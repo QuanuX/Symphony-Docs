@@ -1,0 +1,52 @@
+---
+title: "SACV: API Contract Governance for QuanuX Symphony"
+description: "SACV governs versioned API contracts through bounded OpenAPI 3.2.0 checks, deterministic compatibility diffs, and caller-declared registry proposals across vectors."
+sidebarTitle: "SACV"
+---
+
+The Symphony API Contract Vector (SACV) governs versioned API contracts across the platform. Its engine is an independently installable C++ process that performs bounded OpenAPI 3.2.0 JSON validation, deterministic compatibility diffs, and disposable inventories. Endpoint semantics remain with the domain-owning vector or module; SACV governs contract shape and compatibility.
+
+## Operations
+
+- **Inspect and check**: validate that an OpenAPI 3.2.0 JSON document conforms to the bounded profile.
+- **Diff**: compute deterministic compatibility diffs between contract versions.
+- **Propose**: accept caller-declared registry proposals for new or changed contracts.
+- **Project**: emit disposable inventories for reviewers and downstream tools.
+
+## What SACV governs
+
+SACV bounds:
+
+- The contract shape (OpenAPI 3.2.0 with the SACV profile)
+- Compatibility classification between versions
+- Registry membership for accepted contracts
+
+It does not:
+
+- Own endpoint semantics (each vector or module keeps those)
+- Generate SDKs, publish artifacts, or issue tokens
+- Imply a live network surface exists (mention of a future private API does not create one)
+
+<Note>
+  SACV is read, query, validate, and propose only. Programmatic canonical apply is disabled across the SKV engines.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    The umbrella framework and Contract Quad model.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/skv/sodv">
+    Governs any official publication of a SACV-registered contract.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/skv/sav">
+    Evaluates composition and compatibility across declared components.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Run `qxctl sacv ...` to inspect, check, diff, and propose.
+  </Card>
+</CardGroup>

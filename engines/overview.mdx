@@ -1,0 +1,57 @@
+---
+title: "Symphony Vector Engines: Independent Installation Overview"
+description: "Every Symphony vector engine installs independently, runs out-of-process in C++, and stays authority-free. Meet the SKV, SCV, and SHV engine families here."
+sidebarTitle: "Engines Overview"
+---
+
+Every active application-level Symphony vector may have an independently installable, out-of-process C++ engine. Shared authority-free C++ mechanics live under `libraries/`; a separate C++ coordinator owns authenticated-session and worktree-reconciliation mechanics. Engines inspect, validate, project, and propose within vector-owned contracts. They do not acquire authority merely by generating content.
+
+## Implemented engines
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector foundation" icon="cube" href="/engines/knowledge-vector-foundation">
+    C++ process framing, JSON, SHA-256, snapshots, receipts, and manifest discovery.
+  </Card>
+
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    Authenticated sessions, worktree reconciliation, and lifecycle apply coordination.
+  </Card>
+
+  <Card title="SCV source engines" icon="cloud" href="/engines/scv-source-engines">
+    Eight C++26 SCV, hyperscaler, edge, and provider source-knowledge engines.
+  </Card>
+
+  <Card title="SHV engines" icon="microchip" href="/engines/shv-engines">
+    Hardware source, catalogue, profile, partition, publication, and adapter engines.
+  </Card>
+</CardGroup>
+
+## SKV engine family
+
+The SKV surfaces each have their own engine:
+
+- SKVI, SCLV, SACV, SODV, and SSFV engines each implement inspect, check, propose, project (and recovery where applicable).
+- SAV and SEV engines are freezing-path C++26 processes for composition evaluation and evolution cases.
+
+<Note>
+  Every current SKV engine is read, query, validate, and propose only. Programmatic canonical apply remains disabled until each engine's SSIAG permission verification, expected-state transaction, qxctl safeguard, STAV event, recovery, and negative-test contracts are complete.
+</Note>
+
+## Common guarantees
+
+- Independent installation and uninstallation per module
+- No ambient repository crawl; manifest discovery is explicit
+- No shared authority; every mutation route is gated by SSIAG plus STAV
+- No hot-path residency; engines never inject latency into live workloads
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="qxctl overview" icon="terminal" href="/qxctl/overview">
+    Administrative CLI that invokes exact receipt-validated engines.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/governance/maestro">
+    Records docking relationships between engines and receptors.
+  </Card>
+</CardGroup>

@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: Deterministic Read-Only Repository Checks"
+description: "The Symphony Validator produces line or structured JSON evidence for contracts, source closure, invariants, features, releases, and the machine-checked root summary."
+sidebarTitle: "Validator"
+---
+
+The Symphony Validator (`tools/symphony-validator`) is an independent, deterministic, read-only C++26 repository checker. It produces immutable evidence about the current state of the repository and its contracts. It cannot repair or publish anything.
+
+## What the validator checks
+
+- Contract shape: required Contract Quad anchors and structure
+- Current source closure across SKVI-indexed surfaces
+- Invariant ownership per `knowledge/INVARIANTS.md` and the invariant registry
+- Feature administration expectations reported by SSFV
+- Release records reported by SODV
+- The machine-owned root summary in the repository README
+
+Evidence is emitted as line output or structured JSON. Every emission is reproducible from the same repository state.
+
+## What the validator does not do
+
+<Warning>
+  The validator cannot repair files, rewrite contracts, or publish the repository. It creates canonical truth about nothing; it only reports it.
+</Warning>
+
+- No side effects on the repository
+- No network access
+- No warning suppression outside of qxctl's protected warning policy
+
+## qxctl integration
+
+qxctl validates the validator's exact receipt and structured digests before applying protected warning policy. Nine protected warning-lifecycle qxctl leaves plus the exact receipt-backed root-summary route expose validation administration without altering raw detector evidence.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/qxctl/validate">
+    Protected warning policy, baseline, and display grammar.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/skv/ssfv">
+    Feature administration expectations checked by the validator.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/skv/sodv">
+    Release records the validator inspects.
+  </Card>
+
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    The umbrella framework whose contracts the validator checks.
+  </Card>
+</CardGroup>

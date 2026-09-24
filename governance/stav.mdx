@@ -1,0 +1,54 @@
+---
+title: "STAV: Per-TOPS Append-Only Audit Ledger for Symphony"
+description: "STAV Append Authority runs per-TOPS append-only audit ledgers with authenticated IPC, fsync-before-receipt durability, bounded reads, verification, and recovery."
+sidebarTitle: "STAV"
+---
+
+The Symphony TOPS Audit Vector (STAV) defines the per-TOPS append-only audit ledger protocol. Its runtime authority lives in `modules/stav-append-authority`, an independently installable Go service. Per-TOPS operational ledgers are private to each TOPS installation; they are not SKV content.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` provides:
+
+- Per-TOPS append-only audit ledgers
+- Mutually authenticated local IPC
+- Exact producer and reader grants
+- Fsync-before-receipt durability
+- Bounded reads, verification, and recovery
+- Enrollment and native supervision (launchd, systemd)
+
+<Warning>
+  qxctl never receives raw append authority. It coordinates enrollment, verification, and grants through the exact module-owned adapter, but the ledger append remains sealed inside the append authority process.
+</Warning>
+
+## STAV Protocol for Go
+
+`libraries/stav-protocol-go` is an authority-free Go library implementing the canonical STAV v1 codec, strict validation, digests, framing, conformance rules, and the closed producer vocabulary. Any producer or reader can adopt the protocol without inheriting authority.
+
+## Completed SODV publications
+
+Every STAV artifact currently published through SODV is a Go source-module version, not a binary release:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/governance/ssiag">
+    Authorizes protected mutations that STAV then audits.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/governance/accordare-producer">
+    Emits pre-mutation intent and terminal outcomes into STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/qxctl/lifecycle">
+    Lifecycle administration that composes with STAV enrollment.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/skv/sodv">
+    Governs official publication records for STAV components.
+  </Card>
+</CardGroup>

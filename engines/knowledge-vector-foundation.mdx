@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector Engine C++ Foundation: Shared Mechanics"
+description: "The Knowledge Vector Engine C++ foundation supplies authority-free process framing, bounded JSON, SHA-256, snapshots, receipts, and explicit manifest discovery."
+sidebarTitle: "Foundation Library"
+---
+
+`libraries/knowledge-vector-engine-cpp` supplies the shared, authority-free C++ mechanics that every Symphony vector engine reuses. It provides deterministic building blocks so each engine can stay bounded, reproducible, and free of ambient side effects.
+
+## What the foundation provides
+
+- **Process framing**: authority-free local process protocol used by every engine
+- **Bounded JSON**: strict parsing and emission with explicit size and depth limits
+- **SHA-256**: content addressing for evidence and receipts
+- **No-follow reads**: filesystem reads that never traverse symbolic links unexpectedly
+- **Deterministic snapshots**: repeatable snapshots of inspected state
+- **Temporal validation**: canonical UTC handling per the Symphony Temporal Semantics Contract
+- **Owner-manifest discovery**: exact discovery of contract manifests
+- **Versioned packaging**: independently installable receipt-owned packages
+- **Receipts and receipt-owned uninstall**: uninstall driven only by the receipt that installed the artifact
+
+## Manifest discovery boundary
+
+<Warning>
+  Manifest discovery begins from a fixed bootstrap set and traverses only explicit subordinate declarations. It never performs an ambient repository crawl or infers ownership from directory names.
+</Warning>
+
+Every vector engine that consumes the foundation inherits this rule.
+
+## What the foundation does not do
+
+- It does not carry authority. Engines that use it must still authorize mutations through SSIAG.
+- It does not publish or fetch anything over the network.
+- It does not mutate canonical files on its own.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    C++26 coordinator built on the foundation for sessions and reconciliation.
+  </Card>
+
+  <Card title="Engines overview" icon="cube" href="/engines/overview">
+    The engines that reuse the foundation.
+  </Card>
+
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    Vector contracts that the engines implement.
+  </Card>
+
+  <Card title="qxctl overview" icon="terminal" href="/qxctl/overview">
+    Administrative CLI that invokes exact receipt-validated engines.
+  </Card>
+</CardGroup>

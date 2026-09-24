@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphony Agentic Administrative Command Line"
+description: "qxctl is Symphony's Go administrative CLI. Learn about its 373 executable commands, engine-binding registry, and receipt-validated invocation model for vector engines."
+sidebarTitle: "qxctl Overview"
+---
+
+`qxctl` is Symphony's Go-based, agentic-first administrative and query CLI. It speaks commands; domain vectors own the operations and meanings behind them. Its checked-in registry binds every executable command leaf to a stable machine identity and reviewed feature-administration evidence.
+
+## What qxctl covers
+
+qxctl implements administration for:
+
+- Repository and contract inspection
+- Validator, warning, invariant, feature, lifecycle, session, reconciliation, binding, and Maestro administration
+- SSIAG identity, STAV audit, and Accordare producer administration
+- Implemented vector-engine grammar (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, plus SCV and SHV surfaces)
+
+The current registry contains **373** executable commands.
+
+## Safe invocation model
+
+qxctl invokes exact receipt-validated installations using bounded subprocesses, hard deadlines, response identity and digest checks, expected-state transactions, and durable recovery. It never accepts adapter paths or raw versions in place of receipts.
+
+## Engine-binding registry v2
+
+The engine-binding registry v2 supports the eight established engine roles and bounded future role identities. Legacy v1 state is dual-read; migration to v2 requires an explicit digest-bound compare-and-swap through qxctl and is never a version-selection operation.
+
+## Registry commands
+
+Generate and verify the expected registry from `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+An installed client can emit executable-bound evidence:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Expected evidence has null client version, executable digest, and receipt digest. Observed evidence binds the exact client version and executable digest, plus a receipt digest when one is available. Both forms use `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl owns command grammar and presentation. It does not own vector semantics or canonical knowledge truth. Only reviewed source changes ratify a new `qxcmd` identity, regardless of caller class.
+</Note>
+
+## Command groups
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/qxctl/knowledge">
+    Cross-vector lifecycle and persistent SSFV-session administration.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/qxctl/lifecycle">
+    Profile, ownership, observe, report, boot, apply, and recovery.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/qxctl/engines">
+    Engine binding registry and migration.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/qxctl/reconcile">
+    Coordinator worktree reconciliation.
+  </Card>
+
+  <Card title="session" icon="key" href="/qxctl/session">
+    Authenticated sessions and SSFV maintenance streams.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/qxctl/maestro">
+    Derived receptor inventory and docking evidence.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/qxctl/validate">
+    Protected warning policy and validator administration.
+  </Card>
+
+  <Card title="vector commands" icon="terminal" href="/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv`, and future accord/evolution grammar.
+  </Card>
+</CardGroup>

@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator for Symphony Vector Engines"
+description: "The Knowledge Session Coordinator provides bounded compatibility, worktree reconciliation, authenticated sessions, and apply-capable lifecycle coordination in C++26."
+sidebarTitle: "Coordinator"
+---
+
+The Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) is an independently installable C++26 process. It sits between qxctl and the vector engines and owns bounded compatibility, worktree reconciliation, authenticated noncanonical sessions, SSFV maintenance, report-only lifecycle planning, and separately authorized apply-capable journals.
+
+## Responsibilities
+
+- **Compatibility checks** between qxctl, coordinator, and engines
+- **Worktree reconciliation** with durable slot-based state
+- **Authenticated noncanonical sessions** under SSIAG authority
+- **Persistent SSFV maintenance** streams
+- **Report-only lifecycle planning** with deterministic evidence
+- **Apply-capable journals** with prepared attempts, compare-and-swap, re-observation, dynamic replanning, and recovery
+
+## What the coordinator does not do
+
+<Warning>
+  The coordinator does not execute vector semantics or host actions. It coordinates evidence and journals; each engine still owns its domain, and each host action stays authorized by its own contract.
+</Warning>
+
+- No canonical knowledge apply
+- No arbitrary command execution
+- No hidden watchers or resident background work
+
+## qxctl integration
+
+qxctl invokes exact receipt-validated coordinator installations. `qxctl knowledge reconcile ...` and `qxctl knowledge session ...` use one exact bound coordinator per operation, and mutations require stable operation identifiers plus exact current journal digests for compare-and-swap.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/qxctl/reconcile">
+    Worktree reconciliation grammar.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/qxctl/session">
+    Authenticated session and SSFV maintenance grammar.
+  </Card>
+
+  <Card title="Foundation library" icon="cube" href="/engines/knowledge-vector-foundation">
+    Shared C++ mechanics the coordinator reuses.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/governance/ssiag">
+    Authorizes the sessions the coordinator manages.
+  </Card>
+</CardGroup>

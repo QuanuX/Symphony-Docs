@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Read Symphony Receptor Presence Inventory"
+description: "Inspect Symphony's Maestro presence authority through qxctl to see authenticated vector-engine docking relationships and derived receptor inventory."
+sidebarTitle: "maestro"
+---
+
+The `qxctl maestro ...` grammar surfaces Maestro presence evidence. Maestro is the presence authority; qxctl merely reads and inspects what Maestro records. Neither creates docking relationships on its own.
+
+## Inventory
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` presents Maestro's complete, derived, read-only inventory of authenticated vector-engine docking relationships per TOPS and receptor.
+
+## Related administrative routes
+
+Additional qxctl leaves expose Maestro-related administration:
+
+- Status and inspection of docking evidence
+- Recovery routes bounded by Maestro's own contracts
+- Foundational lifecycle enrollment and native supervision for Maestro itself
+
+Every mutation route goes through the exact module-owned adapter. qxctl never renders Maestro descriptors from internal parsing or invokes an implicit newest version.
+
+<Warning>
+  Maestro does not start, schedule, supervise, or invoke engines. `qxctl maestro inventory` is read-only. Binding, reconciliation, session coordination, or a lifecycle plan alone does not establish Maestro presence.
+</Warning>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/governance/maestro">
+    Presence authority contract and boundaries.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/qxctl/engines">
+    Engine binding registry (bindings are not docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/qxctl/session">
+    Authenticated sessions used to record presence.
+  </Card>
+
+  <Card title="Engines overview" icon="cube" href="/engines/overview">
+    Independently installable vector engines that dock with Maestro.
+  </Card>
+</CardGroup>

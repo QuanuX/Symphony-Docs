@@ -1,0 +1,48 @@
+---
+title: "SODV: Official Documentation and Release Governance"
+description: "SODV governs official QuanuX publication with append-only release-ledger checks, caller-supplied observation verification, and disposable release inventories."
+sidebarTitle: "SODV"
+---
+
+The Symphony Official Documentation Vector (SODV) governs how knowledge inside the SKV framework becomes official public documentation and release records. Its engine is an independently installable C++ process that performs local append-only release-ledger checks and produces disposable release inventories. SODV does not publish anything itself.
+
+## Operations
+
+- **Inspect and check**: validate release-ledger shape and continuity.
+- **Verify**: check caller-supplied observations of published state.
+- **Propose**: accept provider-neutral release proposals.
+- **Recover**: perform non-mutating recovery.
+- **Project**: emit disposable release inventories.
+
+## What SODV does not do
+
+- SODV has no network access.
+- SODV publishes nothing to GitHub, Mintlify, package registries, or any other surface.
+- SODV creates no tags and cannot declare a release complete.
+- SODV does not rank providers or favor a publication path.
+
+Publication happens through separate authorized tooling that consults SODV evidence.
+
+## Completed SODV publications
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` at tag `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` at tag `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` at tag `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Run `qxctl sodv ...` to inspect, verify, propose, and project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Every SKV engine is read, query, validate, and propose only. Canonical apply is disabled until each engine's SSIAG, expected-state transaction, qxctl safeguard, STAV event, recovery, and negative-test contracts are complete.
+</Note>

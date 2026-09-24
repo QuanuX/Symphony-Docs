@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat, and Nest in Symphony"
+description: "Learn how Symphony models physical infrastructure: Node as the physical computer, Habitat as exact OS conditioning, and Nest as user-purpose workload."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony defines three physical concepts that separate hardware identity, software conditioning, and user workload. These concepts keep infrastructure concerns distinct so you can reason about each one independently.
+
+## Node
+
+A **Node** is the target physical computer resource with specifically identified resources. Disconnecting, reconnecting, restarting, or reflashing only software does not create a new physical Node. Destruction, physical replacement, or a material local hardware change does. A Node incarnation is separate evidence created when that Node is attached to a bus as a participant in a trading system, research cluster, or another Symphony-built system.
+
+## Habitat
+
+A **Habitat** is the exact operating system and package conditioning delivered to a Node for the work you select. Its default is the required software surface only: no unrelated packages, hidden runtimes, containers, Kubernetes, or implicit virtualization. A broad general-purpose Habitat remains a valid explicit user choice.
+
+## Nest
+
+A **Nest** serves a purpose chosen by you. Live strategy execution is expected to be common, and one strategy may contain many modular code sections, but Symphony does not define the Nest's purpose or equate it with one source file, process, algorithm, broker API, or data interface. Strategy logic remains your domain.
+
+## Comparison
+
+| Concept | What it is | What changes it |
+| --- | --- | --- |
+| **Node** | Physical computer with specific resources | Physical destruction, replacement, or material hardware change |
+| **Habitat** | Exact OS and package conditioning on a Node | Explicit user selection or qxctl-administered conditioning |
+| **Nest** | User-purpose workload delivered into a Habitat | User deployment of strategy or other selected work |
+
+## Cluster and bus topology
+
+Multiple Nodes form a cluster only when connected to one another through one or more buses. Multiple bus fabrics may coexist inside one cluster, and a Node-in-cluster relationship may identify the relevant bus without changing the physical Node's identity.
+
+Bus adapters such as NATS JetStream and ZeroMQ are user-chosen, not doctrine. Heavy transfer, control, research, and execution exhaust do not have to share one bus. A topology may use multiple buses or bypass a bus for a declared path.
+
+## TOPS and TROG scope
+
+**TOPS** is the dominant Trade Operating System scope. A **TROG** is a deliberately subordinate, non-global trading-group scope. Despite the historical wording, a TROG is not necessarily virtual. Its distinguishing property is that its scope and rules are not universal.

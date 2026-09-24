@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: Cross-Vector Lifecycle Administration"
+description: "The qxctl knowledge command group owns cross-vector lifecycle, session transition, invariant queries, and persistent SSFV maintenance administration."
+sidebarTitle: "knowledge"
+---
+
+The `qxctl knowledge ...` group owns cross-vector lifecycle and persistent SSFV-session administration. It is the entry point for coordinator-backed operations and for invariant queries against the validator.
+
+## Session transition
+
+Use `qxctl knowledge session transition` to signal a host lifecycle event to an existing session:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Safe retries reuse the same event ID. Add `--recover` only when discovery recovery from damaged local session evidence is intended; it does not recover denial, incompatible critical state, or ambiguity.
+
+<Warning>
+  Symphony does not install a login hook, watcher, or boot unit through this command. Use it only when an explicit host lifecycle integration supplies a stable event identity.
+</Warning>
+
+## Invariant queries
+
+Four leaves bind `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` additionally binds `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Direct query leaves emit `symphony.knowledge.invariant-query-result.v1` with `semantic_validity=not_asserted`. `check` returns the exact complete validator result and preserves exit 26.
+
+## Subcommand groups
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/qxctl/lifecycle">
+    Profile, ownership, observe, report, boot, apply, and recovery.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/qxctl/engines">
+    Engine binding registry list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/qxctl/reconcile">
+    Coordinator worktree reconciliation grammar.
+  </Card>
+
+  <Card title="session" icon="key" href="/qxctl/session">
+    Authenticated sessions and SSFV maintenance streams.
+  </Card>
+</CardGroup>

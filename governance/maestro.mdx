@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony Vector-Engine Presence Authority"
+description: "Maestro records authenticated vector-engine docking relationships per TOPS and receptor, deriving a complete read-only inventory without starting or supervising engines."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) is an independently installable, freezing-path C++26 presence authority. It records exact authenticated vector-engine docking relationships per TOPS and receptor and derives a complete read-only inventory of what is currently docked. Maestro is a witness, not a supervisor.
+
+## What Maestro records
+
+- Exact authenticated docking relationships between vector engines and receptors
+- Per-TOPS scoping so each installation's presence stays private to that installation
+- A derived, complete, read-only inventory available through `qxctl maestro inventory`
+
+## What Maestro does not do
+
+<Warning>
+  Maestro does not start, schedule, supervise, or invoke engines. Binding, reconciliation, authenticated-session coordination, or a lifecycle plan alone does not establish Maestro presence, ratify semantic truth, mutate canonical knowledge, or prove installed-host completeness.
+</Warning>
+
+- Maestro creates no processes.
+- Maestro never applies canonical knowledge changes.
+- Maestro never replaces the vector engine that owns the semantics.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/qxctl/maestro">
+    `qxctl maestro inventory` presents the derived inventory.
+  </Card>
+
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    Owns authenticated-session and worktree-reconciliation mechanics.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/governance/ssiag">
+    Authenticates the docking relationships Maestro records.
+  </Card>
+
+  <Card title="Engines overview" icon="cube" href="/engines/overview">
+    Independently installable vector engines that dock with Maestro.
+  </Card>
+</CardGroup>

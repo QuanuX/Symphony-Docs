@@ -1,0 +1,82 @@
+---
+title: "qxctl Vector Commands: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Explore the vector-specific qxctl grammar available today: SKVI, SCLV, SACV, SODV, SSFV, SHV storage and catalogue, plus reserved accord and evolution surfaces."
+sidebarTitle: "Vector Commands"
+---
+
+qxctl exposes vector-specific grammar for every implemented SKV engine and for SCV and SHV administration. Ratified Accordare and SEV grammar will use `qxctl accord ...` and `qxctl evolution ...` once their command implementations and stable registry evidence exist.
+
+## SKV engine grammar
+
+- `qxctl skvi ...`: inspect, check, propose, project against the SKVI engine
+- `qxctl sclv ...`: inspect, check, propose, recover, project against the SCLV engine
+- `qxctl sacv ...`: inspect, check, diff, propose, project against the SACV engine
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project against the SODV engine
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph against the SSFV engine
+
+Each grammar is bounded by the owning engine's contract. qxctl never invents an operation or bypasses the engine.
+
+## Accordare additions
+
+The Accordare additions on qxctl provide:
+
+- Stable status
+- Reconciliation (replays only exact candidates)
+- Supervisor install and uninstall (invokes only the verified receipt-v2 executable)
+- Two grant-administration identities that mutate only the stopped STAV configuration under SSIAG and expected-state recovery
+
+Status separates durable intent and append backlog. Reconciliation replays only exact candidates. Grant leaves never open a running configuration.
+
+## SHV storage
+
+Durable SHV storage is administered only through:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` with the retained expected intent digest is also recovery. There is no separate recovery alias. Store scope is declared in the input; connector identity is set in flags. Structural storage does not duplicate semantic `shv graph validate` or select a catalogue head.
+
+`shv graph store inventory` (release 0.2) adds a revision-bound logical read with explicit retained writer identities. Legacy 0.1 selection remains supported.
+
+## SHV catalogue publication
+
+Catalogue publication is administered only through:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Recovery is `apply --operation-id`, mutually exclusive with `--input`. Permission-backed local catalogue selection is distinct from source activation and generic graph storage.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    Vector semantics the engines implement.
+  </Card>
+
+  <Card title="SHV vector" icon="microchip" href="/vectors/shv">
+    Hardware Vector background and engine list.
+  </Card>
+
+  <Card title="SHV engines" icon="microchip" href="/engines/shv-engines">
+    Engine-level details.
+  </Card>
+
+  <Card title="qxctl overview" icon="terminal" href="/qxctl/overview">
+    Complete qxctl command surface.
+  </Card>
+</CardGroup>

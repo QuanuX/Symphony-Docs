@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance for Symphony"
+description: "SSIAG is Symphony's caller-neutral authorization foundation with per-TOPS enrollment, protected policy lifecycle, safe audit metadata, and native supervision hooks."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) is the independently installable, cgo-free Go foundation for caller-neutral authorization on a Symphony host. It projects effective host authority, gates protected mutations, and integrates with STAV audit before any change becomes visible.
+
+## What SSIAG provides
+
+- Exact caller-neutral authorization tied to target-host ownership, granted permission, requested operation, expected state, and owner-configured safeguards
+- Per-TOPS enrollment and local endpoint trust
+- Protected policy lifecycle and provider-installation lifecycle
+- Binding lifecycle with compare-and-swap between active and previous bindings
+- Safe audit metadata prepared for STAV
+- Native launchd and systemd supervision
+
+## What is deliberately disabled
+
+<Warning>
+  Operational credential use, canonical knowledge apply, and secret delivery remain disabled. Ordinary foundational mutation fails closed until its required audit route through STAV is complete.
+</Warning>
+
+SSIAG does not decide caller class. Human, AI, agent, service, and workload callers are treated identically; authority comes from the target host and the requested operation, not the actor label.
+
+## macOS Keychain provider
+
+`modules/ssiag-provider-macos-keychain` is a Swift metadata adapter with a bounded mutually verified handshake and signed-bundle plus session-readiness observation. It exposes provider metadata to SSIAG without granting operational Keychain access, which is intentionally disabled today.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/governance/stav">
+    Per-TOPS append-only audit ledger that SSIAG mutations rely on.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/governance/accordare-producer">
+    Bounded SAV Named Version audit circuit that composes with SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/qxctl/lifecycle">
+    Lifecycle administration that consults SSIAG for authorization.
+  </Card>
+
+  <Card title="Caller authority" icon="user-shield" href="/concepts/caller-authority">
+    The doctrine SSIAG implements.
+  </Card>
+</CardGroup>

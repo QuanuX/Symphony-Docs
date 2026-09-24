@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Producer: Bounded SAV Named Version Audit"
+description: "The Accordare STAV producer keeps SAV Named Version intent, outcome, and recovery durable through a freezing-path Go producer with authenticated local peers."
+sidebarTitle: "Accordare Producer"
+---
+
+The Accordare STAV producer (`modules/accordare-stav-producer`) is an independently installable, freezing-path Go producer for the bounded SAV Named Version audit circuit. It keeps pre-mutation intent and append recovery durable, authenticates its local peers, and submits only the exact safe candidate admitted by its closed vocabulary. It is not the STAV append authority itself.
+
+## The intent, outcome, recovery pattern
+
+The producer follows a three-step pattern for every audited mutation:
+
+<Steps>
+  <Step title="Pre-mutation intent">
+    Record the caller's stated intent durably before any change becomes observable. The producer refuses candidates outside its closed vocabulary.
+  </Step>
+  <Step title="Terminal outcome">
+    After the mutation completes or fails, capture the exact outcome so the audit reflects reality, not a hoped-for state.
+  </Step>
+  <Step title="Bounded recovery">
+    On interruption, the producer performs bounded recovery of the append stream without inventing a reconciliation or silently discarding intent.
+  </Step>
+</Steps>
+
+## Boundaries
+
+<Warning>
+  The Accordare producer is not the STAV append authority. It authenticates local peers and submits candidates; the append authority validates, seals, and durably stores them. Never route around this separation.
+</Warning>
+
+- The producer's vocabulary is closed. It accepts only SAV Named Version audit candidates.
+- The producer is freezing-path. It must not become a hot-path dependency.
+- The producer authenticates local peers; it does not authenticate remote callers.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/governance/stav">
+    The append authority that seals audit records.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/governance/ssiag">
+    Authorizes the mutation the producer audits.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/skv/sav">
+    The Named Version composition semantics that this circuit audits.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Ratified Accordare grammar arrives as `qxctl accord ...` once implemented.
+  </Card>
+</CardGroup>

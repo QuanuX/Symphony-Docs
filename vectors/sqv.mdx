@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: Framework Contracts"
+description: "SQV owns reusable quantitative and trading-system framework contracts without acquiring user strategy logic. SOOV is its first named subvector for future C++-only FIX architecture."
+sidebarTitle: "Quantitative Vector"
+---
+
+The Symphony Quantitative Vector (SQV) owns reusable framework contracts for quantitative research, trading-system construction, execution support, and later quantitative engines. Strategy logic always belongs to you. SQV supplies framework surfaces and exact compatibility evidence, but it never determines your instruments, feeds, subscriptions, order logic, or execution model.
+
+## User strategy boundary
+
+You retain complete ownership of strategy logic. SQV does not:
+
+- Select your instruments or data feeds
+- Define subscription fields or market depth
+- Determine failure behavior or normalization rules
+- Write order logic or execution models
+- Design your internal modular structure
+
+Symphony gives compatibility evidence and supported operations. It never ranks strategies or imposes platform law on your trading decisions.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV is the first named subvector under SQV. It represents a future high-performance, C++-only FIX architecture informed by historic QuanuX work. SOOV is planned as a bounded, deterministic messaging layer for trading communication. Detailed FIX behavior is not yet canonical; no FIX session, feed adapter, or broker integration is currently implemented.
+
+## Future scope
+
+SQV is the planned home for ratified quantitative framework components across later delivery phases. Expected areas include:
+
+- Backtesting engines
+- Broker C++ APIs
+- Indicator libraries
+- Quantitative mathematics
+- Data-stream architecture
+
+None of these are implemented until their respective contracts are ratified.
+
+## Current status
+
+SQV is a canonical architecture contract only. No SQV or SOOV engine, FIX session, feed adapter, strategy runtime, broker integration, backtester, indicator library, or data-stream component is currently implemented.
+
+## How SQV relates to other vectors
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/vectors/shv">
+    Supplies hardware capability evidence that constrains quantitative engine design.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/vectors/snv">
+    Records the Nodes where quantitative workloads execute.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/skv/overview">
+    Governs SQV contracts, evolution, and official publication relationships.
+  </Card>
+</CardGroup>

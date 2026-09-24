@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: Hardware Capability Knowledge"
+description: "SHV maintains hardware-capability knowledge for CPUs, GPUs, NICs, motherboards, RAM, and NVMe through multiple independently installable C++ engines."
+sidebarTitle: "Hardware Vector"
+---
+
+The Symphony Hardware Vector (SHV) owns hardware-capability knowledge that helps you understand how physical design can enable, constrain, port, or extend quantitative software. It covers processors, CPU core types, GPUs, NICs and fibre interfaces, motherboards, cache hierarchies, memory, NVMe, and complete system builds. Default curation prioritizes original components and evidenced variants starting from 2018.
+
+## Scope and coverage
+
+SHV may cover any evidenced physical capability relevant to program design. You control the coverage profile through qxctl. The default date basis is model introduction, not an inferred individual manufacture date. You may expand, narrow, replace, or remove this filter.
+
+## Implemented engines
+
+SHV knowledge is delivered through multiple independently installable C++ engines:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Core kernel (0.4.0-dev): coverage profiles, retained-source catalogue build/replay, requirement evaluation, deterministic graph projection, and source-backed graph validation.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Source identity, relocation plans, byte-capture binding, and source-replayed provenance graphs.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Declaration conformance, portable recipes, and exact local source binding.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Hardware partition and component mapping operations.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Protected caller catalogue heads, original-source replay, and durable snapshot recovery.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Generic C++ graph port and in-memory portable reference adapter for lossless exchange.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Optional DuckDB relational projection of hardware graph evidence.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Bounded PDF extraction and documentary assertion revalidation from original bytes.
+  </Card>
+</CardGroup>
+
+## Source revision and provenance
+
+The `shv-source-engine` implements stable source identity, explicit relocation plans, pure transition validation, actual-byte capture binding, and source-replayed provenance graphs. These are read-only operations. Core curation prioritizes original component identity and evidenced variants. Protected source activation is handled separately; the pure source engine does not grant authority.
+
+## Graph exchange and storage
+
+The `shv-graph-adapter` supplies a generic C++ graph port for lossless exchange and structural queries. Durable storage is implemented through the DuckDB SQL default. No dedicated graph database is currently selected.
+
+## PDF evidence boundary
+
+The `shv-pdf-adapter` extracts qualified documentary assertions from explicit PDF tables and revalidates them from original bytes after generic graph exchange. General PDF coverage remains separate scoped work.
+
+## Remaining work
+
+A broad hardware atlas, automated source acquisition, multi-source conflict aggregation, additional vendor-specific database drivers, custom plugin loading, and Composer integration remain later work. Broad component mappings and durable vendor drivers are also open.
+
+## How SHV relates to other vectors
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/vectors/snv">
+    Records the Nodes that contain the hardware SHV describes.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/vectors/scv">
+    References provider hardware offerings that SHV characterizes in detail.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/vectors/sov">
+    May act on SHV evidence when provisioning or conditioning Nodes.
+  </Card>
+</CardGroup>

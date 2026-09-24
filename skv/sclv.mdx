@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector for Source Changes"
+description: "SCLV maintains an append-only ledger of completed source changes with provider-neutral proposals, non-mutating recovery, and disposable projections for the record."
+sidebarTitle: "SCLV"
+---
+
+The Symphony Change Ledger Vector (SCLV) records changes made to SKV surfaces over time. Its engine is an independently installable C++ process that performs deterministic append-only ledger checks and produces disposable projections. The ledger is written only after a material source change is complete.
+
+## Operations
+
+- **Inspect and check**: validate ledger shape, continuity, and evidence.
+- **Propose (v3)**: accept caller-declared, provider-neutral proposals for new records.
+- **Recover**: perform non-mutating recovery of interrupted or ambiguous state.
+- **Project**: emit disposable inventories of ledger state on request.
+
+## Admission and retirement
+
+Every admitted SCLV record binds current indexed evidence at the time it is written. Later legitimate retirement of a surface preserves the immutable historical provenance without forcing deleted current prose back into SKVI. History remains history; current truth remains current.
+
+## What SCLV does not do
+
+- SCLV does not create or approve source changes.
+- SCLV does not rewrite existing records; it is append-only.
+- SCLV does not publish anything. Public projection belongs to SODV.
+
+<Note>
+  Every current SKV engine is read, query, validate, and propose only. Canonical apply is disabled until each engine's full authority and audit contracts are complete.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/skv/skvi">
+    Indexes current canonical truth that SCLV records bind to.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/skv/sodv">
+    Governs official public projection of ledger information.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/skv/sev">
+    Evolution cases assess changes before SCLV records them.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Run `qxctl sclv ...` for inspect, check, propose, and recover.
+  </Card>
+</CardGroup>

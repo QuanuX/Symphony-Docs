@@ -1,0 +1,51 @@
+---
+title: "SKVI: The Symphony Knowledge Vector Index Engine"
+description: "SKVI deterministically indexes each canonical SKV surface once, checks manifest-declared coverage, and emits disposable digest-bound projections without touching truth."
+sidebarTitle: "SKVI"
+---
+
+The Symphony Knowledge Vector Index (SKVI) is the engine that maps current canonical truth across every SKV surface. It is an independently installable C++ process that operates deterministically, read-only, and cannot decide membership or write canonical files.
+
+## What SKVI does
+
+SKVI performs three bounded operations:
+
+- **Inspect and check**: verify that every manifest-declared required surface is indexed exactly once, with a stable owner, truth role, relationships, consumers, and projection eligibility.
+- **Propose**: accept caller-declared immutable proposals for index changes without applying them.
+- **Project**: emit disposable digest-bound projections of the current index for downstream consumers.
+
+## What SKVI does not do
+
+SKVI never decides feature-worthiness or manifest membership. Ownership stays with each vector's Contract Quad. SKVI also does not:
+
+- Write or rewrite canonical Markdown
+- Publish anything to a public projection
+- Grant authority merely because it generated evidence
+
+## When to use it
+
+Use SKVI to confirm that a repository is fully covered before you propose a source change, or to see which owner and truth role a specific surface carries. Its projections feed proposal reviewers, agent context, and validator baselines.
+
+<Note>
+  SKVI is one of the read, query, validate, and propose engines. Canonical apply remains disabled across the ratified vector engines until each engine's SSIAG, expected-state transaction, qxctl safeguard, STAV event, recovery, and negative-test contracts are complete.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    The umbrella framework that governs SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/skv/sclv">
+    The append-only change ledger that records completed material source changes.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Run `qxctl skvi ...` to invoke inspect, check, and propose.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/governance/validator">
+    Independent read-only checks that complement SKVI coverage.
+  </Card>
+</CardGroup>

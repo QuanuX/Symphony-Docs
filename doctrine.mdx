@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony Platform Doctrine"
+description: "Learn the governing principles of Symphony: user ownership of strategy and infrastructure, caller-class neutrality, hot-path protection, and evidence-based compatibility."
+sidebarTitle: "Doctrine"
+---
+
+The Symphony doctrine defines the boundaries between what the platform controls and what you control. These rules govern every design decision in the monorepo and every interaction with qxctl, vector engines, and knowledge contracts.
+
+## User ownership
+
+You own your strategy logic, Nest purpose, provider choice, hardware choice, bus topology, and supported adapter selection. Symphony provides exact compatibility evidence and supported operations, but it does not turn recommendations into platform law. The platform reports matches, mismatches, unresolved facts, and consequences. It does not rank providers, prescribe a strategy, or quietly widen your environment.
+
+## Hot-path protection
+
+The hot path is protected from administrative residency and accidental shared-bus pressure. qxctl and the knowledge plane are cold or freezing-path administration. They may explicitly act on a Node that also hosts live work, but they must not become continuous hot-path dependencies, hidden watchers, resident interpreters, or unsolicited background package managers. Your explicit architecture remains sovereign.
+
+## Command and semantics separation
+
+qxctl owns command grammar and presentation. Domain vectors own the operations and meanings those commands expose. A qxctl route invokes an owner-defined capability without absorbing its semantics.
+
+## Names and namespaces
+
+Names are recorded under their owning scope. SNV and SCNV do not dictate them, and root NAMESPACES remains broader than SNV. A name registered within a TOPS or TROG follows that scope. Within multiple clusters, a Node short name may recur in different clusters but may not ambiguously identify two active Nodes in the same cluster.
+
+## Caller-class neutrality
+
+A caller's classification as human, AI, agent, service, or workload does not grant or remove authority. Supported authorization decisions use target-host ownership or granted permissions, the requested operation and resource, expected state, and owner-configured safeguards. The target host's administrator is sovereign over configurable governance. SSIAG may verify and project effective host authority, but it does not create a superior registration authority. Enhanced identity assurance and governance interlocks are caller-neutral, owner-configured safeguards. Protocol-integrity requirements remain mandatory. Symphony does not decide external legal or financial capacity by caller type.
+
+## Truth and evidence
+
+Current contracts describe current truth. Immutable SCLV and SODV records preserve what was known, changed, authorized, or completed at their recorded point in history. When current contracts, implementation evidence, and the latest applicable record disagree, the disagreement is surfaced as drift for review. History is not silently rewritten to resemble the present.
+
+## Python doctrine
+
+First-party Symphony source, generators, schema authoring, tests, and acceptance helpers require no Python implementation or interpreter dependency. C++ owns the replacement authoring and process-test tooling. This repository policy does not restrict your user-authored programs or explicitly selected isolated Habitats.

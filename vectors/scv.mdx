@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Provider Resource Knowledge"
+description: "SCV maintains private knowledge of offsite provider resources across AWS, Azure, GCP, DigitalOcean, Cloudflare, and user-owned hardware through eight independently installable C++ engines."
+sidebarTitle: "Cloud Vector"
+---
+
+The Symphony Cloud Vector (SCV) owns private semantic knowledge about offsite hardware resources and the provider realities that shape your clusters, training, research, and data work. It maps provider offerings, regions, infrastructure domains, constraints, and observed availability without ranking providers or imposing boundaries on what you may attempt.
+
+## Provider coverage
+
+SCV covers the following providers and resource types:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- User-owned hardware (where comparison with offsite resources is required)
+
+## Installed engines
+
+SCV knowledge is delivered through eight independently installable C++ engines. You install only the ones you need:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Core SCV engine for provider resource knowledge and graph construction.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Cloud evidence engine for bounded capture and corpus semantics.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-specific evidence engine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-specific hardware and resource knowledge engine.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-specific hardware and resource knowledge engine.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-specific resource knowledge engine.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-specific hardware and resource knowledge engine.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Optional relational graph connector using DuckDB for retained SQL indexing.
+  </Card>
+</CardGroup>
+
+## Portable provider packages and composition
+
+SCV exposes portable provider packages through qxctl. You retain control over requirements, provider permissions, recipe alternatives, and execution decisions. qxctl supports retained workflows and protected graph selection, so you can replay exact evidence without re-querying providers.
+
+## Optional DuckDB connector
+
+The `scv-graph-duckdb-connector` adds a bounded relational projection of immutable native graphs. DuckDB is the user-selected default SQL database. You may select dedicated graph engines in the future through additional adapters.
+
+## Privacy and sovereignty
+
+An installed SCV knowledge graph belongs to your private installation. User-supplied accounts, balances, permissions, and contractual constraints are used only through explicitly enabled observation surfaces. Private facts do not enter official Symphony source truth.
+
+## How SCV relates to other vectors
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/vectors/sov">
+    The operational control plane that acts upon SCV evidence. SOV does not rewrite provider meaning.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/vectors/snv">
+    Records the identities of physical Nodes and clusters that result from SCV-informed provisioning.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/vectors/shv">
+    Owns detailed hardware capability knowledge for components SCV references.
+  </Card>
+</CardGroup>
+
+## Versioned interface increments
+
+SCV releases are additive and exact-versioned. Earlier installations remain invocable at their exact scopes. Current increments include native operations, corpus snapshots, interpretation profiles, portable provider packs, composition workflows, obligation tracking, and evidence bundles. Each increment preserves prior routes, defaults, and records.

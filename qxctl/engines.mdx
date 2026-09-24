@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: Bind, Doctor, Migrate Registry"
+description: "Manage Symphony's protected user-scope engine binding profile with list, inspect, doctor, bind, unbind, and digest-bound migrate through qxctl."
+sidebarTitle: "engines"
+---
+
+The `qxctl knowledge engines ...` grammar manages the protected user-scope `default` binding profile for Symphony's vector engines. It binds selected content for later reconciliation. It does not install, invoke, activate, dock, authenticate, authorize, or apply an engine.
+
+## Commands
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Supply `absent` for the first v2 registry mutation or the exact digest reported by `list` for later mutations. Every mutation is compare-and-swap against that digest.
+
+## v1 to v2 migration
+
+<Warning>
+  Valid v1 registry state remains readable. Migration to v2 is a separate exact compare-and-swap and is never a version-selection operation. Do not treat migration as an upgrade path for engine selection.
+</Warning>
+
+- `list` and `inspect` continue to work on v1 evidence.
+- `migrate` produces a linked v2 generation without discarding v1 truth.
+- After migration, use v2 digests for future mutations.
+
+## What a bind is
+
+A bind selects exact content for later reconciliation by the coordinator. It:
+
+- Does not install an engine
+- Does not invoke or activate an engine
+- Does not dock an engine with Maestro
+- Does not authenticate a caller
+- Does not authorize apply
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/qxctl/reconcile">
+    Reconcile bound content with a coordinator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/qxctl/lifecycle">
+    Lifecycle plans that use bound engines.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/governance/maestro">
+    Presence authority that records docking, not bindings.
+  </Card>
+
+  <Card title="Engines overview" icon="cube" href="/engines/overview">
+    Independently installable vector engines.
+  </Card>
+</CardGroup>

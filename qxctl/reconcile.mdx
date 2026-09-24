@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Worktree Reconciliation"
+description: "Reconcile worktrees against a bound Symphony coordinator with compatibility checks, checkpoint and close journals, and evidence-based two-slot recovery."
+sidebarTitle: "reconcile"
+---
+
+The `qxctl knowledge reconcile ...` grammar drives worktree reconciliation through one exact bound Knowledge Session Coordinator. Every mutation is stable-identifier tracked and compare-and-swap against the exact current journal digest.
+
+## Commands
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verify that qxctl, the coordinator, and the bound engines agree on protocol version and scope.
+- `begin`: open a new reconciliation context with a stable operation identifier.
+- `status`: inspect the current journal without mutation.
+- `checkpoint`: durably advance the journal with compare-and-swap.
+- `close`: finalize the reconciliation context.
+- `recover --discover`: discovery recovery when ordinary status cannot validate local state.
+
+## Recovery rules
+
+<Warning>
+  Two-slot recovery is evidence-based forward repair. It is never permission to discard an incompatible journal or an unknown critical extension. If recovery fails, escalate rather than force.
+</Warning>
+
+Use discovery recovery only when ordinary status cannot validate local state. Preserve blockers; replan only after verified evidence changes.
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    The engine that owns reconciliation journals.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/qxctl/session">
+    Authenticated sessions that pair with reconciliation contexts.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/qxctl/engines">
+    Manage the bindings the coordinator consumes.
+  </Card>
+</CardGroup>

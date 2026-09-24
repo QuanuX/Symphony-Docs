@@ -1,0 +1,65 @@
+---
+title: "SHV Engines: Symphony Hardware Vector Source and Graph"
+description: "The SHV engines catalogue CPUs, GPUs, NICs, memory, and storage with retained source replay, requirement evaluation, PDF ingestion, and DuckDB durable graphs."
+sidebarTitle: "SHV Engines"
+---
+
+The Symphony Hardware Vector (SHV) engines catalogue processors, CPU topology, caches, GPUs, NICs and fibre interfaces, motherboards, RAM, and NVMe. Default curation prioritizes original components and evidenced variants. Every engine is independently installable and read-only.
+
+## Engines
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Hardware kernel: caller-defined coverage, retained-source catalogue replay, requirement evaluation, and graph projection.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Source ingestion and revision handling for hardware evidence.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Component and system profile evaluation.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partitioning of catalogued hardware for reproducible selection.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Governed local catalogue publication and selection.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Explicit graph transport surface.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Durable DuckDB-backed graph storage administered through qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    PDF source interpretation for hardware datasheets.
+  </Card>
+</CardGroup>
+
+## Administration highlights
+
+- **Durable storage** is administered only through `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` with the retained expected intent digest is also recovery; there is no separate recovery alias.
+- **Catalogue publication** is administered only through `shv catalogue publication inspect|plan|apply|status|schema|template`. Recovery is `apply --operation-id`, mutually exclusive with `--input`.
+- **Inventory** (release 0.2) adds `shv graph store inventory`: a revision-bound logical read with explicit retained writer identities. Legacy 0.1 selection remains supported.
+
+<Note>
+  Hardware classes are caller mapping and profile data, not duplicate command trees. `--version` selects the exact primary owner; `--source-version` and `--adapter-version` name distinct selected dependencies. Schema and mapping revisions are data identities, not aliases for installed engine versions.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SHV vector" icon="microchip" href="/vectors/shv">
+    Hardware Vector contract these engines implement.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Full `shv ...` grammar reference.
+  </Card>
+</CardGroup>

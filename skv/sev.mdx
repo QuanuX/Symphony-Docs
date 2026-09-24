@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector for Planned Changes"
+description: "SEV evaluates planned changes, novelty, and lifecycle transitions with deterministic cases, dependency-ready sets, disposable graphs, and non-applying recovery advice."
+sidebarTitle: "SEV"
+---
+
+The Symphony Evolution Vector (SEV) owns planned-change and encountered-novelty cases across the platform. Its engine is a freezing-path, read-only C++26 process. SEV neither watches a host nor applies a transition; it produces evidence and disposition advice.
+
+## Operations
+
+- **Case evaluation**: deterministic evolution cases for additions, changes, renames, supersessions, deprecations, retirements, and removals.
+- **Impact and disposition planning**: assign each case to its authoritative owners.
+- **Dependency-ready-set recalculation**: derive the safe order of dependent transitions.
+- **Transition verification**: confirm the observed state after a transition matches its expected shape.
+- **Recovery advice**: describe safe forward or reverse steps when a transition is interrupted.
+- **SCSEV assessment**: the first governed SEV profile applies these operations to documentation-only knowledge-surface evolution.
+- **Novelty and watch checks**: detect new or unexpected surfaces for reviewer attention.
+- **Trigger coalescing** and **lifecycle-session binding**: reduce duplicate evaluation and bind cases to a session.
+- **Graph projection**: disposable graphs for review.
+
+## SCSEV profile
+
+SCSEV reuses SSFV feature administration, stable qxctl command truth, and engine-operation descriptors. It does not create a duplicate engine or registry. The first engine slice is report-only and proposal-only; durable external action remains separately authorized through qxctl and the knowledge session coordinator.
+
+<Note>
+  SEV is read, query, validate, and propose only. Canonical apply remains disabled across the SKV engine family.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SKV overview" icon="book-open" href="/skv/overview">
+    The umbrella framework and Contract Quad model.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/skv/ssfv">
+    Feature administration reused by the SCSEV profile.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/skv/sav">
+    Composition and compatibility evaluation for changed components.
+  </Card>
+
+  <Card title="qxctl vector commands" icon="terminal" href="/qxctl/vector-commands">
+    Ratified evolution grammar arrives as `qxctl evolution ...` once implemented.
+  </Card>
+</CardGroup>

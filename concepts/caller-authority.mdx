@@ -1,0 +1,28 @@
+---
+title: "Caller-Class Neutrality and Host Authority in Symphony"
+description: "Symphony does not classify callers by type. Authority derives from target-host ownership, explicit permission, expected state, and owner-configured safeguards."
+sidebarTitle: "Caller Authority"
+---
+
+Symphony does not classify a caller as human, AI, agent, service, workload, organization, or any other actor type when deciding authority. Your classification as a person or an automated system does not grant or remove any capability by itself. This caller-class neutrality is a core architectural boundary that keeps authorization grounded in facts rather than labels.
+
+## What governs authority
+
+Supported authorization decisions use the following inputs:
+
+- **Target-host ownership or granted permissions**: The administrator of the target host is sovereign over configurable governance.
+- **Requested operation and resource**: The specific action and the object it acts upon.
+- **Expected state**: The declared desired outcome and observed current state.
+- **Owner-configured safeguards**: Conservative defaults that the administrator may adjust or remove.
+
+## SSIAG and host authority
+
+SSIAG may verify and project effective host authority, but it does not create a superior registration authority or permanently veto the target host's administrator. Enhanced identity assurance and governance interlocks are caller-neutral, owner-configured safeguards. Protocol-integrity requirements remain mandatory within supported tooling.
+
+## What Symphony does not decide
+
+Symphony does not decide whether an actor may own property, open an account, sign a contract, assume liability, or act for another entity. Those facts belong to the relevant owner, provider, counterparty, and applicable law. The platform stays within its bounded role: it produces compatibility evidence and supports operations, but it does not extend into external legal or financial capacity determination.
+
+## Practical implication
+
+When you invoke qxctl or a vector engine, the same checks apply regardless of whether you are running the command manually, through a script, or via an agentic tool. The authority path is: target-host ownership, explicit permission, expected state, safeguards. No caller type receives an automatic bypass or an automatic restriction.

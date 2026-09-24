@@ -1,0 +1,154 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "aspen",
+  "name": "QuanuX Symphony",
+  "colors": {
+    "primary": "#1A73E8",
+    "light": "#E8F0FE",
+    "dark": "#0D47A1"
+  },
+  "favicon": {
+    "light": "/images/quanux-favicon-light.svg",
+    "dark": "/images/quanux-favicon-dark.svg"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/QuanuX/Symphony"
+    }
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "index",
+              "quickstart",
+              "doctrine"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/architecture",
+              "concepts/node-habitat-nest",
+              "concepts/vectors",
+              "concepts/caller-authority",
+              "concepts/hot-path-isolation"
+            ]
+          },
+          {
+            "group": "Knowledge Vector (SKV)",
+            "pages": [
+              "skv/overview",
+              "skv/skvi",
+              "skv/sclv",
+              "skv/sacv",
+              "skv/sodv",
+              "skv/ssfv",
+              "skv/sav",
+              "skv/sev"
+            ]
+          },
+          {
+            "group": "Operations & Infrastructure",
+            "pages": [
+              "vectors/sov",
+              "vectors/scv",
+              "vectors/snv",
+              "vectors/shv",
+              "vectors/sqv",
+              "vectors/siv"
+            ]
+          },
+          {
+            "group": "Identity, Audit & Governance",
+            "pages": [
+              "governance/ssiag",
+              "governance/stav",
+              "governance/accordare-producer",
+              "governance/maestro",
+              "governance/validator"
+            ]
+          },
+          {
+            "group": "Engines & Libraries",
+            "pages": [
+              "engines/overview",
+              "engines/knowledge-vector-foundation",
+              "engines/coordinator",
+              "engines/scv-source-engines",
+              "engines/shv-engines"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "qxctl CLI",
+        "groups": [
+          {
+            "group": "qxctl",
+            "pages": [
+              "qxctl/overview",
+              "qxctl/knowledge",
+              "qxctl/lifecycle",
+              "qxctl/engines",
+              "qxctl/reconcile",
+              "qxctl/session",
+              "qxctl/maestro",
+              "qxctl/validate",
+              "qxctl/vector-commands"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "description": "QuanuX Symphony is an AGPL-3.0 open-source, agentic-first cockpit for quantitative developers, researchers, and traders. Headless & Modular. Rolling release. Official documentation https://docs.quanux.org",
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "assistant",
+      "view",
+      "download-pdf",
+      "download-spec",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "grok",
+      "aistudio",
+      "devin",
+      "windsurf",
+      "mcp",
+      "add-mcp",
+      "cursor",
+      "vscode",
+      "devin-mcp"
+    ],
+    "display": "header"
+  },
+  "interaction": {
+    "drilldown": true
+  },
+  "footer": {
+    "socials": {
+      "website": "https://quanux.org",
+      "github": "https://github.com/quanux/symphony",
+      "x": "https://x.com/quanuxdotorg"
+    }
+  },
+  "logo": {
+    "light": "/images/quanux-logo-light.svg",
+    "dark": "/images/quanux-logo-dark.svg",
+    "href": "https://quanux.org"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "projectType": "framework",
+  "projectName": "QuanuX",
+  "projectDescription": "An end-to-end quantitative trading framework for research, strategy development, backtesting, and ultra-low-latency execution across dozens of brokerages and prop firms.",
+  "theme": "aspen",
+  "primaryColor": "#1A73E8",
+  "lightColor": "#E8F0FE",
+  "darkColor": "#0D47A1",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "installation"
+            ]
+          },
+          {
+            "group": "Core Concepts",
+            "pages": [
+              "concepts/architecture",
+              "concepts/node-types",
+              "concepts/execution-model",
+              "concepts/strategy-lifecycle"
+            ]
+          },
+          {
+            "group": "The Strategy Forge",
+            "pages": [
+              "forge/overview",
+              "forge/writing-strategies",
+              "forge/backtesting",
+              "forge/python-to-cpp"
+            ]
+          },
+          {
+            "group": "Integrations",
+            "pages": [
+              "integrations/brokerages",
+              "integrations/rithmic",
+              "integrations/topstepx",
+              "integrations/sierra-chart",
+              "integrations/n8n"
+            ]
+          },
+          {
+            "group": "Configuration",
+            "pages": [
+              "configuration/secrets",
+              "configuration/extensions",
+              "configuration/mcp"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "CLI Reference",
+        "groups": [
+          {
+            "group": "quanuxctl",
+            "pages": [
+              "cli/overview",
+              "cli/habitat",
+              "cli/nest",
+              "cli/crucible",
+              "cli/engine",
+              "cli/risk"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "59-nanosecond tick-to-trade execution via isolated C++ core (Core 3 dead-core pinning)",
+    "Python → Cython → C++ strategy pipeline with AI-assisted code generation",
+    "C++ backtesting engine (Crucible) with L3 execution metrics and DuckDB integration",
+    "Support for 20+ brokerages and prop firms via Rithmic, IBKR, Tradovate, and TopstepX",
+    "Multi-node cluster management via quanuxctl CLI with NATS JetStream mesh",
+    "Anaconda-first installation — first quant platform with an official Conda channel",
+    "MCP server with agent skills for AI-assisted development and strategy iteration",
+    "Hardware-enforced risk gate via L3 cache interlock (11.33ns time-to-halt)",
+    "Figma-to-React code generation workflow via MCP server composition",
+    "Sierra Chart DTC integration for professional charting and data feeds"
+  ],
+  "publicApiSurface": [
+    "POST /api/auth/login",
+    "POST /api/auth/register-client",
+    "POST /api/foundry/forge",
+    "POST /api/foundry/verify",
+    "POST /api/strategy/backtest/run",
+    "quanuxctl habitat equip <TARGET_GROUP>",
+    "quanuxctl nest drop <TARGET_GROUP> --engine <ENGINE_TYPE>",
+    "quanuxctl crucible start <strategy> [--version VERSION]",
+    "quanuxctl crucible stop",
+    "quanuxctl crucible status",
+    "quanuxctl crucible report <strategy>",
+    "quanuxctl topstepx user|password|apikey|env|install",
+    "quanuxctl bridge status|run",
+    "quanuxctl secrets get <KEY>",
+    "python -m server.mcp.server (MCP Tool Authority)",
+    "agent.skills.list (MCP)",
+    "agent.skills.read(skill_name) (MCP)",
+    "agent.skills.run_script(...) (MCP)",
+    "conda install quanux (Anaconda channel)",
+    "Extensions QXP pattern: QUANUX_BRIDGE_KEY env + go run main.go"
+  ]
+}

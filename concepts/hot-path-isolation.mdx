@@ -1,0 +1,37 @@
+---
+title: "Hot-Path Isolation in QuanuX Symphony"
+description: "Learn how Symphony protects execution paths from administrative interference: cold and freezing-path components, bus discipline, and the Prima Parte state witness concept."
+sidebarTitle: "Hot-Path Isolation"
+---
+
+Symphony separates administrative work from execution work so that live trading, research, and other performance-sensitive paths remain free of jitter, latency, and hidden dependencies. qxctl and the knowledge plane are cold or freezing-path administration. They may explicitly act on a Node that also hosts live work, but they must not become continuous hot-path dependencies.
+
+## Cold and freezing-path discipline
+
+qxctl and vector engines are administrative cold or freezing-path components. They must not:
+
+- Execute inline with hot or warm execution paths
+- Share locks with live workloads
+- Create synchronous dependencies that add jitter or latency
+- Become hidden watchers, resident interpreters, or unsolicited background package managers
+- Maintain continuous residency on execution Nodes
+
+This rule applies to the knowledge session coordinator, vector engines, and all qxctl-administered operations. They produce evidence, validate state, and prepare plans, but they do not participate in the live execution path.
+
+## Bus discipline
+
+Heavy transfer, control, research, and execution exhaust do not have to share one bus. A topology may use multiple buses or bypass a bus for a declared path, especially where shared traffic could introduce jitter. NATS JetStream, ZeroMQ, and other fabrics are adapters and user choices. The existence of qxctl bus administration does not make bus traversal mandatory.
+
+You choose the bus topology that matches your latency and throughput requirements. Symphony supports the configuration without imposing a single shared fabric.
+
+## Prima Parte
+
+**Prima Parte** is a ratified Phase 3 concept, not a current executable. It is an optional, extremely lightweight C++ Node-local state witness explicitly invoked by qxctl after a material operation. It has no daemon, listener, timer, watcher, polling loop, or resident bus connection.
+
+Its bounded durable vocabulary includes three terms:
+
+- `current` — the present observed state
+- `previous` — the state before the material operation
+- `lastTransmitted` — the state sent by the remote Node after the associated command executed (not confirmed received)
+
+Prima Parte records only its own Node, never becomes a smaller Maestro, and exits after its bounded work. It is not a Phase 1 Maestro receptor, and no executable is implemented yet.

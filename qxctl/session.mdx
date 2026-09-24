@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Authenticated Symphony Sessions"
+description: "Open, checkpoint, close, and recover authenticated Symphony coordinator sessions plus persistent SSFV maintenance streams with SSIAG-verified grants."
+sidebarTitle: "session"
+---
+
+The `qxctl knowledge session ...` grammar opens noncanonical authenticated sessions through one exact bound coordinator and one TOPS-scoped SSIAG endpoint. A separate `session features ...` grammar drives the persistent SSFV maintenance stream.
+
+## Base session grammar
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Every call requests a fresh exact grant and validates:
+
+- Subject and target identity
+- Policy and configuration state
+- Expiry
+- Caller-class neutrality
+- Non-transferability
+- Canonical-apply disablement
+- Capability binding
+
+Session evidence authorizes only the named protected noncanonical operation. Keep session and reconciliation journals separate; use context references only to associate them.
+
+## SSFV maintenance stream
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+The features stream is a separate persistent SSFV maintenance context. Mutations require:
+
+- An open authenticated base session
+- Exact coordinator and SSFV bindings
+- Stable operation identifiers
+- Exact compare-and-swap
+- Fresh SSIAG evidence
+
+<Note>
+  Preserve the baseline snapshot and its original engine identity across compatible upgrades or rollbacks. Optional Maestro evidence must be a complete authenticated inventory; when Maestro is intentionally absent, record the explicit not-configured reason. `review_required` is evidence for caller review, not ratification.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/governance/ssiag">
+    Issues the fresh grants each session request validates.
+  </Card>
+
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    The engine backing session and features journals.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/qxctl/reconcile">
+    Reconciliation contexts that pair with sessions.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/skv/ssfv">
+    The feature vector the features stream maintains.
+  </Card>
+</CardGroup>

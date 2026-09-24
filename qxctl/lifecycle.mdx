@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: Profile, Boot, and Apply"
+description: "Manage protected lifecycle profiles, ownership, observations, boots, and apply-compatible transitions through qxctl with strict compare-and-swap safeguards."
+sidebarTitle: "lifecycle"
+---
+
+The `qxctl knowledge lifecycle ...` grammar administers protected profiles, ownership, observations, boot journals, and apply-compatible transitions. Every mutation is compare-and-swap and every apply is bound to exact evidence.
+
+## Profile
+
+Set the protected lifecycle profile for a TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Supply `absent` for a first-time profile or the exact digest reported by an earlier read.
+
+## Ownership
+
+- `ownership status`: inspect one configured shared root
+- `ownership reconcile`: refresh its evidence
+- `ownership adopt`: adopt only after reviewing every conservative legacy claim
+- `ownership release`: release only for one exact legacy receipt intentionally made reclaimable
+
+<Warning>
+  Never delete or rewrite the root-local registry or its `symphony-root-ownership/1` receipt-layout compatibility fence by hand. Older lifecycle clients must encounter that fence and stop on their existing unknown-package blocker.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: emit disposable fixed-layout receipt evidence
+- `report`: produce a fresh disposable plan
+- `boot`: durable report-only progression with a stable operation ID and exact journal state
+- `status`: v1 inspection
+- `recover --discover`: recover a unique v1 chain when ordinary status cannot validate local state
+
+## Apply-compatible profiles
+
+For an `apply-compatible` profile, call `apply` only with the exact boot source digest, apply-journal compare-and-swap, applied-state compare-and-swap, stable operation ID, and explicit staged roots:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Use `apply-status` for attempt observation or bounded `apply-recover` for durable recovery. Never choose an action manually or edit protected state.
+
+<Note>
+  A timestamp-only observation refresh must change document evidence without advancing stable semantic identities.
+</Note>
+
+## Related surfaces
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/engines/coordinator">
+    The engine behind lifecycle plan and apply coordination.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/qxctl/engines">
+    Manage engine bindings referenced by lifecycle plans.
+  </Card>
+</CardGroup>
