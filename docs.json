@@ -107,7 +107,7 @@
       }
     ]
   },
-  "description": "QuanuX Symphony is an AGPL-3.0 open-source, agentic-first cockpit for quantitative developers, researchers, and traders. Headless & Modular. Rolling release. Official documentation https://docs.quanux.org",
+  "description": "QuanuX Symphony is an AGPL-3.0 open-source, agentic-first cockpit for quantitative developers, researchers, and traders. Headless & Modular. Rolling release. Official documentation https://docs.quanux.org/symphony",
   "styling": {
     "eyebrows": "breadcrumbs"
   },
