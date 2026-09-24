@@ -1,0 +1,33 @@
+---
+title: "Symphony Architecture"
+description: "Understand the boundaries between user-selected infrastructure, vector contracts, engines, qxctl, and governed evidence."
+sidebarTitle: "Architecture"
+---
+
+Symphony separates user-selected infrastructure and workloads from platform knowledge and administration. The platform can inspect, validate, and report compatibility without claiming ownership of your strategy or treating a recommendation as a mandate.
+
+## Physical and workload layer
+
+A [Node](/concepts/node-habitat-nest) is an identified physical computer. A **Habitat** is its exact operating system and package conditioning, and a **Nest** is a workload serving a purpose selected by the user. Clusters connect Nodes through one or more buses. Bus fabrics, adapters, providers, and hardware choices are explicit rather than universal defaults.
+
+The [hot path](/concepts/hot-path-isolation) stays separate from administrative residency. qxctl and knowledge-plane work may explicitly administer a Node, but they do not become hidden continuous dependencies of live execution.
+
+## Semantic ownership
+
+[Vectors](/concepts/vectors) are bounded, enduring owners of meaning and permitted operations. Each owner publishes a Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md`, and `SPEC.md`. The [Symphony Knowledge Vector (SKV)](/skv/overview) indexes canonical surfaces and preserves a route to their owner. Companion schemas, registries, and ledgers remain governed without becoming extra members of the Quad.
+
+Delivery phases describe when work is done. They do not transfer semantic ownership from one vector to another.
+
+## Engines and command surface
+
+[Vector engines](/engines/overview) are independently installable, out-of-process components that inspect, check, project, and propose within their owner contracts. They do not gain authority merely by producing a proposal.
+
+[qxctl](/qxctl/overview) owns administrative command grammar and presentation. It invokes bounded, receipt-validated capabilities, while the vector that defines an operation retains its semantics. Authorization and audit evidence govern mutation routes; [caller classification](/concepts/caller-authority) alone grants no authority.
+
+## Truth and evolution
+
+Current contracts state current truth. The change and publication ledgers preserve the evidence recorded at a particular point in time. Disagreement among contracts, implementation evidence, and recorded history is surfaced as drift rather than silently rewritten. [SAV](/skv/sav) evaluates composition compatibility; [SEV](/skv/sev) plans governed evolution.
+
+<Note>
+  This overview is a map of boundaries. Consult each linked vector's current contract and implementation evidence before treating a capability as available in a specific installation.
+</Note>
