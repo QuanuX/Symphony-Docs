@@ -1,0 +1,25 @@
+---
+title: "Changelog"
+description: "New features, updates, and fixes shipped to QuanuX Symphony."
+rss: true
+---
+
+<Update label="October 2, 2026" description="Week of September 25" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## New features
+
+- **Symphony Node Vector engines.** Five independently installable C++26 engines now cover Node identity (SNIV), resources (SNRV), cluster relationships (SCIV), names (SCNV), and SNV composition and retention. You can administer supplied evidence, selected views, and retained history through qxctl. Live observation and SOV provisioning are not included yet. See [Node Vector](/vectors/snv).
+- **Optional SNV local observer.** qxctl can invoke a separate local observer that reports selected CPU and memory observations with explicit uncertainty. It never assigns identity, membership, or names.
+- **SQV research data foundations.** New C++26 libraries cover capture with original bytes and source provenance (SQAV), metadata (SQMV), flow (SQFV), exact integer conversion with lineage (SQTV), local retention (SQPV), and delivery with checkpoints and exact resume (SQDV). See [Quantitative Vector](/vectors/sqv).
+- **SQV administration through qxctl.** Seven independently installable administration engines expose request and configuration validation, metadata projections, and read-only retained-state inspection. See [Vector commands](/qxctl/vector-commands).
+- **Databento and broker adapters.** SQV now supports Databento DBNv3 MBO capture, preserves DBNv1 and DBNv3 samples, and plans bounded historical requests with coverage evidence. Non-live source and broker read adapters are also available. Authenticated provider execution and live collection remain future work.
+
+## Updates
+
+- **SSIAG credential admission.** SSIAG adds one-shot credential-use guards, authenticated dispatch admission, a durable credential request journal with recovery, and native peer validation on macOS. Operational credential use stays disabled. See [SSIAG](/governance/ssiag).
+- **qxctl command coverage.** qxctl now has 399 stable command identities, up from 383. Engine bindings support 13 established roles, including the five SNV engines. See [qxctl overview](/qxctl/overview).
+- **SQFV batch interface.** The SQFV batch library now uses a C++26 API instead of a C ABI. Update any integrations that called the previous interface.
+- **SKVI capacity.** [SKVI](/skv/skvi) indexes more surfaces, including the new SQV research-data owners.
+- **Engine installation guidance.** Install guidance now clarifies that you install, update, and remove each engine individually. See [Engines overview](/engines/overview).
+
+</Update>
