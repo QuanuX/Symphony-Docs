@@ -6,7 +6,7 @@ sidebarTitle: "STAV"
 
 The Symphony TOPS Audit Vector (STAV) defines the per-TOPS append-only audit ledger protocol. Its runtime authority lives in `modules/stav-append-authority`, an independently installable Go service. Per-TOPS operational ledgers are private to each TOPS installation; they are not SKV content.
 
-## STAV Append Authority
+## STAV append authority
 
 `modules/stav-append-authority` provides:
 
@@ -21,7 +21,7 @@ The Symphony TOPS Audit Vector (STAV) defines the per-TOPS append-only audit led
   qxctl never receives raw append authority. It coordinates enrollment, verification, and grants through the exact module-owned adapter, but the ledger append remains sealed inside the append authority process.
 </Warning>
 
-## STAV Protocol for Go
+## STAV protocol for Go
 
 `libraries/stav-protocol-go` is an authority-free Go library implementing the canonical STAV v1 codec, strict validation, digests, framing, conformance rules, and the closed producer vocabulary. Any producer or reader can adopt the protocol without inheriting authority.
 
