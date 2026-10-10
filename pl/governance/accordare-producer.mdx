@@ -1,0 +1,53 @@
+---
+title: "Producent STAV Accordare: ograniczony audyt SAV Named Version"
+description: "Producent STAV Accordare utrwala intencję, wynik i odzyskiwanie SAV Named Version za pomocą producenta w Go działającego na ścieżce zamrożonej, z uwierzytelnionymi lokalnymi peerami."
+sidebarTitle: "Producent Accordare"
+---
+
+Producent STAV Accordare (`modules/accordare-stav-producer`) to niezależnie instalowany producent w Go, działający na ścieżce zamrożonej, przeznaczony dla ograniczonego obwodu audytu SAV Named Version. Utrwala intencję sprzed mutacji i odzyskiwanie dopisywania, uwierzytelnia swoich lokalnych peerów i przesyła wyłącznie dokładnie określonego, bezpiecznego kandydata dopuszczonego przez swój zamknięty słownik. Sam nie jest organem dopisywania STAV.
+
+## Wzorzec: intencja, wynik, odzyskiwanie
+
+Producent stosuje trzyetapowy wzorzec dla każdej audytowanej mutacji:
+
+<Steps>
+  <Step title="Intencja sprzed mutacji">
+    Trwale zapisz zadeklarowaną intencję wywołującego, zanim jakakolwiek zmiana stanie się widoczna. Producent odrzuca kandydatów spoza swojego zamkniętego słownika.
+  </Step>
+  <Step title="Wynik końcowy">
+    Po zakończeniu lub niepowodzeniu mutacji zarejestruj dokładny wynik, aby audyt odzwierciedlał rzeczywistość, a nie stan, na który liczono.
+  </Step>
+  <Step title="Ograniczone odzyskiwanie">
+    W razie przerwania producent przeprowadza ograniczone odzyskiwanie strumienia dopisywania, nie wymyślając uzgodnienia ani nie odrzucając po cichu intencji.
+  </Step>
+</Steps>
+
+## Granice
+
+<Warning>
+  Producent Accordare nie jest organem dopisywania STAV. Uwierzytelnia lokalnych peerów i przesyła kandydatów; organ dopisywania waliduje ich, pieczętuje i trwale przechowuje. Nigdy nie omijaj tego rozdzielenia.
+</Warning>
+
+- Słownik producenta jest zamknięty. Akceptuje wyłącznie kandydatów audytu SAV Named Version.
+- Producent działa na ścieżce zamrożonej. Nie może stać się zależnością ścieżki krytycznej.
+- Producent uwierzytelnia lokalnych peerów; nie uwierzytelnia zdalnych wywołujących.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/pl/governance/stav">
+    Organ dopisywania, który pieczętuje rekordy audytu.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pl/governance/ssiag">
+    Autoryzuje mutację audytowaną przez producenta.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/pl/skv/sav">
+    Semantyka kompozycji Named Version audytowana przez ten obwód.
+  </Card>
+
+  <Card title="Polecenia wektorów qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Ratyfikowana gramatyka Accordare pojawi się jako `qxctl accord ...` po zaimplementowaniu.
+  </Card>
+</CardGroup>

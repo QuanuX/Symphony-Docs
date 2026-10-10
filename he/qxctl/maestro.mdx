@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: קריאת מלאי נוכחות הרצפטורים של Symphony"
+description: "בדיקת רשות הנוכחות Maestro של Symphony באמצעות qxctl כדי לראות קשרי עגינה מאומתים של מנועי וקטורים ומלאי רצפטורים נגזר."
+sidebarTitle: "maestro"
+---
+
+הדקדוק `qxctl maestro ...` חושף ראיות נוכחות של Maestro. Maestro הוא רשות הנוכחות; qxctl רק קורא ובודק את מה ש-Maestro מתעד. אף אחד מהם אינו יוצר קשרי עגינה בעצמו.
+
+## מלאי
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` מציג את המלאי המלא, הנגזר והקריא בלבד של Maestro, הכולל קשרי עגינה מאומתים של מנועי וקטורים לכל TOPS ורצפטור.
+
+## נתיבי ניהול קשורים
+
+עלים נוספים של qxctl חושפים ניהול הקשור ל-Maestro:
+
+- סטטוס ובדיקה של ראיות עגינה
+- נתיבי שחזור המוגבלים על ידי החוזים של Maestro עצמו
+- רישום בסיסי למחזור חיים ופיקוח מקורי (native) עבור Maestro עצמו
+
+כל נתיב שינוי עובר דרך המתאם (adapter) המדויק שבבעלות המודול. qxctl לעולם אינו מרנדר מתארי Maestro מניתוח פנימי ואינו מפעיל במשתמע את הגרסה החדשה ביותר.
+
+<Warning>
+  Maestro אינו מפעיל, מתזמן, מפקח או מריץ מנועים. `qxctl maestro inventory` הוא קריא בלבד. קישור, התאמה, תיאום סשן או תוכנית מחזור חיים כשלעצמם אינם מבססים נוכחות ב-Maestro.
+</Warning>
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/he/governance/maestro">
+    החוזה והגבולות של רשות הנוכחות.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/he/qxctl/engines">
+    רישום קישורי המנועים (קישורים אינם עגינה).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/he/qxctl/session">
+    סשנים מאומתים המשמשים לתיעוד נוכחות.
+  </Card>
+
+  <Card title="סקירת מנועים" icon="cube" href="/he/engines/overview">
+    מנועי וקטורים הניתנים להתקנה באופן עצמאי ומתעגנים עם Maestro.
+  </Card>
+</CardGroup>

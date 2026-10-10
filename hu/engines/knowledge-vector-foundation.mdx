@@ -1,0 +1,53 @@
+---
+title: "A Knowledge Vector Engine C++ alapja: megosztott mechanizmusok"
+description: "A Knowledge Vector Engine C++ alapja jogosultságmentes folyamatkeretezést, korlátos JSON-t, SHA-256-ot, pillanatképeket, nyugtákat és kifejezett manifesztumfelderítést biztosít."
+sidebarTitle: "Alapkönyvtár"
+---
+
+A `libraries/knowledge-vector-engine-cpp` biztosítja azokat a megosztott, jogosultságmentes C++ mechanizmusokat, amelyeket minden Symphony vektormotor újrahasznosít. Determinisztikus építőelemeket nyújt, így minden motor körülhatárolt, reprodukálható és környezeti mellékhatásoktól mentes maradhat.
+
+## Amit az alap biztosít
+
+- **Folyamatkeretezés**: jogosultságmentes helyi folyamatprotokoll, amelyet minden motor használ
+- **Korlátos JSON**: szigorú elemzés és kibocsátás kifejezett méret- és mélységkorlátokkal
+- **SHA-256**: tartalomalapú címzés a bizonyítékokhoz és nyugtákhoz
+- **Hivatkozást nem követő olvasások**: fájlrendszer-olvasások, amelyek soha nem követnek váratlanul szimbolikus hivatkozásokat
+- **Determinisztikus pillanatképek**: a vizsgált állapot megismételhető pillanatképei
+- **Időbeli validálás**: kanonikus UTC-kezelés a Symphony Temporal Semantics Contract szerint
+- **Tulajdonosi manifesztumok felderítése**: a szerződésmanifesztumok pontos felderítése
+- **Verziózott csomagolás**: függetlenül telepíthető, nyugtához tartozó csomagok
+- **Nyugták és nyugtaalapú eltávolítás**: az eltávolítást kizárólag az a nyugta vezérli, amely a műterméket telepítette
+
+## A manifesztumfelderítés határa
+
+<Warning>
+  A manifesztumfelderítés egy rögzített rendszerindítási készletből indul, és csak a kifejezett alárendelt deklarációkat járja be. Soha nem végez környezeti tárolóbejárást, és soha nem következtet a tulajdonjogra könyvtárnevekből.
+</Warning>
+
+Minden vektormotor, amely az alapot használja, örökli ezt a szabályt.
+
+## Amit az alap nem végez
+
+- Nem hordoz jogosultságot. Az azt használó motoroknak továbbra is az SSIAG-on keresztül kell engedélyeztetniük a módosításokat.
+- Semmit nem tesz közzé és semmit nem tölt le a hálózaton keresztül.
+- Önállóan nem módosít kanonikus fájlokat.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    Az alapra épülő C++26 koordinátor munkamenetekhez és egyeztetéshez.
+  </Card>
+
+  <Card title="Motorok áttekintése" icon="cube" href="/hu/engines/overview">
+    Az alapot újrahasznosító motorok.
+  </Card>
+
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    A motorok által megvalósított vektorszerződések.
+  </Card>
+
+  <Card title="qxctl áttekintés" icon="terminal" href="/hu/qxctl/overview">
+    Adminisztratív CLI, amely pontos, nyugtával validált motorokat hív meg.
+  </Card>
+</CardGroup>

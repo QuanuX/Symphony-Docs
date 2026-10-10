@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: administrarea ciclului de viață între vectori"
+description: "Grupul de comenzi qxctl knowledge gestionează ciclul de viață între vectori, tranziția sesiunilor, interogările de invarianți și administrarea persistentă a mentenanței SSFV."
+sidebarTitle: "knowledge"
+---
+
+Grupul `qxctl knowledge ...` gestionează ciclul de viață între vectori și administrarea persistentă a sesiunilor SSFV. Este punctul de intrare pentru operațiile susținute de coordonator și pentru interogările de invarianți adresate validatorului.
+
+## Tranziția sesiunii
+
+Folosiți `qxctl knowledge session transition` pentru a semnala un eveniment de ciclu de viață al gazdei către o sesiune existentă:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Reîncercările sigure reutilizează același ID de eveniment. Adăugați `--recover` doar atunci când se intenționează recuperarea prin descoperire din dovezi locale de sesiune deteriorate; aceasta nu recuperează refuzurile, starea critică incompatibilă sau ambiguitatea.
+
+<Warning>
+  Symphony nu instalează prin această comandă un hook de autentificare, un watcher sau o unitate de pornire. Folosiți-o doar atunci când o integrare explicită cu ciclul de viață al gazdei furnizează o identitate stabilă a evenimentului.
+</Warning>
+
+## Interogări de invarianți
+
+Patru frunze leagă `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` leagă suplimentar `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Frunzele de interogare directă emit `symphony.knowledge.invariant-query-result.v1` cu `semantic_validity=not_asserted`. `check` returnează rezultatul exact și complet al validatorului și păstrează codul de ieșire 26.
+
+## Grupuri de subcomenzi
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ro/qxctl/lifecycle">
+    Profil, proprietate, observare, raportare, pornire, aplicare și recuperare.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ro/qxctl/engines">
+    Registrul de legare a motoarelor: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ro/qxctl/reconcile">
+    Gramatica de reconciliere a arborilor de lucru prin coordonator.
+  </Card>
+
+  <Card title="session" icon="key" href="/ro/qxctl/session">
+    Sesiuni autentificate și fluxuri de mentenanță SSFV.
+  </Card>
+</CardGroup>

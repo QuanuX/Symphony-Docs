@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: la futura collaborazione tra agenti"
+description: "SIV è proprietario della futura collaborazione agentica, del contesto esteso, della logica strutturata a lungo termine e dell'interazione governata con Symphony. SMCV è il suo primo componente facoltativo; SAIV è riservato."
+sidebarTitle: "Intelligence Vector"
+---
+
+Il Symphony Intelligence Vector (SIV) è proprietario della futura semantica, definita da Symphony, per la collaborazione agentica, il contesto locale esteso, la logica strutturata a lungo termine, la comunicazione tra agenti e il funzionamento diretto dall'uomo sulla superficie di Symphony. È un dominio emergente con contratti canonici, ma ancora senza un'implementazione eseguibile.
+
+## Ambito e scopo
+
+Si prevede che SIV supporti:
+
+- La partecipazione di agenti locali e remoti ai workflow di Symphony
+- Un contesto esteso condiviso tra sessioni e vettori
+- Una logica strutturata a lungo termine per operazioni ricorrenti o in più passaggi
+- Protocolli di comunicazione tra agenti
+- L'interazione governata con la superficie dei comandi di Symphony
+
+SIV non concede autorità in base al tipo di chiamante. Chiamanti umani, IA, agenti e servizi sono trattati allo stesso modo. L'autorità deriva dalla proprietà dell'host di destinazione, dai permessi concessi, dall'operazione richiesta, dallo stato atteso e dalle salvaguardie configurate dal proprietario.
+
+## Sotto-vettori denominati
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Componente facoltativo di conversione Markdown. Previsto come traduttore configurabile tramite qxctl al di sopra di una connessione IPC abilitata. Nessun comando o traduttore SMCV è ancora implementato.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Riservato a un futuro sotto-vettore di integrazione dell'intelligenza in Symphony. La riserva non fornisce alcuna implementazione, comportamento di namespace o operazione semantica.
+  </Card>
+</CardGroup>
+
+## Esclusioni
+
+SIV esplicitamente non:
+
+- Sostituisce la semantica di proprietà dei vettori (le operazioni di dominio restano di proprietà dei rispettivi vettori anche quando è un agente a invocarle)
+- Diventa verità canonica né scavalca i contratti SKV
+- Entra nel percorso critico (hot path) del trading
+- Rende conclusivo il precedente documento di lavoro sull'intelligenza artificiale
+
+## Stato attuale
+
+SIV è esclusivamente un contratto di architettura canonico. Al momento non sono implementati harness SIV, posta tra agenti, engine di stato a lungo termine, connessioni a modelli, protocolli per agenti locali/remoti, componenti SAIV, traduttori SMCV né controlli qxctl.
+
+## Confine del linguaggio
+
+Per i componenti SIV non è stabilito alcun requisito di Rust. Il linguaggio dei componenti seguirà il futuro contratto relativo a prestazioni, portabilità, sicurezza e integrazione. Non è ereditato da alcun documento di lavoro.
+
+## Relazione di SIV con gli altri vettori
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/it/skv/overview">
+    Governa i contratti, l'evoluzione e le relazioni di pubblicazione ufficiale di SIV.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/it/vectors/sov">
+    Può esporre operazioni invocate da agenti tramite qxctl, preservando la semantica di proprietà dei vettori.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/it/skv/sav">
+    Valuta composizione e compatibilità di qualsiasi operazione assemblata da agenti.
+  </Card>
+</CardGroup>

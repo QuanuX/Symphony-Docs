@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: starpvektoru dzīves cikla administrēšana"
+description: "Komandu grupa qxctl knowledge pārvalda starpvektoru dzīves ciklu, sesiju pārejas, invariantu vaicājumus un pastāvīgo SSFV uzturēšanas administrēšanu."
+sidebarTitle: "knowledge"
+---
+
+Grupa `qxctl knowledge ...` pārvalda starpvektoru dzīves ciklu un pastāvīgo SSFV sesiju administrēšanu. Tā ir ieejas punkts koordinatora nodrošinātām operācijām un invariantu vaicājumiem validatoram.
+
+## Sesijas pāreja
+
+Izmantojiet `qxctl knowledge session transition`, lai esošai sesijai signalizētu par resursdatora dzīves cikla notikumu:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Droši atkārtojumi izmanto to pašu notikuma ID. Pievienojiet `--recover` tikai tad, ja ir paredzēta atklāšanas atkopšana no bojātiem lokālās sesijas pierādījumiem; tā neatkopj atteikumu, nesaderīgu kritisko stāvokli vai neskaidrību.
+
+<Warning>
+  Ar šo komandu Symphony neinstalē pieteikšanās āķi, novērotāju vai sāknēšanas vienību. Izmantojiet to tikai tad, ja skaidra resursdatora dzīves cikla integrācija nodrošina stabilu notikuma identitāti.
+</Warning>
+
+## Invariantu vaicājumi
+
+Četras lapas piesaista `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` papildus piesaista `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Tiešo vaicājumu lapas izvada `symphony.knowledge.invariant-query-result.v1` ar `semantic_validity=not_asserted`. `check` atgriež precīzu un pilnīgu validatora rezultātu un saglabā izejas kodu 26.
+
+## Apakškomandu grupas
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/lv/qxctl/lifecycle">
+    Profils, īpašumtiesības, novērošana, atskaite, sāknēšana, piemērošana un atkopšana.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/lv/qxctl/engines">
+    Dzinēju piesaistes reģistra list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/lv/qxctl/reconcile">
+    Koordinatora darba koka saskaņošanas gramatika.
+  </Card>
+
+  <Card title="session" icon="key" href="/lv/qxctl/session">
+    Autentificētas sesijas un SSFV uzturēšanas plūsmas.
+  </Card>
+</CardGroup>

@@ -1,0 +1,43 @@
+---
+title: "Maestro: l'autorità di presenza dei vector engine di Symphony"
+description: "Maestro registra le relazioni di docking autenticate dei vector engine per ogni TOPS e recettore, derivando un inventario completo in sola lettura senza avviare né supervisionare gli engine."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) è un'autorità di presenza C++26 di freezing path, installabile in modo indipendente. Registra le esatte relazioni di docking autenticate dei vector engine per ogni TOPS e recettore e deriva un inventario completo in sola lettura di ciò che è attualmente agganciato. Maestro è un testimone, non un supervisore.
+
+## Cosa registra Maestro
+
+- Le esatte relazioni di docking autenticate tra vector engine e recettori
+- L'ambito per singolo TOPS, così che la presenza di ogni installazione resti privata a quell'installazione
+- Un inventario derivato, completo e in sola lettura, disponibile tramite `qxctl maestro inventory`
+
+## Cosa non fa Maestro
+
+<Warning>
+  Maestro non avvia, pianifica, supervisiona né invoca engine. Un binding, una riconciliazione, il coordinamento di una sessione autenticata o un piano del ciclo di vita, da soli, non stabiliscono la presenza in Maestro, non ratificano la verità semantica, non modificano la conoscenza canonica né dimostrano la completezza dell'host installato.
+</Warning>
+
+- Maestro non crea processi.
+- Maestro non applica mai modifiche alla conoscenza canonica.
+- Maestro non sostituisce mai il vector engine proprietario della semantica.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/it/qxctl/maestro">
+    `qxctl maestro inventory` presenta l'inventario derivato.
+  </Card>
+
+  <Card title="Coordinatore delle sessioni" icon="gears" href="/it/engines/coordinator">
+    Responsabile dei meccanismi delle sessioni autenticate e della riconciliazione dei worktree.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/it/governance/ssiag">
+    Autentica le relazioni di docking registrate da Maestro.
+  </Card>
+
+  <Card title="Panoramica degli engine" icon="cube" href="/it/engines/overview">
+    Vector engine installabili in modo indipendente che si agganciano a Maestro.
+  </Card>
+</CardGroup>

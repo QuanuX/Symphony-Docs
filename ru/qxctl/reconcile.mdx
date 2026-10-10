@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: сверка рабочих деревьев"
+description: "Сверка рабочих деревьев с привязанным координатором Symphony: проверки совместимости, журналы контрольных точек и закрытия, а также двухслотовое восстановление на основе свидетельств."
+sidebarTitle: "reconcile"
+---
+
+Грамматика `qxctl knowledge reconcile ...` управляет сверкой рабочих деревьев через один точный привязанный координатор сеансов знаний (Knowledge Session Coordinator). Каждая мутация отслеживается по стабильному идентификатору и выполняется как compare-and-swap относительно точного текущего дайджеста журнала.
+
+## Команды
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: убедиться, что qxctl, координатор и привязанные движки согласованы по версии протокола и области действия.
+- `begin`: открыть новый контекст сверки со стабильным идентификатором операции.
+- `status`: просмотреть текущий журнал без мутации.
+- `checkpoint`: долговременно продвинуть журнал с помощью compare-and-swap.
+- `close`: завершить контекст сверки.
+- `recover --discover`: восстановление через обнаружение, когда обычная команда status не может проверить локальное состояние.
+
+## Правила восстановления
+
+<Warning>
+  Двухслотовое восстановление — это прямое исправление на основе свидетельств. Оно никогда не даёт права отбросить несовместимый журнал или неизвестное критическое расширение. Если восстановление не удалось, эскалируйте проблему, а не применяйте принудительные меры.
+</Warning>
+
+Используйте восстановление через обнаружение только тогда, когда обычная команда status не может проверить локальное состояние. Сохраняйте блокировщики; перепланируйте только после того, как изменятся проверенные свидетельства.
+
+## Связанные разделы
+
+<CardGroup cols={2}>
+  <Card title="Координатор сеансов" icon="gears" href="/ru/engines/coordinator">
+    Движок, которому принадлежат журналы сверки.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ru/qxctl/session">
+    Аутентифицированные сеансы, связанные с контекстами сверки.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ru/qxctl/engines">
+    Управление привязками, которые использует координатор.
+  </Card>
+</CardGroup>

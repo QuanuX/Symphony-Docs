@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: क्रॉस-वेक्टर लाइफ़साइकल प्रशासन"
+description: "qxctl knowledge कमांड समूह क्रॉस-वेक्टर लाइफ़साइकल, सेशन ट्रांज़िशन, इनवेरिएंट क्वेरी और स्थायी SSFV मेंटेनेंस प्रशासन का स्वामी है।"
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` समूह क्रॉस-वेक्टर लाइफ़साइकल और स्थायी SSFV-सेशन प्रशासन का स्वामी है। यह कोऑर्डिनेटर-समर्थित ऑपरेशनों और वैलिडेटर के विरुद्ध इनवेरिएंट क्वेरी का प्रवेश बिंदु है।
+
+## सेशन ट्रांज़िशन
+
+किसी मौजूदा सेशन को होस्ट लाइफ़साइकल इवेंट का संकेत देने के लिए `qxctl knowledge session transition` का उपयोग करें:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+सुरक्षित पुनःप्रयास उसी इवेंट ID का पुनः उपयोग करते हैं। `--recover` केवल तभी जोड़ें जब क्षतिग्रस्त स्थानीय सेशन साक्ष्य से डिस्कवरी रिकवरी अभिप्रेत हो; यह अस्वीकृति, असंगत क्रिटिकल स्टेट या अस्पष्टता से रिकवर नहीं करता।
+
+<Warning>
+  Symphony इस कमांड के माध्यम से कोई लॉगिन हुक, वॉचर या बूट यूनिट इंस्टॉल नहीं करता। इसका उपयोग केवल तभी करें जब कोई स्पष्ट होस्ट लाइफ़साइकल इंटीग्रेशन एक स्थिर इवेंट पहचान प्रदान करे।
+</Warning>
+
+## इनवेरिएंट क्वेरी
+
+चार लीफ़ `ssfv:symphony:qxctl.invariant-assurance` को बाइंड करते हैं:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` अतिरिक्त रूप से `ssfv:symphony:symphony-validator.invariant-ownership-assurance` को बाइंड करता है।
+
+प्रत्यक्ष क्वेरी लीफ़ `semantic_validity=not_asserted` के साथ `symphony.knowledge.invariant-query-result.v1` उत्सर्जित करते हैं। `check` वैलिडेटर का सटीक पूर्ण परिणाम लौटाता है और exit 26 को संरक्षित रखता है।
+
+## सबकमांड समूह
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/hi/qxctl/lifecycle">
+    प्रोफ़ाइल, ओनरशिप, observe, report, boot, apply और रिकवरी।
+  </Card>
+
+  <Card title="engines" icon="cube" href="/hi/qxctl/engines">
+    इंजन बाइंडिंग रजिस्ट्री list, inspect, doctor, bind, unbind, migrate।
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/hi/qxctl/reconcile">
+    कोऑर्डिनेटर वर्कट्री रिकंसिलिएशन ग्रामर।
+  </Card>
+
+  <Card title="session" icon="key" href="/hi/qxctl/session">
+    प्रमाणित सेशन और SSFV मेंटेनेंस स्ट्रीम।
+  </Card>
+</CardGroup>

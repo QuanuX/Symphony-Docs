@@ -1,0 +1,33 @@
+---
+title: "Symphony arhitektūra"
+description: "Izprotiet robežas starp lietotāja izvēlētu infrastruktūru, vektoru līgumiem, dzinējiem, qxctl un pārvaldītiem pierādījumiem."
+sidebarTitle: "Arhitektūra"
+---
+
+Symphony nošķir lietotāja izvēlēto infrastruktūru un darba slodzes no platformas zināšanām un administrēšanas. Platforma var pārbaudīt, validēt un ziņot par saderību, nepretendējot uz jūsu stratēģijas īpašumtiesībām un neuzskatot ieteikumu par rīkojumu.
+
+## Fiziskais un darba slodžu slānis
+
+[Node](/lv/concepts/node-habitat-nest) ir identificēts fizisks dators. **Habitat** ir tā precīzais operētājsistēmas un pakotņu sagatavojums, un **Nest** ir darba slodze, kas kalpo lietotāja izvēlētam mērķim. Klasteri savieno Node, izmantojot vienu vai vairākas kopnes. Kopņu struktūras, adapteri, piegādātāji un aparatūras izvēles ir skaidri noteiktas, nevis universāli noklusējumi.
+
+[Karstais ceļš](/lv/concepts/hot-path-isolation) paliek nošķirts no administratīvās rezidences. qxctl un zināšanu plaknes darbs var skaidri administrēt Node, taču tas nekļūst par slēptu, nepārtrauktu tiešraides izpildes atkarību.
+
+## Semantiskās īpašumtiesības
+
+[Vektori](/lv/concepts/vectors) ir ierobežoti, ilgstoši nozīmes un atļauto darbību īpašnieki. Katrs īpašnieks publicē Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` un `SPEC.md`. [Symphony Knowledge Vector (SKV)](/lv/skv/overview) indeksē kanoniskās virsmas un saglabā ceļu līdz to īpašniekam. Pavadošās shēmas, reģistri un virsgrāmatas paliek pārvaldītas, nekļūstot par papildu Quad dalībniekiem.
+
+Piegādes fāzes apraksta, kad darbs tiek veikts. Tās nenodod semantiskās īpašumtiesības no viena vektora citam.
+
+## Dzinēji un komandu virsma
+
+[Vektoru dzinēji](/lv/engines/overview) ir neatkarīgi instalējami, ārpus procesa darbojoši komponenti, kas pārbauda, kontrolē, projicē un ierosina savu īpašnieku līgumu ietvaros. Tie neiegūst pilnvaras tikai tāpēc, ka sagatavo priekšlikumu.
+
+[qxctl](/lv/qxctl/overview) pieder administratīvo komandu gramatika un attēlošana. Tas izsauc ierobežotas, ar kvītīm validētas spējas, savukārt vektors, kas definē darbību, saglabā tās semantiku. Mainīšanas maršrutus pārvalda autorizācijas un audita pierādījumi; [izsaucēja klasifikācija](/lv/concepts/caller-authority) pati par sevi nepiešķir nekādas pilnvaras.
+
+## Patiesība un evolūcija
+
+Pašreizējie līgumi pauž pašreizējo patiesību. Izmaiņu un publikāciju virsgrāmatas saglabā pierādījumus, kas reģistrēti konkrētā brīdī. Neatbilstība starp līgumiem, ieviešanas pierādījumiem un reģistrēto vēsturi tiek parādīta kā novirze, nevis klusi pārrakstīta. [SAV](/lv/skv/sav) izvērtē kompozīcijas saderību; [SEV](/lv/skv/sev) plāno pārvaldītu evolūciju.
+
+<Note>
+  Šis pārskats ir robežu karte. Pirms uzskatāt kādu spēju par pieejamu konkrētā instalācijā, iepazīstieties ar katra saistītā vektora pašreizējo līgumu un ieviešanas pierādījumiem.
+</Note>

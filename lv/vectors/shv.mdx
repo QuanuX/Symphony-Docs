@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: zināšanas par aparatūras spējām"
+description: "SHV uztur zināšanas par CPU, GPU, NIC, mātesplatēm, RAM un NVMe aparatūras spējām, izmantojot vairākus neatkarīgi instalējamus C++ dzinējus."
+sidebarTitle: "Aparatūras vektors"
+---
+
+Symphony Hardware Vector (SHV) pārvalda zināšanas par aparatūras spējām, kas palīdz saprast, kā fiziskais dizains var nodrošināt, ierobežot, pārnest vai paplašināt kvantitatīvo programmatūru. Tas aptver procesorus, CPU kodolu tipus, GPU, NIC un optiskās šķiedras saskarnes, mātesplates, kešatmiņas hierarhijas, atmiņu, NVMe un pilnīgas sistēmu konfigurācijas. Noklusējuma atlase prioritizē oriģinālos komponentus un ar pierādījumiem pamatotus variantus, sākot no 2018. gada.
+
+## Tvērums un pārklājums
+
+SHV var aptvert jebkuru ar pierādījumiem pamatotu fizisku spēju, kas ir būtiska programmu dizainam. Pārklājuma profilu jūs kontrolējat ar qxctl. Noklusējuma datuma pamats ir modeļa ieviešana, nevis secināts atsevišķas vienības ražošanas datums. Šo filtru varat paplašināt, sašaurināt, aizstāt vai noņemt.
+
+## Īstenotie dzinēji
+
+SHV zināšanas tiek nodrošinātas ar vairākiem neatkarīgi instalējamiem C++ dzinējiem:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Pamatkodols (0.4.0-dev): pārklājuma profili, saglabāto avotu kataloga veidošana/atkārtošana, prasību novērtēšana, deterministiska grafu projekcija un ar avotiem pamatota grafu validācija.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Avotu identitāte, pārvietošanas plāni, baitu uztveršanas piesaiste un no avotiem atkārtoti izcelsmes grafi.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Deklarāciju atbilstība, pārnēsājamas receptes un precīza lokālo avotu piesaiste.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Aparatūras sadalīšanas un komponentu kartēšanas operācijas.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Aizsargātas izsaucēja kataloga galvas, oriģinālo avotu atkārtošana un noturīga momentuzņēmumu atkopšana.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Vispārīgs C++ grafu ports un atmiņā strādājošs pārnēsājams atsauces adapteris apmaiņai bez zudumiem.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Neobligāta aparatūras grafu pierādījumu DuckDB relāciju projekcija.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Ierobežota PDF ekstrakcija un dokumentāru apgalvojumu atkārtota validācija no oriģinālajiem baitiem.
+  </Card>
+</CardGroup>
+
+## Avotu revīzija un izcelsme
+
+`shv-source-engine` īsteno stabilu avotu identitāti, skaidrus pārvietošanas plānus, tīru pāreju validāciju, faktisko baitu uztveršanas piesaisti un no avotiem atkārtotus izcelsmes grafus. Tās ir tikai lasīšanas operācijas. Pamata atlase prioritizē oriģinālo komponentu identitāti un ar pierādījumiem pamatotus variantus. Aizsargātā avotu aktivizēšana tiek apstrādāta atsevišķi; tīrais avotu dzinējs nepiešķir autoritāti.
+
+## Grafu apmaiņa un glabāšana
+
+`shv-graph-adapter` nodrošina vispārīgu C++ grafu portu apmaiņai bez zudumiem un strukturāliem vaicājumiem. Noturīgā glabāšana ir īstenota ar noklusējuma DuckDB SQL. Pašlaik nav izvēlēta neviena specializēta grafu datubāze.
+
+## PDF pierādījumu robeža
+
+`shv-pdf-adapter` izgūst kvalificētus dokumentārus apgalvojumus no skaidri norādītām PDF tabulām un pēc vispārīgas grafu apmaiņas tos atkārtoti validē no oriģinālajiem baitiem. Vispārīgs PDF pārklājums joprojām ir atsevišķs, konkrēti tverts darbs.
+
+## Atlikušais darbs
+
+Plašs aparatūras atlants, automatizēta avotu iegūšana, vairāku avotu konfliktu apkopošana, papildu ražotājspecifiski datubāzu draiveri, pielāgotu spraudņu ielāde un Composer integrācija paliek vēlākam darbam. Atvērti ir arī plaši komponentu kartējumi un noturīgi ražotāju draiveri.
+
+## Kā SHV saistās ar citiem vektoriem
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/lv/vectors/snv">
+    Reģistrē Node (mezglus), kuros atrodas SHV aprakstītā aparatūra.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/lv/vectors/scv">
+    Atsaucas uz pakalpojumu sniedzēju aparatūras piedāvājumiem, ko SHV raksturo detalizēti.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/lv/vectors/sov">
+    Var izmantot SHV pierādījumus, nodrošinot vai sagatavojot Node.
+  </Card>
+</CardGroup>

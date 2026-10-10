@@ -1,0 +1,28 @@
+---
+title: "Hívóosztály-semlegesség és gazdagép-jogosultság a Symphonyban"
+description: "A Symphony nem sorolja típus szerint a hívókat. A jogosultság a célgazda tulajdonlásából, a kifejezett engedélyből, az elvárt állapotból és a tulajdonos által konfigurált biztosítékokból ered."
+sidebarTitle: "Hívói jogosultság"
+---
+
+A Symphony a jogosultságról való döntéskor nem sorolja a hívót emberként, MI-ként, ágensként, szolgáltatásként, munkaterhelésként, szervezetként vagy bármilyen más szereplőtípusként. Az, hogy Önt személyként vagy automatizált rendszerként sorolják be, önmagában semmilyen képességet nem ad és nem vesz el. Ez a hívóosztály-semlegesség alapvető architekturális határ, amely az engedélyezést tényekre, nem pedig címkékre alapozza.
+
+## Mi szabályozza a jogosultságot
+
+A támogatott engedélyezési döntések a következő bemeneteket használják:
+
+- **A célgazda tulajdonlása vagy a megadott engedélyek**: A konfigurálható irányítás felett a célgazda rendszergazdája szuverén.
+- **A kért művelet és erőforrás**: A konkrét művelet és az objektum, amelyen végrehajtják.
+- **Elvárt állapot**: A deklarált kívánt eredmény és a megfigyelt jelenlegi állapot.
+- **A tulajdonos által konfigurált biztosítékok**: Konzervatív alapértelmezések, amelyeket a rendszergazda módosíthat vagy eltávolíthat.
+
+## SSIAG és gazdagép-jogosultság
+
+Az SSIAG ellenőrizheti és kivetítheti a tényleges gazdagép-jogosultságot, de nem hoz létre felsőbb regisztrációs hatóságot, és nem vétózhatja meg tartósan a célgazda rendszergazdáját. A fokozott identitásbiztosítás és az irányítási reteszek hívósemleges, a tulajdonos által konfigurált biztosítékok. A protokollintegritási követelmények a támogatott eszközökön belül kötelezőek maradnak.
+
+## Amiről a Symphony nem dönt
+
+A Symphony nem dönt arról, hogy egy szereplő birtokolhat-e vagyont, nyithat-e számlát, írhat-e alá szerződést, vállalhat-e felelősséget, vagy eljárhat-e egy másik entitás nevében. Ezek a tények az illetékes tulajdonoshoz, szolgáltatóhoz, szerződő félhez és az alkalmazandó joghoz tartoznak. A platform a körülhatárolt szerepén belül marad: kompatibilitási bizonyítékot állít elő és műveleteket támogat, de nem terjeszkedik ki a külső jogi vagy pénzügyi cselekvőképesség megállapítására.
+
+## Gyakorlati következmény
+
+Amikor a qxctl-t vagy egy vektormotort meghívja, ugyanazok az ellenőrzések érvényesek, függetlenül attól, hogy a parancsot kézzel, szkripttel vagy ágensalapú eszközzel futtatja. A jogosultsági útvonal: a célgazda tulajdonlása, kifejezett engedély, elvárt állapot, biztosítékok. Egyetlen hívótípus sem kap automatikus megkerülési lehetőséget vagy automatikus korlátozást.

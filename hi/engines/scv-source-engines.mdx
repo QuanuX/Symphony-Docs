@@ -1,0 +1,74 @@
+---
+title: "SCV स्रोत-ज्ञान इंजन: Symphony के लिए प्रदाता वास्तविकता"
+description: "आठ स्वतंत्र रूप से पैकेज किए गए SCV, हाइपरस्केलर, एज और प्रदाता इंजन सटीक स्रोत संशोधनों को संरक्षित करते हैं और पुनरुत्पादनीय ग्राफ़ और क्वेरी साक्ष्य तैयार करते हैं।"
+sidebarTitle: "SCV इंजन"
+---
+
+SCV स्रोत-ज्ञान इंजन आठ स्वतंत्र रूप से पैकेज किए गए C++26 प्रोसेस हैं जो ऑफ़साइट प्रदाता संसाधनों, ऑफ़रिंग, क्षेत्रों, बाधाओं और हाइब्रिड संभावनाओं के बारे में निजी अर्थगत ज्ञान रखते हैं। वे सटीक स्रोत संशोधनों और सीमित कैप्चर को संरक्षित करते हैं ताकि डाउनस्ट्रीम टूल परिणामों को पुनः उत्पन्न कर सकें।
+
+## इंजन
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    साझा क्लाउड शब्दावली के लिए समग्र SCV स्रोत इंजन।
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector स्रोत इंजन।
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-विशिष्ट एज स्रोत इंजन।
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services स्रोत इंजन।
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure स्रोत इंजन।
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean स्रोत इंजन।
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform स्रोत इंजन।
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    संरक्षित रिलेशनल ग्राफ़ अनुक्रमण के लिए वैकल्पिक DuckDB कनेक्टर।
+  </Card>
+</CardGroup>
+
+## SCV इंजन क्या करते हैं
+
+- स्पष्ट स्रोत संशोधनों और सीमित कैप्चर को संरक्षित करते हैं
+- योग्य दावों और नेटिव दस्तावेज़ संरचना को बनाए रखते हैं
+- पुनरुत्पादनीय ग्राफ़ और क्वेरी साक्ष्य तैयार करते हैं
+- पोर्टेबल प्रदाता पैकेजों और सीमित, कॉलर-निर्देशित संरचना को इनपुट देते हैं
+
+## वे क्या नहीं करते
+
+<Warning>
+  प्रदाता ऑपरेशन और पूर्ण क्लाउड कैटलॉग इस वृद्धि के दायरे से बाहर हैं। SCV इंजन वर्णन करते हैं कि क्या ज्ञात है; वे प्रदाताओं पर कोई कार्रवाई नहीं करते।
+</Warning>
+
+qxctl संरक्षित वर्कफ़्लो और संरक्षित ग्राफ़ चयन के माध्यम से ऑडिट किए गए स्थानीय स्रोत परिवर्तनों और सुसंगत ग्राफ़ चयन का अलग से प्रशासन करता है। समर्पित ग्राफ़ ट्रैवर्सल और परिचालन एडेप्टर अलग कार्य बने रहते हैं।
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SCV वेक्टर" icon="cloud" href="/hi/vectors/scv">
+    Cloud Vector कॉन्ट्रैक्ट जिसे ये इंजन लागू करते हैं।
+  </Card>
+
+  <Card title="SOV वेक्टर" icon="terminal" href="/hi/vectors/sov">
+    Ops Vector जो qxctl के माध्यम से SCV साक्ष्य पर कार्य करता है।
+  </Card>
+
+  <Card title="qxctl वेक्टर कमांड" icon="terminal" href="/hi/qxctl/vector-commands">
+    ग्राफ़ चयन, स्रोत वर्कफ़्लो और DuckDB कनेक्टर प्रशासन।
+  </Card>
+</CardGroup>

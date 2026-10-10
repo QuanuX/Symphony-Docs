@@ -1,0 +1,37 @@
+---
+title: "Izolacja ścieżki krytycznej w QuanuX Symphony"
+description: "Dowiedz się, jak Symphony chroni ścieżki wykonywania przed ingerencją administracyjną: komponenty ścieżki zimnej i zamrożonej, dyscyplina magistrali oraz koncepcja świadka stanu Prima Parte."
+sidebarTitle: "Izolacja ścieżki krytycznej"
+---
+
+Symphony oddziela prace administracyjne od prac wykonawczych, dzięki czemu handel na żywo, badania i inne ścieżki wrażliwe na wydajność pozostają wolne od jittera, opóźnień i ukrytych zależności. qxctl i płaszczyzna wiedzy to administracja ścieżki zimnej lub zamrożonej. Mogą jawnie działać na Node, który hostuje również pracę na żywo, ale nie mogą stać się ciągłymi zależnościami ścieżki krytycznej.
+
+## Dyscyplina ścieżki zimnej i zamrożonej
+
+qxctl i silniki wektorów są administracyjnymi komponentami ścieżki zimnej lub zamrożonej. Nie mogą:
+
+- Wykonywać się w linii z gorącymi lub ciepłymi ścieżkami wykonywania
+- Współdzielić blokad z obciążeniami na żywo
+- Tworzyć synchronicznych zależności, które zwiększają jitter lub opóźnienia
+- Stawać się ukrytymi obserwatorami, rezydentnymi interpreterami ani niezamówionymi menedżerami pakietów działającymi w tle
+- Utrzymywać ciągłej rezydencji na wykonawczych Node
+
+Ta zasada dotyczy koordynatora sesji wiedzy, silników wektorów i wszystkich operacji administrowanych przez qxctl. Tworzą one dowody, walidują stan i przygotowują plany, ale nie uczestniczą w ścieżce wykonywania na żywo.
+
+## Dyscyplina magistrali
+
+Ciężkie transfery, sterowanie, badania i strumienie danych wykonawczych nie muszą współdzielić jednej magistrali. Topologia może używać wielu magistrali lub omijać magistralę dla zadeklarowanej ścieżki, zwłaszcza tam, gdzie współdzielony ruch mógłby wprowadzać jitter. NATS JetStream, ZeroMQ i inne struktury komunikacyjne to adaptery i wybory użytkownika. Istnienie administracji magistralą w qxctl nie sprawia, że przechodzenie przez magistralę jest obowiązkowe.
+
+To Ty wybierasz topologię magistrali odpowiadającą Twoim wymaganiom dotyczącym opóźnień i przepustowości. Symphony obsługuje taką konfigurację, nie narzucając jednej współdzielonej struktury.
+
+## Prima Parte
+
+**Prima Parte** to ratyfikowana koncepcja Fazy 3, a nie obecny plik wykonywalny. Jest to opcjonalny, wyjątkowo lekki, lokalny dla Node świadek stanu napisany w C++, jawnie wywoływany przez qxctl po istotnej operacji. Nie ma demona, nasłuchiwacza, timera, obserwatora, pętli odpytywania ani rezydentnego połączenia z magistralą.
+
+Jego ograniczony, trwały słownik obejmuje trzy terminy:
+
+- `current` — obecny zaobserwowany stan
+- `previous` — stan sprzed istotnej operacji
+- `lastTransmitted` — stan wysłany przez zdalny Node po wykonaniu powiązanego polecenia (bez potwierdzenia odbioru)
+
+Prima Parte rejestruje wyłącznie własny Node, nigdy nie staje się mniejszym Maestro i kończy działanie po wykonaniu swojej ograniczonej pracy. Nie jest receptorem Maestro z Fazy 1 i żaden plik wykonywalny nie został jeszcze zaimplementowany.

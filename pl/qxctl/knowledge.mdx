@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: administracja cyklem życia między wektorami"
+description: "Grupa poleceń qxctl knowledge odpowiada za cykl życia między wektorami, przejścia sesji, zapytania o niezmienniki oraz administrację trwałym utrzymaniem SSFV."
+sidebarTitle: "knowledge"
+---
+
+Grupa `qxctl knowledge ...` odpowiada za cykl życia między wektorami oraz administrację trwałymi sesjami SSFV. Stanowi punkt wejścia dla operacji obsługiwanych przez koordynatora oraz dla zapytań o niezmienniki kierowanych do walidatora.
+
+## Przejście sesji
+
+Użyj `qxctl knowledge session transition`, aby zasygnalizować istniejącej sesji zdarzenie cyklu życia hosta:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Bezpieczne ponowienia używają tego samego identyfikatora zdarzenia. Dodaj `--recover` tylko wtedy, gdy zamierzone jest odzyskiwanie przez wykrywanie z uszkodzonych lokalnych dowodów sesji; nie odzyskuje ono odmowy, niezgodnego stanu krytycznego ani niejednoznaczności.
+
+<Warning>
+  Symphony nie instaluje za pomocą tego polecenia żadnego hooka logowania, obserwatora ani jednostki rozruchowej. Używaj go tylko wtedy, gdy jawna integracja z cyklem życia hosta dostarcza stabilną tożsamość zdarzenia.
+</Warning>
+
+## Zapytania o niezmienniki
+
+Cztery liście wiążą `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` dodatkowo wiąże `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Liście bezpośrednich zapytań emitują `symphony.knowledge.invariant-query-result.v1` z `semantic_validity=not_asserted`. `check` zwraca dokładny, kompletny wynik walidatora i zachowuje kod wyjścia 26.
+
+## Grupy podpoleceń
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/pl/qxctl/lifecycle">
+    Profil, własność, obserwacja, raport, rozruch, apply i odzyskiwanie.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/pl/qxctl/engines">
+    Rejestr wiązań silników: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/pl/qxctl/reconcile">
+    Gramatyka rekoncyliacji drzew roboczych przez koordynatora.
+  </Card>
+
+  <Card title="session" icon="key" href="/pl/qxctl/session">
+    Uwierzytelnione sesje i strumienie utrzymania SSFV.
+  </Card>
+</CardGroup>

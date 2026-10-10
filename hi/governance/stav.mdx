@@ -1,0 +1,54 @@
+---
+title: "STAV: Symphony के लिए प्रति-TOPS केवल-जोड़ने योग्य ऑडिट लेजर"
+description: "STAV Append Authority प्रमाणीकृत IPC, रसीद-से-पहले-fsync टिकाऊपन, सीमित रीड, सत्यापन और पुनर्प्राप्ति के साथ प्रति-TOPS केवल-जोड़ने योग्य ऑडिट लेजर चलाता है।"
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) प्रति-TOPS केवल-जोड़ने योग्य (append-only) ऑडिट लेजर प्रोटोकॉल को परिभाषित करता है। इसका रनटाइम प्राधिकरण `modules/stav-append-authority` में रहता है, जो एक स्वतंत्र रूप से इंस्टॉल की जा सकने वाली Go सेवा है। प्रति-TOPS परिचालन लेजर प्रत्येक TOPS इंस्टॉलेशन के लिए निजी होते हैं; वे SKV सामग्री नहीं हैं।
+
+## STAV Append Authority
+
+`modules/stav-append-authority` प्रदान करता है:
+
+- प्रति-TOPS केवल-जोड़ने योग्य ऑडिट लेजर
+- पारस्परिक रूप से प्रमाणीकृत स्थानीय IPC
+- सटीक प्रोड्यूसर और रीडर अनुदान
+- रसीद-से-पहले-fsync टिकाऊपन
+- सीमित रीड, सत्यापन और पुनर्प्राप्ति
+- नामांकन और नेटिव पर्यवेक्षण (launchd, systemd)
+
+<Warning>
+  qxctl को कभी भी कच्चा append प्राधिकरण प्राप्त नहीं होता। यह सटीक मॉड्यूल-स्वामित्व वाले एडेप्टर के माध्यम से नामांकन, सत्यापन और अनुदानों का समन्वय करता है, लेकिन लेजर append, append प्राधिकरण प्रोसेस के भीतर सील रहता है।
+</Warning>
+
+## Go के लिए STAV प्रोटोकॉल
+
+`libraries/stav-protocol-go` एक अधिकार-मुक्त Go लाइब्रेरी है जो कैनोनिकल STAV v1 कोडेक, सख़्त सत्यापन, डाइजेस्ट, फ़्रेमिंग, अनुरूपता नियम और बंद प्रोड्यूसर शब्दावली को लागू करती है। कोई भी प्रोड्यूसर या रीडर अधिकार विरासत में पाए बिना इस प्रोटोकॉल को अपना सकता है।
+
+## पूर्ण SODV प्रकाशन
+
+SODV के माध्यम से वर्तमान में प्रकाशित हर STAV आर्टिफ़ैक्ट एक Go स्रोत-मॉड्यूल संस्करण है, बाइनरी रिलीज़ नहीं:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/hi/governance/ssiag">
+    संरक्षित परिवर्तनों को अधिकृत करता है जिनका STAV फिर ऑडिट करता है।
+  </Card>
+
+  <Card title="Accordare प्रोड्यूसर" icon="pen-nib" href="/hi/governance/accordare-producer">
+    परिवर्तन-पूर्व इंटेंट और अंतिम परिणामों को STAV में भेजता है।
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/hi/qxctl/lifecycle">
+    लाइफ़साइकल प्रशासन जो STAV नामांकन के साथ संयोजित होता है।
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hi/skv/sodv">
+    STAV घटकों के आधिकारिक प्रकाशन रिकॉर्ड को नियंत्रित करता है।
+  </Card>
+</CardGroup>

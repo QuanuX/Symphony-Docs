@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector pentru modificările planificate"
+description: "SEV evaluează modificările planificate, noutățile și tranzițiile de ciclu de viață cu cazuri deterministe, seturi pregătite pentru dependențe, grafuri de unică folosință și recomandări de recuperare fără aplicare."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) deține cazurile de modificări planificate și de noutăți întâlnite în întreaga platformă. Motorul său este un proces C++26 doar în citire, pe calea de înghețare (freezing-path). SEV nici nu monitorizează o gazdă, nici nu aplică o tranziție; produce dovezi și recomandări de dispoziție.
+
+## Operații
+
+- **Evaluarea cazurilor**: cazuri de evoluție deterministe pentru adăugări, modificări, redenumiri, înlocuiri, depreciere, retrageri și eliminări.
+- **Planificarea impactului și a dispoziției**: atribuie fiecare caz proprietarilor săi autoritativi.
+- **Recalcularea setului pregătit pentru dependențe**: derivă ordinea sigură a tranzițiilor dependente.
+- **Verificarea tranziției**: confirmă că starea observată după o tranziție corespunde formei așteptate.
+- **Recomandări de recuperare**: descriu pași siguri înainte sau înapoi atunci când o tranziție este întreruptă.
+- **Evaluarea SCSEV**: primul profil SEV guvernat aplică aceste operații evoluției suprafețelor de cunoaștere exclusiv documentare.
+- **Verificări de noutate și monitorizare**: detectează suprafețe noi sau neașteptate pentru atenția revizorilor.
+- **Coalescența declanșatoarelor** și **legarea la sesiunea de ciclu de viață**: reduc evaluarea duplicată și leagă cazurile de o sesiune.
+- **Proiecția grafurilor**: grafuri de unică folosință pentru revizuire.
+
+## Profilul SCSEV
+
+SCSEV reutilizează administrarea funcționalităților SSFV, adevărul stabil al comenzilor qxctl și descriptorii de operații ai motoarelor. Nu creează un motor sau un registru duplicat. Prima porțiune a motorului este doar de raportare și propunere; acțiunea externă durabilă rămâne autorizată separat prin qxctl și coordonatorul sesiunilor de cunoaștere.
+
+<Note>
+  SEV este doar de citire, interogare, validare și propunere. Aplicarea canonică rămâne dezactivată în întreaga familie de motoare SKV.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul-umbrelă și modelul Contract Quad.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ro/skv/ssfv">
+    Administrarea funcționalităților reutilizată de profilul SCSEV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ro/skv/sav">
+    Evaluarea compoziției și compatibilității pentru componentele modificate.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Gramatica de evoluție ratificată va sosi ca `qxctl evolution ...` odată implementată.
+  </Card>
+</CardGroup>

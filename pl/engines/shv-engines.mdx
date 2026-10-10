@@ -1,0 +1,65 @@
+---
+title: "Silniki SHV: źródła i graf Symphony Hardware Vector"
+description: "Silniki SHV katalogują procesory, GPU, karty sieciowe, pamięć i pamięć masową z odtwarzaniem zachowanych źródeł, oceną wymagań, pozyskiwaniem danych z PDF i trwałymi grafami DuckDB."
+sidebarTitle: "Silniki SHV"
+---
+
+Silniki Symphony Hardware Vector (SHV) katalogują procesory, topologię CPU, pamięci podręczne, GPU, karty sieciowe i interfejsy światłowodowe, płyty główne, RAM i NVMe. Domyślna kuracja priorytetowo traktuje oryginalne komponenty i udokumentowane warianty. Każdy silnik jest niezależnie instalowany i działa wyłącznie w trybie odczytu.
+
+## Silniki
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Jądro sprzętowe: pokrycie definiowane przez wywołującego, odtwarzanie katalogu z zachowanych źródeł, ocena wymagań i projekcja grafu.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Pozyskiwanie źródeł i obsługa rewizji dowodów sprzętowych.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Ocena profili komponentów i systemów.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partycjonowanie skatalogowanego sprzętu na potrzeby odtwarzalnego wyboru.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Zarządzana publikacja i wybór lokalnego katalogu.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Jawna powierzchnia transportu grafu.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Trwałe przechowywanie grafu oparte na DuckDB, administrowane przez qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretacja źródeł PDF dla kart katalogowych sprzętu.
+  </Card>
+</CardGroup>
+
+## Najważniejsze elementy administracji
+
+- **Trwałe przechowywanie** jest administrowane wyłącznie za pomocą `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` z zachowanym skrótem oczekiwanej intencji służy również do odzyskiwania; nie ma osobnego aliasu odzyskiwania.
+- **Publikacja katalogu** jest administrowana wyłącznie za pomocą `shv catalogue publication inspect|plan|apply|status|schema|template`. Odzyskiwanie to `apply --operation-id`, wzajemnie wykluczające się z `--input`.
+- **Inwentarz** (wydanie 0.2) dodaje `shv graph store inventory`: odczyt logiczny powiązany z rewizją, z jawnymi zachowanymi tożsamościami zapisujących. Starszy wybór z wersji 0.1 pozostaje obsługiwany.
+
+<Note>
+  Klasy sprzętu to dane mapowania i profili wywołującego, a nie zduplikowane drzewa poleceń. `--version` wybiera dokładnego głównego właściciela; `--source-version` i `--adapter-version` wskazują odrębne wybrane zależności. Rewizje schematów i mapowań to tożsamości danych, a nie aliasy zainstalowanych wersji silników.
+</Note>
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="Wektor SHV" icon="microchip" href="/pl/vectors/shv">
+    Kontrakt Hardware Vector implementowany przez te silniki.
+  </Card>
+
+  <Card title="Polecenia wektorów qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Pełna dokumentacja gramatyki `shv ...`.
+  </Card>
+</CardGroup>

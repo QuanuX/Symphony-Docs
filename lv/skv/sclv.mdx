@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector pirmkoda izmaiņām"
+description: "SCLV uztur tikai papildināmu pabeigto pirmkoda izmaiņu virsgrāmatu ar no pakalpojumu sniedzēja neatkarīgiem priekšlikumiem, nemainošu atkopšanu un vienreizējām projekcijām."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) reģistrē laika gaitā veiktās izmaiņas SKV virsmās. Tā dzinējs ir neatkarīgi instalējams C++ process, kas veic deterministiskas tikai papildināmas virsgrāmatas pārbaudes un rada vienreizējas projekcijas. Virsgrāmatā tiek rakstīts tikai pēc tam, kad būtiska pirmkoda izmaiņa ir pabeigta.
+
+## Operācijas
+
+- **Inspect un check**: validē virsgrāmatas formu, nepārtrauktību un pierādījumus.
+- **Propose (v3)**: pieņem izsaucēja deklarētus, no pakalpojumu sniedzēja neatkarīgus priekšlikumus jauniem ierakstiem.
+- **Recover**: veic pārtraukta vai neskaidra stāvokļa nemainošu atkopšanu.
+- **Project**: pēc pieprasījuma izvada vienreizējus virsgrāmatas stāvokļa inventārus.
+
+## Uzņemšana un izņemšana no lietošanas
+
+Katrs uzņemtais SCLV ieraksts piesaista pašreizējos indeksētos pierādījumus tā rakstīšanas brīdī. Vēlāka leģitīma virsmas izņemšana no lietošanas saglabā nemainīgo vēsturisko izcelsmi, nepiespiežot dzēsto pašreizējo tekstu atgriezt SKVI. Vēsture paliek vēsture; pašreizējā patiesība paliek pašreizēja.
+
+## Ko SCLV nedara
+
+- SCLV neveido un neapstiprina pirmkoda izmaiņas.
+- SCLV nepārraksta esošos ierakstus; tas ir tikai papildināms.
+- SCLV neko nepublicē. Publiskā projekcija pieder SODV.
+
+<Note>
+  Katrs pašreizējais SKV dzinējs tikai lasa, vaicā, validē un ierosina. Kanoniskā piemērošana ir atspējota, līdz katra dzinēja pilnie autoritātes un audita līgumi ir pabeigti.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/lv/skv/skvi">
+    Indeksē pašreizējo kanonisko patiesību, kurai piesaistās SCLV ieraksti.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Pārvalda virsgrāmatas informācijas oficiālo publisko projekciju.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/lv/skv/sev">
+    Evolūcijas gadījumi izvērtē izmaiņas, pirms SCLV tās reģistrē.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Palaidiet `qxctl sclv ...`, lai veiktu inspect, check, propose un recover.
+  </Card>
+</CardGroup>

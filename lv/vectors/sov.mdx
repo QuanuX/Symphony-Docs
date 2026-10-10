@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl operāciju vadība"
+description: "SOV definē ar qxctl administrētu operāciju domēnu resursu nodrošināšanai, Habitat sagatavošanai, Nest piegādei, kopnes adapteriem un neobligātai attālai Node administrēšanai."
+sidebarTitle: "Operāciju vektors"
+---
+
+Symphony Ops Vector (SOV) ir operatīvā vadības plakne, caur kuru autorizētas qxctl komandas iedarbojas uz jūsu infrastruktūru. Tam pieder līgums resursu nodrošināšanai, Habitat (vides) sagatavošanai, Nest (darba slodzes ligzdas) piegādei, kopnes adapteru iestatīšanai un neobligātai attālai Node administrēšanai. SOV neizdomā pakalpojumu sniedzēju nozīmi vai aparatūras faktus; tas izpilda atbalstītas izvēles, ko jūs jau esat izdarījuši.
+
+## Ko aptver SOV
+
+SOV ir topošs 2. fāzes domēns. Tā tvērums ietver:
+
+- **Resursu nodrošināšana**: pakalpojumu sniedzēju un savas aparatūras resursu piešķiršanas darbplūsmas
+- **Habitat sagatavošana**: precīza OS un pakotņu sagatavošana, kas tiek piegādāta Node
+- **Nest piegāde**: darba slodzes izvietošana un atjaunināšana Node
+- **Kopnes adaptera izveide**: Node savienošana caur jūsu izvēlēto kopni (NATS JetStream, ZeroMQ vai citām)
+- **Attālas Node operācijas**: neobligāta to Node administrēšana, kas atrodas ārpus jūsu lokālās čaulas
+
+<Note>
+  Pakalpojumu sniedzēju protokoli, Terraform izpilde, Habitat veidotāji, Nest izvietošanas komandas un attālo operāciju uztvērēji vēl ir jāizstrādā. Pašlaik nav īstenots neviens SOV dzinējs vai pakalpojumu sniedzēju izmaiņas.
+</Note>
+
+## Kā SOV saistās ar citiem vektoriem
+
+SOV ir vadības plakne, nevis zināšanu avots. Tas darbojas, balstoties uz pierādījumiem, kas pieder citiem vektoriem:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/lv/vectors/scv">
+    Nodrošina zināšanas par pakalpojumu sniedzējiem un ārējiem resursiem. SOV nolasa SCV pierādījumus, lai noteiktu, kuras operācijas ir saderīgas.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/lv/vectors/snv">
+    Pēc SOV operāciju pabeigšanas reģistrē iegūtās Node identitātes, dalību klasteros un nosaukumus.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/lv/vectors/shv">
+    Vēlāk var nodrošināt detalizētus aparatūras spēju pierādījumus, lai ierobežotu resursu nodrošināšanas izvēles.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/lv/skv/overview">
+    Pārvalda SOV līgumus, izmaiņu sekas, indeksēšanu un dzīves cikla integrāciju.
+  </Card>
+</CardGroup>
+
+## qxctl kā komandu virsma
+
+SOV operācijas tiek nodrošinātas caur `qxctl` — uz Go balstītu administrēšanas CLI ar 373 izpildāmām komandām. qxctl īsteno un attēlo SOV operācijas, bet tam nepieder to domēna nozīme. Vektoram pieder semantika; rīkam pieder izpildes virsma.
+
+## Lietotāja autoritātes robeža
+
+Jūs izvēlaties pakalpojumu sniedzējus, reģionus, aparatūru, kopnes, programmatūru, izvietošanas topoloģiju un katra Node administrēšanas kārtību. SOV nodrošina un izpilda atbalstītās izvēles. Tas nerangē pakalpojumu sniedzējus, neiesaka topoloģijas un nepārvērš ieteikumus obligātā politikā.
+
+## Pašreizējais statuss
+
+SOV ir kanonisks arhitektūras līgums. Netiek apgalvots, ka būtu īstenots kāds dzinējs, Terraform ietvars, Habitat veidotājs, kopnes adapteris vai attālo komandu uztvērējs. Nākotnes SOV komponenti paliks neatkarīgi instalējami, izvēlami pēc precīzas versijas un atritināmi saskaņā ar kopīgo SKV dzīves ciklu.

@@ -1,0 +1,48 @@
+---
+title: "SODV: hivatalos dokumentáció és kiadásirányítás"
+description: "Az SODV a QuanuX hivatalos közzétételeit irányítja csak hozzáfűzhető kiadási főkönyv-ellenőrzésekkel, a hívó által szolgáltatott megfigyelések ellenőrzésével és eldobható kiadási leltárakkal."
+sidebarTitle: "SODV"
+---
+
+A Symphony Official Documentation Vector (SODV) azt irányítja, hogyan válik az SKV-keretrendszeren belüli tudás hivatalos nyilvános dokumentációvá és kiadási rekordokká. Motorja egy függetlenül telepíthető C++ folyamat, amely helyi, csak hozzáfűzhető kiadási főkönyv-ellenőrzéseket végez, és eldobható kiadási leltárakat állít elő. Az SODV maga semmit nem tesz közzé.
+
+## Műveletek
+
+- **Vizsgálat és ellenőrzés**: a kiadási főkönyv alakjának és folytonosságának validálása.
+- **Ellenőrzés (verify)**: a közzétett állapotról a hívó által szolgáltatott megfigyelések ellenőrzése.
+- **Javaslat**: szolgáltatósemleges kiadási javaslatok fogadása.
+- **Helyreállítás**: nem módosító helyreállítás végrehajtása.
+- **Vetítés**: eldobható kiadási leltárak kibocsátása.
+
+## Amit az SODV nem végez
+
+- Az SODV nem rendelkezik hálózati hozzáféréssel.
+- Az SODV semmit nem tesz közzé a GitHubon, a Mintlify-on, csomagregiszterekben vagy bármely más felületen.
+- Az SODV nem hoz létre tageket, és nem nyilváníthat befejezettnek egy kiadást.
+- Az SODV nem rangsorolja a szolgáltatókat, és nem részesít előnyben egyetlen közzétételi útvonalat sem.
+
+A közzététel különálló, engedélyezett eszközökön keresztül történik, amelyek figyelembe veszik az SODV bizonyítékait.
+
+## Befejezett SODV-közzétételek
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` a `libraries/stav-protocol-go/v0.2.0` tagnél.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` a `modules/stav-append-authority/v0.1.0` tagnél.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` a `modules/stav-append-authority/v0.2.0` tagnél.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Futtassa a `qxctl sodv ...` parancsot vizsgálathoz, ellenőrzéshez, javaslattételhez és vetítéshez.
+  </Card>
+</CardGroup>
+
+<Note>
+  Minden SKV-motor kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A kanonikus alkalmazás le van tiltva, amíg az egyes motorok SSIAG-, elvárt állapotú tranzakció-, qxctl-biztosíték-, STAV-esemény-, helyreállítási és negatívteszt-szerződései el nem készülnek.
+</Note>

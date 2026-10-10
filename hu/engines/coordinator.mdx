@@ -1,0 +1,50 @@
+---
+title: "Tudásmunkamenet-koordinátor a Symphony vektormotorjaihoz"
+description: "A tudásmunkamenet-koordinátor C++26-ban biztosít körülhatárolt kompatibilitást, munkafa-egyeztetést, hitelesített munkameneteket és alkalmazásra képes életciklus-koordinációt."
+sidebarTitle: "Koordinátor"
+---
+
+A tudásmunkamenet-koordinátor (`modules/knowledge-session-coordinator`) egy függetlenül telepíthető C++26 folyamat. A qxctl és a vektormotorok között helyezkedik el, és az ő hatáskörébe tartozik a körülhatárolt kompatibilitás, a munkafa-egyeztetés, a hitelesített nem kanonikus munkamenetek, az SSFV-karbantartás, a csak jelentést készítő életciklus-tervezés, valamint a külön engedélyezett, alkalmazásra képes naplók.
+
+## Feladatkörök
+
+- **Kompatibilitás-ellenőrzés** a qxctl, a koordinátor és a motorok között
+- **Munkafa-egyeztetés** tartós, slotalapú állapottal
+- **Hitelesített nem kanonikus munkamenetek** SSIAG-jogosultság alatt
+- **Tartós SSFV-karbantartási** folyamok
+- **Csak jelentést készítő életciklus-tervezés** determinisztikus bizonyítékokkal
+- **Alkalmazásra képes naplók** előkészített kísérletekkel, compare-and-swap művelettel, újbóli megfigyeléssel, dinamikus újratervezéssel és helyreállítással
+
+## Amit a koordinátor nem végez
+
+<Warning>
+  A koordinátor nem hajt végre vektorszemantikát vagy gazdagép-műveleteket. Bizonyítékokat és naplókat koordinál; minden motor továbbra is a saját tartományát birtokolja, és minden gazdagép-műveletet továbbra is a saját szerződése engedélyez.
+</Warning>
+
+- Nincs kanonikus tudásalkalmazás
+- Nincs tetszőleges parancsvégrehajtás
+- Nincsenek rejtett figyelők vagy rezidens háttérmunka
+
+## qxctl-integráció
+
+A qxctl pontos, nyugtával validált koordinátortelepítéseket hív meg. A `qxctl knowledge reconcile ...` és a `qxctl knowledge session ...` műveletenként pontosan egy kötött koordinátort használ, a módosításokhoz pedig stabil műveletazonosítók, valamint a compare-and-swap művelethez pontos aktuális naplókivonatok szükségesek.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/hu/qxctl/reconcile">
+    A munkafa-egyeztetés nyelvtana.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/hu/qxctl/session">
+    A hitelesített munkamenetek és az SSFV-karbantartás nyelvtana.
+  </Card>
+
+  <Card title="Alapkönyvtár" icon="cube" href="/hu/engines/knowledge-vector-foundation">
+    Megosztott C++ mechanizmusok, amelyeket a koordinátor újrahasznosít.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/hu/governance/ssiag">
+    Engedélyezi a koordinátor által kezelt munkameneteket.
+  </Card>
+</CardGroup>

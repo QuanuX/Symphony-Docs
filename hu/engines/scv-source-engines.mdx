@@ -1,0 +1,74 @@
+---
+title: "SCV forrástudás-motorok: a szolgáltatói valóság a Symphony számára"
+description: "Nyolc, egymástól függetlenül csomagolt SCV, hiperskálázó, edge és szolgáltatói motor őrzi meg a pontos forrásrevíziókat, és állít elő reprodukálható gráf- és lekérdezési bizonyítékokat."
+sidebarTitle: "SCV motorok"
+---
+
+Az SCV forrástudás-motorok nyolc, egymástól függetlenül csomagolt C++26 folyamatot alkotnak, amelyek privát szemantikai tudást tárolnak a külső szolgáltatói erőforrásokról, ajánlatokról, régiókról, korlátozásokról és hibrid lehetőségekről. Megőrzik a pontos forrásrevíziókat és a korlátos rögzítéseket, így a későbbi eszközök reprodukálni tudják az eredményeket.
+
+## Motorok
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Átfogó SCV forrásmotor a közös felhőszókészlethez.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector forrásmotor.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-specifikus edge forrásmotor.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services forrásmotor.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure forrásmotor.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean forrásmotor.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform forrásmotor.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Opcionális DuckDB-összekötő a megőrzött relációs gráf indexeléséhez.
+  </Card>
+</CardGroup>
+
+## Mit végeznek az SCV motorok
+
+- Megőrzik a kifejezett forrásrevíziókat és a korlátos rögzítéseket
+- Megtartják a minősített állításokat és a natív dokumentumszerkezetet
+- Reprodukálható gráf- és lekérdezési bizonyítékokat állítanak elő
+- Táplálják a hordozható szolgáltatói csomagokat és a véges, hívó által irányított kompozíciót
+
+## Mit nem végeznek
+
+<Warning>
+  A szolgáltatói műveletek és a teljes felhőkatalógusok kívül esnek ezen a lépésen. Az SCV motorok azt írják le, ami ismert; nem végeznek műveleteket a szolgáltatóknál.
+</Warning>
+
+A qxctl külön adminisztrálja az auditált helyi forrásváltozásokat és a koherens gráfkiválasztást megőrzött munkafolyamatokon és védett gráfkiválasztáson keresztül. A dedikált gráfbejárás és az operatív adapterek külön munkát képeznek.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SCV vektor" icon="cloud" href="/hu/vectors/scv">
+    A Cloud Vector szerződés, amelyet ezek a motorok megvalósítanak.
+  </Card>
+
+  <Card title="SOV vektor" icon="terminal" href="/hu/vectors/sov">
+    Az Ops Vector, amely a qxctl-en keresztül az SCV-bizonyítékok alapján cselekszik.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Gráfkiválasztás, forrás-munkafolyamatok és a DuckDB-összekötő adminisztrációja.
+  </Card>
+</CardGroup>

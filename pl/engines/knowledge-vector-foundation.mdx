@@ -1,0 +1,53 @@
+---
+title: "Fundament C++ silników Knowledge Vector: wspólne mechanizmy"
+description: "Fundament C++ silników Knowledge Vector zapewnia ramkowanie procesów pozbawione uprawnień, ograniczony JSON, SHA-256, migawki, potwierdzenia i jawne wykrywanie manifestów."
+sidebarTitle: "Biblioteka bazowa"
+---
+
+`libraries/knowledge-vector-engine-cpp` dostarcza wspólnych, pozbawionych uprawnień mechanizmów C++, z których korzysta każdy silnik wektora Symphony. Zapewnia deterministyczne elementy składowe, dzięki którym każdy silnik może pozostać ograniczony, odtwarzalny i wolny od ubocznych efektów otoczenia.
+
+## Co zapewnia fundament
+
+- **Ramkowanie procesów**: pozbawiony uprawnień lokalny protokół procesów używany przez każdy silnik
+- **Ograniczony JSON**: ścisłe parsowanie i generowanie z jawnymi limitami rozmiaru i głębokości
+- **SHA-256**: adresowanie treścią dla dowodów i potwierdzeń
+- **Odczyty bez podążania za dowiązaniami**: odczyty systemu plików, które nigdy nieoczekiwanie nie przechodzą przez dowiązania symboliczne
+- **Deterministyczne migawki**: powtarzalne migawki sprawdzanego stanu
+- **Walidacja czasowa**: kanoniczna obsługa UTC zgodnie z Symphony Temporal Semantics Contract
+- **Wykrywanie manifestów właścicieli**: dokładne wykrywanie manifestów kontraktów
+- **Pakowanie z wersjonowaniem**: niezależnie instalowane pakiety należące do potwierdzeń
+- **Potwierdzenia i deinstalacja sterowana potwierdzeniem**: deinstalacja sterowana wyłącznie przez potwierdzenie, które zainstalowało artefakt
+
+## Granica wykrywania manifestów
+
+<Warning>
+  Wykrywanie manifestów rozpoczyna się od stałego zestawu startowego i przechodzi wyłącznie przez jawne deklaracje podrzędne. Nigdy nie przeszukuje repozytorium na ślepo ani nie wnioskuje o własności na podstawie nazw katalogów.
+</Warning>
+
+Każdy silnik wektora korzystający z fundamentu dziedziczy tę regułę.
+
+## Czego fundament nie robi
+
+- Nie niesie uprawnień. Silniki, które z niego korzystają, nadal muszą autoryzować mutacje przez SSIAG.
+- Niczego nie publikuje ani nie pobiera przez sieć.
+- Samodzielnie nie modyfikuje plików kanonicznych.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Koordynator C++26 zbudowany na fundamencie, obsługujący sesje i uzgadnianie.
+  </Card>
+
+  <Card title="Przegląd silników" icon="cube" href="/pl/engines/overview">
+    Silniki korzystające z fundamentu.
+  </Card>
+
+  <Card title="Przegląd SKV" icon="book-open" href="/pl/skv/overview">
+    Kontrakty wektorów implementowane przez silniki.
+  </Card>
+
+  <Card title="Przegląd qxctl" icon="terminal" href="/pl/qxctl/overview">
+    Administracyjne CLI wywołujące dokładnie określone silniki walidowane potwierdzeniami.
+  </Card>
+</CardGroup>

@@ -1,0 +1,43 @@
+---
+title: "Maestro: autoridade de presença dos motores de vetores do Symphony"
+description: "O Maestro regista relações autenticadas de acoplamento de motores de vetores por TOPS e por recetor, derivando um inventário completo só de leitura sem iniciar nem supervisionar motores."
+sidebarTitle: "Maestro"
+---
+
+O Maestro (`modules/maestro`) é uma autoridade de presença C++26 de freezing path, instalável de forma independente. Regista as relações exatas e autenticadas de acoplamento de motores de vetores por TOPS e por recetor e deriva um inventário completo, só de leitura, do que se encontra atualmente acoplado. O Maestro é uma testemunha, não um supervisor.
+
+## O que o Maestro regista
+
+- Relações exatas e autenticadas de acoplamento entre motores de vetores e recetores
+- Âmbito por TOPS, para que a presença de cada instalação se mantenha privada a essa instalação
+- Um inventário derivado, completo e só de leitura, disponível através de `qxctl maestro inventory`
+
+## O que o Maestro não faz
+
+<Warning>
+  O Maestro não inicia, agenda, supervisiona nem invoca motores. A associação, a reconciliação, a coordenação de sessões autenticadas ou um plano de ciclo de vida, por si só, não estabelecem presença no Maestro, não ratificam a verdade semântica, não alteram o conhecimento canónico nem provam a completude do host instalado.
+</Warning>
+
+- O Maestro não cria processos.
+- O Maestro nunca aplica alterações ao conhecimento canónico.
+- O Maestro nunca substitui o motor de vetor que detém a semântica.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/pt/qxctl/maestro">
+    `qxctl maestro inventory` apresenta o inventário derivado.
+  </Card>
+
+  <Card title="Coordenador de sessões" icon="gears" href="/pt/engines/coordinator">
+    Detém as mecânicas de sessões autenticadas e de reconciliação de worktrees.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pt/governance/ssiag">
+    Autentica as relações de acoplamento que o Maestro regista.
+  </Card>
+
+  <Card title="Visão geral dos motores" icon="cube" href="/pt/engines/overview">
+    Motores de vetores instaláveis de forma independente que se acoplam ao Maestro.
+  </Card>
+</CardGroup>

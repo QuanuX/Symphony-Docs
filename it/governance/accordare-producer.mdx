@@ -1,0 +1,53 @@
+---
+title: "Producer STAV di Accordare: audit delimitato delle Named Version SAV"
+description: "Il producer STAV di Accordare rende durevoli l'intento, l'esito e il ripristino delle Named Version SAV tramite un producer Go di freezing path con peer locali autenticati."
+sidebarTitle: "Producer Accordare"
+---
+
+Il producer STAV di Accordare (`modules/accordare-stav-producer`) è un producer Go di freezing path, installabile in modo indipendente, per il circuito di audit delimitato delle Named Version SAV. Rende durevoli l'intento precedente alla modifica e il ripristino dell'append, autentica i propri peer locali e invia solo l'esatto candidato sicuro ammesso dal suo vocabolario chiuso. Non è esso stesso l'autorità di append di STAV.
+
+## Lo schema intento, esito, ripristino
+
+Il producer segue uno schema in tre passaggi per ogni modifica sottoposta ad audit:
+
+<Steps>
+  <Step title="Intento precedente alla modifica">
+    Registra in modo durevole l'intento dichiarato dal chiamante prima che qualsiasi modifica diventi osservabile. Il producer rifiuta i candidati al di fuori del suo vocabolario chiuso.
+  </Step>
+  <Step title="Esito finale">
+    Dopo che la modifica è stata completata o è fallita, acquisisce l'esito esatto, in modo che l'audit rifletta la realtà e non uno stato sperato.
+  </Step>
+  <Step title="Ripristino delimitato">
+    In caso di interruzione, il producer esegue un ripristino delimitato del flusso di append senza inventare una riconciliazione né scartare silenziosamente l'intento.
+  </Step>
+</Steps>
+
+## Confini
+
+<Warning>
+  Il producer di Accordare non è l'autorità di append di STAV. Autentica i peer locali e invia i candidati; l'autorità di append li valida, li sigilla e li archivia in modo durevole. Non aggirare mai questa separazione.
+</Warning>
+
+- Il vocabolario del producer è chiuso. Accetta solo candidati di audit delle Named Version SAV.
+- Il producer è di freezing path. Non deve diventare una dipendenza dell'hot path.
+- Il producer autentica i peer locali; non autentica i chiamanti remoti.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/it/governance/stav">
+    L'autorità di append che sigilla i record di audit.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/it/governance/ssiag">
+    Autorizza la modifica sottoposta ad audit dal producer.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/it/skv/sav">
+    La semantica di composizione delle Named Version sottoposta ad audit da questo circuito.
+  </Card>
+
+  <Card title="Comandi dei vector di qxctl" icon="terminal" href="/it/qxctl/vector-commands">
+    La grammatica ratificata di Accordare arriverà come `qxctl accord ...` una volta implementata.
+  </Card>
+</CardGroup>

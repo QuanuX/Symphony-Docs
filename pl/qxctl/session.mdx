@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: uwierzytelnione sesje Symphony"
+description: "Otwieraj, zapisuj punkty kontrolne, zamykaj i odzyskuj uwierzytelnione sesje koordynatora Symphony oraz trwałe strumienie utrzymania SSFV z uprawnieniami weryfikowanymi przez SSIAG."
+sidebarTitle: "session"
+---
+
+Gramatyka `qxctl knowledge session ...` otwiera niekanoniczne, uwierzytelnione sesje za pośrednictwem jednego dokładnie powiązanego koordynatora i jednego punktu końcowego SSIAG o zakresie TOPS. Oddzielna gramatyka `session features ...` steruje trwałym strumieniem utrzymania SSFV.
+
+## Podstawowa gramatyka sesji
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Każde wywołanie żąda świeżego, dokładnego uprawnienia (grant) i weryfikuje:
+
+- Tożsamość podmiotu i celu
+- Stan polityki i konfiguracji
+- Wygaśnięcie
+- Neutralność względem klasy wywołującego
+- Nieprzenoszalność
+- Wyłączenie kanonicznego apply
+- Powiązanie z uprawnieniem (capability)
+
+Dowody sesji autoryzują wyłącznie nazwaną, chronioną operację niekanoniczną. Utrzymuj dzienniki sesji i rekoncyliacji oddzielnie; do ich powiązania używaj wyłącznie odwołań do kontekstu.
+
+## Strumień utrzymania SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Strumień features to oddzielny, trwały kontekst utrzymania SSFV. Mutacje wymagają:
+
+- Otwartej, uwierzytelnionej sesji podstawowej
+- Dokładnych wiązań koordynatora i SSFV
+- Stabilnych identyfikatorów operacji
+- Dokładnej operacji compare-and-swap
+- Świeżych dowodów SSIAG
+
+<Note>
+  Zachowuj migawkę bazową i pierwotną tożsamość jej silnika w przypadku zgodnych aktualizacji lub wycofań. Opcjonalne dowody Maestro muszą stanowić kompletny, uwierzytelniony inwentarz; gdy Maestro jest celowo nieobecny, zapisz jawny powód braku konfiguracji. `review_required` to dowód do przeglądu przez wywołującego, a nie ratyfikacja.
+</Note>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/pl/governance/ssiag">
+    Wydaje świeże uprawnienia weryfikowane przy każdym żądaniu sesji.
+  </Card>
+
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Silnik obsługujący dzienniki sesji i features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/pl/qxctl/reconcile">
+    Konteksty rekoncyliacji łączone z sesjami.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pl/skv/ssfv">
+    Wektor funkcji utrzymywany przez strumień features.
+  </Card>
+</CardGroup>

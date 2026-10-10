@@ -1,0 +1,74 @@
+---
+title: "Engine di conoscenza delle sorgenti SCV: la realtà dei provider per Symphony"
+description: "Otto engine SCV, hyperscaler, edge e provider, pacchettizzati in modo indipendente, conservano le revisioni esatte delle sorgenti e producono evidenze riproducibili di grafi e interrogazioni."
+sidebarTitle: "Engine SCV"
+---
+
+Gli engine di conoscenza delle sorgenti SCV sono otto processi C++26 pacchettizzati in modo indipendente che detengono conoscenza semantica privata su risorse, offerte, regioni, vincoli e possibilità ibride dei provider esterni. Conservano le revisioni esatte delle sorgenti e acquisizioni delimitate, così che gli strumenti a valle possano riprodurre i risultati.
+
+## Engine
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Engine ombrello delle sorgenti SCV per il vocabolario cloud condiviso.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Engine delle sorgenti di Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Engine delle sorgenti edge specifico per Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Engine delle sorgenti per Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Engine delle sorgenti per Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Engine delle sorgenti per DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Engine delle sorgenti per Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Connettore DuckDB opzionale per l'indicizzazione relazionale dei grafi conservati.
+  </Card>
+</CardGroup>
+
+## Cosa fanno gli engine SCV
+
+- Conservano revisioni esplicite delle sorgenti e acquisizioni delimitate
+- Mantengono le affermazioni qualificate e la struttura nativa dei documenti
+- Producono evidenze riproducibili di grafi e interrogazioni
+- Alimentano pacchetti di provider portabili e composizioni finite guidate dal chiamante
+
+## Cosa non fanno
+
+<Warning>
+  Le operazioni sui provider e i cataloghi cloud completi restano al di fuori di questo incremento. Gli engine SCV descrivono ciò che è noto; non agiscono sui provider.
+</Warning>
+
+qxctl amministra separatamente le modifiche locali verificate delle sorgenti e la selezione coerente dei grafi tramite workflow conservati e selezione protetta dei grafi. L'attraversamento dedicato dei grafi e gli adapter operativi restano lavori separati.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Vector SCV" icon="cloud" href="/it/vectors/scv">
+    Contratto del Cloud Vector implementato da questi engine.
+  </Card>
+
+  <Card title="Vector SOV" icon="terminal" href="/it/vectors/sov">
+    Ops Vector che agisce sulle evidenze SCV tramite qxctl.
+  </Card>
+
+  <Card title="Comandi dei vector di qxctl" icon="terminal" href="/it/qxctl/vector-commands">
+    Selezione dei grafi, workflow delle sorgenti e amministrazione del connettore DuckDB.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Producer: Audit Named Version SAV yang Terbatas"
+description: "Accordare STAV producer menjaga intent, hasil, dan pemulihan Named Version SAV tetap tahan lama melalui producer Go freezing path dengan peer lokal yang terautentikasi."
+sidebarTitle: "Accordare Producer"
+---
+
+Accordare STAV producer (`modules/accordare-stav-producer`) adalah producer Go freezing path yang dapat dipasang secara independen untuk sirkuit audit Named Version SAV yang terbatas. Producer ini menjaga intent pra-mutasi dan pemulihan append tetap tahan lama, mengautentikasi peer lokalnya, dan hanya mengirimkan kandidat aman yang eksak yang diterima oleh kosakata tertutupnya. Producer ini bukan otoritas append STAV itu sendiri.
+
+## Pola intent, hasil, pemulihan
+
+Producer mengikuti pola tiga langkah untuk setiap mutasi yang diaudit:
+
+<Steps>
+  <Step title="Intent pra-mutasi">
+    Catat intent yang dinyatakan pemanggil secara tahan lama sebelum perubahan apa pun dapat diamati. Producer menolak kandidat di luar kosakata tertutupnya.
+  </Step>
+  <Step title="Hasil terminal">
+    Setelah mutasi selesai atau gagal, tangkap hasil yang eksak sehingga audit mencerminkan kenyataan, bukan status yang diharapkan.
+  </Step>
+  <Step title="Pemulihan terbatas">
+    Saat terjadi gangguan, producer melakukan pemulihan terbatas atas aliran append tanpa mengarang rekonsiliasi atau membuang intent secara diam-diam.
+  </Step>
+</Steps>
+
+## Batasan
+
+<Warning>
+  Accordare producer bukan otoritas append STAV. Producer mengautentikasi peer lokal dan mengirimkan kandidat; otoritas append memvalidasi, menyegel, dan menyimpannya secara tahan lama. Jangan pernah mengakali pemisahan ini.
+</Warning>
+
+- Kosakata producer bersifat tertutup. Producer hanya menerima kandidat audit Named Version SAV.
+- Producer bersifat freezing path. Producer tidak boleh menjadi dependensi hot path.
+- Producer mengautentikasi peer lokal; producer tidak mengautentikasi pemanggil jarak jauh.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/id/governance/stav">
+    Otoritas append yang menyegel catatan audit.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/id/governance/ssiag">
+    Mengotorisasi mutasi yang diaudit oleh producer.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/id/skv/sav">
+    Semantik komposisi Named Version yang diaudit oleh sirkuit ini.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Tata bahasa Accordare yang telah diratifikasi hadir sebagai `qxctl accord ...` setelah diimplementasikan.
+  </Card>
+</CardGroup>

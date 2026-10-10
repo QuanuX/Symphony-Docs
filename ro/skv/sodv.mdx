@@ -1,0 +1,48 @@
+---
+title: "SODV: guvernanța documentației oficiale și a versiunilor"
+description: "SODV guvernează publicarea oficială QuanuX prin verificări ale registrului de versiuni append-only, verificarea observațiilor furnizate de apelant și inventare de versiuni de unică folosință."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) guvernează modul în care cunoașterea din cadrul SKV devine documentație publică oficială și înregistrări de versiuni. Motorul său este un proces C++ instalabil independent, care efectuează verificări locale ale registrului de versiuni append-only și produce inventare de versiuni de unică folosință. SODV nu publică nimic el însuși.
+
+## Operații
+
+- **Inspectare și verificare**: validează forma și continuitatea registrului de versiuni.
+- **Verificare (verify)**: verifică observațiile furnizate de apelant asupra stării publicate.
+- **Propunere**: acceptă propuneri de versiuni neutre față de furnizor.
+- **Recuperare**: efectuează recuperarea fără mutații.
+- **Proiecție**: emite inventare de versiuni de unică folosință.
+
+## Ce nu face SODV
+
+- SODV nu are acces la rețea.
+- SODV nu publică nimic pe GitHub, Mintlify, registre de pachete sau orice altă suprafață.
+- SODV nu creează taguri și nu poate declara o versiune ca fiind finalizată.
+- SODV nu clasifică furnizorii și nu favorizează o cale de publicare.
+
+Publicarea are loc prin instrumente autorizate separate, care consultă dovezile SODV.
+
+## Publicări SODV finalizate
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` la tagul `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` la tagul `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` la tagul `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Rulați `qxctl sodv ...` pentru a inspecta, verifica, propune și proiecta.
+  </Card>
+</CardGroup>
+
+<Note>
+  Fiecare motor SKV este doar de citire, interogare, validare și propunere. Aplicarea canonică este dezactivată până când contractele fiecărui motor pentru SSIAG, tranzacția pe starea așteptată, garanția qxctl, evenimentul STAV, recuperare și testele negative sunt complete.
+</Note>

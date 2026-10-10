@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: contratti del framework"
+description: "SQV è proprietario di contratti di framework riutilizzabili per sistemi quantitativi e di trading, senza acquisire la logica di strategia dell'utente. SOOV è il suo primo sotto-vettore denominato per una futura architettura FIX esclusivamente in C++."
+sidebarTitle: "Quantitative Vector"
+---
+
+Il Symphony Quantitative Vector (SQV) è proprietario di contratti di framework riutilizzabili per la ricerca quantitativa, la costruzione di sistemi di trading, il supporto all'esecuzione e i futuri engine quantitativi. La logica di strategia appartiene sempre a te. SQV fornisce superfici di framework ed evidenze esatte di compatibilità, ma non determina mai i tuoi strumenti finanziari, feed, sottoscrizioni, logica degli ordini o modello di esecuzione.
+
+## Confine della strategia dell'utente
+
+Mantieni la piena proprietà della logica di strategia. SQV non:
+
+- Seleziona i tuoi strumenti finanziari o feed di dati
+- Definisce i campi di sottoscrizione o la profondità di mercato
+- Determina il comportamento in caso di errore o le regole di normalizzazione
+- Scrive la logica degli ordini o i modelli di esecuzione
+- Progetta la tua struttura modulare interna
+
+Symphony fornisce evidenze di compatibilità e operazioni supportate. Non classifica mai le strategie né impone regole di piattaforma alle tue decisioni di trading.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV è il primo sotto-vettore denominato di SQV. Rappresenta una futura architettura FIX ad alte prestazioni, esclusivamente in C++, ispirata al lavoro storico di QuanuX. SOOV è previsto come livello di messaggistica delimitato e deterministico per le comunicazioni di trading. Il comportamento FIX dettagliato non è ancora canonico; al momento non sono implementate sessioni FIX, adattatori di feed né integrazioni con broker.
+
+## Ambito futuro
+
+SQV è la sede prevista per i componenti di framework quantitativo ratificati nelle successive fasi di rilascio. Le aree previste includono:
+
+- Engine di backtesting
+- API C++ dei broker
+- Librerie di indicatori
+- Matematica quantitativa
+- Architettura dei flussi di dati
+
+Nessuno di questi è implementato finché i rispettivi contratti non vengono ratificati.
+
+## Stato attuale
+
+SQV è esclusivamente un contratto di architettura canonico. Al momento non sono implementati engine SQV o SOOV, sessioni FIX, adattatori di feed, runtime di strategia, integrazioni con broker, backtester, librerie di indicatori né componenti per i flussi di dati.
+
+## Relazione di SQV con gli altri vettori
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/it/vectors/shv">
+    Fornisce evidenze sulle capacità hardware che vincolano la progettazione degli engine quantitativi.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/it/vectors/snv">
+    Registra i Node su cui vengono eseguiti i carichi di lavoro quantitativi.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/it/skv/overview">
+    Governa i contratti, l'evoluzione e le relazioni di pubblicazione ufficiale di SQV.
+  </Card>
+</CardGroup>

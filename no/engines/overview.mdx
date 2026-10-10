@@ -1,0 +1,57 @@
+---
+title: "Symphony-vektormotorer: Oversikt over uavhengig installasjon"
+description: "Hver Symphony-vektormotor installeres uavhengig, kjører utenfor prosessen i C++ og forblir uten autoritet. Bli kjent med motorfamiliene SKV, SCV og SHV her."
+sidebarTitle: "Oversikt over motorer"
+---
+
+Hver aktiv Symphony-vektor på applikasjonsnivå kan ha en uavhengig installerbar C++-motor som kjører utenfor prosessen. Delte C++-mekanismer uten autoritet ligger under `libraries/`; en separat C++-koordinator eier mekanismene for autentiserte økter og avstemming av arbeidstrær. Motorer inspiserer, validerer, projiserer og foreslår innenfor vektoreide kontrakter. De får ikke autoritet bare ved å generere innhold.
+
+## Implementerte motorer
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector-fundament" icon="cube" href="/no/engines/knowledge-vector-foundation">
+    C++-prosessrammer, JSON, SHA-256, øyeblikksbilder, kvitteringer og manifestoppdagelse.
+  </Card>
+
+  <Card title="Øktkoordinator" icon="gears" href="/no/engines/coordinator">
+    Autentiserte økter, avstemming av arbeidstrær og koordinering av livssyklusanvendelse.
+  </Card>
+
+  <Card title="SCV-kildemotorer" icon="cloud" href="/no/engines/scv-source-engines">
+    Åtte C++26-motorer for kildekunnskap om SCV, hyperskalere, edge og leverandører.
+  </Card>
+
+  <Card title="SHV-motorer" icon="microchip" href="/no/engines/shv-engines">
+    Motorer for maskinvarekilder, katalog, profil, partisjon, publisering og adaptere.
+  </Card>
+</CardGroup>
+
+## SKV-motorfamilien
+
+SKV-overflatene har hver sin motor:
+
+- Motorene for SKVI, SCLV, SACV, SODV og SSFV implementerer hver inspect, check, propose, project (og recovery der det er relevant).
+- Motorene for SAV og SEV er C++26-prosesser på den frosne stien for vurdering av sammensetninger og utviklingssaker.
+
+<Note>
+  Hver gjeldende SKV-motor kan bare lese, spørre, validere og foreslå. Programmatisk kanonisk anvendelse forblir deaktivert til hver motors kontrakter for SSIAG-tillatelsesverifisering, transaksjon med forventet tilstand, qxctl-sikkerhetsmekanisme, STAV-hendelse, gjenoppretting og negative tester er fullført.
+</Note>
+
+## Felles garantier
+
+- Uavhengig installasjon og avinstallasjon per modul
+- Ingen omgivende gjennomsøking av repositoriet; manifestoppdagelse er eksplisitt
+- Ingen delt autoritet; hver muteringsrute er sperret av SSIAG pluss STAV
+- Ingen tilstedeværelse i den varme stien; motorer tilfører aldri forsinkelse til sanntidsarbeidslaster
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="qxctl-oversikt" icon="terminal" href="/no/qxctl/overview">
+    Administrativt CLI som kaller eksakte, kvitteringsvaliderte motorer.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/no/governance/maestro">
+    Registrerer dokkingsrelasjoner mellom motorer og reseptorer.
+  </Card>
+</CardGroup>

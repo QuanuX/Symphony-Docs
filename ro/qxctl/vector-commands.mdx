@@ -1,0 +1,82 @@
+---
+title: "Comenzi vectoriale qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Explorați gramatica qxctl specifică vectorilor, disponibilă astăzi: SKVI, SCLV, SACV, SODV, SSFV, stocarea și catalogul SHV, plus suprafețele rezervate accord și evolution."
+sidebarTitle: "Comenzi vectoriale"
+---
+
+qxctl expune gramatică specifică vectorilor pentru fiecare motor SKV implementat și pentru administrarea SCV și SHV. Gramatica ratificată pentru Accordare și SEV va folosi `qxctl accord ...` și `qxctl evolution ...` odată ce vor exista implementările comenzilor și dovezi stabile în registru.
+
+## Gramatica motoarelor SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project asupra motorului SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project asupra motorului SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project asupra motorului SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project asupra motorului SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph asupra motorului SSFV
+
+Fiecare gramatică este delimitată de contractul motorului care o deține. qxctl nu inventează niciodată o operație și nu ocolește motorul.
+
+## Adăugiri Accordare
+
+Adăugirile Accordare din qxctl oferă:
+
+- Stare stabilă
+- Reconciliere (reia doar candidații exacți)
+- Instalarea și dezinstalarea supervizorului (invocă doar executabilul verificat receipt-v2)
+- Două identități de administrare a permisiunilor care modifică doar configurația STAV oprită, sub SSIAG și recuperare pe starea așteptată
+
+Starea separă intenția durabilă de restanța de adăugare. Reconcilierea reia doar candidații exacți. Frunzele de permisiuni nu deschid niciodată o configurație în execuție.
+
+## Stocarea SHV
+
+Stocarea durabilă SHV este administrată doar prin:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` cu digest-ul de intenție așteptat păstrat reprezintă și recuperarea. Nu există un alias separat pentru recuperare. Domeniul stocării este declarat în intrare; identitatea conectorului este setată prin flaguri. Stocarea structurală nu dublează `shv graph validate` semantic și nu selectează un cap de catalog.
+
+`shv graph store inventory` (versiunea 0.2) adaugă o citire logică legată de revizie, cu identități explicite ale scriitorilor păstrați. Selecția moștenită 0.1 rămâne acceptată.
+
+## Publicarea catalogului SHV
+
+Publicarea catalogului este administrată doar prin:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Recuperarea se face prin `apply --operation-id`, care se exclude reciproc cu `--input`. Selecția locală a catalogului, susținută de permisiuni, este distinctă de activarea sursei și de stocarea generică a grafurilor.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Semantica vectorilor pe care o implementează motoarele.
+  </Card>
+
+  <Card title="Vectorul SHV" icon="microchip" href="/ro/vectors/shv">
+    Context despre Hardware Vector și lista motoarelor.
+  </Card>
+
+  <Card title="Motoare SHV" icon="microchip" href="/ro/engines/shv-engines">
+    Detalii la nivel de motor.
+  </Card>
+
+  <Card title="Prezentare generală qxctl" icon="terminal" href="/ro/qxctl/overview">
+    Suprafața completă de comenzi qxctl.
+  </Card>
+</CardGroup>

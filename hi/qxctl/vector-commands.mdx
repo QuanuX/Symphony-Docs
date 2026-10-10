@@ -1,0 +1,82 @@
+---
+title: "qxctl वेक्टर कमांड: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "आज उपलब्ध वेक्टर-विशिष्ट qxctl ग्रामर देखें: SKVI, SCLV, SACV, SODV, SSFV, SHV स्टोरेज और कैटलॉग, साथ ही आरक्षित accord और evolution सतहें।"
+sidebarTitle: "वेक्टर कमांड"
+---
+
+qxctl हर लागू किए गए SKV इंजन के लिए और SCV तथा SHV प्रशासन के लिए वेक्टर-विशिष्ट ग्रामर उपलब्ध कराता है। अनुमोदित Accordare और SEV ग्रामर, उनके कमांड इम्प्लीमेंटेशन और स्थिर रजिस्ट्री साक्ष्य मौजूद होने के बाद, `qxctl accord ...` और `qxctl evolution ...` का उपयोग करेंगे।
+
+## SKV इंजन ग्रामर
+
+- `qxctl skvi ...`: SKVI इंजन के विरुद्ध inspect, check, propose, project
+- `qxctl sclv ...`: SCLV इंजन के विरुद्ध inspect, check, propose, recover, project
+- `qxctl sacv ...`: SACV इंजन के विरुद्ध inspect, check, diff, propose, project
+- `qxctl sodv ...`: SODV इंजन के विरुद्ध inspect, check, verify, propose, recover, project
+- `qxctl ssfv ...`: SSFV इंजन के विरुद्ध inspect, check, diff, propose, graph
+
+हर ग्रामर स्वामी इंजन के कॉन्ट्रैक्ट से सीमित है। qxctl कभी भी कोई ऑपरेशन नहीं गढ़ता और न ही इंजन को बायपास करता है।
+
+## Accordare संवर्धन
+
+qxctl पर Accordare संवर्धन प्रदान करते हैं:
+
+- स्थिर status
+- रिकंसिलिएशन (केवल सटीक कैंडिडेट्स को रीप्ले करता है)
+- सुपरवाइज़र install और uninstall (केवल सत्यापित receipt-v2 निष्पादन योग्य को इनवोक करता है)
+- दो ग्रांट-प्रशासन पहचानें जो SSIAG और अपेक्षित-स्टेट रिकवरी के तहत केवल रुके हुए STAV कॉन्फ़िगरेशन को म्यूटेट करती हैं
+
+status टिकाऊ इंटेंट और append बैकलॉग को अलग करता है। रिकंसिलिएशन केवल सटीक कैंडिडेट्स को रीप्ले करता है। ग्रांट लीफ़ कभी भी चल रहा कॉन्फ़िगरेशन नहीं खोलते।
+
+## SHV स्टोरेज
+
+टिकाऊ SHV स्टोरेज का प्रशासन केवल इनके माध्यम से होता है:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+संरक्षित अपेक्षित इंटेंट डाइजेस्ट के साथ `commit` ही रिकवरी भी है। कोई अलग रिकवरी उपनाम नहीं है। स्टोर स्कोप इनपुट में घोषित होता है; कनेक्टर पहचान फ़्लैग्स में सेट होती है। संरचनात्मक स्टोरेज सिमेंटिक `shv graph validate` की नकल नहीं करता और न ही कोई कैटलॉग हेड चुनता है।
+
+`shv graph store inventory` (रिलीज़ 0.2) स्पष्ट संरक्षित राइटर पहचानों के साथ एक रिविज़न-बद्ध लॉजिकल रीड जोड़ता है। लेगेसी 0.1 चयन समर्थित बना रहता है।
+
+## SHV कैटलॉग प्रकाशन
+
+कैटलॉग प्रकाशन का प्रशासन केवल इनके माध्यम से होता है:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+रिकवरी `apply --operation-id` है, जो `--input` के साथ परस्पर अनन्य है। अनुमति-समर्थित स्थानीय कैटलॉग चयन, सोर्स एक्टिवेशन और सामान्य ग्राफ़ स्टोरेज से भिन्न है।
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SKV अवलोकन" icon="book-open" href="/hi/skv/overview">
+    वे वेक्टर सिमेंटिक्स जिन्हें इंजन लागू करते हैं।
+  </Card>
+
+  <Card title="SHV वेक्टर" icon="microchip" href="/hi/vectors/shv">
+    Hardware Vector की पृष्ठभूमि और इंजन सूची।
+  </Card>
+
+  <Card title="SHV इंजन" icon="microchip" href="/hi/engines/shv-engines">
+    इंजन-स्तरीय विवरण।
+  </Card>
+
+  <Card title="qxctl अवलोकन" icon="terminal" href="/hi/qxctl/overview">
+    पूर्ण qxctl कमांड सतह।
+  </Card>
+</CardGroup>

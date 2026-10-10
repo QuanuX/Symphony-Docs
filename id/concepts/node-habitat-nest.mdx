@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat, dan Nest di Symphony"
+description: "Pelajari bagaimana Symphony memodelkan infrastruktur fisik: Node sebagai komputer fisik, Habitat sebagai pengondisian OS yang eksak, dan Nest sebagai workload sesuai tujuan pengguna."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony mendefinisikan tiga konsep fisik yang memisahkan identitas perangkat keras, pengondisian perangkat lunak, dan workload pengguna. Konsep-konsep ini menjaga persoalan infrastruktur tetap terpisah sehingga Anda dapat menalar masing-masing secara independen.
+
+## Node
+
+**Node** adalah sumber daya komputer fisik target dengan sumber daya yang teridentifikasi secara spesifik. Memutuskan sambungan, menyambungkan kembali, memulai ulang, atau hanya mem-flash ulang perangkat lunak tidak menciptakan Node fisik baru. Penghancuran, penggantian fisik, atau perubahan perangkat keras lokal yang material akan menciptakannya. Inkarnasi Node adalah bukti terpisah yang dibuat ketika Node tersebut dipasang ke bus sebagai peserta dalam sistem perdagangan, klaster riset, atau sistem lain yang dibangun dengan Symphony.
+
+## Habitat
+
+**Habitat** adalah pengondisian sistem operasi dan paket yang eksak yang dikirimkan ke sebuah Node untuk pekerjaan yang Anda pilih. Defaultnya hanya permukaan perangkat lunak yang diperlukan: tanpa paket yang tidak terkait, runtime tersembunyi, container, Kubernetes, atau virtualisasi implisit. Habitat serbaguna yang luas tetap merupakan pilihan pengguna eksplisit yang sah.
+
+## Nest
+
+**Nest** (secara harfiah "sarang") melayani tujuan yang Anda pilih. Eksekusi strategi langsung diperkirakan akan umum, dan satu strategi dapat berisi banyak bagian kode modular, tetapi Symphony tidak mendefinisikan tujuan Nest atau menyamakannya dengan satu file sumber, proses, algoritma, API broker, atau antarmuka data. Logika strategi tetap menjadi domain Anda.
+
+## Perbandingan
+
+| Konsep | Apa itu | Apa yang mengubahnya |
+| --- | --- | --- |
+| **Node** | Komputer fisik dengan sumber daya spesifik | Penghancuran fisik, penggantian, atau perubahan perangkat keras yang material |
+| **Habitat** | Pengondisian OS dan paket yang eksak pada sebuah Node | Pemilihan eksplisit oleh pengguna atau pengondisian yang dikelola qxctl |
+| **Nest** | Workload sesuai tujuan pengguna yang dikirimkan ke dalam Habitat | Deployment strategi atau pekerjaan terpilih lainnya oleh pengguna |
+
+## Topologi klaster dan bus
+
+Beberapa Node membentuk klaster hanya ketika terhubung satu sama lain melalui satu atau beberapa bus. Beberapa fabric bus dapat berdampingan dalam satu klaster, dan hubungan Node-dalam-klaster dapat mengidentifikasi bus yang relevan tanpa mengubah identitas Node fisik.
+
+Adaptor bus seperti NATS JetStream dan ZeroMQ dipilih oleh pengguna, bukan doktrin. Transfer berat, kontrol, riset, dan exhaust eksekusi tidak harus berbagi satu bus. Sebuah topologi dapat menggunakan beberapa bus atau melewati bus untuk jalur yang dideklarasikan.
+
+## Cakupan TOPS dan TROG
+
+**TOPS** adalah cakupan Trade Operating System yang dominan. **TROG** adalah cakupan grup perdagangan non-global yang sengaja dibuat subordinat. Meskipun istilah historisnya demikian, TROG belum tentu virtual. Sifat pembedanya adalah bahwa cakupan dan aturannya tidak universal.

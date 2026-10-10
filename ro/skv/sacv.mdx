@@ -1,0 +1,52 @@
+---
+title: "SACV: guvernanța contractelor API pentru QuanuX Symphony"
+description: "SACV guvernează contractele API versionate prin verificări OpenAPI 3.2.0 delimitate, diferențe de compatibilitate deterministe și propuneri de registru declarate de apelant, între vectori."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) guvernează contractele API versionate în întreaga platformă. Motorul său este un proces C++ instalabil independent, care efectuează validări JSON OpenAPI 3.2.0 delimitate, diferențe de compatibilitate deterministe și inventare de unică folosință. Semantica endpoint-urilor rămâne la vectorul sau modulul care deține domeniul; SACV guvernează forma și compatibilitatea contractelor.
+
+## Operații
+
+- **Inspectare și verificare**: validează că un document JSON OpenAPI 3.2.0 respectă profilul delimitat.
+- **Diff**: calculează diferențe de compatibilitate deterministe între versiunile contractelor.
+- **Propunere**: acceptă propuneri de registru declarate de apelant pentru contracte noi sau modificate.
+- **Proiecție**: emite inventare de unică folosință pentru revizori și instrumentele din aval.
+
+## Ce guvernează SACV
+
+SACV delimitează:
+
+- Forma contractului (OpenAPI 3.2.0 cu profilul SACV)
+- Clasificarea compatibilității între versiuni
+- Apartenența la registru pentru contractele acceptate
+
+Nu:
+
+- Deține semantica endpoint-urilor (fiecare vector sau modul o păstrează)
+- Generează SDK-uri, publică artefacte sau emite tokenuri
+- Implică existența unei suprafețe de rețea active (menționarea unui viitor API privat nu creează unul)
+
+<Note>
+  SACV este doar de citire, interogare, validare și propunere. Aplicarea canonică programatică este dezactivată în toate motoarele SKV.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul-umbrelă și modelul Contract Quad.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ro/skv/sodv">
+    Guvernează orice publicare oficială a unui contract înregistrat în SACV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ro/skv/sav">
+    Evaluează compoziția și compatibilitatea între componentele declarate.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Rulați `qxctl sacv ...` pentru a inspecta, verifica, compara și propune.
+  </Card>
+</CardGroup>

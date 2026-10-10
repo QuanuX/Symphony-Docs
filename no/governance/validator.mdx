@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: Deterministiske, skrivebeskyttede repositoriekontroller"
+description: "Symphony Validator produserer linjebasert eller strukturert JSON-evidens for kontrakter, kildelukning, invarianter, funksjoner, utgivelser og den maskinkontrollerte rotoppsummeringen."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) er en uavhengig, deterministisk og skrivebeskyttet C++26-kontrollør for repositoriet. Den produserer uforanderlig evidens om gjeldende tilstand for repositoriet og kontraktene. Den kan ikke reparere eller publisere noe.
+
+## Hva validatoren kontrollerer
+
+- Kontraktform: påkrevde ankere og struktur i Contract Quad
+- Gjeldende kildelukning på tvers av overflater indeksert av SKVI
+- Eierskap til invarianter i henhold til `knowledge/INVARIANTS.md` og invariantregisteret
+- Forventninger til funksjonsadministrasjon rapportert av SSFV
+- Utgivelsesposter rapportert av SODV
+- Den maskineide rotoppsummeringen i repositoriets README
+
+Evidens sendes ut som linjeutdata eller strukturert JSON. Hver utsending kan reproduseres fra samme repositorietilstand.
+
+## Hva validatoren ikke gjør
+
+<Warning>
+  Validatoren kan ikke reparere filer, skrive om kontrakter eller publisere repositoriet. Den skaper ikke kanonisk sannhet om noe; den bare rapporterer den.
+</Warning>
+
+- Ingen sideeffekter på repositoriet
+- Ingen nettverkstilgang
+- Ingen undertrykking av advarsler utenfor qxctls beskyttede advarselspolicy
+
+## qxctl-integrasjon
+
+qxctl validerer validatorens eksakte kvittering og strukturerte sammendrag før beskyttet advarselspolicy anvendes. Ni beskyttede qxctl-blader for advarselslivssyklus pluss den eksakte, kvitteringsstøttede ruten for rotoppsummering eksponerer valideringsadministrasjon uten å endre rå detektorevidens.
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/no/qxctl/validate">
+    Grammatikk for beskyttet advarselspolicy, grunnlinje og visning.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/no/skv/ssfv">
+    Forventninger til funksjonsadministrasjon som validatoren kontrollerer.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/no/skv/sodv">
+    Utgivelsesposter som validatoren inspiserer.
+  </Card>
+
+  <Card title="SKV-oversikt" icon="book-open" href="/no/skv/overview">
+    Det overordnede rammeverket hvis kontrakter validatoren kontrollerer.
+  </Card>
+</CardGroup>

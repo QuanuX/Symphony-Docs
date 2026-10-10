@@ -1,0 +1,54 @@
+---
+title: "STAV: katra TOPS tikai papildināma audita virsgrāmata Symphony"
+description: "STAV Append Authority uztur katra TOPS tikai papildināmas audita virsgrāmatas ar autentificētu IPC, fsync pirms kvīts noturību, ierobežotu lasīšanu, verifikāciju un atkopšanu."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) definē katra TOPS tikai papildināmas audita virsgrāmatas protokolu. Tā izpildlaika iestāde atrodas `modules/stav-append-authority` — neatkarīgi instalējamā Go pakalpojumā. Katra TOPS operatīvās virsgrāmatas ir privātas katrai TOPS instalācijai; tās nav SKV saturs.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` nodrošina:
+
+- Katra TOPS tikai papildināmas audita virsgrāmatas
+- Savstarpēji autentificētu lokālo IPC
+- Precīzas producentu un lasītāju atļaujas
+- Fsync pirms kvīts noturību
+- Ierobežotu lasīšanu, verifikāciju un atkopšanu
+- Reģistrāciju un vietējo uzraudzību (launchd, systemd)
+
+<Warning>
+  qxctl nekad nesaņem neapstrādātas papildināšanas pilnvaras. Tas koordinē reģistrāciju, verifikāciju un atļaujas, izmantojot precīzu modulim piederošu adapteri, taču virsgrāmatas papildināšana paliek aizzīmogota papildināšanas iestādes procesā.
+</Warning>
+
+## STAV protokols Go valodai
+
+`libraries/stav-protocol-go` ir bezpilnvaru Go bibliotēka, kas īsteno kanonisko STAV v1 kodeku, stingru validāciju, īssavilkumus, ietvarošanu, atbilstības noteikumus un slēgto producentu vārdnīcu. Jebkurš producents vai lasītājs var pieņemt protokolu, nemantojot pilnvaras.
+
+## Pabeigtās SODV publikācijas
+
+Katrs STAV artefakts, kas pašlaik publicēts ar SODV, ir Go pirmkoda moduļa versija, nevis binārs laidiens:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/lv/governance/ssiag">
+    Autorizē aizsargātas mainīšanas darbības, kuras pēc tam auditē STAV.
+  </Card>
+
+  <Card title="Accordare producents" icon="pen-nib" href="/lv/governance/accordare-producer">
+    Nodod STAV nodomu pirms mainīšanas un galīgos iznākumus.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/lv/qxctl/lifecycle">
+    Dzīves cikla administrēšana, kas darbojas kopā ar STAV reģistrāciju.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Pārvalda STAV komponentu oficiālos publikāciju ierakstus.
+  </Card>
+</CardGroup>

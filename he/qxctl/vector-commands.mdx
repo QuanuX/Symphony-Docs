@@ -1,0 +1,82 @@
+---
+title: "פקודות הווקטורים של qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "סקירת דקדוק qxctl הייעודי לווקטורים הזמין כיום: SKVI, SCLV, SACV, SODV, SSFV, אחסון וקטלוג של SHV, וכן משטחי accord ו-evolution שמורים."
+sidebarTitle: "פקודות וקטורים"
+---
+
+qxctl חושף דקדוק ייעודי לווקטורים עבור כל מנוע SKV ממומש ועבור ניהול SCV ו-SHV. דקדוק Accordare ו-SEV שאושרר ישתמש ב-`qxctl accord ...` וב-`qxctl evolution ...` ברגע שמימושי הפקודות שלהם וראיות רישום יציבות יהיו קיימים.
+
+## דקדוק מנועי SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project מול מנוע SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project מול מנוע SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project מול מנוע SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project מול מנוע SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph מול מנוע SSFV
+
+כל דקדוק מוגבל על ידי החוזה של המנוע שבבעלותו. qxctl לעולם אינו ממציא פעולה ואינו עוקף את המנוע.
+
+## תוספות Accordare
+
+תוספות Accordare ב-qxctl מספקות:
+
+- סטטוס יציב
+- התאמה (משחזרת רק מועמדים מדויקים)
+- התקנה והסרה של supervisor (מפעילה רק את קובץ ההרצה המאומת מסוג receipt-v2)
+- שתי זהויות של ניהול הרשאות שמשנות רק את תצורת STAV העצורה, תחת SSIAG ושחזור מצב צפוי
+
+הסטטוס מפריד בין כוונה עמידה לבין צבר הוספות (append backlog). ההתאמה משחזרת רק מועמדים מדויקים. עלי ההרשאות לעולם אינם פותחים תצורה רצה.
+
+## אחסון SHV
+
+אחסון SHV עמיד מנוהל אך ורק באמצעות:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` עם ה-digest של הכוונה הצפויה שנשמר משמש גם לשחזור. אין כינוי שחזור נפרד. היקף האחסון מוצהר בקלט; זהות המחבר (connector) נקבעת בדגלים. אחסון מבני אינו משכפל את `shv graph validate` הסמנטי ואינו בוחר ראש קטלוג.
+
+`shv graph store inventory` (גרסה 0.2) מוסיף קריאה לוגית הקשורה לרוויזיה עם זהויות כותבים שמורות מפורשות. הבחירה מדור קודם של 0.1 נתמכת עדיין.
+
+## פרסום קטלוג SHV
+
+פרסום הקטלוג מנוהל אך ורק באמצעות:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+השחזור הוא `apply --operation-id`, והוא בלעדי הדדית עם `--input`. בחירת קטלוג מקומית המגובה בהרשאות נבדלת מהפעלת מקור ומאחסון גרפים כללי.
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="סקירת SKV" icon="book-open" href="/he/skv/overview">
+    הסמנטיקה של הווקטורים שהמנועים מממשים.
+  </Card>
+
+  <Card title="וקטור SHV" icon="microchip" href="/he/vectors/shv">
+    רקע על Hardware Vector ורשימת המנועים.
+  </Card>
+
+  <Card title="מנועי SHV" icon="microchip" href="/he/engines/shv-engines">
+    פרטים ברמת המנוע.
+  </Card>
+
+  <Card title="סקירת qxctl" icon="terminal" href="/he/qxctl/overview">
+    משטח הפקודות המלא של qxctl.
+  </Card>
+</CardGroup>

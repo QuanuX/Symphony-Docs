@@ -1,0 +1,43 @@
+---
+title: "Maestro: Tilstedeværelsesautoritet for Symphony-vektormotorer"
+description: "Maestro registrerer autentiserte dokkingsrelasjoner for vektormotorer per TOPS og reseptor og utleder et komplett, skrivebeskyttet inventar uten å starte eller overvåke motorer."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) er en uavhengig installerbar C++26-tilstedeværelsesautoritet på den frosne stien. Den registrerer eksakte, autentiserte dokkingsrelasjoner for vektormotorer per TOPS og reseptor og utleder et komplett, skrivebeskyttet inventar over hva som er dokket for øyeblikket. Maestro er et vitne, ikke en tilsynsmann.
+
+## Hva Maestro registrerer
+
+- Eksakte, autentiserte dokkingsrelasjoner mellom vektormotorer og reseptorer
+- Avgrensning per TOPS, slik at hver installasjons tilstedeværelse forblir privat for den installasjonen
+- Et utledet, komplett, skrivebeskyttet inventar tilgjengelig gjennom `qxctl maestro inventory`
+
+## Hva Maestro ikke gjør
+
+<Warning>
+  Maestro starter, planlegger, overvåker eller kaller ikke motorer. Binding, avstemming, koordinering av autentiserte økter eller en livssyklusplan alene etablerer ikke tilstedeværelse i Maestro, ratifiserer ikke semantisk sannhet, muterer ikke kanonisk kunnskap og beviser ikke at den installerte verten er komplett.
+</Warning>
+
+- Maestro oppretter ingen prosesser.
+- Maestro anvender aldri endringer i kanonisk kunnskap.
+- Maestro erstatter aldri vektormotoren som eier semantikken.
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/no/qxctl/maestro">
+    `qxctl maestro inventory` presenterer det utledede inventaret.
+  </Card>
+
+  <Card title="Øktkoordinator" icon="gears" href="/no/engines/coordinator">
+    Eier mekanismene for autentiserte økter og avstemming av arbeidstrær.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/no/governance/ssiag">
+    Autentiserer dokkingsrelasjonene som Maestro registrerer.
+  </Card>
+
+  <Card title="Oversikt over motorer" icon="cube" href="/no/engines/overview">
+    Uavhengig installerbare vektormotorer som dokker med Maestro.
+  </Card>
+</CardGroup>

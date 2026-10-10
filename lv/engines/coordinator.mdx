@@ -1,0 +1,50 @@
+---
+title: "Zināšanu sesiju koordinators Symphony vektoru dzinējiem"
+description: "Zināšanu sesiju koordinators C++26 valodā nodrošina ierobežotu saderību, darba koku saskaņošanu, autentificētas sesijas un piemērošanai spējīgu dzīves cikla koordināciju."
+sidebarTitle: "Koordinators"
+---
+
+Zināšanu sesiju koordinators (Knowledge Session Coordinator, `modules/knowledge-session-coordinator`) ir neatkarīgi instalējams C++26 process. Tas atrodas starp qxctl un vektoru dzinējiem, un tam pieder ierobežota saderība, darba koku saskaņošana, autentificētas nekanoniskas sesijas, SSFV uzturēšana, tikai ziņojumu dzīves cikla plānošana un atsevišķi autorizēti piemērošanai spējīgi žurnāli.
+
+## Pienākumi
+
+- **Saderības pārbaudes** starp qxctl, koordinatoru un dzinējiem
+- **Darba koku saskaņošana** ar noturīgu, uz slotiem balstītu stāvokli
+- **Autentificētas nekanoniskas sesijas** SSIAG pilnvaru ietvaros
+- **Noturīgas SSFV uzturēšanas** plūsmas
+- **Tikai ziņojumu dzīves cikla plānošana** ar determinētiem pierādījumiem
+- **Piemērošanai spējīgi žurnāli** ar sagatavotiem mēģinājumiem, compare-and-swap, atkārtotu novērošanu, dinamisku pārplānošanu un atkopšanu
+
+## Ko koordinators nedara
+
+<Warning>
+  Koordinators neizpilda vektoru semantiku vai resursdatora darbības. Tas koordinē pierādījumus un žurnālus; katram dzinējam joprojām pieder savs domēns, un katru resursdatora darbību joprojām autorizē tās pašas līgums.
+</Warning>
+
+- Nekādas kanonisko zināšanu piemērošanas
+- Nekādas patvaļīgu komandu izpildes
+- Nekādu slēptu vērotāju vai rezidenta fona darba
+
+## qxctl integrācija
+
+qxctl izsauc precīzas, ar kvītīm validētas koordinatora instalācijas. `qxctl knowledge reconcile ...` un `qxctl knowledge session ...` katrai darbībai izmanto vienu precīzi piesaistītu koordinatoru, un mainīšanai ir nepieciešami stabili darbību identifikatori, kā arī precīzi pašreizējā žurnāla īssavilkumi (digest) compare-and-swap operācijai.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/lv/qxctl/reconcile">
+    Darba koku saskaņošanas gramatika.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/lv/qxctl/session">
+    Autentificētu sesiju un SSFV uzturēšanas gramatika.
+  </Card>
+
+  <Card title="Pamata bibliotēka" icon="cube" href="/lv/engines/knowledge-vector-foundation">
+    Koplietoti C++ mehānismi, ko izmanto koordinators.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/lv/governance/ssiag">
+    Autorizē sesijas, kuras pārvalda koordinators.
+  </Card>
+</CardGroup>

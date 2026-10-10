@@ -1,0 +1,51 @@
+---
+title: "SKVI: motorul Symphony Knowledge Vector Index"
+description: "SKVI indexează determinist fiecare suprafață SKV canonică o singură dată, verifică acoperirea declarată în manifest și emite proiecții de unică folosință legate de digest, fără a atinge adevărul."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) este motorul care cartografiază adevărul canonic curent în fiecare suprafață SKV. Este un proces C++ instalabil independent, care funcționează determinist, doar în citire, și nu poate decide apartenența și nici scrie fișiere canonice.
+
+## Ce face SKVI
+
+SKVI efectuează trei operații delimitate:
+
+- **Inspectare și verificare**: verifică dacă fiecare suprafață obligatorie declarată în manifest este indexată exact o dată, cu un proprietar stabil, un rol de adevăr, relații, consumatori și eligibilitate pentru proiecție.
+- **Propunere**: acceptă propuneri imuabile declarate de apelant pentru modificări ale indexului, fără a le aplica.
+- **Proiecție**: emite proiecții de unică folosință, legate de digest, ale indexului curent pentru consumatorii din aval.
+
+## Ce nu face SKVI
+
+SKVI nu decide niciodată dacă ceva merită să fie o funcționalitate sau apartenența la manifest. Proprietatea rămâne la Contract Quad-ul fiecărui vector. De asemenea, SKVI nu:
+
+- Scrie sau rescrie Markdown canonic
+- Publică nimic într-o proiecție publică
+- Acordă autoritate doar pentru că a generat dovezi
+
+## Când să îl folosiți
+
+Folosiți SKVI pentru a confirma că un depozit este acoperit complet înainte de a propune o modificare de sursă sau pentru a vedea ce proprietar și ce rol de adevăr are o anumită suprafață. Proiecțiile sale alimentează revizorii propunerilor, contextul agenților și referințele de bază ale validatorului.
+
+<Note>
+  SKVI este unul dintre motoarele de citire, interogare, validare și propunere. Aplicarea canonică rămâne dezactivată în motoarele vectoriale ratificate până când contractele fiecărui motor pentru SSIAG, tranzacția pe starea așteptată, garanția qxctl, evenimentul STAV, recuperare și testele negative sunt complete.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul-umbrelă care guvernează SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/ro/skv/sclv">
+    Registrul append-only care înregistrează modificările de sursă materiale finalizate.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Rulați `qxctl skvi ...` pentru a invoca inspect, check și propose.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/ro/governance/validator">
+    Verificări independente, doar în citire, care completează acoperirea SKVI.
+  </Card>
+</CardGroup>

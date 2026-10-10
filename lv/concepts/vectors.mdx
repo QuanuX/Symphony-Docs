@@ -1,0 +1,47 @@
+---
+title: "Symphony vektori un piegādes fāzes"
+description: "Izprotiet Symphony ilgstošos semantisko īpašumtiesību domēnus (vektorus) pretstatā hronoloģiskām piegādes fāzēm, kā arī Contract Quad un pašreizējo vektoru statusu."
+sidebarTitle: "Vektori un fāzes"
+---
+
+Symphony arhitektūra balstās uz divām idejām: **vektori** ir ilgstoši semantisko īpašumtiesību domēni, un **fāzes** ir hronoloģiskas piegādes kampaņas. Ja komponents pirmo reizi pētīts kādā fāzē, tas nepadara šo fāzi par tā pastāvīgo īpašnieku. Vektori uztur nozīmi stabilu, kamēr ieviešana attīstās.
+
+## Kas ir vektors?
+
+Vektors ir ilgstošs, ierobežots semantisko īpašumtiesību domēns, kura kanoniskajam līgumam pieder šī domēna nozīme un atļautās darbības. Katrs vektors saņem **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` un `SPEC.md`, kā arī mērķtiecīgas pavadošās virsmas, kas tam patiešām nepieciešamas. Vektors deklarē savas kanoniskās virsmas un deleģēšanas grafu, SKVI katru pašreizējo virsmu kartē tieši vienu reizi, un novecojušas pavadošās virsmas tiek aizstātas ar pārvaldītas evolūcijas palīdzību, nevis paliek kā pretrunīgs konteksts.
+
+## Vektoru statuss
+
+| Vektors | Statuss | Lapa |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Ieviests: 1. fāzes pamats ar indeksētām virsmām | [/lv/skv/overview](/lv/skv/overview) |
+| **SKVI** — Avotu indeksēšana | Ieviests: inspect/check/propose dzinējs | [/lv/skv/skvi](/lv/skv/skvi) |
+| **SCLV** — Izmaiņu virsgrāmata | Ieviests: tikai papildināmas virsgrāmatas pārbaudes | [/lv/skv/sclv](/lv/skv/sclv) |
+| **SACV** — API līgumu pārvaldība | Ieviests: OpenAPI 3.2.0 pārbaudes | [/lv/skv/sacv](/lv/skv/sacv) |
+| **SODV** — Oficiālās dokumentācijas/laidienu pārvaldība | Ieviests: lokālas laidienu virsgrāmatas pārbaudes | [/lv/skv/sodv](/lv/skv/sodv) |
+| **SSFV** — Funkciju identitāte/administrēšana | Ieviests: strukturālas funkciju pārbaudes | [/lv/skv/ssfv](/lv/skv/ssfv) |
+| **SAV** — Accordare kompozīcija | Ieviests: sasalušā ceļa izvērtēšana | [/lv/skv/sav](/lv/skv/sav) |
+| **SEV** — Evolūcija | Ieviests: ietekmes/dispozīcijas plānošana | [/lv/skv/sev](/lv/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Ieviests: Go pamats bez cgo | [/lv/governance/ssiag](/lv/governance/ssiag) |
+| **STAV** — TOPS audita protokols | Ieviests: tikai papildināma virsgrāmata katram TOPS | [/lv/governance/stav](/lv/governance/stav) |
+| **SOV** — Ops Vector | Topošs: nodrošināšana, Habitat, Nest piegāde | [/lv/vectors/sov](/lv/vectors/sov) |
+| **SCV** — Cloud Vector | Ieviests: astoņi C++ avotu zināšanu dzinēji | [/lv/vectors/scv](/lv/vectors/scv) |
+| **SNV** — Node Vector | Topošs: SNIV, SNRV, SCIV, SCNV kompozīcija | [/lv/vectors/snv](/lv/vectors/snv) |
+| **SQV** — Quantitative Vector | Topošs: SOOV FIX arhitektūras apakšvektors | [/lv/vectors/sqv](/lv/vectors/sqv) |
+| **SHV** — Hardware Vector | Ieviests: C++ avotu, kataloga, profilu dzinēji | [/lv/vectors/shv](/lv/vectors/shv) |
+| **SIV** — Intelligence Vector | Topošs: SMCV neobligāts Markdown; SAIV rezervēts | [/lv/vectors/siv](/lv/vectors/siv) |
+
+## Contract Quad un pavadošās virsmas
+
+Katrs vektors saņem:
+
+1. **INTENT.md** — mērķis un tvērums
+2. **MANIFEST.md** — identitāte, deklarētās virsmas, deleģēšanas grafs
+3. **SKILL.md** — droša lietošana un darbības norādījumi
+4. **SPEC.md** — normatīvā uzvedība un robežas
+
+Pavadošās virsmas, piemēram, `SLANG.md`, `NAMESPACES.md`, reģistri, shēmas un profili, paliek pārvaldīti artefakti ārpus četru dalībnieku struktūras. Tās maršrutē vai specializē īpašnieka patiesību, taču nevar paplašināt savas pilnvaras.
+
+## Uz pierādījumiem balstīta integrācija
+
+Atliktam dzinējam nav safabricētas kvīts. Ierosinātam API nav izdomāta reģistra ieraksta. Nepublicētam līgumam nav SODV pabeigšanas apgalvojuma. Tā ir uz pierādījumiem balstīta integrācija, nevis ceremoniāla dublēšana.

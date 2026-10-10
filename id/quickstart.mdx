@@ -1,0 +1,33 @@
+---
+title: "Mulai Cepat: Menjelajahi QuanuX Symphony"
+description: "Rute terpandu melalui doktrin, arsitektur, kontrak vektor, dan permukaan administratif qxctl Symphony."
+sidebarTitle: "Mulai Cepat"
+---
+
+Gunakan panduan ini untuk mengorientasikan diri sebelum mengoperasikan Symphony. Dokumentasi ini memisahkan doktrin platform, infrastruktur yang dipilih pengguna, semantik milik vektor, dan perintah administratif. Langkah instalasi dan eksekusi yang eksak berada dalam kontrak terkini dari komponen yang bersangkutan.
+
+## 1. Baca batasan operasional
+
+Mulailah dengan [doktrin platform](/id/doctrine). Doktrin ini menetapkan kepemilikan pengguna atas strategi dan infrastruktur, netralitas kelas pemanggil, kompatibilitas berbasis bukti, dan perlindungan hot path.
+
+## 2. Pelajari model fisik
+
+Baca [Node, Habitat, dan Nest](/id/concepts/node-habitat-nest):
+
+- **Node:** sumber daya komputer fisik yang teridentifikasi.
+- **Habitat:** pengondisian sistem operasi dan paket yang eksak yang dikirimkan ke sebuah Node.
+- **Nest:** workload sesuai tujuan pengguna yang ditempatkan ke dalam Habitat yang sesuai.
+
+Bus dan adaptor sebuah klaster merupakan pilihan arsitektural yang eksplisit. Symphony tidak meresepkan penyedia atau strategi yang universal.
+
+## 3. Telusuri kepemilikan makna
+
+[Ikhtisar arsitektur](/id/concepts/architecture) menunjukkan hubungan antara kontrak vektor, engine, qxctl, dan bukti yang diatur. [Vektor dan fase](/id/concepts/vectors) menjelaskan mengapa sebuah vektor tetap menjadi pemilik semantik meskipun pekerjaan pengiriman berpindah melalui berbagai fase. [Symphony Knowledge Vector](/id/skv/overview) menjelaskan Contract Quad dan permukaan pendampingnya.
+
+## 4. Temukan permukaan administratif
+
+[Ikhtisar qxctl](/id/qxctl/overview) memperkenalkan CLI administratif dan kueri berbasis Go. Gunakan halaman qxctl untuk keluarga perintah tertentu, seperti [knowledge](/id/qxctl/knowledge), [lifecycle](/id/qxctl/lifecycle), [engines](/id/qxctl/engines), atau [validation](/id/qxctl/validate). qxctl menyediakan tata bahasa perintah dan penyajiannya; kontrak vektor memiliki operasi dan maknanya.
+
+## 5. Periksa kontrak dan bukti yang relevan
+
+Sebelum bertindak pada sebuah Node atau memanggil engine vektor, periksa kontrak pemilik saat ini, status target, otorisasi, serta bukti tanda terima atau validasi yang tersedia. [Otoritas pemanggil](/id/concepts/caller-authority) dan [isolasi hot path](/id/concepts/hot-path-isolation) menjelaskan batasan-batasan tersebut. Permukaan yang sedang berkembang bukanlah jaminan operasional yang tersirat.

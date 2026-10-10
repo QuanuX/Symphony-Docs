@@ -1,0 +1,65 @@
+---
+title: "Engine SHV: sorgenti e grafo dello Symphony Hardware Vector"
+description: "Gli engine SHV catalogano CPU, GPU, NIC, memoria e storage con replay delle sorgenti conservate, valutazione dei requisiti, acquisizione di PDF e grafi durevoli su DuckDB."
+sidebarTitle: "Engine SHV"
+---
+
+Gli engine dello Symphony Hardware Vector (SHV) catalogano processori, topologia della CPU, cache, GPU, NIC e interfacce in fibra, schede madri, RAM e NVMe. La curatela predefinita privilegia i componenti originali e le varianti supportate da evidenze. Ogni engine è installabile in modo indipendente e opera in sola lettura.
+
+## Engine
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Kernel hardware: copertura definita dal chiamante, replay del catalogo dalle sorgenti conservate, valutazione dei requisiti e proiezione del grafo.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Acquisizione delle sorgenti e gestione delle revisioni per le evidenze hardware.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Valutazione dei profili di componenti e sistemi.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partizionamento dell'hardware catalogato per una selezione riproducibile.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Pubblicazione e selezione governate del catalogo locale.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Superficie esplicita di trasporto del grafo.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Storage durevole del grafo basato su DuckDB, amministrato tramite qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretazione delle sorgenti PDF per le schede tecniche dell'hardware.
+  </Card>
+</CardGroup>
+
+## Punti salienti dell'amministrazione
+
+- Lo **storage durevole** è amministrato esclusivamente tramite `shv graph store inspect|prepare|commit|status|query|export|schema|template`. Anche `commit` con il digest dell'intento atteso conservato funge da ripristino; non esiste un alias di ripristino separato.
+- La **pubblicazione del catalogo** è amministrata esclusivamente tramite `shv catalogue publication inspect|plan|apply|status|schema|template`. Il ripristino avviene con `apply --operation-id`, mutuamente esclusivo con `--input`.
+- L'**inventario** (release 0.2) aggiunge `shv graph store inventory`: una lettura logica vincolata alla revisione con identità esplicite degli scrittori conservate. La selezione legacy 0.1 resta supportata.
+
+<Note>
+  Le classi hardware sono dati di mappatura e di profilo del chiamante, non alberi di comandi duplicati. `--version` seleziona l'esatto proprietario primario; `--source-version` e `--adapter-version` indicano dipendenze selezionate distinte. Le revisioni degli schemi e delle mappature sono identità di dati, non alias delle versioni degli engine installati.
+</Note>
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Vector SHV" icon="microchip" href="/it/vectors/shv">
+    Contratto dello Hardware Vector implementato da questi engine.
+  </Card>
+
+  <Card title="Comandi dei vector di qxctl" icon="terminal" href="/it/qxctl/vector-commands">
+    Riferimento completo della grammatica `shv ...`.
+  </Card>
+</CardGroup>

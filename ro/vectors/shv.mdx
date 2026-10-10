@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: cunoașterea capabilităților hardware"
+description: "SHV menține cunoașterea capabilităților hardware pentru CPU-uri, GPU-uri, NIC-uri, plăci de bază, RAM și NVMe prin mai multe motoare C++ instalabile independent."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) deține cunoașterea capabilităților hardware care vă ajută să înțelegeți cum designul fizic poate permite, constrânge, porta sau extinde software-ul cantitativ. Acoperă procesoare, tipuri de nuclee CPU, GPU-uri, NIC-uri și interfețe de fibră, plăci de bază, ierarhii de cache, memorie, NVMe și sisteme complete. Curatoriatul implicit prioritizează componentele originale și variantele documentate cu dovezi începând din 2018.
+
+## Domeniu și acoperire
+
+SHV poate acoperi orice capabilitate fizică susținută de dovezi, relevantă pentru designul programelor. Controlați profilul de acoperire prin qxctl. Baza implicită de dată este lansarea modelului, nu o dată de fabricație individuală dedusă. Puteți extinde, restrânge, înlocui sau elimina acest filtru.
+
+## Motoare implementate
+
+Cunoașterea SHV este livrată prin mai multe motoare C++ instalabile independent:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Nucleul de bază (0.4.0-dev): profiluri de acoperire, construirea/redarea catalogului din surse păstrate, evaluarea cerințelor, proiecția deterministă a grafurilor și validarea grafurilor susținută de surse.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Identitatea surselor, planuri de relocare, legarea capturii de octeți și grafuri de proveniență redate din surse.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Conformitatea declarațiilor, rețete portabile și legarea exactă a surselor locale.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operații de partiționare hardware și de mapare a componentelor.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Capete de catalog protejate ale apelantului, redarea surselor originale și recuperarea durabilă a instantaneelor.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Port generic C++ pentru grafuri și adaptor de referință portabil în memorie pentru schimb fără pierderi.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Proiecție relațională DuckDB opțională a dovezilor din grafurile hardware.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Extragere PDF delimitată și revalidarea afirmațiilor documentare din octeții originali.
+  </Card>
+</CardGroup>
+
+## Revizia surselor și proveniența
+
+`shv-source-engine` implementează identitatea stabilă a surselor, planuri explicite de relocare, validarea pură a tranzițiilor, legarea capturii octeților reali și grafuri de proveniență redate din surse. Acestea sunt operații doar în citire. Curatoriatul de bază prioritizează identitatea componentelor originale și variantele susținute de dovezi. Activarea protejată a surselor este gestionată separat; motorul de surse pur nu acordă autoritate.
+
+## Schimbul și stocarea grafurilor
+
+`shv-graph-adapter` furnizează un port generic C++ pentru grafuri, pentru schimb fără pierderi și interogări structurale. Stocarea durabilă este implementată prin DuckDB SQL ca valoare implicită. În prezent nu este selectată nicio bază de date dedicată pentru grafuri.
+
+## Limita dovezilor PDF
+
+`shv-pdf-adapter` extrage afirmații documentare calificate din tabele PDF explicite și le revalidează din octeții originali după schimbul generic de grafuri. Acoperirea PDF generală rămâne o lucrare separată, cu domeniu propriu.
+
+## Lucrări rămase
+
+Un atlas hardware amplu, achiziția automată a surselor, agregarea conflictelor din surse multiple, drivere suplimentare de baze de date specifice furnizorilor, încărcarea de pluginuri personalizate și integrarea cu Composer rămân lucrări ulterioare. Mapările ample ale componentelor și driverele durabile specifice furnizorilor sunt, de asemenea, încă deschise.
+
+## Cum se raportează SHV la alți vectori
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/ro/vectors/snv">
+    Înregistrează Node-urile care conțin hardware-ul descris de SHV.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/ro/vectors/scv">
+    Face referire la ofertele hardware ale furnizorilor pe care SHV le caracterizează în detaliu.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ro/vectors/sov">
+    Poate acționa pe baza dovezilor SHV la provizionarea sau condiționarea Node-urilor.
+  </Card>
+</CardGroup>

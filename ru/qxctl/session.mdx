@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: аутентифицированные сеансы Symphony"
+description: "Открытие, контрольные точки, закрытие и восстановление аутентифицированных сеансов координатора Symphony, а также постоянных потоков обслуживания SSFV с разрешениями, проверенными SSIAG."
+sidebarTitle: "session"
+---
+
+Грамматика `qxctl knowledge session ...` открывает неканонические аутентифицированные сеансы через один точный привязанный координатор и одну конечную точку SSIAG в области TOPS. Отдельная грамматика `session features ...` управляет постоянным потоком обслуживания SSFV.
+
+## Базовая грамматика сеансов
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Каждый вызов запрашивает новое точное разрешение (grant) и проверяет:
+
+- Идентичность субъекта и цели
+- Состояние политики и конфигурации
+- Срок действия
+- Нейтральность к классу вызывающей стороны
+- Непередаваемость
+- Отключение канонического применения
+- Привязку возможностей
+
+Свидетельства сеанса авторизуют только названную защищённую неканоническую операцию. Держите журналы сеансов и сверки раздельно; используйте ссылки на контекст только для их связывания.
+
+## Поток обслуживания SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Поток features — это отдельный постоянный контекст обслуживания SSFV. Мутации требуют:
+
+- Открытого аутентифицированного базового сеанса
+- Точных привязок координатора и SSFV
+- Стабильных идентификаторов операций
+- Точного compare-and-swap
+- Свежих свидетельств SSIAG
+
+<Note>
+  Сохраняйте базовый снимок и исходную идентичность его движка при совместимых обновлениях или откатах. Необязательные свидетельства Maestro должны представлять собой полный аутентифицированный инвентарь; если Maestro намеренно отсутствует, зафиксируйте явную причину отсутствия конфигурации. `review_required` — это свидетельство для проверки вызывающей стороной, а не утверждение.
+</Note>
+
+## Связанные разделы
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ru/governance/ssiag">
+    Выдаёт свежие разрешения, которые проверяет каждый запрос сеанса.
+  </Card>
+
+  <Card title="Координатор сеансов" icon="gears" href="/ru/engines/coordinator">
+    Движок, поддерживающий журналы сеансов и features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ru/qxctl/reconcile">
+    Контексты сверки, связанные с сеансами.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ru/skv/ssfv">
+    Вектор возможностей, который обслуживает поток features.
+  </Card>
+</CardGroup>

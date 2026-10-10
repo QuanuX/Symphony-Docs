@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: jövőbeli ágensalapú együttműködés"
+description: "Az SIV birtokolja a jövőbeli ágensalapú együttműködést, a kiterjesztett kontextust, a strukturált hosszú távú logikát és a szabályozott Symphony-interakciót. Az SMCV az első opcionális komponense; az SAIV fenntartott."
+sidebarTitle: "Intelligence Vector"
+---
+
+A Symphony Intelligence Vector (SIV) birtokolja a jövőbeli, Symphony által megalkotott szemantikát az ágensalapú együttműködéshez, a kiterjesztett helyi kontextushoz, a strukturált hosszú távú logikához, az ágensek közötti kommunikációhoz és az ember által irányított működéshez a Symphony felületén. Ez egy kialakulóban lévő tartomány kanonikus szerződésekkel, de még végrehajtható megvalósítás nélkül.
+
+## Hatókör és cél
+
+Az SIV várhatóan a következőket támogatja majd:
+
+- Helyi és távoli ágensek részvétele a Symphony-munkafolyamatokban
+- Munkamenetek és vektorok között megosztott kiterjesztett kontextus
+- Strukturált hosszú távú logika ismétlődő vagy többlépéses műveletekhez
+- Ágensek közötti kommunikációs protokollok
+- Szabályozott interakció a Symphony parancsfelületével
+
+Az SIV nem ad hatáskört a hívó típusa alapján. Az emberi, MI-, ágens- és szolgáltatáshívókat azonos módon kezeli. A hatáskör a célgazdagép tulajdonjogából, a megadott engedélyből, a kért műveletből, az elvárt állapotból és a tulajdonos által konfigurált biztosítékokból ered.
+
+## Megnevezett alvektorok
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Opcionális Markdown-konverziós komponens. qxctl-lel konfigurálható fordítóként tervezik egy engedélyezett IPC-kapcsolat fölött. Még nincs megvalósítva SMCV-parancs vagy -fordító.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Egy későbbi Symphony intelligenciaintegrációs alvektor számára fenntartva. A fenntartás nem biztosít megvalósítást, névtérviselkedést vagy szemantikai műveletet.
+  </Card>
+</CardGroup>
+
+## Hatókörön kívül
+
+Az SIV kifejezetten nem:
+
+- Váltja fel a vektorok tulajdonában lévő szemantikát (a tartományi műveletek a megfelelő vektorok tulajdonában maradnak akkor is, ha egy ágens hívja meg őket)
+- Válik kanonikus igazsággá, és nem írja felül az SKV-szerződéseket
+- Kerül be a kereskedési kritikus útvonalba (hot path)
+- Teszi véglegessé a korábbi mesterségesintelligencia-munkaanyagot
+
+## Jelenlegi állapot
+
+Az SIV jelenleg kizárólag kanonikus architektúraszerződés. Jelenleg nincs megvalósítva SIV-keretrendszer, ágensposta, hosszú távú állapotmotor, modellkapcsolat, helyi/távoli ágensprotokoll, SAIV-komponens, SMCV-fordító vagy qxctl-vezérlő.
+
+## Nyelvi határ
+
+Az SIV-komponensekre nem vonatkozik Rust-követelmény. A komponensek nyelvét a végső teljesítményi, hordozhatósági, biztonsági és integrációs szerződés határozza meg. Ez nem öröklődik egyetlen munkaanyagból sem.
+
+## Hogyan kapcsolódik az SIV más vektorokhoz
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/hu/skv/overview">
+    Az SIV-szerződéseket, az evolúciót és a hivatalos közzétételi kapcsolatokat irányítja.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/hu/vectors/sov">
+    Az ágensek által meghívott műveleteket a qxctl-en keresztül teheti elérhetővé, a vektorok tulajdonában lévő szemantika megőrzése mellett.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/hu/skv/sav">
+    Értékeli az ágensek által összeállított műveletek kompozícióját és kompatibilitását.
+  </Card>
+</CardGroup>

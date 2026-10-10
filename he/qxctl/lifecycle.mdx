@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: פרופיל, אתחול ו-Apply"
+description: "ניהול פרופילי מחזור חיים מוגנים, בעלות, תצפיות, אתחולים ומעברים תואמי-apply באמצעות qxctl עם אמצעי הגנה קפדניים של compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+הדקדוק `qxctl knowledge lifecycle ...` מנהל פרופילים מוגנים, בעלות, תצפיות, יומני אתחול ומעברים תואמי-apply. כל שינוי הוא compare-and-swap וכל apply קשור לראיות מדויקות.
+
+## פרופיל
+
+הגדירו את פרופיל מחזור החיים המוגן עבור TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+ספקו `absent` עבור פרופיל ראשון, או את ה-digest המדויק שדווח בקריאה קודמת.
+
+## בעלות
+
+- `ownership status`: בדיקת שורש משותף מוגדר אחד
+- `ownership reconcile`: רענון הראיות שלו
+- `ownership adopt`: אימוץ רק לאחר סקירת כל טענת legacy שמרנית
+- `ownership release`: שחרור רק עבור קבלה (receipt) מדויקת אחת מסוג legacy שהוגדרה במכוון כניתנת להשבה
+
+<Warning>
+  לעולם אל תמחקו או תשכתבו ידנית את הרישום המקומי לשורש או את גדר התאימות של פריסת הקבלות `symphony-root-ownership/1`. לקוחות מחזור חיים ישנים יותר חייבים להיתקל בגדר זו ולעצור על חוסם ה-unknown-package הקיים שלהם.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: פליטת ראיות קבלה חד-פעמיות בפריסה קבועה
+- `report`: הפקת תוכנית חד-פעמית חדשה
+- `boot`: התקדמות עמידה מסוג report-only עם מזהה פעולה יציב ומצב יומן מדויק
+- `status`: בדיקת v1
+- `recover --discover`: שחזור שרשרת v1 ייחודית כאשר status רגיל אינו יכול לאמת את המצב המקומי
+
+## פרופילים תואמי-apply
+
+עבור פרופיל `apply-compatible`, קראו ל-`apply` רק עם ה-digest המדויק של מקור האתחול, compare-and-swap של יומן ה-apply, compare-and-swap של המצב המוחל, מזהה פעולה יציב ושורשים מבוימים (staged) מפורשים:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+השתמשו ב-`apply-status` לתצפית על ניסיון, או ב-`apply-recover` המוגבל לשחזור עמיד. לעולם אל תבחרו פעולה ידנית ואל תערכו מצב מוגן.
+
+<Note>
+  רענון תצפית שמשנה רק חותמת זמן חייב לשנות את ראיות המסמך מבלי לקדם זהויות סמנטיות יציבות.
+</Note>
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="מתאם הסשנים" icon="gears" href="/he/engines/coordinator">
+    המנוע שמאחורי תיאום תוכניות מחזור החיים וה-apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/he/qxctl/engines">
+    ניהול קישורי המנועים שתוכניות מחזור החיים מפנות אליהם.
+  </Card>
+</CardGroup>

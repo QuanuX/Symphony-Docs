@@ -1,0 +1,53 @@
+---
+title: "C++-fundamentet for Knowledge Vector-motorer: Delte mekanismer"
+description: "C++-fundamentet for Knowledge Vector-motorer leverer prosessrammer uten autoritet, avgrenset JSON, SHA-256, øyeblikksbilder, kvitteringer og eksplisitt manifestoppdagelse."
+sidebarTitle: "Fundamentbibliotek"
+---
+
+`libraries/knowledge-vector-engine-cpp` leverer de delte C++-mekanismene uten autoritet som hver Symphony-vektormotor gjenbruker. Det gir deterministiske byggeklosser slik at hver motor kan forbli avgrenset, reproduserbar og fri for omgivende sideeffekter.
+
+## Hva fundamentet leverer
+
+- **Prosessrammer**: lokal prosessprotokoll uten autoritet som brukes av alle motorer
+- **Avgrenset JSON**: streng parsing og utskrift med eksplisitte grenser for størrelse og dybde
+- **SHA-256**: innholdsadressering for evidens og kvitteringer
+- **No-follow-lesing**: filsystemlesing som aldri traverserer symbolske lenker uventet
+- **Deterministiske øyeblikksbilder**: repeterbare øyeblikksbilder av inspisert tilstand
+- **Temporal validering**: kanonisk UTC-håndtering i henhold til Symphony Temporal Semantics Contract
+- **Oppdagelse av eiermanifester**: eksakt oppdagelse av kontraktmanifester
+- **Versjonert pakking**: uavhengig installerbare, kvitteringseide pakker
+- **Kvitteringer og kvitteringseid avinstallasjon**: avinstallasjon styres bare av kvitteringen som installerte artefaktet
+
+## Grense for manifestoppdagelse
+
+<Warning>
+  Manifestoppdagelse starter fra et fast oppstartssett og traverserer bare eksplisitte underordnede deklarasjoner. Den gjennomsøker aldri repositoriet på omgivende vis eller utleder eierskap fra katalognavn.
+</Warning>
+
+Hver vektormotor som bruker fundamentet, arver denne regelen.
+
+## Hva fundamentet ikke gjør
+
+- Det bærer ikke autoritet. Motorer som bruker det, må fortsatt autorisere mutasjoner gjennom SSIAG.
+- Det publiserer eller henter ikke noe over nettverket.
+- Det muterer ikke kanoniske filer på egen hånd.
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="Øktkoordinator" icon="gears" href="/no/engines/coordinator">
+    C++26-koordinator bygget på fundamentet for økter og avstemming.
+  </Card>
+
+  <Card title="Oversikt over motorer" icon="cube" href="/no/engines/overview">
+    Motorene som gjenbruker fundamentet.
+  </Card>
+
+  <Card title="SKV-oversikt" icon="book-open" href="/no/skv/overview">
+    Vektorkontraktene som motorene implementerer.
+  </Card>
+
+  <Card title="qxctl-oversikt" icon="terminal" href="/no/qxctl/overview">
+    Administrativt CLI som kaller eksakte, kvitteringsvaliderte motorer.
+  </Card>
+</CardGroup>

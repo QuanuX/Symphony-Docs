@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: Administrasi Lifecycle Lintas Vektor"
+description: "Grup perintah qxctl knowledge memiliki lifecycle lintas vektor, transisi sesi, kueri invarian, dan administrasi pemeliharaan SSFV persisten."
+sidebarTitle: "knowledge"
+---
+
+Grup `qxctl knowledge ...` memiliki administrasi lifecycle lintas vektor dan sesi SSFV persisten. Grup ini adalah titik masuk untuk operasi yang didukung coordinator dan untuk kueri invarian terhadap validator.
+
+## Transisi sesi
+
+Gunakan `qxctl knowledge session transition` untuk memberi sinyal peristiwa lifecycle host ke sesi yang sudah ada:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Percobaan ulang yang aman menggunakan kembali ID peristiwa yang sama. Tambahkan `--recover` hanya jika pemulihan discovery dari bukti sesi lokal yang rusak memang dimaksudkan; opsi ini tidak memulihkan penolakan, state kritis yang tidak kompatibel, atau ambiguitas.
+
+<Warning>
+  Symphony tidak menginstal login hook, watcher, atau unit boot melalui perintah ini. Gunakan hanya ketika integrasi lifecycle host yang eksplisit menyediakan identitas peristiwa yang stabil.
+</Warning>
+
+## Kueri invarian
+
+Empat leaf mengikat `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` juga mengikat `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Leaf kueri langsung menghasilkan `symphony.knowledge.invariant-query-result.v1` dengan `semantic_validity=not_asserted`. `check` mengembalikan hasil validator yang persis dan lengkap serta mempertahankan exit 26.
+
+## Grup subperintah
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/id/qxctl/lifecycle">
+    Profile, ownership, observe, report, boot, apply, dan recovery.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/id/qxctl/engines">
+    Registry binding engine: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/id/qxctl/reconcile">
+    Grammar rekonsiliasi worktree coordinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/id/qxctl/session">
+    Sesi terautentikasi dan stream pemeliharaan SSFV.
+  </Card>
+</CardGroup>

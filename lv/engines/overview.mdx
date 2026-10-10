@@ -1,0 +1,57 @@
+---
+title: "Symphony vektoru dzinēji: neatkarīgas instalēšanas pārskats"
+description: "Katrs Symphony vektora dzinējs tiek instalēts neatkarīgi, darbojas ārpus procesa C++ valodā un paliek bez pilnvarām. Iepazīstiet SKV, SCV un SHV dzinēju saimes."
+sidebarTitle: "Dzinēju pārskats"
+---
+
+Katram aktīvam lietojumprogrammas līmeņa Symphony vektoram var būt neatkarīgi instalējams, ārpus procesa darbojošs C++ dzinējs. Koplietoti bezpilnvaru C++ mehānismi atrodas `libraries/`; atsevišķam C++ koordinatoram pieder autentificētu sesiju un darba koku saskaņošanas mehānismi. Dzinēji pārbauda, validē, projicē un ierosina vektoriem piederošu līgumu ietvaros. Tie neiegūst pilnvaras tikai tāpēc, ka ģenerē saturu.
+
+## Ieviestie dzinēji
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector pamats" icon="cube" href="/lv/engines/knowledge-vector-foundation">
+    C++ procesu ietvars, JSON, SHA-256, momentuzņēmumi, kvītis un manifestu atklāšana.
+  </Card>
+
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Autentificētas sesijas, darba koku saskaņošana un dzīves cikla piemērošanas koordinācija.
+  </Card>
+
+  <Card title="SCV avotu dzinēji" icon="cloud" href="/lv/engines/scv-source-engines">
+    Astoņi C++26 SCV, hiperskalētāju, malas un piegādātāju avotu zināšanu dzinēji.
+  </Card>
+
+  <Card title="SHV dzinēji" icon="microchip" href="/lv/engines/shv-engines">
+    Aparatūras avotu, kataloga, profilu, sadalījuma, publicēšanas un adapteru dzinēji.
+  </Card>
+</CardGroup>
+
+## SKV dzinēju saime
+
+Katrai SKV virsmai ir savs dzinējs:
+
+- SKVI, SCLV, SACV, SODV un SSFV dzinēji katrs īsteno inspect, check, propose, project (un, ja piemērojams, recovery).
+- SAV un SEV dzinēji ir sasalušā ceļa C++26 procesi kompozīcijas izvērtēšanai un evolūcijas gadījumiem.
+
+<Note>
+  Katrs pašreizējais SKV dzinējs paredzēts tikai lasīšanai, vaicājumiem, validācijai un ierosināšanai. Programmatiska kanoniskā piemērošana paliek atspējota, līdz katram dzinējam ir pabeigti SSIAG atļauju pārbaudes, sagaidāmā stāvokļa transakcijas, qxctl drošības pasākuma, STAV notikuma, atkopšanas un negatīvo testu līgumi.
+</Note>
+
+## Kopīgās garantijas
+
+- Neatkarīga instalēšana un atinstalēšana katram modulim
+- Nekādas vispārējas repozitorija pārmeklēšanas; manifestu atklāšana ir skaidra
+- Nekādu koplietotu pilnvaru; katru mainīšanas maršrutu aizsargā SSIAG kopā ar STAV
+- Nekādas karstā ceļa rezidences; dzinēji nekad neievada latentumu tiešraides darba slodzēs
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="qxctl pārskats" icon="terminal" href="/lv/qxctl/overview">
+    Administratīvais CLI, kas izsauc precīzus, ar kvītīm validētus dzinējus.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/lv/governance/maestro">
+    Reģistrē piesaistes attiecības starp dzinējiem un receptoriem.
+  </Card>
+</CardGroup>

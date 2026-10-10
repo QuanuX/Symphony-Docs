@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat és Nest a Symphonyban"
+description: "Ismerje meg, hogyan modellezi a Symphony a fizikai infrastruktúrát: a Node a fizikai számítógép, a Habitat a pontos operációsrendszer-kondicionálás, a Nest pedig a felhasználói célú munkaterhelés."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+A Symphony három fizikai fogalmat határoz meg, amelyek elkülönítik a hardveridentitást, a szoftveres kondicionálást és a felhasználói munkaterhelést. Ezek a fogalmak elválasztják egymástól az infrastrukturális szempontokat, így mindegyikről külön-külön gondolkodhat.
+
+## Node
+
+A **Node** a cél fizikai számítógépes erőforrás, konkrétan azonosított erőforrásokkal. A csupán szoftveres lecsatlakoztatás, újracsatlakoztatás, újraindítás vagy újraflashelés nem hoz létre új fizikai Node-ot. A megsemmisülés, a fizikai csere vagy a helyi hardver lényeges megváltozása viszont igen. A Node-inkarnáció különálló bizonyíték, amely akkor jön létre, amikor az adott Node-ot résztvevőként csatlakoztatják egy buszhoz egy kereskedési rendszerben, kutatási klaszterben vagy más, Symphonyra épülő rendszerben.
+
+## Habitat
+
+A **Habitat** a Node-ra az Ön által kiválasztott munkához telepített pontos operációs rendszer és csomagkondicionálás. Alapértelmezés szerint csak a szükséges szoftverfelületet tartalmazza: nincsenek benne nem kapcsolódó csomagok, rejtett futtatókörnyezetek, konténerek, Kubernetes vagy implicit virtualizáció. Egy széles körű, általános célú Habitat továbbra is érvényes, kifejezett felhasználói választás.
+
+## Nest
+
+A **Nest** (fészek) az Ön által választott célt szolgálja. Az élő stratégiavégrehajtás várhatóan gyakori lesz, és egy stratégia sok moduláris kódrészt tartalmazhat, de a Symphony nem határozza meg a Nest célját, és nem azonosítja egyetlen forrásfájllal, folyamattal, algoritmussal, bróker-API-val vagy adatinterfésszel. A stratégialogika az Ön hatáskörében marad.
+
+## Összehasonlítás
+
+| Fogalom | Mi ez | Mi változtatja meg |
+| --- | --- | --- |
+| **Node** | Fizikai számítógép meghatározott erőforrásokkal | Fizikai megsemmisülés, csere vagy lényeges hardverváltozás |
+| **Habitat** | Pontos operációs rendszer és csomagkondicionálás egy Node-on | Kifejezett felhasználói választás vagy qxctl által adminisztrált kondicionálás |
+| **Nest** | Habitatba telepített, felhasználói célú munkaterhelés | Stratégia vagy más kiválasztott munka felhasználói telepítése |
+
+## Klaszter- és busztopológia
+
+Több Node csak akkor alkot klasztert, ha egy vagy több buszon keresztül kapcsolódnak egymáshoz. Egy klaszteren belül több buszszövet is létezhet egymás mellett, és egy Node–klaszter kapcsolat azonosíthatja a releváns buszt anélkül, hogy a fizikai Node identitása megváltozna.
+
+A buszadapterek, például a NATS JetStream és a ZeroMQ, a felhasználó választásai, nem doktrína részei. A nagy volumenű átvitel, a vezérlés, a kutatás és a végrehajtási kimenet nem feltétlenül osztozik egyetlen buszon. Egy topológia használhat több buszt, vagy egy deklarált útvonalon megkerülheti a buszt.
+
+## TOPS és TROG hatókör
+
+A **TOPS** a domináns Trade Operating System hatókör. A **TROG** egy szándékosan alárendelt, nem globális kereskedési csoport hatókör. A történeti elnevezés ellenére a TROG nem feltétlenül virtuális. Megkülönböztető tulajdonsága, hogy hatóköre és szabályai nem univerzálisak.

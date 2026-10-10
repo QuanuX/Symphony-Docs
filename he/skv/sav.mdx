@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector להערכת הרכב"
+description: "SAV פותר הפניות Accord, מעריך הרכב בשלושה צירים, מאמת Named Versions ומתכנן Installation Blueprints מבלי לשנות את האמת הקנונית."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) פותר הרכב ותאימות של רכיבים מוצהרים. המנוע שלו הוא תהליך C++26 בנתיב מקפיא (freezing-path) וקריא בלבד. SAV מרכיב הטלות (projections) מדויקות ומוקלדות, אך לעולם אינו לוקח את אמת המקור מווקטורי הבעלים.
+
+## פעולות
+
+SAV תומך במערך עשיר של פעולות הערכה:
+
+- **פתרון הפניות Accord** לתמונות מצב CURRENT נגזרות ובלתי ניתנות לשינוי
+- **הערכה בשלושה צירים**, השוואה והסבר
+- **גרפי הרכב** והטלות חד-פעמיות
+- אימות והפרשים של **Named Version**
+- בדיקות **Extension Capsule**
+- תכנון **Installation Blueprint**
+- **משא ומתן על תאימות** בין רכיבים מוצהרים
+
+## מה SAV אינו עושה
+
+- SAV אינו לוקח בעלות סמנטית על הרכיבים שהוא מרכיב.
+- SAV אינו בוחר עבורכם תכנון; הוא מעריך את מה שהצהרתם.
+- SAV אינו משנה קבצים קנוניים. הפלט שלו הוא ראיות והצעות.
+- SAV אינו רשות ההוספה של STAV. ראו את מפיק ה-STAV של Accordare לטיפול בכוונה שלפני שינוי.
+
+<Note>
+  SAV מוגבל לקריאה, שאילתה, אימות והצעה בלבד. apply קנוני פרוגרמטי נשאר מושבת בכל משפחת מנועי SKV.
+</Note>
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="סקירת SKV" icon="book-open" href="/he/skv/overview">
+    מסגרת-העל ומודל ה-Contract Quad.
+  </Card>
+
+  <Card title="מפיק Accordare" icon="pen-nib" href="/he/governance/accordare-producer">
+    מעגל ביקורת מוגבל עבור Named Version של SAV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/he/skv/sev">
+    מקרי אבולוציה שמפעילים הערכת SAV של שינויי הרכב.
+  </Card>
+
+  <Card title="פקודות הווקטורים של qxctl" icon="terminal" href="/he/qxctl/vector-commands">
+    דקדוק Accordare שאושרר יגיע בתור `qxctl accord ...` לאחר שימומש.
+  </Card>
+</CardGroup>

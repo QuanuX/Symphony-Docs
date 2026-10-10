@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: keretrendszer-szerződések"
+description: "Az SQV birtokolja az újrahasznosítható kvantitatív és kereskedésirendszer-keretrendszer szerződéseket anélkül, hogy a felhasználói stratégialogikát megszerezné. Az SOOV az első megnevezett alvektora a jövőbeli, kizárólag C++ alapú FIX-architektúrához."
+sidebarTitle: "Quantitative Vector"
+---
+
+A Symphony Quantitative Vector (SQV) birtokolja az újrahasznosítható keretrendszer-szerződéseket a kvantitatív kutatáshoz, a kereskedési rendszerek felépítéséhez, a végrehajtás támogatásához és a későbbi kvantitatív motorokhoz. A stratégialogika mindig az Öné. Az SQV keretrendszer-felületeket és pontos kompatibilitási bizonyítékokat biztosít, de soha nem határozza meg az Ön instrumentumait, adatfolyamait, előfizetéseit, megbízási logikáját vagy végrehajtási modelljét.
+
+## A felhasználói stratégia határa
+
+A stratégialogika teljes tulajdonjoga Önnél marad. Az SQV nem:
+
+- Választja ki az instrumentumait vagy adatfolyamait
+- Határozza meg az előfizetési mezőket vagy a piaci mélységet
+- Szabja meg a hibakezelési viselkedést vagy a normalizálási szabályokat
+- Ír megbízási logikát vagy végrehajtási modelleket
+- Tervezi meg a belső moduláris struktúráját
+
+A Symphony kompatibilitási bizonyítékot és támogatott műveleteket biztosít. Soha nem rangsorolja a stratégiákat, és nem kényszerít platformszabályokat a kereskedési döntéseire.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+Az SOOV az SQV első megnevezett alvektora. Egy jövőbeli, nagy teljesítményű, kizárólag C++ alapú FIX-architektúrát képvisel, amelyet a QuanuX korábbi munkája inspirált. Az SOOV-ot korlátozott, determinisztikus üzenetkezelési rétegként tervezik a kereskedési kommunikációhoz. A részletes FIX-viselkedés még nem kanonikus; jelenleg nincs megvalósítva FIX-munkamenet, adatfolyam-adapter vagy brókerintegráció.
+
+## Jövőbeli hatókör
+
+Az SQV a ratifikált kvantitatív keretrendszer-komponensek tervezett otthona a későbbi szállítási fázisokban. A várható területek:
+
+- Backtesting-motorok
+- Bróker C++ API-k
+- Indikátorkönyvtárak
+- Kvantitatív matematika
+- Adatfolyam-architektúra
+
+Ezek egyike sincs megvalósítva, amíg a megfelelő szerződéseiket nem ratifikálják.
+
+## Jelenlegi állapot
+
+Az SQV jelenleg kizárólag kanonikus architektúraszerződés. Jelenleg nincs megvalósítva SQV- vagy SOOV-motor, FIX-munkamenet, adatfolyam-adapter, stratégia-futtatókörnyezet, brókerintegráció, backtester, indikátorkönyvtár vagy adatfolyam-komponens.
+
+## Hogyan kapcsolódik az SQV más vektorokhoz
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/hu/vectors/shv">
+    Hardverképesség-bizonyítékot szolgáltat, amely korlátozza a kvantitatív motorok tervezését.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/hu/vectors/snv">
+    Rögzíti azokat a Node-okat, amelyeken a kvantitatív munkaterhelések futnak.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/hu/skv/overview">
+    Az SQV-szerződéseket, az evolúciót és a hivatalos közzétételi kapcsolatokat irányítja.
+  </Card>
+</CardGroup>

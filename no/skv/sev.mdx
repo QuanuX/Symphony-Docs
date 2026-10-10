@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector for planlagte endringer"
+description: "SEV evaluerer planlagte endringer, nyheter og livssyklusoverganger med deterministiske saker, avhengighetsklare sett, engangsgrafer og gjenopprettingsråd som ikke anvendes."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) eier saker om planlagte endringer og oppdagede nyheter på tvers av plattformen. Motoren er en skrivebeskyttet C++26-prosess på frysebanen (freezing path). SEV verken overvåker en vert eller anvender en overgang; den produserer bevis og disposisjonsråd.
+
+## Operasjoner
+
+- **Saksevaluering**: deterministiske evolusjonssaker for tillegg, endringer, omdøpinger, erstatninger, avvikling, utfasing og fjerning.
+- **Konsekvens- og disposisjonsplanlegging**: tilordne hver sak til de autoritative eierne.
+- **Ny beregning av avhengighetsklare sett**: utled den trygge rekkefølgen for avhengige overganger.
+- **Verifisering av overganger**: bekreft at den observerte tilstanden etter en overgang samsvarer med forventet form.
+- **Gjenopprettingsråd**: beskriv trygge steg fremover eller bakover når en overgang avbrytes.
+- **SCSEV-vurdering**: den første styrte SEV-profilen anvender disse operasjonene på evolusjon av kunnskapsflater som kun gjelder dokumentasjon.
+- **Nyhets- og overvåkingskontroller**: oppdag nye eller uventede flater som krever oppmerksomhet fra gjennomgåere.
+- **Sammenslåing av utløsere** og **binding til livssyklussesjoner**: reduser duplisert evaluering og bind saker til en sesjon.
+- **Grafprojeksjon**: engangsgrafer for gjennomgang.
+
+## SCSEV-profil
+
+SCSEV gjenbruker SSFV-funksjonsadministrasjon, stabil qxctl-kommandosannhet og deskriptorer for motoroperasjoner. Den oppretter ikke en duplisert motor eller et duplisert register. Den første motorskiven er kun for rapportering og forslag; varig ekstern handling forblir separat autorisert via qxctl og kunnskapssesjonskoordinatoren.
+
+<Note>
+  SEV er kun for lesing, spørring, validering og forslag. Kanonisk apply forblir deaktivert på tvers av SKV-motorfamilien.
+</Note>
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Oversikt over SKV" icon="book-open" href="/no/skv/overview">
+    Paraplyrammeverket og Contract Quad-modellen.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/no/skv/ssfv">
+    Funksjonsadministrasjon som gjenbrukes av SCSEV-profilen.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/no/skv/sav">
+    Komposisjons- og kompatibilitetsevaluering for endrede komponenter.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/no/qxctl/vector-commands">
+    Ratifisert evolusjonsgrammatikk kommer som `qxctl evolution ...` når den er implementert.
+  </Card>
+</CardGroup>

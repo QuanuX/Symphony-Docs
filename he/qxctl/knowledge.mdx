@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: ניהול מחזור חיים חוצה-וקטורים"
+description: "קבוצת הפקודות qxctl knowledge אחראית על מחזור חיים חוצה-וקטורים, מעברי סשן, שאילתות אינווריאנטים וניהול תחזוקה מתמשכת של SSFV."
+sidebarTitle: "knowledge"
+---
+
+הקבוצה `qxctl knowledge ...` אחראית על מחזור חיים חוצה-וקטורים ועל ניהול סשנים מתמשכים של SSFV. היא נקודת הכניסה לפעולות המגובות על ידי המתאם (coordinator) ולשאילתות אינווריאנטים מול ה-validator.
+
+## מעבר סשן
+
+השתמשו ב-`qxctl knowledge session transition` כדי לאותת על אירוע מחזור חיים של המארח לסשן קיים:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+ניסיונות חוזרים בטוחים משתמשים מחדש באותו מזהה אירוע. הוסיפו `--recover` רק כאשר מתכוונים לשחזור גילוי (discovery recovery) מראיות סשן מקומיות פגומות; הוא אינו משחזר מדחייה, ממצב קריטי לא תואם או מעמימות.
+
+<Warning>
+  Symphony אינו מתקין hook של התחברות, watcher או יחידת אתחול באמצעות פקודה זו. השתמשו בה רק כאשר אינטגרציה מפורשת של מחזור חיים במארח מספקת זהות אירוע יציבה.
+</Warning>
+
+## שאילתות אינווריאנטים
+
+ארבעה עלים (leaves) מקושרים ל-`ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` מקושר בנוסף ל-`ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+עלי שאילתה ישירים פולטים `symphony.knowledge.invariant-query-result.v1` עם `semantic_validity=not_asserted`. `check` מחזיר את תוצאת ה-validator המלאה והמדויקת ושומר על קוד היציאה 26.
+
+## קבוצות תת-פקודות
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/he/qxctl/lifecycle">
+    פרופיל, בעלות, observe, report, boot, apply ושחזור.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/he/qxctl/engines">
+    רישום קישורי מנועים: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/he/qxctl/reconcile">
+    דקדוק התאמת worktree של המתאם.
+  </Card>
+
+  <Card title="session" icon="key" href="/he/qxctl/session">
+    סשנים מאומתים וזרמי תחזוקה של SSFV.
+  </Card>
+</CardGroup>

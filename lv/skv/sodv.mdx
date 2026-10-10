@@ -1,0 +1,48 @@
+---
+title: "SODV: oficiālās dokumentācijas un laidienu pārvaldība"
+description: "SODV pārvalda oficiālās QuanuX publikācijas ar tikai papildināmām laidienu virsgrāmatas pārbaudēm, izsaucēja sniegto novērojumu verifikāciju un vienreizējiem laidienu inventāriem."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) pārvalda, kā zināšanas SKV ietvarā kļūst par oficiālu publisku dokumentāciju un laidienu ierakstiem. Tā dzinējs ir neatkarīgi instalējams C++ process, kas veic lokālas tikai papildināmas laidienu virsgrāmatas pārbaudes un rada vienreizējus laidienu inventārus. SODV pats neko nepublicē.
+
+## Operācijas
+
+- **Inspect un check**: validē laidienu virsgrāmatas formu un nepārtrauktību.
+- **Verify**: pārbauda izsaucēja sniegtos publicētā stāvokļa novērojumus.
+- **Propose**: pieņem no pakalpojumu sniedzēja neatkarīgus laidienu priekšlikumus.
+- **Recover**: veic nemainošu atkopšanu.
+- **Project**: izvada vienreizējus laidienu inventārus.
+
+## Ko SODV nedara
+
+- SODV nav tīkla piekļuves.
+- SODV neko nepublicē GitHub, Mintlify, pakotņu reģistros vai jebkurā citā virsmā.
+- SODV neveido tagus un nevar pasludināt laidienu par pabeigtu.
+- SODV nerangē pakalpojumu sniedzējus un nedod priekšroku kādam publicēšanas ceļam.
+
+Publicēšana notiek ar atsevišķiem autorizētiem rīkiem, kas izmanto SODV pierādījumus.
+
+## Pabeigtās SODV publikācijas
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` ar tagu `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` ar tagu `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` ar tagu `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Palaidiet `qxctl sodv ...`, lai veiktu inspect, verify, propose un project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Katrs SKV dzinējs tikai lasa, vaicā, validē un ierosina. Kanoniskā piemērošana ir atspējota, līdz katra dzinēja SSIAG, gaidītā stāvokļa transakcijas, qxctl aizsardzības, STAV notikuma, atkopšanas un negatīvo testu līgumi ir pabeigti.
+</Note>

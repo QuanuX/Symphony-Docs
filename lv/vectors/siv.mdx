@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: nākotnes sadarbība ar aģentiem"
+description: "SIV pārvalda nākotnes aģentisku sadarbību, paplašinātu kontekstu, strukturētu ilgtermiņa loģiku un pārvaldītu mijiedarbību ar Symphony. SMCV ir tā pirmais neobligātais komponents; SAIV ir rezervēts."
+sidebarTitle: "Intelekta vektors"
+---
+
+Symphony Intelligence Vector (SIV) pārvalda nākotnes Symphony veidotu semantiku aģentiskai sadarbībai, paplašinātam lokālajam kontekstam, strukturētai ilgtermiņa loģikai, starpaģentu komunikācijai un cilvēka vadītai darbībai Symphony virsmā. Tas ir topošs domēns ar kanoniskiem līgumiem, bet vēl bez izpildāmas implementācijas.
+
+## Tvērums un mērķis
+
+Paredzams, ka SIV atbalstīs:
+
+- Lokālu un attālu aģentu dalību Symphony darbplūsmās
+- Paplašinātu kontekstu, kas tiek koplietots starp sesijām un vektoriem
+- Strukturētu ilgtermiņa loģiku atkārtotām vai daudzpakāpju operācijām
+- Starpaģentu komunikācijas protokolus
+- Pārvaldītu mijiedarbību ar Symphony komandu virsmu
+
+SIV nepiešķir autoritāti, balstoties uz izsaucēja veidu. Cilvēki, AI, aģenti un pakalpojumi kā izsaucēji tiek apstrādāti identiski. Autoritāte izriet no mērķa resursdatora īpašumtiesībām, piešķirtās atļaujas, pieprasītās operācijas, gaidītā stāvokļa un īpašnieka konfigurētām aizsardzībām.
+
+## Nosauktie apakšvektori
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Neobligāts Markdown konvertēšanas komponents. Plānots kā ar qxctl konfigurējams tulkotājs virs iespējota IPC savienojuma. Neviena SMCV komanda vai tulkotājs vēl nav īstenots.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Rezervēts vēlākam Symphony intelekta integrācijas apakšvektoram. Rezervācija nenodrošina ne implementāciju, ne vārdtelpas uzvedību, ne semantisku operāciju.
+  </Card>
+</CardGroup>
+
+## Ārpus tvēruma
+
+SIV skaidri nedara šo:
+
+- Neaizstāj vektoriem piederošo semantiku (domēnu operācijas paliek attiecīgo vektoru īpašumā arī tad, ja tās izsauc aģents)
+- Nekļūst par kanonisko patiesību un neignorē SKV līgumus
+- Neiekļūst tirdzniecības kritiskajā ceļā (hot path)
+- Nepadara vecāko mākslīgā intelekta darba dokumentu par galīgu
+
+## Pašreizējais statuss
+
+SIV ir tikai kanonisks arhitektūras līgums. Pašlaik nav īstenots neviens SIV ietvars, aģentu pasts, ilgtermiņa stāvokļa dzinējs, modeļa savienojums, lokālo/attālo aģentu protokols, SAIV komponents, SMCV tulkotājs vai qxctl vadīkla.
+
+## Valodas robeža
+
+SIV komponentiem nav noteikta Rust prasība. Komponentu valoda tiks noteikta atbilstoši turpmākajam veiktspējas, pārnesamības, drošības un integrācijas līgumam. Tā netiek mantota no neviena darba dokumenta.
+
+## Kā SIV saistās ar citiem vektoriem
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/lv/skv/overview">
+    Pārvalda SIV līgumus, evolūciju un oficiālās publicēšanas attiecības.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/lv/vectors/sov">
+    Var nodrošināt aģentu izsauktas operācijas caur qxctl, saglabājot vektoriem piederošo semantiku.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/lv/skv/sav">
+    Novērtē kompozīciju un saderību jebkurām aģentu saliktām operācijām.
+  </Card>
+</CardGroup>

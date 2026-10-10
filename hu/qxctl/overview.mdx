@@ -1,0 +1,83 @@
+---
+title: "qxctl: a Symphony ágensközpontú adminisztratív parancssora"
+description: "A qxctl a Symphony Go nyelvű adminisztratív CLI-je. Ismerje meg 373 végrehajtható parancsát, motorkötési regiszterét és a vektormotorok nyugtával validált meghívási modelljét."
+sidebarTitle: "qxctl áttekintés"
+---
+
+A `qxctl` a Symphony Go-alapú, elsősorban ágensekre tervezett adminisztratív és lekérdező CLI-je. Parancsokat beszél; a mögöttük álló műveletek és jelentések a tartományvektorok tulajdonában vannak. A verziókezelőbe bevett regisztere minden végrehajtható levélparancsot stabil gépi identitáshoz és áttekintett funkcióadminisztrációs bizonyítékokhoz köt.
+
+## Mire terjed ki a qxctl
+
+A qxctl a következők adminisztrációját valósítja meg:
+
+- Tárolók és szerződések vizsgálata
+- Validátor-, figyelmeztetés-, invariáns-, funkció-, életciklus-, munkamenet-, egyeztetés-, kötés- és Maestro-adminisztráció
+- SSIAG-identitás, STAV-audit és Accordare-producer adminisztráció
+- Megvalósított vektormotor-nyelvtan (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, valamint SCV- és SHV-felületek)
+
+A jelenlegi regiszter **373** végrehajtható parancsot tartalmaz.
+
+## Biztonságos meghívási modell
+
+A qxctl pontos, nyugtával validált telepítéseket hív meg korlátozott alfolyamatok, szigorú határidők, válaszidentitás- és digest-ellenőrzések, elvárt állapotú tranzakciók és tartós helyreállítás segítségével. Soha nem fogad el adapterútvonalakat vagy nyers verziókat a nyugták helyett.
+
+## Motorkötési regiszter v2
+
+A motorkötési regiszter v2 támogatja a nyolc kialakult motorszerepet és a korlátozott jövőbeli szerepidentitásokat. Az örökölt v1 állapot kettős olvasású; a v2-re való migrációhoz explicit, digesthez kötött compare-and-swap szükséges a qxctl-en keresztül, és ez soha nem verzióválasztási művelet.
+
+## Regiszterparancsok
+
+Az elvárt regiszter előállítása és ellenőrzése a `tools/qxctl` könyvtárból:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Egy telepített kliens végrehajtható fájlhoz kötött bizonyítékot is kibocsáthat:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Az elvárt bizonyítékban a kliensverzió, a végrehajtható fájl digestje és a nyugtadigest null értékű. A megfigyelt bizonyíték a pontos kliensverziót és a végrehajtható fájl digestjét köti, valamint a nyugtadigestet, ha az elérhető. Mindkét forma a `symphony.qxctl.command-registry.v1` sémát használja.
+
+<Note>
+  A qxctl a parancsnyelvtanért és a megjelenítésért felel. Nem tulajdonosa a vektorszemantikának vagy a kanonikus tudásigazságnak. Új `qxcmd` identitást kizárólag áttekintett forrásmódosítások ratifikálhatnak, a hívó osztályától függetlenül.
+</Note>
+
+## Parancscsoportok
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/hu/qxctl/knowledge">
+    Vektorokon átívelő életciklus és tartós SSFV-munkamenet-adminisztráció.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/hu/qxctl/lifecycle">
+    Profil, tulajdonjog, megfigyelés, jelentés, rendszerindítás, alkalmazás és helyreállítás.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/hu/qxctl/engines">
+    Motorkötési regiszter és migráció.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/hu/qxctl/reconcile">
+    Koordinátoros munkafa-egyeztetés.
+  </Card>
+
+  <Card title="session" icon="key" href="/hu/qxctl/session">
+    Hitelesített munkamenetek és SSFV-karbantartási folyamok.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/hu/qxctl/maestro">
+    Származtatott receptorleltár és dokkolási bizonyítékok.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/hu/qxctl/validate">
+    Védett figyelmeztetési szabályzat és validátor-adminisztráció.
+  </Card>
+
+  <Card title="vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` és a jövőbeli accord/evolution nyelvtan.
+  </Card>
+</CardGroup>

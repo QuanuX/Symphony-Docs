@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: Bind, Doctor, Migrasi Registry"
+description: "Kelola profil binding engine cakupan pengguna Symphony yang terlindungi dengan list, inspect, doctor, bind, unbind, dan migrate terikat digest melalui qxctl."
+sidebarTitle: "engines"
+---
+
+Grammar `qxctl knowledge engines ...` mengelola profil binding `default` cakupan pengguna yang terlindungi untuk engine vektor Symphony. Grammar ini mengikat konten yang dipilih untuk rekonsiliasi selanjutnya. Grammar ini tidak menginstal, memanggil, mengaktifkan, melakukan docking, mengautentikasi, mengotorisasi, atau menerapkan (apply) engine.
+
+## Perintah
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Berikan `absent` untuk mutasi registry v2 pertama atau digest persis yang dilaporkan oleh `list` untuk mutasi berikutnya. Setiap mutasi adalah compare-and-swap terhadap digest tersebut.
+
+## Migrasi v1 ke v2
+
+<Warning>
+  State registry v1 yang valid tetap dapat dibaca. Migrasi ke v2 adalah compare-and-swap persis yang terpisah dan tidak pernah merupakan operasi pemilihan versi. Jangan memperlakukan migrasi sebagai jalur upgrade untuk pemilihan engine.
+</Warning>
+
+- `list` dan `inspect` tetap berfungsi pada bukti v1.
+- `migrate` menghasilkan generasi v2 yang tertaut tanpa membuang kebenaran v1.
+- Setelah migrasi, gunakan digest v2 untuk mutasi berikutnya.
+
+## Apa itu bind
+
+Bind memilih konten persis untuk rekonsiliasi selanjutnya oleh coordinator. Bind:
+
+- Tidak menginstal engine
+- Tidak memanggil atau mengaktifkan engine
+- Tidak melakukan docking engine dengan Maestro
+- Tidak mengautentikasi pemanggil
+- Tidak mengotorisasi apply
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/id/qxctl/reconcile">
+    Rekonsiliasi konten yang terikat dengan coordinator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/id/qxctl/lifecycle">
+    Rencana lifecycle yang menggunakan engine terikat.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/id/governance/maestro">
+    Otoritas kehadiran yang mencatat docking, bukan binding.
+  </Card>
+
+  <Card title="Ikhtisar engine" icon="cube" href="/id/engines/overview">
+    Engine vektor yang dapat diinstal secara independen.
+  </Card>
+</CardGroup>

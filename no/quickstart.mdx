@@ -1,0 +1,33 @@
+---
+title: "Hurtigstart: Utforsk QuanuX Symphony"
+description: "En veiledet gjennomgang av Symphonys doktrine, arkitektur, vektorkontrakter og den administrative overflaten i qxctl."
+sidebarTitle: "Hurtigstart"
+---
+
+Bruk denne veiledningen til å orientere deg før du tar Symphony i bruk. Dokumentasjonen skiller mellom plattformdoktrine, brukervalgt infrastruktur, vektoreid semantikk og administrative kommandoer. Eksakte installasjons- og kjøringstrinn hører hjemme i den aktuelle komponentens gjeldende kontrakt.
+
+## 1. Les driftsgrensene
+
+Start med [plattformdoktrinen](/no/doctrine). Den fastsetter brukereierskap til strategi og infrastruktur, nøytralitet overfor kallerklasse, evidensbasert kompatibilitet og beskyttelse av den varme stien.
+
+## 2. Lær den fysiske modellen
+
+Les [Node, Habitat og Nest](/no/concepts/node-habitat-nest):
+
+- **Node:** den identifiserte fysiske datamaskinressursen.
+- **Habitat:** den eksakte kondisjoneringen av operativsystem og pakker som leveres til en Node.
+- **Nest:** arbeidslasten med brukerformål som plasseres i et egnet Habitat.
+
+En klynges busser og adaptere er eksplisitte arkitekturvalg. Symphony foreskriver ingen universell leverandør eller strategi.
+
+## 3. Følg eierskapet til betydning
+
+[Arkitekturoversikten](/no/concepts/architecture) viser forholdet mellom vektorkontrakter, motorer, qxctl og styrt evidens. [Vektorer og faser](/no/concepts/vectors) forklarer hvorfor en vektor forblir den semantiske eieren selv når leveransearbeid går gjennom faser. [Symphony Knowledge Vector](/no/skv/overview) beskriver Contract Quad og de ledsagende overflatene.
+
+## 4. Finn den administrative overflaten
+
+[qxctl-oversikten](/no/qxctl/overview) introduserer det administrative spørrings-CLI-et skrevet i Go. Bruk qxctl-sidene for en bestemt kommandofamilie, for eksempel [kunnskap](/no/qxctl/knowledge), [livssyklus](/no/qxctl/lifecycle), [motorer](/no/qxctl/engines) eller [validering](/no/qxctl/validate). qxctl leverer kommandogrammatikk og presentasjon; vektorkontrakter eier operasjonene og deres betydning.
+
+## 5. Sjekk den relevante kontrakten og evidensen
+
+Før du handler på en Node eller kaller en vektormotor, sjekk gjeldende eierkontrakt, måltilstand, autorisasjon og tilgjengelig kvittering eller valideringsevidens. [Kallerautoritet](/no/concepts/caller-authority) og [isolasjon av den varme stien](/no/concepts/hot-path-isolation) forklarer disse grensene. En fremvoksende overflate er ingen implisitt driftsgaranti.

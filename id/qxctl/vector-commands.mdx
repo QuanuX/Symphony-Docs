@@ -1,0 +1,82 @@
+---
+title: "Perintah Vektor qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Jelajahi grammar qxctl khusus vektor yang tersedia saat ini: SKVI, SCLV, SACV, SODV, SSFV, penyimpanan dan katalog SHV, serta permukaan accord dan evolution yang dicadangkan."
+sidebarTitle: "Perintah Vektor"
+---
+
+qxctl mengekspos grammar khusus vektor untuk setiap engine SKV yang telah diimplementasikan serta untuk administrasi SCV dan SHV. Grammar Accordare dan SEV yang telah diratifikasi akan menggunakan `qxctl accord ...` dan `qxctl evolution ...` setelah implementasi perintah dan bukti registry yang stabil tersedia.
+
+## Grammar engine SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project terhadap engine SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project terhadap engine SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project terhadap engine SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project terhadap engine SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph terhadap engine SSFV
+
+Setiap grammar dibatasi oleh kontrak engine pemiliknya. qxctl tidak pernah menciptakan operasi atau melewati engine.
+
+## Tambahan Accordare
+
+Tambahan Accordare pada qxctl menyediakan:
+
+- Status yang stabil
+- Rekonsiliasi (hanya memutar ulang kandidat yang persis)
+- Instalasi dan pencopotan supervisor (hanya memanggil executable receipt-v2 yang terverifikasi)
+- Dua identitas administrasi grant yang hanya memutasi konfigurasi STAV yang dihentikan di bawah SSIAG dan pemulihan expected-state
+
+Status memisahkan intent tahan lama dan backlog append. Rekonsiliasi hanya memutar ulang kandidat yang persis. Leaf grant tidak pernah membuka konfigurasi yang sedang berjalan.
+
+## Penyimpanan SHV
+
+Penyimpanan SHV yang tahan lama hanya diadministrasikan melalui:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` dengan digest intent yang diharapkan yang dipertahankan juga berfungsi sebagai pemulihan. Tidak ada alias pemulihan terpisah. Cakupan store dideklarasikan dalam input; identitas konektor ditetapkan dalam flag. Penyimpanan struktural tidak menduplikasi `shv graph validate` semantik atau memilih head katalog.
+
+`shv graph store inventory` (rilis 0.2) menambahkan pembacaan logis yang terikat revisi dengan identitas penulis yang dipertahankan secara eksplisit. Pemilihan legacy 0.1 tetap didukung.
+
+## Publikasi katalog SHV
+
+Publikasi katalog hanya diadministrasikan melalui:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Pemulihan dilakukan dengan `apply --operation-id`, yang saling eksklusif dengan `--input`. Pemilihan katalog lokal yang didukung izin berbeda dari aktivasi sumber dan penyimpanan graf generik.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Semantik vektor yang diimplementasikan oleh engine.
+  </Card>
+
+  <Card title="Vektor SHV" icon="microchip" href="/id/vectors/shv">
+    Latar belakang Hardware Vector dan daftar engine.
+  </Card>
+
+  <Card title="Engine SHV" icon="microchip" href="/id/engines/shv-engines">
+    Detail tingkat engine.
+  </Card>
+
+  <Card title="Ikhtisar qxctl" icon="terminal" href="/id/qxctl/overview">
+    Permukaan perintah qxctl lengkap.
+  </Card>
+</CardGroup>

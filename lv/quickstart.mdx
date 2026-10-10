@@ -1,0 +1,33 @@
+---
+title: "Ātrā sākšana: iepazīstiet QuanuX Symphony"
+description: "Vadīts ceļš cauri Symphony doktrīnai, arhitektūrai, vektoru līgumiem un qxctl administratīvajai virsmai."
+sidebarTitle: "Ātrā sākšana"
+---
+
+Izmantojiet šo ceļvedi, lai orientētos pirms darba ar Symphony. Dokumentācija nošķir platformas doktrīnu, lietotāja izvēlētu infrastruktūru, vektoriem piederošu semantiku un administratīvās komandas. Precīzi instalēšanas un izpildes soļi ir aprakstīti attiecīgā komponenta pašreizējā līgumā.
+
+## 1. Izlasiet darbības robežas
+
+Sāciet ar [platformas doktrīnu](/lv/doctrine). Tā nosaka lietotāja īpašumtiesības uz stratēģiju un infrastruktūru, izsaucēja klases neitralitāti, uz pierādījumiem balstītu saderību un karstā ceļa aizsardzību.
+
+## 2. Iepazīstiet fizisko modeli
+
+Izlasiet [Node, Habitat un Nest](/lv/concepts/node-habitat-nest):
+
+- **Node:** identificētais fiziskais datora resurss.
+- **Habitat:** precīzs operētājsistēmas un pakotņu sagatavojums, kas piegādāts Node.
+- **Nest (ligzda):** lietotāja mērķa darba slodze, kas izvietota piemērotā Habitat.
+
+Klastera kopnes un adapteri ir skaidras arhitektūras izvēles. Symphony nenosaka universālu piegādātāju vai stratēģiju.
+
+## 3. Izsekojiet nozīmes īpašumtiesības
+
+[Arhitektūras pārskats](/lv/concepts/architecture) parāda saistību starp vektoru līgumiem, dzinējiem, qxctl un pārvaldītiem pierādījumiem. [Vektori un fāzes](/lv/concepts/vectors) skaidro, kāpēc vektors paliek semantiskais īpašnieks arī tad, kad piegādes darbs virzās cauri fāzēm. [Symphony Knowledge Vector](/lv/skv/overview) apraksta Contract Quad un tā pavadošās virsmas.
+
+## 4. Atrodiet administratīvo virsmu
+
+[qxctl pārskats](/lv/qxctl/overview) iepazīstina ar Go administratīvo un vaicājumu CLI. Izmantojiet qxctl lapas konkrētai komandu saimei, piemēram, [knowledge](/lv/qxctl/knowledge), [lifecycle](/lv/qxctl/lifecycle), [engines](/lv/qxctl/engines) vai [validācijai](/lv/qxctl/validate). qxctl nodrošina komandu gramatiku un attēlošanu; darbības un to nozīme pieder vektoru līgumiem.
+
+## 5. Pārbaudiet attiecīgo līgumu un pierādījumus
+
+Pirms darbības ar Node vai vektora dzinēja izsaukšanas pārbaudiet pašreizējo īpašnieka līgumu, mērķa stāvokli, autorizāciju un pieejamos kvīts vai validācijas pierādījumus. [Izsaucēja pilnvaras](/lv/concepts/caller-authority) un [karstā ceļa izolācija](/lv/concepts/hot-path-isolation) skaidro šīs robežas. Topoša virsma nav netieša darbības garantija.

@@ -1,0 +1,65 @@
+---
+title: "מנועי SHV: מקור וגרף של Symphony Hardware Vector"
+description: "מנועי SHV מקטלגים מעבדים, GPUs, כרטיסי רשת, זיכרון ואחסון, עם הפעלה חוזרת של מקורות שמורים, הערכת דרישות, קליטת PDF וגרפים עמידים מבוססי DuckDB."
+sidebarTitle: "מנועי SHV"
+---
+
+מנועי Symphony Hardware Vector (SHV) מקטלגים מעבדים, טופולוגיית CPU, מטמונים, GPUs, כרטיסי רשת וממשקי סיב אופטי, לוחות אם, RAM ו-NVMe. האוצרות כברירת מחדל מעניקה עדיפות לרכיבים מקוריים ולגרסאות מגובות בראיות. כל מנוע ניתן להתקנה עצמאית והוא לקריאה בלבד.
+
+## מנועים
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    ליבת החומרה: כיסוי שמוגדר על ידי הקורא, הפעלה חוזרת של קטלוג ממקורות שמורים, הערכת דרישות והקרנת גרף.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    קליטת מקורות וטיפול בגרסאות עבור ראיות חומרה.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    הערכת פרופילים של רכיבים ומערכות.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    חלוקה של חומרה מקוטלגת לבחירה הניתנת לשחזור.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    פרסום ובחירה מנוהלים של קטלוג מקומי.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    משטח העברה מפורש של גרף.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    אחסון גרף עמיד מבוסס DuckDB המנוהל באמצעות qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    פענוח מקורות PDF עבור גיליונות נתונים של חומרה.
+  </Card>
+</CardGroup>
+
+## עיקרי הניהול
+
+- **אחסון עמיד** מנוהל אך ורק באמצעות `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` עם תקציר הכוונה הצפויה השמור משמש גם לשחזור; אין כינוי שחזור נפרד.
+- **פרסום קטלוג** מנוהל אך ורק באמצעות `shv catalogue publication inspect|plan|apply|status|schema|template`. השחזור הוא `apply --operation-id`, שאינו יכול לשמש יחד עם `--input`.
+- **מלאי** (גרסה 0.2) מוסיף את `shv graph store inventory`: קריאה לוגית הכבולה לגרסה עם זהויות כותבים שמורות ומפורשות. בחירת 0.1 הישנה נותרת נתמכת.
+
+<Note>
+  מחלקות חומרה הן נתוני מיפוי ופרופיל של הקורא, לא עצי פקודות כפולים. `--version` בוחר את הבעלים הראשי המדויק; `--source-version` ו-`--adapter-version` מציינים תלויות נבחרות נפרדות. גרסאות סכמה ומיפוי הן זהויות נתונים, לא כינויים לגרסאות מנוע מותקנות.
+</Note>
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="וקטור SHV" icon="microchip" href="/he/vectors/shv">
+    חוזה ה-Hardware Vector שמנועים אלה מממשים.
+  </Card>
+
+  <Card title="פקודות הווקטור של qxctl" icon="terminal" href="/he/qxctl/vector-commands">
+    מדריך מלא לדקדוק `shv ...`.
+  </Card>
+</CardGroup>

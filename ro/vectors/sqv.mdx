@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: contracte de cadru"
+description: "SQV deține contracte de cadru reutilizabile pentru sisteme cantitative și de tranzacționare, fără a prelua logica strategiilor utilizatorului. SOOV este primul său subvector numit, pentru o viitoare arhitectură FIX exclusiv C++."
+sidebarTitle: "Quantitative Vector"
+---
+
+Symphony Quantitative Vector (SQV) deține contracte de cadru reutilizabile pentru cercetarea cantitativă, construirea sistemelor de tranzacționare, suportul pentru execuție și viitoarele motoare cantitative. Logica strategiilor vă aparține întotdeauna. SQV furnizează suprafețe de cadru și dovezi exacte de compatibilitate, dar nu determină niciodată instrumentele, fluxurile de date, abonamentele, logica ordinelor sau modelul de execuție.
+
+## Limita strategiei utilizatorului
+
+Păstrați proprietatea completă asupra logicii strategiilor. SQV nu:
+
+- Selectează instrumentele sau fluxurile de date
+- Definește câmpurile abonamentelor sau adâncimea pieței
+- Determină comportamentul la eșec sau regulile de normalizare
+- Scrie logica ordinelor sau modelele de execuție
+- Proiectează structura modulară internă
+
+Symphony oferă dovezi de compatibilitate și operații acceptate. Nu clasifică niciodată strategiile și nu impune legi ale platformei asupra deciziilor dumneavoastră de tranzacționare.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV este primul subvector numit din SQV. Reprezintă o viitoare arhitectură FIX de înaltă performanță, exclusiv C++, inspirată de lucrările istorice QuanuX. SOOV este planificat ca un strat de mesagerie delimitat și determinist pentru comunicarea de tranzacționare. Comportamentul FIX detaliat nu este încă canonic; în prezent nu este implementată nicio sesiune FIX, niciun adaptor de flux și nicio integrare cu brokeri.
+
+## Domeniul viitor
+
+SQV este locul planificat pentru componentele de cadru cantitativ ratificate în fazele ulterioare de livrare. Domeniile așteptate includ:
+
+- Motoare de backtesting
+- API-uri C++ pentru brokeri
+- Biblioteci de indicatori
+- Matematică cantitativă
+- Arhitectura fluxurilor de date
+
+Niciuna dintre acestea nu este implementată până la ratificarea contractelor respective.
+
+## Starea curentă
+
+SQV este doar un contract de arhitectură canonic. În prezent nu este implementat niciun motor SQV sau SOOV, nicio sesiune FIX, niciun adaptor de flux, runtime de strategii, integrare cu brokeri, backtester, bibliotecă de indicatori sau componentă de flux de date.
+
+## Cum se raportează SQV la alți vectori
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/ro/vectors/shv">
+    Furnizează dovezi despre capabilitățile hardware care constrâng designul motoarelor cantitative.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ro/vectors/snv">
+    Înregistrează Node-urile pe care rulează sarcinile de lucru cantitative.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/ro/skv/overview">
+    Guvernează contractele SQV, evoluția și relațiile de publicare oficială.
+  </Card>
+</CardGroup>

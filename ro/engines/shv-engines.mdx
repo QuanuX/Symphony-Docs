@@ -1,0 +1,65 @@
+---
+title: "Motoarele SHV: surse și graf pentru Symphony Hardware Vector"
+description: "Motoarele SHV catalogează CPU-uri, GPU-uri, NIC-uri, memorie și stocare, cu redarea surselor reținute, evaluarea cerințelor, preluarea documentelor PDF și grafuri durabile DuckDB."
+sidebarTitle: "Motoarele SHV"
+---
+
+Motoarele Symphony Hardware Vector (SHV) catalogează procesoare, topologia CPU, memorii cache, GPU-uri, NIC-uri și interfețe de fibră optică, plăci de bază, RAM și NVMe. Curatoriatul implicit prioritizează componentele originale și variantele susținute de dovezi. Fiecare motor este instalabil independent și funcționează doar în mod citire.
+
+## Motoare
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Nucleul hardware: acoperire definită de apelant, redarea catalogului din surse reținute, evaluarea cerințelor și proiecția grafului.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Preluarea surselor și gestionarea reviziilor pentru dovezile hardware.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Evaluarea profilurilor de componente și de sistem.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partiționarea hardware-ului catalogat pentru o selecție reproductibilă.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Publicarea și selecția guvernată a catalogului local.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Suprafață explicită de transport al grafului.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Stocare durabilă a grafului pe bază de DuckDB, administrată prin qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretarea surselor PDF pentru fișele tehnice hardware.
+  </Card>
+</CardGroup>
+
+## Aspecte esențiale ale administrării
+
+- **Stocarea durabilă** este administrată exclusiv prin `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` cu digestul intenției așteptate reținute reprezintă și recuperarea; nu există un alias separat pentru recuperare.
+- **Publicarea catalogului** este administrată exclusiv prin `shv catalogue publication inspect|plan|apply|status|schema|template`. Recuperarea se face cu `apply --operation-id`, care se exclude reciproc cu `--input`.
+- **Inventarul** (versiunea 0.2) adaugă `shv graph store inventory`: o citire logică legată de revizie, cu identități explicite ale scriitorilor reținuți. Selecția moștenită din versiunea 0.1 rămâne acceptată.
+
+<Note>
+  Clasele hardware sunt date de mapare și de profil ale apelantului, nu arbori de comenzi duplicați. `--version` selectează proprietarul principal exact; `--source-version` și `--adapter-version` denumesc dependențe selectate distincte. Reviziile schemelor și ale mapărilor sunt identități de date, nu aliasuri pentru versiunile motoarelor instalate.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Vectorul SHV" icon="microchip" href="/ro/vectors/shv">
+    Contractul Hardware Vector pe care îl implementează aceste motoare.
+  </Card>
+
+  <Card title="Comenzi qxctl pentru vectori" icon="terminal" href="/ro/qxctl/vector-commands">
+    Referința completă a gramaticii `shv ...`.
+  </Card>
+</CardGroup>

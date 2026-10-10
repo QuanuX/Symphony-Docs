@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node identitāte un klasteru ieraksti"
+description: "SNV reģistrē un sasaista Node identitāti, resursus, dalību klasteros un lietotāja piešķirtus nosaukumus, tos nenosakot. Sastāv no apakšvektoriem SNIV, SNRV, SCIV un SCNV."
+sidebarTitle: "Node vektors"
+---
+
+Symphony Node Vector (SNV) reģistrē un sasaista to fizisko Node (mezglu) identitātes, resursus, dalību klasteros un nosaukumus, kurus izmantojat ar Symphony. Tas sastāv no četriem apakšvektoriem, katram no kuriem pieder atsevišķa semantiskā robeža. SNV neko neizvēlas, neizsniedz, nenosaka un automātiski nepārdēvē jūsu vietā.
+
+## Apakšvektoru sastāvs
+
+SNV veido četri noturīgi semantiskie domēni:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node identitāte**: fiziskā Node identitāte un tās precīzās saistības ar pakalpojumu sniedzēja resursu, izvēlēto piedāvājumu un infrastruktūras domēnu.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node resursi**: lokālā un skaidri kvalificētā attālā resursu patiesība par Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Klastera identitāte**: klastera identitāte, kopnes savienojamība un Node attiecības klasterī.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Konsolidēta nosaukumu piešķiršana**: SNV ierobežota to nosaukumu atrisināšana, kurus jau piešķīrāt jūs vai jūsu pakalpojumu sniedzēji.
+  </Card>
+</CardGroup>
+
+## Reģistrēšanas robeža
+
+SNV reģistrē faktus un to izcelsmi. Tas nerezervē nosaukumus, nepiešķir resursus un neveido klasterus jūsu vietā. Nosaukumus piešķir lietotājs; Symphony tos reģistrē. Pakalpojumu sniedzēju resursus izvēlas lietotājs; Symphony tos sasaista. Klastera topoloģiju izstrādā lietotājs; Symphony to dokumentē.
+
+## Kā SNV saistās ar citiem vektoriem
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/lv/vectors/scv">
+    Nodrošina zināšanas par pakalpojumu sniedzējiem un ārējiem resursiem, kas nosaka, kādi Node var pastāvēt.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/lv/vectors/sov">
+    Izveido un maina infrastruktūru caur qxctl, radot Node, ko reģistrē SNV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/lv/vectors/shv">
+    Var nodrošināt detalizētus aparatūras spēju pierādījumus fiziskajiem komponentiem Node iekšienē.
+  </Card>
+</CardGroup>
+
+## Pašreizējais statuss
+
+SNV ir topošs kanonisks arhitektūras līgums. Pašlaik nav īstenots neviens SNV dzinējs, grafs, reģistra shēma, identitātes kodētājs, atklāšanas pakalpojums, nosaukumu pakalpojums vai qxctl komanda. Ierakstu shēmas un dzinēji ir atlikti.
+
+## Nākotnes instalējamība
+
+Jebkuram nākotnes SNV dzinējam jābūt neatkarīgi instalējamam un spējīgam pārbūvēt savas projekcijas no precīziem īpašnieka pierādījumiem. Neviens dzinējs nekļūst par identitātes vai nosaukumu autoritāti tikai tāpēc, ka glabā vai atrisina ierakstus.

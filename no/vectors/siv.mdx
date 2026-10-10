@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: fremtidig agentsamarbeid"
+description: "SIV eier fremtidig agentisk samarbeid, utvidet kontekst, strukturert langsiktig logikk og styrt samhandling med Symphony. SMCV er den første valgfrie komponenten; SAIV er reservert."
+sidebarTitle: "Intelligensvektor"
+---
+
+Symphony Intelligence Vector (SIV) eier fremtidig Symphony-forfattet semantikk for agentisk samarbeid, utvidet lokal kontekst, strukturert langsiktig logikk, kommunikasjon mellom agenter og menneskestyrt drift på Symphony-flaten. Det er et fremvoksende domene med kanoniske kontrakter, men ennå uten kjørbar implementasjon.
+
+## Omfang og formål
+
+SIV forventes å støtte:
+
+- Deltakelse fra lokale og eksterne agenter i Symphony-arbeidsflyter
+- Utvidet kontekst som deles på tvers av sesjoner og vektorer
+- Strukturert langsiktig logikk for gjentakende operasjoner eller operasjoner i flere trinn
+- Protokoller for kommunikasjon mellom agenter
+- Styrt samhandling med Symphonys kommandoflate
+
+SIV gir ikke autoritet basert på kallertype. Mennesker, KI, agenter og tjenester behandles likt som kallere. Autoritet utledes av eierskap til målverten, gitt tillatelse, forespurt operasjon, forventet tilstand og sikringer konfigurert av eieren.
+
+## Navngitte undervektorer
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Valgfri komponent for Markdown-konvertering. Planlagt som en oversetter som kan konfigureres i qxctl, over en aktivert IPC-tilkobling. Ingen SMCV-kommando eller -oversetter er implementert ennå.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Reservert for en senere Symphony-undervektor for intelligensintegrasjon. Reservasjonen gir ingen implementasjon, navneromsatferd eller semantisk operasjon.
+  </Card>
+</CardGroup>
+
+## Utenfor omfang
+
+SIV gjør eksplisitt ikke følgende:
+
+- Erstatter vektor-eid semantikk (domeneoperasjoner forblir eid av sine respektive vektorer selv når en agent kaller dem)
+- Blir kanonisk sannhet eller overstyrer SKV-kontrakter
+- Går inn i den varme handelsbanen (hot path)
+- Gjør det eldre arbeidsnotatet om kunstig intelligens konkluderende
+
+## Nåværende status
+
+SIV er kun en kanonisk arkitekturkontrakt. Ingen SIV-rammeverk (harness), agentpost, motor for langsiktig tilstand, modelltilkobling, lokal/ekstern agentprotokoll, SAIV-komponent, SMCV-oversetter eller qxctl-kontroll er implementert for øyeblikket.
+
+## Språkgrense
+
+Det er ikke fastsatt noe krav om Rust for SIV-komponenter. Komponentspråket vil følge den endelige kontrakten for ytelse, portabilitet, sikkerhet og integrasjon. Det arves ikke fra noe arbeidsnotat.
+
+## Hvordan SIV forholder seg til andre vektorer
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/no/skv/overview">
+    Styrer SIV-kontrakter, evolusjon og relasjoner til offisiell publisering.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/no/vectors/sov">
+    Kan eksponere agentkalte operasjoner via qxctl samtidig som vektor-eid semantikk bevares.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/no/skv/sav">
+    Evaluerer komposisjon og kompatibilitet for alle operasjoner satt sammen av agenter.
+  </Card>
+</CardGroup>

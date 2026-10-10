@@ -1,0 +1,33 @@
+---
+title: "Arsitektur Symphony"
+description: "Pahami batas antara infrastruktur yang dipilih pengguna, kontrak vektor, engine, qxctl, dan bukti yang diatur."
+sidebarTitle: "Arsitektur"
+---
+
+Symphony memisahkan infrastruktur dan workload yang dipilih pengguna dari pengetahuan dan administrasi platform. Platform dapat menginspeksi, memvalidasi, dan melaporkan kompatibilitas tanpa mengklaim kepemilikan atas strategi Anda atau memperlakukan rekomendasi sebagai mandat.
+
+## Lapisan fisik dan workload
+
+[Node](/id/concepts/node-habitat-nest) adalah komputer fisik yang teridentifikasi. **Habitat** adalah pengondisian sistem operasi dan paket yang eksak pada Node tersebut, dan **Nest** adalah workload yang melayani tujuan yang dipilih oleh pengguna. Klaster menghubungkan Node melalui satu atau beberapa bus. Fabric bus, adaptor, penyedia, dan pilihan perangkat keras bersifat eksplisit, bukan default universal.
+
+[Hot path](/id/concepts/hot-path-isolation) tetap terpisah dari residensi administratif. Pekerjaan qxctl dan bidang pengetahuan dapat secara eksplisit mengelola sebuah Node, tetapi tidak menjadi dependensi tersembunyi yang berkelanjutan bagi eksekusi langsung.
+
+## Kepemilikan semantik
+
+[Vektor](/id/concepts/vectors) adalah pemilik makna dan operasi yang diizinkan yang terbatas dan bertahan lama. Setiap pemilik menerbitkan Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md`, dan `SPEC.md`. [Symphony Knowledge Vector (SKV)](/id/skv/overview) mengindeks permukaan kanonis dan mempertahankan rute ke pemiliknya. Skema, registri, dan ledger pendamping tetap diatur tanpa menjadi anggota tambahan dari Quad.
+
+Fase pengiriman menjelaskan kapan pekerjaan dilakukan. Fase tidak memindahkan kepemilikan semantik dari satu vektor ke vektor lain.
+
+## Engine dan permukaan perintah
+
+[Engine vektor](/id/engines/overview) adalah komponen di luar proses yang dapat dipasang secara independen, yang menginspeksi, memeriksa, memproyeksikan, dan mengusulkan dalam batas kontrak pemiliknya. Engine tidak memperoleh otoritas hanya karena menghasilkan usulan.
+
+[qxctl](/id/qxctl/overview) memiliki tata bahasa perintah administratif dan penyajiannya. qxctl memanggil kapabilitas terbatas yang tervalidasi tanda terima, sementara vektor yang mendefinisikan suatu operasi tetap mempertahankan semantiknya. Bukti otorisasi dan audit mengatur rute mutasi; [klasifikasi pemanggil](/id/concepts/caller-authority) saja tidak memberikan otoritas.
+
+## Kebenaran dan evolusi
+
+Kontrak saat ini menyatakan kebenaran saat ini. Ledger perubahan dan publikasi mempertahankan bukti yang dicatat pada titik waktu tertentu. Ketidaksesuaian antara kontrak, bukti implementasi, dan riwayat yang tercatat dimunculkan sebagai drift, bukan ditulis ulang secara diam-diam. [SAV](/id/skv/sav) mengevaluasi kompatibilitas komposisi; [SEV](/id/skv/sev) merencanakan evolusi yang diatur.
+
+<Note>
+  Ikhtisar ini adalah peta batasan. Konsultasikan kontrak terkini dan bukti implementasi setiap vektor yang ditautkan sebelum memperlakukan suatu kapabilitas sebagai tersedia pada instalasi tertentu.
+</Note>

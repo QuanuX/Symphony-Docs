@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node-identitet og klyngeposter"
+description: "SNV registrerer og relaterer Node-identitet, ressurser, klyngemedlemskap og brukertildelte navn uten å diktere dem. Består av undervektorene SNIV, SNRV, SCIV og SCNV."
+sidebarTitle: "Node-vektor"
+---
+
+Symphony Node Vector (SNV) registrerer og relaterer identitetene, ressursene, klyngemedlemskapene og navnene til de fysiske Nodes du bruker med Symphony. Den består av fire undervektorer som hver eier en tydelig semantisk grense. SNV velger, utsteder, dikterer eller omdøper ikke automatisk noe på dine vegne.
+
+## Sammensetning av undervektorer
+
+SNV er bygget av fire varige semantiske domener:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node-identitet**: fysisk Node-identitet og dens eksakte tilknytninger til leverandørressurs, valgt tilbud og infrastrukturdomene.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node-ressurser**: lokal og eksplisitt kvalifisert ekstern ressurssannhet for en Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Klyngeidentitet**: klyngeidentitet, busstilkobling og relasjoner mellom Node og klynge.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Konsolidert navngiving**: SNV-avgrenset oppløsning av navn som allerede er tildelt av deg eller leverandørene dine.
+  </Card>
+</CardGroup>
+
+## Registreringsgrense
+
+SNV registrerer fakta og deres opphav. Den reserverer ikke navn, allokerer ikke ressurser og oppretter ikke klynger for deg. Navn tildeles av brukeren; Symphony registrerer dem. Leverandørressurser velges av brukeren; Symphony relaterer dem. Klyngetopologi utformes av brukeren; Symphony dokumenterer den.
+
+## Hvordan SNV forholder seg til andre vektorer
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/no/vectors/scv">
+    Leverer kunnskap om leverandører og eksterne ressurser som avgjør hvilke Nodes som kan finnes.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/no/vectors/sov">
+    Etablerer og endrer infrastruktur via qxctl og produserer Nodes som SNV registrerer.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/no/vectors/shv">
+    Kan levere detaljert bevis om maskinvarekapabiliteter for de fysiske komponentene i en Node.
+  </Card>
+</CardGroup>
+
+## Nåværende status
+
+SNV er en fremvoksende kanonisk arkitekturkontrakt. Ingen SNV-motor, graf, registerskjema, identitetskoder, oppdagelsestjeneste, navnetjeneste eller qxctl-kommando er implementert for øyeblikket. Postskjemaer og motorer er fortsatt utsatt.
+
+## Fremtidig installerbarhet
+
+Enhver fremtidig SNV-motor må være uavhengig installerbar og kunne gjenoppbygge projeksjonene sine fra eksakt eierbevis. Ingen motor blir en identitets- eller navneautoritet bare ved å lagre eller løse opp poster.

@@ -1,0 +1,51 @@
+---
+title: "SKVI: a Symphony Knowledge Vector Index motor"
+description: "Az SKVI determinisztikusan egyszer indexel minden kanonikus SKV-felületet, ellenőrzi a manifesztben deklarált lefedettséget, és eldobható, digesthez kötött vetületeket bocsát ki az igazság érintése nélkül."
+sidebarTitle: "SKVI"
+---
+
+A Symphony Knowledge Vector Index (SKVI) az a motor, amely feltérképezi az aktuális kanonikus igazságot minden SKV-felületen. Függetlenül telepíthető C++ folyamat, amely determinisztikusan és csak olvasva működik, és nem dönthet tagságról, illetve nem írhat kanonikus fájlokat.
+
+## Mit végez az SKVI
+
+Az SKVI három korlátozott műveletet végez:
+
+- **Vizsgálat és ellenőrzés**: ellenőrzi, hogy minden, a manifesztben deklarált kötelező felület pontosan egyszer szerepel-e az indexben, stabil tulajdonossal, igazságszereppel, kapcsolatokkal, felhasználókkal és vetítési jogosultsággal.
+- **Javaslat**: a hívó által deklarált, megváltoztathatatlan indexmódosítási javaslatokat fogad azok alkalmazása nélkül.
+- **Vetítés**: az aktuális index eldobható, digesthez kötött vetületeit bocsátja ki a későbbi felhasználók számára.
+
+## Amit az SKVI nem végez
+
+Az SKVI soha nem dönt arról, hogy valami funkciónak minősül-e, vagy tagja-e a manifesztnek. A tulajdonjog az egyes vektorok Contract Quadjánál marad. Az SKVI továbbá:
+
+- Nem ír és nem ír át kanonikus Markdownt
+- Semmit nem tesz közzé nyilvános vetületbe
+- Nem ad hatáskört pusztán azért, mert bizonyítékot állított elő
+
+## Mikor érdemes használni
+
+Az SKVI-vel megerősítheti, hogy egy tároló teljesen lefedett, mielőtt forrásmódosítást javasolna, vagy megnézheti, hogy egy adott felülethez melyik tulajdonos és igazságszerep tartozik. Vetületei a javaslatok áttekintőit, az ágenskontextust és a validátor alapállapotait táplálják.
+
+<Note>
+  Az SKVI az olvasó, lekérdező, validáló és javaslattevő motorok egyike. A kanonikus alkalmazás a ratifikált vektormotorok mindegyikében le van tiltva, amíg az egyes motorok SSIAG-, elvárt állapotú tranzakció-, qxctl-biztosíték-, STAV-esemény-, helyreállítási és negatívteszt-szerződései el nem készülnek.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az SKVI-t irányító átfogó keretrendszer.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/hu/skv/sclv">
+    A befejezett lényegi forrásmódosításokat rögzítő, csak hozzáfűzhető változásnapló.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Futtassa a `qxctl skvi ...` parancsot a vizsgálat, az ellenőrzés és a javaslattétel meghívásához.
+  </Card>
+
+  <Card title="Validátor" icon="clipboard-check" href="/hu/governance/validator">
+    Független, csak olvasó ellenőrzések, amelyek kiegészítik az SKVI lefedettségét.
+  </Card>
+</CardGroup>

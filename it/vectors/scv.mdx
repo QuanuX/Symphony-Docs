@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: conoscenza delle risorse dei provider"
+description: "SCV mantiene una conoscenza privata delle risorse dei provider esterni su AWS, Azure, GCP, DigitalOcean, Cloudflare e hardware di proprietà dell'utente tramite otto engine C++ installabili in modo indipendente."
+sidebarTitle: "Cloud Vector"
+---
+
+Il Symphony Cloud Vector (SCV) è proprietario della conoscenza semantica privata sulle risorse hardware esterne e sulle realtà dei provider che danno forma ai tuoi cluster e al tuo lavoro di addestramento, ricerca e gestione dei dati. Mappa offerte dei provider, regioni, domini infrastrutturali, vincoli e disponibilità osservata senza classificare i provider né imporre limiti a ciò che puoi tentare.
+
+## Copertura dei provider
+
+SCV copre i seguenti provider e tipi di risorse:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Hardware di proprietà dell'utente (quando è necessario un confronto con le risorse esterne)
+
+## Engine installati
+
+La conoscenza SCV viene fornita tramite otto engine C++ installabili in modo indipendente. Installi solo quelli che ti servono:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Engine SCV principale per la conoscenza delle risorse dei provider e la costruzione dei grafi.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Engine delle evidenze cloud per l'acquisizione delimitata e la semantica del corpus.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Engine delle evidenze specifico per Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Engine di conoscenza dell'hardware e delle risorse specifico per AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Engine di conoscenza dell'hardware e delle risorse specifico per Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Engine di conoscenza delle risorse specifico per DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Engine di conoscenza dell'hardware e delle risorse specifico per GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Connettore facoltativo per grafi relazionali che usa DuckDB per l'indicizzazione SQL conservata.
+  </Card>
+</CardGroup>
+
+## Pacchetti portabili dei provider e composizione
+
+SCV espone pacchetti portabili dei provider tramite qxctl. Mantieni il controllo su requisiti, permessi dei provider, ricette alternative e decisioni di esecuzione. qxctl supporta workflow conservati e la selezione protetta dei grafi, così puoi riprodurre evidenze esatte senza interrogare nuovamente i provider.
+
+## Connettore DuckDB facoltativo
+
+Lo `scv-graph-duckdb-connector` aggiunge una proiezione relazionale delimitata di grafi nativi immutabili. DuckDB è il database SQL predefinito scelto dall'utente. In futuro potrai selezionare engine di grafi dedicati tramite adattatori aggiuntivi.
+
+## Privacy e sovranità
+
+Un grafo di conoscenza SCV installato appartiene alla tua installazione privata. Account, saldi, permessi e vincoli contrattuali forniti dall'utente vengono usati solo tramite superfici di osservazione abilitate esplicitamente. I fatti privati non entrano nella verità sorgente ufficiale di Symphony.
+
+## Relazione di SCV con gli altri vettori
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/it/vectors/sov">
+    Il piano di controllo operativo che agisce sulle evidenze SCV. SOV non riscrive il significato dei provider.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/it/vectors/snv">
+    Registra le identità dei Node fisici e dei cluster risultanti dal provisioning basato su SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/it/vectors/shv">
+    È proprietario della conoscenza dettagliata delle capacità hardware dei componenti a cui SCV fa riferimento.
+  </Card>
+</CardGroup>
+
+## Incrementi versionati dell'interfaccia
+
+I rilasci di SCV sono additivi e con versioni esatte. Le installazioni precedenti restano invocabili nei loro ambiti esatti. Gli incrementi attuali includono operazioni native, snapshot del corpus, profili di interpretazione, pacchetti portabili dei provider, workflow di composizione, tracciamento degli obblighi e bundle di evidenze. Ogni incremento preserva i percorsi, i valori predefiniti e i record precedenti.

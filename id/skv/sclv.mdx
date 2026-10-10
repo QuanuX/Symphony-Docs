@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector untuk Perubahan Sumber"
+description: "SCLV memelihara ledger append-only atas perubahan sumber yang telah selesai dengan proposal netral penyedia, pemulihan tanpa mutasi, dan proyeksi sekali pakai untuk catatan."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) mencatat perubahan yang dilakukan pada permukaan SKV dari waktu ke waktu. Engine-nya adalah proses C++ yang dapat diinstal secara independen yang melakukan pemeriksaan ledger append-only secara deterministik dan menghasilkan proyeksi sekali pakai. Ledger hanya ditulis setelah perubahan sumber material selesai.
+
+## Operasi
+
+- **Inspect dan check**: memvalidasi bentuk, kontinuitas, dan bukti ledger.
+- **Propose (v3)**: menerima proposal netral penyedia yang dideklarasikan pemanggil untuk catatan baru.
+- **Recover**: melakukan pemulihan tanpa mutasi atas state yang terputus atau ambigu.
+- **Project**: menghasilkan inventaris sekali pakai atas state ledger sesuai permintaan.
+
+## Penerimaan dan penghentian
+
+Setiap catatan SCLV yang diterima mengikat bukti terindeks saat ini pada saat catatan tersebut ditulis. Penghentian sah suatu permukaan di kemudian hari mempertahankan provenans historis yang tidak dapat diubah tanpa memaksa prosa saat ini yang telah dihapus kembali ke SKVI. Sejarah tetap sejarah; kebenaran saat ini tetap kebenaran saat ini.
+
+## Yang tidak dilakukan SCLV
+
+- SCLV tidak membuat atau menyetujui perubahan sumber.
+- SCLV tidak menulis ulang catatan yang ada; SCLV bersifat append-only.
+- SCLV tidak memublikasikan apa pun. Proyeksi publik adalah milik SODV.
+
+<Note>
+  Setiap engine SKV saat ini hanya melakukan read, query, validate, dan propose. Apply kanonis dinonaktifkan hingga kontrak otoritas dan audit lengkap setiap engine selesai.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/id/skv/skvi">
+    Mengindeks kebenaran kanonis saat ini yang diikat oleh catatan SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Mengatur proyeksi publik resmi atas informasi ledger.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/id/skv/sev">
+    Kasus evolusi menilai perubahan sebelum SCLV mencatatnya.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Jalankan `qxctl sclv ...` untuk inspect, check, propose, dan recover.
+  </Card>
+</CardGroup>

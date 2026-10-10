@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: az SKV-keretrendszer áttekintése"
+description: "Az SKV a Symphony deklaratív platformtudásának átfogó keretrendszere. Ismerje meg a Contract Quadokat, a kísérőfelületeket és az összes alvektort egyetlen irányítási modellben."
+sidebarTitle: "SKV áttekintés"
+---
+
+A Symphony Knowledge Vector (SKV) a Symphony deklaratív platformtudásának kanonikus keretrendszere. Olyan struktúrában őrzi meg az architekturális igazságot, a modulhatárokat, a szerződéseket, a doktrínát és a kompatibilitási tudást, amelyet az emberek, a validátorok, a qxctl, a CI és az ágensalapú eszközök egységesen használnak. Az SKV nem futtatókörnyezet; ez az a közös tudásréteg, amelyen minden vektor keresztülhalad.
+
+## A Contract Quad
+
+Az SKV-ben minden szemantikai tulajdonos közzétesz egy Contract Quadot:
+
+- **INTENT.md**: cél, hatókör és a hatókörön kívül eső elemek
+- **MANIFEST.md**: kanonikus felületek és delegálás
+- **SKILL.md**: biztonságos használati eljárás a hívók számára
+- **SPEC.md**: normatív viselkedés
+
+A sémák, regiszterek, profilok, főkönyvek és egyéb artefaktumok a négytagú Quadon kívül maradnak, és ugyanannak a tulajdonosnak az irányítása alatt állnak.
+
+## Kísérőfelületek
+
+Két, az SKV tulajdonában lévő kísérőfelület minden vektoron átível:
+
+- A `knowledge/SLANG.md` minden platformfogalmat ahhoz a pontos szerződéshez rendel, amely a szemantikáját birtokolja.
+- A `knowledge/NAMESPACES.md` az identitáscsaládok tulajdonjogát rögzíti anélkül, hogy a nyelvtant, a kiosztást, az életciklust vagy az egyes identitásokat előírná.
+
+Egyik kísérőfelület sem ötödik Quad-tag, új vektor vagy futásidejű szolgáltatás.
+
+## Értelmezési szabály
+
+Az aktuális szerződések az aktuális igazságot írják le. A csak hozzáfűzhető SCLV- és SODV-rekordok azt őrzik meg, amit a rögzítésük időpontjában ismertek, engedélyeztek vagy befejeztek. Ha a szerződésállapot, a megvalósítási bizonyíték és a legutóbbi alkalmazandó rekord ellentmond egymásnak, az eltérés áttekintendő sodródásnak (drift) minősül. Az eszközök nem találhatnak ki csendben egyeztetést.
+
+## Alvektorok
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/hu/skv/skvi">
+    Minden aktuális kanonikus felületet pontosan egyszer indexel.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/hu/skv/sclv">
+    Csak hozzáfűzhető változásnapló a befejezett lényegi forrásmódosításokhoz.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/hu/skv/sacv">
+    Korlátozott OpenAPI 3.2.0 irányítás és kompatibilitási diffek.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    A QuanuX hivatalos közzétételeit és kiadási rekordjait irányítja.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hu/skv/ssfv">
+    Funkcióidentitás, frissesség és adminisztrációs garancia.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/hu/skv/sav">
+    Accordare-kompozíció és háromtengelyű kompatibilitás-értékelés.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/hu/skv/sev">
+    Evolúciós esetek, döntéstervezés és újdonság-ellenőrzések.
+  </Card>
+
+  <Card title="Irányítás" icon="shield-halved" href="/hu/governance/ssiag">
+    SSIAG-identitás és STAV-audit irányítás az engedélyezett módosításokhoz.
+  </Card>
+</CardGroup>
+
+<Note>
+  Minden jelenlegi SKV-motor kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A programozott kanonikus alkalmazás le van tiltva, amíg az egyes motorok SSIAG-engedélyre, elvárt állapotú tranzakcióra, qxctl-biztosítékra, STAV-eseményre, helyreállításra és negatív tesztekre vonatkozó szerződései el nem készülnek.
+</Note>

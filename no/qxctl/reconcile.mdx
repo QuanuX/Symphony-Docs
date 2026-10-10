@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: avstemming av arbeidstrær"
+description: "Avstem arbeidstrær mot en bundet Symphony-koordinator med kompatibilitetskontroller, checkpoint- og close-journaler og bevisbasert gjenoppretting med to plasser."
+sidebarTitle: "reconcile"
+---
+
+Grammatikken `qxctl knowledge reconcile ...` driver avstemming av arbeidstrær gjennom én eksakt bundet Knowledge Session Coordinator. Hver endring spores med stabile identifikatorer og er en compare-and-swap mot den eksakte gjeldende journaldigesten.
+
+## Kommandoer
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifiser at qxctl, koordinatoren og de bundne motorene er enige om protokollversjon og omfang.
+- `begin`: åpne en ny avstemmingskontekst med en stabil operasjonsidentifikator.
+- `status`: inspiser gjeldende journal uten endring.
+- `checkpoint`: flytt journalen varig fremover med compare-and-swap.
+- `close`: fullfør avstemmingskonteksten.
+- `recover --discover`: gjenoppretting via oppdagelse når vanlig status ikke kan validere lokal tilstand.
+
+## Regler for gjenoppretting
+
+<Warning>
+  Gjenoppretting med to plasser er bevisbasert reparasjon fremover. Den gir aldri tillatelse til å forkaste en inkompatibel journal eller en ukjent kritisk utvidelse. Hvis gjenopprettingen mislykkes, eskaler i stedet for å tvinge.
+</Warning>
+
+Bruk gjenoppretting via oppdagelse bare når vanlig status ikke kan validere lokal tilstand. Bevar blokkeringer; planlegg på nytt bare etter at verifisert bevis er endret.
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Sesjonskoordinator" icon="gears" href="/no/engines/coordinator">
+    Motoren som eier avstemmingsjournaler.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/no/qxctl/session">
+    Autentiserte sesjoner som pares med avstemmingskontekster.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/no/qxctl/engines">
+    Administrer bindingene som koordinatoren bruker.
+  </Card>
+</CardGroup>

@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl-alapú műveletvezérlés"
+description: "Az SOV határozza meg a qxctl által adminisztrált műveleti tartományt a kiépítéshez, a Habitat-kondicionáláshoz, a Nest-telepítéshez, a buszadapterekhez és az opcionális távoli Node-adminisztrációhoz."
+sidebarTitle: "Ops Vector"
+---
+
+A Symphony Ops Vector (SOV) az az operatív vezérlősík, amelyen keresztül az engedélyezett qxctl-parancsok az Ön infrastruktúráján hatnak. Birtokolja a kiépítésre, a Habitat-kondicionálásra, a Nest-telepítésre, a buszadapterek beállítására és az opcionális távoli Node-adminisztrációra vonatkozó szerződést. Az SOV nem talál ki szolgáltatói jelentést vagy hardvertényeket; az Ön által már kiválasztott, támogatott lehetőségeket hajtja végre.
+
+## Mire terjed ki az SOV
+
+Az SOV egy kialakulóban lévő, 2. fázisú tartomány. Hatóköre a következőket foglalja magában:
+
+- **Kiépítés**: szolgáltatói és saját hardveres erőforrás-kiosztási munkafolyamatok
+- **Habitat-kondicionálás**: egy Node-ra szállított pontos operációs rendszer- és csomagkondicionálás
+- **Nest-telepítés**: munkaterhelések elhelyezése és frissítése egy Node-on
+- **Buszadapterek létrehozása**: Node-ok összekapcsolása az Ön által választott buszon (NATS JetStream, ZeroMQ vagy más)
+- **Távoli Node-műveletek**: a helyi shellen kívüli Node-ok opcionális adminisztrációja
+
+<Note>
+  A szolgáltatói protokollok, a Terraform-végrehajtás, a Habitat-építők, a Nest-telepítési parancsok és a távoli műveleti fogadók tervezése még hátravan. Jelenleg nincs megvalósítva SOV-motor vagy szolgáltatói módosítás.
+</Note>
+
+## Hogyan kapcsolódik az SOV más vektorokhoz
+
+Az SOV a vezérlősík, nem a tudás forrása. Más vektorok tulajdonában lévő bizonyítékok alapján cselekszik:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/hu/vectors/scv">
+    Szolgáltatói és telephelyen kívüli erőforrás-tudást biztosít. Az SOV az SCV-bizonyítékokat olvassa annak eldöntéséhez, mely műveletek kompatibilisek.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/hu/vectors/snv">
+    Az SOV-műveletek befejezése után rögzíti az eredményül kapott Node-identitásokat, klasztertagságokat és neveket.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/hu/vectors/shv">
+    Később részletes hardverképesség-bizonyítékot szolgáltathat a kiépítési lehetőségek korlátozásához.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/hu/skv/overview">
+    Az SOV-szerződéseket, a változások következményeit, az indexelést és az életciklus-integrációt irányítja.
+  </Card>
+</CardGroup>
+
+## A qxctl mint parancsfelület
+
+Az SOV-műveletek a `qxctl`-en, a 373 végrehajtható paranccsal rendelkező, Go-alapú adminisztratív CLI-n keresztül érhetők el. A qxctl megvalósítja és megjeleníti az SOV-műveleteket, de nem birtokolja azok tartományi jelentését. A szemantika a vektoré; a végrehajtási felület az eszközé.
+
+## A felhasználói hatáskör határa
+
+Ön választja ki a szolgáltatókat, a régiókat, a hardvert, a buszokat, a szoftvereket, a telepítési topológiát és a Node-onkénti adminisztrációs megoldásokat. Az SOV elérhetővé teszi és végrehajtja a támogatott lehetőségeket. Nem rangsorolja a szolgáltatókat, nem ajánl topológiákat, és nem alakítja a javaslatokat kötelező szabályzattá.
+
+## Jelenlegi állapot
+
+Az SOV kanonikus architektúraszerződés. Egyetlen motor, Terraform-burkoló, Habitat-építő, buszadapter vagy távoli parancsfogadó sem tekinthető megvalósítottnak. A jövőbeli SOV-komponensek a közös SKV-életciklus keretében függetlenül telepíthetők, pontos verzió szerint választhatók és visszaállíthatók maradnak.

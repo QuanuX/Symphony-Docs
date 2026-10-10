@@ -1,0 +1,28 @@
+---
+title: "Izsaucēja klases neitralitāte un resursdatora pilnvaras Symphony"
+description: "Symphony neklasificē izsaucējus pēc veida. Pilnvaras izriet no mērķa resursdatora īpašumtiesībām, skaidras atļaujas, sagaidāmā stāvokļa un īpašnieka konfigurētiem drošības pasākumiem."
+sidebarTitle: "Izsaucēja pilnvaras"
+---
+
+Lemjot par pilnvarām, Symphony neklasificē izsaucēju kā cilvēku, AI, aģentu, pakalpojumu, darba slodzi, organizāciju vai jebkuru citu dalībnieka veidu. Jūsu klasifikācija kā personai vai automatizētai sistēmai pati par sevi nepiešķir un neatņem nevienu spēju. Šī izsaucēja klases neitralitāte ir būtiska arhitektūras robeža, kas nodrošina, ka autorizācija balstās uz faktiem, nevis etiķetēm.
+
+## Kas nosaka pilnvaras
+
+Atbalstītie autorizācijas lēmumi izmanto šādus ievades datus:
+
+- **Mērķa resursdatora īpašumtiesības vai piešķirtās atļaujas**: mērķa resursdatora administrators ir suverēns pār konfigurējamo pārvaldību.
+- **Pieprasītā darbība un resurss**: konkrētā darbība un objekts, uz kuru tā attiecas.
+- **Sagaidāmais stāvoklis**: deklarētais vēlamais rezultāts un novērotais pašreizējais stāvoklis.
+- **Īpašnieka konfigurēti drošības pasākumi**: piesardzīgi noklusējumi, kurus administrators var pielāgot vai noņemt.
+
+## SSIAG un resursdatora pilnvaras
+
+SSIAG var pārbaudīt un projicēt faktiskās resursdatora pilnvaras, taču tas neizveido augstāku reģistrācijas iestādi un neuzliek pastāvīgu veto mērķa resursdatora administratoram. Pastiprināta identitātes garantija un pārvaldības bloķētāji ir izsaucējneitrāli, īpašnieka konfigurēti drošības pasākumi. Protokola integritātes prasības atbalstītajos rīkos paliek obligātas.
+
+## Ko Symphony nenosaka
+
+Symphony nenosaka, vai dalībnieks drīkst piederēt īpašumu, atvērt kontu, parakstīt līgumu, uzņemties atbildību vai rīkoties citas personas vārdā. Šie fakti ir attiecīgā īpašnieka, piegādātāja, darījuma partnera un piemērojamo tiesību aktu ziņā. Platforma paliek savas ierobežotās lomas robežās: tā sagatavo saderības pierādījumus un atbalsta darbības, taču nepaplašinās līdz ārējās juridiskās vai finansiālās rīcībspējas noteikšanai.
+
+## Praktiskā nozīme
+
+Kad izsaucat qxctl vai vektora dzinēju, tiek piemērotas tās pašas pārbaudes neatkarīgi no tā, vai komandu palaižat manuāli, ar skriptu vai ar aģentu rīku. Pilnvaru ceļš ir: mērķa resursdatora īpašumtiesības, skaidra atļauja, sagaidāmais stāvoklis, drošības pasākumi. Neviens izsaucēja veids nesaņem automātisku apiešanu vai automātisku ierobežojumu.

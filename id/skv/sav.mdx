@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector untuk Evaluasi Komposisi"
+description: "SAV meresolusi referensi Accord, mengevaluasi komposisi pada tiga sumbu, memvalidasi Named Version, dan merencanakan Installation Blueprint tanpa memutasi kebenaran kanonis."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) meresolusi komposisi dan kompatibilitas komponen yang dideklarasikan. Engine-nya adalah proses C++26 hanya-baca pada jalur pembekuan (freezing-path). SAV menyusun proyeksi bertipe yang persis tetapi tidak pernah mengambil kebenaran sumber dari vektor pemilik.
+
+## Operasi
+
+SAV mendukung serangkaian operasi evaluasi yang kaya:
+
+- **Resolusi referensi Accord** menjadi snapshot CURRENT turunan yang tidak dapat diubah
+- **Evaluasi tiga sumbu**, perbandingan, dan penjelasan
+- **Graf komposisi** dan proyeksi sekali pakai
+- Validasi dan diff **Named Version**
+- Pemeriksaan **Extension Capsule**
+- Perencanaan **Installation Blueprint**
+- **Negosiasi kompatibilitas** antara komponen yang dideklarasikan
+
+## Yang tidak dilakukan SAV
+
+- SAV tidak mengambil kepemilikan semantik atas komponen yang disusunnya.
+- SAV tidak memilih desain untuk Anda; SAV mengevaluasi apa yang Anda deklarasikan.
+- SAV tidak memutasi file kanonis. Outputnya berupa bukti dan proposal.
+- SAV bukan otoritas append STAV. Lihat produsen STAV Accordare untuk penanganan intent pra-mutasi.
+
+<Note>
+  SAV hanya melakukan read, query, validate, dan propose. Apply kanonis secara terprogram tetap dinonaktifkan di seluruh keluarga engine SKV.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka kerja payung dan model Contract Quad.
+  </Card>
+
+  <Card title="Produsen Accordare" icon="pen-nib" href="/id/governance/accordare-producer">
+    Sirkuit audit Named Version SAV yang terbatas.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/id/skv/sev">
+    Kasus evolusi yang memicu evaluasi SAV atas perubahan komposisi.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Grammar Accordare yang telah diratifikasi akan hadir sebagai `qxctl accord ...` setelah diimplementasikan.
+  </Card>
+</CardGroup>

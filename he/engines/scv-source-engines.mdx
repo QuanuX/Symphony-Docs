@@ -1,0 +1,74 @@
+---
+title: "מנועי ידע-המקור של SCV: המציאות של הספקים עבור Symphony"
+description: "שמונה מנועים הארוזים באופן עצמאי עבור SCV, ספקי ענן גדולים, קצה וספקים משמרים גרסאות מקור מדויקות ומפיקים ראיות גרף ושאילתה הניתנות לשחזור."
+sidebarTitle: "מנועי SCV"
+---
+
+מנועי ידע-המקור של SCV הם שמונה תהליכי C++26 הארוזים באופן עצמאי, המחזיקים ידע סמנטי פרטי על משאבי ספקים חיצוניים, הצעות, אזורים, אילוצים ואפשרויות היברידיות. הם משמרים גרסאות מקור מדויקות ולכידות תחומות, כך שכלים במורד הזרם יכולים לשחזר תוצאות.
+
+## מנועים
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    מנוע מקור SCV כללי עבור אוצר המילים המשותף של הענן.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    מנוע מקור של Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    מנוע מקור קצה ייעודי ל-Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    מנוע מקור של Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    מנוע מקור של Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    מנוע מקור של DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    מנוע מקור של Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    מחבר DuckDB אופציונלי לאינדוקס גרף יחסי שמור.
+  </Card>
+</CardGroup>
+
+## מה מנועי SCV עושים
+
+- משמרים גרסאות מקור מפורשות ולכידות תחומות
+- שומרים טענות מסויגות ואת מבנה המסמך המקורי
+- מפיקים ראיות גרף ושאילתה הניתנות לשחזור
+- מזינים חבילות ספקים ניידות והרכבה סופית בהכוונת הקורא
+
+## מה הם אינם עושים
+
+<Warning>
+  פעולות מול ספקים וקטלוגי ענן מלאים נותרים מחוץ למהדורה זו. מנועי SCV מתארים את מה שידוע; הם אינם פועלים מול ספקים.
+</Warning>
+
+qxctl מנהל בנפרד שינויי מקור מקומיים שעברו ביקורת ובחירת גרף קוהרנטית, באמצעות תהליכי עבודה שמורים ובחירת גרף מוגנת. מעבר ייעודי על גרפים ומתאמים תפעוליים נותרים עבודה נפרדת.
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="וקטור SCV" icon="cloud" href="/he/vectors/scv">
+    חוזה ה-Cloud Vector שמנועים אלה מממשים.
+  </Card>
+
+  <Card title="וקטור SOV" icon="terminal" href="/he/vectors/sov">
+    ה-Ops Vector שפועל על ראיות SCV באמצעות qxctl.
+  </Card>
+
+  <Card title="פקודות הווקטור של qxctl" icon="terminal" href="/he/qxctl/vector-commands">
+    בחירת גרף, תהליכי עבודה של מקורות וניהול מחבר DuckDB.
+  </Card>
+</CardGroup>

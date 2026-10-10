@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector plānotām izmaiņām"
+description: "SEV novērtē plānotās izmaiņas, jaunumus un dzīves cikla pārejas ar deterministiskiem gadījumiem, atkarību gatavības kopām, vienreizējiem grafiem un nepiemērojošiem atkopšanas ieteikumiem."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) pārvalda plānoto izmaiņu un sastapto jaunumu gadījumus visā platformā. Tā dzinējs ir iesaldēšanas ceļa (freezing-path), tikai lasāms C++26 process. SEV nedz novēro resursdatoru, nedz piemēro pāreju; tas rada pierādījumus un risinājumu ieteikumus.
+
+## Operācijas
+
+- **Gadījumu novērtēšana**: deterministiski evolūcijas gadījumi papildinājumiem, izmaiņām, pārdēvēšanai, aizstāšanai, novecošanai, izņemšanai no lietošanas un noņemšanai.
+- **Ietekmes un risinājumu plānošana**: katra gadījuma piešķiršana tā autoritatīvajiem īpašniekiem.
+- **Atkarību gatavības kopas pārrēķins**: atkarīgo pāreju drošās secības atvasināšana.
+- **Pārejas pārbaude**: apstiprina, ka pēc pārejas novērotais stāvoklis atbilst gaidītajai formai.
+- **Atkopšanas ieteikumi**: apraksta drošus soļus uz priekšu vai atpakaļ, ja pāreja tiek pārtraukta.
+- **SCSEV izvērtējums**: pirmais pārvaldītais SEV profils piemēro šīs operācijas tikai dokumentācijas zināšanu virsmu evolūcijai.
+- **Jaunuma un novērošanas pārbaudes**: konstatē jaunas vai negaidītas virsmas pārskatītāju uzmanībai.
+- **Trigeru apvienošana** un **dzīves cikla sesijas piesaiste**: samazina dublētu novērtēšanu un piesaista gadījumus sesijai.
+- **Grafu projekcija**: vienreizēji grafi pārskatīšanai.
+
+## SCSEV profils
+
+SCSEV atkārtoti izmanto SSFV funkciju administrēšanu, stabilo qxctl komandu patiesību un dzinēju operāciju deskriptorus. Tas neveido dublētu dzinēju vai reģistru. Pirmā dzinēja daļa ir tikai atskaišu un tikai priekšlikumu; noturīga ārēja darbība joprojām tiek atsevišķi autorizēta caur qxctl un zināšanu sesiju koordinatoru.
+
+<Note>
+  SEV tikai lasa, vaicā, validē un ierosina. Kanoniskā piemērošana joprojām ir atspējota visā SKV dzinēju saimē.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Jumta ietvars un Contract Quad modelis.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/lv/skv/ssfv">
+    Funkciju administrēšana, ko atkārtoti izmanto SCSEV profils.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/lv/skv/sav">
+    Mainīto komponentu kompozīcijas un saderības novērtēšana.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Ratificētā evolūcijas gramatika pēc implementēšanas būs pieejama kā `qxctl evolution ...`.
+  </Card>
+</CardGroup>

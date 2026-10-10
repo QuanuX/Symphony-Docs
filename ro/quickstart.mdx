@@ -1,0 +1,33 @@
+---
+title: "Ghid de pornire rapidă: explorați QuanuX Symphony"
+description: "Un traseu ghidat prin doctrina, arhitectura, contractele de vectori și suprafața administrativă qxctl ale Symphony."
+sidebarTitle: "Pornire rapidă"
+---
+
+Folosiți acest ghid pentru a vă orienta înainte de a opera Symphony. Documentația separă doctrina platformei, infrastructura selectată de utilizator, semantica deținută de vectori și comenzile administrative. Pașii exacți de instalare și execuție aparțin contractului curent al componentei relevante.
+
+## 1. Citiți granițele operaționale
+
+Începeți cu [doctrina platformei](/ro/doctrine). Aceasta stabilește proprietatea utilizatorului asupra strategiei și infrastructurii, neutralitatea față de clasa apelantului, compatibilitatea bazată pe dovezi și protecția căii critice.
+
+## 2. Învățați modelul fizic
+
+Citiți [Node, Habitat și Nest](/ro/concepts/node-habitat-nest):
+
+- **Node:** resursa de calcul fizică identificată.
+- **Habitat:** sistemul de operare exact și condiționarea pachetelor livrate unui Node.
+- **Nest:** sarcina de lucru cu scopul ales de utilizator, plasată într-un Habitat potrivit.
+
+Magistralele și adaptoarele unui cluster sunt alegeri arhitecturale explicite. Symphony nu prescrie un furnizor sau o strategie universală.
+
+## 3. Urmăriți proprietatea asupra semnificației
+
+[Prezentarea generală a arhitecturii](/ro/concepts/architecture) arată relația dintre contractele de vectori, motoare, qxctl și dovezile guvernate. [Vectori și faze](/ro/concepts/vectors) explică de ce un vector rămâne proprietarul semantic chiar și atunci când activitatea de livrare trece prin faze. [Symphony Knowledge Vector](/ro/skv/overview) descrie Contract Quad și suprafețele sale însoțitoare.
+
+## 4. Găsiți suprafața administrativă
+
+[Prezentarea generală qxctl](/ro/qxctl/overview) introduce CLI-ul administrativ și de interogare scris în Go. Folosiți paginile qxctl pentru o anumită familie de comenzi, precum [knowledge](/ro/qxctl/knowledge), [lifecycle](/ro/qxctl/lifecycle), [engines](/ro/qxctl/engines) sau [validare](/ro/qxctl/validate). qxctl oferă gramatica și prezentarea comenzilor; contractele de vectori dețin operațiunile și semnificația lor.
+
+## 5. Verificați contractul și dovezile relevante
+
+Înainte de a acționa asupra unui Node sau de a invoca un motor de vector, verificați contractul curent al proprietarului, starea țintă, autorizarea și dovezile disponibile de tip chitanță sau validare. [Autoritatea apelantului](/ro/concepts/caller-authority) și [izolarea căii critice](/ro/concepts/hot-path-isolation) explică aceste granițe. O suprafață emergentă nu reprezintă o garanție operațională implicită.

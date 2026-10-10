@@ -1,0 +1,52 @@
+---
+title: "SACV: API līgumu pārvaldība QuanuX Symphony"
+description: "SACV pārvalda versiju API līgumus ar ierobežotām OpenAPI 3.2.0 pārbaudēm, deterministiskiem saderības salīdzinājumiem un izsaucēja deklarētiem reģistra priekšlikumiem visos vektoros."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) pārvalda versiju API līgumus visā platformā. Tā dzinējs ir neatkarīgi instalējams C++ process, kas veic ierobežotu OpenAPI 3.2.0 JSON validāciju, deterministiskus saderības salīdzinājumus un vienreizējus inventārus. Galapunktu semantika paliek domēnam piederošajam vektoram vai modulim; SACV pārvalda līguma formu un saderību.
+
+## Operācijas
+
+- **Inspect un check**: validē, vai OpenAPI 3.2.0 JSON dokuments atbilst ierobežotajam profilam.
+- **Diff**: aprēķina deterministiskus saderības salīdzinājumus starp līgumu versijām.
+- **Propose**: pieņem izsaucēja deklarētus reģistra priekšlikumus jauniem vai mainītiem līgumiem.
+- **Project**: izvada vienreizējus inventārus pārskatītājiem un lejupējiem rīkiem.
+
+## Ko pārvalda SACV
+
+SACV ierobežo:
+
+- Līguma formu (OpenAPI 3.2.0 ar SACV profilu)
+- Saderības klasifikāciju starp versijām
+- Reģistra dalību pieņemtajiem līgumiem
+
+Tas nedara šo:
+
+- Tam nepieder galapunktu semantika (to patur katrs vektors vai modulis)
+- Neģenerē SDK, nepublicē artefaktus un neizsniedz žetonus
+- Nenozīmē, ka pastāv aktīva tīkla virsma (nākotnes privāta API pieminēšana to neizveido)
+
+<Note>
+  SACV tikai lasa, vaicā, validē un ierosina. Programmatiska kanoniskā piemērošana ir atspējota visiem SKV dzinējiem.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Jumta ietvars un Contract Quad modelis.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Pārvalda jebkuru SACV reģistrēta līguma oficiālu publicēšanu.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/lv/skv/sav">
+    Novērtē kompozīciju un saderību starp deklarētajiem komponentiem.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Palaidiet `qxctl sacv ...`, lai veiktu inspect, check, diff un propose.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Producătorul STAV Accordare: auditul delimitat al versiunilor denumite SAV"
+description: "Producătorul STAV Accordare menține durabile intenția, rezultatul și recuperarea pentru versiunile denumite (Named Version) SAV, printr-un producător Go pe calea înghețată, cu peer-i locali autentificați."
+sidebarTitle: "Producătorul Accordare"
+---
+
+Producătorul STAV Accordare (`modules/accordare-stav-producer`) este un producător Go instalabil independent, pe calea înghețată, pentru circuitul delimitat de audit al versiunilor denumite (Named Version) SAV. Acesta menține durabile intenția dinaintea modificării și recuperarea adăugărilor, își autentifică peer-ii locali și trimite doar candidatul sigur exact admis de vocabularul său închis. Nu este el însuși autoritatea de adăugare STAV.
+
+## Modelul intenție, rezultat, recuperare
+
+Producătorul urmează un model în trei pași pentru fiecare modificare auditată:
+
+<Steps>
+  <Step title="Intenția dinaintea modificării">
+    Înregistrați în mod durabil intenția declarată a apelantului înainte ca orice modificare să devină observabilă. Producătorul refuză candidații din afara vocabularului său închis.
+  </Step>
+  <Step title="Rezultatul final">
+    După ce modificarea se finalizează sau eșuează, capturați rezultatul exact, astfel încât auditul să reflecte realitatea, nu o stare sperată.
+  </Step>
+  <Step title="Recuperarea delimitată">
+    La întrerupere, producătorul efectuează o recuperare delimitată a fluxului de adăugare, fără a inventa o reconciliere și fără a renunța pe tăcute la intenție.
+  </Step>
+</Steps>
+
+## Granițe
+
+<Warning>
+  Producătorul Accordare nu este autoritatea de adăugare STAV. Acesta autentifică peer-ii locali și trimite candidați; autoritatea de adăugare îi validează, îi sigilează și îi stochează în mod durabil. Nu ocoliți niciodată această separare.
+</Warning>
+
+- Vocabularul producătorului este închis. Acceptă doar candidați de audit pentru versiunile denumite SAV.
+- Producătorul funcționează pe calea înghețată. Nu trebuie să devină o dependență a căii critice.
+- Producătorul autentifică peer-ii locali; nu autentifică apelanții la distanță.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/ro/governance/stav">
+    Autoritatea de adăugare care sigilează înregistrările de audit.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ro/governance/ssiag">
+    Autorizează modificarea pe care o auditează producătorul.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ro/skv/sav">
+    Semantica de compoziție a versiunilor denumite pe care o auditează acest circuit.
+  </Card>
+
+  <Card title="Comenzi qxctl pentru vectori" icon="terminal" href="/ro/qxctl/vector-commands">
+    Gramatica Accordare ratificată va fi disponibilă ca `qxctl accord ...` după implementare.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV producents: ierobežots SAV Named Version audits"
+description: "Accordare STAV producents nodrošina SAV Named Version nodoma, iznākuma un atkopšanas noturību, izmantojot sasalušā ceļa Go producentu ar autentificētiem lokālajiem partneriem."
+sidebarTitle: "Accordare producents"
+---
+
+Accordare STAV producents (`modules/accordare-stav-producer`) ir neatkarīgi instalējams sasalušā ceļa Go producents ierobežotajai SAV Named Version audita ķēdei. Tas nodrošina pirms mainīšanas nodoma un papildināšanas atkopšanas noturību, autentificē savus lokālos partnerus un iesniedz tikai precīzu drošu kandidātu, ko pieļauj tā slēgtā vārdnīca. Tas pats nav STAV papildināšanas iestāde.
+
+## Nodoma, iznākuma un atkopšanas modelis
+
+Katrai auditētai mainīšanai producents ievēro trīs soļu modeli:
+
+<Steps>
+  <Step title="Nodoms pirms mainīšanas">
+    Noturīgi reģistrējiet izsaucēja paziņoto nodomu, pirms kāda izmaiņa kļūst novērojama. Producents noraida kandidātus ārpus savas slēgtās vārdnīcas.
+  </Step>
+  <Step title="Galīgais iznākums">
+    Pēc tam, kad mainīšana ir pabeigta vai neizdevusies, fiksējiet precīzu iznākumu, lai audits atspoguļotu realitāti, nevis cerēto stāvokli.
+  </Step>
+  <Step title="Ierobežota atkopšana">
+    Pārtraukuma gadījumā producents veic ierobežotu papildināšanas plūsmas atkopšanu, neizdomājot saskaņošanu un klusi neatmetot nodomu.
+  </Step>
+</Steps>
+
+## Robežas
+
+<Warning>
+  Accordare producents nav STAV papildināšanas iestāde. Tas autentificē lokālos partnerus un iesniedz kandidātus; papildināšanas iestāde tos validē, aizzīmogo un noturīgi saglabā. Nekad neapejiet šo nošķīrumu.
+</Warning>
+
+- Producenta vārdnīca ir slēgta. Tas pieņem tikai SAV Named Version audita kandidātus.
+- Producents darbojas sasalušajā ceļā. Tas nedrīkst kļūt par karstā ceļa atkarību.
+- Producents autentificē lokālos partnerus; tas neautentificē attālos izsaucējus.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/lv/governance/stav">
+    Papildināšanas iestāde, kas aizzīmogo audita ierakstus.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/lv/governance/ssiag">
+    Autorizē mainīšanu, ko auditē producents.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/lv/skv/sav">
+    Named Version kompozīcijas semantika, ko auditē šī ķēde.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Ratificētā Accordare gramatika pēc ieviešanas būs pieejama kā `qxctl accord ...`.
+  </Card>
+</CardGroup>

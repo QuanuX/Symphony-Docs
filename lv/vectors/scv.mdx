@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: zināšanas par pakalpojumu sniedzēju resursiem"
+description: "SCV uztur privātas zināšanas par ārējo pakalpojumu sniedzēju resursiem AWS, Azure, GCP, DigitalOcean, Cloudflare un lietotājam piederošā aparatūrā, izmantojot astoņus neatkarīgi instalējamus C++ dzinējus."
+sidebarTitle: "Mākoņa vektors"
+---
+
+Symphony Cloud Vector (SCV) pārvalda privātas semantiskās zināšanas par ārējiem aparatūras resursiem un pakalpojumu sniedzēju realitāti, kas veido jūsu klasterus, apmācību, pētniecību un darbu ar datiem. Tas kartē pakalpojumu sniedzēju piedāvājumus, reģionus, infrastruktūras domēnus, ierobežojumus un novēroto pieejamību, nerangējot pakalpojumu sniedzējus un nenosakot robežas tam, ko jūs drīkstat mēģināt.
+
+## Pakalpojumu sniedzēju pārklājums
+
+SCV aptver šādus pakalpojumu sniedzējus un resursu veidus:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Lietotājam piederoša aparatūra (ja nepieciešama salīdzināšana ar ārējiem resursiem)
+
+## Instalētie dzinēji
+
+SCV zināšanas tiek nodrošinātas ar astoņiem neatkarīgi instalējamiem C++ dzinējiem. Jūs instalējat tikai tos, kas jums nepieciešami:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    SCV pamatdzinējs zināšanām par pakalpojumu sniedzēju resursiem un grafu veidošanai.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Mākoņa pierādījumu dzinējs ierobežotai uztveršanai un korpusa semantikai.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare specifisks pierādījumu dzinējs.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS specifisks aparatūras un resursu zināšanu dzinējs.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure specifisks aparatūras un resursu zināšanu dzinējs.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean specifisks resursu zināšanu dzinējs.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP specifisks aparatūras un resursu zināšanu dzinējs.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Neobligāts relāciju grafa savienotājs, kas izmanto DuckDB saglabātai SQL indeksēšanai.
+  </Card>
+</CardGroup>
+
+## Pārnēsājamas pakalpojumu sniedzēju pakotnes un kompozīcija
+
+SCV nodrošina pārnēsājamas pakalpojumu sniedzēju pakotnes caur qxctl. Jūs saglabājat kontroli pār prasībām, pakalpojumu sniedzēju atļaujām, recepšu alternatīvām un izpildes lēmumiem. qxctl atbalsta saglabātas darbplūsmas un aizsargātu grafu atlasi, tāpēc varat atkārtot precīzus pierādījumus, atkārtoti nevaicājot pakalpojumu sniedzējiem.
+
+## Neobligātais DuckDB savienotājs
+
+`scv-graph-duckdb-connector` pievieno ierobežotu nemainīgu vietējo grafu relāciju projekciju. DuckDB ir lietotāja izvēlētā noklusējuma SQL datubāze. Nākotnē, izmantojot papildu adapterus, varēsiet izvēlēties specializētus grafu dzinējus.
+
+## Privātums un suverenitāte
+
+Instalēts SCV zināšanu grafs pieder jūsu privātajai instalācijai. Lietotāja sniegtie konti, atlikumi, atļaujas un līgumiskie ierobežojumi tiek izmantoti tikai caur skaidri iespējotām novērošanas virsmām. Privāti fakti nenonāk oficiālajā Symphony avota patiesībā.
+
+## Kā SCV saistās ar citiem vektoriem
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/lv/vectors/sov">
+    Operatīvā vadības plakne, kas darbojas, balstoties uz SCV pierādījumiem. SOV nepārraksta pakalpojumu sniedzēju nozīmi.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/lv/vectors/snv">
+    Reģistrē fizisko Node (mezglu) un klasteru identitātes, kas rodas, nodrošinot resursus, balstoties uz SCV informāciju.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/lv/vectors/shv">
+    Pārvalda detalizētas zināšanas par aparatūras spējām komponentiem, uz kuriem atsaucas SCV.
+  </Card>
+</CardGroup>
+
+## Versiju saskarnes papildinājumi
+
+SCV laidieni ir aditīvi un ar precīzām versijām. Agrākās instalācijas joprojām ir izsaucamas savos precīzajos tvērumos. Pašreizējie papildinājumi ietver vietējās operācijas, korpusa momentuzņēmumus, interpretācijas profilus, pārnēsājamas pakalpojumu sniedzēju pakotnes, kompozīcijas darbplūsmas, saistību izsekošanu un pierādījumu komplektus. Katrs papildinājums saglabā iepriekšējos maršrutus, noklusējumus un ierakstus.

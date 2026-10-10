@@ -1,0 +1,28 @@
+---
+title: "Nøytralitet overfor kallerklasse og vertsautoritet i Symphony"
+description: "Symphony klassifiserer ikke kallere etter type. Autoritet utledes fra eierskap til målverten, eksplisitt tillatelse, forventet tilstand og eierkonfigurerte sikkerhetsmekanismer."
+sidebarTitle: "Kallerautoritet"
+---
+
+Symphony klassifiserer ikke en kaller som menneske, AI, agent, tjeneste, arbeidslast, organisasjon eller noen annen aktørtype når autoritet avgjøres. Om du klassifiseres som en person eller et automatisert system, gir eller fjerner ikke i seg selv noen kapabilitet. Denne nøytraliteten overfor kallerklasse er en sentral arkitekturgrense som holder autorisasjon forankret i fakta i stedet for merkelapper.
+
+## Hva som styrer autoritet
+
+Støttede autorisasjonsbeslutninger bruker følgende inndata:
+
+- **Eierskap til målverten eller tildelte tillatelser**: Administratoren av målverten er suveren over konfigurerbar styring.
+- **Forespurt operasjon og ressurs**: Den konkrete handlingen og objektet den virker på.
+- **Forventet tilstand**: Det erklærte ønskede utfallet og den observerte gjeldende tilstanden.
+- **Eierkonfigurerte sikkerhetsmekanismer**: Konservative standarder som administratoren kan justere eller fjerne.
+
+## SSIAG og vertsautoritet
+
+SSIAG kan verifisere og projisere effektiv vertsautoritet, men oppretter ikke en overordnet registreringsautoritet og nedlegger ikke permanent veto mot administratoren av målverten. Forsterket identitetssikring og styringssperrer er kallernøytrale, eierkonfigurerte sikkerhetsmekanismer. Krav til protokollintegritet er fortsatt obligatoriske innenfor støttet verktøy.
+
+## Hva Symphony ikke avgjør
+
+Symphony avgjør ikke om en aktør kan eie eiendom, åpne en konto, signere en kontrakt, påta seg ansvar eller handle på vegne av en annen enhet. Disse faktaene tilhører den relevante eieren, leverandøren, motparten og gjeldende lov. Plattformen holder seg innenfor sin avgrensede rolle: den produserer kompatibilitetsevidens og støtter operasjoner, men strekker seg ikke til å fastslå ekstern juridisk eller finansiell kapasitet.
+
+## Praktisk betydning
+
+Når du kaller qxctl eller en vektormotor, gjelder de samme kontrollene uavhengig av om du kjører kommandoen manuelt, via et skript eller gjennom et agentisk verktøy. Autoritetsstien er: eierskap til målverten, eksplisitt tillatelse, forventet tilstand, sikkerhetsmekanismer. Ingen kallertype får automatisk omgåelse eller automatisk begrensning.

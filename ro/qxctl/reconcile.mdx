@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: reconcilierea arborilor de lucru"
+description: "Reconciliați arborii de lucru cu un coordonator Symphony legat, cu verificări de compatibilitate, jurnale de checkpoint și închidere și recuperare în două sloturi bazată pe dovezi."
+sidebarTitle: "reconcile"
+---
+
+Gramatica `qxctl knowledge reconcile ...` conduce reconcilierea arborilor de lucru printr-un singur Knowledge Session Coordinator legat exact. Fiecare mutație este urmărită prin identificatori stabili și este de tip compare-and-swap față de digest-ul exact al jurnalului curent.
+
+## Comenzi
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifică dacă qxctl, coordonatorul și motoarele legate sunt de acord asupra versiunii protocolului și a domeniului.
+- `begin`: deschide un nou context de reconciliere cu un identificator de operație stabil.
+- `status`: inspectează jurnalul curent fără mutație.
+- `checkpoint`: avansează durabil jurnalul prin compare-and-swap.
+- `close`: finalizează contextul de reconciliere.
+- `recover --discover`: recuperare prin descoperire atunci când starea obișnuită nu poate valida starea locală.
+
+## Reguli de recuperare
+
+<Warning>
+  Recuperarea în două sloturi este o reparare înainte bazată pe dovezi. Nu este niciodată o permisiune de a renunța la un jurnal incompatibil sau la o extensie critică necunoscută. Dacă recuperarea eșuează, escaladați în loc să forțați.
+</Warning>
+
+Folosiți recuperarea prin descoperire doar atunci când starea obișnuită nu poate valida starea locală. Păstrați blocajele; replanificați doar după ce dovezile verificate se schimbă.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Coordonatorul de sesiune" icon="gears" href="/ro/engines/coordinator">
+    Motorul care deține jurnalele de reconciliere.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ro/qxctl/session">
+    Sesiuni autentificate care se asociază cu contextele de reconciliere.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ro/qxctl/engines">
+    Gestionați legările pe care le consumă coordonatorul.
+  </Card>
+</CardGroup>

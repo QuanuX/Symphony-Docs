@@ -1,0 +1,37 @@
+---
+title: "Izolarea căii critice în QuanuX Symphony"
+description: "Aflați cum protejează Symphony căile de execuție de interferențele administrative: componente pe calea rece și înghețată, disciplina magistralelor și conceptul de martor de stare Prima Parte."
+sidebarTitle: "Izolarea căii critice"
+---
+
+Symphony separă activitatea administrativă de activitatea de execuție, astfel încât tranzacționarea live, cercetarea și alte căi sensibile la performanță să rămână ferite de jitter, latență și dependențe ascunse. qxctl și planul de cunoaștere reprezintă administrare pe calea rece sau înghețată. Acestea pot acționa explicit asupra unui Node care găzduiește și activitate live, dar nu trebuie să devină dependențe continue ale căii critice.
+
+## Disciplina căii reci și înghețate
+
+qxctl și motoarele de vectori sunt componente administrative pe calea rece sau înghețată. Acestea nu trebuie:
+
+- Să se execute în linie cu căile de execuție fierbinți sau calde
+- Să partajeze blocări (locks) cu sarcinile de lucru live
+- Să creeze dependențe sincrone care adaugă jitter sau latență
+- Să devină observatori ascunși, interpretoare rezidente sau manageri de pachete nesolicitați rulând în fundal
+- Să mențină o rezidență continuă pe Node-urile de execuție
+
+Această regulă se aplică coordonatorului sesiunilor de cunoaștere, motoarelor de vectori și tuturor operațiunilor administrate de qxctl. Acestea produc dovezi, validează starea și pregătesc planuri, dar nu participă la calea de execuție live.
+
+## Disciplina magistralelor
+
+Transferurile voluminoase, controlul, cercetarea și datele reziduale ale execuției nu trebuie să partajeze aceeași magistrală. O topologie poate folosi mai multe magistrale sau poate ocoli o magistrală pentru o cale declarată, mai ales acolo unde traficul partajat ar putea introduce jitter. NATS JetStream, ZeroMQ și alte rețele sunt adaptoare și alegeri ale utilizatorului. Existența administrării magistralelor prin qxctl nu face obligatorie traversarea magistralei.
+
+Dumneavoastră alegeți topologia magistralelor care corespunde cerințelor de latență și debit. Symphony acceptă configurația fără a impune o singură rețea partajată.
+
+## Prima Parte
+
+**Prima Parte** este un concept ratificat al Fazei 3, nu un executabil curent. Este un martor de stare C++ opțional, extrem de ușor, local pentru Node, invocat explicit de qxctl după o operațiune semnificativă. Nu are daemon, listener, temporizator, observator, buclă de interogare sau conexiune rezidentă la magistrală.
+
+Vocabularul său durabil delimitat include trei termeni:
+
+- `current` — starea observată în prezent
+- `previous` — starea dinaintea operațiunii semnificative
+- `lastTransmitted` — starea trimisă de Node-ul la distanță după executarea comenzii asociate (fără confirmarea primirii)
+
+Prima Parte înregistrează doar propriul Node, nu devine niciodată un Maestro mai mic și se închide după finalizarea activității sale delimitate. Nu este un receptor Maestro al Fazei 1 și niciun executabil nu este încă implementat.

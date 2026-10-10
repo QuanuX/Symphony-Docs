@@ -1,0 +1,50 @@
+---
+title: "Koordynator sesji wiedzy dla silników wektorów Symphony"
+description: "Koordynator sesji wiedzy zapewnia ograniczoną kompatybilność, uzgadnianie drzew roboczych, uwierzytelnione sesje i koordynację cyklu życia z możliwością stosowania zmian w C++26."
+sidebarTitle: "Koordynator"
+---
+
+Koordynator sesji wiedzy (`modules/knowledge-session-coordinator`) to niezależnie instalowany proces C++26. Znajduje się między qxctl a silnikami wektorów i jest właścicielem ograniczonej kompatybilności, uzgadniania drzew roboczych, uwierzytelnionych sesji niekanonicznych, utrzymania SSFV, planowania cyklu życia wyłącznie w trybie raportowania oraz oddzielnie autoryzowanych dzienników z możliwością stosowania zmian.
+
+## Obowiązki
+
+- **Kontrole kompatybilności** między qxctl, koordynatorem i silnikami
+- **Uzgadnianie drzew roboczych** z trwałym stanem opartym na slotach
+- **Uwierzytelnione sesje niekanoniczne** pod nadzorem SSIAG
+- **Trwałe strumienie utrzymania SSFV**
+- **Planowanie cyklu życia wyłącznie w trybie raportowania** z deterministycznymi dowodami
+- **Dzienniki z możliwością stosowania zmian** z przygotowanymi próbami, operacją compare-and-swap, ponowną obserwacją, dynamicznym ponownym planowaniem i odzyskiwaniem
+
+## Czego koordynator nie robi
+
+<Warning>
+  Koordynator nie wykonuje semantyki wektorów ani działań na hoście. Koordynuje dowody i dzienniki; każdy silnik nadal jest właścicielem swojej domeny, a każde działanie na hoście pozostaje autoryzowane przez własny kontrakt.
+</Warning>
+
+- Brak stosowania zmian w wiedzy kanonicznej
+- Brak wykonywania dowolnych poleceń
+- Brak ukrytych obserwatorów i rezydentnej pracy w tle
+
+## Integracja z qxctl
+
+qxctl wywołuje dokładnie określone instalacje koordynatora walidowane potwierdzeniami. `qxctl knowledge reconcile ...` i `qxctl knowledge session ...` używają jednego dokładnie powiązanego koordynatora na operację, a mutacje wymagają stabilnych identyfikatorów operacji oraz dokładnych skrótów bieżącego dziennika na potrzeby compare-and-swap.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/pl/qxctl/reconcile">
+    Gramatyka uzgadniania drzew roboczych.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pl/qxctl/session">
+    Gramatyka uwierzytelnionych sesji i utrzymania SSFV.
+  </Card>
+
+  <Card title="Biblioteka bazowa" icon="cube" href="/pl/engines/knowledge-vector-foundation">
+    Wspólne mechanizmy C++ wykorzystywane przez koordynatora.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pl/governance/ssiag">
+    Autoryzuje sesje zarządzane przez koordynatora.
+  </Card>
+</CardGroup>

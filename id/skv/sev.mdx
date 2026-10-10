@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector untuk Perubahan Terencana"
+description: "SEV mengevaluasi perubahan terencana, kebaruan, dan transisi lifecycle dengan kasus deterministik, set siap-dependensi, graf sekali pakai, dan saran pemulihan tanpa apply."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) memiliki kasus perubahan terencana dan kebaruan yang ditemui di seluruh platform. Engine-nya adalah proses C++26 hanya-baca pada jalur pembekuan (freezing-path). SEV tidak memantau host maupun menerapkan transisi; SEV menghasilkan bukti dan saran disposisi.
+
+## Operasi
+
+- **Evaluasi kasus**: kasus evolusi deterministik untuk penambahan, perubahan, penggantian nama, penggantian (supersession), deprecation, penghentian, dan penghapusan.
+- **Perencanaan dampak dan disposisi**: menetapkan setiap kasus ke pemilik otoritatifnya.
+- **Penghitungan ulang set siap-dependensi**: menurunkan urutan aman dari transisi yang saling bergantung.
+- **Verifikasi transisi**: mengonfirmasi bahwa state yang diamati setelah transisi sesuai dengan bentuk yang diharapkan.
+- **Saran pemulihan**: menjelaskan langkah maju atau mundur yang aman ketika transisi terputus.
+- **Penilaian SCSEV**: profil SEV pertama yang diatur menerapkan operasi ini pada evolusi permukaan pengetahuan yang hanya berupa dokumentasi.
+- **Pemeriksaan kebaruan dan pemantauan**: mendeteksi permukaan baru atau tak terduga untuk perhatian peninjau.
+- **Penggabungan pemicu** dan **binding sesi lifecycle**: mengurangi evaluasi duplikat dan mengikat kasus ke sebuah sesi.
+- **Proyeksi graf**: graf sekali pakai untuk ditinjau.
+
+## Profil SCSEV
+
+SCSEV menggunakan kembali administrasi fitur SSFV, kebenaran perintah qxctl yang stabil, dan deskriptor operasi engine. SCSEV tidak membuat engine atau registry duplikat. Slice engine pertama hanya berupa laporan dan proposal; tindakan eksternal yang tahan lama tetap diotorisasi secara terpisah melalui qxctl dan knowledge session coordinator.
+
+<Note>
+  SEV hanya melakukan read, query, validate, dan propose. Apply kanonis tetap dinonaktifkan di seluruh keluarga engine SKV.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka kerja payung dan model Contract Quad.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/id/skv/ssfv">
+    Administrasi fitur yang digunakan kembali oleh profil SCSEV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/id/skv/sav">
+    Evaluasi komposisi dan kompatibilitas untuk komponen yang berubah.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Grammar evolution yang telah diratifikasi akan hadir sebagai `qxctl evolution ...` setelah diimplementasikan.
+  </Card>
+</CardGroup>

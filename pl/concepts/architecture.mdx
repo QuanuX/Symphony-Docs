@@ -1,0 +1,33 @@
+---
+title: "Architektura Symphony"
+description: "Zrozum granice między infrastrukturą wybraną przez użytkownika, kontraktami wektorów, silnikami, qxctl i zarządzanymi dowodami."
+sidebarTitle: "Architektura"
+---
+
+Symphony oddziela infrastrukturę i obciążenia wybrane przez użytkownika od wiedzy i administracji platformy. Platforma może sprawdzać, walidować i raportować kompatybilność, nie przejmując własności Twojej strategii ani nie traktując rekomendacji jako nakazu.
+
+## Warstwa fizyczna i obciążeń
+
+[Node](/pl/concepts/node-habitat-nest) to zidentyfikowany komputer fizyczny. **Habitat** to jego dokładne przygotowanie systemu operacyjnego i pakietów, a **Nest** to obciążenie realizujące cel wybrany przez użytkownika. Klastry łączą Node za pomocą jednej lub wielu magistrali. Struktury magistrali, adaptery, dostawcy i wybory sprzętowe są jawne, a nie stanowią uniwersalnych ustawień domyślnych.
+
+[Ścieżka krytyczna](/pl/concepts/hot-path-isolation) pozostaje oddzielona od rezydencji administracyjnej. qxctl i prace płaszczyzny wiedzy mogą jawnie administrować Node, ale nie stają się ukrytymi, ciągłymi zależnościami wykonywania na żywo.
+
+## Własność semantyczna
+
+[Wektory](/pl/concepts/vectors) to ograniczeni, trwali właściciele znaczenia i dozwolonych operacji. Każdy właściciel publikuje Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` i `SPEC.md`. [Symphony Knowledge Vector (SKV)](/pl/skv/overview) indeksuje powierzchnie kanoniczne i zachowuje ścieżkę do ich właściciela. Towarzyszące schematy, rejestry i księgi pozostają zarządzane, nie stając się dodatkowymi członkami Quad.
+
+Fazy dostarczania opisują, kiedy praca jest wykonywana. Nie przenoszą własności semantycznej z jednego wektora na inny.
+
+## Silniki i powierzchnia poleceń
+
+[Silniki wektorów](/pl/engines/overview) to niezależnie instalowane komponenty działające poza procesem, które sprawdzają, weryfikują, odwzorowują i proponują w ramach kontraktów swoich właścicieli. Nie zyskują uprawnień tylko dlatego, że tworzą propozycję.
+
+[qxctl](/pl/qxctl/overview) jest właścicielem gramatyki poleceń administracyjnych i prezentacji. Wywołuje ograniczone zdolności walidowane potwierdzeniami, podczas gdy wektor definiujący operację zachowuje jej semantykę. Dowody autoryzacji i audytu rządzą trasami mutacji; sama [klasyfikacja wywołującego](/pl/concepts/caller-authority) nie nadaje żadnych uprawnień.
+
+## Prawda i ewolucja
+
+Bieżące kontrakty określają bieżącą prawdę. Księgi zmian i publikacji zachowują dowody zarejestrowane w określonym momencie. Niezgodność między kontraktami, dowodami implementacji i zarejestrowaną historią jest ujawniana jako dryf, a nie po cichu przepisywana. [SAV](/pl/skv/sav) ocenia kompatybilność kompozycji; [SEV](/pl/skv/sev) planuje zarządzaną ewolucję.
+
+<Note>
+  Ten przegląd jest mapą granic. Zanim uznasz daną zdolność za dostępną w konkretnej instalacji, zapoznaj się z bieżącym kontraktem i dowodami implementacji każdego podlinkowanego wektora.
+</Note>

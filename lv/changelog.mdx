@@ -1,0 +1,25 @@
+---
+title: "Izmaiņu žurnāls"
+description: "Jaunas funkcijas, atjauninājumi un labojumi, kas piegādāti QuanuX Symphony."
+rss: true
+---
+
+<Update label="2026. gada 2. oktobris" description="25. septembra nedēļa" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Jaunas funkcijas
+
+- **Symphony Node Vector dzinēji.** Pieci neatkarīgi instalējami C++26 dzinēji tagad aptver Node identitāti (SNIV), resursus (SNRV), klastera attiecības (SCIV), nosaukumus (SCNV) un SNV kompozīciju un saglabāšanu. Iesniegtos pierādījumus, atlasītos skatus un saglabāto vēsturi varat administrēt ar qxctl. Tiešraides novērošana un SOV nodrošināšana pagaidām nav iekļautas. Skatiet [Node Vector](/lv/vectors/snv).
+- **Neobligāts SNV lokālais novērotājs.** qxctl var izsaukt atsevišķu lokālo novērotāju, kas ziņo par atlasītiem CPU un atmiņas novērojumiem ar skaidri norādītu nenoteiktību. Tas nekad nepiešķir identitāti, dalību vai nosaukumus.
+- **SQV pētniecības datu pamati.** Jaunas C++26 bibliotēkas aptver tveršanu ar oriģinālajiem baitiem un avota izcelsmi (SQAV), metadatus (SQMV), plūsmu (SQFV), precīzu veselo skaitļu konvertēšanu ar izcelsmes ķēdi (SQTV), lokālo saglabāšanu (SQPV) un piegādi ar kontrolpunktiem un precīzu atsākšanu (SQDV). Skatiet [Quantitative Vector](/lv/vectors/sqv).
+- **SQV administrēšana ar qxctl.** Septiņi neatkarīgi instalējami administrēšanas dzinēji nodrošina pieprasījumu un konfigurācijas validāciju, metadatu projekcijas un tikai lasāmu saglabātā stāvokļa pārbaudi. Skatiet [Vektoru komandas](/lv/qxctl/vector-commands).
+- **Databento un brokeru adapteri.** SQV tagad atbalsta Databento DBNv3 MBO tveršanu, saglabā DBNv1 un DBNv3 paraugus un plāno ierobežotus vēsturiskos pieprasījumus ar pārklājuma pierādījumiem. Pieejami arī ne-tiešraides avotu un brokeru lasīšanas adapteri. Autentificēta piegādātāju izpilde un tiešraides datu vākšana paliek turpmākajam darbam.
+
+## Atjauninājumi
+
+- **SSIAG akreditācijas datu pieņemšana.** SSIAG pievieno vienreizējas akreditācijas datu lietošanas aizsargus, autentificētu nosūtīšanas pieņemšanu, noturīgu akreditācijas datu pieprasījumu žurnālu ar atkopšanu un vietējo partnera validāciju macOS. Operatīvā akreditācijas datu izmantošana paliek atspējota. Skatiet [SSIAG](/lv/governance/ssiag).
+- **qxctl komandu pārklājums.** qxctl tagad ir 399 stabilas komandu identitātes (iepriekš 383). Dzinēju piesaistes atbalsta 13 noteiktas lomas, tostarp piecus SNV dzinējus. Skatiet [qxctl pārskatu](/lv/qxctl/overview).
+- **SQFV pakešu saskarne.** SQFV pakešu bibliotēka tagad izmanto C++26 API C ABI vietā. Atjauniniet visas integrācijas, kas izsauca iepriekšējo saskarni.
+- **SKVI ietilpība.** [SKVI](/lv/skv/skvi) indeksē vairāk virsmu, tostarp jaunos SQV pētniecības datu īpašniekus.
+- **Dzinēju instalēšanas norādījumi.** Instalēšanas norādījumi tagad precizē, ka katru dzinēju instalējat, atjauninat un noņemat atsevišķi. Skatiet [Dzinēju pārskatu](/lv/engines/overview).
+
+</Update>

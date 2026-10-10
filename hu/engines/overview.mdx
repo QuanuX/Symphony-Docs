@@ -1,0 +1,57 @@
+---
+title: "Symphony vektormotorok: a független telepítés áttekintése"
+description: "Minden Symphony vektormotor függetlenül települ, C++-ban, folyamaton kívül fut, és jogosultságmentes marad. Ismerje meg itt az SKV, SCV és SHV motorcsaládokat."
+sidebarTitle: "Motorok áttekintése"
+---
+
+Minden aktív, alkalmazásszintű Symphony vektorhoz tartozhat egy függetlenül telepíthető, folyamaton kívül futó C++ motor. A megosztott, jogosultságmentes C++ mechanizmusok a `libraries/` alatt találhatók; egy különálló C++ koordinátor felel a hitelesített munkamenetek és a munkafa-egyeztetés mechanizmusaiért. A motorok a vektorok által birtokolt szerződéseken belül vizsgálnak, validálnak, kivetítenek és javaslatot tesznek. Pusztán tartalom előállításával nem tesznek szert jogosultságra.
+
+## Megvalósított motorok
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector alap" icon="cube" href="/hu/engines/knowledge-vector-foundation">
+    C++ folyamatkeretezés, JSON, SHA-256, pillanatképek, nyugták és manifesztumfelderítés.
+  </Card>
+
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    Hitelesített munkamenetek, munkafa-egyeztetés és az életciklus-alkalmazás koordinálása.
+  </Card>
+
+  <Card title="SCV forrásmotorok" icon="cloud" href="/hu/engines/scv-source-engines">
+    Nyolc C++26 SCV, hiperskálázó, edge és szolgáltatói forrástudás-motor.
+  </Card>
+
+  <Card title="SHV motorok" icon="microchip" href="/hu/engines/shv-engines">
+    Hardverforrás-, katalógus-, profil-, partíció-, közzétételi és adaptermotorok.
+  </Card>
+</CardGroup>
+
+## Az SKV motorcsalád
+
+Az SKV felületek mindegyikének saját motorja van:
+
+- Az SKVI, SCLV, SACV, SODV és SSFV motorok egyaránt megvalósítják a vizsgálatot (inspect), az ellenőrzést (check), a javaslattételt (propose), a kivetítést (project), és ahol alkalmazható, a helyreállítást (recovery).
+- Az SAV és SEV motorok freezing path C++26 folyamatok a kompozíció értékeléséhez és a fejlődési esetekhez.
+
+<Note>
+  Minden jelenlegi SKV motor kizárólag olvas, lekérdez, validál és javaslatot tesz. A programozott kanonikus alkalmazás letiltva marad mindaddig, amíg az egyes motorok SSIAG-engedélyellenőrzési, elvártállapot-tranzakciós, qxctl-biztosítéki, STAV-eseményi, helyreállítási és negatív teszt szerződései el nem készülnek.
+</Note>
+
+## Közös garanciák
+
+- Modulonként független telepítés és eltávolítás
+- Nincs környezeti tárolóbejárás; a manifesztumfelderítés kifejezett
+- Nincs megosztott jogosultság; minden módosító útvonalat az SSIAG és a STAV együtt kapuz
+- Nincs hot path rezidencia; a motorok soha nem visznek késleltetést az élő munkaterhelésekbe
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="qxctl áttekintés" icon="terminal" href="/hu/qxctl/overview">
+    Adminisztratív CLI, amely pontos, nyugtával validált motorokat hív meg.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/hu/governance/maestro">
+    Rögzíti a motorok és receptorok közötti dokkolási kapcsolatokat.
+  </Card>
+</CardGroup>

@@ -1,0 +1,37 @@
+---
+title: "A hot path elszigetelése a QuanuX Symphonyban"
+description: "Ismerje meg, hogyan védi a Symphony a végrehajtási útvonalakat az adminisztratív beavatkozástól: cold és freezing path komponensek, buszfegyelem és a Prima Parte állapottanú koncepció."
+sidebarTitle: "Hot path elszigetelése"
+---
+
+A Symphony elkülöníti az adminisztratív munkát a végrehajtási munkától, hogy az élő kereskedés, a kutatás és más teljesítményérzékeny útvonalak mentesek maradjanak a jittertől, a késleltetéstől és a rejtett függőségektől. A qxctl és a tudássík cold vagy freezing path adminisztrációt végez. Kifejezetten végezhetnek műveletet olyan Node-on, amely élő munkát is futtat, de nem válhatnak folyamatos hot path függőséggé.
+
+## Cold és freezing path fegyelem
+
+A qxctl és a vektormotorok adminisztratív cold vagy freezing path komponensek. Nem tehetik a következőket:
+
+- Nem futhatnak a hot vagy warm végrehajtási útvonalakkal egy sorban
+- Nem oszthatnak meg zárolásokat élő munkaterhelésekkel
+- Nem hozhatnak létre jittert vagy késleltetést okozó szinkron függőségeket
+- Nem válhatnak rejtett figyelővé, rezidens értelmezővé vagy kéretlen háttérbeli csomagkezelővé
+- Nem tarthatnak fenn folyamatos rezidenciát a végrehajtási Node-okon
+
+Ez a szabály vonatkozik a tudásmunkamenet-koordinátorra, a vektormotorokra és minden qxctl által adminisztrált műveletre. Bizonyítékot állítanak elő, állapotot validálnak és terveket készítenek, de nem vesznek részt az élő végrehajtási útvonalon.
+
+## Buszfegyelem
+
+A nagy volumenű átvitel, a vezérlés, a kutatás és a végrehajtási kimenet nem feltétlenül osztozik egyetlen buszon. Egy topológia használhat több buszt, vagy egy deklarált útvonalon megkerülheti a buszt, különösen ott, ahol a megosztott forgalom jittert okozhat. A NATS JetStream, a ZeroMQ és más buszszövetek adapterek és felhasználói döntések. Az, hogy létezik qxctl buszadminisztráció, nem teszi kötelezővé a buszon való áthaladást.
+
+Ön választja ki azt a busztopológiát, amely megfelel a késleltetési és átviteli követelményeinek. A Symphony támogatja a konfigurációt anélkül, hogy egyetlen megosztott buszszövetet kényszerítene rá.
+
+## Prima Parte
+
+A **Prima Parte** egy ratifikált, 3. fázisú koncepció, nem pedig jelenleg futtatható program. Opcionális, rendkívül könnyűsúlyú, C++ nyelvű, Node-helyi állapottanú, amelyet a qxctl kifejezetten egy lényeges művelet után hív meg. Nincs démonja, figyelője, időzítője, megfigyelője, lekérdezési ciklusa vagy rezidens buszkapcsolata.
+
+Körülhatárolt, tartós szókészlete három kifejezést tartalmaz:
+
+- `current` — a jelenleg megfigyelt állapot
+- `previous` — a lényeges művelet előtti állapot
+- `lastTransmitted` — a távoli Node által a kapcsolódó parancs végrehajtása után elküldött állapot (a fogadás nincs megerősítve)
+
+A Prima Parte csak a saját Node-ját rögzíti, soha nem válik kisebb Maestróvá, és a körülhatárolt munkája után kilép. Nem 1. fázisú Maestro-receptor, és futtatható program még nincs megvalósítva.

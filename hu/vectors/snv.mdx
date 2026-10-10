@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node-identitás és klaszterrekordok"
+description: "Az SNV rögzíti és összekapcsolja a Node-identitást, az erőforrásokat, a klasztertagságokat és a felhasználó által adott neveket anélkül, hogy előírná őket. Az SNIV, SNRV, SCIV és SCNV alvektorokból áll."
+sidebarTitle: "Node Vector"
+---
+
+A Symphony Node Vector (SNV) rögzíti és összekapcsolja a Symphonyval használt fizikai Node-ok (csomópontok) identitását, erőforrásait, klasztertagságait és neveit. Négy alvektorból áll, amelyek mindegyike egy-egy különálló szemantikai határt birtokol. Az SNV semmit nem választ, nem bocsát ki, nem ír elő és nem nevez át automatikusan az Ön nevében.
+
+## Az alvektorok összetétele
+
+Az SNV négy tartós szemantikai tartományra épül:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node-identitás**: a fizikai Node identitása és annak pontos szolgáltatói erőforrás-, kiválasztott ajánlat- és infrastruktúratartomány-társításai.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node-erőforrások**: egy Node helyi és kifejezetten minősített távoli erőforrás-igazsága.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Klaszteridentitás**: klaszteridentitás, buszkapcsolat és a Node–klaszter kapcsolatok.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Összevont elnevezés**: az Ön vagy szolgáltatói által már kiosztott nevek SNV-határokon belüli feloldása.
+  </Card>
+</CardGroup>
+
+## Rögzítési határ
+
+Az SNV tényeket és azok leszármazását rögzíti. Nem foglal le neveket, nem oszt ki erőforrásokat és nem hoz létre klasztereket Ön helyett. A neveket a felhasználó adja; a Symphony rögzíti őket. A szolgáltatói erőforrásokat a felhasználó választja ki; a Symphony összekapcsolja őket. A klasztertopológiát a felhasználó tervezi; a Symphony dokumentálja.
+
+## Hogyan kapcsolódik az SNV más vektorokhoz
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/hu/vectors/scv">
+    Szolgáltatói és telephelyen kívüli erőforrás-tudást biztosít, amely meghatározza, milyen Node-ok létezhetnek.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/hu/vectors/sov">
+    A qxctl-en keresztül hozza létre és módosítja az infrastruktúrát, előállítva az SNV által rögzített Node-okat.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/hu/vectors/shv">
+    Részletes hardverképesség-bizonyítékot szolgáltathat a Node-on belüli fizikai komponensekről.
+  </Card>
+</CardGroup>
+
+## Jelenlegi állapot
+
+Az SNV egy kialakulóban lévő kanonikus architektúraszerződés. Jelenleg nincs megvalósítva SNV-motor, gráf, regiszterséma, identitáskódoló, felderítési szolgáltatás, névszolgáltatás vagy qxctl-parancs. A rekordsémák és a motorok elhalasztva maradnak.
+
+## Jövőbeli telepíthetőség
+
+Minden jövőbeli SNV-motornak függetlenül telepíthetőnek kell lennie, és képesnek kell lennie vetületeit a tulajdonos pontos bizonyítékaiból újraépíteni. Egyetlen motor sem válik identitás- vagy elnevezési hatósággá pusztán azáltal, hogy rekordokat tárol vagy old fel.

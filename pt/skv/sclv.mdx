@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector para alterações no código-fonte"
+description: "O SCLV mantém um livro-razão append-only de alterações concluídas no código-fonte, com propostas neutras quanto ao fornecedor, recuperação sem mutação e projeções descartáveis para o registo."
+sidebarTitle: "SCLV"
+---
+
+O Symphony Change Ledger Vector (SCLV) regista as alterações feitas às superfícies SKV ao longo do tempo. O seu engine é um processo C++ instalável de forma independente que realiza verificações determinísticas de um livro-razão append-only e produz projeções descartáveis. O livro-razão só é escrito depois de uma alteração material no código-fonte estar concluída.
+
+## Operações
+
+- **Inspect e check**: validam a forma, a continuidade e a evidência do livro-razão.
+- **Propose (v3)**: aceita propostas declaradas pelo chamador, neutras quanto ao fornecedor, para novos registos.
+- **Recover**: realiza a recuperação sem mutação de estados interrompidos ou ambíguos.
+- **Project**: emite, a pedido, inventários descartáveis do estado do livro-razão.
+
+## Admissão e retirada
+
+Cada registo SCLV admitido vincula a evidência indexada atual no momento em que é escrito. Uma retirada legítima posterior de uma superfície preserva a proveniência histórica imutável sem obrigar a reintroduzir no SKVI prosa atual eliminada. A história continua a ser história; a verdade atual continua a ser atual.
+
+## O que o SCLV não faz
+
+- O SCLV não cria nem aprova alterações no código-fonte.
+- O SCLV não reescreve registos existentes; é append-only.
+- O SCLV não publica nada. A projeção pública pertence ao SODV.
+
+<Note>
+  Todos os engines SKV atuais são apenas de leitura, consulta, validação e proposta. A aplicação canónica está desativada até que estejam concluídos todos os contratos de autoridade e auditoria de cada engine.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/pt/skv/skvi">
+    Indexa a verdade canónica atual à qual os registos SCLV se vinculam.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt/skv/sodv">
+    Governa a projeção pública oficial da informação do livro-razão.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/pt/skv/sev">
+    Os casos de evolução avaliam as alterações antes de o SCLV as registar.
+  </Card>
+
+  <Card title="Comandos de vetores do qxctl" icon="terminal" href="/pt/qxctl/vector-commands">
+    Execute `qxctl sclv ...` para inspect, check, propose e recover.
+  </Card>
+</CardGroup>

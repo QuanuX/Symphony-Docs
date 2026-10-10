@@ -1,0 +1,83 @@
+---
+title: "qxctl: agentowy administracyjny wiersz poleceń Symphony"
+description: "qxctl to administracyjne CLI Symphony napisane w Go. Poznaj jego 373 wykonywalne polecenia, rejestr wiązań silników i model wywołań silników wektorowych weryfikowany potwierdzeniami."
+sidebarTitle: "Przegląd qxctl"
+---
+
+`qxctl` to oparte na Go, projektowane przede wszystkim z myślą o agentach CLI Symphony do administracji i zapytań. Obsługuje polecenia; wektory domenowe są właścicielami operacji i znaczeń, które się za nimi kryją. Jego zatwierdzony w repozytorium rejestr wiąże każdy wykonywalny liść polecenia ze stabilną tożsamością maszynową i przejrzanymi dowodami administracji funkcjami.
+
+## Zakres qxctl
+
+qxctl implementuje administrację w zakresie:
+
+- Inspekcji repozytorium i kontraktów
+- Administracji walidatorem, ostrzeżeniami, niezmiennikami, funkcjami, cyklem życia, sesjami, rekoncyliacją, wiązaniami i Maestro
+- Administracji tożsamością SSIAG, audytem STAV i producentami Accordare
+- Zaimplementowanej gramatyki silników wektorowych (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv` oraz obszary SCV i SHV)
+
+Obecny rejestr zawiera **373** wykonywalne polecenia.
+
+## Bezpieczny model wywołań
+
+qxctl wywołuje dokładne instalacje zweryfikowane potwierdzeniami, korzystając z ograniczonych podprocesów, twardych terminów, kontroli tożsamości i digestu odpowiedzi, transakcji z oczekiwanym stanem oraz trwałego odzyskiwania. Nigdy nie akceptuje ścieżek adapterów ani surowych wersji zamiast potwierdzeń.
+
+## Rejestr wiązań silników v2
+
+Rejestr wiązań silników v2 obsługuje osiem ustalonych ról silników oraz ograniczone przyszłe tożsamości ról. Starszy stan v1 jest odczytywany równolegle; migracja do v2 wymaga jawnej operacji compare-and-swap powiązanej z digestem, wykonywanej przez qxctl, i nigdy nie jest operacją wyboru wersji.
+
+## Polecenia rejestru
+
+Wygeneruj i zweryfikuj oczekiwany rejestr z katalogu `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Zainstalowany klient może emitować dowody powiązane z plikiem wykonywalnym:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Dowody oczekiwane mają wartość null dla wersji klienta, digestu pliku wykonywalnego i digestu potwierdzenia. Dowody zaobserwowane wiążą dokładną wersję klienta i digest pliku wykonywalnego, a także digest potwierdzenia, jeśli jest dostępny. Obie formy używają `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl odpowiada za gramatykę i prezentację poleceń. Nie odpowiada za semantykę wektorów ani kanoniczną prawdę wiedzy. Tylko przejrzane zmiany w źródłach ratyfikują nową tożsamość `qxcmd`, niezależnie od klasy wywołującego.
+</Note>
+
+## Grupy poleceń
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/pl/qxctl/knowledge">
+    Cykl życia między wektorami i administracja trwałymi sesjami SSFV.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/pl/qxctl/lifecycle">
+    Profil, własność, obserwacja, raport, rozruch, apply i odzyskiwanie.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/pl/qxctl/engines">
+    Rejestr wiązań silników i migracja.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/pl/qxctl/reconcile">
+    Rekoncyliacja drzew roboczych przez koordynatora.
+  </Card>
+
+  <Card title="session" icon="key" href="/pl/qxctl/session">
+    Uwierzytelnione sesje i strumienie utrzymania SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/pl/qxctl/maestro">
+    Pochodny inwentarz receptorów i dowody dokowania.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/pl/qxctl/validate">
+    Chroniona polityka ostrzeżeń i administracja walidatorem.
+  </Card>
+
+  <Card title="polecenia wektorowe" icon="terminal" href="/pl/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` oraz przyszła gramatyka accord/evolution.
+  </Card>
+</CardGroup>

@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance pentru Symphony"
+description: "SSIAG este fundamentul de autorizare neutru față de apelant al Symphony, cu înrolare per TOPS, ciclu de viață protejat al politicilor, metadate de audit sigure și puncte de integrare native pentru supraveghere."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) este fundamentul Go instalabil independent, fără cgo, pentru autorizarea neutră față de apelant pe o gazdă Symphony. Acesta proiectează autoritatea efectivă a gazdei, condiționează modificările protejate și se integrează cu auditul STAV înainte ca orice modificare să devină vizibilă.
+
+## Ce oferă SSIAG
+
+- Autorizare exactă, neutră față de apelant, legată de proprietatea asupra gazdei țintă, permisiunea acordată, operațiunea solicitată, starea așteptată și măsurile de protecție configurate de proprietar
+- Înrolare per TOPS și încredere în punctele finale locale
+- Ciclu de viață protejat al politicilor și ciclu de viață al instalării furnizorilor
+- Ciclu de viață al legărilor, cu compare-and-swap între legările active și cele anterioare
+- Metadate de audit sigure, pregătite pentru STAV
+- Supraveghere nativă prin launchd și systemd
+
+## Ce este dezactivat în mod deliberat
+
+<Warning>
+  Utilizarea operațională a credențialelor, aplicarea cunoașterii canonice și livrarea secretelor rămân dezactivate. Modificările fundamentale obișnuite eșuează în mod închis (fail closed) până când ruta de audit necesară prin STAV este finalizată.
+</Warning>
+
+SSIAG nu decide clasa apelantului. Apelanții de tip om, IA, agent, serviciu și sarcină de lucru sunt tratați identic; autoritatea provine de la gazda țintă și de la operațiunea solicitată, nu de la eticheta actorului.
+
+## Furnizorul macOS Keychain
+
+`modules/ssiag-provider-macos-keychain` este un adaptor de metadate Swift, cu un handshake delimitat, verificat reciproc, și cu observarea pachetului semnat plus a pregătirii sesiunii. Acesta expune metadatele furnizorului către SSIAG fără a acorda acces operațional la Keychain, acces care este dezactivat intenționat în prezent.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/ro/governance/stav">
+    Registrul de audit append-only per TOPS pe care se bazează modificările SSIAG.
+  </Card>
+
+  <Card title="Producătorul Accordare" icon="pen-nib" href="/ro/governance/accordare-producer">
+    Circuitul delimitat de audit al versiunilor denumite SAV, care se compune cu SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/ro/qxctl/lifecycle">
+    Administrarea ciclului de viață, care consultă SSIAG pentru autorizare.
+  </Card>
+
+  <Card title="Autoritatea apelantului" icon="user-shield" href="/ro/concepts/caller-authority">
+    Doctrina pe care o implementează SSIAG.
+  </Card>
+</CardGroup>

@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: wiedza o zasobach dostawców"
+description: "SCV utrzymuje prywatną wiedzę o zewnętrznych zasobach dostawców AWS, Azure, GCP, DigitalOcean, Cloudflare oraz o sprzęcie należącym do użytkownika za pomocą ośmiu niezależnie instalowalnych silników C++."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) jest właścicielem prywatnej wiedzy semantycznej o zewnętrznych zasobach sprzętowych i realiach dostawców, które kształtują Twoje klastry, trenowanie, badania i pracę z danymi. Mapuje oferty dostawców, regiony, domeny infrastruktury, ograniczenia i zaobserwowaną dostępność, nie szeregując dostawców ani nie narzucając granic tego, czego możesz próbować.
+
+## Obsługiwani dostawcy
+
+SCV obejmuje następujących dostawców i typy zasobów:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Sprzęt należący do użytkownika (tam, gdzie wymagane jest porównanie z zasobami zewnętrznymi)
+
+## Instalowane silniki
+
+Wiedza SCV jest dostarczana przez osiem niezależnie instalowalnych silników C++. Instalujesz tylko te, których potrzebujesz:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Podstawowy silnik SCV do wiedzy o zasobach dostawców i budowy grafów.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Silnik dowodów chmurowych do ograniczonego przechwytywania i semantyki korpusu.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Silnik dowodów specyficzny dla Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Silnik wiedzy o sprzęcie i zasobach specyficzny dla AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Silnik wiedzy o sprzęcie i zasobach specyficzny dla Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Silnik wiedzy o zasobach specyficzny dla DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Silnik wiedzy o sprzęcie i zasobach specyficzny dla GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Opcjonalny relacyjny konektor grafów wykorzystujący DuckDB do zachowanego indeksowania SQL.
+  </Card>
+</CardGroup>
+
+## Przenośne pakiety dostawców i kompozycja
+
+SCV udostępnia przenośne pakiety dostawców za pośrednictwem qxctl. Zachowujesz kontrolę nad wymaganiami, uprawnieniami dostawców, alternatywnymi recepturami i decyzjami o wykonaniu. qxctl obsługuje zachowane przepływy pracy i chroniony wybór grafów, dzięki czemu możesz odtwarzać dokładne dowody bez ponownego odpytywania dostawców.
+
+## Opcjonalny konektor DuckDB
+
+`scv-graph-duckdb-connector` dodaje ograniczoną relacyjną projekcję niezmiennych natywnych grafów. DuckDB to wybrana przez użytkownika domyślna baza danych SQL. W przyszłości możesz wybrać dedykowane silniki grafowe za pomocą dodatkowych adapterów.
+
+## Prywatność i suwerenność
+
+Zainstalowany graf wiedzy SCV należy do Twojej prywatnej instalacji. Konta, salda, uprawnienia i ograniczenia umowne dostarczone przez użytkownika są wykorzystywane wyłącznie przez jawnie włączone powierzchnie obserwacji. Prywatne fakty nie trafiają do oficjalnej prawdy źródłowej Symphony.
+
+## Relacje SCV z innymi wektorami
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/pl/vectors/sov">
+    Operacyjna płaszczyzna sterowania, która działa na podstawie dowodów SCV. SOV nie przepisuje znaczenia dostawców.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/pl/vectors/snv">
+    Rejestruje tożsamości fizycznych Node'ów i klastrów powstałych w wyniku provisioningu opartego na wiedzy SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/pl/vectors/shv">
+    Jest właścicielem szczegółowej wiedzy o możliwościach sprzętu dla komponentów, do których odwołuje się SCV.
+  </Card>
+</CardGroup>
+
+## Wersjonowane przyrosty interfejsu
+
+Wydania SCV są addytywne i dokładnie wersjonowane. Wcześniejsze instalacje pozostają możliwe do wywołania w swoich dokładnych zakresach. Bieżące przyrosty obejmują operacje natywne, migawki korpusu, profile interpretacji, przenośne pakiety dostawców, przepływy kompozycji, śledzenie zobowiązań i pakiety dowodów. Każdy przyrost zachowuje wcześniejsze ścieżki, wartości domyślne i rekordy.

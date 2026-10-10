@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Pengetahuan Sumber Daya Penyedia"
+description: "SCV memelihara pengetahuan privat tentang sumber daya penyedia offsite di AWS, Azure, GCP, DigitalOcean, Cloudflare, dan perangkat keras milik pengguna melalui delapan engine C++ yang dapat diinstal secara independen."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) memiliki pengetahuan semantik privat tentang sumber daya perangkat keras offsite dan realitas penyedia yang membentuk klaster, pelatihan, riset, dan pekerjaan data Anda. SCV memetakan penawaran penyedia, region, domain infrastruktur, batasan, dan ketersediaan yang diamati tanpa memeringkat penyedia atau memaksakan batasan atas apa yang boleh Anda coba.
+
+## Cakupan penyedia
+
+SCV mencakup penyedia dan jenis sumber daya berikut:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Perangkat keras milik pengguna (jika perbandingan dengan sumber daya offsite diperlukan)
+
+## Engine yang terinstal
+
+Pengetahuan SCV disampaikan melalui delapan engine C++ yang dapat diinstal secara independen. Anda hanya menginstal yang Anda butuhkan:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Engine SCV inti untuk pengetahuan sumber daya penyedia dan konstruksi graf.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Engine bukti cloud untuk penangkapan terbatas dan semantik korpus.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Engine bukti khusus Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Engine pengetahuan perangkat keras dan sumber daya khusus AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Engine pengetahuan perangkat keras dan sumber daya khusus Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Engine pengetahuan sumber daya khusus DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Engine pengetahuan perangkat keras dan sumber daya khusus GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Konektor graf relasional opsional yang menggunakan DuckDB untuk pengindeksan SQL yang dipertahankan.
+  </Card>
+</CardGroup>
+
+## Paket penyedia portabel dan komposisi
+
+SCV mengekspos paket penyedia portabel melalui qxctl. Anda tetap memegang kendali atas persyaratan, izin penyedia, alternatif resep, dan keputusan eksekusi. qxctl mendukung alur kerja yang dipertahankan dan pemilihan graf terlindungi, sehingga Anda dapat memutar ulang bukti yang persis tanpa meng-query ulang penyedia.
+
+## Konektor DuckDB opsional
+
+`scv-graph-duckdb-connector` menambahkan proyeksi relasional terbatas dari graf native yang tidak dapat diubah. DuckDB adalah database SQL default yang dipilih pengguna. Anda dapat memilih engine graf khusus di masa depan melalui adapter tambahan.
+
+## Privasi dan kedaulatan
+
+Graf pengetahuan SCV yang terinstal adalah milik instalasi privat Anda. Akun, saldo, izin, dan batasan kontraktual yang disediakan pengguna hanya digunakan melalui permukaan observasi yang diaktifkan secara eksplisit. Fakta privat tidak masuk ke kebenaran sumber resmi Symphony.
+
+## Hubungan SCV dengan vektor lain
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/id/vectors/sov">
+    Control plane operasional yang bertindak berdasarkan bukti SCV. SOV tidak menulis ulang makna penyedia.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/id/vectors/snv">
+    Mencatat identitas Node fisik dan klaster yang dihasilkan dari provisioning yang diinformasikan SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/id/vectors/shv">
+    Memiliki pengetahuan kapabilitas perangkat keras terperinci untuk komponen yang dirujuk SCV.
+  </Card>
+</CardGroup>
+
+## Inkremen antarmuka berversi
+
+Rilis SCV bersifat aditif dan berversi persis. Instalasi sebelumnya tetap dapat dipanggil pada cakupan persisnya. Inkremen saat ini mencakup operasi native, snapshot korpus, profil interpretasi, paket penyedia portabel, alur kerja komposisi, pelacakan kewajiban, dan bundel bukti. Setiap inkremen mempertahankan rute, default, dan catatan sebelumnya.

@@ -1,0 +1,82 @@
+---
+title: "Векторные команды qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Обзор доступной сегодня векторной грамматики qxctl: SKVI, SCLV, SACV, SODV, SSFV, хранилище и каталог SHV, а также зарезервированные разделы accord и evolution."
+sidebarTitle: "Векторные команды"
+---
+
+qxctl предоставляет векторную грамматику для каждого реализованного движка SKV, а также для администрирования SCV и SHV. Утверждённая грамматика Accordare и SEV будет использовать `qxctl accord ...` и `qxctl evolution ...`, как только появятся реализации их команд и стабильные свидетельства в реестре.
+
+## Грамматика движков SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project для движка SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project для движка SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project для движка SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project для движка SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph для движка SSFV
+
+Каждая грамматика ограничена контрактом движка-владельца. qxctl никогда не изобретает операции и не обходит движок.
+
+## Дополнения Accordare
+
+Дополнения Accordare в qxctl предоставляют:
+
+- Стабильный статус
+- Сверку (воспроизводит только точных кандидатов)
+- Установку и удаление супервизора (вызывает только проверенный исполняемый файл с квитанцией v2)
+- Две идентичности администрирования разрешений, которые изменяют только остановленную конфигурацию STAV под контролем SSIAG и с восстановлением ожидаемого состояния
+
+Статус разделяет долговременное намерение и очередь добавления. Сверка воспроизводит только точных кандидатов. Листовые команды разрешений никогда не открывают работающую конфигурацию.
+
+## Хранилище SHV
+
+Долговременное хранилище SHV администрируется только через:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` с сохранённым ожидаемым дайджестом намерения также является восстановлением. Отдельного псевдонима для восстановления нет. Область хранилища объявляется во входных данных; идентичность коннектора задаётся флагами. Структурное хранилище не дублирует семантическую команду `shv graph validate` и не выбирает головную версию каталога.
+
+`shv graph store inventory` (релиз 0.2) добавляет логическое чтение, привязанное к ревизии, с явными сохранёнными идентичностями записывающих сторон. Унаследованный выбор 0.1 по-прежнему поддерживается.
+
+## Публикация каталога SHV
+
+Публикация каталога администрируется только через:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Восстановление выполняется командой `apply --operation-id`, которая взаимоисключающая с `--input`. Локальный выбор каталога на основе разрешений отличается от активации источника и обобщённого хранилища графов.
+
+## Связанные разделы
+
+<CardGroup cols={2}>
+  <Card title="Обзор SKV" icon="book-open" href="/ru/skv/overview">
+    Семантика векторов, которую реализуют движки.
+  </Card>
+
+  <Card title="Вектор SHV" icon="microchip" href="/ru/vectors/shv">
+    Общие сведения об аппаратном векторе и список движков.
+  </Card>
+
+  <Card title="Движки SHV" icon="microchip" href="/ru/engines/shv-engines">
+    Подробности на уровне движков.
+  </Card>
+
+  <Card title="Обзор qxctl" icon="terminal" href="/ru/qxctl/overview">
+    Полный набор команд qxctl.
+  </Card>
+</CardGroup>

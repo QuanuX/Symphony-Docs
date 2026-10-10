@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profils, sāknēšana un piemērošana"
+description: "Pārvaldiet aizsargātus dzīves cikla profilus, īpašumtiesības, novērojumus, sāknēšanas un ar piemērošanu saderīgas pārejas, izmantojot qxctl ar stingrām compare-and-swap aizsardzībām."
+sidebarTitle: "lifecycle"
+---
+
+Gramatika `qxctl knowledge lifecycle ...` administrē aizsargātus profilus, īpašumtiesības, novērojumus, sāknēšanas žurnālus un ar piemērošanu saderīgas pārejas. Katra izmaiņa ir compare-and-swap operācija, un katra piemērošana ir piesaistīta precīziem pierādījumiem.
+
+## Profils
+
+Iestatiet TOPS aizsargāto dzīves cikla profilu:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Pirmreizējam profilam norādiet `absent`, citādi — precīzo jaucējvērtību, ko atgrieza iepriekšēja nolasīšana.
+
+## Īpašumtiesības
+
+- `ownership status`: pārbaudīt vienu konfigurētu koplietojamo sakni
+- `ownership reconcile`: atsvaidzināt tās pierādījumus
+- `ownership adopt`: pārņemt tikai pēc katras konservatīvās mantotās prasības pārskatīšanas
+- `ownership release`: atbrīvot tikai vienai precīzai mantotajai kvītij, kas apzināti padarīta atgūstama
+
+<Warning>
+  Nekad manuāli nedzēsiet un nepārrakstiet saknes lokālo reģistru vai tā `symphony-root-ownership/1` kvīšu izkārtojuma saderības barjeru. Vecākiem dzīves cikla klientiem ir jāsastopas ar šo barjeru un jāapstājas pie sava esošā nezināmās pakotnes bloķētāja.
+</Warning>
+
+## Novērošana, atskaite, sāknēšana
+
+- `observe`: izvadīt vienreizējus fiksēta izkārtojuma kvīšu pierādījumus
+- `report`: izveidot jaunu vienreizēju plānu
+- `boot`: noturīga tikai atskaites progresija ar stabilu operācijas ID un precīzu žurnāla stāvokli
+- `status`: v1 pārbaude
+- `recover --discover`: atkopt unikālu v1 ķēdi, ja parastais statuss nevar validēt lokālo stāvokli
+
+## Ar piemērošanu saderīgi profili
+
+Profilam `apply-compatible` izsauciet `apply` tikai ar precīzu sāknēšanas avota jaucējvērtību, piemērošanas žurnāla compare-and-swap, piemērotā stāvokļa compare-and-swap, stabilu operācijas ID un skaidri norādītām sagatavotajām saknēm:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Izmantojiet `apply-status` mēģinājumu novērošanai vai ierobežoto `apply-recover` noturīgai atkopšanai. Nekad neizvēlieties darbību manuāli un nerediģējiet aizsargāto stāvokli.
+
+<Note>
+  Novērojuma atsvaidzināšanai, kas maina tikai laikspiedolu, ir jāmaina dokumenta pierādījumi, nepārvirzot stabilās semantiskās identitātes.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Dzinējs, kas nodrošina dzīves cikla plānu un piemērošanas koordināciju.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/lv/qxctl/engines">
+    Pārvaldiet dzinēju piesaistes, uz kurām atsaucas dzīves cikla plāni.
+  </Card>
+</CardGroup>

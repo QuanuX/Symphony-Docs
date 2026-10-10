@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony Validator brīdinājumu politika"
+description: "Administrējiet aizsargāto brīdinājumu politiku, bāzlīniju un attēlošanas gramatiku neatkarīgajam Symphony Validator, izmantojot qxctl, nemainot neapstrādātos detektora pierādījumus."
+sidebarTitle: "validate"
+---
+
+Gramatika `qxctl validate ...` administrē Symphony Validator aizsargāto brīdinājumu politiku, bāzlīniju un attēlošanas gramatiku. Neatkarīgi instalētais C++ validators rada nemainīgus neapstrādātus pierādījumus; qxctl administrē no izsaucēja neatkarīgu aizsargātu attēlošanu, nemainot noteikšanu.
+
+## Ko aptver qxctl validate
+
+- Deviņas aizsargātas brīdinājumu dzīves cikla lapas
+- Precīzais ar kvīti nodrošinātais saknes kopsavilkuma maršruts
+- Bāzlīnijas pārvaldība un izmaiņu atskaites
+- Attēlošanas gramatika rindu izvadei un strukturētam JSON
+
+Katra lapa pirms aizsargātās brīdinājumu politikas piemērošanas validē validatora precīzo kvīti un strukturētās jaucējvērtības.
+
+## Robeža
+
+<Warning>
+  qxctl validate nevar labot failus, neko publicēt vai ignorēt neapstrādātus detektora pierādījumus. Brīdinājuma statuss ietekmē attēlošanu, nevis noteikšanu.
+</Warning>
+
+- Nekāda brīdinājumu apslāpēšana ārpus aizsargātās politikas
+- Nekāda validatora izvades modificēšana
+- Nekāds izdomāts pārklājums nepieejamam maršrutam
+
+## Biežākie lietojumi
+
+- Izveidot vai atiestatīt brīdinājumu bāzlīniju
+- Apstiprināt vai atkārtoti atvērt pārvaldītu vēsturisku brīdinājumu
+- Izvadīt ar kvīti nodrošināto saknes kopsavilkumu, kas parādās repozitorija README
+
+Validators, uz kura balstās šī gramatika, pārbauda līgumu formu, pašreizējā pirmkoda noslēgtību, invariantu īpašumtiesības, funkciju administrēšanu, laidienus un mašīnai piederošo saknes kopsavilkumu.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="Validators" icon="clipboard-check" href="/lv/governance/validator">
+    Neatkarīgais tikai lasāmais C++ pārbaudītājs, ko administrē qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/lv/skv/ssfv">
+    Funkciju administrēšanas prasības, kas tiek pārbaudītas pierādījumos.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Laidienu ieraksti, kas parādās validatora pierādījumos.
+  </Card>
+
+  <Card title="qxctl pārskats" icon="terminal" href="/lv/qxctl/overview">
+    Pilna komandu virsma.
+  </Card>
+</CardGroup>

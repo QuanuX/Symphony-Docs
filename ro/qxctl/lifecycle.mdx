@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, pornire și aplicare"
+description: "Gestionați profilurile protejate de ciclu de viață, proprietatea, observațiile, pornirile și tranzițiile compatibile cu aplicarea prin qxctl, cu garanții stricte de tip compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+Gramatica `qxctl knowledge lifecycle ...` administrează profilurile protejate, proprietatea, observațiile, jurnalele de pornire și tranzițiile compatibile cu aplicarea. Fiecare mutație este de tip compare-and-swap și fiecare aplicare este legată de dovezi exacte.
+
+## Profil
+
+Setați profilul protejat de ciclu de viață pentru un TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Furnizați `absent` pentru un profil creat prima dată sau digest-ul exact raportat de o citire anterioară.
+
+## Proprietate
+
+- `ownership status`: inspectează o rădăcină partajată configurată
+- `ownership reconcile`: îi reîmprospătează dovezile
+- `ownership adopt`: adoptă doar după examinarea fiecărei revendicări moștenite conservatoare
+- `ownership release`: eliberează doar pentru o singură chitanță moștenită exactă, făcută intenționat revendicabilă
+
+<Warning>
+  Nu ștergeți și nu rescrieți niciodată manual registrul local al rădăcinii sau bariera sa de compatibilitate a structurii chitanțelor `symphony-root-ownership/1`. Clienții de ciclu de viață mai vechi trebuie să întâlnească acea barieră și să se oprească la blocajul existent pentru pachete necunoscute.
+</Warning>
+
+## Observare, raportare, pornire
+
+- `observe`: emite dovezi de chitanță de unică folosință, cu structură fixă
+- `report`: produce un plan nou, de unică folosință
+- `boot`: progresie durabilă, doar de raportare, cu un ID de operație stabil și o stare exactă a jurnalului
+- `status`: inspecție v1
+- `recover --discover`: recuperează un lanț v1 unic atunci când starea obișnuită nu poate valida starea locală
+
+## Profiluri compatibile cu aplicarea
+
+Pentru un profil `apply-compatible`, apelați `apply` doar cu digest-ul exact al sursei de pornire, compare-and-swap pentru jurnalul de aplicare, compare-and-swap pentru starea aplicată, un ID de operație stabil și rădăcini pregătite (staged) explicite:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Folosiți `apply-status` pentru observarea încercărilor sau `apply-recover` delimitat pentru recuperarea durabilă. Nu alegeți niciodată manual o acțiune și nu editați starea protejată.
+
+<Note>
+  O reîmprospătare a observației care modifică doar marcajul temporal trebuie să schimbe dovezile documentului fără a avansa identitățile semantice stabile.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Coordonatorul de sesiune" icon="gears" href="/ro/engines/coordinator">
+    Motorul din spatele coordonării planurilor de ciclu de viață și a aplicării.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ro/qxctl/engines">
+    Gestionați legările de motoare la care fac referire planurile de ciclu de viață.
+  </Card>
+</CardGroup>

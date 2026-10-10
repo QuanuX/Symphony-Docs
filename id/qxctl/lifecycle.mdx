@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: Profile, Boot, dan Apply"
+description: "Kelola profil lifecycle terlindungi, kepemilikan, observasi, boot, dan transisi yang kompatibel dengan apply melalui qxctl dengan pengaman compare-and-swap yang ketat."
+sidebarTitle: "lifecycle"
+---
+
+Grammar `qxctl knowledge lifecycle ...` mengadministrasikan profil terlindungi, kepemilikan, observasi, jurnal boot, dan transisi yang kompatibel dengan apply. Setiap mutasi adalah compare-and-swap dan setiap apply terikat pada bukti yang persis.
+
+## Profile
+
+Tetapkan profil lifecycle terlindungi untuk sebuah TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Berikan `absent` untuk profil pertama kali atau digest persis yang dilaporkan oleh pembacaan sebelumnya.
+
+## Ownership
+
+- `ownership status`: memeriksa satu root bersama yang dikonfigurasi
+- `ownership reconcile`: menyegarkan buktinya
+- `ownership adopt`: mengadopsi hanya setelah meninjau setiap klaim legacy yang konservatif
+- `ownership release`: melepaskan hanya untuk satu receipt legacy persis yang sengaja dibuat dapat diklaim ulang
+
+<Warning>
+  Jangan pernah menghapus atau menulis ulang registry root-local atau pagar kompatibilitas tata letak receipt `symphony-root-ownership/1` secara manual. Klien lifecycle yang lebih lama harus menemui pagar tersebut dan berhenti pada blocker unknown-package yang sudah ada.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: menghasilkan bukti receipt sekali pakai dengan tata letak tetap
+- `report`: menghasilkan rencana sekali pakai yang baru
+- `boot`: progresi tahan lama yang hanya berupa laporan dengan ID operasi yang stabil dan state jurnal yang persis
+- `status`: inspeksi v1
+- `recover --discover`: memulihkan rantai v1 yang unik ketika status biasa tidak dapat memvalidasi state lokal
+
+## Profil yang kompatibel dengan apply
+
+Untuk profil `apply-compatible`, panggil `apply` hanya dengan digest sumber boot yang persis, compare-and-swap jurnal apply, compare-and-swap state yang diterapkan, ID operasi yang stabil, dan root staged yang eksplisit:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Gunakan `apply-status` untuk observasi percobaan atau `apply-recover` yang terbatas untuk pemulihan tahan lama. Jangan pernah memilih tindakan secara manual atau mengedit state terlindungi.
+
+<Note>
+  Penyegaran observasi yang hanya mengubah timestamp harus mengubah bukti dokumen tanpa memajukan identitas semantik yang stabil.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/id/engines/coordinator">
+    Engine di balik koordinasi rencana dan apply lifecycle.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/id/qxctl/engines">
+    Kelola binding engine yang dirujuk oleh rencana lifecycle.
+  </Card>
+</CardGroup>

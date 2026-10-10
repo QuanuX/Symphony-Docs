@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: Kolaborasi Agen di Masa Depan"
+description: "SIV memiliki kolaborasi agentik di masa depan, konteks yang diperluas, logika jangka panjang terstruktur, dan interaksi Symphony yang diatur. SMCV adalah komponen opsional pertamanya; SAIV dicadangkan."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV) memiliki semantik yang akan ditulis Symphony di masa depan untuk kolaborasi agentik, konteks lokal yang diperluas, logika jangka panjang terstruktur, komunikasi antaragen, dan operasi yang diarahkan manusia pada permukaan Symphony. SIV adalah domain yang sedang berkembang dengan kontrak kanonis tetapi belum memiliki implementasi yang dapat dieksekusi.
+
+## Cakupan dan tujuan
+
+SIV diharapkan mendukung:
+
+- Partisipasi agen lokal dan jarak jauh dalam alur kerja Symphony
+- Konteks yang diperluas dan dibagikan di seluruh sesi dan vektor
+- Logika jangka panjang terstruktur untuk operasi berulang atau multilangkah
+- Protokol komunikasi antaragen
+- Interaksi yang diatur dengan permukaan perintah Symphony
+
+SIV tidak memberikan otoritas berdasarkan jenis pemanggil. Pemanggil manusia, AI, agen, dan layanan diperlakukan secara identik. Otoritas berasal dari kepemilikan host target, izin yang diberikan, operasi yang diminta, state yang diharapkan, dan pengaman yang dikonfigurasi pemilik.
+
+## Subvektor bernama
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Komponen konversi Markdown opsional. Direncanakan sebagai penerjemah yang dapat dikonfigurasi melalui qxctl di atas koneksi IPC yang diaktifkan. Belum ada perintah atau penerjemah SMCV yang diimplementasikan.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Dicadangkan untuk subvektor integrasi kecerdasan Symphony di kemudian hari. Pencadangan ini tidak menyediakan implementasi, perilaku namespace, atau operasi semantik apa pun.
+  </Card>
+</CardGroup>
+
+## Di luar cakupan
+
+SIV secara eksplisit tidak:
+
+- Menggantikan semantik milik vektor (operasi domain tetap dimiliki oleh vektor masing-masing meskipun dipanggil oleh agen)
+- Menjadi kebenaran kanonis atau mengesampingkan kontrak SKV
+- Masuk ke jalur kritis (hot path) trading
+- Menjadikan makalah kerja kecerdasan buatan yang lebih lama sebagai acuan final
+
+## Status saat ini
+
+SIV hanya berupa kontrak arsitektur kanonis. Saat ini belum ada harness SIV, surat agen, engine state jangka panjang, koneksi model, protokol agen lokal/jarak jauh, komponen SAIV, penerjemah SMCV, atau kontrol qxctl yang diimplementasikan.
+
+## Batasan bahasa
+
+Tidak ada persyaratan Rust yang ditetapkan untuk komponen SIV. Bahasa komponen akan mengikuti kontrak performa, portabilitas, keamanan, dan integrasi yang kelak ditetapkan. Bahasa tersebut tidak diwarisi dari makalah kerja mana pun.
+
+## Hubungan SIV dengan vektor lain
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/id/skv/overview">
+    Mengatur kontrak, evolusi, dan hubungan publikasi resmi SIV.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/id/vectors/sov">
+    Dapat mengekspos operasi yang dipanggil agen melalui qxctl sambil mempertahankan semantik milik vektor.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/id/skv/sav">
+    Mengevaluasi komposisi dan kompatibilitas untuk setiap operasi yang dirakit agen.
+  </Card>
+</CardGroup>

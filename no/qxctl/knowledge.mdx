@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: livssyklusadministrasjon på tvers av vektorer"
+description: "Kommandogruppen qxctl knowledge eier livssyklus på tvers av vektorer, sesjonsoverganger, invariantspørringer og administrasjon av vedvarende SSFV-vedlikehold."
+sidebarTitle: "knowledge"
+---
+
+Gruppen `qxctl knowledge ...` eier livssyklus på tvers av vektorer og administrasjon av vedvarende SSFV-sesjoner. Den er inngangspunktet for koordinatorstøttede operasjoner og for invariantspørringer mot validatoren.
+
+## Sesjonsovergang
+
+Bruk `qxctl knowledge session transition` for å signalisere en livssyklushendelse fra verten til en eksisterende sesjon:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Trygge nye forsøk gjenbruker samme hendelses-ID. Legg til `--recover` bare når gjenoppretting via oppdagelse fra skadet lokalt sesjonsbevis er tilsiktet; det gjenoppretter ikke avslag, inkompatibel kritisk tilstand eller tvetydighet.
+
+<Warning>
+  Symphony installerer ikke en innloggingshook, en overvåker eller en oppstartsenhet via denne kommandoen. Bruk den bare når en eksplisitt livssyklusintegrasjon i verten leverer en stabil hendelsesidentitet.
+</Warning>
+
+## Invariantspørringer
+
+Fire løv binder `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` binder i tillegg `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Direkte spørringsløv sender ut `symphony.knowledge.invariant-query-result.v1` med `semantic_validity=not_asserted`. `check` returnerer det eksakte, komplette validatorresultatet og bevarer avslutningskode 26.
+
+## Underkommandogrupper
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/no/qxctl/lifecycle">
+    Profil, eierskap, observe, report, boot, apply og gjenoppretting.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/no/qxctl/engines">
+    Motorbindingsregisteret: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/no/qxctl/reconcile">
+    Grammatikk for avstemming av arbeidstrær via koordinatoren.
+  </Card>
+
+  <Card title="session" icon="key" href="/no/qxctl/session">
+    Autentiserte sesjoner og SSFV-vedlikeholdsstrømmer.
+  </Card>
+</CardGroup>

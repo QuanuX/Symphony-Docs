@@ -1,0 +1,54 @@
+---
+title: "STAV: registrul de audit append-only per TOPS pentru Symphony"
+description: "STAV Append Authority rulează registre de audit append-only per TOPS, cu IPC autentificat, durabilitate prin fsync înaintea chitanței, citiri delimitate, verificare și recuperare."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) definește protocolul registrului de audit append-only per TOPS. Autoritatea sa de execuție se află în `modules/stav-append-authority`, un serviciu Go instalabil independent. Registrele operaționale per TOPS sunt private pentru fiecare instalare TOPS; ele nu reprezintă conținut SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` oferă:
+
+- Registre de audit append-only per TOPS
+- IPC local autentificat reciproc
+- Permisiuni exacte pentru producători și cititori
+- Durabilitate prin fsync înaintea chitanței
+- Citiri delimitate, verificare și recuperare
+- Înrolare și supraveghere nativă (launchd, systemd)
+
+<Warning>
+  qxctl nu primește niciodată autoritate brută de adăugare. Coordonează înrolarea, verificarea și permisiunile prin adaptorul exact deținut de modul, dar adăugarea în registru rămâne sigilată în interiorul procesului autorității de adăugare.
+</Warning>
+
+## Protocolul STAV pentru Go
+
+`libraries/stav-protocol-go` este o bibliotecă Go fără autoritate care implementează codecul canonic STAV v1, validarea strictă, digesturile, încadrarea, regulile de conformitate și vocabularul închis al producătorilor. Orice producător sau cititor poate adopta protocolul fără a moșteni autoritate.
+
+## Publicații SODV finalizate
+
+Fiecare artefact STAV publicat în prezent prin SODV este o versiune de modul sursă Go, nu o lansare binară:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ro/governance/ssiag">
+    Autorizează modificările protejate pe care STAV le auditează apoi.
+  </Card>
+
+  <Card title="Producătorul Accordare" icon="pen-nib" href="/ro/governance/accordare-producer">
+    Emite în STAV intenția dinaintea modificării și rezultatele finale.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/ro/qxctl/lifecycle">
+    Administrarea ciclului de viață, care se compune cu înrolarea STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ro/skv/sodv">
+    Guvernează înregistrările oficiale de publicare pentru componentele STAV.
+  </Card>
+</CardGroup>

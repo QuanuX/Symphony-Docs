@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: amministrazione del ciclo di vita tra vettori"
+description: "Il gruppo di comandi qxctl knowledge gestisce il ciclo di vita tra vettori, le transizioni di sessione, le query sugli invarianti e l'amministrazione persistente della manutenzione SSFV."
+sidebarTitle: "knowledge"
+---
+
+Il gruppo `qxctl knowledge ...` gestisce il ciclo di vita tra vettori e l'amministrazione persistente delle sessioni SSFV. È il punto di ingresso per le operazioni basate sul coordinatore e per le query sugli invarianti rivolte al validatore.
+
+## Transizione di sessione
+
+Usa `qxctl knowledge session transition` per segnalare un evento del ciclo di vita dell'host a una sessione esistente:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+I tentativi ripetuti sicuri riutilizzano lo stesso ID evento. Aggiungi `--recover` solo quando si intende effettuare un recupero per discovery a partire da evidenze di sessione locali danneggiate; non recupera dinieghi, stati critici incompatibili o ambiguità.
+
+<Warning>
+  Symphony non installa alcun hook di login, watcher o unità di avvio tramite questo comando. Usalo solo quando un'integrazione esplicita con il ciclo di vita dell'host fornisce un'identità di evento stabile.
+</Warning>
+
+## Query sugli invarianti
+
+Quattro foglie sono associate a `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` è inoltre associato a `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Le foglie di query dirette emettono `symphony.knowledge.invariant-query-result.v1` con `semantic_validity=not_asserted`. `check` restituisce il risultato esatto e completo del validatore e preserva il codice di uscita 26.
+
+## Gruppi di sottocomandi
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/it/qxctl/lifecycle">
+    Profilo, ownership, observe, report, boot, apply e recupero.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/it/qxctl/engines">
+    Registro dei binding degli engine: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/it/qxctl/reconcile">
+    Grammatica di riconciliazione dei worktree del coordinatore.
+  </Card>
+
+  <Card title="session" icon="key" href="/it/qxctl/session">
+    Sessioni autenticate e flussi di manutenzione SSFV.
+  </Card>
+</CardGroup>

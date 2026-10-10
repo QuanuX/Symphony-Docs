@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Kebijakan Peringatan Symphony Validator"
+description: "Administrasikan kebijakan peringatan terlindungi, baseline, dan grammar tampilan atas Symphony Validator yang independen melalui qxctl tanpa mengubah bukti detektor mentah."
+sidebarTitle: "validate"
+---
+
+Grammar `qxctl validate ...` mengadministrasikan kebijakan peringatan terlindungi, baseline, dan grammar tampilan milik Symphony Validator. Validator C++ yang diinstal secara independen menghasilkan bukti mentah yang tidak dapat diubah; qxctl mengadministrasikan presentasi terlindungi yang netral terhadap pemanggil tanpa mengubah deteksi.
+
+## Cakupan qxctl validate
+
+- Sembilan leaf lifecycle peringatan terlindungi
+- Rute root-summary persis yang didukung receipt
+- Manajemen baseline dan pelaporan delta
+- Grammar tampilan untuk output baris dan JSON terstruktur
+
+Setiap leaf memvalidasi receipt persis dan digest terstruktur milik validator sebelum menerapkan kebijakan peringatan terlindungi.
+
+## Batasan
+
+<Warning>
+  qxctl validate tidak dapat memperbaiki file, memublikasikan apa pun, atau mengesampingkan bukti detektor mentah. Disposisi peringatan memengaruhi presentasi, bukan deteksi.
+</Warning>
+
+- Tidak ada penekanan peringatan di luar kebijakan terlindungi
+- Tidak ada modifikasi output validator
+- Tidak ada cakupan rekaan untuk rute yang tidak tersedia
+
+## Penggunaan umum
+
+- Menetapkan atau mengatur ulang baseline peringatan
+- Menyetujui atau membuka kembali peringatan historis yang diatur
+- Menghasilkan root summary yang didukung receipt yang muncul di README repositori
+
+Validator yang mendasari grammar ini memeriksa bentuk kontrak, penutupan sumber saat ini, kepemilikan invarian, administrasi fitur, rilis, dan root summary milik mesin.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/id/governance/validator">
+    Pemeriksa C++ hanya-baca yang independen yang diadministrasikan qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/id/skv/ssfv">
+    Ekspektasi administrasi fitur yang diperiksa dalam bukti.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Catatan rilis yang muncul dalam bukti validator.
+  </Card>
+
+  <Card title="Ikhtisar qxctl" icon="terminal" href="/id/qxctl/overview">
+    Permukaan perintah lengkap.
+  </Card>
+</CardGroup>

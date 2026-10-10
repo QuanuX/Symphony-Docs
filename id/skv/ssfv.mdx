@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector dan Registry"
+description: "SSFV memiliki identitas fitur kanonis, semantik, hierarki, lifecycle, dan jaminan administrasi di seluruh modul Symphony yang telah diimplementasikan dan permukaan qxctl."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) memiliki kontrak identitas fitur aplikasi kanonis, semantik, hierarki, lifecycle, pembedaan, routing catatan terdistribusi, inventaris cakupan, dan proyeksi graf. Engine-nya adalah proses C++ yang dapat diinstal secara independen yang melakukan pemeriksaan fitur struktural dan sadar kesegaran.
+
+## Operasi
+
+- **Inspect dan check**: evaluasi fitur struktural dan sadar kesegaran.
+- **Diff**: diff beralamat konten antar-state fitur.
+- **Propose**: proposal yang dideklarasikan pemanggil untuk penerimaan atau perubahan fitur.
+- **Graph**: graf fitur sekali pakai yang deterministik untuk ditinjau.
+
+## Cakupan terdaftar
+
+Katalog terdaftar saat ini secara eksplisit bersifat parsial:
+
+- **110** fitur terdaftar
+- **35** cakupan pemilik terdaftar
+- **76** fitur bersarang yang telah diratifikasi
+- **295** permukaan administrasi fitur yang telah ditinjau (**285** wajib, **13** pengecualian yang didukung bukti, **9** larangan, **0** belum ditinjau)
+
+Cakupan pemilik terdaftar mencakup setiap modul yang telah diimplementasikan, mulai dari `qxctl` dan validator, melalui engine SKV dan penyedia SSIAG, hingga keluarga engine SCV dan SHV.
+
+## Yang tidak dilakukan SSFV
+
+<Warning>
+  SSFV tidak memutuskan kelayakan fitur, menciptakan identitas, atau mengklaim kelengkapan repositori maupun host. `review_required` adalah bukti untuk tinjauan pemanggil, bukan ratifikasi atau otoritas apply.
+</Warning>
+
+Tinjauan fitur, penerimaan, dan perubahan lifecycle tetap berada pada kontrak pemilik setiap fitur.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka kerja payung yang mengatur SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/id/skv/sev">
+    Menerapkan kasus evolusi pada penambahan, perubahan, dan penghentian fitur.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/id/qxctl/session">
+    Kelola sesi pemeliharaan SSFV persisten melalui qxctl.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Jalankan `qxctl ssfv ...` untuk inspect, check, diff, propose, dan graph.
+  </Card>
+</CardGroup>

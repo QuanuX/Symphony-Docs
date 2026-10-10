@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: קישור, אבחון והעברה של הרישום"
+description: "ניהול פרופיל הקישור המוגן של מנועי Symphony בהיקף המשתמש באמצעות list, inspect, doctor, bind, unbind ו-migrate הקשור ל-digest דרך qxctl."
+sidebarTitle: "engines"
+---
+
+הדקדוק `qxctl knowledge engines ...` מנהל את פרופיל הקישור המוגן `default` בהיקף המשתמש עבור מנועי הווקטורים של Symphony. הוא מקשר תוכן נבחר לצורך התאמה (reconciliation) מאוחרת יותר. הוא אינו מתקין, מפעיל, מאקטב, מעגן (dock), מאמת זהות, מעניק הרשאה או מחיל (apply) מנוע.
+
+## פקודות
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+ספקו `absent` עבור השינוי הראשון ברישום v2, או את ה-digest המדויק שמדווח על ידי `list` עבור שינויים מאוחרים יותר. כל שינוי הוא compare-and-swap מול אותו digest.
+
+## העברה מ-v1 ל-v2
+
+<Warning>
+  מצב רישום v1 תקין נשאר קריא. ההעברה ל-v2 היא פעולת compare-and-swap מדויקת ונפרדת, ולעולם אינה פעולת בחירת גרסה. אל תתייחסו להעברה כאל נתיב שדרוג לבחירת מנוע.
+</Warning>
+
+- `list` ו-`inspect` ממשיכים לעבוד על ראיות v1.
+- `migrate` מפיק דור v2 מקושר מבלי לזנוח את האמת של v1.
+- לאחר ההעברה, השתמשו ב-digest-ים של v2 לשינויים עתידיים.
+
+## מהו קישור (bind)
+
+קישור בוחר תוכן מדויק לצורך התאמה מאוחרת יותר על ידי המתאם (coordinator). הוא:
+
+- אינו מתקין מנוע
+- אינו מפעיל או מאקטב מנוע
+- אינו מעגן מנוע עם Maestro
+- אינו מאמת את זהות הקורא
+- אינו מעניק הרשאה ל-apply
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/he/qxctl/reconcile">
+    התאמת תוכן מקושר מול מתאם.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/he/qxctl/lifecycle">
+    תוכניות מחזור חיים המשתמשות במנועים מקושרים.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/he/governance/maestro">
+    רשות הנוכחות שמתעדת עגינה, לא קישורים.
+  </Card>
+
+  <Card title="סקירת מנועים" icon="cube" href="/he/engines/overview">
+    מנועי וקטורים הניתנים להתקנה באופן עצמאי.
+  </Card>
+</CardGroup>

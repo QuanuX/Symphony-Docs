@@ -1,0 +1,28 @@
+---
+title: "Netralitas Kelas Pemanggil dan Otoritas Host di Symphony"
+description: "Symphony tidak mengklasifikasikan pemanggil berdasarkan jenis. Otoritas berasal dari kepemilikan host target, izin eksplisit, status yang diharapkan, dan pengaman yang dikonfigurasi pemilik."
+sidebarTitle: "Otoritas Pemanggil"
+---
+
+Symphony tidak mengklasifikasikan pemanggil sebagai manusia, AI, agen, layanan, workload, organisasi, atau jenis aktor lainnya saat memutuskan otoritas. Klasifikasi Anda sebagai orang atau sistem otomatis tidak dengan sendirinya memberikan atau mencabut kapabilitas apa pun. Netralitas kelas pemanggil ini merupakan batas arsitektural inti yang menjaga otorisasi tetap berlandaskan fakta, bukan label.
+
+## Apa yang mengatur otoritas
+
+Keputusan otorisasi yang didukung menggunakan input berikut:
+
+- **Kepemilikan host target atau izin yang diberikan**: Administrator host target berdaulat atas tata kelola yang dapat dikonfigurasi.
+- **Operasi dan sumber daya yang diminta**: Tindakan spesifik dan objek yang dikenainya.
+- **Status yang diharapkan**: Hasil yang diinginkan yang dideklarasikan dan status saat ini yang diamati.
+- **Pengaman yang dikonfigurasi pemilik**: Default konservatif yang dapat disesuaikan atau dihapus oleh administrator.
+
+## SSIAG dan otoritas host
+
+SSIAG dapat memverifikasi dan memproyeksikan otoritas host yang efektif, tetapi tidak menciptakan otoritas pendaftaran yang lebih tinggi atau memveto administrator host target secara permanen. Jaminan identitas yang ditingkatkan dan interlock tata kelola adalah pengaman yang netral terhadap pemanggil dan dikonfigurasi oleh pemilik. Persyaratan integritas protokol tetap wajib dalam tooling yang didukung.
+
+## Apa yang tidak diputuskan Symphony
+
+Symphony tidak memutuskan apakah seorang aktor boleh memiliki properti, membuka akun, menandatangani kontrak, menanggung kewajiban, atau bertindak atas nama entitas lain. Fakta-fakta tersebut menjadi milik pemilik, penyedia, pihak lawan, dan hukum yang berlaku. Platform tetap berada dalam peran terbatasnya: platform menghasilkan bukti kompatibilitas dan mendukung operasi, tetapi tidak meluas ke penentuan kapasitas hukum atau finansial eksternal.
+
+## Implikasi praktis
+
+Saat Anda memanggil qxctl atau engine vektor, pemeriksaan yang sama berlaku terlepas dari apakah Anda menjalankan perintah secara manual, melalui skrip, atau melalui alat agentik. Jalur otoritasnya adalah: kepemilikan host target, izin eksplisit, status yang diharapkan, pengaman. Tidak ada jenis pemanggil yang menerima bypass otomatis atau pembatasan otomatis.

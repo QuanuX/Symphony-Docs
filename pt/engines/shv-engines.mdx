@@ -1,0 +1,65 @@
+---
+title: "Motores SHV: fontes e grafo do Symphony Hardware Vector"
+description: "Os motores SHV catalogam CPUs, GPUs, NICs, memória e armazenamento com reprodução de fontes retidas, avaliação de requisitos, ingestão de PDF e grafos duráveis em DuckDB."
+sidebarTitle: "Motores SHV"
+---
+
+Os motores do Symphony Hardware Vector (SHV) catalogam processadores, topologia de CPU, caches, GPUs, NICs e interfaces de fibra, placas principais, RAM e NVMe. A curadoria predefinida dá prioridade aos componentes originais e às variantes comprovadas. Todos os motores são instaláveis de forma independente e só de leitura.
+
+## Motores
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Núcleo de hardware: cobertura definida pelo chamador, reprodução do catálogo a partir de fontes retidas, avaliação de requisitos e projeção em grafo.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Ingestão de fontes e tratamento de revisões para evidências de hardware.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Avaliação de perfis de componentes e de sistemas.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Particionamento do hardware catalogado para uma seleção reprodutível.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Publicação e seleção governadas do catálogo local.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Superfície explícita de transporte de grafos.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Armazenamento durável de grafos suportado por DuckDB, administrado através do qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretação de fontes PDF para fichas técnicas de hardware.
+  </Card>
+</CardGroup>
+
+## Destaques da administração
+
+- O **armazenamento durável** é administrado apenas através de `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` com o digest de intenção esperada retido também serve de recuperação; não existe um alias de recuperação separado.
+- A **publicação do catálogo** é administrada apenas através de `shv catalogue publication inspect|plan|apply|status|schema|template`. A recuperação é feita com `apply --operation-id`, mutuamente exclusivo com `--input`.
+- O **inventário** (versão 0.2) acrescenta `shv graph store inventory`: uma leitura lógica vinculada a uma revisão, com identidades explícitas dos escritores retidos. A seleção legada 0.1 continua a ser suportada.
+
+<Note>
+  As classes de hardware são dados de mapeamento e de perfil do chamador, e não árvores de comandos duplicadas. `--version` seleciona o proprietário principal exato; `--source-version` e `--adapter-version` designam dependências selecionadas distintas. As revisões de esquemas e de mapeamentos são identidades de dados, e não aliases das versões instaladas dos motores.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Vetor SHV" icon="microchip" href="/pt/vectors/shv">
+    Contrato do Hardware Vector que estes motores implementam.
+  </Card>
+
+  <Card title="Comandos de vetor do qxctl" icon="terminal" href="/pt/qxctl/vector-commands">
+    Referência completa da gramática `shv ...`.
+  </Card>
+</CardGroup>

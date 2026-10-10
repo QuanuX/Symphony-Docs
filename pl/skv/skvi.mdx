@@ -1,0 +1,51 @@
+---
+title: "SKVI: silnik indeksu Symphony Knowledge Vector"
+description: "SKVI deterministycznie indeksuje każdą kanoniczną powierzchnię SKV jeden raz, sprawdza pokrycie zadeklarowane w manifestach i emituje jednorazowe projekcje powiązane z digestem, nie naruszając prawdy."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) to silnik mapujący bieżącą kanoniczną prawdę we wszystkich powierzchniach SKV. Jest to niezależnie instalowalny proces C++, który działa deterministycznie, wyłącznie w trybie odczytu i nie może decydować o członkostwie ani zapisywać plików kanonicznych.
+
+## Co robi SKVI
+
+SKVI wykonuje trzy ograniczone operacje:
+
+- **Inspect i check**: weryfikują, czy każda wymagana powierzchnia zadeklarowana w manifeście jest zindeksowana dokładnie raz, ze stabilnym właścicielem, rolą prawdy, relacjami, konsumentami i kwalifikowalnością do projekcji.
+- **Propose**: przyjmuje deklarowane przez wywołującego niezmienne propozycje zmian indeksu bez ich stosowania.
+- **Project**: emituje jednorazowe, powiązane z digestem projekcje bieżącego indeksu dla konsumentów niższego rzędu.
+
+## Czego SKVI nie robi
+
+SKVI nigdy nie decyduje o tym, czy coś zasługuje na miano funkcji, ani o członkostwie w manifeście. Własność pozostaje przy Contract Quad każdego wektora. SKVI również nie:
+
+- Zapisuje ani nie przepisuje kanonicznego Markdownu
+- Publikuje niczego w publicznej projekcji
+- Przyznaje uprawnień tylko dlatego, że wygenerował dowody
+
+## Kiedy go używać
+
+Używaj SKVI, aby potwierdzić, że repozytorium jest w pełni pokryte, zanim zaproponujesz zmianę w źródłach, lub aby sprawdzić, jakiego właściciela i jaką rolę prawdy ma określona powierzchnia. Jego projekcje zasilają recenzentów propozycji, kontekst agentów i linie bazowe walidatora.
+
+<Note>
+  SKVI jest jednym z silników służących do odczytu, zapytań, walidacji i propozycji. Kanoniczne apply pozostaje wyłączone we wszystkich ratyfikowanych silnikach wektorowych, dopóki nie zostaną ukończone kontrakty każdego silnika dotyczące SSIAG, transakcji z oczekiwanym stanem, zabezpieczeń qxctl, zdarzeń STAV, odzyskiwania i testów negatywnych.
+</Note>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Przegląd SKV" icon="book-open" href="/pl/skv/overview">
+    Nadrzędny framework zarządzający SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/pl/skv/sclv">
+    Rejestr zmian tylko do dopisywania, rejestrujący ukończone istotne zmiany w źródłach.
+  </Card>
+
+  <Card title="Polecenia wektorowe qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Uruchom `qxctl skvi ...`, aby wywołać inspect, check i propose.
+  </Card>
+
+  <Card title="Walidator" icon="clipboard-check" href="/pl/governance/validator">
+    Niezależne kontrole tylko do odczytu uzupełniające pokrycie SKVI.
+  </Card>
+</CardGroup>

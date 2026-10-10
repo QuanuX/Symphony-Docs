@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: sesiuni Symphony autentificate"
+description: "Deschideți, salvați (checkpoint), închideți și recuperați sesiuni autentificate ale coordonatorului Symphony, plus fluxuri persistente de mentenanță SSFV, cu permisiuni verificate de SSIAG."
+sidebarTitle: "session"
+---
+
+Gramatica `qxctl knowledge session ...` deschide sesiuni autentificate necanonice printr-un singur coordonator legat exact și un singur endpoint SSIAG cu domeniu TOPS. O gramatică separată, `session features ...`, conduce fluxul persistent de mentenanță SSFV.
+
+## Gramatica de bază a sesiunii
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Fiecare apel solicită o permisiune (grant) nouă și exactă și validează:
+
+- Identitatea subiectului și a țintei
+- Starea politicii și a configurației
+- Expirarea
+- Neutralitatea față de clasa apelantului
+- Netransferabilitatea
+- Dezactivarea aplicării canonice
+- Legarea capabilităților
+
+Dovezile de sesiune autorizează doar operația necanonică protejată numită. Păstrați jurnalele de sesiune și de reconciliere separate; folosiți referințe de context doar pentru a le asocia.
+
+## Fluxul de mentenanță SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Fluxul de funcționalități este un context persistent separat de mentenanță SSFV. Mutațiile necesită:
+
+- O sesiune de bază autentificată deschisă
+- Legări exacte ale coordonatorului și SSFV
+- Identificatori de operație stabili
+- Compare-and-swap exact
+- Dovezi SSIAG noi
+
+<Note>
+  Păstrați instantaneul de referință și identitatea sa originală de motor în cadrul actualizărilor sau revenirilor compatibile. Dovezile Maestro opționale trebuie să fie un inventar autentificat complet; atunci când Maestro lipsește intenționat, înregistrați motivul explicit de neconfigurare. `review_required` reprezintă dovezi pentru revizuirea de către apelant, nu o ratificare.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ro/governance/ssiag">
+    Emite permisiunile noi pe care le validează fiecare cerere de sesiune.
+  </Card>
+
+  <Card title="Coordonatorul de sesiune" icon="gears" href="/ro/engines/coordinator">
+    Motorul din spatele jurnalelor de sesiune și de funcționalități.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ro/qxctl/reconcile">
+    Contexte de reconciliere care se asociază cu sesiunile.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ro/skv/ssfv">
+    Vectorul de funcționalități pe care îl întreține fluxul de funcționalități.
+  </Card>
+</CardGroup>

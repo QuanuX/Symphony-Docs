@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: ler o inventário de presença de recetores do Symphony"
+description: "Inspecione a autoridade de presença Maestro do Symphony através do qxctl para ver as relações de acoplamento autenticadas de engines de vetores e o inventário derivado de recetores."
+sidebarTitle: "maestro"
+---
+
+A gramática `qxctl maestro ...` expõe a evidência de presença do Maestro. O Maestro é a autoridade de presença; o qxctl limita-se a ler e inspecionar o que o Maestro regista. Nenhum dos dois cria relações de acoplamento por si só.
+
+## Inventário
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` apresenta o inventário completo, derivado e só de leitura do Maestro sobre as relações de acoplamento autenticadas de engines de vetores, por TOPS e recetor.
+
+## Rotas administrativas relacionadas
+
+Folhas adicionais do qxctl expõem administração relacionada com o Maestro:
+
+- Estado e inspeção da evidência de acoplamento
+- Rotas de recuperação limitadas pelos próprios contratos do Maestro
+- Inscrição fundacional no ciclo de vida e supervisão nativa do próprio Maestro
+
+Cada rota de mutação passa pelo adaptador exato pertencente ao módulo. O qxctl nunca gera descritores do Maestro a partir de análise interna nem invoca implicitamente a versão mais recente.
+
+<Warning>
+  O Maestro não inicia, agenda, supervisiona nem invoca engines. `qxctl maestro inventory` é só de leitura. Uma associação, reconciliação, coordenação de sessão ou um plano de ciclo de vida, por si só, não estabelece presença no Maestro.
+</Warning>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/pt/governance/maestro">
+    Contrato e limites da autoridade de presença.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/pt/qxctl/engines">
+    Registo de associações de engines (associações não são acoplamentos).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pt/qxctl/session">
+    Sessões autenticadas utilizadas para registar presença.
+  </Card>
+
+  <Card title="Visão geral dos engines" icon="cube" href="/pt/engines/overview">
+    Engines de vetores instaláveis de forma independente que se acoplam ao Maestro.
+  </Card>
+</CardGroup>

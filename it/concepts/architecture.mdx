@@ -1,0 +1,33 @@
+---
+title: "Architettura di Symphony"
+description: "Comprendi i confini tra infrastruttura scelta dall'utente, contratti dei vector, engine, qxctl ed evidenze governate."
+sidebarTitle: "Architettura"
+---
+
+Symphony separa l'infrastruttura e i workload scelti dall'utente dalla conoscenza e dall'amministrazione della piattaforma. La piattaforma può ispezionare, validare e segnalare la compatibilità senza rivendicare la proprietà della tua strategia né trattare una raccomandazione come un obbligo.
+
+## Livello fisico e dei workload
+
+Un [Node](/it/concepts/node-habitat-nest) è un computer fisico identificato. Un **Habitat** è il suo esatto sistema operativo e condizionamento dei pacchetti, e un **Nest** è un workload che serve uno scopo scelto dall'utente. I cluster collegano i Node tramite uno o più bus. Fabric dei bus, adapter, provider e scelte hardware sono espliciti e non default universali.
+
+L'[hot path](/it/concepts/hot-path-isolation) resta separato dalla residenza amministrativa. qxctl e il lavoro del knowledge plane possono amministrare esplicitamente un Node, ma non diventano dipendenze continue e nascoste dell'esecuzione live.
+
+## Proprietà semantica
+
+I [vector](/it/concepts/vectors) sono proprietari delimitati e duraturi del significato e delle operazioni consentite. Ogni proprietario pubblica un Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` e `SPEC.md`. Il [Symphony Knowledge Vector (SKV)](/it/skv/overview) indicizza le superfici canoniche e conserva un percorso verso il loro proprietario. Gli schemi, i registri e i ledger companion restano governati senza diventare membri aggiuntivi del Quad.
+
+Le fasi di consegna descrivono quando il lavoro viene svolto. Non trasferiscono la proprietà semantica da un vector a un altro.
+
+## Engine e superficie dei comandi
+
+I [vector engine](/it/engines/overview) sono componenti installabili in modo indipendente ed eseguiti fuori processo che ispezionano, verificano, proiettano e propongono all'interno dei contratti dei rispettivi proprietari. Non acquisiscono autorità per il solo fatto di produrre una proposta.
+
+[qxctl](/it/qxctl/overview) è proprietario della grammatica dei comandi amministrativi e della loro presentazione. Invoca capacità delimitate e validate tramite ricevuta, mentre il vector che definisce un'operazione ne mantiene la semantica. Le evidenze di autorizzazione e di audit governano le route di modifica; la sola [classificazione del chiamante](/it/concepts/caller-authority) non concede alcuna autorità.
+
+## Verità ed evoluzione
+
+I contratti correnti esprimono la verità corrente. I ledger delle modifiche e delle pubblicazioni conservano le evidenze registrate in un determinato momento. Le discrepanze tra contratti, evidenze di implementazione e cronologia registrata vengono segnalate come drift invece di essere riscritte silenziosamente. [SAV](/it/skv/sav) valuta la compatibilità della composizione; [SEV](/it/skv/sev) pianifica l'evoluzione governata.
+
+<Note>
+  Questa panoramica è una mappa dei confini. Consulta il contratto corrente e le evidenze di implementazione di ciascun vector collegato prima di considerare una capacità disponibile in una specifica installazione.
+</Note>

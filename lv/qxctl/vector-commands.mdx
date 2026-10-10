@@ -1,0 +1,82 @@
+---
+title: "qxctl vektoru komandas: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Izpētiet šobrīd pieejamo vektoru specifisko qxctl gramatiku: SKVI, SCLV, SACV, SODV, SSFV, SHV glabāšanu un katalogu, kā arī rezervētās accord un evolution virsmas."
+sidebarTitle: "Vektoru komandas"
+---
+
+qxctl nodrošina vektoru specifisku gramatiku katram īstenotajam SKV dzinējam, kā arī SCV un SHV administrēšanai. Ratificētā Accordare un SEV gramatika izmantos `qxctl accord ...` un `qxctl evolution ...`, tiklīdz būs pieejamas to komandu implementācijas un stabili reģistra pierādījumi.
+
+## SKV dzinēju gramatika
+
+- `qxctl skvi ...`: inspect, check, propose, project pret SKVI dzinēju
+- `qxctl sclv ...`: inspect, check, propose, recover, project pret SCLV dzinēju
+- `qxctl sacv ...`: inspect, check, diff, propose, project pret SACV dzinēju
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project pret SODV dzinēju
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph pret SSFV dzinēju
+
+Katru gramatiku ierobežo tā dzinēja līgums, kam tā pieder. qxctl nekad neizdomā operācijas un neapiet dzinēju.
+
+## Accordare papildinājumi
+
+Accordare papildinājumi qxctl nodrošina:
+
+- Stabilu statusu
+- Saskaņošanu (atkārto tikai precīzus kandidātus)
+- Uzrauga instalēšanu un atinstalēšanu (izsauc tikai pārbaudīto receipt-v2 izpildāmo failu)
+- Divas piešķīrumu administrēšanas identitātes, kas maina tikai apturēto STAV konfigurāciju ar SSIAG un gaidītā stāvokļa atkopšanu
+
+Statuss nodala noturīgo nodomu un pievienošanas rindu. Saskaņošana atkārto tikai precīzus kandidātus. Piešķīrumu lapas nekad neatver darbojošos konfigurāciju.
+
+## SHV glabāšana
+
+Noturīgā SHV glabāšana tiek administrēta tikai ar:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` ar saglabāto gaidītā nodoma jaucējvērtību ir arī atkopšana. Atsevišķa atkopšanas aizstājvārda nav. Glabātuves tvērums tiek deklarēts ievadē; savienotāja identitāte tiek iestatīta karogos. Strukturālā glabāšana nedublē semantisko `shv graph validate` un neizvēlas kataloga galvu.
+
+`shv graph store inventory` (laidiens 0.2) pievieno ar revīziju piesaistītu loģisku nolasīšanu ar skaidri saglabātām rakstītāju identitātēm. Mantotā 0.1 atlase joprojām tiek atbalstīta.
+
+## SHV kataloga publicēšana
+
+Kataloga publicēšana tiek administrēta tikai ar:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Atkopšana ir `apply --operation-id`, kas ir savstarpēji izslēdzoša ar `--input`. Ar atļaujām nodrošināta lokālā kataloga atlase atšķiras no avota aktivizēšanas un vispārīgas grafu glabāšanas.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Vektoru semantika, ko īsteno dzinēji.
+  </Card>
+
+  <Card title="SHV vektors" icon="microchip" href="/lv/vectors/shv">
+    Aparatūras vektora (Hardware Vector) pamatinformācija un dzinēju saraksts.
+  </Card>
+
+  <Card title="SHV dzinēji" icon="microchip" href="/lv/engines/shv-engines">
+    Dzinēju līmeņa informācija.
+  </Card>
+
+  <Card title="qxctl pārskats" icon="terminal" href="/lv/qxctl/overview">
+    Pilnīga qxctl komandu virsma.
+  </Card>
+</CardGroup>

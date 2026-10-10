@@ -1,0 +1,47 @@
+---
+title: "Vektor dan Fase Pengiriman Symphony"
+description: "Pahami domain kepemilikan semantik Symphony yang bertahan lama (vektor) dibandingkan fase pengiriman kronologis, serta Contract Quad dan status vektor saat ini."
+sidebarTitle: "Vektor & Fase"
+---
+
+Symphony mengatur arsitekturnya di sekitar dua gagasan: **vektor** adalah domain kepemilikan semantik yang bertahan lama, dan **fase** adalah kampanye pengiriman kronologis. Komponen yang pertama kali diriset dalam suatu fase tidak menjadikan fase tersebut sebagai pemilik permanennya. Vektor menjaga makna tetap stabil sementara implementasi terus berkembang.
+
+## Apa itu vektor?
+
+Vektor adalah domain kepemilikan semantik terbatas yang bertahan lama, yang kontrak kanonisnya memiliki makna dan operasi yang diizinkan dalam domain tersebut. Setiap vektor menerima **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md`, dan `SPEC.md`, ditambah permukaan pendamping terfokus yang benar-benar dibutuhkannya. Vektor mendeklarasikan permukaan kanonis dan graf delegasinya, SKVI memetakan setiap permukaan saat ini tepat satu kali, dan pendamping yang usang digantikan melalui evolusi yang diatur alih-alih tetap tertinggal sebagai konteks yang kontradiktif.
+
+## Status vektor
+
+| Vektor | Status | Halaman |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Diimplementasikan: fondasi Fase 1 dengan permukaan terindeks | [/id/skv/overview](/id/skv/overview) |
+| **SKVI** — Pengindeksan sumber | Diimplementasikan: engine inspect/check/propose | [/id/skv/skvi](/id/skv/skvi) |
+| **SCLV** — Ledger perubahan | Diimplementasikan: pemeriksaan ledger append-only | [/id/skv/sclv](/id/skv/sclv) |
+| **SACV** — Tata kelola kontrak API | Diimplementasikan: pemeriksaan OpenAPI 3.2.0 | [/id/skv/sacv](/id/skv/sacv) |
+| **SODV** — Tata kelola dokumentasi/rilis resmi | Diimplementasikan: pemeriksaan ledger rilis lokal | [/id/skv/sodv](/id/skv/sodv) |
+| **SSFV** — Identitas/administrasi fitur | Diimplementasikan: pemeriksaan fitur struktural | [/id/skv/ssfv](/id/skv/ssfv) |
+| **SAV** — Komposisi Accordare | Diimplementasikan: evaluasi freezing path | [/id/skv/sav](/id/skv/sav) |
+| **SEV** — Evolusi | Diimplementasikan: perencanaan dampak/disposisi | [/id/skv/sev](/id/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Diimplementasikan: fondasi Go tanpa cgo | [/id/governance/ssiag](/id/governance/ssiag) |
+| **STAV** — Protokol audit TOPS | Diimplementasikan: ledger append-only per TOPS | [/id/governance/stav](/id/governance/stav) |
+| **SOV** — Ops Vector | Berkembang: penyediaan, pengiriman Habitat, Nest | [/id/vectors/sov](/id/vectors/sov) |
+| **SCV** — Cloud Vector | Diimplementasikan: delapan engine pengetahuan sumber C++ | [/id/vectors/scv](/id/vectors/scv) |
+| **SNV** — Node Vector | Berkembang: komposisi SNIV, SNRV, SCIV, SCNV | [/id/vectors/snv](/id/vectors/snv) |
+| **SQV** — Quantitative Vector | Berkembang: subvektor arsitektur FIX SOOV | [/id/vectors/sqv](/id/vectors/sqv) |
+| **SHV** — Hardware Vector | Diimplementasikan: engine sumber, katalog, profil C++ | [/id/vectors/shv](/id/vectors/shv) |
+| **SIV** — Intelligence Vector | Berkembang: SMCV Markdown opsional; SAIV dicadangkan | [/id/vectors/siv](/id/vectors/siv) |
+
+## Contract Quad dan permukaan pendamping
+
+Setiap vektor menerima:
+
+1. **INTENT.md** — tujuan dan cakupan
+2. **MANIFEST.md** — identitas, permukaan yang dideklarasikan, graf delegasi
+3. **SKILL.md** — penggunaan yang aman dan panduan operasional
+4. **SPEC.md** — perilaku normatif dan batasan
+
+Permukaan pendamping seperti `SLANG.md`, `NAMESPACES.md`, registri, skema, dan profil tetap merupakan artefak yang diatur di luar struktur empat anggota. Permukaan ini merutekan atau mengkhususkan kebenaran pemilik, tetapi tidak dapat memperluas otoritasnya sendiri.
+
+## Integrasi berbasis bukti
+
+Engine yang ditangguhkan tidak memiliki tanda terima rekaan. API yang diusulkan tidak memiliki entri registri yang dikarang. Kontrak yang belum diterbitkan tidak memiliki klaim penyelesaian SODV. Inilah integrasi berbasis bukti, bukan duplikasi seremonial.

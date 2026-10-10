@@ -1,0 +1,74 @@
+---
+title: "SCV avotu zināšanu dzinēji: piegādātāju realitāte Symphony"
+description: "Astoņi neatkarīgi pakoti SCV, hiperskalētāju, malas un piegādātāju dzinēji saglabā precīzas avotu revīzijas un sagatavo reproducējamus grafa un vaicājumu pierādījumus."
+sidebarTitle: "SCV dzinēji"
+---
+
+SCV avotu zināšanu dzinēji ir astoņi neatkarīgi pakoti C++26 procesi, kas glabā privātas semantiskās zināšanas par ārējo piegādātāju resursiem, piedāvājumiem, reģioniem, ierobežojumiem un hibrīdām iespējām. Tie saglabā precīzas avotu revīzijas un ierobežotus tvērumus, lai lejupējie rīki varētu reproducēt rezultātus.
+
+## Dzinēji
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Vispārējais SCV avotu dzinējs koplietotajai mākoņa vārdnīcai.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector avotu dzinējs.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare specifisks malas avotu dzinējs.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services avotu dzinējs.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure avotu dzinējs.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean avotu dzinējs.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform avotu dzinējs.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Neobligāts DuckDB savienotājs saglabātai relāciju grafa indeksēšanai.
+  </Card>
+</CardGroup>
+
+## Ko dara SCV dzinēji
+
+- Saglabā skaidras avotu revīzijas un ierobežotus tvērumus
+- Saglabā kvalificētus apgalvojumus un dokumentu sākotnējo struktūru
+- Sagatavo reproducējamus grafa un vaicājumu pierādījumus
+- Nodrošina pārnesamas piegādātāju pakotnes un ierobežotu, izsaucēja vadītu kompozīciju
+
+## Ko tie nedara
+
+<Warning>
+  Piegādātāju darbības un pilnīgi mākoņa katalogi paliek ārpus šī pieauguma. SCV dzinēji apraksta to, kas ir zināms; tie neveic darbības ar piegādātājiem.
+</Warning>
+
+qxctl atsevišķi administrē auditētas lokālas avotu izmaiņas un saskaņotu grafa atlasi, izmantojot saglabātas darbplūsmas un aizsargātu grafa atlasi. Īpaša grafa šķērsošana un darbības adapteri paliek atsevišķs darbs.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SCV vektors" icon="cloud" href="/lv/vectors/scv">
+    Cloud Vector līgums, ko īsteno šie dzinēji.
+  </Card>
+
+  <Card title="SOV vektors" icon="terminal" href="/lv/vectors/sov">
+    Ops Vector, kas, izmantojot qxctl, rīkojas, pamatojoties uz SCV pierādījumiem.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Grafa atlase, avotu darbplūsmas un DuckDB savienotāja administrēšana.
+  </Card>
+</CardGroup>

@@ -1,0 +1,35 @@
+---
+title: "Dottrina della piattaforma QuanuX Symphony"
+description: "Scopri i principi che governano Symphony: proprietà dell'utente su strategia e infrastruttura, neutralità rispetto alla classe del chiamante, protezione dell'hot path e compatibilità basata sulle evidenze."
+sidebarTitle: "Dottrina"
+---
+
+La dottrina di Symphony definisce i confini tra ciò che controlla la piattaforma e ciò che controlli tu. Queste regole governano ogni decisione di progettazione nel monorepo e ogni interazione con qxctl, con i vector engine e con i contratti di conoscenza.
+
+## Proprietà dell'utente
+
+Sei tu il proprietario della logica della tua strategia, dello scopo del Nest, della scelta del provider, della scelta dell'hardware, della topologia dei bus e della selezione degli adapter supportati. Symphony fornisce evidenze di compatibilità esatte e operazioni supportate, ma non trasforma le raccomandazioni in leggi della piattaforma. La piattaforma riporta corrispondenze, discrepanze, fatti irrisolti e conseguenze. Non classifica i provider, non prescrive una strategia e non amplia silenziosamente il tuo ambiente.
+
+## Protezione dell'hot path
+
+L'hot path è protetto dalla residenza amministrativa e dalla pressione accidentale sui bus condivisi. qxctl e il knowledge plane sono amministrazione di cold path o freezing path. Possono agire esplicitamente su un Node che ospita anche lavoro live, ma non devono diventare dipendenze continue dell'hot path, watcher nascosti, interpreti residenti o package manager in background non richiesti. La tua architettura esplicita resta sovrana.
+
+## Separazione tra comandi e semantica
+
+qxctl è proprietario della grammatica dei comandi e della loro presentazione. I vector di dominio sono proprietari delle operazioni e dei significati che quei comandi espongono. Una route di qxctl invoca una capacità definita dal proprietario senza assorbirne la semantica.
+
+## Nomi e namespace
+
+I nomi vengono registrati nell'ambito che li possiede. SNV e SCNV non li impongono, e il NAMESPACES radice resta più ampio di SNV. Un nome registrato all'interno di un TOPS o di un TROG segue quell'ambito. In presenza di più cluster, il nome breve di un Node può ripetersi in cluster diversi, ma non può identificare in modo ambiguo due Node attivi nello stesso cluster.
+
+## Neutralità rispetto alla classe del chiamante
+
+La classificazione di un chiamante come umano, IA, agente, servizio o workload non concede né revoca autorità. Le decisioni di autorizzazione supportate si basano sulla proprietà dell'host di destinazione o sui permessi concessi, sull'operazione e sulla risorsa richieste, sullo stato atteso e sulle salvaguardie configurate dal proprietario. L'amministratore dell'host di destinazione è sovrano sulla governance configurabile. SSIAG può verificare e proiettare l'autorità effettiva dell'host, ma non crea un'autorità di registrazione superiore. Le garanzie di identità rafforzate e gli interblocchi di governance sono salvaguardie neutrali rispetto al chiamante e configurate dal proprietario. I requisiti di integrità del protocollo restano obbligatori. Symphony non stabilisce la capacità legale o finanziaria esterna in base al tipo di chiamante.
+
+## Verità ed evidenze
+
+I contratti correnti descrivono la verità corrente. I record immutabili SCLV e SODV conservano ciò che era noto, modificato, autorizzato o completato nel momento storico in cui sono stati registrati. Quando i contratti correnti, le evidenze di implementazione e l'ultimo record applicabile non concordano, la discrepanza viene segnalata come drift da revisionare. La storia non viene riscritta silenziosamente per somigliare al presente.
+
+## Dottrina su Python
+
+Il codice sorgente first-party di Symphony, i generatori, la scrittura degli schemi, i test e gli helper di accettazione non richiedono alcuna implementazione Python né dipendenze da un interprete Python. C++ è responsabile degli strumenti sostitutivi di authoring e di test dei processi. Questa policy del repository non limita i programmi scritti da te né gli Habitat isolati selezionati esplicitamente.

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, rozruch i apply"
+description: "Zarządzaj chronionymi profilami cyklu życia, własnością, obserwacjami, rozruchami i przejściami zgodnymi z apply w qxctl, z rygorystycznymi zabezpieczeniami compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+Gramatyka `qxctl knowledge lifecycle ...` administruje chronionymi profilami, własnością, obserwacjami, dziennikami rozruchu i przejściami zgodnymi z apply. Każda mutacja jest operacją compare-and-swap, a każde apply jest powiązane z dokładnymi dowodami.
+
+## Profil
+
+Ustaw chroniony profil cyklu życia dla TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Podaj `absent` dla profilu tworzonego po raz pierwszy lub dokładny digest zwrócony przez wcześniejszy odczyt.
+
+## Własność
+
+- `ownership status`: sprawdza jeden skonfigurowany współdzielony katalog główny
+- `ownership reconcile`: odświeża jego dowody
+- `ownership adopt`: przejmuje własność dopiero po przejrzeniu każdego zachowawczego roszczenia legacy
+- `ownership release`: zwalnia własność tylko dla jednego dokładnego potwierdzenia legacy celowo oznaczonego jako możliwe do odzyskania
+
+<Warning>
+  Nigdy nie usuwaj ani nie przepisuj ręcznie lokalnego rejestru katalogu głównego ani jego bariery zgodności układu potwierdzeń `symphony-root-ownership/1`. Starsi klienci cyklu życia muszą napotkać tę barierę i zatrzymać się na istniejącej blokadzie nieznanego pakietu.
+</Warning>
+
+## Obserwacja, raport, rozruch
+
+- `observe`: emituje jednorazowe dowody potwierdzeń o stałym układzie
+- `report`: tworzy świeży, jednorazowy plan
+- `boot`: trwała progresja wyłącznie raportowa ze stabilnym identyfikatorem operacji i dokładnym stanem dziennika
+- `status`: inspekcja v1
+- `recover --discover`: odzyskuje unikalny łańcuch v1, gdy zwykły status nie może zweryfikować stanu lokalnego
+
+## Profile zgodne z apply
+
+Dla profilu `apply-compatible` wywołuj `apply` wyłącznie z dokładnym digestem źródła rozruchu, operacją compare-and-swap dziennika apply, operacją compare-and-swap stanu zastosowanego, stabilnym identyfikatorem operacji i jawnie wskazanymi przygotowanymi katalogami głównymi:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Używaj `apply-status` do obserwacji prób lub ograniczonego `apply-recover` do trwałego odzyskiwania. Nigdy nie wybieraj akcji ręcznie ani nie edytuj chronionego stanu.
+
+<Note>
+  Odświeżenie obserwacji zmieniające wyłącznie znacznik czasu musi zmienić dowody dokumentu bez przesuwania stabilnych tożsamości semantycznych.
+</Note>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Silnik odpowiedzialny za koordynację planów cyklu życia i apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/pl/qxctl/engines">
+    Zarządzanie wiązaniami silników, do których odwołują się plany cyklu życia.
+  </Card>
+</CardGroup>

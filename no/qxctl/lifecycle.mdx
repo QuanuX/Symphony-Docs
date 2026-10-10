@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, boot og apply"
+description: "Administrer beskyttede livssyklusprofiler, eierskap, observasjoner, oppstarter og apply-kompatible overganger via qxctl med strenge compare-and-swap-sikringer."
+sidebarTitle: "lifecycle"
+---
+
+Grammatikken `qxctl knowledge lifecycle ...` administrerer beskyttede profiler, eierskap, observasjoner, oppstartsjournaler og apply-kompatible overganger. Hver endring er en compare-and-swap, og hver apply er bundet til eksakt bevis.
+
+## Profil
+
+Angi den beskyttede livssyklusprofilen for en TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Oppgi `absent` for en førstegangsprofil, eller den eksakte digesten som en tidligere lesing rapporterte.
+
+## Eierskap
+
+- `ownership status`: inspiser én konfigurert delt rot
+- `ownership reconcile`: oppdater bevisene for den
+- `ownership adopt`: adopter bare etter å ha gjennomgått hvert konservative eldre krav
+- `ownership release`: frigi bare for én eksakt eldre kvittering som bevisst er gjort gjenvinnbar
+
+<Warning>
+  Slett eller omskriv aldri det rotlokale registeret eller dets kompatibilitetsgjerde for kvitteringsoppsettet `symphony-root-ownership/1` for hånd. Eldre livssyklusklienter må møte dette gjerdet og stoppe på sin eksisterende blokkering for ukjente pakker.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: send ut engangsbevis i form av kvitteringer med fast oppsett
+- `report`: lag en fersk engangsplan
+- `boot`: varig progresjon kun for rapportering, med en stabil operasjons-ID og eksakt journaltilstand
+- `status`: v1-inspeksjon
+- `recover --discover`: gjenopprett en unik v1-kjede når vanlig status ikke kan validere lokal tilstand
+
+## Apply-kompatible profiler
+
+For en `apply-compatible`-profil kaller du `apply` bare med den eksakte digesten for oppstartskilden, compare-and-swap for apply-journalen, compare-and-swap for anvendt tilstand, en stabil operasjons-ID og eksplisitte trinnvise røtter (staged roots):
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Bruk `apply-status` for å observere forsøk, eller den avgrensede `apply-recover` for varig gjenoppretting. Velg aldri en handling manuelt, og rediger aldri beskyttet tilstand.
+
+<Note>
+  En observasjonsoppdatering som bare endrer tidsstempelet, må endre dokumentbeviset uten å flytte frem stabile semantiske identiteter.
+</Note>
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Sesjonskoordinator" icon="gears" href="/no/engines/coordinator">
+    Motoren bak koordinering av livssyklusplaner og apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/no/qxctl/engines">
+    Administrer motorbindingene som livssyklusplaner refererer til.
+  </Card>
+</CardGroup>

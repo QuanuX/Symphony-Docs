@@ -1,0 +1,25 @@
+---
+title: "Catatan Perubahan"
+description: "Fitur baru, pembaruan, dan perbaikan yang dirilis untuk QuanuX Symphony."
+rss: true
+---
+
+<Update label="2 Oktober 2026" description="Minggu 25 September" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Fitur baru
+
+- **Engine Symphony Node Vector.** Lima engine C++26 yang dapat dipasang secara independen kini mencakup identitas Node (SNIV), sumber daya (SNRV), hubungan klaster (SCIV), nama (SCNV), serta komposisi dan retensi SNV. Anda dapat mengelola bukti yang diberikan, tampilan terpilih, dan riwayat yang disimpan melalui qxctl. Observasi langsung dan penyediaan SOV belum disertakan. Lihat [Node Vector](/id/vectors/snv).
+- **Pengamat lokal SNV opsional.** qxctl dapat memanggil pengamat lokal terpisah yang melaporkan observasi CPU dan memori terpilih dengan ketidakpastian yang eksplisit. Pengamat ini tidak pernah menetapkan identitas, keanggotaan, atau nama.
+- **Fondasi data riset SQV.** Pustaka C++26 baru mencakup penangkapan dengan byte asli dan provenans sumber (SQAV), metadata (SQMV), aliran (SQFV), konversi bilangan bulat yang eksak dengan silsilah (SQTV), retensi lokal (SQPV), serta pengiriman dengan checkpoint dan pelanjutan yang eksak (SQDV). Lihat [Quantitative Vector](/id/vectors/sqv).
+- **Administrasi SQV melalui qxctl.** Tujuh engine administrasi yang dapat dipasang secara independen menyediakan validasi permintaan dan konfigurasi, proyeksi metadata, serta inspeksi baca-saja atas status yang disimpan. Lihat [Perintah vektor](/id/qxctl/vector-commands).
+- **Adaptor Databento dan broker.** SQV kini mendukung penangkapan Databento DBNv3 MBO, mempertahankan sampel DBNv1 dan DBNv3, serta merencanakan permintaan historis yang terbatas beserta bukti cakupannya. Adaptor baca sumber non-langsung dan broker juga tersedia. Eksekusi penyedia yang terautentikasi dan pengumpulan langsung masih menjadi pekerjaan mendatang.
+
+## Pembaruan
+
+- **Penerimaan kredensial SSIAG.** SSIAG menambahkan pengaman penggunaan kredensial sekali pakai, penerimaan dispatch yang terautentikasi, jurnal permintaan kredensial yang tahan lama dengan pemulihan, serta validasi peer native di macOS. Penggunaan kredensial operasional tetap dinonaktifkan. Lihat [SSIAG](/id/governance/ssiag).
+- **Cakupan perintah qxctl.** qxctl kini memiliki 399 identitas perintah stabil, naik dari 383. Binding engine mendukung 13 peran yang telah ditetapkan, termasuk lima engine SNV. Lihat [Ikhtisar qxctl](/id/qxctl/overview).
+- **Antarmuka batch SQFV.** Pustaka batch SQFV kini menggunakan API C++26, bukan C ABI. Perbarui integrasi apa pun yang memanggil antarmuka sebelumnya.
+- **Kapasitas SKVI.** [SKVI](/id/skv/skvi) mengindeks lebih banyak permukaan, termasuk pemilik data riset SQV yang baru.
+- **Panduan instalasi engine.** Panduan instalasi kini memperjelas bahwa Anda memasang, memperbarui, dan menghapus setiap engine secara terpisah. Lihat [Ikhtisar engine](/id/engines/overview).
+
+</Update>

@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: verificări deterministe, doar pentru citire, ale depozitului"
+description: "Symphony Validator produce dovezi pe linii sau în JSON structurat pentru contracte, închiderea surselor, invarianți, funcționalități, lansări și rezumatul rădăcină verificat automat."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) este un verificator de depozit C++26 independent, determinist și doar pentru citire. Acesta produce dovezi imuabile despre starea curentă a depozitului și a contractelor sale. Nu poate repara și nu poate publica nimic.
+
+## Ce verifică validatorul
+
+- Forma contractelor: ancorele și structura obligatorii ale Contract Quad
+- Închiderea curentă a surselor pe suprafețele indexate de SKVI
+- Proprietatea asupra invarianților conform `knowledge/INVARIANTS.md` și registrului de invarianți
+- Așteptările privind administrarea funcționalităților raportate de SSFV
+- Înregistrările de lansare raportate de SODV
+- Rezumatul rădăcină deținut automat din README-ul depozitului
+
+Dovezile sunt emise ca ieșire pe linii sau ca JSON structurat. Fiecare emitere este reproductibilă din aceeași stare a depozitului.
+
+## Ce nu face validatorul
+
+<Warning>
+  Validatorul nu poate repara fișiere, nu poate rescrie contracte și nu poate publica depozitul. Nu creează adevăr canonic despre nimic; doar îl raportează.
+</Warning>
+
+- Niciun efect secundar asupra depozitului
+- Niciun acces la rețea
+- Nicio suprimare a avertismentelor în afara politicii protejate de avertismente a qxctl
+
+## Integrarea cu qxctl
+
+qxctl validează chitanța exactă și digesturile structurate ale validatorului înainte de a aplica politica protejată de avertismente. Nouă comenzi finale qxctl protejate pentru ciclul de viață al avertismentelor, plus ruta exactă a rezumatului rădăcină susținută de chitanță, expun administrarea validării fără a modifica dovezile brute ale detectorului.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/ro/qxctl/validate">
+    Gramatica politicii protejate de avertismente, a liniei de bază și a afișării.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ro/skv/ssfv">
+    Așteptările privind administrarea funcționalităților verificate de validator.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ro/skv/sodv">
+    Înregistrările de lansare pe care le inspectează validatorul.
+  </Card>
+
+  <Card title="Prezentarea generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul general ale cărui contracte le verifică validatorul.
+  </Card>
+</CardGroup>

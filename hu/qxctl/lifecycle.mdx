@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, rendszerindítás és alkalmazás"
+description: "Védett életciklus-profilok, tulajdonjog, megfigyelések, rendszerindítások és alkalmazáskompatibilis átmenetek kezelése a qxctl segítségével, szigorú compare-and-swap biztosítékokkal."
+sidebarTitle: "lifecycle"
+---
+
+A `qxctl knowledge lifecycle ...` nyelvtan a védett profilokat, a tulajdonjogot, a megfigyeléseket, a rendszerindítási naplókat és az alkalmazáskompatibilis átmeneteket adminisztrálja. Minden módosítás compare-and-swap művelet, és minden alkalmazás pontos bizonyítékokhoz kötött.
+
+## Profil
+
+Egy TOPS védett életciklus-profiljának beállítása:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Első profil esetén adja meg az `absent` értéket, egyébként egy korábbi olvasás által jelentett pontos digestet.
+
+## Tulajdonjog
+
+- `ownership status`: egy konfigurált megosztott gyökér vizsgálata
+- `ownership reconcile`: a hozzá tartozó bizonyítékok frissítése
+- `ownership adopt`: átvétel csak minden konzervatív örökölt igény áttekintése után
+- `ownership release`: felszabadítás csak egyetlen, szándékosan visszaigényelhetővé tett pontos örökölt nyugta esetén
+
+<Warning>
+  Soha ne törölje vagy írja át kézzel a gyökérhez tartozó helyi regisztert vagy annak `symphony-root-ownership/1` nyugtaelrendezési kompatibilitási korlátját. A régebbi életciklus-klienseknek bele kell ütközniük ebbe a korlátba, és meg kell állniuk a meglévő ismeretlen-csomag blokkolójukon.
+</Warning>
+
+## Megfigyelés, jelentés, rendszerindítás
+
+- `observe`: eldobható, rögzített elrendezésű nyugtabizonyíték kibocsátása
+- `report`: friss, eldobható terv előállítása
+- `boot`: tartós, csak jelentéses előrehaladás stabil műveletazonosítóval és pontos naplóállapottal
+- `status`: v1 vizsgálat
+- `recover --discover`: egyedi v1 lánc helyreállítása, ha a szokásos állapotlekérdezés nem tudja validálni a helyi állapotot
+
+## Alkalmazáskompatibilis profilok
+
+`apply-compatible` profil esetén az `apply` parancsot csak a pontos rendszerindítási forrásdigesttel, az alkalmazási napló compare-and-swap értékével, az alkalmazott állapot compare-and-swap értékével, stabil műveletazonosítóval és explicit előkészített gyökerekkel hívja meg:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+A kísérletek megfigyeléséhez használja az `apply-status` parancsot, tartós helyreállításhoz pedig a korlátozott `apply-recover` parancsot. Soha ne válasszon műveletet kézzel, és ne szerkessze a védett állapotot.
+
+<Note>
+  A csak időbélyeget érintő megfigyelésfrissítésnek meg kell változtatnia a dokumentum bizonyítékait anélkül, hogy a stabil szemantikai identitásokat továbbléptetné.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    Az életciklus-tervek és -alkalmazások koordinációja mögötti motor.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/hu/qxctl/engines">
+    Az életciklus-tervek által hivatkozott motorkötések kezelése.
+  </Card>
+</CardGroup>

@@ -1,0 +1,50 @@
+---
+title: "SAV: संरचना मूल्यांकन के लिए Symphony Accordare Vector"
+description: "SAV, कैनॉनिकल सत्य को म्यूटेट किए बिना Accord संदर्भों को हल करता है, तीन अक्षों पर संरचना का मूल्यांकन करता है, Named Version को मान्य करता है और Installation Blueprint की योजना बनाता है।"
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) घोषित घटक संरचना और संगतता को हल करता है। इसका इंजन एक फ़्रीज़िंग-पाथ, केवल-पठन C++26 प्रोसेस है। SAV सटीक टाइप्ड प्रोजेक्शन की संरचना करता है, लेकिन स्वामी वेक्टरों से कभी भी सोर्स सत्य नहीं लेता।
+
+## ऑपरेशन
+
+SAV मूल्यांकन ऑपरेशनों के एक समृद्ध सेट का समर्थन करता है:
+
+- अपरिवर्तनीय व्युत्पन्न CURRENT स्नैपशॉट में **Accord संदर्भ समाधान**
+- **तीन-अक्षीय मूल्यांकन**, तुलना और व्याख्या
+- **संरचना ग्राफ़** और डिस्पोज़ेबल प्रोजेक्शन
+- **Named Version** सत्यापन और डिफ़
+- **Extension Capsule** जाँच
+- **Installation Blueprint** योजना
+- घोषित घटकों के बीच **संगतता वार्ता**
+
+## SAV क्या नहीं करता
+
+- SAV जिन घटकों की संरचना करता है, उनका सिमेंटिक स्वामित्व नहीं लेता।
+- SAV आपके लिए कोई डिज़ाइन नहीं चुनता; यह वही मूल्यांकित करता है जो आपने घोषित किया।
+- SAV कैनॉनिकल फ़ाइलों को म्यूटेट नहीं करता। इसका आउटपुट साक्ष्य और प्रस्ताव है।
+- SAV, STAV append अथॉरिटी नहीं है। म्यूटेशन-पूर्व इंटेंट हैंडलिंग के लिए Accordare STAV प्रोड्यूसर देखें।
+
+<Note>
+  SAV केवल read, query, validate और propose करता है। SKV इंजन परिवार में प्रोग्रामेटिक कैनॉनिकल apply निष्क्रिय बना रहता है।
+</Note>
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SKV अवलोकन" icon="book-open" href="/hi/skv/overview">
+    छत्र फ़्रेमवर्क और Contract Quad मॉडल।
+  </Card>
+
+  <Card title="Accordare प्रोड्यूसर" icon="pen-nib" href="/hi/governance/accordare-producer">
+    सीमित SAV Named Version ऑडिट सर्किट।
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/hi/skv/sev">
+    इवोल्यूशन केस जो संरचना परिवर्तनों के SAV मूल्यांकन को ट्रिगर करते हैं।
+  </Card>
+
+  <Card title="qxctl वेक्टर कमांड" icon="terminal" href="/hi/qxctl/vector-commands">
+    अनुमोदित Accordare ग्रामर, लागू होने के बाद, `qxctl accord ...` के रूप में आएगा।
+  </Card>
+</CardGroup>

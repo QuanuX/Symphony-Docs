@@ -1,0 +1,48 @@
+---
+title: "SSIAG: drošas identitātes un piekļuves pārvaldība (Secure Identity and Access Governance) Symphony"
+description: "SSIAG ir Symphony izsaucējneitrālais autorizācijas pamats ar reģistrāciju katrā TOPS, aizsargātu politiku dzīves ciklu, drošiem audita metadatiem un vietējās uzraudzības saitēm."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) ir neatkarīgi instalējams Go pamats bez cgo izsaucējneitrālai autorizācijai Symphony resursdatorā. Tas projicē faktiskās resursdatora pilnvaras, aizsargā aizsargātas mainīšanas darbības un integrējas ar STAV auditu, pirms kāda izmaiņa kļūst redzama.
+
+## Ko nodrošina SSIAG
+
+- Precīzu izsaucējneitrālu autorizāciju, kas piesaistīta mērķa resursdatora īpašumtiesībām, piešķirtajai atļaujai, pieprasītajai darbībai, sagaidāmajam stāvoklim un īpašnieka konfigurētiem drošības pasākumiem
+- Reģistrāciju katrā TOPS un lokālo galapunktu uzticēšanos
+- Aizsargātu politiku dzīves ciklu un piegādātāju instalāciju dzīves ciklu
+- Piesaistu dzīves ciklu ar compare-and-swap starp aktīvajām un iepriekšējām piesaistēm
+- Drošus audita metadatus, kas sagatavoti STAV
+- Vietējo launchd un systemd uzraudzību
+
+## Kas ir apzināti atspējots
+
+<Warning>
+  Operatīvā akreditācijas datu izmantošana, kanonisko zināšanu piemērošana un noslēpumu piegāde paliek atspējotas. Parastā pamata mainīšana tiek droši noraidīta (fails closed), līdz ir pabeigts tās nepieciešamais audita maršruts caur STAV.
+</Warning>
+
+SSIAG nenosaka izsaucēja klasi. Cilvēki, AI, aģenti, pakalpojumi un darba slodzes kā izsaucēji tiek apstrādāti vienādi; pilnvaras izriet no mērķa resursdatora un pieprasītās darbības, nevis no dalībnieka etiķetes.
+
+## macOS Keychain piegādātājs
+
+`modules/ssiag-provider-macos-keychain` ir Swift metadatu adapteris ar ierobežotu, savstarpēji pārbaudītu rokasspiedienu un parakstītas pakotnes, kā arī sesijas gatavības novērošanu. Tas atklāj piegādātāja metadatus SSIAG, nepiešķirot operatīvu piekļuvi Keychain, kas šobrīd ir apzināti atspējota.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/lv/governance/stav">
+    Katra TOPS tikai papildināma audita virsgrāmata, uz kuru paļaujas SSIAG mainīšanas darbības.
+  </Card>
+
+  <Card title="Accordare producents" icon="pen-nib" href="/lv/governance/accordare-producer">
+    Ierobežota SAV Named Version audita ķēde, kas darbojas kopā ar SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/lv/qxctl/lifecycle">
+    Dzīves cikla administrēšana, kas autorizācijai vēršas pie SSIAG.
+  </Card>
+
+  <Card title="Izsaucēja pilnvaras" icon="user-shield" href="/lv/concepts/caller-authority">
+    Doktrīna, ko īsteno SSIAG.
+  </Card>
+</CardGroup>

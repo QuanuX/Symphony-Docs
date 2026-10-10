@@ -1,0 +1,57 @@
+---
+title: "Motoarele de vectori Symphony: prezentare generală a instalării independente"
+description: "Fiecare motor de vector Symphony se instalează independent, rulează în afara procesului în C++ și rămâne fără autoritate. Faceți cunoștință aici cu familiile de motoare SKV, SCV și SHV."
+sidebarTitle: "Prezentarea generală a motoarelor"
+---
+
+Fiecare vector Symphony activ la nivel de aplicație poate avea un motor C++ instalabil independent, care rulează în afara procesului. Mecanismele C++ partajate, fără autoritate, se află în `libraries/`; un coordonator C++ separat deține mecanismele sesiunilor autentificate și ale reconcilierii arborilor de lucru. Motoarele inspectează, validează, proiectează și propun în limitele contractelor deținute de vectori. Ele nu dobândesc autoritate doar prin faptul că generează conținut.
+
+## Motoare implementate
+
+<CardGroup cols={2}>
+  <Card title="Fundamentul Knowledge Vector" icon="cube" href="/ro/engines/knowledge-vector-foundation">
+    Încadrarea proceselor C++, JSON, SHA-256, instantanee, chitanțe și descoperirea manifestelor.
+  </Card>
+
+  <Card title="Coordonatorul sesiunilor" icon="gears" href="/ro/engines/coordinator">
+    Sesiuni autentificate, reconcilierea arborilor de lucru și coordonarea aplicării ciclului de viață.
+  </Card>
+
+  <Card title="Motoarele de surse SCV" icon="cloud" href="/ro/engines/scv-source-engines">
+    Opt motoare C++26 de cunoaștere a surselor pentru SCV, hyperscaleri, edge și furnizori.
+  </Card>
+
+  <Card title="Motoarele SHV" icon="microchip" href="/ro/engines/shv-engines">
+    Motoare pentru surse hardware, catalog, profiluri, partiționare, publicare și adaptoare.
+  </Card>
+</CardGroup>
+
+## Familia de motoare SKV
+
+Fiecare suprafață SKV are propriul motor:
+
+- Motoarele SKVI, SCLV, SACV, SODV și SSFV implementează fiecare inspectarea, verificarea, propunerea, proiecția (și recuperarea, acolo unde este cazul).
+- Motoarele SAV și SEV sunt procese C++26 pe calea înghețată pentru evaluarea compoziției și cazurile de evoluție.
+
+<Note>
+  Fiecare motor SKV curent permite doar citire, interogare, validare și propunere. Aplicarea canonică programatică rămâne dezactivată până când sunt finalizate, pentru fiecare motor, contractele de verificare a permisiunilor SSIAG, tranzacție cu stare așteptată, măsură de protecție qxctl, eveniment STAV, recuperare și teste negative.
+</Note>
+
+## Garanții comune
+
+- Instalare și dezinstalare independente pentru fiecare modul
+- Nicio parcurgere ambientală a depozitului; descoperirea manifestelor este explicită
+- Nicio autoritate partajată; fiecare rută de modificare este condiționată de SSIAG plus STAV
+- Nicio rezidență pe calea critică; motoarele nu introduc niciodată latență în sarcinile de lucru live
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentarea generală qxctl" icon="terminal" href="/ro/qxctl/overview">
+    CLI administrativ care invocă motoare exacte, validate prin chitanțe.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ro/governance/maestro">
+    Înregistrează relațiile de andocare dintre motoare și receptori.
+  </Card>
+</CardGroup>

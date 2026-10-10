@@ -1,0 +1,83 @@
+---
+title: "qxctl: Command Line Administratif Agentik Symphony"
+description: "qxctl adalah CLI administratif Go milik Symphony. Pelajari 373 perintah yang dapat dieksekusi, registry binding engine, dan model pemanggilan tervalidasi receipt untuk engine vektor."
+sidebarTitle: "Ikhtisar qxctl"
+---
+
+`qxctl` adalah CLI administratif dan kueri berbasis Go milik Symphony yang mengutamakan agen. CLI ini menyampaikan perintah; vektor domain memiliki operasi dan makna di baliknya. Registry yang di-check-in mengikat setiap leaf perintah yang dapat dieksekusi ke identitas mesin yang stabil dan bukti administrasi fitur yang telah ditinjau.
+
+## Cakupan qxctl
+
+qxctl mengimplementasikan administrasi untuk:
+
+- Inspeksi repositori dan kontrak
+- Administrasi validator, peringatan, invarian, fitur, lifecycle, sesi, rekonsiliasi, binding, dan Maestro
+- Administrasi identitas SSIAG, audit STAV, dan produsen Accordare
+- Grammar engine vektor yang telah diimplementasikan (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, ditambah permukaan SCV dan SHV)
+
+Registry saat ini berisi **373** perintah yang dapat dieksekusi.
+
+## Model pemanggilan yang aman
+
+qxctl memanggil instalasi persis yang tervalidasi receipt menggunakan subproses terbatas, tenggat waktu keras, pemeriksaan identitas respons dan digest, transaksi expected-state, dan pemulihan tahan lama. qxctl tidak pernah menerima path adapter atau versi mentah sebagai pengganti receipt.
+
+## Registry binding engine v2
+
+Registry binding engine v2 mendukung delapan peran engine yang sudah mapan dan identitas peran masa depan yang terbatas. State v1 legacy dibaca ganda (dual-read); migrasi ke v2 memerlukan compare-and-swap eksplisit yang terikat digest melalui qxctl dan tidak pernah merupakan operasi pemilihan versi.
+
+## Perintah registry
+
+Hasilkan dan verifikasi registry yang diharapkan dari `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Klien yang terinstal dapat menghasilkan bukti yang terikat pada executable:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Bukti yang diharapkan memiliki versi klien, digest executable, dan digest receipt bernilai null. Bukti yang diamati mengikat versi klien dan digest executable yang persis, ditambah digest receipt jika tersedia. Kedua bentuk menggunakan `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl memiliki grammar dan presentasi perintah. qxctl tidak memiliki semantik vektor atau kebenaran pengetahuan kanonis. Hanya perubahan sumber yang telah ditinjau yang meratifikasi identitas `qxcmd` baru, terlepas dari kelas pemanggil.
+</Note>
+
+## Grup perintah
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/id/qxctl/knowledge">
+    Administrasi lifecycle lintas vektor dan sesi SSFV persisten.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/id/qxctl/lifecycle">
+    Profile, ownership, observe, report, boot, apply, dan recovery.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/id/qxctl/engines">
+    Registry binding engine dan migrasi.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/id/qxctl/reconcile">
+    Rekonsiliasi worktree coordinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/id/qxctl/session">
+    Sesi terautentikasi dan stream pemeliharaan SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/id/qxctl/maestro">
+    Inventaris reseptor turunan dan bukti docking.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/id/qxctl/validate">
+    Kebijakan peringatan terlindungi dan administrasi validator.
+  </Card>
+
+  <Card title="perintah vektor" icon="terminal" href="/id/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv`, serta grammar accord/evolution di masa depan.
+  </Card>
+</CardGroup>

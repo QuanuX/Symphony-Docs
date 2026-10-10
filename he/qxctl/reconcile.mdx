@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: התאמת worktree"
+description: "התאמת worktree-ים מול מתאם Symphony מקושר, עם בדיקות תאימות, יומני checkpoint ו-close ושחזור דו-חריצי מבוסס ראיות."
+sidebarTitle: "reconcile"
+---
+
+הדקדוק `qxctl knowledge reconcile ...` מניע התאמת worktree באמצעות Knowledge Session Coordinator מקושר ומדויק אחד. כל שינוי נעקב באמצעות מזהה יציב ומבוצע כ-compare-and-swap מול ה-digest המדויק של היומן הנוכחי.
+
+## פקודות
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: אימות ש-qxctl, המתאם והמנועים המקושרים מסכימים על גרסת הפרוטוקול ועל ההיקף.
+- `begin`: פתיחת הקשר התאמה חדש עם מזהה פעולה יציב.
+- `status`: בדיקת היומן הנוכחי ללא שינוי.
+- `checkpoint`: קידום עמיד של היומן באמצעות compare-and-swap.
+- `close`: סיום הקשר ההתאמה.
+- `recover --discover`: שחזור גילוי כאשר status רגיל אינו יכול לאמת את המצב המקומי.
+
+## כללי שחזור
+
+<Warning>
+  שחזור דו-חריצי הוא תיקון קדימה מבוסס ראיות. הוא לעולם אינו היתר לזנוח יומן לא תואם או הרחבה קריטית לא מוכרת. אם השחזור נכשל, הסלימו במקום לכפות.
+</Warning>
+
+השתמשו בשחזור גילוי רק כאשר status רגיל אינו יכול לאמת את המצב המקומי. שמרו על החוסמים; תכננו מחדש רק לאחר שראיות מאומתות השתנו.
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="מתאם הסשנים" icon="gears" href="/he/engines/coordinator">
+    המנוע שהוא הבעלים של יומני ההתאמה.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/he/qxctl/session">
+    סשנים מאומתים המשתלבים עם הקשרי התאמה.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/he/qxctl/engines">
+    ניהול הקישורים שהמתאם צורך.
+  </Card>
+</CardGroup>

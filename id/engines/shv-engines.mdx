@@ -1,0 +1,65 @@
+---
+title: "Engine SHV: Sumber dan Graf Symphony Hardware Vector"
+description: "Engine SHV mengatalogkan CPU, GPU, NIC, memori, dan penyimpanan dengan pemutaran ulang sumber yang disimpan, evaluasi persyaratan, ingesti PDF, dan graf DuckDB yang tahan lama."
+sidebarTitle: "Engine SHV"
+---
+
+Engine Symphony Hardware Vector (SHV) mengatalogkan prosesor, topologi CPU, cache, GPU, NIC dan antarmuka serat, motherboard, RAM, dan NVMe. Kurasi default memprioritaskan komponen asli dan varian yang terbukti. Setiap engine dapat dipasang secara independen dan bersifat baca-saja.
+
+## Engine
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Kernel perangkat keras: cakupan yang ditentukan pemanggil, pemutaran ulang katalog dari sumber yang disimpan, evaluasi persyaratan, dan proyeksi graf.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Ingesti sumber dan penanganan revisi untuk bukti perangkat keras.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Evaluasi profil komponen dan sistem.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partisi perangkat keras yang dikatalogkan untuk pemilihan yang dapat direproduksi.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Publikasi dan pemilihan katalog lokal yang diatur.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Permukaan transport graf yang eksplisit.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Penyimpanan graf tahan lama berbasis DuckDB yang dikelola melalui qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretasi sumber PDF untuk lembar data perangkat keras.
+  </Card>
+</CardGroup>
+
+## Sorotan administrasi
+
+- **Penyimpanan tahan lama** hanya dikelola melalui `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` dengan digest intent yang diharapkan dan disimpan juga berfungsi sebagai pemulihan; tidak ada alias pemulihan terpisah.
+- **Publikasi katalog** hanya dikelola melalui `shv catalogue publication inspect|plan|apply|status|schema|template`. Pemulihan dilakukan dengan `apply --operation-id`, yang saling eksklusif dengan `--input`.
+- **Inventaris** (rilis 0.2) menambahkan `shv graph store inventory`: pembacaan logis yang terikat revisi dengan identitas penulis tersimpan yang eksplisit. Pemilihan lama 0.1 tetap didukung.
+
+<Note>
+  Kelas perangkat keras adalah data pemetaan dan profil pemanggil, bukan pohon perintah duplikat. `--version` memilih pemilik utama yang eksak; `--source-version` dan `--adapter-version` menamai dependensi terpilih yang berbeda. Revisi skema dan pemetaan adalah identitas data, bukan alias untuk versi engine yang terpasang.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Vektor SHV" icon="microchip" href="/id/vectors/shv">
+    Kontrak Hardware Vector yang diimplementasikan oleh engine-engine ini.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Referensi lengkap tata bahasa `shv ...`.
+  </Card>
+</CardGroup>

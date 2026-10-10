@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector dzinēju C++ pamats: koplietoti mehānismi"
+description: "Knowledge Vector dzinēju C++ pamats nodrošina bezpilnvaru procesu ietvaru, ierobežotu JSON, SHA-256, momentuzņēmumus, kvītis un skaidru manifestu atklāšanu."
+sidebarTitle: "Pamata bibliotēka"
+---
+
+`libraries/knowledge-vector-engine-cpp` nodrošina koplietotus, bezpilnvaru C++ mehānismus, ko atkārtoti izmanto katrs Symphony vektora dzinējs. Tas sniedz determinētus pamatelementus, lai katrs dzinējs paliktu ierobežots, reproducējams un brīvs no apkārtējiem blakusefektiem.
+
+## Ko nodrošina pamats
+
+- **Procesu ietvars**: bezpilnvaru lokālo procesu protokols, ko izmanto katrs dzinējs
+- **Ierobežots JSON**: stingra parsēšana un izvade ar skaidriem izmēra un dziļuma ierobežojumiem
+- **SHA-256**: satura adresācija pierādījumiem un kvītīm
+- **No-follow lasīšana**: failu sistēmas lasīšana, kas nekad negaidīti neseko simboliskajām saitēm
+- **Determinēti momentuzņēmumi**: atkārtojami pārbaudītā stāvokļa momentuzņēmumi
+- **Laika validācija**: kanoniska UTC apstrāde saskaņā ar Symphony Temporal Semantics Contract
+- **Īpašnieku manifestu atklāšana**: precīza līgumu manifestu atklāšana
+- **Versiju pakošana**: neatkarīgi instalējamas, kvītīm piederošas pakotnes
+- **Kvītis un kvītīm piederoša atinstalēšana**: atinstalēšanu vada tikai kvīts, kas instalēja artefaktu
+
+## Manifestu atklāšanas robeža
+
+<Warning>
+  Manifestu atklāšana sākas no fiksētas sākotnējās kopas un šķērso tikai skaidras pakārtotās deklarācijas. Tā nekad neveic vispārēju repozitorija pārmeklēšanu un nesecina īpašumtiesības no direktoriju nosaukumiem.
+</Warning>
+
+Katrs vektora dzinējs, kas izmanto pamatu, manto šo noteikumu.
+
+## Ko pamats nedara
+
+- Tam nav pilnvaru. Dzinējiem, kas to izmanto, joprojām jāautorizē mainīšana ar SSIAG.
+- Tas neko nepublicē un neielādē tīklā.
+- Tas pats par sevi nemaina kanoniskos failus.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Uz pamata veidots C++26 koordinators sesijām un saskaņošanai.
+  </Card>
+
+  <Card title="Dzinēju pārskats" icon="cube" href="/lv/engines/overview">
+    Dzinēji, kas atkārtoti izmanto pamatu.
+  </Card>
+
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Vektoru līgumi, ko īsteno dzinēji.
+  </Card>
+
+  <Card title="qxctl pārskats" icon="terminal" href="/lv/qxctl/overview">
+    Administratīvais CLI, kas izsauc precīzus, ar kvītīm validētus dzinējus.
+  </Card>
+</CardGroup>

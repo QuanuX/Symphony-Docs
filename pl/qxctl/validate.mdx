@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: polityka ostrzeżeń walidatora Symphony"
+description: "Administruj chronioną polityką ostrzeżeń, linią bazową i gramatyką wyświetlania niezależnego walidatora Symphony za pomocą qxctl, bez zmieniania surowych dowodów detektora."
+sidebarTitle: "validate"
+---
+
+Gramatyka `qxctl validate ...` administruje chronioną polityką ostrzeżeń, linią bazową i gramatyką wyświetlania walidatora Symphony. Niezależnie instalowany walidator w C++ wytwarza niezmienne surowe dowody; qxctl administruje neutralną względem wywołującego, chronioną prezentacją bez zmieniania wykrywania.
+
+## Zakres qxctl validate
+
+- Dziewięć chronionych liści cyklu życia ostrzeżeń
+- Dokładna, oparta na potwierdzeniu ścieżka podsumowania głównego (root summary)
+- Zarządzanie linią bazową i raportowanie różnic
+- Gramatyka wyświetlania dla wyjścia liniowego i ustrukturyzowanego JSON
+
+Każdy liść weryfikuje dokładne potwierdzenie walidatora i ustrukturyzowane digesty przed zastosowaniem chronionej polityki ostrzeżeń.
+
+## Granice
+
+<Warning>
+  qxctl validate nie może naprawiać plików, niczego publikować ani nadpisywać surowych dowodów detektora. Dyspozycja ostrzeżeń wpływa na prezentację, a nie na wykrywanie.
+</Warning>
+
+- Brak tłumienia ostrzeżeń poza chronioną polityką
+- Brak modyfikacji wyjścia walidatora
+- Brak fabrykowania pokrycia dla niedostępnej ścieżki
+
+## Typowe zastosowania
+
+- Ustanowienie lub zresetowanie linii bazowej ostrzeżeń
+- Zatwierdzenie lub ponowne otwarcie zarządzanego historycznego ostrzeżenia
+- Emitowanie opartego na potwierdzeniu podsumowania głównego, które pojawia się w README repozytorium
+
+Walidator stojący za tą gramatyką sprawdza kształt kontraktów, bieżące domknięcie źródeł, własność niezmienników, administrację funkcjami, wydania oraz należące do maszyny podsumowanie główne.
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Walidator" icon="clipboard-check" href="/pl/governance/validator">
+    Niezależny, działający tylko w trybie odczytu kontroler w C++, którym administruje qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pl/skv/ssfv">
+    Oczekiwania dotyczące administracji funkcjami sprawdzane w dowodach.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pl/skv/sodv">
+    Rekordy wydań pojawiające się w dowodach walidatora.
+  </Card>
+
+  <Card title="Przegląd qxctl" icon="terminal" href="/pl/qxctl/overview">
+    Pełny zakres poleceń.
+  </Card>
+</CardGroup>

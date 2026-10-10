@@ -1,0 +1,25 @@
+---
+title: "Registo de alterações"
+description: "Novas funcionalidades, atualizações e correções disponibilizadas no QuanuX Symphony."
+rss: true
+---
+
+<Update label="2 de outubro de 2026" description="Semana de 25 de setembro" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Novas funcionalidades
+
+- **Motores Symphony Node Vector.** Cinco motores C++26 instaláveis de forma independente cobrem agora a identidade do Node (SNIV), os recursos (SNRV), as relações de cluster (SCIV), os nomes (SCNV) e a composição e retenção do SNV. Pode administrar evidências fornecidas, vistas selecionadas e histórico retido através do qxctl. A observação em tempo real e o aprovisionamento SOV ainda não estão incluídos. Consulte [Node Vector](/pt/vectors/snv).
+- **Observador local SNV opcional.** O qxctl pode invocar um observador local separado que reporta observações selecionadas de CPU e memória com incerteza explícita. Nunca atribui identidade, pertença ou nomes.
+- **Fundações de dados de investigação SQV.** Novas bibliotecas C++26 cobrem a captura com os bytes originais e a proveniência da fonte (SQAV), metadados (SQMV), fluxo (SQFV), conversão exata de inteiros com linhagem (SQTV), retenção local (SQPV) e entrega com pontos de controlo e retoma exata (SQDV). Consulte [Quantitative Vector](/pt/vectors/sqv).
+- **Administração do SQV através do qxctl.** Sete motores de administração instaláveis de forma independente expõem a validação de pedidos e de configuração, projeções de metadados e a inspeção só de leitura do estado retido. Consulte [Comandos de vetor](/pt/qxctl/vector-commands).
+- **Adaptadores Databento e de corretoras.** O SQV suporta agora a captura MBO Databento DBNv3, preserva amostras DBNv1 e DBNv3 e planeia pedidos históricos delimitados com evidência de cobertura. Estão também disponíveis adaptadores de leitura não em tempo real para fontes e corretoras. A execução autenticada junto de fornecedores e a recolha em tempo real continuam a ser trabalho futuro.
+
+## Atualizações
+
+- **Admissão de credenciais no SSIAG.** O SSIAG acrescenta proteções de utilização única de credenciais, admissão autenticada de despacho, um diário durável de pedidos de credenciais com recuperação e validação nativa de pares no macOS. A utilização operacional de credenciais permanece desativada. Consulte [SSIAG](/pt/governance/ssiag).
+- **Cobertura de comandos do qxctl.** O qxctl tem agora 399 identidades de comando estáveis, face às anteriores 383. As associações de motores suportam 13 funções estabelecidas, incluindo os cinco motores SNV. Consulte a [visão geral do qxctl](/pt/qxctl/overview).
+- **Interface de lotes do SQFV.** A biblioteca de lotes do SQFV utiliza agora uma API C++26 em vez de uma ABI C. Atualize quaisquer integrações que chamassem a interface anterior.
+- **Capacidade do SKVI.** O [SKVI](/pt/skv/skvi) indexa mais superfícies, incluindo os novos proprietários de dados de investigação do SQV.
+- **Orientações de instalação de motores.** As orientações de instalação esclarecem agora que cada motor é instalado, atualizado e removido individualmente. Consulte a [visão geral dos motores](/pt/engines/overview).
+
+</Update>

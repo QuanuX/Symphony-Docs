@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: वर्कट्री रिकंसिलिएशन"
+description: "संगतता जाँच, checkpoint और close जर्नल तथा साक्ष्य-आधारित टू-स्लॉट रिकवरी के साथ, एक बाइंड किए गए Symphony कोऑर्डिनेटर के विरुद्ध वर्कट्री रिकंसाइल करें।"
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` ग्रामर एक सटीक बाइंड किए गए Knowledge Session Coordinator के माध्यम से वर्कट्री रिकंसिलिएशन संचालित करता है। हर म्यूटेशन स्थिर पहचानकर्ता से ट्रैक किया जाता है और सटीक वर्तमान जर्नल डाइजेस्ट के विरुद्ध compare-and-swap होता है।
+
+## कमांड
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: सत्यापित करें कि qxctl, कोऑर्डिनेटर और बाइंड किए गए इंजन प्रोटोकॉल संस्करण और स्कोप पर सहमत हैं।
+- `begin`: स्थिर ऑपरेशन पहचानकर्ता के साथ एक नया रिकंसिलिएशन संदर्भ खोलें।
+- `status`: म्यूटेशन के बिना वर्तमान जर्नल का निरीक्षण करें।
+- `checkpoint`: compare-and-swap के साथ जर्नल को टिकाऊ रूप से आगे बढ़ाएँ।
+- `close`: रिकंसिलिएशन संदर्भ को अंतिम रूप दें।
+- `recover --discover`: जब सामान्य status स्थानीय स्टेट को मान्य न कर सके, तब डिस्कवरी रिकवरी।
+
+## रिकवरी नियम
+
+<Warning>
+  टू-स्लॉट रिकवरी साक्ष्य-आधारित फ़ॉरवर्ड मरम्मत है। यह कभी भी किसी असंगत जर्नल या अज्ञात क्रिटिकल एक्सटेंशन को त्यागने की अनुमति नहीं है। यदि रिकवरी विफल हो जाए, तो ज़बरदस्ती करने के बजाय मामले को आगे बढ़ाएँ (एस्केलेट करें)।
+</Warning>
+
+डिस्कवरी रिकवरी का उपयोग केवल तभी करें जब सामान्य status स्थानीय स्टेट को मान्य न कर सके। ब्लॉकर्स को संरक्षित रखें; सत्यापित साक्ष्य बदलने के बाद ही पुनः योजना बनाएँ।
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="सेशन कोऑर्डिनेटर" icon="gears" href="/hi/engines/coordinator">
+    वह इंजन जो रिकंसिलिएशन जर्नल का स्वामी है।
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/hi/qxctl/session">
+    प्रमाणित सेशन जो रिकंसिलिएशन संदर्भों के साथ जुड़ते हैं।
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/hi/qxctl/engines">
+    कोऑर्डिनेटर द्वारा उपयोग की जाने वाली बाइंडिंग प्रबंधित करें।
+  </Card>
+</CardGroup>

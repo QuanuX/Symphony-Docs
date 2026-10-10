@@ -1,0 +1,48 @@
+---
+title: "SSIAG: biztonságos identitás- és hozzáférés-irányítás a Symphonyhoz"
+description: "Az SSIAG a Symphony hívósemleges engedélyezési alapja TOPS-onkénti regisztrációval, védett szabályzat-életciklussal, biztonságos auditmetaadatokkal és natív felügyeleti kapcsolódási pontokkal."
+sidebarTitle: "SSIAG"
+---
+
+A Symphony Secure Identity and Access Governance (SSIAG) a hívósemleges engedélyezés függetlenül telepíthető, cgo-mentes Go alapja egy Symphony gazdagépen. Kivetíti a tényleges gazdagép-jogosultságot, kapuzza a védett módosításokat, és integrálódik a STAV audittal, mielőtt bármilyen változás láthatóvá válna.
+
+## Amit az SSIAG biztosít
+
+- Pontos, hívósemleges engedélyezés, amely a célgazda tulajdonlásához, a megadott engedélyhez, a kért művelethez, az elvárt állapothoz és a tulajdonos által konfigurált biztosítékokhoz kötött
+- TOPS-onkénti regisztráció és helyi végpont-megbízhatóság
+- Védett szabályzat-életciklus és szolgáltatótelepítési életciklus
+- Kötési életciklus compare-and-swap művelettel az aktív és az előző kötések között
+- A STAV számára előkészített biztonságos auditmetaadatok
+- Natív launchd és systemd felügyelet
+
+## Amit szándékosan letiltottak
+
+<Warning>
+  Az operatív hitelesítőadat-használat, a kanonikus tudásalkalmazás és a titkok kézbesítése letiltva marad. A szokásos alapszintű módosítás zártan hibázik (fail closed), amíg a STAV-on keresztüli kötelező auditútvonala el nem készül.
+</Warning>
+
+Az SSIAG nem dönt a hívóosztályról. Az emberi, MI-, ágens-, szolgáltatás- és munkaterhelés-hívókat azonos módon kezeli; a jogosultság a célgazdából és a kért műveletből ered, nem a szereplő címkéjéből.
+
+## macOS Keychain szolgáltató
+
+A `modules/ssiag-provider-macos-keychain` egy Swift metaadat-adapter körülhatárolt, kölcsönösen ellenőrzött kézfogással, valamint aláírtcsomag- és munkamenet-készenléti megfigyeléssel. Szolgáltatói metaadatokat tesz elérhetővé az SSIAG számára anélkül, hogy operatív Keychain-hozzáférést adna, amely jelenleg szándékosan le van tiltva.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/hu/governance/stav">
+    TOPS-onkénti, csak hozzáfűzhető auditfőkönyv, amelyre az SSIAG-módosítások támaszkodnak.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/hu/governance/accordare-producer">
+    Körülhatárolt SAV Named Version auditkör, amely az SSIAG-gal együttműködik.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/hu/qxctl/lifecycle">
+    Életciklus-adminisztráció, amely engedélyezésért az SSIAG-hoz fordul.
+  </Card>
+
+  <Card title="Hívói jogosultság" icon="user-shield" href="/hu/concepts/caller-authority">
+    Az SSIAG által megvalósított doktrína.
+  </Card>
+</CardGroup>

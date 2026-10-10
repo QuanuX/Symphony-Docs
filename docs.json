@@ -18,100 +18,3676 @@
     }
   },
   "navigation": {
-    "tabs": [
+    "languages": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "tabs": [
           {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "quickstart",
-              "doctrine"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Get Started",
+                "pages": [
+                  "index",
+                  "quickstart",
+                  "doctrine"
+                ]
+              },
+              {
+                "group": "Core Concepts",
+                "pages": [
+                  "concepts/architecture",
+                  "concepts/node-habitat-nest",
+                  "concepts/vectors",
+                  "concepts/caller-authority",
+                  "concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "skv/overview",
+                  "skv/skvi",
+                  "skv/sclv",
+                  "skv/sacv",
+                  "skv/sodv",
+                  "skv/ssfv",
+                  "skv/sav",
+                  "skv/sev"
+                ]
+              },
+              {
+                "group": "Operations & Infrastructure",
+                "pages": [
+                  "vectors/sov",
+                  "vectors/scv",
+                  "vectors/snv",
+                  "vectors/shv",
+                  "vectors/sqv",
+                  "vectors/siv"
+                ]
+              },
+              {
+                "group": "Identity, Audit & Governance",
+                "pages": [
+                  "governance/ssiag",
+                  "governance/stav",
+                  "governance/accordare-producer",
+                  "governance/maestro",
+                  "governance/validator"
+                ]
+              },
+              {
+                "group": "Engines & Libraries",
+                "pages": [
+                  "engines/overview",
+                  "engines/knowledge-vector-foundation",
+                  "engines/coordinator",
+                  "engines/scv-source-engines",
+                  "engines/shv-engines"
+                ]
+              }
             ]
           },
           {
-            "group": "Core Concepts",
-            "pages": [
-              "concepts/architecture",
-              "concepts/node-habitat-nest",
-              "concepts/vectors",
-              "concepts/caller-authority",
-              "concepts/hot-path-isolation"
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "qxctl/overview",
+                  "qxctl/knowledge",
+                  "qxctl/lifecycle",
+                  "qxctl/engines",
+                  "qxctl/reconcile",
+                  "qxctl/session",
+                  "qxctl/maestro",
+                  "qxctl/validate",
+                  "qxctl/vector-commands"
+                ]
+              }
             ]
           },
           {
-            "group": "Knowledge Vector (SKV)",
-            "pages": [
-              "skv/overview",
-              "skv/skvi",
-              "skv/sclv",
-              "skv/sacv",
-              "skv/sodv",
-              "skv/ssfv",
-              "skv/sav",
-              "skv/sev"
-            ]
-          },
-          {
-            "group": "Operations & Infrastructure",
-            "pages": [
-              "vectors/sov",
-              "vectors/scv",
-              "vectors/snv",
-              "vectors/shv",
-              "vectors/sqv",
-              "vectors/siv"
-            ]
-          },
-          {
-            "group": "Identity, Audit & Governance",
-            "pages": [
-              "governance/ssiag",
-              "governance/stav",
-              "governance/accordare-producer",
-              "governance/maestro",
-              "governance/validator"
-            ]
-          },
-          {
-            "group": "Engines & Libraries",
-            "pages": [
-              "engines/overview",
-              "engines/knowledge-vector-foundation",
-              "engines/coordinator",
-              "engines/scv-source-engines",
-              "engines/shv-engines"
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "changelog"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "qxctl CLI",
-        "groups": [
+        "language": "cn",
+        "tabs": [
           {
-            "group": "qxctl",
-            "pages": [
-              "qxctl/overview",
-              "qxctl/knowledge",
-              "qxctl/lifecycle",
-              "qxctl/engines",
-              "qxctl/reconcile",
-              "qxctl/session",
-              "qxctl/maestro",
-              "qxctl/validate",
-              "qxctl/vector-commands"
+            "tab": "文档",
+            "groups": [
+              {
+                "group": "快速开始",
+                "pages": [
+                  "cn/index",
+                  "cn/quickstart",
+                  "cn/doctrine"
+                ]
+              },
+              {
+                "group": "核心概念",
+                "pages": [
+                  "cn/concepts/architecture",
+                  "cn/concepts/node-habitat-nest",
+                  "cn/concepts/vectors",
+                  "cn/concepts/caller-authority",
+                  "cn/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector（SKV）",
+                "pages": [
+                  "cn/skv/overview",
+                  "cn/skv/skvi",
+                  "cn/skv/sclv",
+                  "cn/skv/sacv",
+                  "cn/skv/sodv",
+                  "cn/skv/ssfv",
+                  "cn/skv/sav",
+                  "cn/skv/sev"
+                ]
+              },
+              {
+                "group": "运维与基础设施",
+                "pages": [
+                  "cn/vectors/sov",
+                  "cn/vectors/scv",
+                  "cn/vectors/snv",
+                  "cn/vectors/shv",
+                  "cn/vectors/sqv",
+                  "cn/vectors/siv"
+                ]
+              },
+              {
+                "group": "身份、审计与治理",
+                "pages": [
+                  "cn/governance/ssiag",
+                  "cn/governance/stav",
+                  "cn/governance/accordare-producer",
+                  "cn/governance/maestro",
+                  "cn/governance/validator"
+                ]
+              },
+              {
+                "group": "引擎与库",
+                "pages": [
+                  "cn/engines/overview",
+                  "cn/engines/knowledge-vector-foundation",
+                  "cn/engines/coordinator",
+                  "cn/engines/scv-source-engines",
+                  "cn/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "cn/qxctl/overview",
+                  "cn/qxctl/knowledge",
+                  "cn/qxctl/lifecycle",
+                  "cn/qxctl/engines",
+                  "cn/qxctl/reconcile",
+                  "cn/qxctl/session",
+                  "cn/qxctl/maestro",
+                  "cn/qxctl/validate",
+                  "cn/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "更新日志",
+            "groups": [
+              {
+                "group": "更新日志",
+                "pages": [
+                  "cn/changelog"
+                ]
+              }
             ]
           }
         ]
       },
       {
-        "tab": "Changelog",
-        "groups": [
+        "language": "zh",
+        "tabs": [
           {
-            "group": "Changelog",
-            "pages": [
-              "changelog"
+            "tab": "文档",
+            "groups": [
+              {
+                "group": "入门",
+                "pages": [
+                  "zh/index",
+                  "zh/quickstart",
+                  "zh/doctrine"
+                ]
+              },
+              {
+                "group": "核心概念",
+                "pages": [
+                  "zh/concepts/architecture",
+                  "zh/concepts/node-habitat-nest",
+                  "zh/concepts/vectors",
+                  "zh/concepts/caller-authority",
+                  "zh/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector（SKV）",
+                "pages": [
+                  "zh/skv/overview",
+                  "zh/skv/skvi",
+                  "zh/skv/sclv",
+                  "zh/skv/sacv",
+                  "zh/skv/sodv",
+                  "zh/skv/ssfv",
+                  "zh/skv/sav",
+                  "zh/skv/sev"
+                ]
+              },
+              {
+                "group": "运维与基础设施",
+                "pages": [
+                  "zh/vectors/sov",
+                  "zh/vectors/scv",
+                  "zh/vectors/snv",
+                  "zh/vectors/shv",
+                  "zh/vectors/sqv",
+                  "zh/vectors/siv"
+                ]
+              },
+              {
+                "group": "身份、审计与治理",
+                "pages": [
+                  "zh/governance/ssiag",
+                  "zh/governance/stav",
+                  "zh/governance/accordare-producer",
+                  "zh/governance/maestro",
+                  "zh/governance/validator"
+                ]
+              },
+              {
+                "group": "引擎与库",
+                "pages": [
+                  "zh/engines/overview",
+                  "zh/engines/knowledge-vector-foundation",
+                  "zh/engines/coordinator",
+                  "zh/engines/scv-source-engines",
+                  "zh/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "zh/qxctl/overview",
+                  "zh/qxctl/knowledge",
+                  "zh/qxctl/lifecycle",
+                  "zh/qxctl/engines",
+                  "zh/qxctl/reconcile",
+                  "zh/qxctl/session",
+                  "zh/qxctl/maestro",
+                  "zh/qxctl/validate",
+                  "zh/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "更新日志",
+            "groups": [
+              {
+                "group": "更新日志",
+                "pages": [
+                  "zh/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ja",
+        "tabs": [
+          {
+            "tab": "ドキュメント",
+            "groups": [
+              {
+                "group": "はじめに",
+                "pages": [
+                  "ja/index",
+                  "ja/quickstart",
+                  "ja/doctrine"
+                ]
+              },
+              {
+                "group": "コアコンセプト",
+                "pages": [
+                  "ja/concepts/architecture",
+                  "ja/concepts/node-habitat-nest",
+                  "ja/concepts/vectors",
+                  "ja/concepts/caller-authority",
+                  "ja/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "ja/skv/overview",
+                  "ja/skv/skvi",
+                  "ja/skv/sclv",
+                  "ja/skv/sacv",
+                  "ja/skv/sodv",
+                  "ja/skv/ssfv",
+                  "ja/skv/sav",
+                  "ja/skv/sev"
+                ]
+              },
+              {
+                "group": "運用とインフラストラクチャ",
+                "pages": [
+                  "ja/vectors/sov",
+                  "ja/vectors/scv",
+                  "ja/vectors/snv",
+                  "ja/vectors/shv",
+                  "ja/vectors/sqv",
+                  "ja/vectors/siv"
+                ]
+              },
+              {
+                "group": "アイデンティティ、監査、ガバナンス",
+                "pages": [
+                  "ja/governance/ssiag",
+                  "ja/governance/stav",
+                  "ja/governance/accordare-producer",
+                  "ja/governance/maestro",
+                  "ja/governance/validator"
+                ]
+              },
+              {
+                "group": "エンジンとライブラリ",
+                "pages": [
+                  "ja/engines/overview",
+                  "ja/engines/knowledge-vector-foundation",
+                  "ja/engines/coordinator",
+                  "ja/engines/scv-source-engines",
+                  "ja/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ja/qxctl/overview",
+                  "ja/qxctl/knowledge",
+                  "ja/qxctl/lifecycle",
+                  "ja/qxctl/engines",
+                  "ja/qxctl/reconcile",
+                  "ja/qxctl/session",
+                  "ja/qxctl/maestro",
+                  "ja/qxctl/validate",
+                  "ja/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "変更履歴",
+            "groups": [
+              {
+                "group": "変更履歴",
+                "pages": [
+                  "ja/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ja-jp",
+        "tabs": [
+          {
+            "tab": "ドキュメント",
+            "groups": [
+              {
+                "group": "はじめに",
+                "pages": [
+                  "ja-jp/index",
+                  "ja-jp/quickstart",
+                  "ja-jp/doctrine"
+                ]
+              },
+              {
+                "group": "コアコンセプト",
+                "pages": [
+                  "ja-jp/concepts/architecture",
+                  "ja-jp/concepts/node-habitat-nest",
+                  "ja-jp/concepts/vectors",
+                  "ja-jp/concepts/caller-authority",
+                  "ja-jp/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "ナレッジベクター（SKV）",
+                "pages": [
+                  "ja-jp/skv/overview",
+                  "ja-jp/skv/skvi",
+                  "ja-jp/skv/sclv",
+                  "ja-jp/skv/sacv",
+                  "ja-jp/skv/sodv",
+                  "ja-jp/skv/ssfv",
+                  "ja-jp/skv/sav",
+                  "ja-jp/skv/sev"
+                ]
+              },
+              {
+                "group": "運用とインフラストラクチャ",
+                "pages": [
+                  "ja-jp/vectors/sov",
+                  "ja-jp/vectors/scv",
+                  "ja-jp/vectors/snv",
+                  "ja-jp/vectors/shv",
+                  "ja-jp/vectors/sqv",
+                  "ja-jp/vectors/siv"
+                ]
+              },
+              {
+                "group": "ID、監査、ガバナンス",
+                "pages": [
+                  "ja-jp/governance/ssiag",
+                  "ja-jp/governance/stav",
+                  "ja-jp/governance/accordare-producer",
+                  "ja-jp/governance/maestro",
+                  "ja-jp/governance/validator"
+                ]
+              },
+              {
+                "group": "エンジンとライブラリ",
+                "pages": [
+                  "ja-jp/engines/overview",
+                  "ja-jp/engines/knowledge-vector-foundation",
+                  "ja-jp/engines/coordinator",
+                  "ja-jp/engines/scv-source-engines",
+                  "ja-jp/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ja-jp/qxctl/overview",
+                  "ja-jp/qxctl/knowledge",
+                  "ja-jp/qxctl/lifecycle",
+                  "ja-jp/qxctl/engines",
+                  "ja-jp/qxctl/reconcile",
+                  "ja-jp/qxctl/session",
+                  "ja-jp/qxctl/maestro",
+                  "ja-jp/qxctl/validate",
+                  "ja-jp/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "変更履歴",
+            "groups": [
+              {
+                "group": "変更履歴",
+                "pages": [
+                  "ja-jp/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ko",
+        "tabs": [
+          {
+            "tab": "문서",
+            "groups": [
+              {
+                "group": "시작하기",
+                "pages": [
+                  "ko/index",
+                  "ko/quickstart",
+                  "ko/doctrine"
+                ]
+              },
+              {
+                "group": "핵심 개념",
+                "pages": [
+                  "ko/concepts/architecture",
+                  "ko/concepts/node-habitat-nest",
+                  "ko/concepts/vectors",
+                  "ko/concepts/caller-authority",
+                  "ko/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "ko/skv/overview",
+                  "ko/skv/skvi",
+                  "ko/skv/sclv",
+                  "ko/skv/sacv",
+                  "ko/skv/sodv",
+                  "ko/skv/ssfv",
+                  "ko/skv/sav",
+                  "ko/skv/sev"
+                ]
+              },
+              {
+                "group": "운영 및 인프라",
+                "pages": [
+                  "ko/vectors/sov",
+                  "ko/vectors/scv",
+                  "ko/vectors/snv",
+                  "ko/vectors/shv",
+                  "ko/vectors/sqv",
+                  "ko/vectors/siv"
+                ]
+              },
+              {
+                "group": "신원, 감사 및 거버넌스",
+                "pages": [
+                  "ko/governance/ssiag",
+                  "ko/governance/stav",
+                  "ko/governance/accordare-producer",
+                  "ko/governance/maestro",
+                  "ko/governance/validator"
+                ]
+              },
+              {
+                "group": "엔진 및 라이브러리",
+                "pages": [
+                  "ko/engines/overview",
+                  "ko/engines/knowledge-vector-foundation",
+                  "ko/engines/coordinator",
+                  "ko/engines/scv-source-engines",
+                  "ko/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ko/qxctl/overview",
+                  "ko/qxctl/knowledge",
+                  "ko/qxctl/lifecycle",
+                  "ko/qxctl/engines",
+                  "ko/qxctl/reconcile",
+                  "ko/qxctl/session",
+                  "ko/qxctl/maestro",
+                  "ko/qxctl/validate",
+                  "ko/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "변경 로그",
+            "groups": [
+              {
+                "group": "변경 로그",
+                "pages": [
+                  "ko/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "jp",
+        "tabs": [
+          {
+            "tab": "ドキュメント",
+            "groups": [
+              {
+                "group": "はじめに",
+                "pages": [
+                  "jp/index",
+                  "jp/quickstart",
+                  "jp/doctrine"
+                ]
+              },
+              {
+                "group": "コアコンセプト",
+                "pages": [
+                  "jp/concepts/architecture",
+                  "jp/concepts/node-habitat-nest",
+                  "jp/concepts/vectors",
+                  "jp/concepts/caller-authority",
+                  "jp/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "jp/skv/overview",
+                  "jp/skv/skvi",
+                  "jp/skv/sclv",
+                  "jp/skv/sacv",
+                  "jp/skv/sodv",
+                  "jp/skv/ssfv",
+                  "jp/skv/sav",
+                  "jp/skv/sev"
+                ]
+              },
+              {
+                "group": "運用とインフラストラクチャ",
+                "pages": [
+                  "jp/vectors/sov",
+                  "jp/vectors/scv",
+                  "jp/vectors/snv",
+                  "jp/vectors/shv",
+                  "jp/vectors/sqv",
+                  "jp/vectors/siv"
+                ]
+              },
+              {
+                "group": "アイデンティティ、監査、ガバナンス",
+                "pages": [
+                  "jp/governance/ssiag",
+                  "jp/governance/stav",
+                  "jp/governance/accordare-producer",
+                  "jp/governance/maestro",
+                  "jp/governance/validator"
+                ]
+              },
+              {
+                "group": "エンジンとライブラリ",
+                "pages": [
+                  "jp/engines/overview",
+                  "jp/engines/knowledge-vector-foundation",
+                  "jp/engines/coordinator",
+                  "jp/engines/scv-source-engines",
+                  "jp/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "jp/qxctl/overview",
+                  "jp/qxctl/knowledge",
+                  "jp/qxctl/lifecycle",
+                  "jp/qxctl/engines",
+                  "jp/qxctl/reconcile",
+                  "jp/qxctl/session",
+                  "jp/qxctl/maestro",
+                  "jp/qxctl/validate",
+                  "jp/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "変更履歴",
+            "groups": [
+              {
+                "group": "変更履歴",
+                "pages": [
+                  "jp/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh-Hans",
+        "tabs": [
+          {
+            "tab": "文档",
+            "groups": [
+              {
+                "group": "快速开始",
+                "pages": [
+                  "zh-Hans/index",
+                  "zh-Hans/quickstart",
+                  "zh-Hans/doctrine"
+                ]
+              },
+              {
+                "group": "核心概念",
+                "pages": [
+                  "zh-Hans/concepts/architecture",
+                  "zh-Hans/concepts/node-habitat-nest",
+                  "zh-Hans/concepts/vectors",
+                  "zh-Hans/concepts/caller-authority",
+                  "zh-Hans/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "知识 Vector（SKV）",
+                "pages": [
+                  "zh-Hans/skv/overview",
+                  "zh-Hans/skv/skvi",
+                  "zh-Hans/skv/sclv",
+                  "zh-Hans/skv/sacv",
+                  "zh-Hans/skv/sodv",
+                  "zh-Hans/skv/ssfv",
+                  "zh-Hans/skv/sav",
+                  "zh-Hans/skv/sev"
+                ]
+              },
+              {
+                "group": "运维与基础设施",
+                "pages": [
+                  "zh-Hans/vectors/sov",
+                  "zh-Hans/vectors/scv",
+                  "zh-Hans/vectors/snv",
+                  "zh-Hans/vectors/shv",
+                  "zh-Hans/vectors/sqv",
+                  "zh-Hans/vectors/siv"
+                ]
+              },
+              {
+                "group": "身份、审计与治理",
+                "pages": [
+                  "zh-Hans/governance/ssiag",
+                  "zh-Hans/governance/stav",
+                  "zh-Hans/governance/accordare-producer",
+                  "zh-Hans/governance/maestro",
+                  "zh-Hans/governance/validator"
+                ]
+              },
+              {
+                "group": "引擎与库",
+                "pages": [
+                  "zh-Hans/engines/overview",
+                  "zh-Hans/engines/knowledge-vector-foundation",
+                  "zh-Hans/engines/coordinator",
+                  "zh-Hans/engines/scv-source-engines",
+                  "zh-Hans/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "zh-Hans/qxctl/overview",
+                  "zh-Hans/qxctl/knowledge",
+                  "zh-Hans/qxctl/lifecycle",
+                  "zh-Hans/qxctl/engines",
+                  "zh-Hans/qxctl/reconcile",
+                  "zh-Hans/qxctl/session",
+                  "zh-Hans/qxctl/maestro",
+                  "zh-Hans/qxctl/validate",
+                  "zh-Hans/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "更新日志",
+            "groups": [
+              {
+                "group": "更新日志",
+                "pages": [
+                  "zh-Hans/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "sv",
+        "tabs": [
+          {
+            "tab": "Dokumentation",
+            "groups": [
+              {
+                "group": "Kom igång",
+                "pages": [
+                  "sv/index",
+                  "sv/quickstart",
+                  "sv/doctrine"
+                ]
+              },
+              {
+                "group": "Grundläggande koncept",
+                "pages": [
+                  "sv/concepts/architecture",
+                  "sv/concepts/node-habitat-nest",
+                  "sv/concepts/vectors",
+                  "sv/concepts/caller-authority",
+                  "sv/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Kunskapsvektor (SKV)",
+                "pages": [
+                  "sv/skv/overview",
+                  "sv/skv/skvi",
+                  "sv/skv/sclv",
+                  "sv/skv/sacv",
+                  "sv/skv/sodv",
+                  "sv/skv/ssfv",
+                  "sv/skv/sav",
+                  "sv/skv/sev"
+                ]
+              },
+              {
+                "group": "Drift och infrastruktur",
+                "pages": [
+                  "sv/vectors/sov",
+                  "sv/vectors/scv",
+                  "sv/vectors/snv",
+                  "sv/vectors/shv",
+                  "sv/vectors/sqv",
+                  "sv/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitet, granskning och styrning",
+                "pages": [
+                  "sv/governance/ssiag",
+                  "sv/governance/stav",
+                  "sv/governance/accordare-producer",
+                  "sv/governance/maestro",
+                  "sv/governance/validator"
+                ]
+              },
+              {
+                "group": "Motorer och bibliotek",
+                "pages": [
+                  "sv/engines/overview",
+                  "sv/engines/knowledge-vector-foundation",
+                  "sv/engines/coordinator",
+                  "sv/engines/scv-source-engines",
+                  "sv/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "sv/qxctl/overview",
+                  "sv/qxctl/knowledge",
+                  "sv/qxctl/lifecycle",
+                  "sv/qxctl/engines",
+                  "sv/qxctl/reconcile",
+                  "sv/qxctl/session",
+                  "sv/qxctl/maestro",
+                  "sv/qxctl/validate",
+                  "sv/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Ändringslogg",
+            "groups": [
+              {
+                "group": "Ändringslogg",
+                "pages": [
+                  "sv/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "tabs": [
+          {
+            "tab": "Documentación",
+            "groups": [
+              {
+                "group": "Primeros pasos",
+                "pages": [
+                  "es/index",
+                  "es/quickstart",
+                  "es/doctrine"
+                ]
+              },
+              {
+                "group": "Conceptos fundamentales",
+                "pages": [
+                  "es/concepts/architecture",
+                  "es/concepts/node-habitat-nest",
+                  "es/concepts/vectors",
+                  "es/concepts/caller-authority",
+                  "es/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "es/skv/overview",
+                  "es/skv/skvi",
+                  "es/skv/sclv",
+                  "es/skv/sacv",
+                  "es/skv/sodv",
+                  "es/skv/ssfv",
+                  "es/skv/sav",
+                  "es/skv/sev"
+                ]
+              },
+              {
+                "group": "Operaciones e infraestructura",
+                "pages": [
+                  "es/vectors/sov",
+                  "es/vectors/scv",
+                  "es/vectors/snv",
+                  "es/vectors/shv",
+                  "es/vectors/sqv",
+                  "es/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identidad, auditoría y gobernanza",
+                "pages": [
+                  "es/governance/ssiag",
+                  "es/governance/stav",
+                  "es/governance/accordare-producer",
+                  "es/governance/maestro",
+                  "es/governance/validator"
+                ]
+              },
+              {
+                "group": "Motores y bibliotecas",
+                "pages": [
+                  "es/engines/overview",
+                  "es/engines/knowledge-vector-foundation",
+                  "es/engines/coordinator",
+                  "es/engines/scv-source-engines",
+                  "es/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "es/qxctl/overview",
+                  "es/qxctl/knowledge",
+                  "es/qxctl/lifecycle",
+                  "es/qxctl/engines",
+                  "es/qxctl/reconcile",
+                  "es/qxctl/session",
+                  "es/qxctl/maestro",
+                  "es/qxctl/validate",
+                  "es/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Registro de cambios",
+            "groups": [
+              {
+                "group": "Registro de cambios",
+                "pages": [
+                  "es/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh-Hant",
+        "tabs": [
+          {
+            "tab": "文件",
+            "groups": [
+              {
+                "group": "開始使用",
+                "pages": [
+                  "zh-Hant/index",
+                  "zh-Hant/quickstart",
+                  "zh-Hant/doctrine"
+                ]
+              },
+              {
+                "group": "核心概念",
+                "pages": [
+                  "zh-Hant/concepts/architecture",
+                  "zh-Hant/concepts/node-habitat-nest",
+                  "zh-Hant/concepts/vectors",
+                  "zh-Hant/concepts/caller-authority",
+                  "zh-Hant/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector（SKV）",
+                "pages": [
+                  "zh-Hant/skv/overview",
+                  "zh-Hant/skv/skvi",
+                  "zh-Hant/skv/sclv",
+                  "zh-Hant/skv/sacv",
+                  "zh-Hant/skv/sodv",
+                  "zh-Hant/skv/ssfv",
+                  "zh-Hant/skv/sav",
+                  "zh-Hant/skv/sev"
+                ]
+              },
+              {
+                "group": "營運與基礎架構",
+                "pages": [
+                  "zh-Hant/vectors/sov",
+                  "zh-Hant/vectors/scv",
+                  "zh-Hant/vectors/snv",
+                  "zh-Hant/vectors/shv",
+                  "zh-Hant/vectors/sqv",
+                  "zh-Hant/vectors/siv"
+                ]
+              },
+              {
+                "group": "身分、稽核與治理",
+                "pages": [
+                  "zh-Hant/governance/ssiag",
+                  "zh-Hant/governance/stav",
+                  "zh-Hant/governance/accordare-producer",
+                  "zh-Hant/governance/maestro",
+                  "zh-Hant/governance/validator"
+                ]
+              },
+              {
+                "group": "引擎與程式庫",
+                "pages": [
+                  "zh-Hant/engines/overview",
+                  "zh-Hant/engines/knowledge-vector-foundation",
+                  "zh-Hant/engines/coordinator",
+                  "zh-Hant/engines/scv-source-engines",
+                  "zh-Hant/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "zh-Hant/qxctl/overview",
+                  "zh-Hant/qxctl/knowledge",
+                  "zh-Hant/qxctl/lifecycle",
+                  "zh-Hant/qxctl/engines",
+                  "zh-Hant/qxctl/reconcile",
+                  "zh-Hant/qxctl/session",
+                  "zh-Hant/qxctl/maestro",
+                  "zh-Hant/qxctl/validate",
+                  "zh-Hant/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "更新日誌",
+            "groups": [
+              {
+                "group": "更新日誌",
+                "pages": [
+                  "zh-Hant/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "tr",
+        "tabs": [
+          {
+            "tab": "Belgeler",
+            "groups": [
+              {
+                "group": "Başlarken",
+                "pages": [
+                  "tr/index",
+                  "tr/quickstart",
+                  "tr/doctrine"
+                ]
+              },
+              {
+                "group": "Temel Kavramlar",
+                "pages": [
+                  "tr/concepts/architecture",
+                  "tr/concepts/node-habitat-nest",
+                  "tr/concepts/vectors",
+                  "tr/concepts/caller-authority",
+                  "tr/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "tr/skv/overview",
+                  "tr/skv/skvi",
+                  "tr/skv/sclv",
+                  "tr/skv/sacv",
+                  "tr/skv/sodv",
+                  "tr/skv/ssfv",
+                  "tr/skv/sav",
+                  "tr/skv/sev"
+                ]
+              },
+              {
+                "group": "Operasyonlar ve Altyapı",
+                "pages": [
+                  "tr/vectors/sov",
+                  "tr/vectors/scv",
+                  "tr/vectors/snv",
+                  "tr/vectors/shv",
+                  "tr/vectors/sqv",
+                  "tr/vectors/siv"
+                ]
+              },
+              {
+                "group": "Kimlik, Denetim ve Yönetişim",
+                "pages": [
+                  "tr/governance/ssiag",
+                  "tr/governance/stav",
+                  "tr/governance/accordare-producer",
+                  "tr/governance/maestro",
+                  "tr/governance/validator"
+                ]
+              },
+              {
+                "group": "Motorlar ve Kütüphaneler",
+                "pages": [
+                  "tr/engines/overview",
+                  "tr/engines/knowledge-vector-foundation",
+                  "tr/engines/coordinator",
+                  "tr/engines/scv-source-engines",
+                  "tr/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "tr/qxctl/overview",
+                  "tr/qxctl/knowledge",
+                  "tr/qxctl/lifecycle",
+                  "tr/qxctl/engines",
+                  "tr/qxctl/reconcile",
+                  "tr/qxctl/session",
+                  "tr/qxctl/maestro",
+                  "tr/qxctl/validate",
+                  "tr/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Değişiklik Günlüğü",
+            "groups": [
+              {
+                "group": "Değişiklik Günlüğü",
+                "pages": [
+                  "tr/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "uz",
+        "tabs": [
+          {
+            "tab": "Hujjatlar",
+            "groups": [
+              {
+                "group": "Boshlash",
+                "pages": [
+                  "uz/index",
+                  "uz/quickstart",
+                  "uz/doctrine"
+                ]
+              },
+              {
+                "group": "Asosiy tushunchalar",
+                "pages": [
+                  "uz/concepts/architecture",
+                  "uz/concepts/node-habitat-nest",
+                  "uz/concepts/vectors",
+                  "uz/concepts/caller-authority",
+                  "uz/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "uz/skv/overview",
+                  "uz/skv/skvi",
+                  "uz/skv/sclv",
+                  "uz/skv/sacv",
+                  "uz/skv/sodv",
+                  "uz/skv/ssfv",
+                  "uz/skv/sav",
+                  "uz/skv/sev"
+                ]
+              },
+              {
+                "group": "Operatsiyalar va infratuzilma",
+                "pages": [
+                  "uz/vectors/sov",
+                  "uz/vectors/scv",
+                  "uz/vectors/snv",
+                  "uz/vectors/shv",
+                  "uz/vectors/sqv",
+                  "uz/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identifikatsiya, audit va boshqaruv",
+                "pages": [
+                  "uz/governance/ssiag",
+                  "uz/governance/stav",
+                  "uz/governance/accordare-producer",
+                  "uz/governance/maestro",
+                  "uz/governance/validator"
+                ]
+              },
+              {
+                "group": "Engine’lar va kutubxonalar",
+                "pages": [
+                  "uz/engines/overview",
+                  "uz/engines/knowledge-vector-foundation",
+                  "uz/engines/coordinator",
+                  "uz/engines/scv-source-engines",
+                  "uz/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "uz/qxctl/overview",
+                  "uz/qxctl/knowledge",
+                  "uz/qxctl/lifecycle",
+                  "uz/qxctl/engines",
+                  "uz/qxctl/reconcile",
+                  "uz/qxctl/session",
+                  "uz/qxctl/maestro",
+                  "uz/qxctl/validate",
+                  "uz/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Oʻzgarishlar jurnali",
+            "groups": [
+              {
+                "group": "Oʻzgarishlar jurnali",
+                "pages": [
+                  "uz/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "vi",
+        "tabs": [
+          {
+            "tab": "Tài liệu",
+            "groups": [
+              {
+                "group": "Bắt đầu",
+                "pages": [
+                  "vi/index",
+                  "vi/quickstart",
+                  "vi/doctrine"
+                ]
+              },
+              {
+                "group": "Khái niệm cốt lõi",
+                "pages": [
+                  "vi/concepts/architecture",
+                  "vi/concepts/node-habitat-nest",
+                  "vi/concepts/vectors",
+                  "vi/concepts/caller-authority",
+                  "vi/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "vi/skv/overview",
+                  "vi/skv/skvi",
+                  "vi/skv/sclv",
+                  "vi/skv/sacv",
+                  "vi/skv/sodv",
+                  "vi/skv/ssfv",
+                  "vi/skv/sav",
+                  "vi/skv/sev"
+                ]
+              },
+              {
+                "group": "Vận hành & hạ tầng",
+                "pages": [
+                  "vi/vectors/sov",
+                  "vi/vectors/scv",
+                  "vi/vectors/snv",
+                  "vi/vectors/shv",
+                  "vi/vectors/sqv",
+                  "vi/vectors/siv"
+                ]
+              },
+              {
+                "group": "Danh tính, kiểm toán & quản trị",
+                "pages": [
+                  "vi/governance/ssiag",
+                  "vi/governance/stav",
+                  "vi/governance/accordare-producer",
+                  "vi/governance/maestro",
+                  "vi/governance/validator"
+                ]
+              },
+              {
+                "group": "Engine & thư viện",
+                "pages": [
+                  "vi/engines/overview",
+                  "vi/engines/knowledge-vector-foundation",
+                  "vi/engines/coordinator",
+                  "vi/engines/scv-source-engines",
+                  "vi/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "vi/qxctl/overview",
+                  "vi/qxctl/knowledge",
+                  "vi/qxctl/lifecycle",
+                  "vi/qxctl/engines",
+                  "vi/qxctl/reconcile",
+                  "vi/qxctl/session",
+                  "vi/qxctl/maestro",
+                  "vi/qxctl/validate",
+                  "vi/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Nhật ký thay đổi",
+            "groups": [
+              {
+                "group": "Nhật ký thay đổi",
+                "pages": [
+                  "vi/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "uk",
+        "tabs": [
+          {
+            "tab": "Документація",
+            "groups": [
+              {
+                "group": "Початок роботи",
+                "pages": [
+                  "uk/index",
+                  "uk/quickstart",
+                  "uk/doctrine"
+                ]
+              },
+              {
+                "group": "Основні концепції",
+                "pages": [
+                  "uk/concepts/architecture",
+                  "uk/concepts/node-habitat-nest",
+                  "uk/concepts/vectors",
+                  "uk/concepts/caller-authority",
+                  "uk/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Вектор знань (SKV)",
+                "pages": [
+                  "uk/skv/overview",
+                  "uk/skv/skvi",
+                  "uk/skv/sclv",
+                  "uk/skv/sacv",
+                  "uk/skv/sodv",
+                  "uk/skv/ssfv",
+                  "uk/skv/sav",
+                  "uk/skv/sev"
+                ]
+              },
+              {
+                "group": "Операції та інфраструктура",
+                "pages": [
+                  "uk/vectors/sov",
+                  "uk/vectors/scv",
+                  "uk/vectors/snv",
+                  "uk/vectors/shv",
+                  "uk/vectors/sqv",
+                  "uk/vectors/siv"
+                ]
+              },
+              {
+                "group": "Ідентичність, аудит і врядування",
+                "pages": [
+                  "uk/governance/ssiag",
+                  "uk/governance/stav",
+                  "uk/governance/accordare-producer",
+                  "uk/governance/maestro",
+                  "uk/governance/validator"
+                ]
+              },
+              {
+                "group": "Рушії та бібліотеки",
+                "pages": [
+                  "uk/engines/overview",
+                  "uk/engines/knowledge-vector-foundation",
+                  "uk/engines/coordinator",
+                  "uk/engines/scv-source-engines",
+                  "uk/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "uk/qxctl/overview",
+                  "uk/qxctl/knowledge",
+                  "uk/qxctl/lifecycle",
+                  "uk/qxctl/engines",
+                  "uk/qxctl/reconcile",
+                  "uk/qxctl/session",
+                  "uk/qxctl/maestro",
+                  "uk/qxctl/validate",
+                  "uk/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Журнал змін",
+            "groups": [
+              {
+                "group": "Журнал змін",
+                "pages": [
+                  "uk/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ar",
+        "tabs": [
+          {
+            "tab": "التوثيق",
+            "groups": [
+              {
+                "group": "البدء",
+                "pages": [
+                  "ar/index",
+                  "ar/quickstart",
+                  "ar/doctrine"
+                ]
+              },
+              {
+                "group": "المفاهيم الأساسية",
+                "pages": [
+                  "ar/concepts/architecture",
+                  "ar/concepts/node-habitat-nest",
+                  "ar/concepts/vectors",
+                  "ar/concepts/caller-authority",
+                  "ar/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "متجه المعرفة (SKV)",
+                "pages": [
+                  "ar/skv/overview",
+                  "ar/skv/skvi",
+                  "ar/skv/sclv",
+                  "ar/skv/sacv",
+                  "ar/skv/sodv",
+                  "ar/skv/ssfv",
+                  "ar/skv/sav",
+                  "ar/skv/sev"
+                ]
+              },
+              {
+                "group": "العمليات والبنية التحتية",
+                "pages": [
+                  "ar/vectors/sov",
+                  "ar/vectors/scv",
+                  "ar/vectors/snv",
+                  "ar/vectors/shv",
+                  "ar/vectors/sqv",
+                  "ar/vectors/siv"
+                ]
+              },
+              {
+                "group": "الهوية والتدقيق والحوكمة",
+                "pages": [
+                  "ar/governance/ssiag",
+                  "ar/governance/stav",
+                  "ar/governance/accordare-producer",
+                  "ar/governance/maestro",
+                  "ar/governance/validator"
+                ]
+              },
+              {
+                "group": "المحركات والمكتبات",
+                "pages": [
+                  "ar/engines/overview",
+                  "ar/engines/knowledge-vector-foundation",
+                  "ar/engines/coordinator",
+                  "ar/engines/scv-source-engines",
+                  "ar/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "واجهة qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ar/qxctl/overview",
+                  "ar/qxctl/knowledge",
+                  "ar/qxctl/lifecycle",
+                  "ar/qxctl/engines",
+                  "ar/qxctl/reconcile",
+                  "ar/qxctl/session",
+                  "ar/qxctl/maestro",
+                  "ar/qxctl/validate",
+                  "ar/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "سجل التغييرات",
+            "groups": [
+              {
+                "group": "سجل التغييرات",
+                "pages": [
+                  "ar/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pt-BR",
+        "tabs": [
+          {
+            "tab": "Documentação",
+            "groups": [
+              {
+                "group": "Primeiros passos",
+                "pages": [
+                  "pt-BR/index",
+                  "pt-BR/quickstart",
+                  "pt-BR/doctrine"
+                ]
+              },
+              {
+                "group": "Conceitos principais",
+                "pages": [
+                  "pt-BR/concepts/architecture",
+                  "pt-BR/concepts/node-habitat-nest",
+                  "pt-BR/concepts/vectors",
+                  "pt-BR/concepts/caller-authority",
+                  "pt-BR/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Vetor de Conhecimento (SKV)",
+                "pages": [
+                  "pt-BR/skv/overview",
+                  "pt-BR/skv/skvi",
+                  "pt-BR/skv/sclv",
+                  "pt-BR/skv/sacv",
+                  "pt-BR/skv/sodv",
+                  "pt-BR/skv/ssfv",
+                  "pt-BR/skv/sav",
+                  "pt-BR/skv/sev"
+                ]
+              },
+              {
+                "group": "Operações e infraestrutura",
+                "pages": [
+                  "pt-BR/vectors/sov",
+                  "pt-BR/vectors/scv",
+                  "pt-BR/vectors/snv",
+                  "pt-BR/vectors/shv",
+                  "pt-BR/vectors/sqv",
+                  "pt-BR/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identidade, auditoria e governança",
+                "pages": [
+                  "pt-BR/governance/ssiag",
+                  "pt-BR/governance/stav",
+                  "pt-BR/governance/accordare-producer",
+                  "pt-BR/governance/maestro",
+                  "pt-BR/governance/validator"
+                ]
+              },
+              {
+                "group": "Engines e bibliotecas",
+                "pages": [
+                  "pt-BR/engines/overview",
+                  "pt-BR/engines/knowledge-vector-foundation",
+                  "pt-BR/engines/coordinator",
+                  "pt-BR/engines/scv-source-engines",
+                  "pt-BR/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "pt-BR/qxctl/overview",
+                  "pt-BR/qxctl/knowledge",
+                  "pt-BR/qxctl/lifecycle",
+                  "pt-BR/qxctl/engines",
+                  "pt-BR/qxctl/reconcile",
+                  "pt-BR/qxctl/session",
+                  "pt-BR/qxctl/maestro",
+                  "pt-BR/qxctl/validate",
+                  "pt-BR/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Registro de alterações",
+            "groups": [
+              {
+                "group": "Registro de alterações",
+                "pages": [
+                  "pt-BR/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "fr-CA",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Premiers pas",
+                "pages": [
+                  "fr-CA/index",
+                  "fr-CA/quickstart",
+                  "fr-CA/doctrine"
+                ]
+              },
+              {
+                "group": "Concepts fondamentaux",
+                "pages": [
+                  "fr-CA/concepts/architecture",
+                  "fr-CA/concepts/node-habitat-nest",
+                  "fr-CA/concepts/vectors",
+                  "fr-CA/concepts/caller-authority",
+                  "fr-CA/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "fr-CA/skv/overview",
+                  "fr-CA/skv/skvi",
+                  "fr-CA/skv/sclv",
+                  "fr-CA/skv/sacv",
+                  "fr-CA/skv/sodv",
+                  "fr-CA/skv/ssfv",
+                  "fr-CA/skv/sav",
+                  "fr-CA/skv/sev"
+                ]
+              },
+              {
+                "group": "Opérations et infrastructure",
+                "pages": [
+                  "fr-CA/vectors/sov",
+                  "fr-CA/vectors/scv",
+                  "fr-CA/vectors/snv",
+                  "fr-CA/vectors/shv",
+                  "fr-CA/vectors/sqv",
+                  "fr-CA/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identité, audit et gouvernance",
+                "pages": [
+                  "fr-CA/governance/ssiag",
+                  "fr-CA/governance/stav",
+                  "fr-CA/governance/accordare-producer",
+                  "fr-CA/governance/maestro",
+                  "fr-CA/governance/validator"
+                ]
+              },
+              {
+                "group": "Moteurs et bibliothèques",
+                "pages": [
+                  "fr-CA/engines/overview",
+                  "fr-CA/engines/knowledge-vector-foundation",
+                  "fr-CA/engines/coordinator",
+                  "fr-CA/engines/scv-source-engines",
+                  "fr-CA/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Interface en ligne de commande qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "fr-CA/qxctl/overview",
+                  "fr-CA/qxctl/knowledge",
+                  "fr-CA/qxctl/lifecycle",
+                  "fr-CA/qxctl/engines",
+                  "fr-CA/qxctl/reconcile",
+                  "fr-CA/qxctl/session",
+                  "fr-CA/qxctl/maestro",
+                  "fr-CA/qxctl/validate",
+                  "fr-CA/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Journal des modifications",
+            "groups": [
+              {
+                "group": "Journal des modifications",
+                "pages": [
+                  "fr-CA/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ca",
+        "tabs": [
+          {
+            "tab": "Documentació",
+            "groups": [
+              {
+                "group": "Primers passos",
+                "pages": [
+                  "ca/index",
+                  "ca/quickstart",
+                  "ca/doctrine"
+                ]
+              },
+              {
+                "group": "Conceptes fonamentals",
+                "pages": [
+                  "ca/concepts/architecture",
+                  "ca/concepts/node-habitat-nest",
+                  "ca/concepts/vectors",
+                  "ca/concepts/caller-authority",
+                  "ca/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Vector de coneixement (SKV)",
+                "pages": [
+                  "ca/skv/overview",
+                  "ca/skv/skvi",
+                  "ca/skv/sclv",
+                  "ca/skv/sacv",
+                  "ca/skv/sodv",
+                  "ca/skv/ssfv",
+                  "ca/skv/sav",
+                  "ca/skv/sev"
+                ]
+              },
+              {
+                "group": "Operacions i infraestructura",
+                "pages": [
+                  "ca/vectors/sov",
+                  "ca/vectors/scv",
+                  "ca/vectors/snv",
+                  "ca/vectors/shv",
+                  "ca/vectors/sqv",
+                  "ca/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitat, auditoria i governança",
+                "pages": [
+                  "ca/governance/ssiag",
+                  "ca/governance/stav",
+                  "ca/governance/accordare-producer",
+                  "ca/governance/maestro",
+                  "ca/governance/validator"
+                ]
+              },
+              {
+                "group": "Motors i biblioteques",
+                "pages": [
+                  "ca/engines/overview",
+                  "ca/engines/knowledge-vector-foundation",
+                  "ca/engines/coordinator",
+                  "ca/engines/scv-source-engines",
+                  "ca/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ca/qxctl/overview",
+                  "ca/qxctl/knowledge",
+                  "ca/qxctl/lifecycle",
+                  "ca/qxctl/engines",
+                  "ca/qxctl/reconcile",
+                  "ca/qxctl/session",
+                  "ca/qxctl/maestro",
+                  "ca/qxctl/validate",
+                  "ca/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Registre de canvis",
+            "groups": [
+              {
+                "group": "Registre de canvis",
+                "pages": [
+                  "ca/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "cs",
+        "tabs": [
+          {
+            "tab": "Dokumentace",
+            "groups": [
+              {
+                "group": "Začínáme",
+                "pages": [
+                  "cs/index",
+                  "cs/quickstart",
+                  "cs/doctrine"
+                ]
+              },
+              {
+                "group": "Základní koncepty",
+                "pages": [
+                  "cs/concepts/architecture",
+                  "cs/concepts/node-habitat-nest",
+                  "cs/concepts/vectors",
+                  "cs/concepts/caller-authority",
+                  "cs/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "cs/skv/overview",
+                  "cs/skv/skvi",
+                  "cs/skv/sclv",
+                  "cs/skv/sacv",
+                  "cs/skv/sodv",
+                  "cs/skv/ssfv",
+                  "cs/skv/sav",
+                  "cs/skv/sev"
+                ]
+              },
+              {
+                "group": "Provoz a infrastruktura",
+                "pages": [
+                  "cs/vectors/sov",
+                  "cs/vectors/scv",
+                  "cs/vectors/snv",
+                  "cs/vectors/shv",
+                  "cs/vectors/sqv",
+                  "cs/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identita, audit a správa",
+                "pages": [
+                  "cs/governance/ssiag",
+                  "cs/governance/stav",
+                  "cs/governance/accordare-producer",
+                  "cs/governance/maestro",
+                  "cs/governance/validator"
+                ]
+              },
+              {
+                "group": "Enginy a knihovny",
+                "pages": [
+                  "cs/engines/overview",
+                  "cs/engines/knowledge-vector-foundation",
+                  "cs/engines/coordinator",
+                  "cs/engines/scv-source-engines",
+                  "cs/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "cs/qxctl/overview",
+                  "cs/qxctl/knowledge",
+                  "cs/qxctl/lifecycle",
+                  "cs/qxctl/engines",
+                  "cs/qxctl/reconcile",
+                  "cs/qxctl/session",
+                  "cs/qxctl/maestro",
+                  "cs/qxctl/validate",
+                  "cs/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Přehled změn",
+            "groups": [
+              {
+                "group": "Přehled změn",
+                "pages": [
+                  "cs/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "da",
+        "tabs": [
+          {
+            "tab": "Dokumentation",
+            "groups": [
+              {
+                "group": "Kom godt i gang",
+                "pages": [
+                  "da/index",
+                  "da/quickstart",
+                  "da/doctrine"
+                ]
+              },
+              {
+                "group": "Kernekoncepter",
+                "pages": [
+                  "da/concepts/architecture",
+                  "da/concepts/node-habitat-nest",
+                  "da/concepts/vectors",
+                  "da/concepts/caller-authority",
+                  "da/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "da/skv/overview",
+                  "da/skv/skvi",
+                  "da/skv/sclv",
+                  "da/skv/sacv",
+                  "da/skv/sodv",
+                  "da/skv/ssfv",
+                  "da/skv/sav",
+                  "da/skv/sev"
+                ]
+              },
+              {
+                "group": "Drift og infrastruktur",
+                "pages": [
+                  "da/vectors/sov",
+                  "da/vectors/scv",
+                  "da/vectors/snv",
+                  "da/vectors/shv",
+                  "da/vectors/sqv",
+                  "da/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitet, revision og governance",
+                "pages": [
+                  "da/governance/ssiag",
+                  "da/governance/stav",
+                  "da/governance/accordare-producer",
+                  "da/governance/maestro",
+                  "da/governance/validator"
+                ]
+              },
+              {
+                "group": "Engines og biblioteker",
+                "pages": [
+                  "da/engines/overview",
+                  "da/engines/knowledge-vector-foundation",
+                  "da/engines/coordinator",
+                  "da/engines/scv-source-engines",
+                  "da/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "da/qxctl/overview",
+                  "da/qxctl/knowledge",
+                  "da/qxctl/lifecycle",
+                  "da/qxctl/engines",
+                  "da/qxctl/reconcile",
+                  "da/qxctl/session",
+                  "da/qxctl/maestro",
+                  "da/qxctl/validate",
+                  "da/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Ændringslog",
+            "groups": [
+              {
+                "group": "Ændringslog",
+                "pages": [
+                  "da/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "nl",
+        "tabs": [
+          {
+            "tab": "Documentatie",
+            "groups": [
+              {
+                "group": "Aan de slag",
+                "pages": [
+                  "nl/index",
+                  "nl/quickstart",
+                  "nl/doctrine"
+                ]
+              },
+              {
+                "group": "Kernconcepten",
+                "pages": [
+                  "nl/concepts/architecture",
+                  "nl/concepts/node-habitat-nest",
+                  "nl/concepts/vectors",
+                  "nl/concepts/caller-authority",
+                  "nl/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "nl/skv/overview",
+                  "nl/skv/skvi",
+                  "nl/skv/sclv",
+                  "nl/skv/sacv",
+                  "nl/skv/sodv",
+                  "nl/skv/ssfv",
+                  "nl/skv/sav",
+                  "nl/skv/sev"
+                ]
+              },
+              {
+                "group": "Operaties en infrastructuur",
+                "pages": [
+                  "nl/vectors/sov",
+                  "nl/vectors/scv",
+                  "nl/vectors/snv",
+                  "nl/vectors/shv",
+                  "nl/vectors/sqv",
+                  "nl/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identiteit, audit en governance",
+                "pages": [
+                  "nl/governance/ssiag",
+                  "nl/governance/stav",
+                  "nl/governance/accordare-producer",
+                  "nl/governance/maestro",
+                  "nl/governance/validator"
+                ]
+              },
+              {
+                "group": "Engines en bibliotheken",
+                "pages": [
+                  "nl/engines/overview",
+                  "nl/engines/knowledge-vector-foundation",
+                  "nl/engines/coordinator",
+                  "nl/engines/scv-source-engines",
+                  "nl/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "nl/qxctl/overview",
+                  "nl/qxctl/knowledge",
+                  "nl/qxctl/lifecycle",
+                  "nl/qxctl/engines",
+                  "nl/qxctl/reconcile",
+                  "nl/qxctl/session",
+                  "nl/qxctl/maestro",
+                  "nl/qxctl/validate",
+                  "nl/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "nl/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "fi",
+        "tabs": [
+          {
+            "tab": "Dokumentaatio",
+            "groups": [
+              {
+                "group": "Aloitus",
+                "pages": [
+                  "fi/index",
+                  "fi/quickstart",
+                  "fi/doctrine"
+                ]
+              },
+              {
+                "group": "Keskeiset käsitteet",
+                "pages": [
+                  "fi/concepts/architecture",
+                  "fi/concepts/node-habitat-nest",
+                  "fi/concepts/vectors",
+                  "fi/concepts/caller-authority",
+                  "fi/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "fi/skv/overview",
+                  "fi/skv/skvi",
+                  "fi/skv/sclv",
+                  "fi/skv/sacv",
+                  "fi/skv/sodv",
+                  "fi/skv/ssfv",
+                  "fi/skv/sav",
+                  "fi/skv/sev"
+                ]
+              },
+              {
+                "group": "Toiminnot ja infrastruktuuri",
+                "pages": [
+                  "fi/vectors/sov",
+                  "fi/vectors/scv",
+                  "fi/vectors/snv",
+                  "fi/vectors/shv",
+                  "fi/vectors/sqv",
+                  "fi/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identiteetti, auditointi ja hallinta",
+                "pages": [
+                  "fi/governance/ssiag",
+                  "fi/governance/stav",
+                  "fi/governance/accordare-producer",
+                  "fi/governance/maestro",
+                  "fi/governance/validator"
+                ]
+              },
+              {
+                "group": "Moottorit ja kirjastot",
+                "pages": [
+                  "fi/engines/overview",
+                  "fi/engines/knowledge-vector-foundation",
+                  "fi/engines/coordinator",
+                  "fi/engines/scv-source-engines",
+                  "fi/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "fi/qxctl/overview",
+                  "fi/qxctl/knowledge",
+                  "fi/qxctl/lifecycle",
+                  "fi/qxctl/engines",
+                  "fi/qxctl/reconcile",
+                  "fi/qxctl/session",
+                  "fi/qxctl/maestro",
+                  "fi/qxctl/validate",
+                  "fi/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Muutosloki",
+            "groups": [
+              {
+                "group": "Muutosloki",
+                "pages": [
+                  "fi/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "fr",
+        "tabs": [
+          {
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Prise en main",
+                "pages": [
+                  "fr/index",
+                  "fr/quickstart",
+                  "fr/doctrine"
+                ]
+              },
+              {
+                "group": "Concepts fondamentaux",
+                "pages": [
+                  "fr/concepts/architecture",
+                  "fr/concepts/node-habitat-nest",
+                  "fr/concepts/vectors",
+                  "fr/concepts/caller-authority",
+                  "fr/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "fr/skv/overview",
+                  "fr/skv/skvi",
+                  "fr/skv/sclv",
+                  "fr/skv/sacv",
+                  "fr/skv/sodv",
+                  "fr/skv/ssfv",
+                  "fr/skv/sav",
+                  "fr/skv/sev"
+                ]
+              },
+              {
+                "group": "Opérations et infrastructure",
+                "pages": [
+                  "fr/vectors/sov",
+                  "fr/vectors/scv",
+                  "fr/vectors/snv",
+                  "fr/vectors/shv",
+                  "fr/vectors/sqv",
+                  "fr/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identité, audit et gouvernance",
+                "pages": [
+                  "fr/governance/ssiag",
+                  "fr/governance/stav",
+                  "fr/governance/accordare-producer",
+                  "fr/governance/maestro",
+                  "fr/governance/validator"
+                ]
+              },
+              {
+                "group": "Moteurs et bibliothèques",
+                "pages": [
+                  "fr/engines/overview",
+                  "fr/engines/knowledge-vector-foundation",
+                  "fr/engines/coordinator",
+                  "fr/engines/scv-source-engines",
+                  "fr/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "fr/qxctl/overview",
+                  "fr/qxctl/knowledge",
+                  "fr/qxctl/lifecycle",
+                  "fr/qxctl/engines",
+                  "fr/qxctl/reconcile",
+                  "fr/qxctl/session",
+                  "fr/qxctl/maestro",
+                  "fr/qxctl/validate",
+                  "fr/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Journal des modifications",
+            "groups": [
+              {
+                "group": "Journal des modifications",
+                "pages": [
+                  "fr/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "tabs": [
+          {
+            "tab": "Dokumentation",
+            "groups": [
+              {
+                "group": "Erste Schritte",
+                "pages": [
+                  "de/index",
+                  "de/quickstart",
+                  "de/doctrine"
+                ]
+              },
+              {
+                "group": "Kernkonzepte",
+                "pages": [
+                  "de/concepts/architecture",
+                  "de/concepts/node-habitat-nest",
+                  "de/concepts/vectors",
+                  "de/concepts/caller-authority",
+                  "de/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "de/skv/overview",
+                  "de/skv/skvi",
+                  "de/skv/sclv",
+                  "de/skv/sacv",
+                  "de/skv/sodv",
+                  "de/skv/ssfv",
+                  "de/skv/sav",
+                  "de/skv/sev"
+                ]
+              },
+              {
+                "group": "Betrieb & Infrastruktur",
+                "pages": [
+                  "de/vectors/sov",
+                  "de/vectors/scv",
+                  "de/vectors/snv",
+                  "de/vectors/shv",
+                  "de/vectors/sqv",
+                  "de/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identität, Audit & Governance",
+                "pages": [
+                  "de/governance/ssiag",
+                  "de/governance/stav",
+                  "de/governance/accordare-producer",
+                  "de/governance/maestro",
+                  "de/governance/validator"
+                ]
+              },
+              {
+                "group": "Engines & Bibliotheken",
+                "pages": [
+                  "de/engines/overview",
+                  "de/engines/knowledge-vector-foundation",
+                  "de/engines/coordinator",
+                  "de/engines/scv-source-engines",
+                  "de/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "de/qxctl/overview",
+                  "de/qxctl/knowledge",
+                  "de/qxctl/lifecycle",
+                  "de/qxctl/engines",
+                  "de/qxctl/reconcile",
+                  "de/qxctl/session",
+                  "de/qxctl/maestro",
+                  "de/qxctl/validate",
+                  "de/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "de/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "he",
+        "tabs": [
+          {
+            "tab": "תיעוד",
+            "groups": [
+              {
+                "group": "תחילת העבודה",
+                "pages": [
+                  "he/index",
+                  "he/quickstart",
+                  "he/doctrine"
+                ]
+              },
+              {
+                "group": "מושגי יסוד",
+                "pages": [
+                  "he/concepts/architecture",
+                  "he/concepts/node-habitat-nest",
+                  "he/concepts/vectors",
+                  "he/concepts/caller-authority",
+                  "he/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "he/skv/overview",
+                  "he/skv/skvi",
+                  "he/skv/sclv",
+                  "he/skv/sacv",
+                  "he/skv/sodv",
+                  "he/skv/ssfv",
+                  "he/skv/sav",
+                  "he/skv/sev"
+                ]
+              },
+              {
+                "group": "תפעול ותשתית",
+                "pages": [
+                  "he/vectors/sov",
+                  "he/vectors/scv",
+                  "he/vectors/snv",
+                  "he/vectors/shv",
+                  "he/vectors/sqv",
+                  "he/vectors/siv"
+                ]
+              },
+              {
+                "group": "זהות, ביקורת וממשל",
+                "pages": [
+                  "he/governance/ssiag",
+                  "he/governance/stav",
+                  "he/governance/accordare-producer",
+                  "he/governance/maestro",
+                  "he/governance/validator"
+                ]
+              },
+              {
+                "group": "מנועים וספריות",
+                "pages": [
+                  "he/engines/overview",
+                  "he/engines/knowledge-vector-foundation",
+                  "he/engines/coordinator",
+                  "he/engines/scv-source-engines",
+                  "he/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "he/qxctl/overview",
+                  "he/qxctl/knowledge",
+                  "he/qxctl/lifecycle",
+                  "he/qxctl/engines",
+                  "he/qxctl/reconcile",
+                  "he/qxctl/session",
+                  "he/qxctl/maestro",
+                  "he/qxctl/validate",
+                  "he/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "יומן שינויים",
+            "groups": [
+              {
+                "group": "יומן שינויים",
+                "pages": [
+                  "he/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "hi",
+        "tabs": [
+          {
+            "tab": "दस्तावेज़ीकरण",
+            "groups": [
+              {
+                "group": "शुरुआत करें",
+                "pages": [
+                  "hi/index",
+                  "hi/quickstart",
+                  "hi/doctrine"
+                ]
+              },
+              {
+                "group": "मूल अवधारणाएँ",
+                "pages": [
+                  "hi/concepts/architecture",
+                  "hi/concepts/node-habitat-nest",
+                  "hi/concepts/vectors",
+                  "hi/concepts/caller-authority",
+                  "hi/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "नॉलेज वेक्टर (SKV)",
+                "pages": [
+                  "hi/skv/overview",
+                  "hi/skv/skvi",
+                  "hi/skv/sclv",
+                  "hi/skv/sacv",
+                  "hi/skv/sodv",
+                  "hi/skv/ssfv",
+                  "hi/skv/sav",
+                  "hi/skv/sev"
+                ]
+              },
+              {
+                "group": "संचालन और इन्फ्रास्ट्रक्चर",
+                "pages": [
+                  "hi/vectors/sov",
+                  "hi/vectors/scv",
+                  "hi/vectors/snv",
+                  "hi/vectors/shv",
+                  "hi/vectors/sqv",
+                  "hi/vectors/siv"
+                ]
+              },
+              {
+                "group": "पहचान, ऑडिट और शासन",
+                "pages": [
+                  "hi/governance/ssiag",
+                  "hi/governance/stav",
+                  "hi/governance/accordare-producer",
+                  "hi/governance/maestro",
+                  "hi/governance/validator"
+                ]
+              },
+              {
+                "group": "इंजन और लाइब्रेरी",
+                "pages": [
+                  "hi/engines/overview",
+                  "hi/engines/knowledge-vector-foundation",
+                  "hi/engines/coordinator",
+                  "hi/engines/scv-source-engines",
+                  "hi/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "hi/qxctl/overview",
+                  "hi/qxctl/knowledge",
+                  "hi/qxctl/lifecycle",
+                  "hi/qxctl/engines",
+                  "hi/qxctl/reconcile",
+                  "hi/qxctl/session",
+                  "hi/qxctl/maestro",
+                  "hi/qxctl/validate",
+                  "hi/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "चेंजलॉग",
+            "groups": [
+              {
+                "group": "चेंजलॉग",
+                "pages": [
+                  "hi/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "hu",
+        "tabs": [
+          {
+            "tab": "Dokumentáció",
+            "groups": [
+              {
+                "group": "Első lépések",
+                "pages": [
+                  "hu/index",
+                  "hu/quickstart",
+                  "hu/doctrine"
+                ]
+              },
+              {
+                "group": "Alapfogalmak",
+                "pages": [
+                  "hu/concepts/architecture",
+                  "hu/concepts/node-habitat-nest",
+                  "hu/concepts/vectors",
+                  "hu/concepts/caller-authority",
+                  "hu/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "hu/skv/overview",
+                  "hu/skv/skvi",
+                  "hu/skv/sclv",
+                  "hu/skv/sacv",
+                  "hu/skv/sodv",
+                  "hu/skv/ssfv",
+                  "hu/skv/sav",
+                  "hu/skv/sev"
+                ]
+              },
+              {
+                "group": "Üzemeltetés és infrastruktúra",
+                "pages": [
+                  "hu/vectors/sov",
+                  "hu/vectors/scv",
+                  "hu/vectors/snv",
+                  "hu/vectors/shv",
+                  "hu/vectors/sqv",
+                  "hu/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitás, audit és irányítás",
+                "pages": [
+                  "hu/governance/ssiag",
+                  "hu/governance/stav",
+                  "hu/governance/accordare-producer",
+                  "hu/governance/maestro",
+                  "hu/governance/validator"
+                ]
+              },
+              {
+                "group": "Motorok és könyvtárak",
+                "pages": [
+                  "hu/engines/overview",
+                  "hu/engines/knowledge-vector-foundation",
+                  "hu/engines/coordinator",
+                  "hu/engines/scv-source-engines",
+                  "hu/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "hu/qxctl/overview",
+                  "hu/qxctl/knowledge",
+                  "hu/qxctl/lifecycle",
+                  "hu/qxctl/engines",
+                  "hu/qxctl/reconcile",
+                  "hu/qxctl/session",
+                  "hu/qxctl/maestro",
+                  "hu/qxctl/validate",
+                  "hu/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Változásnapló",
+            "groups": [
+              {
+                "group": "Változásnapló",
+                "pages": [
+                  "hu/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "id",
+        "tabs": [
+          {
+            "tab": "Dokumentasi",
+            "groups": [
+              {
+                "group": "Memulai",
+                "pages": [
+                  "id/index",
+                  "id/quickstart",
+                  "id/doctrine"
+                ]
+              },
+              {
+                "group": "Konsep Inti",
+                "pages": [
+                  "id/concepts/architecture",
+                  "id/concepts/node-habitat-nest",
+                  "id/concepts/vectors",
+                  "id/concepts/caller-authority",
+                  "id/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "id/skv/overview",
+                  "id/skv/skvi",
+                  "id/skv/sclv",
+                  "id/skv/sacv",
+                  "id/skv/sodv",
+                  "id/skv/ssfv",
+                  "id/skv/sav",
+                  "id/skv/sev"
+                ]
+              },
+              {
+                "group": "Operasi & Infrastruktur",
+                "pages": [
+                  "id/vectors/sov",
+                  "id/vectors/scv",
+                  "id/vectors/snv",
+                  "id/vectors/shv",
+                  "id/vectors/sqv",
+                  "id/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitas, Audit & Tata Kelola",
+                "pages": [
+                  "id/governance/ssiag",
+                  "id/governance/stav",
+                  "id/governance/accordare-producer",
+                  "id/governance/maestro",
+                  "id/governance/validator"
+                ]
+              },
+              {
+                "group": "Engine & Pustaka",
+                "pages": [
+                  "id/engines/overview",
+                  "id/engines/knowledge-vector-foundation",
+                  "id/engines/coordinator",
+                  "id/engines/scv-source-engines",
+                  "id/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "id/qxctl/overview",
+                  "id/qxctl/knowledge",
+                  "id/qxctl/lifecycle",
+                  "id/qxctl/engines",
+                  "id/qxctl/reconcile",
+                  "id/qxctl/session",
+                  "id/qxctl/maestro",
+                  "id/qxctl/validate",
+                  "id/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Catatan Perubahan",
+            "groups": [
+              {
+                "group": "Catatan Perubahan",
+                "pages": [
+                  "id/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "tabs": [
+          {
+            "tab": "Documentazione",
+            "groups": [
+              {
+                "group": "Per iniziare",
+                "pages": [
+                  "it/index",
+                  "it/quickstart",
+                  "it/doctrine"
+                ]
+              },
+              {
+                "group": "Concetti fondamentali",
+                "pages": [
+                  "it/concepts/architecture",
+                  "it/concepts/node-habitat-nest",
+                  "it/concepts/vectors",
+                  "it/concepts/caller-authority",
+                  "it/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "it/skv/overview",
+                  "it/skv/skvi",
+                  "it/skv/sclv",
+                  "it/skv/sacv",
+                  "it/skv/sodv",
+                  "it/skv/ssfv",
+                  "it/skv/sav",
+                  "it/skv/sev"
+                ]
+              },
+              {
+                "group": "Operazioni e infrastruttura",
+                "pages": [
+                  "it/vectors/sov",
+                  "it/vectors/scv",
+                  "it/vectors/snv",
+                  "it/vectors/shv",
+                  "it/vectors/sqv",
+                  "it/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identità, audit e governance",
+                "pages": [
+                  "it/governance/ssiag",
+                  "it/governance/stav",
+                  "it/governance/accordare-producer",
+                  "it/governance/maestro",
+                  "it/governance/validator"
+                ]
+              },
+              {
+                "group": "Engine e librerie",
+                "pages": [
+                  "it/engines/overview",
+                  "it/engines/knowledge-vector-foundation",
+                  "it/engines/coordinator",
+                  "it/engines/scv-source-engines",
+                  "it/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "it/qxctl/overview",
+                  "it/qxctl/knowledge",
+                  "it/qxctl/lifecycle",
+                  "it/qxctl/engines",
+                  "it/qxctl/reconcile",
+                  "it/qxctl/session",
+                  "it/qxctl/maestro",
+                  "it/qxctl/validate",
+                  "it/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Changelog",
+            "groups": [
+              {
+                "group": "Changelog",
+                "pages": [
+                  "it/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "lv",
+        "tabs": [
+          {
+            "tab": "Dokumentācija",
+            "groups": [
+              {
+                "group": "Darba sākšana",
+                "pages": [
+                  "lv/index",
+                  "lv/quickstart",
+                  "lv/doctrine"
+                ]
+              },
+              {
+                "group": "Pamatkoncepcijas",
+                "pages": [
+                  "lv/concepts/architecture",
+                  "lv/concepts/node-habitat-nest",
+                  "lv/concepts/vectors",
+                  "lv/concepts/caller-authority",
+                  "lv/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Zināšanu vektors (SKV)",
+                "pages": [
+                  "lv/skv/overview",
+                  "lv/skv/skvi",
+                  "lv/skv/sclv",
+                  "lv/skv/sacv",
+                  "lv/skv/sodv",
+                  "lv/skv/ssfv",
+                  "lv/skv/sav",
+                  "lv/skv/sev"
+                ]
+              },
+              {
+                "group": "Darbības un infrastruktūra",
+                "pages": [
+                  "lv/vectors/sov",
+                  "lv/vectors/scv",
+                  "lv/vectors/snv",
+                  "lv/vectors/shv",
+                  "lv/vectors/sqv",
+                  "lv/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitāte, audits un pārvaldība",
+                "pages": [
+                  "lv/governance/ssiag",
+                  "lv/governance/stav",
+                  "lv/governance/accordare-producer",
+                  "lv/governance/maestro",
+                  "lv/governance/validator"
+                ]
+              },
+              {
+                "group": "Dzinēji un bibliotēkas",
+                "pages": [
+                  "lv/engines/overview",
+                  "lv/engines/knowledge-vector-foundation",
+                  "lv/engines/coordinator",
+                  "lv/engines/scv-source-engines",
+                  "lv/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "lv/qxctl/overview",
+                  "lv/qxctl/knowledge",
+                  "lv/qxctl/lifecycle",
+                  "lv/qxctl/engines",
+                  "lv/qxctl/reconcile",
+                  "lv/qxctl/session",
+                  "lv/qxctl/maestro",
+                  "lv/qxctl/validate",
+                  "lv/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Izmaiņu žurnāls",
+            "groups": [
+              {
+                "group": "Izmaiņu žurnāls",
+                "pages": [
+                  "lv/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "no",
+        "tabs": [
+          {
+            "tab": "Dokumentasjon",
+            "groups": [
+              {
+                "group": "Kom i gang",
+                "pages": [
+                  "no/index",
+                  "no/quickstart",
+                  "no/doctrine"
+                ]
+              },
+              {
+                "group": "Kjernekonsepter",
+                "pages": [
+                  "no/concepts/architecture",
+                  "no/concepts/node-habitat-nest",
+                  "no/concepts/vectors",
+                  "no/concepts/caller-authority",
+                  "no/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "no/skv/overview",
+                  "no/skv/skvi",
+                  "no/skv/sclv",
+                  "no/skv/sacv",
+                  "no/skv/sodv",
+                  "no/skv/ssfv",
+                  "no/skv/sav",
+                  "no/skv/sev"
+                ]
+              },
+              {
+                "group": "Drift og infrastruktur",
+                "pages": [
+                  "no/vectors/sov",
+                  "no/vectors/scv",
+                  "no/vectors/snv",
+                  "no/vectors/shv",
+                  "no/vectors/sqv",
+                  "no/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitet, revisjon og styring",
+                "pages": [
+                  "no/governance/ssiag",
+                  "no/governance/stav",
+                  "no/governance/accordare-producer",
+                  "no/governance/maestro",
+                  "no/governance/validator"
+                ]
+              },
+              {
+                "group": "Motorer og biblioteker",
+                "pages": [
+                  "no/engines/overview",
+                  "no/engines/knowledge-vector-foundation",
+                  "no/engines/coordinator",
+                  "no/engines/scv-source-engines",
+                  "no/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "no/qxctl/overview",
+                  "no/qxctl/knowledge",
+                  "no/qxctl/lifecycle",
+                  "no/qxctl/engines",
+                  "no/qxctl/reconcile",
+                  "no/qxctl/session",
+                  "no/qxctl/maestro",
+                  "no/qxctl/validate",
+                  "no/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Endringslogg",
+            "groups": [
+              {
+                "group": "Endringslogg",
+                "pages": [
+                  "no/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "tabs": [
+          {
+            "tab": "Dokumentacja",
+            "groups": [
+              {
+                "group": "Pierwsze kroki",
+                "pages": [
+                  "pl/index",
+                  "pl/quickstart",
+                  "pl/doctrine"
+                ]
+              },
+              {
+                "group": "Podstawowe pojęcia",
+                "pages": [
+                  "pl/concepts/architecture",
+                  "pl/concepts/node-habitat-nest",
+                  "pl/concepts/vectors",
+                  "pl/concepts/caller-authority",
+                  "pl/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "pl/skv/overview",
+                  "pl/skv/skvi",
+                  "pl/skv/sclv",
+                  "pl/skv/sacv",
+                  "pl/skv/sodv",
+                  "pl/skv/ssfv",
+                  "pl/skv/sav",
+                  "pl/skv/sev"
+                ]
+              },
+              {
+                "group": "Operacje i infrastruktura",
+                "pages": [
+                  "pl/vectors/sov",
+                  "pl/vectors/scv",
+                  "pl/vectors/snv",
+                  "pl/vectors/shv",
+                  "pl/vectors/sqv",
+                  "pl/vectors/siv"
+                ]
+              },
+              {
+                "group": "Tożsamość, audyt i zarządzanie",
+                "pages": [
+                  "pl/governance/ssiag",
+                  "pl/governance/stav",
+                  "pl/governance/accordare-producer",
+                  "pl/governance/maestro",
+                  "pl/governance/validator"
+                ]
+              },
+              {
+                "group": "Silniki i biblioteki",
+                "pages": [
+                  "pl/engines/overview",
+                  "pl/engines/knowledge-vector-foundation",
+                  "pl/engines/coordinator",
+                  "pl/engines/scv-source-engines",
+                  "pl/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "pl/qxctl/overview",
+                  "pl/qxctl/knowledge",
+                  "pl/qxctl/lifecycle",
+                  "pl/qxctl/engines",
+                  "pl/qxctl/reconcile",
+                  "pl/qxctl/session",
+                  "pl/qxctl/maestro",
+                  "pl/qxctl/validate",
+                  "pl/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Dziennik zmian",
+            "groups": [
+              {
+                "group": "Dziennik zmian",
+                "pages": [
+                  "pl/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "tabs": [
+          {
+            "tab": "Documentação",
+            "groups": [
+              {
+                "group": "Começar",
+                "pages": [
+                  "pt/index",
+                  "pt/quickstart",
+                  "pt/doctrine"
+                ]
+              },
+              {
+                "group": "Conceitos fundamentais",
+                "pages": [
+                  "pt/concepts/architecture",
+                  "pt/concepts/node-habitat-nest",
+                  "pt/concepts/vectors",
+                  "pt/concepts/caller-authority",
+                  "pt/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "pt/skv/overview",
+                  "pt/skv/skvi",
+                  "pt/skv/sclv",
+                  "pt/skv/sacv",
+                  "pt/skv/sodv",
+                  "pt/skv/ssfv",
+                  "pt/skv/sav",
+                  "pt/skv/sev"
+                ]
+              },
+              {
+                "group": "Operações e infraestrutura",
+                "pages": [
+                  "pt/vectors/sov",
+                  "pt/vectors/scv",
+                  "pt/vectors/snv",
+                  "pt/vectors/shv",
+                  "pt/vectors/sqv",
+                  "pt/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identidade, auditoria e governação",
+                "pages": [
+                  "pt/governance/ssiag",
+                  "pt/governance/stav",
+                  "pt/governance/accordare-producer",
+                  "pt/governance/maestro",
+                  "pt/governance/validator"
+                ]
+              },
+              {
+                "group": "Motores e bibliotecas",
+                "pages": [
+                  "pt/engines/overview",
+                  "pt/engines/knowledge-vector-foundation",
+                  "pt/engines/coordinator",
+                  "pt/engines/scv-source-engines",
+                  "pt/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "pt/qxctl/overview",
+                  "pt/qxctl/knowledge",
+                  "pt/qxctl/lifecycle",
+                  "pt/qxctl/engines",
+                  "pt/qxctl/reconcile",
+                  "pt/qxctl/session",
+                  "pt/qxctl/maestro",
+                  "pt/qxctl/validate",
+                  "pt/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Registo de alterações",
+            "groups": [
+              {
+                "group": "Registo de alterações",
+                "pages": [
+                  "pt/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ro",
+        "tabs": [
+          {
+            "tab": "Documentație",
+            "groups": [
+              {
+                "group": "Primii pași",
+                "pages": [
+                  "ro/index",
+                  "ro/quickstart",
+                  "ro/doctrine"
+                ]
+              },
+              {
+                "group": "Concepte de bază",
+                "pages": [
+                  "ro/concepts/architecture",
+                  "ro/concepts/node-habitat-nest",
+                  "ro/concepts/vectors",
+                  "ro/concepts/caller-authority",
+                  "ro/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "ro/skv/overview",
+                  "ro/skv/skvi",
+                  "ro/skv/sclv",
+                  "ro/skv/sacv",
+                  "ro/skv/sodv",
+                  "ro/skv/ssfv",
+                  "ro/skv/sav",
+                  "ro/skv/sev"
+                ]
+              },
+              {
+                "group": "Operațiuni și infrastructură",
+                "pages": [
+                  "ro/vectors/sov",
+                  "ro/vectors/scv",
+                  "ro/vectors/snv",
+                  "ro/vectors/shv",
+                  "ro/vectors/sqv",
+                  "ro/vectors/siv"
+                ]
+              },
+              {
+                "group": "Identitate, audit și guvernanță",
+                "pages": [
+                  "ro/governance/ssiag",
+                  "ro/governance/stav",
+                  "ro/governance/accordare-producer",
+                  "ro/governance/maestro",
+                  "ro/governance/validator"
+                ]
+              },
+              {
+                "group": "Motoare și biblioteci",
+                "pages": [
+                  "ro/engines/overview",
+                  "ro/engines/knowledge-vector-foundation",
+                  "ro/engines/coordinator",
+                  "ro/engines/scv-source-engines",
+                  "ro/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "CLI qxctl",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ro/qxctl/overview",
+                  "ro/qxctl/knowledge",
+                  "ro/qxctl/lifecycle",
+                  "ro/qxctl/engines",
+                  "ro/qxctl/reconcile",
+                  "ro/qxctl/session",
+                  "ro/qxctl/maestro",
+                  "ro/qxctl/validate",
+                  "ro/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Jurnal de modificări",
+            "groups": [
+              {
+                "group": "Jurnal de modificări",
+                "pages": [
+                  "ro/changelog"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ru",
+        "tabs": [
+          {
+            "tab": "Документация",
+            "groups": [
+              {
+                "group": "Начало работы",
+                "pages": [
+                  "ru/index",
+                  "ru/quickstart",
+                  "ru/doctrine"
+                ]
+              },
+              {
+                "group": "Основные концепции",
+                "pages": [
+                  "ru/concepts/architecture",
+                  "ru/concepts/node-habitat-nest",
+                  "ru/concepts/vectors",
+                  "ru/concepts/caller-authority",
+                  "ru/concepts/hot-path-isolation"
+                ]
+              },
+              {
+                "group": "Knowledge Vector (SKV)",
+                "pages": [
+                  "ru/skv/overview",
+                  "ru/skv/skvi",
+                  "ru/skv/sclv",
+                  "ru/skv/sacv",
+                  "ru/skv/sodv",
+                  "ru/skv/ssfv",
+                  "ru/skv/sav",
+                  "ru/skv/sev"
+                ]
+              },
+              {
+                "group": "Операции и инфраструктура",
+                "pages": [
+                  "ru/vectors/sov",
+                  "ru/vectors/scv",
+                  "ru/vectors/snv",
+                  "ru/vectors/shv",
+                  "ru/vectors/sqv",
+                  "ru/vectors/siv"
+                ]
+              },
+              {
+                "group": "Идентичность, аудит и управление",
+                "pages": [
+                  "ru/governance/ssiag",
+                  "ru/governance/stav",
+                  "ru/governance/accordare-producer",
+                  "ru/governance/maestro",
+                  "ru/governance/validator"
+                ]
+              },
+              {
+                "group": "Движки и библиотеки",
+                "pages": [
+                  "ru/engines/overview",
+                  "ru/engines/knowledge-vector-foundation",
+                  "ru/engines/coordinator",
+                  "ru/engines/scv-source-engines",
+                  "ru/engines/shv-engines"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "qxctl CLI",
+            "groups": [
+              {
+                "group": "qxctl",
+                "pages": [
+                  "ru/qxctl/overview",
+                  "ru/qxctl/knowledge",
+                  "ru/qxctl/lifecycle",
+                  "ru/qxctl/engines",
+                  "ru/qxctl/reconcile",
+                  "ru/qxctl/session",
+                  "ru/qxctl/maestro",
+                  "ru/qxctl/validate",
+                  "ru/qxctl/vector-commands"
+                ]
+              }
+            ]
+          },
+          {
+            "tab": "Журнал изменений",
+            "groups": [
+              {
+                "group": "Журнал изменений",
+                "pages": [
+                  "ru/changelog"
+                ]
+              }
             ]
           }
         ]

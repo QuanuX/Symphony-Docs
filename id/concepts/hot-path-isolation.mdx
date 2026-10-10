@@ -1,0 +1,37 @@
+---
+title: "Isolasi Hot Path di QuanuX Symphony"
+description: "Pelajari bagaimana Symphony melindungi jalur eksekusi dari gangguan administratif: komponen cold path dan freezing path, disiplin bus, dan konsep saksi status Prima Parte."
+sidebarTitle: "Isolasi Hot Path"
+---
+
+Symphony memisahkan pekerjaan administratif dari pekerjaan eksekusi sehingga perdagangan langsung, riset, dan jalur lain yang sensitif terhadap performa tetap bebas dari jitter, latensi, dan dependensi tersembunyi. qxctl dan bidang pengetahuan adalah administrasi cold path atau freezing path. Keduanya dapat secara eksplisit bertindak pada Node yang juga menjalankan pekerjaan langsung, tetapi tidak boleh menjadi dependensi hot path yang berkelanjutan.
+
+## Disiplin cold path dan freezing path
+
+qxctl dan engine vektor adalah komponen administratif cold path atau freezing path. Komponen-komponen ini tidak boleh:
+
+- Dieksekusi sejajar (inline) dengan jalur eksekusi hot atau warm
+- Berbagi lock dengan workload langsung
+- Menciptakan dependensi sinkron yang menambah jitter atau latensi
+- Menjadi pengamat tersembunyi, interpreter residen, atau manajer paket latar belakang yang tidak diminta
+- Mempertahankan residensi berkelanjutan pada Node eksekusi
+
+Aturan ini berlaku untuk koordinator sesi pengetahuan, engine vektor, dan semua operasi yang dikelola qxctl. Komponen-komponen tersebut menghasilkan bukti, memvalidasi status, dan menyiapkan rencana, tetapi tidak berpartisipasi dalam jalur eksekusi langsung.
+
+## Disiplin bus
+
+Transfer berat, kontrol, riset, dan exhaust eksekusi tidak harus berbagi satu bus. Sebuah topologi dapat menggunakan beberapa bus atau melewati bus untuk jalur yang dideklarasikan, terutama ketika lalu lintas bersama dapat menimbulkan jitter. NATS JetStream, ZeroMQ, dan fabric lainnya adalah adaptor dan pilihan pengguna. Keberadaan administrasi bus qxctl tidak menjadikan penelusuran bus sebagai keharusan.
+
+Anda memilih topologi bus yang sesuai dengan kebutuhan latensi dan throughput Anda. Symphony mendukung konfigurasi tersebut tanpa memaksakan satu fabric bersama.
+
+## Prima Parte
+
+**Prima Parte** adalah konsep Fase 3 yang telah diratifikasi, bukan executable saat ini. Ini adalah saksi status lokal Node berbasis C++ yang opsional dan sangat ringan, yang dipanggil secara eksplisit oleh qxctl setelah operasi material. Prima Parte tidak memiliki daemon, listener, timer, pengamat, loop polling, atau koneksi bus residen.
+
+Kosakata tahan lamanya yang terbatas mencakup tiga istilah:
+
+- `current` — status yang diamati saat ini
+- `previous` — status sebelum operasi material
+- `lastTransmitted` — status yang dikirim oleh Node jarak jauh setelah perintah terkait dieksekusi (tidak dikonfirmasi telah diterima)
+
+Prima Parte hanya mencatat Node-nya sendiri, tidak pernah menjadi Maestro yang lebih kecil, dan keluar setelah pekerjaannya yang terbatas selesai. Prima Parte bukan reseptor Maestro Fase 1, dan belum ada executable yang diimplementasikan.

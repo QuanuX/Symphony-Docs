@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: odczyt inwentarza obecności receptorów Symphony"
+description: "Sprawdzaj autorytet obecności Maestro w Symphony za pomocą qxctl, aby zobaczyć uwierzytelnione relacje dokowania silników wektorowych i pochodny inwentarz receptorów."
+sidebarTitle: "maestro"
+---
+
+Gramatyka `qxctl maestro ...` udostępnia dowody obecności Maestro. Maestro jest autorytetem obecności; qxctl jedynie odczytuje i sprawdza to, co rejestruje Maestro. Żadne z nich samodzielnie nie tworzy relacji dokowania.
+
+## Inwentarz
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` prezentuje kompletny, pochodny, przeznaczony tylko do odczytu inwentarz Maestro zawierający uwierzytelnione relacje dokowania silników wektorowych dla każdego TOPS i receptora.
+
+## Powiązane ścieżki administracyjne
+
+Dodatkowe liście qxctl udostępniają administrację związaną z Maestro:
+
+- Status i inspekcję dowodów dokowania
+- Ścieżki odzyskiwania ograniczone własnymi kontraktami Maestro
+- Podstawową rejestrację w cyklu życia i natywny nadzór nad samym Maestro
+
+Każda ścieżka mutacji przechodzi przez dokładny adapter należący do modułu. qxctl nigdy nie renderuje deskryptorów Maestro na podstawie wewnętrznego parsowania ani nie wywołuje niejawnie najnowszej wersji.
+
+<Warning>
+  Maestro nie uruchamia, nie planuje, nie nadzoruje ani nie wywołuje silników. `qxctl maestro inventory` działa tylko w trybie odczytu. Samo wiązanie, rekoncyliacja, koordynacja sesji ani plan cyklu życia nie ustanawiają obecności w Maestro.
+</Warning>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/pl/governance/maestro">
+    Kontrakt i granice autorytetu obecności.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/pl/qxctl/engines">
+    Rejestr wiązań silników (wiązania to nie dokowanie).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pl/qxctl/session">
+    Uwierzytelnione sesje używane do rejestrowania obecności.
+  </Card>
+
+  <Card title="Przegląd silników" icon="cube" href="/pl/engines/overview">
+    Niezależnie instalowalne silniki wektorowe dokujące w Maestro.
+  </Card>
+</CardGroup>

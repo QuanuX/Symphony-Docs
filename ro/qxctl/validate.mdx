@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: politica de avertismente a Symphony Validator"
+description: "Administrați prin qxctl politica protejată de avertismente, referința de bază și gramatica de afișare peste Symphony Validator independent, fără a modifica dovezile brute ale detectorului."
+sidebarTitle: "validate"
+---
+
+Gramatica `qxctl validate ...` administrează politica protejată de avertismente, referința de bază (baseline) și gramatica de afișare ale Symphony Validator. Validatorul C++ instalat independent produce dovezi brute imuabile; qxctl administrează o prezentare protejată, neutră față de apelant, fără a modifica detecția.
+
+## Ce acoperă qxctl validate
+
+- Nouă frunze protejate pentru ciclul de viață al avertismentelor
+- Ruta exactă de rezumat al rădăcinii, susținută de chitanță
+- Gestionarea referinței de bază și raportarea diferențelor
+- Gramatica de afișare pentru ieșire pe linii și JSON structurat
+
+Fiecare frunză validează chitanța exactă și digest-urile structurate ale validatorului înainte de a aplica politica protejată de avertismente.
+
+## Limite
+
+<Warning>
+  qxctl validate nu poate repara fișiere, nu poate publica nimic și nu poate suprascrie dovezile brute ale detectorului. Dispoziția avertismentelor afectează prezentarea, nu detecția.
+</Warning>
+
+- Nicio suprimare a avertismentelor în afara politicii protejate
+- Nicio modificare a ieșirii validatorului
+- Nicio acoperire fabricată pentru o rută indisponibilă
+
+## Utilizări frecvente
+
+- Stabilirea sau resetarea unei referințe de bază pentru avertismente
+- Aprobarea sau redeschiderea unui avertisment istoric guvernat
+- Emiterea rezumatului rădăcinii susținut de chitanță, care apare în README-ul depozitului
+
+Validatorul care stă la baza acestei gramatici verifică forma contractelor, închiderea sursei curente, proprietatea invarianților, administrarea funcționalităților, versiunile publicate și rezumatul rădăcinii deținut de mașină.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/ro/governance/validator">
+    Verificatorul C++ independent, doar în citire, pe care îl administrează qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ro/skv/ssfv">
+    Așteptările de administrare a funcționalităților verificate în dovezi.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ro/skv/sodv">
+    Înregistrările de versiuni care apar în dovezile validatorului.
+  </Card>
+
+  <Card title="Prezentare generală qxctl" icon="terminal" href="/ro/qxctl/overview">
+    Suprafața completă de comenzi.
+  </Card>
+</CardGroup>

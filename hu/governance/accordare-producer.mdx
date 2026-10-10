@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV producer: körülhatárolt SAV Named Version audit"
+description: "Az Accordare STAV producer egy hitelesített helyi partnerekkel dolgozó freezing path Go producer révén tartósan megőrzi az SAV Named Version szándékot, kimenetelt és helyreállítást."
+sidebarTitle: "Accordare producer"
+---
+
+Az Accordare STAV producer (`modules/accordare-stav-producer`) egy függetlenül telepíthető, freezing path Go producer a körülhatárolt SAV Named Version auditkörhöz. Tartósan megőrzi a módosítás előtti szándékot és a hozzáfűzési helyreállítást, hitelesíti a helyi partnereit, és csak azt a pontos, biztonságos jelöltet küldi be, amelyet zárt szókészlete befogad. Nem maga a STAV hozzáfűzési hatóság.
+
+## A szándék, kimenetel, helyreállítás minta
+
+A producer minden auditált módosításnál háromlépéses mintát követ:
+
+<Steps>
+  <Step title="Módosítás előtti szándék">
+    A hívó által kinyilvánított szándékot tartósan rögzíti, mielőtt bármilyen változás megfigyelhetővé válna. A producer elutasítja a zárt szókészletén kívül eső jelölteket.
+  </Step>
+  <Step title="Végső kimenetel">
+    Miután a módosítás befejeződött vagy meghiúsult, rögzíti a pontos kimenetelt, hogy az audit a valóságot tükrözze, ne pedig egy remélt állapotot.
+  </Step>
+  <Step title="Körülhatárolt helyreállítás">
+    Megszakítás esetén a producer körülhatárolt helyreállítást végez a hozzáfűzési folyamon, anélkül hogy egyeztetést találna ki vagy csendben elvetné a szándékot.
+  </Step>
+</Steps>
+
+## Határok
+
+<Warning>
+  Az Accordare producer nem a STAV hozzáfűzési hatóság. Hitelesíti a helyi partnereket és beküldi a jelölteket; a hozzáfűzési hatóság validálja, lezárja és tartósan tárolja azokat. Soha ne kerülje meg ezt a szétválasztást.
+</Warning>
+
+- A producer szókészlete zárt. Kizárólag SAV Named Version auditjelölteket fogad el.
+- A producer freezing path komponens. Nem válhat hot path függőséggé.
+- A producer a helyi partnereket hitelesíti; távoli hívókat nem hitelesít.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/hu/governance/stav">
+    A hozzáfűzési hatóság, amely lezárja az auditrekordokat.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/hu/governance/ssiag">
+    Engedélyezi a producer által auditált módosítást.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/hu/skv/sav">
+    A Named Version kompozíciós szemantika, amelyet ez a kör auditál.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    A ratifikált Accordare nyelvtan a megvalósítás után `qxctl accord ...` formában érkezik.
+  </Card>
+</CardGroup>

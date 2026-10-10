@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Symphony receptoru klātbūtnes inventāra nolasīšana"
+description: "Pārbaudiet Symphony Maestro klātbūtnes autoritāti ar qxctl, lai redzētu autentificētās vektoru dzinēju pievienošanas (docking) attiecības un atvasināto receptoru inventāru."
+sidebarTitle: "maestro"
+---
+
+Gramatika `qxctl maestro ...` atklāj Maestro klātbūtnes pierādījumus. Maestro ir klātbūtnes autoritāte; qxctl tikai nolasa un pārbauda to, ko Maestro reģistrē. Neviens no tiem pats par sevi neizveido pievienošanas (docking) attiecības.
+
+## Inventārs
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` parāda Maestro pilnīgo, atvasināto, tikai lasāmo autentificēto vektoru dzinēju pievienošanas attiecību inventāru katram TOPS un receptoram.
+
+## Saistītie administrēšanas maršruti
+
+Papildu qxctl lapas nodrošina ar Maestro saistītu administrēšanu:
+
+- Pievienošanas pierādījumu statuss un pārbaude
+- Atkopšanas maršruti, ko ierobežo paša Maestro līgumi
+- Pamata dzīves cikla reģistrācija un vietējā uzraudzība pašam Maestro
+
+Katrs izmaiņu maršruts iet caur precīzu modulim piederošu adapteri. qxctl nekad neattēlo Maestro deskriptorus no iekšējas parsēšanas un neizsauc netiešu jaunāko versiju.
+
+<Warning>
+  Maestro nestartē, neplāno, neuzrauga un neizsauc dzinējus. `qxctl maestro inventory` ir tikai lasāma. Piesaiste, saskaņošana, sesiju koordinācija vai dzīves cikla plāns vien nenodibina Maestro klātbūtni.
+</Warning>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/lv/governance/maestro">
+    Klātbūtnes autoritātes līgums un robežas.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/lv/qxctl/engines">
+    Dzinēju piesaistes reģistrs (piesaistes nav pievienošana).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/lv/qxctl/session">
+    Autentificētas sesijas, ko izmanto klātbūtnes reģistrēšanai.
+  </Card>
+
+  <Card title="Dzinēju pārskats" icon="cube" href="/lv/engines/overview">
+    Neatkarīgi instalējami vektoru dzinēji, kas pievienojas Maestro.
+  </Card>
+</CardGroup>

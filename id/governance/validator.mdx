@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: Pemeriksaan Repositori Deterministik dan Baca-Saja"
+description: "Symphony Validator menghasilkan bukti berupa baris atau JSON terstruktur untuk kontrak, penutupan sumber, invarian, fitur, rilis, dan ringkasan root yang diperiksa mesin."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) adalah pemeriksa repositori C++26 yang independen, deterministik, dan baca-saja. Validator ini menghasilkan bukti yang tidak dapat diubah tentang status repositori dan kontraknya saat ini. Validator tidak dapat memperbaiki atau menerbitkan apa pun.
+
+## Apa yang diperiksa validator
+
+- Bentuk kontrak: jangkar dan struktur Contract Quad yang diwajibkan
+- Penutupan sumber saat ini di seluruh permukaan yang diindeks SKVI
+- Kepemilikan invarian sesuai `knowledge/INVARIANTS.md` dan registri invarian
+- Ekspektasi administrasi fitur yang dilaporkan oleh SSFV
+- Catatan rilis yang dilaporkan oleh SODV
+- Ringkasan root milik mesin di README repositori
+
+Bukti dikeluarkan sebagai output baris atau JSON terstruktur. Setiap emisi dapat direproduksi dari status repositori yang sama.
+
+## Apa yang tidak dilakukan validator
+
+<Warning>
+  Validator tidak dapat memperbaiki file, menulis ulang kontrak, atau menerbitkan repositori. Validator tidak menciptakan kebenaran kanonis apa pun; validator hanya melaporkannya.
+</Warning>
+
+- Tidak ada efek samping pada repositori
+- Tidak ada akses jaringan
+- Tidak ada penekanan peringatan di luar kebijakan peringatan yang dilindungi milik qxctl
+
+## Integrasi qxctl
+
+qxctl memvalidasi tanda terima eksak dan digest terstruktur validator sebelum menerapkan kebijakan peringatan yang dilindungi. Sembilan leaf qxctl siklus hidup peringatan yang dilindungi, ditambah rute ringkasan root eksak yang didukung tanda terima, mengekspos administrasi validasi tanpa mengubah bukti detektor mentah.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/id/qxctl/validate">
+    Tata bahasa kebijakan peringatan yang dilindungi, baseline, dan tampilan.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/id/skv/ssfv">
+    Ekspektasi administrasi fitur yang diperiksa oleh validator.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Catatan rilis yang diinspeksi oleh validator.
+  </Card>
+
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka payung yang kontraknya diperiksa oleh validator.
+  </Card>
+</CardGroup>

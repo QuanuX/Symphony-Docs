@@ -1,0 +1,33 @@
+---
+title: "Arhitectura Symphony"
+description: "Înțelegeți granițele dintre infrastructura selectată de utilizator, contractele de vectori, motoare, qxctl și dovezile guvernate."
+sidebarTitle: "Arhitectură"
+---
+
+Symphony separă infrastructura și sarcinile de lucru selectate de utilizator de cunoașterea și administrarea platformei. Platforma poate inspecta, valida și raporta compatibilitatea fără a revendica proprietatea asupra strategiei dumneavoastră și fără a trata o recomandare ca pe un mandat.
+
+## Stratul fizic și al sarcinilor de lucru
+
+Un [Node](/ro/concepts/node-habitat-nest) este un computer fizic identificat. Un **Habitat** este sistemul său de operare exact și condiționarea pachetelor, iar un **Nest** este o sarcină de lucru care servește unui scop selectat de utilizator. Clusterele conectează Node-urile prin una sau mai multe magistrale. Rețelele de magistrale, adaptoarele, furnizorii și alegerile hardware sunt explicite, nu valori implicite universale.
+
+[Calea critică](/ro/concepts/hot-path-isolation) rămâne separată de rezidența administrativă. Activitatea qxctl și a planului de cunoaștere poate administra explicit un Node, dar nu devine o dependență continuă ascunsă a execuției live.
+
+## Proprietatea semantică
+
+[Vectorii](/ro/concepts/vectors) sunt proprietari delimitați și durabili ai semnificației și ai operațiunilor permise. Fiecare proprietar publică un Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` și `SPEC.md`. [Symphony Knowledge Vector (SKV)](/ro/skv/overview) indexează suprafețele canonice și păstrează o rută către proprietarul lor. Schemele, registrele și registrele contabile însoțitoare rămân guvernate fără a deveni membri suplimentari ai Quad.
+
+Fazele de livrare descriu când se realizează activitatea. Ele nu transferă proprietatea semantică de la un vector la altul.
+
+## Motoare și suprafața de comenzi
+
+[Motoarele de vectori](/ro/engines/overview) sunt componente instalabile independent, care rulează în afara procesului și care inspectează, verifică, proiectează și propun în limitele contractelor proprietarilor lor. Ele nu dobândesc autoritate doar prin faptul că produc o propunere.
+
+[qxctl](/ro/qxctl/overview) deține gramatica și prezentarea comenzilor administrative. Acesta invocă capabilități delimitate, validate prin chitanțe, în timp ce vectorul care definește o operațiune își păstrează semantica. Dovezile de autorizare și audit guvernează rutele de modificare; [clasificarea apelantului](/ro/concepts/caller-authority) singură nu acordă nicio autoritate.
+
+## Adevăr și evoluție
+
+Contractele curente exprimă adevărul curent. Registrele de modificări și de publicare păstrează dovezile înregistrate la un anumit moment. Neconcordanța dintre contracte, dovezile de implementare și istoricul înregistrat este semnalată ca deviere, în loc să fie rescrisă pe tăcute. [SAV](/ro/skv/sav) evaluează compatibilitatea compoziției; [SEV](/ro/skv/sev) planifică evoluția guvernată.
+
+<Note>
+  Această prezentare generală este o hartă a granițelor. Consultați contractul curent și dovezile de implementare ale fiecărui vector indicat înainte de a considera o capabilitate disponibilă într-o anumită instalare.
+</Note>

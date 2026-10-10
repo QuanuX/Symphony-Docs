@@ -1,0 +1,35 @@
+---
+title: "Doutrina da plataforma QuanuX Symphony"
+description: "Conheça os princípios que regem o Symphony: propriedade do utilizador sobre a estratégia e a infraestrutura, neutralidade quanto à classe do chamador, proteção do hot path e compatibilidade baseada em evidências."
+sidebarTitle: "Doutrina"
+---
+
+A doutrina do Symphony define as fronteiras entre aquilo que a plataforma controla e aquilo que o utilizador controla. Estas regras orientam todas as decisões de design no monorepo e todas as interações com o qxctl, os motores de vetores e os contratos de conhecimento.
+
+## Propriedade do utilizador
+
+É o utilizador quem detém a lógica da sua estratégia, o propósito do Nest, a escolha do fornecedor, a escolha do hardware, a topologia do bus e a seleção de adaptadores suportados. O Symphony fornece evidências exatas de compatibilidade e operações suportadas, mas não transforma recomendações em lei da plataforma. A plataforma reporta correspondências, discrepâncias, factos por resolver e consequências. Não classifica fornecedores, não prescreve uma estratégia nem alarga discretamente o seu ambiente.
+
+## Proteção do hot path
+
+O hot path (caminho crítico) está protegido contra a residência administrativa e a pressão acidental sobre buses partilhados. O qxctl e o plano de conhecimento são administração de cold path ou freezing path. Podem atuar explicitamente sobre um Node que também aloje trabalho em produção, mas não podem tornar-se dependências contínuas do hot path, observadores ocultos, interpretadores residentes nem gestores de pacotes em segundo plano não solicitados. A sua arquitetura explícita mantém-se soberana.
+
+## Separação entre comandos e semântica
+
+O qxctl detém a gramática e a apresentação dos comandos. Os vetores de domínio detêm as operações e os significados que esses comandos expõem. Uma rota do qxctl invoca uma capacidade definida pelo proprietário sem absorver a sua semântica.
+
+## Nomes e espaços de nomes
+
+Os nomes são registados no âmbito a que pertencem. O SNV e o SCNV não os ditam, e o NAMESPACES raiz continua a ser mais amplo do que o SNV. Um nome registado num TOPS ou num TROG segue esse âmbito. Em múltiplos clusters, o nome abreviado de um Node pode repetir-se em clusters diferentes, mas não pode identificar de forma ambígua dois Nodes ativos no mesmo cluster.
+
+## Neutralidade quanto à classe do chamador
+
+A classificação de um chamador como humano, IA, agente, serviço ou carga de trabalho não concede nem retira autoridade. As decisões de autorização suportadas baseiam-se na propriedade do host de destino ou nas permissões concedidas, na operação e no recurso pedidos, no estado esperado e nas salvaguardas configuradas pelo proprietário. O administrador do host de destino é soberano sobre a governação configurável. O SSIAG pode verificar e projetar a autoridade efetiva do host, mas não cria uma autoridade de registo superior. A garantia reforçada de identidade e os bloqueios de governação são salvaguardas neutras quanto ao chamador e configuradas pelo proprietário. Os requisitos de integridade do protocolo continuam a ser obrigatórios. O Symphony não decide a capacidade jurídica ou financeira externa com base no tipo de chamador.
+
+## Verdade e evidências
+
+Os contratos atuais descrevem a verdade atual. Os registos imutáveis do SCLV e do SODV preservam aquilo que era conhecido, foi alterado, autorizado ou concluído no momento histórico em que foram registados. Quando os contratos atuais, as evidências de implementação e o registo aplicável mais recente divergem, a divergência é apresentada como deriva (drift) para revisão. O histórico não é reescrito silenciosamente para se assemelhar ao presente.
+
+## Doutrina sobre Python
+
+O código-fonte próprio do Symphony, os geradores, a criação de esquemas, os testes e os auxiliares de aceitação não requerem qualquer implementação em Python nem dependência de um interpretador. O C++ detém as ferramentas de criação e de testes de processos que os substituem. Esta política do repositório não restringe os programas criados pelo utilizador nem os Habitats isolados explicitamente selecionados.

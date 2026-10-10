@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: Ikhtisar Kerangka Kerja SKV"
+description: "SKV adalah kerangka kerja payung untuk pengetahuan platform deklaratif Symphony. Jelajahi Contract Quad, permukaan pendamping, dan setiap sub-vektor di bawah satu model tata kelola."
+sidebarTitle: "Ikhtisar SKV"
+---
+
+Symphony Knowledge Vector (SKV) adalah kerangka kerja kanonis untuk pengetahuan platform deklaratif Symphony. SKV mempertahankan kebenaran arsitektural, batas modul, kontrak, doktrin, dan pengetahuan kompatibilitas dalam struktur yang dikonsumsi secara konsisten oleh manusia, validator, qxctl, CI, dan alat agentik. SKV bukan runtime; SKV adalah lapisan pengetahuan bersama yang dilalui oleh setiap vektor.
+
+## Contract Quad
+
+Setiap pemilik semantik di SKV menerbitkan sebuah Contract Quad:
+
+- **INTENT.md**: tujuan, cakupan, dan hal di luar cakupan
+- **MANIFEST.md**: permukaan kanonis dan delegasi
+- **SKILL.md**: prosedur penggunaan yang aman bagi pemanggil
+- **SPEC.md**: perilaku normatif
+
+Skema, registry, profil, ledger, dan artefak lainnya berada di luar Quad empat anggota tersebut dan tetap diatur oleh pemilik yang sama.
+
+## Permukaan pendamping
+
+Dua pendamping milik SKV berlaku di seluruh vektor:
+
+- `knowledge/SLANG.md` memetakan setiap istilah platform ke kontrak persis yang memiliki semantiknya.
+- `knowledge/NAMESPACES.md` mencatat kepemilikan keluarga identitas tanpa mendikte grammar, alokasi, lifecycle, atau identitas individual.
+
+Kedua pendamping ini bukan anggota kelima Quad, bukan vektor baru, dan bukan layanan runtime.
+
+## Aturan interpretasi
+
+Kontrak saat ini menggambarkan kebenaran saat ini. Catatan SCLV dan SODV yang hanya dapat ditambahkan (append-only) mempertahankan apa yang diketahui, diotorisasi, atau diselesaikan pada titik waktu pencatatannya. Ketika state kontrak, bukti implementasi, dan catatan terbaru yang berlaku tidak sepakat, ketidaksepakatan tersebut adalah drift untuk ditinjau. Tooling tidak boleh diam-diam menciptakan rekonsiliasi.
+
+## Sub-vektor
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/id/skv/skvi">
+    Mengindeks setiap permukaan kanonis saat ini tepat satu kali.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/id/skv/sclv">
+    Ledger perubahan append-only untuk perubahan sumber material yang telah selesai.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/id/skv/sacv">
+    Tata kelola OpenAPI 3.2.0 yang terbatas dan diff kompatibilitas.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Mengatur publikasi resmi QuanuX dan catatan rilis.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/id/skv/ssfv">
+    Identitas fitur, kesegaran, dan jaminan administrasi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/id/skv/sav">
+    Komposisi Accordare dan evaluasi kompatibilitas tiga sumbu.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/id/skv/sev">
+    Kasus evolusi, perencanaan disposisi, dan pemeriksaan kebaruan.
+  </Card>
+
+  <Card title="Tata kelola" icon="shield-halved" href="/id/governance/ssiag">
+    Tata kelola identitas SSIAG dan audit STAV untuk mutasi yang diotorisasi.
+  </Card>
+</CardGroup>
+
+<Note>
+  Setiap engine SKV saat ini hanya melakukan read, query, validate, dan propose. Apply kanonis secara terprogram dinonaktifkan hingga kontrak izin SSIAG, transaksi expected-state, pengaman qxctl, peristiwa STAV, pemulihan, dan pengujian negatif setiap engine selesai.
+</Note>

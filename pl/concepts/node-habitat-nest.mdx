@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat i Nest w Symphony"
+description: "Dowiedz się, jak Symphony modeluje infrastrukturę fizyczną: Node jako komputer fizyczny, Habitat jako dokładne przygotowanie systemu operacyjnego i Nest jako obciążenie realizujące cel użytkownika."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definiuje trzy pojęcia fizyczne, które rozdzielają tożsamość sprzętu, przygotowanie oprogramowania i obciążenie użytkownika. Pojęcia te utrzymują odrębność zagadnień infrastrukturalnych, dzięki czemu możesz analizować każde z nich niezależnie.
+
+## Node
+
+**Node** to docelowy fizyczny zasób obliczeniowy o konkretnie zidentyfikowanych zasobach. Odłączenie, ponowne podłączenie, ponowne uruchomienie lub ponowne wgranie samego oprogramowania nie tworzy nowego fizycznego Node. Tworzy go natomiast zniszczenie, fizyczna wymiana lub istotna zmiana lokalnego sprzętu. Inkarnacja Node to odrębny dowód tworzony, gdy Node zostaje podłączony do magistrali jako uczestnik systemu transakcyjnego, klastra badawczego lub innego systemu zbudowanego na Symphony.
+
+## Habitat
+
+**Habitat** to dokładne przygotowanie systemu operacyjnego i pakietów dostarczone do Node na potrzeby wybranej przez Ciebie pracy. Domyślnie obejmuje wyłącznie wymaganą powierzchnię oprogramowania: bez niepowiązanych pakietów, ukrytych środowisk uruchomieniowych, kontenerów, Kubernetes ani niejawnej wirtualizacji. Szeroki Habitat ogólnego przeznaczenia pozostaje prawidłowym, jawnym wyborem użytkownika.
+
+## Nest
+
+**Nest** (dosł. „gniazdo”) służy celowi wybranemu przez Ciebie. Oczekuje się, że wykonywanie strategii na żywo będzie częstym przypadkiem, a jedna strategia może zawierać wiele modułowych sekcji kodu, ale Symphony nie definiuje celu Nest ani nie utożsamia go z jednym plikiem źródłowym, procesem, algorytmem, API brokera czy interfejsem danych. Logika strategii pozostaje Twoją domeną.
+
+## Porównanie
+
+| Pojęcie | Czym jest | Co go zmienia |
+| --- | --- | --- |
+| **Node** | Komputer fizyczny z określonymi zasobami | Fizyczne zniszczenie, wymiana lub istotna zmiana sprzętu |
+| **Habitat** | Dokładne przygotowanie systemu operacyjnego i pakietów na Node | Jawny wybór użytkownika lub przygotowanie administrowane przez qxctl |
+| **Nest** | Obciążenie realizujące cel użytkownika, dostarczone do Habitatu | Wdrożenie przez użytkownika strategii lub innej wybranej pracy |
+
+## Topologia klastra i magistrali
+
+Wiele Node tworzy klaster tylko wtedy, gdy są połączone ze sobą za pomocą jednej lub wielu magistrali. W jednym klastrze może współistnieć wiele struktur magistrali, a relacja Node-w-klastrze może identyfikować właściwą magistralę bez zmiany tożsamości fizycznego Node.
+
+Adaptery magistrali, takie jak NATS JetStream i ZeroMQ, są wybierane przez użytkownika, a nie wynikają z doktryny. Ciężkie transfery, sterowanie, badania i strumienie danych wykonawczych nie muszą współdzielić jednej magistrali. Topologia może używać wielu magistrali lub omijać magistralę dla zadeklarowanej ścieżki.
+
+## Zakres TOPS i TROG
+
+**TOPS** to dominujący zakres systemu operacyjnego do handlu (Trade Operating System). **TROG** to celowo podporządkowany, nieglobalny zakres grupy transakcyjnej. Wbrew historycznemu nazewnictwu TROG nie musi być wirtualny. Jego cechą wyróżniającą jest to, że jego zakres i reguły nie są uniwersalne.
