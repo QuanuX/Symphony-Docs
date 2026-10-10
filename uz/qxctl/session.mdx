@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: autentifikatsiyalangan Symphony sessiyalari"
+description: "Autentifikatsiyalangan Symphony koordinator sessiyalari va doimiy SSFV texnik xizmat oqimlarini SSIAG tomonidan tasdiqlangan ruxsatnomalar bilan oching, checkpoint qiling, yoping va tiklang."
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` grammatikasi bitta aniq bog'langan koordinator va bitta TOPS doirasidagi SSIAG endpoint'i orqali kanonik bo'lmagan autentifikatsiyalangan sessiyalarni ochadi. Alohida `session features ...` grammatikasi doimiy SSFV texnik xizmat oqimini boshqaradi.
+
+## Asosiy sessiya grammatikasi
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Har bir chaqiruv yangi aniq ruxsatnoma (grant) so'raydi va quyidagilarni tasdiqlaydi:
+
+- Subyekt va maqsad identifikatori
+- Siyosat va konfiguratsiya holati
+- Amal qilish muddati
+- Chaqiruvchi sinfiga nisbatan neytrallik
+- Boshqaga o'tkazib bo'lmaslik
+- Kanonik qo'llashning o'chirilganligi
+- Imkoniyatga bog'lanish
+
+Sessiya dalillari faqat nomlangan himoyalangan kanonik bo'lmagan amalni avtorizatsiya qiladi. Sessiya va muvofiqlashtirish jurnallarini alohida saqlang; ularni bog'lash uchun faqat kontekst havolalaridan foydalaning.
+
+## SSFV texnik xizmat oqimi
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Features oqimi — alohida doimiy SSFV texnik xizmat konteksti. O'zgarishlar quyidagilarni talab qiladi:
+
+- Ochiq autentifikatsiyalangan asosiy sessiya
+- Aniq koordinator va SSFV bog'lashlari
+- Barqaror amal identifikatorlari
+- Aniq compare-and-swap
+- Yangi SSIAG dalillari
+
+<Note>
+  Mos keluvchi yangilash yoki orqaga qaytarishlarda boshlang'ich snapshot va uning asl engine identifikatorini saqlang. Ixtiyoriy Maestro dalillari to'liq autentifikatsiyalangan inventar bo'lishi kerak; Maestro ataylab mavjud bo'lmaganda, aniq "sozlanmagan" sababini qayd eting. `review_required` — tasdiqlash emas, balki chaqiruvchi ko'rib chiqishi uchun dalil.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/uz/governance/ssiag">
+    Har bir sessiya so'rovi tasdiqlaydigan yangi ruxsatnomalarni beradi.
+  </Card>
+
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Sessiya va features jurnallarini ta'minlovchi engine.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/uz/qxctl/reconcile">
+    Sessiyalar bilan juftlashadigan muvofiqlashtirish kontekstlari.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uz/skv/ssfv">
+    Features oqimi qo'llab-quvvatlaydigan funksiyalar vektori.
+  </Card>
+</CardGroup>

@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: إدارة دورة الحياة عبر المتجهات"
+description: "تتولى مجموعة أوامر qxctl knowledge دورة الحياة عبر المتجهات، وانتقالات الجلسات، واستعلامات الثوابت، وإدارة صيانة SSFV المستمرة."
+sidebarTitle: "knowledge"
+---
+
+تتولى المجموعة `qxctl knowledge ...` إدارة دورة الحياة عبر المتجهات وإدارة جلسات SSFV المستمرة. وهي نقطة الدخول للعمليات المدعومة بالمنسّق ولاستعلامات الثوابت (invariants) مقابل المدقق.
+
+## انتقال الجلسة
+
+استخدم `qxctl knowledge session transition` لإبلاغ جلسة قائمة بحدث من أحداث دورة حياة المضيف:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+تعيد المحاولات الآمنة استخدام معرّف الحدث نفسه. أضف `--recover` فقط عندما يكون المقصود هو الاسترداد بالاكتشاف من أدلة جلسة محلية تالفة؛ فهو لا يسترد حالات الرفض أو الحالات الحرجة غير المتوافقة أو الغموض.
+
+<Warning>
+  لا يثبّت Symphony خطاف تسجيل دخول أو مراقبًا أو وحدة إقلاع عبر هذا الأمر. استخدمه فقط عندما يوفّر تكامل صريح لدورة حياة المضيف هوية حدث مستقرة.
+</Warning>
+
+## استعلامات الثوابت
+
+تربط أربعة أوامر فرعية `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+يربط `check` إضافةً إلى ذلك `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+تُصدر أوامر الاستعلام المباشرة `symphony.knowledge.invariant-query-result.v1` مع `semantic_validity=not_asserted`. ويعيد `check` نتيجة المدقق الكاملة الدقيقة ويحافظ على رمز الخروج 26.
+
+## مجموعات الأوامر الفرعية
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ar/qxctl/lifecycle">
+    ملف التعريف، والملكية، والمراقبة، والتقرير، والإقلاع، والتطبيق، والاسترداد.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ar/qxctl/engines">
+    سجل ربط المحركات: list وinspect وdoctor وbind وunbind وmigrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ar/qxctl/reconcile">
+    قواعد أوامر تسوية شجرة العمل عبر المنسّق.
+  </Card>
+
+  <Card title="session" icon="key" href="/ar/qxctl/session">
+    الجلسات المصادق عليها وتدفقات صيانة SSFV.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Präsenzinventar der Symphony-Rezeptoren lesen"
+description: "Untersuchen Sie die Maestro-Präsenzautorität von Symphony über qxctl, um authentifizierte Docking-Beziehungen von Vektor-Engines und das abgeleitete Rezeptorinventar einzusehen."
+sidebarTitle: "maestro"
+---
+
+Die Grammatik `qxctl maestro ...` macht Maestro-Präsenznachweise sichtbar. Maestro ist die Präsenzautorität; qxctl liest und untersucht lediglich, was Maestro erfasst. Keiner von beiden erstellt eigenständig Docking-Beziehungen.
+
+## Inventar
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` zeigt das vollständige, abgeleitete, schreibgeschützte Inventar von Maestro zu authentifizierten Docking-Beziehungen von Vektor-Engines pro TOPS und Rezeptor.
+
+## Verwandte administrative Routen
+
+Weitere qxctl-Leaves stellen Maestro-bezogene Administration bereit:
+
+- Status und Inspektion von Docking-Nachweisen
+- Wiederherstellungsrouten, begrenzt durch Maestros eigene Verträge
+- Grundlegende Lifecycle-Registrierung und native Überwachung für Maestro selbst
+
+Jede Mutationsroute läuft über den exakten modulverantworteten Adapter. qxctl rendert niemals Maestro-Deskriptoren aus internem Parsing und ruft niemals implizit die neueste Version auf.
+
+<Warning>
+  Maestro startet, plant, überwacht oder ruft keine Engines auf. `qxctl maestro inventory` ist schreibgeschützt. Binding, Abstimmung, Session-Koordination oder ein Lifecycle-Plan allein begründen keine Maestro-Präsenz.
+</Warning>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/de/governance/maestro">
+    Vertrag und Grenzen der Präsenzautorität.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/de/qxctl/engines">
+    Engine-Binding-Registry (Bindings sind kein Docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/de/qxctl/session">
+    Authentifizierte Sessions, die zur Erfassung von Präsenz verwendet werden.
+  </Card>
+
+  <Card title="Engines-Übersicht" icon="cube" href="/de/engines/overview">
+    Unabhängig installierbare Vektor-Engines, die bei Maestro andocken.
+  </Card>
+</CardGroup>

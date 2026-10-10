@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: 인증된 Symphony 세션"
+description: "SSIAG로 검증된 권한 부여를 사용하여 인증된 Symphony 코디네이터 세션과 영구 SSFV 유지 관리 스트림을 열고, 체크포인트하고, 닫고, 복구합니다."
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` 문법은 정확히 하나의 바인딩된 코디네이터와 하나의 TOPS 범위 SSIAG 엔드포인트를 통해 비정규(noncanonical) 인증 세션을 엽니다. 별도의 `session features ...` 문법은 영구 SSFV 유지 관리 스트림을 다룹니다.
+
+## 기본 세션 문법
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+모든 호출은 새로운 정확한 권한 부여(grant)를 요청하고 다음을 검증합니다.
+
+- 주체 및 대상 식별자
+- 정책 및 구성 상태
+- 만료
+- 호출자 클래스 중립성
+- 양도 불가성
+- 정규 apply 비활성화
+- 기능(capability) 바인딩
+
+세션 증거는 지정된 보호된 비정규 작업만 승인합니다. 세션 저널과 조정 저널은 분리하여 유지하고, 둘을 연결할 때는 컨텍스트 참조만 사용하세요.
+
+## SSFV 유지 관리 스트림
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+features 스트림은 별도의 영구 SSFV 유지 관리 컨텍스트입니다. 변경에는 다음이 필요합니다.
+
+- 열려 있는 인증된 기본 세션
+- 정확한 코디네이터 및 SSFV 바인딩
+- 안정적인 작업 식별자
+- 정확한 compare-and-swap
+- 새로운 SSIAG 증거
+
+<Note>
+  호환되는 업그레이드나 롤백 전반에 걸쳐 기준 스냅샷과 원래 엔진 식별자를 보존하세요. 선택적인 Maestro 증거는 완전한 인증 인벤토리여야 하며, Maestro를 의도적으로 사용하지 않는 경우 명시적인 미구성 사유를 기록하세요. `review_required`는 호출자 검토를 위한 증거이지 승인이 아닙니다.
+</Note>
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ko/governance/ssiag">
+    각 세션 요청이 검증하는 새로운 권한 부여를 발급합니다.
+  </Card>
+
+  <Card title="세션 코디네이터" icon="gears" href="/ko/engines/coordinator">
+    세션 및 features 저널을 뒷받침하는 엔진입니다.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ko/qxctl/reconcile">
+    세션과 짝을 이루는 조정 컨텍스트입니다.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ko/skv/ssfv">
+    features 스트림이 유지 관리하는 기능 벡터입니다.
+  </Card>
+</CardGroup>

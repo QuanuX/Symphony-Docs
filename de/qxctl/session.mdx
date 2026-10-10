@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Authentifizierte Symphony-Sessions"
+description: "Öffnen, checkpointen, schließen und wiederherstellen Sie authentifizierte Sessions des Symphony-Koordinators sowie persistente SSFV-Wartungsstreams mit SSIAG-verifizierten Grants."
+sidebarTitle: "session"
+---
+
+Die Grammatik `qxctl knowledge session ...` öffnet nichtkanonische, authentifizierte Sessions über genau einen gebundenen Koordinator und genau einen TOPS-bezogenen SSIAG-Endpunkt. Eine separate Grammatik `session features ...` steuert den persistenten SSFV-Wartungsstream.
+
+## Basis-Session-Grammatik
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Jeder Aufruf fordert einen frischen, exakten Grant an und validiert:
+
+- Subjekt- und Zielidentität
+- Richtlinien- und Konfigurationszustand
+- Ablauf
+- Neutralität gegenüber der Aufruferklasse
+- Nichtübertragbarkeit
+- Deaktivierung von kanonischem Apply
+- Capability-Binding
+
+Session-Nachweise autorisieren ausschließlich die benannte geschützte, nichtkanonische Operation. Halten Sie Session- und Abstimmungsjournale getrennt; verwenden Sie Kontextreferenzen nur, um sie zu verknüpfen.
+
+## SSFV-Wartungsstream
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Der Features-Stream ist ein separater, persistenter SSFV-Wartungskontext. Mutationen erfordern:
+
+- eine offene, authentifizierte Basis-Session
+- exakte Koordinator- und SSFV-Bindings
+- stabile Operationsbezeichner
+- exaktes Compare-and-Swap
+- frische SSIAG-Nachweise
+
+<Note>
+  Bewahren Sie den Baseline-Snapshot und seine ursprüngliche Engine-Identität über kompatible Upgrades oder Rollbacks hinweg. Optionale Maestro-Nachweise müssen ein vollständiges, authentifiziertes Inventar sein; wenn Maestro absichtlich fehlt, erfassen Sie den expliziten Grund für die fehlende Konfiguration. `review_required` ist ein Nachweis zur Prüfung durch den Aufrufer, keine Ratifizierung.
+</Note>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/de/governance/ssiag">
+    Stellt die frischen Grants aus, die jede Session-Anfrage validiert.
+  </Card>
+
+  <Card title="Session-Koordinator" icon="gears" href="/de/engines/coordinator">
+    Die Engine hinter Session- und Features-Journalen.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/de/qxctl/reconcile">
+    Abstimmungskontexte, die mit Sessions gekoppelt sind.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/de/skv/ssfv">
+    Der Feature-Vektor, den der Features-Stream pflegt.
+  </Card>
+</CardGroup>

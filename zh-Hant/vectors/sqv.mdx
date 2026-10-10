@@ -1,0 +1,55 @@
+---
+title: "Symphony 量化向量：框架合約"
+description: "SQV 擁有可重複使用的量化與交易系統框架合約，但不取得使用者的策略邏輯。SOOV 是其第一個具名子向量，用於未來純 C++ 的 FIX 架構。"
+sidebarTitle: "量化向量"
+---
+
+Symphony 量化向量（Symphony Quantitative Vector，SQV）擁有可重複使用的框架合約，涵蓋量化研究、交易系統建構、執行支援，以及日後的量化引擎。策略邏輯永遠屬於你。SQV 提供框架介面與確切的相容性證據，但絕不會決定你的交易工具、資料源、訂閱、下單邏輯或執行模型。
+
+## 使用者策略邊界
+
+你保有策略邏輯的完整擁有權。SQV 不會：
+
+- 選擇你的交易工具或資料源
+- 定義訂閱欄位或市場深度
+- 決定失敗行為或正規化規則
+- 撰寫下單邏輯或執行模型
+- 設計你的內部模組化結構
+
+Symphony 提供相容性證據與受支援的操作。它絕不會為策略排名，也不會將平台規則強加於你的交易決策。
+
+## SOOV：Symphony Orchestra Omega Vector
+
+SOOV 是 SQV 之下第一個具名子向量。它代表一個未來的高效能、純 C++ FIX 架構，其設計參考了 QuanuX 過往的工作。SOOV 規劃為一個有界且確定性的交易通訊訊息層。詳細的 FIX 行為尚未成為標準；目前尚未實作任何 FIX 工作階段、資料源配接器或券商整合。
+
+## 未來範圍
+
+SQV 是在後續交付階段中，已批准之量化框架元件的規劃歸屬。預期領域包括：
+
+- 回測引擎
+- 券商 C++ API
+- 指標函式庫
+- 量化數學
+- 資料串流架構
+
+在各自的合約獲得批准之前，這些都不會實作。
+
+## 目前狀態
+
+SQV 目前僅是標準架構合約。目前尚未實作任何 SQV 或 SOOV 引擎、FIX 工作階段、資料源配接器、策略執行階段、券商整合、回測器、指標函式庫或資料串流元件。
+
+## SQV 與其他向量的關係
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/zh-Hant/vectors/shv">
+    提供約束量化引擎設計的硬體能力證據。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/zh-Hant/vectors/snv">
+    記錄執行量化工作負載的 Node。
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/zh-Hant/skv/overview">
+    治理 SQV 的合約、演進與官方發布關係。
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Fundamentul C++ al motoarelor Knowledge Vector: mecanisme partajate"
+description: "Fundamentul C++ al motoarelor Knowledge Vector oferă încadrarea proceselor fără autoritate, JSON delimitat, SHA-256, instantanee, chitanțe și descoperirea explicită a manifestelor."
+sidebarTitle: "Biblioteca de fundament"
+---
+
+`libraries/knowledge-vector-engine-cpp` oferă mecanismele C++ partajate, fără autoritate, pe care le reutilizează fiecare motor de vector Symphony. Acesta furnizează blocuri de construcție deterministe, astfel încât fiecare motor să rămână delimitat, reproductibil și lipsit de efecte secundare ambientale.
+
+## Ce oferă fundamentul
+
+- **Încadrarea proceselor**: protocol de proces local fără autoritate, folosit de fiecare motor
+- **JSON delimitat**: analiză și emitere stricte, cu limite explicite de dimensiune și adâncime
+- **SHA-256**: adresare după conținut pentru dovezi și chitanțe
+- **Citiri fără urmărire**: citiri din sistemul de fișiere care nu traversează niciodată în mod neașteptat legături simbolice
+- **Instantanee deterministe**: instantanee repetabile ale stării inspectate
+- **Validare temporală**: gestionarea canonică a UTC conform Symphony Temporal Semantics Contract
+- **Descoperirea manifestelor proprietarilor**: descoperirea exactă a manifestelor contractelor
+- **Împachetare versionată**: pachete instalabile independent, deținute prin chitanțe
+- **Chitanțe și dezinstalare deținută prin chitanțe**: dezinstalare determinată exclusiv de chitanța care a instalat artefactul
+
+## Granița descoperirii manifestelor
+
+<Warning>
+  Descoperirea manifestelor pornește de la un set fix de inițializare și traversează doar declarațiile subordonate explicite. Nu efectuează niciodată o parcurgere ambientală a depozitului și nu deduce proprietatea din numele directoarelor.
+</Warning>
+
+Fiecare motor de vector care folosește fundamentul moștenește această regulă.
+
+## Ce nu face fundamentul
+
+- Nu deține autoritate. Motoarele care îl folosesc trebuie să autorizeze în continuare modificările prin SSIAG.
+- Nu publică și nu preia nimic prin rețea.
+- Nu modifică singur fișierele canonice.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Coordonatorul sesiunilor" icon="gears" href="/ro/engines/coordinator">
+    Coordonator C++26 construit pe fundament, pentru sesiuni și reconciliere.
+  </Card>
+
+  <Card title="Prezentarea generală a motoarelor" icon="cube" href="/ro/engines/overview">
+    Motoarele care reutilizează fundamentul.
+  </Card>
+
+  <Card title="Prezentarea generală SKV" icon="book-open" href="/ro/skv/overview">
+    Contractele de vectori pe care le implementează motoarele.
+  </Card>
+
+  <Card title="Prezentarea generală qxctl" icon="terminal" href="/ro/qxctl/overview">
+    CLI administrativ care invocă motoare exacte, validate prin chitanțe.
+  </Card>
+</CardGroup>

@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphony aģentisks administrēšanas komandrindas rīks"
+description: "qxctl ir Symphony administrēšanas CLI, kas rakstīts Go valodā. Uzziniet par tā 373 izpildāmajām komandām, dzinēju piesaistes reģistru un ar kvītīm validēto vektoru dzinēju izsaukšanas modeli."
+sidebarTitle: "qxctl pārskats"
+---
+
+`qxctl` ir Symphony uz Go balstīts, pirmām kārtām aģentiem paredzēts administrēšanas un vaicājumu CLI. Tas runā komandās; domēnu vektoriem pieder operācijas un to nozīme. Tā repozitorijā iekļautais reģistrs piesaista katru izpildāmās komandas lapu stabilai mašīnidentitātei un pārskatītiem funkciju administrēšanas pierādījumiem.
+
+## Ko aptver qxctl
+
+qxctl īsteno administrēšanu šādām jomām:
+
+- Repozitoriju un līgumu pārbaude
+- Validatora, brīdinājumu, invariantu, funkciju, dzīves cikla, sesiju, saskaņošanas, piesaistes un Maestro administrēšana
+- SSIAG identitātes, STAV audita un Accordare producenta administrēšana
+- Īstenotā vektoru dzinēju gramatika (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, kā arī SCV un SHV virsmas)
+
+Pašreizējais reģistrs satur **373** izpildāmās komandas.
+
+## Drošas izsaukšanas modelis
+
+qxctl izsauc precīzas, ar kvītīm validētas instalācijas, izmantojot ierobežotus apakšprocesus, stingrus termiņus, atbildes identitātes un jaucējvērtības pārbaudes, gaidītā stāvokļa transakcijas un noturīgu atkopšanu. Tas nekad nepieņem adapteru ceļus vai neapstrādātas versijas kvīšu vietā.
+
+## Dzinēju piesaistes reģistrs v2
+
+Dzinēju piesaistes reģistrs v2 atbalsta astoņas noteiktās dzinēju lomas un ierobežotas nākotnes lomu identitātes. Mantotais v1 stāvoklis tiek lasīts duāli; migrācijai uz v2 nepieciešama skaidra, ar jaucējvērtību piesaistīta compare-and-swap operācija caur qxctl, un tā nekad nav versijas izvēles operācija.
+
+## Reģistra komandas
+
+Ģenerējiet un pārbaudiet gaidīto reģistru no `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Instalēts klients var izvadīt ar izpildāmo failu piesaistītus pierādījumus:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Gaidītajiem pierādījumiem klienta versija, izpildāmā faila jaucējvērtība un kvīts jaucējvērtība ir null. Novērotie pierādījumi piesaista precīzu klienta versiju un izpildāmā faila jaucējvērtību, kā arī kvīts jaucējvērtību, ja tā ir pieejama. Abas formas izmanto `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl pieder komandu gramatika un attēlošana. Tam nepieder vektoru semantika vai kanoniskā zināšanu patiesība. Jaunu `qxcmd` identitāti ratificē tikai pārskatītas pirmkoda izmaiņas neatkarīgi no izsaucēja klases.
+</Note>
+
+## Komandu grupas
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/lv/qxctl/knowledge">
+    Starpvektoru dzīves cikla un pastāvīgo SSFV sesiju administrēšana.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/lv/qxctl/lifecycle">
+    Profils, īpašumtiesības, novērošana, atskaite, sāknēšana, piemērošana un atkopšana.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/lv/qxctl/engines">
+    Dzinēju piesaistes reģistrs un migrācija.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/lv/qxctl/reconcile">
+    Koordinatora darba koka saskaņošana.
+  </Card>
+
+  <Card title="session" icon="key" href="/lv/qxctl/session">
+    Autentificētas sesijas un SSFV uzturēšanas plūsmas.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/lv/qxctl/maestro">
+    Atvasinātais receptoru inventārs un pievienošanas pierādījumi.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/lv/qxctl/validate">
+    Aizsargātā brīdinājumu politika un validatora administrēšana.
+  </Card>
+
+  <Card title="vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` un nākotnes accord/evolution gramatika.
+  </Card>
+</CardGroup>

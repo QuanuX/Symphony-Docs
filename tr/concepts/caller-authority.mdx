@@ -1,0 +1,28 @@
+---
+title: "Symphony'de Çağıran Sınıfı Tarafsızlığı ve Ana Bilgisayar Yetkisi"
+description: "Symphony çağıranları türlerine göre sınıflandırmaz. Yetki; hedef ana bilgisayar sahipliğinden, açık izinden, beklenen durumdan ve sahip tarafından yapılandırılan güvenlik önlemlerinden kaynaklanır."
+sidebarTitle: "Çağıran Yetkisi"
+---
+
+Symphony, yetkiye karar verirken bir çağıranı insan, yapay zekâ, ajan, hizmet, iş yükü, kuruluş veya başka herhangi bir aktör türü olarak sınıflandırmaz. Bir kişi ya da otomatik bir sistem olarak sınıflandırılmanız, tek başına hiçbir yetenek vermez veya kaldırmaz. Bu çağıran sınıfı tarafsızlığı, yetkilendirmeyi etiketler yerine olgulara dayandıran temel bir mimari sınırdır.
+
+## Yetkiyi ne belirler
+
+Desteklenen yetkilendirme kararları aşağıdaki girdileri kullanır:
+
+- **Hedef ana bilgisayar sahipliği veya verilen izinler**: Hedef ana bilgisayarın yöneticisi, yapılandırılabilir yönetişim üzerinde egemendir.
+- **İstenen işlem ve kaynak**: Belirli eylem ve bu eylemin uygulandığı nesne.
+- **Beklenen durum**: Bildirilen istenen sonuç ve gözlemlenen mevcut durum.
+- **Sahip tarafından yapılandırılan güvenlik önlemleri**: Yöneticinin ayarlayabileceği veya kaldırabileceği ihtiyatlı varsayılanlar.
+
+## SSIAG ve ana bilgisayar yetkisi
+
+SSIAG etkin ana bilgisayar yetkisini doğrulayabilir ve yansıtabilir, ancak üstün bir kayıt yetkisi oluşturmaz veya hedef ana bilgisayarın yöneticisini kalıcı olarak veto etmez. Gelişmiş kimlik güvencesi ve yönetişim kilitleri, çağırandan bağımsız ve sahip tarafından yapılandırılan güvenlik önlemleridir. Protokol bütünlüğü gereksinimleri, desteklenen araçlar dahilinde zorunlu kalır.
+
+## Symphony neye karar vermez
+
+Symphony, bir aktörün mülk sahibi olup olamayacağına, hesap açıp açamayacağına, sözleşme imzalayıp imzalayamayacağına, sorumluluk üstlenip üstlenemeyeceğine veya başka bir varlık adına hareket edip edemeyeceğine karar vermez. Bu olgular ilgili sahibe, sağlayıcıya, karşı tarafa ve geçerli hukuka aittir. Platform sınırlı rolü içinde kalır: uyumluluk kanıtı üretir ve işlemleri destekler, ancak harici yasal veya finansal ehliyet belirlemesine uzanmaz.
+
+## Pratik sonuç
+
+qxctl'i veya bir vektör motorunu çağırdığınızda, komutu elle, bir betik aracılığıyla veya ajan tabanlı bir araçla çalıştırıp çalıştırmadığınızdan bağımsız olarak aynı kontroller uygulanır. Yetki yolu şudur: hedef ana bilgisayar sahipliği, açık izin, beklenen durum, güvenlik önlemleri. Hiçbir çağıran türü otomatik bir muafiyet veya otomatik bir kısıtlama almaz.

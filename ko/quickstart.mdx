@@ -1,0 +1,33 @@
+---
+title: "빠른 시작: QuanuX Symphony 살펴보기"
+description: "Symphony의 원칙, 아키텍처, vector 계약, qxctl 관리 표면을 안내하는 경로입니다."
+sidebarTitle: "빠른 시작"
+---
+
+Symphony를 운영하기 전에 이 가이드로 전체 구조를 파악하세요. 이 문서는 플랫폼 원칙, 사용자가 선택한 인프라, vector가 소유하는 의미, 관리 명령을 구분합니다. 정확한 설치 및 실행 단계는 관련 구성 요소의 현재 계약에 속합니다.
+
+## 1. 운영 경계 읽기
+
+[플랫폼 원칙](/ko/doctrine)부터 시작하세요. 이 문서는 전략과 인프라에 대한 사용자 소유권, 호출자 클래스 중립성, 증거 기반 호환성, 핫 패스 보호를 확립합니다.
+
+## 2. 물리적 모델 이해하기
+
+[Node, Habitat, Nest](/ko/concepts/node-habitat-nest)를 읽어 보세요.
+
+- **Node:** 식별된 물리적 컴퓨터 리소스입니다.
+- **Habitat:** Node에 제공되는 정확한 운영 체제 및 패키지 구성입니다.
+- **Nest:** 적합한 Habitat에 배치되는 사용자 목적의 워크로드입니다.
+
+클러스터의 버스와 어댑터는 명시적인 아키텍처 선택입니다. Symphony는 보편적인 공급자나 전략을 규정하지 않습니다.
+
+## 3. 의미의 소유권 추적하기
+
+[아키텍처 개요](/ko/concepts/architecture)는 vector 계약, 엔진, qxctl, 거버넌스가 적용되는 증거 사이의 관계를 보여 줍니다. [Vector와 단계](/ko/concepts/vectors)는 전달 작업이 여러 단계를 거쳐 진행되더라도 vector가 의미의 소유자로 남는 이유를 설명합니다. [Symphony Knowledge Vector](/ko/skv/overview)는 Contract Quad와 그 보조 표면을 설명합니다.
+
+## 4. 관리 표면 찾기
+
+[qxctl 개요](/ko/qxctl/overview)는 Go로 작성된 관리 및 조회 CLI를 소개합니다. [knowledge](/ko/qxctl/knowledge), [lifecycle](/ko/qxctl/lifecycle), [engines](/ko/qxctl/engines), [validation](/ko/qxctl/validate)과 같은 특정 명령 계열은 qxctl 페이지를 참고하세요. qxctl은 명령 문법과 표현을 제공하며, 작업과 그 의미는 vector 계약이 소유합니다.
+
+## 5. 관련 계약과 증거 확인하기
+
+Node에 작업을 수행하거나 vector 엔진을 호출하기 전에, 현재 소유자 계약, 대상 상태, 권한 부여, 사용 가능한 영수증 또는 검증 증거를 확인하세요. [호출자 권한](/ko/concepts/caller-authority)과 [핫 패스 격리](/ko/concepts/hot-path-isolation)에서 이러한 경계를 설명합니다. 새로 등장하는 표면은 암묵적인 운영 보장이 아닙니다.

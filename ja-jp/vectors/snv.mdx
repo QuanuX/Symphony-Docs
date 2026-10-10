@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node ID とクラスターの記録"
+description: "SNV は、Node の ID、リソース、クラスターメンバーシップ、ユーザーが割り当てた名前を、規定することなく記録し関連付けます。SNIV、SNRV、SCIV、SCNV のサブベクターで構成されます。"
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector（SNV）は、Symphony で使用する物理 Node の ID、リソース、クラスターメンバーシップ、名前を記録し、関連付けます。それぞれが異なるセマンティック境界を所有する 4 つのサブベクターで構成されます。SNV が、あなたに代わって何かを選択、発行、規定、または自動的に名前変更することはありません。
+
+## サブベクターの構成
+
+SNV は、4 つの永続的なセマンティックドメインから構築されています:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node Identity**: 物理 Node の ID と、その正確なプロバイダーリソース、選択された提供内容、インフラストラクチャドメインとの関連付け。
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node Resources**: Node のローカルリソースおよび明示的に適格とされたリモートリソースの真実。
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Cluster Identity**: クラスター ID、バス接続、クラスター内の Node の関係。
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Consolidated Naming**: あなたまたはプロバイダーによってすでに割り当てられた名前の、SNV の範囲内での解決。
+  </Card>
+</CardGroup>
+
+## 記録の境界
+
+SNV は事実とその系譜を記録します。名前を予約したり、リソースを割り当てたり、クラスターを作成したりはしません。名前はユーザーが割り当て、Symphony はそれを記録します。プロバイダーリソースはユーザーが選択し、Symphony はそれらを関連付けます。クラスタートポロジーはユーザーが設計し、Symphony はそれを文書化します。
+
+## SNV と他のベクターとの関係
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/ja-jp/vectors/scv">
+    どのような Node が存在しうるかの判断材料となる、プロバイダーとオフサイトリソースの知識を提供します。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ja-jp/vectors/sov">
+    qxctl を通じてインフラストラクチャを構築・変更し、SNV が記録する Node を生み出します。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ja-jp/vectors/shv">
+    Node 内の物理コンポーネントについて、詳細なハードウェア機能のエビデンスを提供する場合があります。
+  </Card>
+</CardGroup>
+
+## 現在のステータス
+
+SNV は新たな正規のアーキテクチャコントラクトです。SNV エンジン、グラフ、レジストリスキーマ、ID エンコーダー、ディスカバリーサービス、命名サービス、qxctl コマンドは、現在いずれも実装されていません。レコードスキーマとエンジンは引き続き先送りされています。
+
+## 将来のインストール可能性
+
+将来の SNV エンジンはいずれも、個別にインストール可能であり、正確なオーナーエビデンスからプロジェクションを再構築できる必要があります。記録を保存または解決するというだけで、エンジンが ID や命名の権限になることはありません。

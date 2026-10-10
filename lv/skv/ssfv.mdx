@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector un reģistrs"
+description: "SSFV pārvalda kanonisko funkciju identitāti, semantiku, hierarhiju, dzīves ciklu un administrēšanas nodrošinājumu visos īstenotajos Symphony moduļos un qxctl virsmās."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) pārvalda kanonisko lietojumprogrammas funkciju identitāti, semantiku, hierarhiju, dzīves ciklu, atšķirības, sadalīto ierakstu maršrutēšanu, pārklājuma inventāru un grafu projekcijas līgumus. Tā dzinējs ir neatkarīgi instalējams C++ process, kas veic strukturālas un aktualitāti ievērojošas funkciju pārbaudes.
+
+## Operācijas
+
+- **Inspect un check**: strukturāla un aktualitāti ievērojoša funkciju novērtēšana.
+- **Diff**: pēc satura adresēti salīdzinājumi starp funkciju stāvokļiem.
+- **Propose**: izsaucēja deklarēti priekšlikumi funkciju uzņemšanai vai izmaiņām.
+- **Graph**: deterministiski vienreizēji funkciju grafi pārskatīšanai.
+
+## Reģistrētais pārklājums
+
+Pašreizējais reģistrētais katalogs ir apzināti daļējs:
+
+- **110** reģistrētas funkcijas
+- **35** reģistrēti īpašnieku tvērumi
+- **76** ratificētas ligzdotas funkcijas
+- **295** pārskatītas funkciju administrēšanas virsmas (**285** obligātas, **13** ar pierādījumiem pamatoti izņēmumi, **9** aizliegumi, **0** nepārskatītas)
+
+Reģistrētie īpašnieku tvērumi aptver visus īstenotos moduļus — no `qxctl` un validatora līdz SKV dzinējiem un SSIAG pakalpojumu sniedzējiem, līdz pat SCV un SHV dzinēju saimēm.
+
+## Ko SSFV nedara
+
+<Warning>
+  SSFV nelemj par funkcijas vērtīgumu, neizdomā identitātes un neapgalvo repozitorija vai resursdatora pilnīgumu. `review_required` ir pierādījums izsaucēja pārskatīšanai, nevis ratifikācija vai piemērošanas autoritāte.
+</Warning>
+
+Funkciju pārskatīšana, uzņemšana un dzīves cikla izmaiņas paliek katras funkcijas īpašnieka līguma ziņā.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Jumta ietvars, kas pārvalda SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/lv/skv/sev">
+    Piemēro evolūcijas gadījumus funkciju papildinājumiem, izmaiņām un izņemšanai no lietošanas.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/lv/qxctl/session">
+    Pārvaldiet pastāvīgas SSFV uzturēšanas sesijas ar qxctl.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Palaidiet `qxctl ssfv ...`, lai veiktu inspect, check, diff, propose un graph.
+  </Card>
+</CardGroup>

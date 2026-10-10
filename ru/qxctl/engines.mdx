@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: привязка, диагностика, миграция реестра"
+description: "Управление защищённым профилем привязки движков Symphony в пользовательской области с помощью команд list, inspect, doctor, bind, unbind и привязанной к дайджесту команды migrate в qxctl."
+sidebarTitle: "engines"
+---
+
+Грамматика `qxctl knowledge engines ...` управляет защищённым профилем привязки `default` в пользовательской области для векторных движков Symphony. Она привязывает выбранное содержимое для последующей сверки. Она не устанавливает, не вызывает, не активирует, не стыкует (dock), не аутентифицирует, не авторизует и не применяет движок.
+
+## Команды
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Укажите `absent` для первой мутации реестра v2 или точный дайджест, сообщённый командой `list`, для последующих мутаций. Каждая мутация выполняется как операция compare-and-swap относительно этого дайджеста.
+
+## Миграция с v1 на v2
+
+<Warning>
+  Корректное состояние реестра v1 остаётся доступным для чтения. Миграция на v2 — это отдельная точная операция compare-and-swap, а не операция выбора версии. Не рассматривайте миграцию как путь обновления для выбора движка.
+</Warning>
+
+- `list` и `inspect` продолжают работать со свидетельствами v1.
+- `migrate` создаёт связанное поколение v2, не отбрасывая истину v1.
+- После миграции используйте дайджесты v2 для будущих мутаций.
+
+## Что такое привязка
+
+Привязка выбирает точное содержимое для последующей сверки координатором. Она:
+
+- Не устанавливает движок
+- Не вызывает и не активирует движок
+- Не стыкует движок с Maestro
+- Не аутентифицирует вызывающую сторону
+- Не авторизует применение (apply)
+
+## Связанные разделы
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ru/qxctl/reconcile">
+    Сверка привязанного содержимого с координатором.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/ru/qxctl/lifecycle">
+    Планы жизненного цикла, использующие привязанные движки.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ru/governance/maestro">
+    Орган присутствия, который фиксирует стыковки, а не привязки.
+  </Card>
+
+  <Card title="Обзор движков" icon="cube" href="/ru/engines/overview">
+    Независимо устанавливаемые векторные движки.
+  </Card>
+</CardGroup>

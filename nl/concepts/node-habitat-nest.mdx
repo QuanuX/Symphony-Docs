@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat en Nest in Symphony"
+description: "Leer hoe Symphony fysieke infrastructuur modelleert: Node als de fysieke computer, Habitat als exacte OS-conditionering en Nest als workload voor het doel van de gebruiker."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definieert drie fysieke concepten die hardware-identiteit, softwareconditionering en gebruikersworkload van elkaar scheiden. Deze concepten houden infrastructuuraspecten gescheiden, zodat u over elk ervan onafhankelijk kunt redeneren.
+
+## Node
+
+Een **Node** is de fysieke doelcomputerresource met specifiek geïdentificeerde resources. Het loskoppelen, opnieuw verbinden, herstarten of opnieuw flashen van alleen software creëert geen nieuwe fysieke Node. Vernietiging, fysieke vervanging of een materiële lokale hardwarewijziging doet dat wel. Een Node-incarnatie is afzonderlijk bewijs dat wordt gecreëerd wanneer die Node aan een bus wordt gekoppeld als deelnemer in een handelssysteem, onderzoekscluster of een ander met Symphony gebouwd systeem.
+
+## Habitat
+
+Een **Habitat** (letterlijk: leefomgeving) is de exacte conditionering van besturingssysteem en pakketten die aan een Node wordt geleverd voor het werk dat u selecteert. De standaard is uitsluitend het vereiste softwareoppervlak: geen ongerelateerde pakketten, verborgen runtimes, containers, Kubernetes of impliciete virtualisatie. Een brede Habitat voor algemeen gebruik blijft een geldige expliciete gebruikerskeuze.
+
+## Nest
+
+Een **Nest** dient een doel dat u kiest. Live uitvoering van strategieën zal naar verwachting veel voorkomen, en één strategie kan veel modulaire codesecties bevatten, maar Symphony definieert het doel van het Nest niet en stelt het niet gelijk aan één bronbestand, proces, algoritme, broker-API of data-interface. Strategielogica blijft uw domein.
+
+## Vergelijking
+
+| Concept | Wat het is | Wat het verandert |
+| --- | --- | --- |
+| **Node** | Fysieke computer met specifieke resources | Fysieke vernietiging, vervanging of materiële hardwarewijziging |
+| **Habitat** | Exacte OS- en pakketconditionering op een Node | Expliciete gebruikersselectie of door qxctl beheerde conditionering |
+| **Nest** | Workload voor het doel van de gebruiker, geleverd in een Habitat | Uitrol door de gebruiker van een strategie of ander geselecteerd werk |
+
+## Cluster- en bustopologie
+
+Meerdere Nodes vormen pas een cluster wanneer ze via een of meer bussen met elkaar zijn verbonden. Meerdere busfabrics kunnen naast elkaar bestaan binnen één cluster, en een Node-in-cluster-relatie kan de relevante bus identificeren zonder de identiteit van de fysieke Node te veranderen.
+
+Busadapters zoals NATS JetStream en ZeroMQ worden door de gebruiker gekozen en zijn geen doctrine. Zware overdracht, besturing, onderzoek en uitvoeringsuitstoot hoeven niet één bus te delen. Een topologie kan meerdere bussen gebruiken of een bus omzeilen voor een gedeclareerd pad.
+
+## Scope van TOPS en TROG
+
+**TOPS** is de dominante scope van het Trade Operating System. Een **TROG** is een bewust ondergeschikte, niet-globale scope voor een handelsgroep. Ondanks de historische benaming is een TROG niet noodzakelijk virtueel. Het onderscheidende kenmerk is dat de scope en regels ervan niet universeel zijn.

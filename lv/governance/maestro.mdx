@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony vektoru dzinēju klātbūtnes iestāde"
+description: "Maestro reģistrē autentificētas vektoru dzinēju piesaistes attiecības katram TOPS un receptoram, atvasinot pilnīgu, tikai lasāmu inventāru, nepalaižot un neuzraugot dzinējus."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) ir neatkarīgi instalējama sasalušā ceļa C++26 klātbūtnes iestāde. Tā reģistrē precīzas autentificētas vektoru dzinēju piesaistes attiecības katram TOPS un receptoram un atvasina pilnīgu, tikai lasāmu inventāru par to, kas pašlaik ir piesaistīts. Maestro ir liecinieks, nevis uzraugs.
+
+## Ko reģistrē Maestro
+
+- Precīzas autentificētas piesaistes attiecības starp vektoru dzinējiem un receptoriem
+- Tvērumu katram TOPS atsevišķi, lai katras instalācijas klātbūtne paliktu privāta šai instalācijai
+- Atvasinātu, pilnīgu, tikai lasāmu inventāru, kas pieejams ar `qxctl maestro inventory`
+
+## Ko Maestro nedara
+
+<Warning>
+  Maestro nepalaiž, neplāno, neuzrauga un neizsauc dzinējus. Piesaiste, saskaņošana, autentificētu sesiju koordinācija vai dzīves cikla plāns pats par sevi neapliecina Maestro klātbūtni, neratificē semantisko patiesību, nemaina kanoniskās zināšanas un nepierāda instalētā resursdatora pilnīgumu.
+</Warning>
+
+- Maestro neizveido procesus.
+- Maestro nekad nepiemēro kanonisko zināšanu izmaiņas.
+- Maestro nekad neaizstāj vektora dzinēju, kuram pieder semantika.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/lv/qxctl/maestro">
+    `qxctl maestro inventory` parāda atvasināto inventāru.
+  </Card>
+
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Pieder autentificētu sesiju un darba koku saskaņošanas mehānismi.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/lv/governance/ssiag">
+    Autentificē piesaistes attiecības, ko reģistrē Maestro.
+  </Card>
+
+  <Card title="Dzinēju pārskats" icon="cube" href="/lv/engines/overview">
+    Neatkarīgi instalējami vektoru dzinēji, kas piesaistās Maestro.
+  </Card>
+</CardGroup>

@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector för planerade ändringar"
+description: "SEV utvärderar planerade ändringar, nyheter och livscykelövergångar med deterministiska ärenden, beroendeklara mängder, engångsgrafer och återställningsråd som inte tillämpas."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) äger ärenden för planerade ändringar och påträffade nyheter över hela plattformen. Dess motor är en skrivskyddad C++26-process på en frysningsväg. SEV varken bevakar en värd eller tillämpar en övergång; den producerar evidens och dispositionsråd.
+
+## Operationer
+
+- **Ärendeutvärdering**: deterministiska evolutionsärenden för tillägg, ändringar, namnbyten, ersättningar, utfasningar, avvecklingar och borttagningar.
+- **Planering av påverkan och disposition**: tilldelar varje ärende dess auktoritativa ägare.
+- **Omberäkning av beroendeklara mängder**: härleder den säkra ordningen för beroende övergångar.
+- **Verifiering av övergångar**: bekräftar att det observerade tillståndet efter en övergång motsvarar den förväntade formen.
+- **Återställningsråd**: beskriver säkra steg framåt eller bakåt när en övergång avbryts.
+- **SCSEV-bedömning**: den första styrda SEV-profilen tillämpar dessa operationer på evolution av kunskapsytor som endast gäller dokumentation.
+- **Nyhets- och bevakningskontroller**: upptäcker nya eller oväntade ytor som granskare bör uppmärksamma.
+- **Sammanslagning av utlösare** och **bindning till livscykelsessioner**: minskar dubbel utvärdering och binder ärenden till en session.
+- **Grafprojektion**: engångsgrafer för granskning.
+
+## SCSEV-profilen
+
+SCSEV återanvänder SSFV:s funktionsadministration, stabil kommandosanning från qxctl och deskriptorer för motoroperationer. Den skapar ingen dubblettmotor eller dubblettregister. Den första motorskivan rapporterar och föreslår endast; beständiga externa åtgärder auktoriseras fortfarande separat via qxctl och kunskapssessionskoordinatorn.
+
+<Note>
+  SEV är endast till för läsning, frågor, validering och förslag. Kanonisk apply förblir inaktiverad i hela SKV-motorfamiljen.
+</Note>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Översikt över SKV" icon="book-open" href="/sv/skv/overview">
+    Paraplyramverket och Contract Quad-modellen.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/sv/skv/ssfv">
+    Funktionsadministration som återanvänds av SCSEV-profilen.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/sv/skv/sav">
+    Utvärdering av komposition och kompatibilitet för ändrade komponenter.
+  </Card>
+
+  <Card title="Vektorkommandon i qxctl" icon="terminal" href="/sv/qxctl/vector-commands">
+    Ratificerad evolutionsgrammatik kommer som `qxctl evolution ...` när den har implementerats.
+  </Card>
+</CardGroup>

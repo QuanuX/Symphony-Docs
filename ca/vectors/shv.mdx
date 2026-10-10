@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: coneixement de capacitats del maquinari"
+description: "SHV manté coneixement de les capacitats del maquinari per a CPU, GPU, NIC, plaques base, RAM i NVMe mitjançant diversos motors en C++ instal·lables de manera independent."
+sidebarTitle: "Hardware Vector"
+---
+
+El Symphony Hardware Vector (SHV) és propietari del coneixement de capacitats del maquinari que us ajuda a entendre com el disseny físic pot habilitar, restringir, portar o ampliar el programari quantitatiu. Cobreix processadors, tipus de nuclis de CPU, GPU, NIC i interfícies de fibra, plaques base, jerarquies de memòria cau, memòria, NVMe i sistemes complets. La curació predeterminada prioritza els components originals i les variants documentades amb evidència a partir del 2018.
+
+## Abast i cobertura
+
+SHV pot cobrir qualsevol capacitat física documentada amb evidència que sigui rellevant per al disseny de programes. Controleu el perfil de cobertura mitjançant qxctl. La base de dates predeterminada és la presentació del model, no una data de fabricació individual inferida. Podeu ampliar, restringir, substituir o eliminar aquest filtre.
+
+## Motors implementats
+
+El coneixement de SHV es lliura mitjançant diversos motors en C++ instal·lables de manera independent:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Nucli principal (0.4.0-dev): perfils de cobertura, construcció/reproducció del catàleg de fonts retingudes, avaluació de requisits, projecció determinista de grafs i validació de grafs recolzada per fonts.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Identitat de fonts, plans de reubicació, vinculació de captures de bytes i grafs de procedència reproduïts des de les fonts.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Conformitat de declaracions, receptes portables i vinculació exacta de fonts locals.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operacions de partició del maquinari i de mapatge de components.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Caps de catàleg protegits de l'invocador, reproducció de la font original i recuperació duradora d'instantànies.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Port genèric de grafs en C++ i adaptador de referència portable en memòria per a l'intercanvi sense pèrdues.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Projecció relacional opcional en DuckDB de l'evidència dels grafs de maquinari.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Extracció acotada de PDF i revalidació d'afirmacions documentals a partir dels bytes originals.
+  </Card>
+</CardGroup>
+
+## Revisió de fonts i procedència
+
+El `shv-source-engine` implementa una identitat de fonts estable, plans de reubicació explícits, validació pura de transicions, vinculació de captures dels bytes reals i grafs de procedència reproduïts des de les fonts. Són operacions de només lectura. La curació principal prioritza la identitat original dels components i les variants documentades amb evidència. L'activació protegida de fonts es gestiona per separat; el motor de fonts pur no concedeix autoritat.
+
+## Intercanvi i emmagatzematge de grafs
+
+El `shv-graph-adapter` proporciona un port genèric de grafs en C++ per a l'intercanvi sense pèrdues i les consultes estructurals. L'emmagatzematge durador s'implementa mitjançant DuckDB SQL com a opció predeterminada. Actualment no hi ha cap base de dades de grafs dedicada seleccionada.
+
+## Límit de l'evidència en PDF
+
+El `shv-pdf-adapter` extreu afirmacions documentals qualificades de taules PDF explícites i les revalida a partir dels bytes originals després de l'intercanvi genèric de grafs. La cobertura general de PDF continua sent una feina separada amb el seu propi abast.
+
+## Feina pendent
+
+Un atles ampli de maquinari, l'adquisició automatitzada de fonts, l'agregació de conflictes entre múltiples fonts, controladors addicionals de bases de dades específics de fabricants, la càrrega de connectors personalitzats i la integració amb Composer queden per a més endavant. Els mapatges amplis de components i els controladors duradors de fabricants també continuen oberts.
+
+## Com es relaciona SHV amb altres vectors
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/ca/vectors/snv">
+    Registra els Nodes que contenen el maquinari que descriu SHV.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/ca/vectors/scv">
+    Referencia les ofertes de maquinari dels proveïdors que SHV caracteritza en detall.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ca/vectors/sov">
+    Pot actuar sobre l'evidència de SHV en aprovisionar o condicionar Nodes.
+  </Card>
+</CardGroup>

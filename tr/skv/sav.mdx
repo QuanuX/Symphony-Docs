@@ -1,0 +1,50 @@
+---
+title: "SAV: Kompozisyon Değerlendirmesi için Symphony Accordare Vector"
+description: "SAV, Accord referanslarını çözümler, kompozisyonu üç eksende değerlendirir, Named Version'ları doğrular ve kanonik gerçeği değiştirmeden Installation Blueprint'leri planlar."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV), bildirilen bileşen kompozisyonunu ve uyumluluğunu çözümler. Engine'i, dondurma yolunda çalışan, salt okunur bir C++26 sürecidir. SAV kesin, tiplendirilmiş projeksiyonları birleştirir ancak kaynak gerçeği hiçbir zaman sahip vektörlerden devralmaz.
+
+## İşlemler
+
+SAV zengin bir değerlendirme işlemleri kümesini destekler:
+
+- Değiştirilemez, türetilmiş CURRENT anlık görüntülerine **Accord referansı çözümlemesi**
+- **Üç eksenli değerlendirme**, karşılaştırma ve açıklama
+- **Kompozisyon grafikleri** ve atılabilir projeksiyonlar
+- **Named Version** doğrulaması ve farkı
+- **Extension Capsule** kontrolleri
+- **Installation Blueprint** planlaması
+- Bildirilen bileşenler arasında **uyumluluk müzakeresi**
+
+## SAV neler yapmaz
+
+- SAV, birleştirdiği bileşenlerin anlamsal sahipliğini üstlenmez.
+- SAV sizin için bir tasarım seçmez; bildirdiklerinizi değerlendirir.
+- SAV kanonik dosyaları değiştirmez. Çıktısı kanıt ve önerilerdir.
+- SAV, STAV ekleme otoritesi değildir. Değişiklik öncesi niyet işleme için Accordare STAV üreticisine bakın.
+
+<Note>
+  SAV yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Programatik kanonik uygulama, SKV engine ailesinin tamamında devre dışı kalmaya devam eder.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    Çatı çerçeve ve Contract Quad modeli.
+  </Card>
+
+  <Card title="Accordare üreticisi" icon="pen-nib" href="/tr/governance/accordare-producer">
+    Sınırlı SAV Named Version denetim devresi.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/tr/skv/sev">
+    Kompozisyon değişikliklerinin SAV tarafından değerlendirilmesini tetikleyen evrim vakaları.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    Onaylanmış Accordare grameri, uygulandığında `qxctl accord ...` olarak gelecektir.
+  </Card>
+</CardGroup>

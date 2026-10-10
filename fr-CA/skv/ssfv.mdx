@@ -1,0 +1,53 @@
+---
+title: "SSFV : Symphony Semantic Feature Vector et registre"
+description: "SSFV possède l'identité canonique, la sémantique, la hiérarchie, le cycle de vie et l'assurance de l'administration des fonctionnalités pour chaque module Symphony mis en œuvre et chaque surface qxctl."
+sidebarTitle: "SSFV"
+---
+
+Le Symphony Semantic Feature Vector (SSFV) possède les contrats d'identité canonique des fonctionnalités applicatives, de sémantique, de hiérarchie, de cycle de vie, de distinctions, d'acheminement des registres distribués, d'inventaire de couverture et de projection de graphes. Son moteur est un processus C++ installable de façon indépendante qui effectue des vérifications structurelles des fonctionnalités tenant compte de la fraîcheur.
+
+## Opérations
+
+- **Inspection et vérification** : évaluation structurelle des fonctionnalités tenant compte de la fraîcheur.
+- **Différence** : différences adressées par contenu entre les états des fonctionnalités.
+- **Proposition** : propositions déclarées par l'appelant pour l'admission ou la modification de fonctionnalités.
+- **Graphe** : graphes de fonctionnalités déterministes et jetables pour l'examen.
+
+## Couverture enregistrée
+
+Le catalogue enregistré actuel est explicitement partiel :
+
+- **110** fonctionnalités enregistrées
+- **35** portées de propriétaire enregistrées
+- **76** fonctionnalités imbriquées ratifiées
+- **295** surfaces d'administration des fonctionnalités examinées (**285** requises, **13** exemptions appuyées par des preuves, **9** interdictions, **0** non examinées)
+
+Les portées de propriétaire enregistrées couvrent chaque module mis en œuvre, de `qxctl` et du validateur jusqu'aux familles de moteurs SCV et SHV, en passant par les moteurs SKV et les fournisseurs SSIAG.
+
+## Ce que SSFV ne fait pas
+
+<Warning>
+  SSFV ne décide pas de la pertinence d'une fonctionnalité, n'invente pas d'identités et ne prétend pas à l'exhaustivité du dépôt ou de l'hôte. `review_required` est une preuve destinée à l'examen par l'appelant, et non une ratification ni une autorité d'application.
+</Warning>
+
+L'examen, l'admission et les changements de cycle de vie des fonctionnalités demeurent du ressort du contrat propriétaire de chaque fonctionnalité.
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="Aperçu de SKV" icon="book-open" href="/fr-CA/skv/overview">
+    Le cadre englobant qui régit SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fr-CA/skv/sev">
+    Applique les cas d'évolution aux ajouts, modifications et retraits de fonctionnalités.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/fr-CA/qxctl/session">
+    Gérez les sessions de maintenance SSFV persistantes au moyen de qxctl.
+  </Card>
+
+  <Card title="Commandes vectorielles qxctl" icon="terminal" href="/fr-CA/qxctl/vector-commands">
+    Exécutez `qxctl ssfv ...` pour inspecter, vérifier, comparer, proposer et générer des graphes.
+  </Card>
+</CardGroup>

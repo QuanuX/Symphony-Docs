@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: politika varování validátoru Symphony"
+description: "Spravujte chráněnou politiku varování, baseline a gramatiku zobrazení nad nezávislým validátorem Symphony přes qxctl, aniž byste měnili surové důkazy detektoru."
+sidebarTitle: "validate"
+---
+
+Gramatika `qxctl validate ...` spravuje chráněnou politiku varování, baseline a gramatiku zobrazení validátoru Symphony. Nezávisle instalovaný validátor v C++ produkuje neměnné surové důkazy; qxctl spravuje chráněnou prezentaci neutrální vůči volajícímu, aniž by měnil detekci.
+
+## Co qxctl validate pokrývá
+
+- Devět chráněných listových příkazů životního cyklu varování
+- Přesnou cestu souhrnu kořene podloženou stvrzenkou
+- Správu baseline a reportování rozdílů
+- Gramatiku zobrazení pro řádkový výstup a strukturovaný JSON
+
+Každý listový příkaz ověří přesnou stvrzenku validátoru a strukturované digesty před uplatněním chráněné politiky varování.
+
+## Hranice
+
+<Warning>
+  qxctl validate nemůže opravovat soubory, nic publikovat ani přepsat surové důkazy detektoru. Dispozice varování ovlivňuje prezentaci, nikoli detekci.
+</Warning>
+
+- Žádné potlačování varování mimo chráněnou politiku
+- Žádná úprava výstupu validátoru
+- Žádné smyšlené pokrytí pro nedostupnou cestu
+
+## Běžná použití
+
+- Vytvoření nebo resetování baseline varování
+- Schválení nebo znovuotevření spravovaného historického varování
+- Emitování souhrnu kořene podloženého stvrzenkou, který se zobrazuje v README repozitáře
+
+Validátor, na kterém tato gramatika stojí, kontroluje tvar kontraktů, uzávěr aktuálních zdrojů, vlastnictví invariantů, správu funkcí, vydání a strojově vlastněný souhrn kořene.
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Validátor" icon="clipboard-check" href="/cs/governance/validator">
+    Nezávislý kontrolor v C++ pouze pro čtení, který qxctl spravuje.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cs/skv/ssfv">
+    Očekávání správy funkcí kontrolovaná v důkazech.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Záznamy vydání, které se objevují v důkazech validátoru.
+  </Card>
+
+  <Card title="Přehled qxctl" icon="terminal" href="/cs/qxctl/overview">
+    Úplná sada příkazů.
+  </Card>
+</CardGroup>

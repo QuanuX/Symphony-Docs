@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: ishchi daraxtni muvofiqlashtirish"
+description: "Ishchi daraxtlarni bog'langan Symphony koordinatori bilan moslik tekshiruvlari, checkpoint va yopish jurnallari hamda dalillarga asoslangan ikki slotli tiklash yordamida muvofiqlashtiring."
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` grammatikasi ishchi daraxtni muvofiqlashtirishni bitta aniq bog'langan Knowledge Session Coordinator orqali boshqaradi. Har bir o'zgarish barqaror identifikator bilan kuzatiladi va joriy jurnalning aniq digest'iga nisbatan compare-and-swap amali sifatida bajariladi.
+
+## Buyruqlar
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: qxctl, koordinator va bog'langan engine'lar protokol versiyasi va doirasi bo'yicha kelishganini tekshirish.
+- `begin`: barqaror amal identifikatori bilan yangi muvofiqlashtirish kontekstini ochish.
+- `status`: joriy jurnalni o'zgartirmasdan tekshirish.
+- `checkpoint`: jurnalni compare-and-swap bilan bardoshli tarzda oldinga surish.
+- `close`: muvofiqlashtirish kontekstini yakunlash.
+- `recover --discover`: oddiy status mahalliy holatni tasdiqlay olmaganda topish orqali tiklash.
+
+## Tiklash qoidalari
+
+<Warning>
+  Ikki slotli tiklash — dalillarga asoslangan oldinga yo'naltirilgan ta'mirlash. U hech qachon mos kelmaydigan jurnal yoki noma'lum kritik kengaytmani tashlab yuborishga ruxsat emas. Agar tiklash muvaffaqiyatsiz bo'lsa, majburlash o'rniga masalani yuqoriga yetkazing.
+</Warning>
+
+Topish orqali tiklashdan faqat oddiy status mahalliy holatni tasdiqlay olmagandagina foydalaning. Blokerlarni saqlang; faqat tasdiqlangan dalillar o'zgargandan keyingina qayta rejalashtiring.
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Muvofiqlashtirish jurnallariga egalik qiluvchi engine.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/uz/qxctl/session">
+    Muvofiqlashtirish kontekstlari bilan juftlashadigan autentifikatsiyalangan sessiyalar.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/uz/qxctl/engines">
+    Koordinator foydalanadigan bog'lashlarni boshqaring.
+  </Card>
+</CardGroup>

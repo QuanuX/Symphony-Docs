@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Chính sách cảnh báo của Symphony Validator"
+description: "Quản trị chính sách cảnh báo được bảo vệ, baseline và cú pháp hiển thị trên Symphony Validator độc lập thông qua qxctl mà không thay đổi bằng chứng thô của bộ phát hiện."
+sidebarTitle: "validate"
+---
+
+Cú pháp `qxctl validate ...` quản trị chính sách cảnh báo được bảo vệ, baseline và cú pháp hiển thị của Symphony Validator. Validator C++ được cài đặt độc lập tạo ra bằng chứng thô bất biến; qxctl quản trị phần trình bày được bảo vệ, trung lập với bên gọi, mà không thay đổi việc phát hiện.
+
+## Phạm vi của qxctl validate
+
+- Chín lệnh lá vòng đời cảnh báo được bảo vệ
+- Lộ trình tóm tắt gốc (root-summary) chính xác, dựa trên biên nhận
+- Quản lý baseline và báo cáo chênh lệch
+- Cú pháp hiển thị cho đầu ra dạng dòng và JSON có cấu trúc
+
+Mọi lệnh lá đều xác thực biên nhận chính xác và các digest có cấu trúc của validator trước khi áp dụng chính sách cảnh báo được bảo vệ.
+
+## Ranh giới
+
+<Warning>
+  qxctl validate không thể sửa tệp, xuất bản bất cứ thứ gì hay ghi đè bằng chứng thô của bộ phát hiện. Cách xử lý cảnh báo ảnh hưởng đến phần trình bày, không ảnh hưởng đến việc phát hiện.
+</Warning>
+
+- Không chặn cảnh báo bên ngoài chính sách được bảo vệ
+- Không sửa đổi đầu ra của validator
+- Không bịa đặt độ bao phủ cho một lộ trình không khả dụng
+
+## Cách dùng phổ biến
+
+- Thiết lập hoặc đặt lại baseline cảnh báo
+- Phê duyệt hoặc mở lại một cảnh báo lịch sử được quản trị
+- Xuất bản tóm tắt gốc dựa trên biên nhận xuất hiện trong README của kho mã
+
+Validator làm nền cho cú pháp này kiểm tra hình dạng hợp đồng, tính khép kín của mã nguồn hiện tại, quyền sở hữu bất biến, quản trị tính năng, các bản phát hành và bản tóm tắt gốc do máy sở hữu.
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/vi/governance/validator">
+    Trình kiểm tra C++ chỉ đọc độc lập mà qxctl quản trị.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/vi/skv/ssfv">
+    Các kỳ vọng quản trị tính năng được kiểm tra trong bằng chứng.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Các bản ghi phát hành xuất hiện trong bằng chứng của validator.
+  </Card>
+
+  <Card title="Tổng quan qxctl" icon="terminal" href="/vi/qxctl/overview">
+    Toàn bộ bề mặt lệnh.
+  </Card>
+</CardGroup>

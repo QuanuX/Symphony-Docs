@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: provayder resurslari haqidagi bilimlar"
+description: "SCV sakkizta mustaqil o'rnatiladigan C++ engine'i orqali AWS, Azure, GCP, DigitalOcean, Cloudflare va foydalanuvchiga tegishli uskunalar bo'ylab tashqi provayder resurslari haqidagi xususiy bilimlarni yuritadi."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) tashqi (offsite) uskuna resurslari va klasterlaringiz, o'qitish, tadqiqot va ma'lumotlar bilan ishlashingizni shakllantiruvchi provayder voqeliklari haqidagi xususiy semantik bilimlarga egalik qiladi. U provayderlarni reytinglamasdan yoki nima qilishga urinishingiz mumkinligiga chegara qo'ymasdan provayder takliflari, mintaqalar, infratuzilma domenlari, cheklovlar va kuzatilgan mavjudlikni xaritalaydi.
+
+## Provayderlar qamrovi
+
+SCV quyidagi provayderlar va resurs turlarini qamrab oladi:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Foydalanuvchiga tegishli uskunalar (tashqi resurslar bilan taqqoslash talab qilinganda)
+
+## O'rnatilgan engine'lar
+
+SCV bilimlari sakkizta mustaqil o'rnatiladigan C++ engine'i orqali yetkaziladi. Siz faqat o'zingizga keraklilarini o'rnatasiz:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Provayder resurslari haqidagi bilimlar va graf qurish uchun asosiy SCV engine'i.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Cheklangan yig'ish va korpus semantikasi uchun bulut dalillari engine'i.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare'ga xos dalillar engine'i.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS'ga xos uskuna va resurslar haqidagi bilimlar engine'i.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure'ga xos uskuna va resurslar haqidagi bilimlar engine'i.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean'ga xos resurslar haqidagi bilimlar engine'i.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP'ga xos uskuna va resurslar haqidagi bilimlar engine'i.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Saqlab qolingan SQL indekslash uchun DuckDB'dan foydalanadigan ixtiyoriy relyatsion graf konnektori.
+  </Card>
+</CardGroup>
+
+## Ko'chma provayder paketlari va kompozitsiya
+
+SCV qxctl orqali ko'chma provayder paketlarini taqdim etadi. Talablar, provayder ruxsatlari, retsept muqobillari va bajarish qarorlari ustidan nazorat sizda qoladi. qxctl saqlab qolingan ish oqimlari va himoyalangan graf tanlovini qo'llab-quvvatlaydi, shuning uchun provayderlarga qayta so'rov yubormasdan aniq dalillarni qayta ijro etishingiz mumkin.
+
+## Ixtiyoriy DuckDB konnektori
+
+`scv-graph-duckdb-connector` o'zgarmas mahalliy graflarning cheklangan relyatsion proyeksiyasini qo'shadi. DuckDB — foydalanuvchi tanlagan standart SQL ma'lumotlar bazasi. Kelajakda qo'shimcha adapterlar orqali maxsus graf engine'larini tanlashingiz mumkin.
+
+## Maxfiylik va suverenitet
+
+O'rnatilgan SCV bilimlar grafi sizning xususiy o'rnatmangizga tegishli. Foydalanuvchi taqdim etgan hisoblar, balanslar, ruxsatlar va shartnomaviy cheklovlar faqat aniq yoqilgan kuzatuv interfeyslari orqali ishlatiladi. Xususiy faktlar rasmiy Symphony manba haqiqatiga kirmaydi.
+
+## SCV boshqa vektorlar bilan qanday bog'liq
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/uz/vectors/sov">
+    SCV dalillari asosida harakat qiluvchi operatsion boshqaruv tekisligi. SOV provayder ma'nosini qayta yozmaydi.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/uz/vectors/snv">
+    SCV ma'lumotlariga asoslangan resurs ajratish natijasida paydo bo'lgan jismoniy Node'lar va klasterlarning identifikatorlarini qayd etadi.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/uz/vectors/shv">
+    SCV havola qiladigan komponentlar uchun batafsil uskuna imkoniyatlari haqidagi bilimlarga egalik qiladi.
+  </Card>
+</CardGroup>
+
+## Versiyalangan interfeys qadamlari
+
+SCV relizlari qo'shimcha xarakterga ega va aniq versiyalangan. Avvalgi o'rnatmalar o'zlarining aniq doiralarida chaqiriladigan bo'lib qoladi. Joriy qadamlar mahalliy amallar, korpus snapshot'lari, talqin profillari, ko'chma provayder paketlari, kompozitsiya ish oqimlari, majburiyatlarni kuzatish va dalillar to'plamlarini o'z ichiga oladi. Har bir qadam avvalgi yo'nalishlar, standart sozlamalar va yozuvlarni saqlab qoladi.

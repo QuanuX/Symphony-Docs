@@ -1,0 +1,82 @@
+---
+title: "Ordres de vectors de qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Exploreu la gramàtica de qxctl específica per a vectors disponible avui: SKVI, SCLV, SACV, SODV, SSFV, emmagatzematge i catàleg de SHV, a més de les superfícies reservades d'accord i evolution."
+sidebarTitle: "Ordres de vectors"
+---
+
+qxctl exposa gramàtica específica per a vectors per a cada motor SKV implementat i per a l'administració de SCV i SHV. La gramàtica ratificada d'Accordare i SEV utilitzarà `qxctl accord ...` i `qxctl evolution ...` un cop existeixin les implementacions de les seves ordres i evidència estable al registre.
+
+## Gramàtica dels motors SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project contra el motor SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project contra el motor SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project contra el motor SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project contra el motor SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph contra el motor SSFV
+
+Cada gramàtica està acotada pel contracte del motor propietari. qxctl mai no inventa cap operació ni eludeix el motor.
+
+## Incorporacions d'Accordare
+
+Les incorporacions d'Accordare a qxctl proporcionen:
+
+- Estat estable
+- Reconciliació (només reprodueix candidats exactes)
+- Instal·lació i desinstal·lació del supervisor (només invoca l'executable verificat amb rebut v2)
+- Dues identitats d'administració de concessions que només muten la configuració STAV aturada sota SSIAG i recuperació d'estat esperat
+
+L'estat separa la intenció duradora i la cua pendent d'afegits. La reconciliació només reprodueix candidats exactes. Les fulles de concessions mai no obren una configuració en execució.
+
+## Emmagatzematge de SHV
+
+L'emmagatzematge durador de SHV només s'administra mitjançant:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` amb el digest d'intenció esperat retingut també és la recuperació. No hi ha cap àlies de recuperació separat. L'àmbit de l'emmagatzematge es declara a l'entrada; la identitat del connector s'estableix als indicadors. L'emmagatzematge estructural no duplica el `shv graph validate` semàntic ni selecciona un cap de catàleg.
+
+`shv graph store inventory` (versió 0.2) afegeix una lectura lògica lligada a la revisió amb identitats d'escriptor retingudes explícites. La selecció heretada 0.1 continua sent compatible.
+
+## Publicació del catàleg de SHV
+
+La publicació del catàleg només s'administra mitjançant:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+La recuperació és `apply --operation-id`, mútuament excloent amb `--input`. La selecció local del catàleg recolzada per permisos és diferent de l'activació de fonts i de l'emmagatzematge genèric de grafs.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Visió general de SKV" icon="book-open" href="/ca/skv/overview">
+    Semàntica dels vectors que implementen els motors.
+  </Card>
+
+  <Card title="Vector SHV" icon="microchip" href="/ca/vectors/shv">
+    Context del Hardware Vector i llista de motors.
+  </Card>
+
+  <Card title="Motors SHV" icon="microchip" href="/ca/engines/shv-engines">
+    Detalls a nivell de motor.
+  </Card>
+
+  <Card title="Visió general de qxctl" icon="terminal" href="/ca/qxctl/overview">
+    Superfície d'ordres completa de qxctl.
+  </Card>
+</CardGroup>

@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: hardverképesség-tudás"
+description: "Az SHV több, függetlenül telepíthető C++ motoron keresztül tart fenn hardverképesség-tudást CPU-król, GPU-król, hálózati kártyákról, alaplapokról, RAM-ról és NVMe-ről."
+sidebarTitle: "Hardware Vector"
+---
+
+A Symphony Hardware Vector (SHV) olyan hardverképesség-tudást birtokol, amely segít megérteni, hogyan teheti lehetővé, korlátozhatja, hordozhatja vagy bővítheti a fizikai kialakítás a kvantitatív szoftvereket. Lefedi a processzorokat, a CPU-magtípusokat, a GPU-kat, a hálózati kártyákat és optikai interfészeket, az alaplapokat, a gyorsítótár-hierarchiákat, a memóriát, az NVMe-t és a teljes rendszerösszeállításokat. Az alapértelmezett válogatás a 2018-tól kezdődő eredeti komponenseket és bizonyítékkal alátámasztott változatokat részesíti előnyben.
+
+## Hatókör és lefedettség
+
+Az SHV a programtervezés szempontjából releváns bármely bizonyítékkal alátámasztott fizikai képességre kiterjedhet. A lefedettségi profilt a qxctl-en keresztül szabályozhatja. Az alapértelmezett dátumalap a modell bevezetése, nem pedig egy kikövetkeztetett egyedi gyártási dátum. Ezt a szűrőt bővítheti, szűkítheti, lecserélheti vagy eltávolíthatja.
+
+## Megvalósított motorok
+
+Az SHV-tudást több, függetlenül telepíthető C++ motor szolgáltatja:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Alapkernel (0.4.0-dev): lefedettségi profilok, megőrzött forrású katalógus építése/visszajátszása, követelményértékelés, determinisztikus gráfvetítés és forrással alátámasztott gráfvalidálás.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Forrásidentitás, áthelyezési tervek, bájtrögzítési kötés és forrásból visszajátszott eredetgráfok.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Deklarációs megfelelőség, hordozható receptek és pontos helyi forráskötés.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Hardverpartíciós és komponens-hozzárendelési műveletek.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Védett hívói katalógusfejek, eredeti forrás visszajátszása és tartós pillanatkép-helyreállítás.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Általános C++ gráfport és memóriabeli hordozható referenciaadapter a veszteségmentes cseréhez.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    A hardvergráf-bizonyítékok opcionális DuckDB-alapú relációs vetülete.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Korlátozott PDF-kinyerés és dokumentumalapú állítások újravalidálása az eredeti bájtokból.
+  </Card>
+</CardGroup>
+
+## Forrásrevízió és eredet
+
+A `shv-source-engine` stabil forrásidentitást, explicit áthelyezési terveket, tiszta átmenetvalidálást, tényleges bájtrögzítési kötést és forrásból visszajátszott eredetgráfokat valósít meg. Ezek csak olvasó műveletek. Az alapválogatás az eredeti komponensidentitást és a bizonyítékkal alátámasztott változatokat részesíti előnyben. A védett forrásaktiválás külön történik; a tiszta forrásmotor nem ad hatáskört.
+
+## Gráfcsere és tárolás
+
+A `shv-graph-adapter` általános C++ gráfportot biztosít a veszteségmentes cseréhez és a strukturális lekérdezésekhez. A tartós tárolás az alapértelmezett DuckDB SQL-lel valósul meg. Jelenleg nincs kiválasztva dedikált gráfadatbázis.
+
+## PDF-bizonyítékhatár
+
+A `shv-pdf-adapter` minősített dokumentumalapú állításokat nyer ki explicit PDF-táblázatokból, és az általános gráfcsere után az eredeti bájtokból újravalidálja őket. Az általános PDF-lefedettség továbbra is külön, hatókörrel rendelkező munka.
+
+## Hátralévő munka
+
+Egy átfogó hardveratlasz, az automatizált forrásbeszerzés, a többforrású ütközések összesítése, további gyártóspecifikus adatbázis-illesztőprogramok, egyéni bővítménybetöltés és a Composer-integráció későbbi munka marad. Az átfogó komponens-hozzárendelések és a tartós gyártói illesztőprogramok szintén nyitottak.
+
+## Hogyan kapcsolódik az SHV más vektorokhoz
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/hu/vectors/snv">
+    Rögzíti azokat a Node-okat, amelyek az SHV által leírt hardvert tartalmazzák.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/hu/vectors/scv">
+    Hivatkozik azokra a szolgáltatói hardverajánlatokra, amelyeket az SHV részletesen jellemez.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/hu/vectors/sov">
+    Node-ok kiépítésekor vagy kondicionálásakor az SHV-bizonyítékok alapján cselekedhet.
+  </Card>
+</CardGroup>

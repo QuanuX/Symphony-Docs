@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector för kompositionsutvärdering"
+description: "SAV löser upp Accord-referenser, utvärderar komposition längs tre axlar, validerar Named Versions och planerar Installation Blueprints utan att mutera kanonisk sanning."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) löser upp deklarerad komponentkomposition och kompatibilitet. Dess motor är en skrivskyddad C++26-process på en frysningsväg. SAV komponerar exakta typade projektioner men tar aldrig källsanning från ägarvektorerna.
+
+## Operationer
+
+SAV stöder en omfattande uppsättning utvärderingsoperationer:
+
+- **Upplösning av Accord-referenser** till oföränderliga härledda CURRENT-ögonblicksbilder
+- **Utvärdering längs tre axlar**, jämförelse och förklaring
+- **Kompositionsgrafer** och engångsprojektioner
+- Validering och diff av **Named Version**
+- Kontroller av **Extension Capsule**
+- Planering av **Installation Blueprint**
+- **Kompatibilitetsförhandling** mellan deklarerade komponenter
+
+## Vad SAV inte gör
+
+- SAV tar inte semantiskt ägarskap över de komponenter som det komponerar.
+- SAV väljer inte en design åt dig; det utvärderar det du har deklarerat.
+- SAV muterar inte kanoniska filer. Dess utdata är evidens och förslag.
+- SAV är inte STAV:s auktoritet för tillägg. Se Accordare STAV-producenten för hantering av avsikt före mutation.
+
+<Note>
+  SAV är endast till för läsning, frågor, validering och förslag. Programmatisk kanonisk apply förblir inaktiverad i hela SKV-motorfamiljen.
+</Note>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Översikt över SKV" icon="book-open" href="/sv/skv/overview">
+    Paraplyramverket och Contract Quad-modellen.
+  </Card>
+
+  <Card title="Accordare-producent" icon="pen-nib" href="/sv/governance/accordare-producer">
+    Avgränsad granskningskrets för SAV Named Version.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/sv/skv/sev">
+    Evolutionsärenden som utlöser SAV-utvärdering av kompositionsändringar.
+  </Card>
+
+  <Card title="Vektorkommandon i qxctl" icon="terminal" href="/sv/qxctl/vector-commands">
+    Ratificerad Accordare-grammatik kommer som `qxctl accord ...` när den har implementerats.
+  </Card>
+</CardGroup>

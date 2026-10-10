@@ -1,0 +1,47 @@
+---
+title: "Vetores e fases de entrega do Symphony"
+description: "Compreenda os domínios duradouros de propriedade semântica do Symphony (vetores) face às fases cronológicas de entrega, bem como o Contract Quad e o estado atual dos vetores."
+sidebarTitle: "Vetores e fases"
+---
+
+O Symphony organiza a sua arquitetura em torno de duas ideias: os **vetores** são domínios duradouros de propriedade semântica e as **fases** são campanhas cronológicas de entrega. O facto de um componente ter sido investigado pela primeira vez numa fase não torna essa fase a sua proprietária permanente. Os vetores mantêm o significado estável enquanto a implementação evolui.
+
+## O que é um vetor?
+
+Um vetor é um domínio duradouro e delimitado de propriedade semântica, cujo contrato canónico detém o significado e as operações permitidas desse domínio. Cada vetor recebe um **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` e `SPEC.md`, além das superfícies complementares específicas de que realmente necessita. O vetor declara as suas superfícies canónicas e o seu grafo de delegação, o SKVI mapeia cada superfície atual exatamente uma vez, e os complementos obsoletos são substituídos através de evolução governada, em vez de permanecerem como contexto contraditório.
+
+## Estado dos vetores
+
+| Vetor | Estado | Página |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementado: fundação da Fase 1 com superfícies indexadas | [/skv/overview](/pt/skv/overview) |
+| **SKVI** — Indexação de fontes | Implementado: motor inspect/check/propose | [/skv/skvi](/pt/skv/skvi) |
+| **SCLV** — Livro-razão de alterações | Implementado: verificações de livro-razão só de acréscimo | [/skv/sclv](/pt/skv/sclv) |
+| **SACV** — Governação de contratos de API | Implementado: verificações OpenAPI 3.2.0 | [/skv/sacv](/pt/skv/sacv) |
+| **SODV** — Governação da documentação oficial e das versões | Implementado: verificações locais do livro-razão de versões | [/skv/sodv](/pt/skv/sodv) |
+| **SSFV** — Identidade e administração de funcionalidades | Implementado: verificações estruturais de funcionalidades | [/skv/ssfv](/pt/skv/ssfv) |
+| **SAV** — Composição Accordare | Implementado: avaliação em freezing path | [/skv/sav](/pt/skv/sav) |
+| **SEV** — Evolução | Implementado: planeamento de impacto e disposição | [/skv/sev](/pt/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementado: fundação em Go sem cgo | [/governance/ssiag](/pt/governance/ssiag) |
+| **STAV** — Protocolo de auditoria TOPS | Implementado: livro-razão só de acréscimo por TOPS | [/governance/stav](/pt/governance/stav) |
+| **SOV** — Ops Vector | Emergente: aprovisionamento, entrega de Habitat e Nest | [/vectors/sov](/pt/vectors/sov) |
+| **SCV** — Cloud Vector | Implementado: oito motores C++ de conhecimento de fontes | [/vectors/scv](/pt/vectors/scv) |
+| **SNV** — Node Vector | Emergente: composição SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/pt/vectors/snv) |
+| **SQV** — Quantitative Vector | Emergente: subvetor de arquitetura FIX SOOV | [/vectors/sqv](/pt/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementado: motores C++ de fontes, catálogo e perfis | [/vectors/shv](/pt/vectors/shv) |
+| **SIV** — Intelligence Vector | Emergente: SMCV Markdown opcional; SAIV reservado | [/vectors/siv](/pt/vectors/siv) |
+
+## Contract Quad e superfícies complementares
+
+Cada vetor recebe:
+
+1. **INTENT.md** — propósito e âmbito
+2. **MANIFEST.md** — identidade, superfícies declaradas, grafo de delegação
+3. **SKILL.md** — utilização segura e orientações operacionais
+4. **SPEC.md** — comportamento normativo e fronteiras
+
+As superfícies complementares, como `SLANG.md`, `NAMESPACES.md`, registos, esquemas e perfis, continuam a ser artefactos governados fora da estrutura de quatro membros. Encaminham ou especializam a verdade do proprietário, mas não podem expandir a sua própria autoridade.
+
+## Integração baseada em evidências
+
+Um motor adiado não tem um recibo fabricado. Uma API proposta não tem uma entrada de registo inventada. Um contrato não publicado não tem uma declaração de conclusão no SODV. Isto é integração baseada em evidências, e não duplicação cerimonial.

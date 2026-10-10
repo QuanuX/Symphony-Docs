@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony vector engine’lari mavjudligi vakolati"
+description: "Maestro har bir TOPS va retseptor uchun autentifikatsiyalangan vector engine ulanish munosabatlarini qayd etadi va engine’larni ishga tushirmasdan yoki nazorat qilmasdan toʻliq, faqat oʻqiladigan inventarni hosil qiladi."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) — mustaqil oʻrnatiladigan, freezing-path C++26 mavjudlik vakolati. U har bir TOPS va retseptor uchun aniq autentifikatsiyalangan vector engine ulanish munosabatlarini qayd etadi va hozirda nima ulanganligi haqida toʻliq, faqat oʻqiladigan inventarni hosil qiladi. Maestro nazoratchi emas, guvohdir.
+
+## Maestro nimani qayd etadi
+
+- Vector engine’lari va retseptorlar oʻrtasidagi aniq autentifikatsiyalangan ulanish munosabatlari
+- Har bir TOPS boʻyicha doiralash, shunda har bir oʻrnatmaning mavjudlik maʼlumotlari shu oʻrnatmaning oʻziga xususiy boʻlib qoladi
+- `qxctl maestro inventory` orqali mavjud boʻlgan hosilaviy, toʻliq, faqat oʻqiladigan inventar
+
+## Maestro nima qilmaydi
+
+<Warning>
+  Maestro engine’larni ishga tushirmaydi, rejalashtirmaydi, nazorat qilmaydi yoki chaqirmaydi. Bogʻlash, muvofiqlashtirish, autentifikatsiyalangan sessiya koordinatsiyasi yoki hayot sikli rejasining oʻzi Maestro mavjudligini oʻrnatmaydi, semantik haqiqatni ratifikatsiya qilmaydi, kanonik bilimlarni oʻzgartirmaydi yoki oʻrnatilgan xostning toʻliqligini isbotlamaydi.
+</Warning>
+
+- Maestro hech qanday jarayon yaratmaydi.
+- Maestro hech qachon kanonik bilim oʻzgarishlarini qoʻllamaydi.
+- Maestro hech qachon semantikaga egalik qiladigan vector engine’ning oʻrnini bosmaydi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/uz/qxctl/maestro">
+    `qxctl maestro inventory` hosilaviy inventarni taqdim etadi.
+  </Card>
+
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Autentifikatsiyalangan sessiya va worktree muvofiqlashtirish mexanizmlariga egalik qiladi.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/uz/governance/ssiag">
+    Maestro qayd etadigan ulanish munosabatlarini autentifikatsiya qiladi.
+  </Card>
+
+  <Card title="Engine’lar umumiy koʻrinishi" icon="cube" href="/uz/engines/overview">
+    Maestro bilan ulanadigan, mustaqil oʻrnatiladigan vector engine’lari.
+  </Card>
+</CardGroup>

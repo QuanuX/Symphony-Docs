@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector dla zmian w źródłach"
+description: "SCLV prowadzi rejestr ukończonych zmian w źródłach przeznaczony wyłącznie do dopisywania, z propozycjami niezależnymi od dostawcy, niemutującym odzyskiwaniem i jednorazowymi projekcjami."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) rejestruje zmiany wprowadzane w powierzchniach SKV na przestrzeni czasu. Jego silnik to niezależnie instalowalny proces C++, który wykonuje deterministyczne kontrole rejestru tylko do dopisywania i tworzy jednorazowe projekcje. Wpis do rejestru jest dokonywany dopiero po ukończeniu istotnej zmiany w źródłach.
+
+## Operacje
+
+- **Inspect i check**: weryfikują kształt, ciągłość i dowody rejestru.
+- **Propose (v3)**: przyjmuje deklarowane przez wywołującego, niezależne od dostawcy propozycje nowych rekordów.
+- **Recover**: wykonuje niemutujące odzyskiwanie przerwanego lub niejednoznacznego stanu.
+- **Project**: na żądanie emituje jednorazowe inwentarze stanu rejestru.
+
+## Przyjmowanie i wycofywanie
+
+Każdy przyjęty rekord SCLV wiąże bieżące zindeksowane dowody z chwili zapisu. Późniejsze uprawnione wycofanie powierzchni zachowuje niezmienne historyczne pochodzenie bez wymuszania przywrócenia usuniętej bieżącej treści do SKVI. Historia pozostaje historią; bieżąca prawda pozostaje bieżąca.
+
+## Czego SCLV nie robi
+
+- SCLV nie tworzy ani nie zatwierdza zmian w źródłach.
+- SCLV nie przepisuje istniejących rekordów; jest przeznaczony wyłącznie do dopisywania.
+- SCLV niczego nie publikuje. Publiczna projekcja należy do SODV.
+
+<Note>
+  Każdy obecny silnik SKV służy wyłącznie do odczytu, zapytań, walidacji i propozycji. Kanoniczne apply jest wyłączone, dopóki nie zostaną ukończone pełne kontrakty uprawnień i audytu każdego silnika.
+</Note>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/pl/skv/skvi">
+    Indeksuje bieżącą kanoniczną prawdę, z którą wiążą się rekordy SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pl/skv/sodv">
+    Zarządza oficjalną publiczną projekcją informacji z rejestru.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/pl/skv/sev">
+    Przypadki ewolucji oceniają zmiany, zanim SCLV je zarejestruje.
+  </Card>
+
+  <Card title="Polecenia wektorowe qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Uruchom `qxctl sclv ...`, aby wykonać inspect, check, propose i recover.
+  </Card>
+</CardGroup>

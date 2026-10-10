@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Sağlayıcı Kaynak Bilgisi"
+description: "SCV; AWS, Azure, GCP, DigitalOcean, Cloudflare ve kullanıcıya ait donanımdaki tesis dışı sağlayıcı kaynaklarına ilişkin özel bilgiyi, bağımsız olarak kurulabilen sekiz C++ engine'i aracılığıyla tutar."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV), tesis dışı donanım kaynakları ile kümelerinizi, eğitim, araştırma ve veri çalışmalarınızı şekillendiren sağlayıcı gerçeklikleri hakkındaki özel anlamsal bilginin sahibidir. Sağlayıcı tekliflerini, bölgeleri, altyapı alanlarını, kısıtları ve gözlemlenen kullanılabilirliği; sağlayıcıları sıralamadan veya deneyebileceklerinize sınır koymadan eşler.
+
+## Sağlayıcı kapsamı
+
+SCV aşağıdaki sağlayıcıları ve kaynak türlerini kapsar:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Kullanıcıya ait donanım (tesis dışı kaynaklarla karşılaştırma gerektiğinde)
+
+## Kurulu engine'ler
+
+SCV bilgisi, bağımsız olarak kurulabilen sekiz C++ engine'i aracılığıyla sunulur. Yalnızca ihtiyaç duyduklarınızı kurarsınız:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Sağlayıcı kaynak bilgisi ve grafik oluşturma için çekirdek SCV engine'i.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Sınırlı yakalama ve derlem (corpus) anlamları için bulut kanıt engine'i.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare'e özgü kanıt engine'i.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS'ye özgü donanım ve kaynak bilgisi engine'i.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure'a özgü donanım ve kaynak bilgisi engine'i.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean'a özgü kaynak bilgisi engine'i.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP'ye özgü donanım ve kaynak bilgisi engine'i.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Saklanan SQL dizinlemesi için DuckDB kullanan isteğe bağlı ilişkisel grafik bağlayıcısı.
+  </Card>
+</CardGroup>
+
+## Taşınabilir sağlayıcı paketleri ve kompozisyon
+
+SCV, taşınabilir sağlayıcı paketlerini qxctl aracılığıyla sunar. Gereksinimler, sağlayıcı izinleri, tarif alternatifleri ve yürütme kararları üzerindeki denetim sizde kalır. qxctl, saklanan iş akışlarını ve korumalı grafik seçimini destekler; böylece sağlayıcıları yeniden sorgulamadan kesin kanıtı yeniden oynatabilirsiniz.
+
+## İsteğe bağlı DuckDB bağlayıcısı
+
+`scv-graph-duckdb-connector`, değiştirilemez yerel grafiklerin sınırlı ilişkisel bir projeksiyonunu ekler. DuckDB, kullanıcı tarafından seçilen varsayılan SQL veritabanıdır. Gelecekte ek bağdaştırıcılar aracılığıyla özel grafik engine'leri seçebilirsiniz.
+
+## Gizlilik ve egemenlik
+
+Kurulu bir SCV bilgi grafiği, sizin özel kurulumunuza aittir. Kullanıcı tarafından sağlanan hesaplar, bakiyeler, izinler ve sözleşmesel kısıtlar yalnızca açıkça etkinleştirilmiş gözlem yüzeyleri aracılığıyla kullanılır. Özel olgular resmî Symphony kaynak gerçeğine girmez.
+
+## SCV'nin diğer vektörlerle ilişkisi
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/tr/vectors/sov">
+    SCV kanıtına göre hareket eden operasyonel kontrol düzlemi. SOV, sağlayıcı anlamını yeniden yazmaz.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/tr/vectors/snv">
+    SCV bilgisine dayalı hazırlama sonucunda ortaya çıkan fiziksel Node'ların ve kümelerin kimliklerini kaydeder.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/tr/vectors/shv">
+    SCV'nin başvurduğu bileşenler için ayrıntılı donanım yeteneği bilgisinin sahibidir.
+  </Card>
+</CardGroup>
+
+## Sürümlenmiş arayüz artışları
+
+SCV sürümleri eklemelidir ve kesin sürümlüdür. Önceki kurulumlar kendi kesin kapsamlarında çağrılabilir kalır. Mevcut artışlar; yerel işlemleri, derlem anlık görüntülerini, yorumlama profillerini, taşınabilir sağlayıcı paketlerini, kompozisyon iş akışlarını, yükümlülük takibini ve kanıt paketlerini içerir. Her artış önceki yolları, varsayılanları ve kayıtları korur.

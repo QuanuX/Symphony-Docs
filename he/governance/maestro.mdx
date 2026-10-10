@@ -1,0 +1,43 @@
+---
+title: "Maestro: רשות הנוכחות של מנועי הווקטור ב-Symphony"
+description: "Maestro מתעד יחסי עגינה מאומתים של מנועי וקטור לפי TOPS ולפי קולטן, וגוזר מלאי מלא לקריאה בלבד מבלי להפעיל מנועים או לפקח עליהם."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) הוא רשות נוכחות ב-C++26 הניתנת להתקנה עצמאית ופועלת בנתיב קפוא. הוא מתעד יחסי עגינה מדויקים ומאומתים של מנועי וקטור לפי TOPS ולפי קולטן, וגוזר מלאי מלא לקריאה בלבד של מה שעגון כעת. Maestro הוא עד, לא מפקח.
+
+## מה Maestro מתעד
+
+- יחסי עגינה מדויקים ומאומתים בין מנועי וקטור לבין קולטנים
+- תיחום לפי TOPS, כך שהנוכחות של כל התקנה נשארת פרטית לאותה התקנה
+- מלאי נגזר, מלא ולקריאה בלבד, הזמין באמצעות `qxctl maestro inventory`
+
+## מה Maestro אינו עושה
+
+<Warning>
+  Maestro אינו מפעיל, מתזמן, מפקח או מזמן מנועים. כריכה, יישוב, תיאום סשנים מאומתים או תוכנית מחזור חיים כשלעצמם אינם מבססים נוכחות ב-Maestro, אינם מאשררים אמת סמנטית, אינם משנים ידע קנוני ואינם מוכיחים שלמות של מארח מותקן.
+</Warning>
+
+- Maestro אינו יוצר תהליכים.
+- Maestro לעולם אינו מחיל שינויי ידע קנוניים.
+- Maestro לעולם אינו מחליף את מנוע הווקטור שהוא הבעלים של הסמנטיקה.
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/he/qxctl/maestro">
+    `qxctl maestro inventory` מציג את המלאי הנגזר.
+  </Card>
+
+  <Card title="מתאם הסשנים" icon="gears" href="/he/engines/coordinator">
+    הבעלים של מנגנוני הסשנים המאומתים ויישוב ה-worktree.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/he/governance/ssiag">
+    מאמת את יחסי העגינה ש-Maestro מתעד.
+  </Card>
+
+  <Card title="סקירת המנועים" icon="cube" href="/he/engines/overview">
+    מנועי וקטור הניתנים להתקנה עצמאית ועוגנים ב-Maestro.
+  </Card>
+</CardGroup>

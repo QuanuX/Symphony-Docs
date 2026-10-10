@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony Doğrulayıcı Uyarı Politikası"
+description: "Bağımsız Symphony Validator üzerindeki korumalı uyarı politikasını, temel çizgiyi ve görüntüleme gramerini ham dedektör kanıtını değiştirmeden qxctl üzerinden yönetin."
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` grameri, Symphony Validator'ın korumalı uyarı politikasını, temel çizgisini (baseline) ve görüntüleme gramerini yönetir. Bağımsız olarak kurulan C++ doğrulayıcı değiştirilemez ham kanıt üretir; qxctl ise algılamayı değiştirmeden çağırandan bağımsız korumalı sunumu yönetir.
+
+## qxctl validate neleri kapsar
+
+- Dokuz korumalı uyarı yaşam döngüsü yaprağı
+- Kesin, makbuz destekli kök özet yolu
+- Temel çizgi yönetimi ve fark raporlaması
+- Satır çıktısı ve yapılandırılmış JSON için görüntüleme grameri
+
+Her yaprak, korumalı uyarı politikasını uygulamadan önce doğrulayıcının kesin makbuzunu ve yapılandırılmış özetlerini doğrular.
+
+## Sınır
+
+<Warning>
+  qxctl validate dosyaları onaramaz, hiçbir şey yayımlayamaz veya ham dedektör kanıtını geçersiz kılamaz. Uyarı yönetimi algılamayı değil, sunumu etkiler.
+</Warning>
+
+- Korumalı politika dışında uyarı bastırma yoktur
+- Doğrulayıcı çıktısında değişiklik yoktur
+- Kullanılamayan bir yol için uydurulmuş kapsam yoktur
+
+## Yaygın kullanımlar
+
+- Bir uyarı temel çizgisi oluşturun veya sıfırlayın
+- Yönetişim altındaki geçmiş bir uyarıyı onaylayın veya yeniden açın
+- Depo README'sinde görünen makbuz destekli kök özeti üretin
+
+Bu gramerin dayandığı doğrulayıcı; sözleşme biçimini, mevcut kaynak kapanışını, değişmez sahipliğini, özellik yönetimini, sürümleri ve makinenin sahip olduğu kök özeti kontrol eder.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="Doğrulayıcı" icon="clipboard-check" href="/tr/governance/validator">
+    qxctl'in yönettiği bağımsız, salt okunur C++ denetleyicisi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/tr/skv/ssfv">
+    Kanıtlarda kontrol edilen özellik yönetimi beklentileri.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    Doğrulayıcı kanıtlarında görünen sürüm kayıtları.
+  </Card>
+
+  <Card title="qxctl'e genel bakış" icon="terminal" href="/tr/qxctl/overview">
+    Tam komut yüzeyi.
+  </Card>
+</CardGroup>

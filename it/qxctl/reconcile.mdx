@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: riconciliazione dei worktree"
+description: "Riconcilia i worktree rispetto a un coordinatore Symphony associato, con controlli di compatibilità, journal di checkpoint e chiusura e recupero a due slot basato sulle evidenze."
+sidebarTitle: "reconcile"
+---
+
+La grammatica `qxctl knowledge reconcile ...` guida la riconciliazione dei worktree attraverso un unico e preciso Knowledge Session Coordinator associato. Ogni mutazione è tracciata con identificatori stabili ed è un compare-and-swap rispetto all'esatto digest del journal corrente.
+
+## Comandi
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifica che qxctl, il coordinatore e gli engine associati concordino su versione del protocollo e ambito.
+- `begin`: apre un nuovo contesto di riconciliazione con un identificatore di operazione stabile.
+- `status`: ispeziona il journal corrente senza mutazioni.
+- `checkpoint`: fa avanzare in modo durevole il journal con compare-and-swap.
+- `close`: finalizza il contesto di riconciliazione.
+- `recover --discover`: recupero per discovery quando lo status ordinario non riesce a validare lo stato locale.
+
+## Regole di recupero
+
+<Warning>
+  Il recupero a due slot è una riparazione in avanti basata sulle evidenze. Non è mai un permesso per scartare un journal incompatibile o un'estensione critica sconosciuta. Se il recupero non riesce, effettua un'escalation anziché forzare.
+</Warning>
+
+Usa il recupero per discovery solo quando lo status ordinario non riesce a validare lo stato locale. Preserva i blocchi; ripianifica solo dopo che le evidenze verificate sono cambiate.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Coordinatore di sessione" icon="gears" href="/it/engines/coordinator">
+    L'engine proprietario dei journal di riconciliazione.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/it/qxctl/session">
+    Sessioni autenticate abbinate ai contesti di riconciliazione.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/it/qxctl/engines">
+    Gestisci i binding utilizzati dal coordinatore.
+  </Card>
+</CardGroup>

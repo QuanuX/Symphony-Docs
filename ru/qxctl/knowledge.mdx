@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: межвекторное администрирование жизненного цикла"
+description: "Группа команд qxctl knowledge отвечает за межвекторный жизненный цикл, переходы сеансов, запросы инвариантов и администрирование постоянного обслуживания SSFV."
+sidebarTitle: "knowledge"
+---
+
+Группа `qxctl knowledge ...` отвечает за межвекторный жизненный цикл и администрирование постоянных сеансов SSFV. Это точка входа для операций, выполняемых через координатор, и для запросов инвариантов к валидатору.
+
+## Переход сеанса
+
+Используйте `qxctl knowledge session transition`, чтобы сообщить существующему сеансу о событии жизненного цикла хоста:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+При безопасных повторных попытках используется тот же идентификатор события. Добавляйте `--recover` только тогда, когда предполагается восстановление через обнаружение из повреждённых локальных свидетельств сеанса; оно не восстанавливает отказ, несовместимое критическое состояние или неоднозначность.
+
+<Warning>
+  Symphony не устанавливает с помощью этой команды хук входа, наблюдатель или загрузочный юнит. Используйте её только тогда, когда явная интеграция с жизненным циклом хоста предоставляет стабильную идентичность события.
+</Warning>
+
+## Запросы инвариантов
+
+Четыре листовые команды привязывают `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` дополнительно привязывает `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Листовые команды прямых запросов выдают `symphony.knowledge.invariant-query-result.v1` с `semantic_validity=not_asserted`. `check` возвращает точный полный результат валидатора и сохраняет код выхода 26.
+
+## Группы подкоманд
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ru/qxctl/lifecycle">
+    Профиль, владение, наблюдение, отчёт, загрузка, применение и восстановление.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ru/qxctl/engines">
+    Реестр привязок движков: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ru/qxctl/reconcile">
+    Грамматика сверки рабочих деревьев координатора.
+  </Card>
+
+  <Card title="session" icon="key" href="/ru/qxctl/session">
+    Аутентифицированные сеансы и потоки обслуживания SSFV.
+  </Card>
+</CardGroup>

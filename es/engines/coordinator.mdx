@@ -1,0 +1,50 @@
+---
+title: "Coordinador de sesiones de conocimiento para los motores de vectores de Symphony"
+description: "El coordinador de sesiones de conocimiento proporciona compatibilidad acotada, reconciliación de worktrees, sesiones autenticadas y coordinación del ciclo de vida con capacidad de aplicación en C++26."
+sidebarTitle: "Coordinador"
+---
+
+El coordinador de sesiones de conocimiento (`modules/knowledge-session-coordinator`) es un proceso C++26 instalable de forma independiente. Se sitúa entre qxctl y los motores de vectores y es propietario de la compatibilidad acotada, la reconciliación de worktrees, las sesiones no canónicas autenticadas, el mantenimiento de SSFV, la planificación del ciclo de vida solo informativa y los diarios con capacidad de aplicación autorizados por separado.
+
+## Responsabilidades
+
+- **Comprobaciones de compatibilidad** entre qxctl, el coordinador y los motores
+- **Reconciliación de worktrees** con estado duradero basado en ranuras
+- **Sesiones no canónicas autenticadas** bajo la autoridad de SSIAG
+- **Flujos persistentes de mantenimiento de SSFV**
+- **Planificación del ciclo de vida solo informativa** con evidencia determinista
+- **Diarios con capacidad de aplicación** con intentos preparados, compare-and-swap, nueva observación, replanificación dinámica y recuperación
+
+## Lo que el coordinador no hace
+
+<Warning>
+  El coordinador no ejecuta la semántica de los vectores ni acciones sobre el host. Coordina la evidencia y los diarios; cada motor sigue siendo propietario de su dominio y cada acción sobre el host sigue estando autorizada por su propio contrato.
+</Warning>
+
+- Ninguna aplicación de conocimiento canónico
+- Ninguna ejecución arbitraria de comandos
+- Ningún observador oculto ni trabajo residente en segundo plano
+
+## Integración con qxctl
+
+qxctl invoca instalaciones exactas del coordinador validadas mediante recibos. `qxctl knowledge reconcile ...` y `qxctl knowledge session ...` utilizan un único coordinador enlazado exacto por operación, y las mutaciones requieren identificadores de operación estables junto con los digests exactos del diario actual para el compare-and-swap.
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/es/qxctl/reconcile">
+    Gramática de reconciliación de worktrees.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/es/qxctl/session">
+    Gramática de sesiones autenticadas y mantenimiento de SSFV.
+  </Card>
+
+  <Card title="Biblioteca base" icon="cube" href="/es/engines/knowledge-vector-foundation">
+    Mecánicas compartidas de C++ que reutiliza el coordinador.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/es/governance/ssiag">
+    Autoriza las sesiones que gestiona el coordinador.
+  </Card>
+</CardGroup>

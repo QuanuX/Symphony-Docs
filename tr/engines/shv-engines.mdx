@@ -1,0 +1,65 @@
+---
+title: "SHV Motorları: Symphony Hardware Vector Kaynağı ve Grafiği"
+description: "SHV motorları; CPU'ları, GPU'ları, NIC'leri, belleği ve depolamayı saklanan kaynak yeniden oynatma, gereksinim değerlendirmesi, PDF alımı ve DuckDB kalıcı grafikleriyle kataloglar."
+sidebarTitle: "SHV Motorları"
+---
+
+Symphony Hardware Vector (SHV) motorları; işlemcileri, CPU topolojisini, önbellekleri, GPU'ları, NIC'leri ve fiber arayüzleri, anakartları, RAM'i ve NVMe'yi kataloglar. Varsayılan derleme, orijinal bileşenlere ve kanıtlanmış varyantlara öncelik verir. Her motor bağımsız olarak kurulabilir ve salt okunurdur.
+
+## Motorlar
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Donanım çekirdeği: çağıran tarafından tanımlanan kapsam, saklanan kaynaktan katalog yeniden oynatma, gereksinim değerlendirmesi ve grafik projeksiyonu.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Donanım kanıtları için kaynak alımı ve revizyon işleme.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Bileşen ve sistem profili değerlendirmesi.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Yeniden üretilebilir seçim için kataloglanmış donanımın bölümlenmesi.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Yönetilen yerel katalog yayını ve seçimi.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Açık grafik aktarım yüzeyi.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    qxctl aracılığıyla yönetilen, DuckDB destekli kalıcı grafik depolaması.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Donanım veri sayfaları için PDF kaynak yorumlama.
+  </Card>
+</CardGroup>
+
+## Yönetimde öne çıkanlar
+
+- **Kalıcı depolama** yalnızca `shv graph store inspect|prepare|commit|status|query|export|schema|template` aracılığıyla yönetilir. Saklanan beklenen niyet özetiyle yapılan `commit` aynı zamanda kurtarmadır; ayrı bir kurtarma takma adı yoktur.
+- **Katalog yayını** yalnızca `shv catalogue publication inspect|plan|apply|status|schema|template` aracılığıyla yönetilir. Kurtarma, `--input` ile karşılıklı olarak dışlayıcı olan `apply --operation-id` komutudur.
+- **Envanter** (sürüm 0.2), `shv graph store inventory` komutunu ekler: açık saklanan yazıcı kimlikleriyle revizyona bağlı mantıksal bir okuma. Eski 0.1 seçimi desteklenmeye devam eder.
+
+<Note>
+  Donanım sınıfları yinelenen komut ağaçları değil, çağıran eşleme ve profil verileridir. `--version` kesin birincil sahibi seçer; `--source-version` ve `--adapter-version` ayrı seçilen bağımlılıkları adlandırır. Şema ve eşleme revizyonları, kurulu motor sürümleri için takma adlar değil, veri kimlikleridir.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SHV vektörü" icon="microchip" href="/tr/vectors/shv">
+    Bu motorların uyguladığı Hardware Vector sözleşmesi.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    Eksiksiz `shv ...` dil bilgisi başvurusu.
+  </Card>
+</CardGroup>

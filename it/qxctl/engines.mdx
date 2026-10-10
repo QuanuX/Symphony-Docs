@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: bind, doctor e migrazione del registro"
+description: "Gestisci il profilo di binding degli engine protetto con ambito utente di Symphony tramite qxctl con list, inspect, doctor, bind, unbind e migrate vincolato al digest."
+sidebarTitle: "engines"
+---
+
+La grammatica `qxctl knowledge engines ...` gestisce il profilo di binding `default` protetto con ambito utente per gli engine vettoriali di Symphony. Associa (bind) contenuti selezionati per una successiva riconciliazione. Non installa, invoca, attiva, aggancia (dock), autentica, autorizza né applica alcun engine.
+
+## Comandi
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Specifica `absent` per la prima mutazione del registro v2, oppure il digest esatto riportato da `list` per le mutazioni successive. Ogni mutazione è un compare-and-swap rispetto a quel digest.
+
+## Migrazione da v1 a v2
+
+<Warning>
+  Lo stato valido del registro v1 resta leggibile. La migrazione a v2 è un compare-and-swap esatto e separato e non è mai un'operazione di selezione della versione. Non considerare la migrazione come un percorso di aggiornamento per la selezione degli engine.
+</Warning>
+
+- `list` e `inspect` continuano a funzionare sulle evidenze v1.
+- `migrate` produce una generazione v2 collegata senza scartare la verità v1.
+- Dopo la migrazione, usa i digest v2 per le mutazioni future.
+
+## Che cos'è un bind
+
+Un bind seleziona contenuti esatti per la successiva riconciliazione da parte del coordinatore. Esso:
+
+- Non installa un engine
+- Non invoca né attiva un engine
+- Non aggancia un engine a Maestro
+- Non autentica un chiamante
+- Non autorizza l'apply
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/it/qxctl/reconcile">
+    Riconcilia i contenuti associati con un coordinatore.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/it/qxctl/lifecycle">
+    Piani di ciclo di vita che usano engine associati.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/it/governance/maestro">
+    Autorità di presenza che registra gli agganci, non i binding.
+  </Card>
+
+  <Card title="Panoramica degli engine" icon="cube" href="/it/engines/overview">
+    Engine vettoriali installabili in modo indipendente.
+  </Card>
+</CardGroup>

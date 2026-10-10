@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector koostamisen arviointiin"
+description: "SAV ratkaisee Accord-viittaukset, arvioi koostamista kolmella akselilla, validoi Named Versionit ja suunnittelee Installation Blueprintit muuttamatta kanonista totuutta."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) ratkaisee ilmoitettujen komponenttien koostamisen ja yhteensopivuuden. Sen moottori on jäädytyspolun vain luku -C++26-prosessi. SAV koostaa tarkkoja tyypitettyjä projektioita, mutta ei koskaan ota lähdetotuutta omistajavektoreilta.
+
+## Operaatiot
+
+SAV tukee laajaa joukkoa arviointioperaatioita:
+
+- **Accord-viittausten ratkaisu** muuttumattomiksi johdetuiksi CURRENT-tilannevedoksiksi
+- **Kolmiakselinen arviointi**, vertailu ja selitys
+- **Koostamisgraafit** ja kertakäyttöiset projektiot
+- **Named Version** -validointi ja erot
+- **Extension Capsule** -tarkistukset
+- **Installation Blueprint** -suunnittelu
+- **Yhteensopivuusneuvottelu** ilmoitettujen komponenttien välillä
+
+## Mitä SAV ei tee
+
+- SAV ei ota semanttista omistajuutta koostamistaan komponenteista.
+- SAV ei valitse suunnittelua puolestasi; se arvioi sen, mitä olet ilmoittanut.
+- SAV ei muuta kanonisia tiedostoja. Sen tuotos on todisteita ja ehdotuksia.
+- SAV ei ole STAV-liiteauktoriteetti. Katso Accordare STAV -tuottaja muutosta edeltävän aikomuksen käsittelyä varten.
+
+<Note>
+  SAV on vain luku-, kysely-, validointi- ja ehdotusmoottori. Ohjelmallinen kanoninen soveltaminen on edelleen poissa käytöstä koko SKV-moottoriperheessä.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys ja Contract Quad -malli.
+  </Card>
+
+  <Card title="Accordare-tuottaja" icon="pen-nib" href="/fi/governance/accordare-producer">
+    Rajattu SAV Named Version -auditointipiiri.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fi/skv/sev">
+    Evoluutiotapaukset, jotka käynnistävät SAV-arvioinnin koostamismuutoksille.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Ratifioitu Accordare-kielioppi tulee muodossa `qxctl accord ...`, kun se on toteutettu.
+  </Card>
+</CardGroup>

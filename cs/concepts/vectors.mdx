@@ -1,0 +1,47 @@
+---
+title: "Vektory a fáze dodávky v Symphony"
+description: "Pochopte rozdíl mezi trvalými doménami sémantického vlastnictví Symphony (vektory) a chronologickými fázemi dodávky, včetně Contract Quad a aktuálního stavu vektorů."
+sidebarTitle: "Vektory a fáze"
+---
+
+Symphony organizuje svou architekturu kolem dvou myšlenek: **vektory** jsou trvalé domény sémantického vlastnictví a **fáze** jsou chronologické kampaně dodávky. Komponenta, která byla poprvé zkoumána v určité fázi, nečiní tuto fázi svým trvalým vlastníkem. Vektory udržují význam stabilní, zatímco se implementace vyvíjí.
+
+## Co je vektor?
+
+Vektor je trvalá ohraničená doména sémantického vlastnictví, jejíž kanonický kontrakt vlastní význam a povolené operace této domény. Každý vektor dostává **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` a `SPEC.md`, plus cílené doprovodné povrchy, které skutečně potřebuje. Vektor deklaruje své kanonické povrchy a graf delegace, SKVI mapuje každý aktuální povrch právě jednou a zastaralé doprovodné povrchy jsou nahrazovány řízeným vývojem, místo aby přetrvávaly jako protichůdný kontext.
+
+## Stav vektorů
+
+| Vektor | Stav | Stránka |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementováno: základ fáze 1 s indexovanými povrchy | [/cs/skv/overview](/cs/skv/overview) |
+| **SKVI** — Indexování zdrojů | Implementováno: engine inspect/check/propose | [/cs/skv/skvi](/cs/skv/skvi) |
+| **SCLV** — Ledger změn | Implementováno: kontroly ledgeru pouze pro připojování | [/cs/skv/sclv](/cs/skv/sclv) |
+| **SACV** — Správa kontraktů API | Implementováno: kontroly OpenAPI 3.2.0 | [/cs/skv/sacv](/cs/skv/sacv) |
+| **SODV** — Správa oficiální dokumentace a vydání | Implementováno: kontroly lokálního ledgeru vydání | [/cs/skv/sodv](/cs/skv/sodv) |
+| **SSFV** — Identita a správa funkcí | Implementováno: strukturální kontroly funkcí | [/cs/skv/ssfv](/cs/skv/ssfv) |
+| **SAV** — Kompozice Accordare | Implementováno: vyhodnocování na mrazivé cestě | [/cs/skv/sav](/cs/skv/sav) |
+| **SEV** — Vývoj | Implementováno: plánování dopadu a dispozic | [/cs/skv/sev](/cs/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementováno: základ v Go bez cgo | [/cs/governance/ssiag](/cs/governance/ssiag) |
+| **STAV** — Auditní protokol TOPS | Implementováno: ledger pouze pro připojování pro každý TOPS | [/cs/governance/stav](/cs/governance/stav) |
+| **SOV** — Ops Vector | Vznikající: provisioning, dodávka Habitatů a Nestů | [/cs/vectors/sov](/cs/vectors/sov) |
+| **SCV** — Cloud Vector | Implementováno: osm enginů znalostí zdrojů v C++ | [/cs/vectors/scv](/cs/vectors/scv) |
+| **SNV** — Node Vector | Vznikající: kompozice SNIV, SNRV, SCIV, SCNV | [/cs/vectors/snv](/cs/vectors/snv) |
+| **SQV** — Quantitative Vector | Vznikající: subvektor architektury FIX SOOV | [/cs/vectors/sqv](/cs/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementováno: enginy zdrojů, katalogu a profilů v C++ | [/cs/vectors/shv](/cs/vectors/shv) |
+| **SIV** — Intelligence Vector | Vznikající: volitelný Markdown SMCV; SAIV rezervováno | [/cs/vectors/siv](/cs/vectors/siv) |
+
+## Contract Quad a doprovodné povrchy
+
+Každý vektor dostává:
+
+1. **INTENT.md** — účel a rozsah
+2. **MANIFEST.md** — identita, deklarované povrchy, graf delegace
+3. **SKILL.md** — bezpečné použití a provozní pokyny
+4. **SPEC.md** — normativní chování a hranice
+
+Doprovodné povrchy, jako jsou `SLANG.md`, `NAMESPACES.md`, registry, schémata a profily, zůstávají řízenými artefakty mimo čtyřčlennou strukturu. Směrují nebo specializují pravdu vlastníka, ale nemohou rozšiřovat své vlastní oprávnění.
+
+## Integrace založená na důkazech
+
+Odložený engine nemá žádné vymyšlené potvrzení. Navrhované API nemá žádný smyšlený záznam v registru. Nepublikovaný kontrakt nemá žádný nárok na dokončení v SODV. Jde o integraci založenou na důkazech, nikoli o ceremoniální duplikaci.

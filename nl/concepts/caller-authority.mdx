@@ -1,0 +1,28 @@
+---
+title: "Neutraliteit ten aanzien van aanroeperklassen en hostautoriteit in Symphony"
+description: "Symphony classificeert aanroepers niet op type. Autoriteit volgt uit eigendom van de doelhost, expliciete toestemming, verwachte status en door de eigenaar geconfigureerde waarborgen."
+sidebarTitle: "Aanroeperautoriteit"
+---
+
+Symphony classificeert een aanroeper niet als mens, AI, agent, service, workload, organisatie of enig ander type actor bij het bepalen van autoriteit. Uw classificatie als persoon of als geautomatiseerd systeem verleent of ontneemt op zichzelf geen enkele capaciteit. Deze neutraliteit ten aanzien van aanroeperklassen is een kerngrens in de architectuur die autorisatie verankert in feiten in plaats van labels.
+
+## Wat autoriteit bepaalt
+
+Ondersteunde autorisatiebeslissingen gebruiken de volgende invoer:
+
+- **Eigendom van de doelhost of verleende rechten**: de beheerder van de doelhost is soeverein over configureerbare governance.
+- **Gevraagde bewerking en resource**: de specifieke actie en het object waarop deze inwerkt.
+- **Verwachte status**: de gedeclareerde gewenste uitkomst en de waargenomen huidige status.
+- **Door de eigenaar geconfigureerde waarborgen**: conservatieve standaardwaarden die de beheerder kan aanpassen of verwijderen.
+
+## SSIAG en hostautoriteit
+
+SSIAG kan effectieve hostautoriteit verifiëren en projecteren, maar creëert geen hogere registratieautoriteit en heeft geen permanent veto over de beheerder van de doelhost. Verhoogde identiteitszekerheid en governance-interlocks zijn aanroeperneutrale, door de eigenaar geconfigureerde waarborgen. Vereisten voor protocolintegriteit blijven verplicht binnen ondersteunde tooling.
+
+## Waarover Symphony niet beslist
+
+Symphony beslist niet of een actor eigendom mag bezitten, een rekening mag openen, een contract mag ondertekenen, aansprakelijkheid mag aanvaarden of namens een andere entiteit mag handelen. Die feiten behoren toe aan de relevante eigenaar, provider, tegenpartij en het toepasselijke recht. Het platform blijft binnen zijn begrensde rol: het produceert compatibiliteitsbewijs en ondersteunt bewerkingen, maar strekt zich niet uit tot het vaststellen van externe juridische of financiële bevoegdheid.
+
+## Praktische implicatie
+
+Wanneer u qxctl of een vectorengine aanroept, gelden dezelfde controles, ongeacht of u de opdracht handmatig uitvoert, via een script of via een agentic tool. Het autoriteitspad is: eigendom van de doelhost, expliciete toestemming, verwachte status, waarborgen. Geen enkel type aanroeper krijgt een automatische omzeiling of een automatische beperking.

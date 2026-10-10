@@ -1,0 +1,57 @@
+---
+title: "Silniki wektorów Symphony: przegląd niezależnej instalacji"
+description: "Każdy silnik wektora Symphony instaluje się niezależnie, działa poza procesem w C++ i pozostaje pozbawiony uprawnień. Poznaj tutaj rodziny silników SKV, SCV i SHV."
+sidebarTitle: "Przegląd silników"
+---
+
+Każdy aktywny wektor Symphony na poziomie aplikacji może mieć niezależnie instalowany silnik C++ działający poza procesem. Wspólne, pozbawione uprawnień mechanizmy C++ znajdują się w `libraries/`; oddzielny koordynator C++ jest właścicielem mechanizmów uwierzytelnionych sesji i uzgadniania drzew roboczych. Silniki sprawdzają, walidują, odwzorowują i proponują w ramach kontraktów należących do wektorów. Nie zyskują uprawnień tylko dlatego, że generują treść.
+
+## Zaimplementowane silniki
+
+<CardGroup cols={2}>
+  <Card title="Fundament Knowledge Vector" icon="cube" href="/pl/engines/knowledge-vector-foundation">
+    Ramkowanie procesów w C++, JSON, SHA-256, migawki, potwierdzenia i wykrywanie manifestów.
+  </Card>
+
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Uwierzytelnione sesje, uzgadnianie drzew roboczych i koordynacja stosowania zmian w cyklu życia.
+  </Card>
+
+  <Card title="Silniki źródłowe SCV" icon="cloud" href="/pl/engines/scv-source-engines">
+    Osiem silników wiedzy źródłowej C++26 dla SCV, hyperscalerów, edge i dostawców.
+  </Card>
+
+  <Card title="Silniki SHV" icon="microchip" href="/pl/engines/shv-engines">
+    Silniki źródeł sprzętowych, katalogu, profili, partycji, publikacji i adapterów.
+  </Card>
+</CardGroup>
+
+## Rodzina silników SKV
+
+Każda z powierzchni SKV ma własny silnik:
+
+- Silniki SKVI, SCLV, SACV, SODV i SSFV implementują operacje inspect, check, propose, project (oraz recovery, jeśli ma zastosowanie).
+- Silniki SAV i SEV to procesy C++26 ścieżki zamrożonej służące do oceny kompozycji i przypadków ewolucji.
+
+<Note>
+  Każdy obecny silnik SKV służy wyłącznie do odczytu, zapytań, walidacji i proponowania. Programowe stosowanie zmian kanonicznych pozostaje wyłączone do czasu ukończenia dla każdego silnika kontraktów weryfikacji uprawnień SSIAG, transakcji oczekiwanego stanu, zabezpieczeń qxctl, zdarzeń STAV, odzyskiwania i testów negatywnych.
+</Note>
+
+## Wspólne gwarancje
+
+- Niezależna instalacja i deinstalacja każdego modułu
+- Brak przeszukiwania repozytorium na ślepo; wykrywanie manifestów jest jawne
+- Brak współdzielonych uprawnień; każda trasa mutacji jest chroniona przez SSIAG i STAV
+- Brak rezydencji na ścieżce krytycznej; silniki nigdy nie wprowadzają opóźnień do obciążeń na żywo
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="Przegląd qxctl" icon="terminal" href="/pl/qxctl/overview">
+    Administracyjne CLI wywołujące dokładnie określone silniki walidowane potwierdzeniami.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/pl/governance/maestro">
+    Rejestruje relacje dokowania między silnikami a receptorami.
+  </Card>
+</CardGroup>

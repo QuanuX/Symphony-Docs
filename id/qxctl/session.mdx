@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Sesi Symphony Terautentikasi"
+description: "Buka, checkpoint, tutup, dan pulihkan sesi coordinator Symphony yang terautentikasi serta stream pemeliharaan SSFV persisten dengan grant yang diverifikasi SSIAG."
+sidebarTitle: "session"
+---
+
+Grammar `qxctl knowledge session ...` membuka sesi terautentikasi nonkanonis melalui satu coordinator terikat yang persis dan satu endpoint SSIAG bercakupan TOPS. Grammar `session features ...` yang terpisah menjalankan stream pemeliharaan SSFV persisten.
+
+## Grammar sesi dasar
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Setiap panggilan meminta grant persis yang baru dan memvalidasi:
+
+- Identitas subjek dan target
+- State kebijakan dan konfigurasi
+- Kedaluwarsa
+- Netralitas kelas pemanggil
+- Tidak dapat dialihkan
+- Penonaktifan apply kanonis
+- Binding kapabilitas
+
+Bukti sesi hanya mengotorisasi operasi nonkanonis terlindungi yang disebutkan. Pisahkan jurnal sesi dan jurnal rekonsiliasi; gunakan referensi konteks hanya untuk mengaitkan keduanya.
+
+## Stream pemeliharaan SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Stream features adalah konteks pemeliharaan SSFV persisten yang terpisah. Mutasi memerlukan:
+
+- Sesi dasar terautentikasi yang terbuka
+- Binding coordinator dan SSFV yang persis
+- Identifier operasi yang stabil
+- Compare-and-swap yang persis
+- Bukti SSIAG yang baru
+
+<Note>
+  Pertahankan snapshot baseline dan identitas engine aslinya di seluruh upgrade atau rollback yang kompatibel. Bukti Maestro opsional harus berupa inventaris terautentikasi yang lengkap; ketika Maestro sengaja tidak ada, catat alasan not-configured yang eksplisit. `review_required` adalah bukti untuk tinjauan pemanggil, bukan ratifikasi.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/id/governance/ssiag">
+    Menerbitkan grant baru yang divalidasi oleh setiap permintaan sesi.
+  </Card>
+
+  <Card title="Session coordinator" icon="gears" href="/id/engines/coordinator">
+    Engine yang mendukung jurnal sesi dan features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/id/qxctl/reconcile">
+    Konteks rekonsiliasi yang berpasangan dengan sesi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/id/skv/ssfv">
+    Vektor fitur yang dipelihara oleh stream features.
+  </Card>
+</CardGroup>

@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: laitteistokyvykkyystieto"
+description: "SHV ylläpitää laitteistokyvykkyystietoa suorittimista, näytönohjaimista, verkkokorteista, emolevyistä, RAM-muistista ja NVMe:stä useiden itsenäisesti asennettavien C++-moottorien avulla."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) omistaa laitteistokyvykkyystiedon, joka auttaa ymmärtämään, miten fyysinen suunnittelu voi mahdollistaa, rajoittaa, siirtää tai laajentaa kvantitatiivista ohjelmistoa. Se kattaa suorittimet, suoritinytimien tyypit, näytönohjaimet, verkkokortit ja kuituliitännät, emolevyt, välimuistihierarkiat, muistin, NVMe:n ja kokonaiset järjestelmäkokoonpanot. Oletuskuratointi priorisoi alkuperäisiä komponentteja ja todisteisiin perustuvia variantteja vuodesta 2018 alkaen.
+
+## Laajuus ja kattavuus
+
+SHV voi kattaa minkä tahansa todisteisiin perustuvan fyysisen kyvykkyyden, joka on olennainen ohjelmasuunnittelun kannalta. Hallitset kattavuusprofiilia qxctl:n kautta. Oletusarvoinen päivämääräperuste on mallin julkistus, ei pääteltävä yksittäisen laitteen valmistuspäivä. Voit laajentaa, kaventaa, korvata tai poistaa tämän suodattimen.
+
+## Toteutetut moottorit
+
+SHV-tieto toimitetaan useiden itsenäisesti asennettavien C++-moottorien kautta:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Ydin (0.4.0-dev): kattavuusprofiilit, säilytettyjen lähteiden luettelon rakentaminen ja toisto, vaatimusten arviointi, deterministinen graafiprojektio ja lähteisiin perustuva graafin validointi.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Lähdeidentiteetti, siirtosuunnitelmat, tavukaappauksen sidonta ja lähteistä toistetut alkuperägraafit.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Ilmoitusten vaatimustenmukaisuus, siirrettävät reseptit ja tarkka paikallisen lähteen sidonta.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Laitteiston osiointi- ja komponenttien kartoitusoperaatiot.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Suojatut kutsujan luettelon kärjet, alkuperäisten lähteiden toisto ja pysyvä tilannevedosten palautus.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Yleinen C++-graafiportti ja muistinsisäinen siirrettävä viiteadapteri häviöttömään vaihtoon.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Valinnainen DuckDB-relaatioprojektio laitteistograafin todisteista.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Rajattu PDF-poiminta ja dokumentaaristen väitteiden uudelleenvalidointi alkuperäisistä tavuista.
+  </Card>
+</CardGroup>
+
+## Lähteiden revisiot ja alkuperä
+
+`shv-source-engine` toteuttaa vakaan lähdeidentiteetin, eksplisiittiset siirtosuunnitelmat, puhtaan siirtymien validoinnin, todellisten tavujen kaappauksen sidonnan ja lähteistä toistetut alkuperägraafit. Nämä ovat vain luku -operaatioita. Ydinkuratointi priorisoi alkuperäisten komponenttien identiteettiä ja todisteisiin perustuvia variantteja. Suojattu lähteiden aktivointi käsitellään erikseen; puhdas lähdemoottori ei myönnä auktoriteettia.
+
+## Graafien vaihto ja tallennus
+
+`shv-graph-adapter` tarjoaa yleisen C++-graafiportin häviöttömään vaihtoon ja rakenteellisiin kyselyihin. Pysyvä tallennus on toteutettu DuckDB-SQL-oletuksen kautta. Erillistä graafitietokantaa ei ole tällä hetkellä valittu.
+
+## PDF-todisteiden raja
+
+`shv-pdf-adapter` poimii päteviä dokumentaarisia väitteitä eksplisiittisistä PDF-taulukoista ja validoi ne uudelleen alkuperäisistä tavuista yleisen graafivaihdon jälkeen. Yleinen PDF-kattavuus on edelleen erillinen rajattu työ.
+
+## Jäljellä oleva työ
+
+Laaja laitteistokartasto, automatisoitu lähteiden hankinta, useiden lähteiden ristiriitojen yhdistäminen, lisää valmistajakohtaisia tietokanta-ajureita, mukautettujen liitännäisten lataus ja Composer-integraatio ovat myöhempää työtä. Myös laajat komponenttikartoitukset ja pysyvät valmistaja-ajurit ovat vielä avoinna.
+
+## Miten SHV liittyy muihin vektoreihin
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/fi/vectors/snv">
+    Kirjaa Nodet, jotka sisältävät SHV:n kuvaaman laitteiston.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/fi/vectors/scv">
+    Viittaa palveluntarjoajien laitteistotarjoomiin, joita SHV kuvaa yksityiskohtaisesti.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/fi/vectors/sov">
+    Voi toimia SHV-todisteiden pohjalta provisioidessaan tai valmistellessaan Nodeja.
+  </Card>
+</CardGroup>

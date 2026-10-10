@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: बाइंड, डॉक्टर, रजिस्ट्री माइग्रेट करें"
+description: "qxctl के माध्यम से list, inspect, doctor, bind, unbind और डाइजेस्ट-बद्ध migrate के साथ Symphony की संरक्षित यूज़र-स्कोप इंजन बाइंडिंग प्रोफ़ाइल प्रबंधित करें।"
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` ग्रामर Symphony के वेक्टर इंजनों के लिए संरक्षित यूज़र-स्कोप `default` बाइंडिंग प्रोफ़ाइल का प्रबंधन करता है। यह बाद के रिकंसिलिएशन के लिए चयनित सामग्री को बाइंड करता है। यह किसी इंजन को इंस्टॉल, इनवोक, सक्रिय, डॉक, प्रमाणित, अधिकृत या लागू (apply) नहीं करता।
+
+## कमांड
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+पहले v2 रजिस्ट्री म्यूटेशन के लिए `absent` दें, या बाद के म्यूटेशन के लिए `list` द्वारा रिपोर्ट किया गया सटीक डाइजेस्ट दें। हर म्यूटेशन उसी डाइजेस्ट के विरुद्ध compare-and-swap होता है।
+
+## v1 से v2 माइग्रेशन
+
+<Warning>
+  वैध v1 रजिस्ट्री स्टेट पठनीय बनी रहती है। v2 में माइग्रेशन एक अलग सटीक compare-and-swap है और यह कभी भी संस्करण-चयन ऑपरेशन नहीं है। माइग्रेशन को इंजन चयन के लिए अपग्रेड पथ के रूप में न लें।
+</Warning>
+
+- `list` और `inspect` v1 साक्ष्य पर काम करते रहते हैं।
+- `migrate` v1 सत्य को त्यागे बिना एक लिंक्ड v2 जनरेशन बनाता है।
+- माइग्रेशन के बाद, भविष्य के म्यूटेशन के लिए v2 डाइजेस्ट का उपयोग करें।
+
+## बाइंड क्या है
+
+एक बाइंड, कोऑर्डिनेटर द्वारा बाद के रिकंसिलिएशन के लिए सटीक सामग्री का चयन करता है। यह:
+
+- किसी इंजन को इंस्टॉल नहीं करता
+- किसी इंजन को इनवोक या सक्रिय नहीं करता
+- किसी इंजन को Maestro के साथ डॉक नहीं करता
+- किसी कॉलर को प्रमाणित नहीं करता
+- apply को अधिकृत नहीं करता
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/hi/qxctl/reconcile">
+    बाइंड की गई सामग्री को कोऑर्डिनेटर के साथ रिकंसाइल करें।
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/hi/qxctl/lifecycle">
+    बाइंड किए गए इंजनों का उपयोग करने वाली लाइफ़साइकल योजनाएँ।
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/hi/governance/maestro">
+    प्रेज़ेंस अथॉरिटी जो डॉकिंग रिकॉर्ड करती है, बाइंडिंग नहीं।
+  </Card>
+
+  <Card title="इंजन अवलोकन" icon="cube" href="/hi/engines/overview">
+    स्वतंत्र रूप से इंस्टॉल किए जा सकने वाले वेक्टर इंजन।
+  </Card>
+</CardGroup>

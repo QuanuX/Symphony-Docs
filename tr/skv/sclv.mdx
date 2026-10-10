@@ -1,0 +1,48 @@
+---
+title: "SCLV: Kaynak Değişiklikleri için Symphony Change Ledger Vector"
+description: "SCLV, tamamlanmış kaynak değişikliklerinin yalnızca eklemeli bir defterini sağlayıcıdan bağımsız öneriler, değiştirmeyen kurtarma ve kayıt için atılabilir projeksiyonlarla tutar."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV), SKV yüzeylerinde zaman içinde yapılan değişiklikleri kaydeder. Engine'i, deterministik yalnızca eklemeli defter kontrolleri yapan ve atılabilir projeksiyonlar üreten, bağımsız olarak kurulabilen bir C++ sürecidir. Deftere yalnızca önemli bir kaynak değişikliği tamamlandıktan sonra yazılır.
+
+## İşlemler
+
+- **İnceleme ve kontrol**: Defter biçimini, sürekliliğini ve kanıtlarını doğrular.
+- **Önerme (v3)**: Yeni kayıtlar için çağıran tarafından bildirilen, sağlayıcıdan bağımsız önerileri kabul eder.
+- **Kurtarma**: Kesintiye uğramış veya belirsiz durumun değiştirmeyen kurtarmasını gerçekleştirir.
+- **Projeksiyon**: İstek üzerine defter durumunun atılabilir envanterlerini üretir.
+
+## Kabul ve emeklilik
+
+Kabul edilen her SCLV kaydı, yazıldığı anda mevcut dizinlenmiş kanıtı bağlar. Bir yüzeyin daha sonra meşru biçimde emekliye ayrılması, silinmiş mevcut metni SKVI'ye geri zorlamadan değiştirilemez tarihsel kökeni korur. Geçmiş geçmiş olarak kalır; mevcut gerçek mevcut olarak kalır.
+
+## SCLV neler yapmaz
+
+- SCLV kaynak değişiklikleri oluşturmaz veya onaylamaz.
+- SCLV mevcut kayıtları yeniden yazmaz; yalnızca eklemelidir.
+- SCLV hiçbir şey yayımlamaz. Genel projeksiyon SODV'ye aittir.
+
+<Note>
+  Mevcut her SKV engine'i yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Kanonik uygulama, her engine'in tam yetki ve denetim sözleşmeleri tamamlanana kadar devre dışıdır.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/tr/skv/skvi">
+    SCLV kayıtlarının bağlandığı mevcut kanonik gerçeği dizinler.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    Defter bilgilerinin resmî genel projeksiyonunu yönetir.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/tr/skv/sev">
+    Evrim vakaları, değişiklikleri SCLV kaydetmeden önce değerlendirir.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    İnceleme, kontrol, önerme ve kurtarma için `qxctl sclv ...` komutunu çalıştırın.
+  </Card>
+</CardGroup>

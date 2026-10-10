@@ -1,0 +1,82 @@
+---
+title: "qxctl-vektorkommandoer: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Udforsk den vektorspecifikke qxctl-grammatik, der er tilgængelig i dag: SKVI, SCLV, SACV, SODV, SSFV, SHV-lager og -katalog samt reserverede accord- og evolution-flader."
+sidebarTitle: "Vektorkommandoer"
+---
+
+qxctl eksponerer vektorspecifik grammatik for hver implementeret SKV-motor og til administration af SCV og SHV. Ratificeret grammatik for Accordare og SEV vil bruge `qxctl accord ...` og `qxctl evolution ...`, når deres kommandoimplementeringer og stabil registerevidens findes.
+
+## Grammatik for SKV-motorer
+
+- `qxctl skvi ...`: inspect, check, propose, project mod SKVI-motoren
+- `qxctl sclv ...`: inspect, check, propose, recover, project mod SCLV-motoren
+- `qxctl sacv ...`: inspect, check, diff, propose, project mod SACV-motoren
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project mod SODV-motoren
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph mod SSFV-motoren
+
+Hver grammatik er afgrænset af den ejende motors kontrakt. qxctl opfinder aldrig en operation og omgår aldrig motoren.
+
+## Accordare-tilføjelser
+
+Accordare-tilføjelserne i qxctl giver:
+
+- Stabil status
+- Afstemning (genafspiller kun nøjagtige kandidater)
+- Installation og afinstallation af supervisor (kalder kun den verificerede receipt-v2-eksekverbare fil)
+- To identiteter for tildelingsadministration, der kun ændrer den stoppede STAV-konfiguration under SSIAG og gendannelse med forventet tilstand
+
+Status adskiller varig hensigt og append-backlog. Afstemning genafspiller kun nøjagtige kandidater. Tildelingsblade åbner aldrig en kørende konfiguration.
+
+## SHV-lager
+
+Varigt SHV-lager administreres kun via:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` med det bevarede forventede hensigtsdigest er også gendannelse. Der findes ikke noget separat gendannelsesalias. Lagerets scope erklæres i inputtet; connector-identiteten angives i flag. Strukturelt lager duplikerer ikke den semantiske `shv graph validate` og vælger ikke et katalog-head.
+
+`shv graph store inventory` (udgivelse 0.2) tilføjer en revisionsbundet logisk læsning med eksplicit bevarede skriveridentiteter. Legacy-valg fra 0.1 understøttes fortsat.
+
+## Publicering af SHV-katalog
+
+Katalogpublicering administreres kun via:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Gendannelse er `apply --operation-id`, som udelukker `--input`. Tilladelsesbaseret lokalt katalogvalg er adskilt fra kildeaktivering og generisk graflager.
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Oversigt over SKV" icon="book-open" href="/da/skv/overview">
+    Den vektorsemantik, som motorerne implementerer.
+  </Card>
+
+  <Card title="SHV-vektor" icon="microchip" href="/da/vectors/shv">
+    Baggrund for Hardware Vector og liste over motorer.
+  </Card>
+
+  <Card title="SHV-motorer" icon="microchip" href="/da/engines/shv-engines">
+    Detaljer på motorniveau.
+  </Card>
+
+  <Card title="Oversigt over qxctl" icon="terminal" href="/da/qxctl/overview">
+    Den komplette qxctl-kommandoflade.
+  </Card>
+</CardGroup>

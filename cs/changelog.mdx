@@ -1,0 +1,25 @@
+---
+title: "Přehled změn"
+description: "Nové funkce, aktualizace a opravy vydané pro QuanuX Symphony."
+rss: true
+---
+
+<Update label="2. října 2026" description="Týden od 25. září" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Nové funkce
+
+- **Enginy Symphony Node Vector.** Pět samostatně instalovatelných enginů v C++26 nyní pokrývá identitu Node (SNIV), prostředky (SNRV), vztahy v clusteru (SCIV), názvy (SCNV) a kompozici a uchovávání SNV. Dodané důkazy, vybrané pohledy a uchovanou historii můžete spravovat prostřednictvím qxctl. Živé pozorování a provisioning přes SOV zatím zahrnuty nejsou. Viz [Node Vector](/cs/vectors/snv).
+- **Volitelný lokální pozorovatel SNV.** qxctl může vyvolat samostatného lokálního pozorovatele, který hlásí vybraná pozorování CPU a paměti s explicitně vyjádřenou nejistotou. Nikdy nepřiřazuje identitu, členství ani názvy.
+- **Základy výzkumných dat SQV.** Nové knihovny v C++26 pokrývají sběr s původními bajty a provenienci zdroje (SQAV), metadata (SQMV), tok (SQFV), přesný celočíselný převod s rodokmenem (SQTV), lokální uchovávání (SQPV) a doručování s kontrolními body a přesným navázáním (SQDV). Viz [Quantitative Vector](/cs/vectors/sqv).
+- **Správa SQV prostřednictvím qxctl.** Sedm samostatně instalovatelných správních enginů zpřístupňuje validaci požadavků a konfigurace, projekce metadat a inspekci uchovaného stavu pouze pro čtení. Viz [Příkazy vektorů](/cs/qxctl/vector-commands).
+- **Adaptéry pro Databento a brokery.** SQV nyní podporuje sběr Databento DBNv3 MBO, zachovává vzorky DBNv1 a DBNv3 a plánuje ohraničené historické požadavky s důkazy o pokrytí. K dispozici jsou také neživé adaptéry pro čtení ze zdrojů a od brokerů. Autentizované spouštění u poskytovatelů a živý sběr zůstávají budoucí prací.
+
+## Aktualizace
+
+- **Přijímání pověření v SSIAG.** SSIAG přidává jednorázové ochrany použití pověření, autentizované přijímání dispatchů, trvalý žurnál požadavků na pověření s obnovou a nativní validaci protějšků v macOS. Provozní použití pověření zůstává vypnuté. Viz [SSIAG](/cs/governance/ssiag).
+- **Pokrytí příkazů qxctl.** qxctl nyní má 399 stabilních identit příkazů, oproti původním 383. Vazby enginů podporují 13 zavedených rolí, včetně pěti enginů SNV. Viz [Přehled qxctl](/cs/qxctl/overview).
+- **Dávkové rozhraní SQFV.** Dávková knihovna SQFV nyní místo C ABI používá API v C++26. Aktualizujte všechny integrace, které volaly předchozí rozhraní.
+- **Kapacita SKVI.** [SKVI](/cs/skv/skvi) indexuje více povrchů, včetně nových vlastníků výzkumných dat SQV.
+- **Pokyny k instalaci enginů.** Pokyny k instalaci nyní upřesňují, že každý engine instalujete, aktualizujete a odebíráte jednotlivě. Viz [Přehled enginů](/cs/engines/overview).
+
+</Update>

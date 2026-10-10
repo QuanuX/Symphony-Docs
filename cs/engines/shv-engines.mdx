@@ -1,0 +1,65 @@
+---
+title: "Enginy SHV: zdroje a graf Symphony Hardware Vector"
+description: "Enginy SHV katalogizují CPU, GPU, NIC, paměti a úložiště s přehráváním uchovaných zdrojů, vyhodnocováním požadavků, zpracováním PDF a trvalými grafy v DuckDB."
+sidebarTitle: "Enginy SHV"
+---
+
+Enginy Symphony Hardware Vector (SHV) katalogizují procesory, topologii CPU, cache, GPU, NIC a optická rozhraní, základní desky, RAM a NVMe. Výchozí kurátorství upřednostňuje originální komponenty a doložené varianty. Každý engine je samostatně instalovatelný a slouží pouze ke čtení.
+
+## Enginy
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Hardwarové jádro: pokrytí definované volajícím, přehrávání katalogu z uchovaných zdrojů, vyhodnocování požadavků a projekce grafu.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Zpracování zdrojů a revizí pro hardwarové důkazy.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Vyhodnocování profilů komponent a systémů.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Rozdělování katalogizovaného hardwaru pro reprodukovatelný výběr.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Řízená lokální publikace a výběr katalogu.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Explicitní povrch pro přenos grafu.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Trvalé úložiště grafu založené na DuckDB, spravované přes qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretace zdrojů PDF pro hardwarové datové listy.
+  </Card>
+</CardGroup>
+
+## Hlavní body správy
+
+- **Trvalé úložiště** se spravuje výhradně prostřednictvím `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` s uchovaným digestem očekávaného záměru slouží zároveň jako obnova; samostatný alias pro obnovu neexistuje.
+- **Publikace katalogu** se spravuje výhradně prostřednictvím `shv catalogue publication inspect|plan|apply|status|schema|template`. Obnova se provádí pomocí `apply --operation-id`, které se vzájemně vylučuje s `--input`.
+- **Inventář** (vydání 0.2) přidává `shv graph store inventory`: logické čtení vázané na revizi s explicitními uchovanými identitami zapisovatelů. Starší výběr z verze 0.1 zůstává podporován.
+
+<Note>
+  Třídy hardwaru jsou mapovacími a profilovými daty volajícího, nikoli duplicitními stromy příkazů. `--version` vybírá přesného primárního vlastníka; `--source-version` a `--adapter-version` pojmenovávají samostatné vybrané závislosti. Revize schémat a mapování jsou datové identity, nikoli aliasy pro verze nainstalovaných enginů.
+</Note>
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="Vektor SHV" icon="microchip" href="/cs/vectors/shv">
+    Kontrakt Hardware Vector, který tyto enginy implementují.
+  </Card>
+
+  <Card title="Příkazy vektorů v qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Úplná reference gramatiky `shv ...`.
+  </Card>
+</CardGroup>

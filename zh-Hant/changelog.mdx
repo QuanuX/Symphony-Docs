@@ -1,0 +1,25 @@
+---
+title: "更新日誌"
+description: "QuanuX Symphony 推出的新功能、更新與修正。"
+rss: true
+---
+
+<Update label="2026 年 10 月 2 日" description="9 月 25 日當週" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## 新功能
+
+- **Symphony Node Vector 引擎。** 五個可獨立安裝的 C++26 引擎，現已涵蓋 Node 身分（SNIV）、資源（SNRV）、叢集關係（SCIV）、名稱（SCNV），以及 SNV 的組合與保留。你可以透過 qxctl 管理所提供的證據、所選檢視與保留的歷史記錄。即時觀測與 SOV 佈建目前尚未納入。請參閱 [Node Vector](/zh-Hant/vectors/snv)。
+- **選用的 SNV 本機觀測器。** qxctl 可以呼叫一個獨立的本機觀測器，回報所選的 CPU 與記憶體觀測結果，並明確標示不確定性。它絕不會指派身分、成員資格或名稱。
+- **SQV 研究資料基礎。** 新的 C++26 程式庫涵蓋保留原始位元組與來源出處的擷取（SQAV）、中繼資料（SQMV）、資料流（SQFV）、具血緣記錄的精確整數轉換（SQTV）、本機保留（SQPV），以及具檢查點與精確續傳的交付（SQDV）。請參閱 [Quantitative Vector](/zh-Hant/vectors/sqv)。
+- **透過 qxctl 管理 SQV。** 七個可獨立安裝的管理引擎提供請求與設定驗證、中繼資料投影，以及唯讀的保留狀態檢查。請參閱 [Vector 指令](/zh-Hant/qxctl/vector-commands)。
+- **Databento 與券商轉接器。** SQV 現已支援 Databento DBNv3 MBO 擷取、保留 DBNv1 與 DBNv3 樣本，並以涵蓋範圍證據規劃有界限的歷史資料請求。非即時來源與券商讀取轉接器也已推出。經驗證的供應商執行與即時蒐集仍屬未來工作。
+
+## 更新
+
+- **SSIAG 憑證准入。** SSIAG 新增一次性憑證使用防護、經驗證的派送准入、具備復原能力的持久憑證請求日誌，以及 macOS 上的原生對等端驗證。營運用途的憑證使用仍維持停用。請參閱 [SSIAG](/zh-Hant/governance/ssiag)。
+- **qxctl 指令涵蓋範圍。** qxctl 現在擁有 399 個穩定的指令識別，較先前的 383 個增加。引擎繫結支援 13 個既定角色，包括五個 SNV 引擎。請參閱 [qxctl 概觀](/zh-Hant/qxctl/overview)。
+- **SQFV 批次介面。** SQFV 批次程式庫現在改用 C++26 API，而非 C ABI。請更新任何呼叫先前介面的整合。
+- **SKVI 容量。** [SKVI](/zh-Hant/skv/skvi) 會為更多介面建立索引，包括新的 SQV 研究資料擁有者。
+- **引擎安裝指引。** 安裝指引現在明確說明，你需要個別安裝、更新與移除每個引擎。請參閱 [引擎概觀](/zh-Hant/engines/overview)。
+
+</Update>

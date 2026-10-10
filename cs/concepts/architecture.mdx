@@ -1,0 +1,33 @@
+---
+title: "Architektura Symphony"
+description: "Pochopte hranice mezi uživatelem vybranou infrastrukturou, vektorovými kontrakty, enginy, qxctl a řízenými důkazy."
+sidebarTitle: "Architektura"
+---
+
+Symphony odděluje uživatelem vybranou infrastrukturu a workloady od znalostí a správy platformy. Platforma může kontrolovat, validovat a hlásit kompatibilitu, aniž by si nárokovala vlastnictví vaší strategie nebo považovala doporučení za příkaz.
+
+## Fyzická vrstva a vrstva workloadů
+
+[Node](/cs/concepts/node-habitat-nest) je identifikovaný fyzický počítač. **Habitat** je jeho přesné vybavení operačním systémem a balíčky a **Nest** je workload sloužící účelu, který zvolil uživatel. Clustery propojují Nody prostřednictvím jedné nebo více sběrnic. Struktury sběrnic, adaptéry, poskytovatelé a volby hardwaru jsou explicitní, nikoli univerzální výchozí hodnoty.
+
+[Hot path](/cs/concepts/hot-path-isolation) zůstává oddělená od rezidence správních komponent. Práce qxctl a znalostní roviny může Node explicitně spravovat, ale nestává se skrytou trvalou závislostí živého provádění.
+
+## Sémantické vlastnictví
+
+[Vektory](/cs/concepts/vectors) jsou ohraničení, trvalí vlastníci významu a povolených operací. Každý vlastník publikuje Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` a `SPEC.md`. [Symphony Knowledge Vector (SKV)](/cs/skv/overview) indexuje kanonické povrchy a uchovává cestu k jejich vlastníkovi. Doprovodná schémata, registry a ledgery zůstávají řízené, aniž by se staly dalšími členy Quadu.
+
+Fáze dodávky popisují, kdy se práce provádí. Nepřevádějí sémantické vlastnictví z jednoho vektoru na jiný.
+
+## Enginy a příkazový povrch
+
+[Vektorové enginy](/cs/engines/overview) jsou samostatně instalovatelné komponenty běžící mimo proces, které v rámci kontraktů svých vlastníků kontrolují, ověřují, promítají a navrhují. Pouhým vytvořením návrhu nezískávají žádné oprávnění.
+
+[qxctl](/cs/qxctl/overview) vlastní gramatiku správních příkazů a jejich prezentaci. Vyvolává ohraničené schopnosti validované potvrzením, zatímco vektor, který operaci definuje, si ponechává její sémantiku. Cesty provádějící změny řídí autorizační a auditní důkazy; samotná [klasifikace volajícího](/cs/concepts/caller-authority) žádné oprávnění neuděluje.
+
+## Pravda a vývoj
+
+Aktuální kontrakty uvádějí aktuální pravdu. Ledgery změn a publikací uchovávají důkazy zaznamenané v určitém okamžiku. Rozpor mezi kontrakty, důkazy o implementaci a zaznamenanou historií se zobrazuje jako drift, místo aby byl potichu přepsán. [SAV](/cs/skv/sav) vyhodnocuje kompatibilitu kompozice; [SEV](/cs/skv/sev) plánuje řízený vývoj.
+
+<Note>
+  Tento přehled je mapou hranic. Než budete považovat určitou schopnost za dostupnou v konkrétní instalaci, nahlédněte do aktuálního kontraktu a důkazů o implementaci každého odkazovaného vektoru.
+</Note>

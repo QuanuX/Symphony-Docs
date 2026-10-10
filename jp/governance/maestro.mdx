@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony の Vector エンジン存在権限"
+description: "Maestro は、TOPS とレセプターごとに認証済みの vector エンジンのドッキング関係を記録し、エンジンを起動・監督することなく完全な読み取り専用インベントリーを導出します。"
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) は、個別にインストール可能なフリージングパスの C++26 存在権限です。TOPS とレセプターごとに、厳密に認証された vector エンジンのドッキング関係を記録し、現在ドッキングしているものの完全な読み取り専用インベントリーを導出します。Maestro は監督者ではなく、証人です。
+
+## Maestro が記録するもの
+
+- vector エンジンとレセプター間の、厳密に認証されたドッキング関係
+- TOPS ごとのスコープ設定により、各インストールの存在情報はそのインストール内で非公開に保たれる
+- `qxctl maestro inventory` を通じて利用できる、導出された完全な読み取り専用インベントリー
+
+## Maestro が行わないこと
+
+<Warning>
+  Maestro はエンジンの起動、スケジュール、監督、呼び出しを行いません。バインディング、調整、認証済みセッションの調整、ライフサイクル計画だけでは、Maestro の存在が確立されたり、セマンティックな真実が承認されたり、正規のナレッジが変更されたり、インストール済みホストの完全性が証明されたりすることはありません。
+</Warning>
+
+- Maestro はプロセスを作成しません。
+- Maestro が正規のナレッジの変更を適用することはありません。
+- Maestro がセマンティクスを所有する vector エンジンを置き換えることはありません。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/jp/qxctl/maestro">
+    `qxctl maestro inventory` は導出されたインベントリーを表示します。
+  </Card>
+
+  <Card title="セッションコーディネーター" icon="gears" href="/jp/engines/coordinator">
+    認証済みセッションとワークツリー調整のメカニズムを所有します。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/jp/governance/ssiag">
+    Maestro が記録するドッキング関係を認証します。
+  </Card>
+
+  <Card title="エンジンの概要" icon="cube" href="/jp/engines/overview">
+    Maestro とドッキングする、個別にインストール可能な vector エンジン。
+  </Card>
+</CardGroup>

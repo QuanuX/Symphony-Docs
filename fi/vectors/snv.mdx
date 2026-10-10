@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node-identiteetti ja klusteritietueet"
+description: "SNV kirjaa ja yhdistää Node-identiteetit, resurssit, klusterijäsenyydet ja käyttäjän antamat nimet sanelematta niitä. Koostuu alivektoreista SNIV, SNRV, SCIV ja SCNV."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector (SNV) kirjaa ja yhdistää Symphonyn kanssa käyttämiesi fyysisten Nodejen (solmujen) identiteetit, resurssit, klusterijäsenyydet ja nimet. Se koostuu neljästä alivektorista, joista kukin omistaa erillisen semanttisen rajan. SNV ei valitse, myönnä, sanele eikä automaattisesti nimeä uudelleen mitään puolestasi.
+
+## Alivektorien koostumus
+
+SNV rakentuu neljästä pysyvästä semanttisesta toimialueesta:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node Identity**: fyysisen Noden identiteetti ja sen tarkat yhteydet palveluntarjoajan resurssiin, valittuun tarjoomaan ja infrastruktuuritoimialueeseen.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node Resources**: Noden paikallinen ja eksplisiittisesti määritelty etäresurssitotuus.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Cluster Identity**: klusterin identiteetti, väyläyhteydet ja Node klusterissa -suhteet.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Consolidated Naming**: SNV:n rajaama sinun tai palveluntarjoajiesi jo antamien nimien selvitys.
+  </Card>
+</CardGroup>
+
+## Kirjaamisen raja
+
+SNV kirjaa tosiasiat ja niiden alkuperän. Se ei varaa nimiä, allokoi resursseja eikä luo klustereita puolestasi. Nimet ovat käyttäjän antamia; Symphony kirjaa ne. Palveluntarjoajien resurssit ovat käyttäjän valitsemia; Symphony yhdistää ne. Klusterin topologia on käyttäjän suunnittelema; Symphony dokumentoi sen.
+
+## Miten SNV liittyy muihin vektoreihin
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/fi/vectors/scv">
+    Tarjoaa palveluntarjoaja- ja ulkoista resurssitietoa, joka määrittää, millaisia Nodeja voi olla olemassa.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/fi/vectors/sov">
+    Perustaa ja muuttaa infrastruktuuria qxctl:n kautta ja tuottaa Nodet, jotka SNV kirjaa.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/fi/vectors/shv">
+    Voi tarjota yksityiskohtaisia laitteistokyvykkyystodisteita Noden sisältämistä fyysisistä komponenteista.
+  </Card>
+</CardGroup>
+
+## Nykytila
+
+SNV on kehittyvä kanoninen arkkitehtuurisopimus. SNV-moottoria, graafia, rekisteriskeemaa, identiteettienkooderia, löytöpalvelua, nimipalvelua tai qxctl-komentoa ei ole tällä hetkellä toteutettu. Tietueskeemat ja moottorit on lykätty myöhemmäksi.
+
+## Tuleva asennettavuus
+
+Jokaisen tulevan SNV-moottorin on oltava itsenäisesti asennettavissa ja kyettävä rakentamaan projektionsa uudelleen tarkoista omistajatodisteista. Mikään moottori ei muutu identiteetti- tai nimeämisauktoriteetiksi pelkästään tallentamalla tai selvittämällä tietueita.

@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro：讀取 Symphony 受體存在清單"
+description: "透過 qxctl 檢查 Symphony 的 Maestro 存在權威，查看已驗證的向量引擎停靠關係與衍生的受體清單。"
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` 語法用於呈現 Maestro 的存在證據。Maestro 是存在權威；qxctl 只是讀取並檢查 Maestro 所記錄的內容。兩者都不會自行建立停靠關係。
+
+## 清單
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` 會呈現 Maestro 完整、衍生且唯讀的清單，列出每個 TOPS 與受體的已驗證向量引擎停靠關係。
+
+## 相關管理路由
+
+其他 qxctl 葉節點命令提供與 Maestro 相關的管理功能：
+
+- 停靠證據的狀態與檢查
+- 受 Maestro 自身合約約束的復原路由
+- Maestro 本身的基礎生命週期註冊與原生監督
+
+每條變更路由都會經過確切的模組所屬配接器。qxctl 絕不會透過內部解析來產生 Maestro 描述元，也不會隱含地呼叫最新版本。
+
+<Warning>
+  Maestro 不會啟動、排程、監督或呼叫引擎。`qxctl maestro inventory` 是唯讀的。單靠綁定、協調、工作階段協調或生命週期計畫，都無法建立 Maestro 存在。
+</Warning>
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/zh-Hant/governance/maestro">
+    存在權威的合約與邊界。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/zh-Hant/qxctl/engines">
+    引擎綁定登錄檔（綁定並非停靠）。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh-Hant/qxctl/session">
+    用於記錄存在的已驗證工作階段。
+  </Card>
+
+  <Card title="引擎概覽" icon="cube" href="/zh-Hant/engines/overview">
+    可獨立安裝並停靠於 Maestro 的向量引擎。
+  </Card>
+</CardGroup>

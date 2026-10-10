@@ -1,0 +1,54 @@
+---
+title: "STAV: Ledger Audit Append-Only per TOPS untuk Symphony"
+description: "STAV Append Authority menjalankan ledger audit append-only per TOPS dengan IPC terautentikasi, durabilitas fsync-sebelum-tanda-terima, pembacaan terbatas, verifikasi, dan pemulihan."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) mendefinisikan protokol ledger audit append-only per TOPS. Otoritas runtime-nya berada di `modules/stav-append-authority`, sebuah layanan Go yang dapat dipasang secara independen. Ledger operasional per TOPS bersifat privat bagi setiap instalasi TOPS; ledger tersebut bukan konten SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` menyediakan:
+
+- Ledger audit append-only per TOPS
+- IPC lokal yang saling terautentikasi
+- Pemberian izin producer dan reader yang eksak
+- Durabilitas fsync-sebelum-tanda-terima
+- Pembacaan terbatas, verifikasi, dan pemulihan
+- Pendaftaran dan supervisi native (launchd, systemd)
+
+<Warning>
+  qxctl tidak pernah menerima otoritas append mentah. qxctl mengoordinasikan pendaftaran, verifikasi, dan pemberian izin melalui adaptor milik modul yang eksak, tetapi append ledger tetap tersegel di dalam proses otoritas append.
+</Warning>
+
+## STAV Protocol untuk Go
+
+`libraries/stav-protocol-go` adalah pustaka Go tanpa otoritas yang mengimplementasikan codec STAV v1 kanonis, validasi ketat, digest, framing, aturan kesesuaian, dan kosakata producer yang tertutup. Producer atau reader mana pun dapat mengadopsi protokol ini tanpa mewarisi otoritas.
+
+## Publikasi SODV yang telah selesai
+
+Setiap artefak STAV yang saat ini diterbitkan melalui SODV adalah versi modul sumber Go, bukan rilis biner:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/id/governance/ssiag">
+    Mengotorisasi mutasi yang dilindungi yang kemudian diaudit oleh STAV.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/id/governance/accordare-producer">
+    Mengirimkan intent pra-mutasi dan hasil terminal ke STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/id/qxctl/lifecycle">
+    Administrasi siklus hidup yang berkomposisi dengan pendaftaran STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Mengatur catatan publikasi resmi untuk komponen STAV.
+  </Card>
+</CardGroup>

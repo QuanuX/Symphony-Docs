@@ -1,0 +1,50 @@
+---
+title: "SAV: a Symphony Accordare Vector a kompozíció értékeléséhez"
+description: "Az SAV feloldja az Accord-hivatkozásokat, három tengely mentén értékeli a kompozíciót, validálja a Named Versionöket és megtervezi az Installation Blueprinteket a kanonikus igazság módosítása nélkül."
+sidebarTitle: "SAV"
+---
+
+A Symphony Accordare Vector (SAV) a deklarált komponensek kompozícióját és kompatibilitását oldja fel. Motorja egy fagyasztási útvonalon futó, csak olvasó C++26 folyamat. Az SAV pontos, típusos vetületeket komponál, de soha nem veszi át a forrásigazságot a tulajdonos vektoroktól.
+
+## Műveletek
+
+Az SAV értékelési műveletek gazdag készletét támogatja:
+
+- **Accord-hivatkozások feloldása** megváltoztathatatlan, származtatott CURRENT pillanatképekké
+- **Háromtengelyű értékelés**, összehasonlítás és magyarázat
+- **Kompozíciós gráfok** és eldobható vetületek
+- **Named Version** validálása és diffje
+- **Extension Capsule** ellenőrzések
+- **Installation Blueprint** tervezése
+- **Kompatibilitási egyeztetés** a deklarált komponensek között
+
+## Amit az SAV nem végez
+
+- Az SAV nem veszi át az általa komponált komponensek szemantikai tulajdonjogát.
+- Az SAV nem választ Ön helyett tervet; azt értékeli, amit Ön deklarált.
+- Az SAV nem módosít kanonikus fájlokat. Kimenete bizonyíték és javaslat.
+- Az SAV nem a STAV hozzáfűzési hatósága. A módosítás előtti szándékkezeléshez lásd az Accordare STAV-producert.
+
+<Note>
+  Az SAV kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A programozott kanonikus alkalmazás az SKV-motorcsalád egészében továbbra is le van tiltva.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az átfogó keretrendszer és a Contract Quad modell.
+  </Card>
+
+  <Card title="Accordare-producer" icon="pen-nib" href="/hu/governance/accordare-producer">
+    Korlátozott SAV Named Version auditkör.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/hu/skv/sev">
+    Evolúciós esetek, amelyek kiváltják a kompozícióváltozások SAV általi értékelését.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    A ratifikált Accordare-nyelvtan a megvalósítás után `qxctl accord ...` formában érkezik.
+  </Card>
+</CardGroup>

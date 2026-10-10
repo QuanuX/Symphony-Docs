@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: autentificētas Symphony sesijas"
+description: "Atveriet, fiksējiet kontrolpunktus, aizveriet un atkopiet autentificētas Symphony koordinatora sesijas, kā arī pastāvīgas SSFV uzturēšanas plūsmas ar SSIAG pārbaudītiem piešķīrumiem."
+sidebarTitle: "session"
+---
+
+Gramatika `qxctl knowledge session ...` atver nekanoniskas autentificētas sesijas caur vienu precīzi piesaistītu koordinatoru un vienu TOPS tvēruma SSIAG galapunktu. Atsevišķa gramatika `session features ...` vada pastāvīgo SSFV uzturēšanas plūsmu.
+
+## Pamata sesijas gramatika
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Katrs izsaukums pieprasa jaunu precīzu piešķīrumu un validē:
+
+- Subjekta un mērķa identitāti
+- Politikas un konfigurācijas stāvokli
+- Derīguma termiņu
+- Izsaucēja klases neitralitāti
+- Nenododamību
+- Kanoniskās piemērošanas atspējošanu
+- Spēju piesaisti
+
+Sesijas pierādījumi autorizē tikai nosaukto aizsargāto nekanonisko operāciju. Turiet sesiju un saskaņošanas žurnālus atsevišķi; to sasaistīšanai izmantojiet tikai konteksta atsauces.
+
+## SSFV uzturēšanas plūsma
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Funkciju plūsma ir atsevišķs pastāvīgs SSFV uzturēšanas konteksts. Izmaiņām nepieciešams:
+
+- Atvērta autentificēta pamata sesija
+- Precīzas koordinatora un SSFV piesaistes
+- Stabili operāciju identifikatori
+- Precīza compare-and-swap operācija
+- Jauni SSIAG pierādījumi
+
+<Note>
+  Saglabājiet bāzlīnijas momentuzņēmumu un tā sākotnējo dzinēja identitāti saderīgu jauninājumu vai atritinājumu laikā. Neobligātajiem Maestro pierādījumiem jābūt pilnīgam autentificētam inventāram; ja Maestro apzināti nav, reģistrējiet skaidru iemeslu „nav konfigurēts”. `review_required` ir pierādījums izsaucēja pārskatīšanai, nevis ratifikācija.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/lv/governance/ssiag">
+    Izsniedz jaunos piešķīrumus, ko validē katrs sesijas pieprasījums.
+  </Card>
+
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Dzinējs, kas nodrošina sesiju un funkciju žurnālus.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/lv/qxctl/reconcile">
+    Saskaņošanas konteksti, kas veido pārus ar sesijām.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/lv/skv/ssfv">
+    Funkciju vektors, ko uztur funkciju plūsma.
+  </Card>
+</CardGroup>

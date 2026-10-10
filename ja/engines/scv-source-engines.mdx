@@ -1,0 +1,74 @@
+---
+title: "SCV ソースナレッジエンジン: Symphony のためのプロバイダーの実態"
+description: "個別にパッケージ化された 8 つの SCV、ハイパースケーラー、エッジ、プロバイダーエンジンが、正確なソースリビジョンを保持し、再現可能なグラフとクエリのエビデンスを生成します。"
+sidebarTitle: "SCV エンジン"
+---
+
+SCV ソースナレッジエンジンは、個別にパッケージ化された 8 つの C++26 プロセスであり、オフサイトのプロバイダーのリソース、サービス、リージョン、制約、ハイブリッド構成の可能性に関する非公開のセマンティックナレッジを保持します。正確なソースリビジョンと範囲を限定したキャプチャを保持するため、下流のツールで結果を再現できます。
+
+## エンジン
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    共有クラウド語彙のための包括的な SCV ソースエンジン。
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector のソースエンジン。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare 固有のエッジソースエンジン。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services のソースエンジン。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure のソースエンジン。
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean のソースエンジン。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform のソースエンジン。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    保持されたリレーショナルグラフのインデックス化のためのオプションの DuckDB コネクター。
+  </Card>
+</CardGroup>
+
+## SCV エンジンが行うこと
+
+- 明示的なソースリビジョンと範囲を限定したキャプチャを保持する
+- 限定条件付きの主張とネイティブなドキュメント構造を保持する
+- 再現可能なグラフとクエリのエビデンスを生成する
+- ポータブルなプロバイダーパッケージと、呼び出し元が指示する有限の合成にデータを提供する
+
+## 行わないこと
+
+<Warning>
+  プロバイダーの操作と完全なクラウドカタログは、今回のインクリメントの対象外です。SCV エンジンは既知の情報を記述するだけであり、プロバイダーに対して操作を行うことはありません。
+</Warning>
+
+qxctl は、保持されたワークフローと保護されたグラフ選択を通じて、監査済みのローカルソースの変更と一貫性のあるグラフ選択を別途管理します。専用のグラフトラバーサルと運用アダプターは、別の作業として残っています。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SCV ベクター" icon="cloud" href="/ja/vectors/scv">
+    これらのエンジンが実装する Cloud Vector のコントラクト。
+  </Card>
+
+  <Card title="SOV ベクター" icon="terminal" href="/ja/vectors/sov">
+    qxctl を介して SCV のエビデンスに基づいて動作する Ops Vector。
+  </Card>
+
+  <Card title="qxctl ベクターコマンド" icon="terminal" href="/ja/qxctl/vector-commands">
+    グラフ選択、ソースワークフロー、DuckDB コネクターの管理。
+  </Card>
+</CardGroup>

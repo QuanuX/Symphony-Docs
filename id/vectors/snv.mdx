@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Identitas Node dan Catatan Klaster"
+description: "SNV mencatat dan menghubungkan identitas Node, sumber daya, keanggotaan klaster, dan nama yang ditetapkan pengguna tanpa mendiktenya. Terdiri dari subvektor SNIV, SNRV, SCIV, dan SCNV."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector (SNV) mencatat dan menghubungkan identitas, sumber daya, keanggotaan klaster, dan nama Node fisik yang Anda gunakan dengan Symphony. SNV terdiri dari empat subvektor yang masing-masing memiliki batas semantik tersendiri. SNV tidak memilih, menerbitkan, mendikte, atau secara otomatis mengganti nama apa pun atas nama Anda.
+
+## Komposisi subvektor
+
+SNV dibangun dari empat domain semantik yang bertahan lama:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node Identity**: identitas Node fisik dan asosiasi persisnya dengan sumber daya penyedia, penawaran yang dipilih, dan domain infrastruktur.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node Resources**: kebenaran sumber daya lokal dan jarak jauh yang memenuhi syarat secara eksplisit untuk sebuah Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Cluster Identity**: identitas klaster, konektivitas bus, dan hubungan Node-dalam-klaster.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Consolidated Naming**: resolusi yang dibatasi SNV atas nama yang sudah ditetapkan oleh Anda atau penyedia Anda.
+  </Card>
+</CardGroup>
+
+## Batas pencatatan
+
+SNV mencatat fakta dan silsilahnya. SNV tidak mencadangkan nama, mengalokasikan sumber daya, atau membuat klaster untuk Anda. Nama ditetapkan oleh pengguna; Symphony mencatatnya. Sumber daya penyedia dipilih oleh pengguna; Symphony menghubungkannya. Topologi klaster dirancang oleh pengguna; Symphony mendokumentasikannya.
+
+## Hubungan SNV dengan vektor lain
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/id/vectors/scv">
+    Menyediakan pengetahuan sumber daya penyedia dan offsite yang menginformasikan Node apa saja yang dapat ada.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/id/vectors/sov">
+    Membangun dan mengubah infrastruktur melalui qxctl, menghasilkan Node yang dicatat SNV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/id/vectors/shv">
+    Dapat menyediakan bukti kapabilitas perangkat keras terperinci untuk komponen fisik di dalam sebuah Node.
+  </Card>
+</CardGroup>
+
+## Status saat ini
+
+SNV adalah kontrak arsitektur kanonis yang sedang berkembang. Saat ini belum ada engine, graf, skema registry, encoder identitas, layanan discovery, layanan penamaan, atau perintah qxctl SNV yang diimplementasikan. Skema catatan dan engine masih ditangguhkan.
+
+## Kemampuan instalasi di masa depan
+
+Setiap engine SNV di masa depan harus dapat diinstal secara independen dan mampu membangun ulang proyeksinya dari bukti pemilik yang persis. Tidak ada engine yang menjadi otoritas identitas atau penamaan hanya karena menyimpan atau meresolusi catatan.

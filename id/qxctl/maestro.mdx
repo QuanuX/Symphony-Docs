@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Membaca Inventaris Kehadiran Reseptor Symphony"
+description: "Periksa otoritas kehadiran Maestro milik Symphony melalui qxctl untuk melihat hubungan docking engine vektor yang terautentikasi dan inventaris reseptor turunan."
+sidebarTitle: "maestro"
+---
+
+Grammar `qxctl maestro ...` menampilkan bukti kehadiran Maestro. Maestro adalah otoritas kehadiran; qxctl hanya membaca dan memeriksa apa yang dicatat Maestro. Keduanya tidak membuat hubungan docking dengan sendirinya.
+
+## Inventaris
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` menyajikan inventaris Maestro yang lengkap, turunan, dan hanya-baca atas hubungan docking engine vektor yang terautentikasi per TOPS dan reseptor.
+
+## Rute administratif terkait
+
+Leaf qxctl tambahan mengekspos administrasi yang terkait dengan Maestro:
+
+- Status dan inspeksi bukti docking
+- Rute pemulihan yang dibatasi oleh kontrak Maestro sendiri
+- Pendaftaran lifecycle fondasional dan supervisi native untuk Maestro itu sendiri
+
+Setiap rute mutasi melewati adapter persis milik modul. qxctl tidak pernah merender deskriptor Maestro dari parsing internal atau memanggil versi terbaru secara implisit.
+
+<Warning>
+  Maestro tidak memulai, menjadwalkan, mengawasi, atau memanggil engine. `qxctl maestro inventory` bersifat hanya-baca. Binding, rekonsiliasi, koordinasi sesi, atau rencana lifecycle saja tidak menetapkan kehadiran Maestro.
+</Warning>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/id/governance/maestro">
+    Kontrak dan batasan otoritas kehadiran.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/id/qxctl/engines">
+    Registry binding engine (binding bukan docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/id/qxctl/session">
+    Sesi terautentikasi yang digunakan untuk mencatat kehadiran.
+  </Card>
+
+  <Card title="Ikhtisar engine" icon="cube" href="/id/engines/overview">
+    Engine vektor yang dapat diinstal secara independen dan melakukan docking dengan Maestro.
+  </Card>
+</CardGroup>

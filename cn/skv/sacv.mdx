@@ -1,0 +1,52 @@
+---
+title: "SACV：QuanuX Symphony 的 API 契约治理"
+description: "SACV 通过有界的 OpenAPI 3.2.0 检查、确定性的兼容性差异比较以及调用方声明的注册表提议，跨向量治理带版本的 API 契约。"
+sidebarTitle: "SACV"
+---
+
+Symphony API 契约向量（Symphony API Contract Vector，SACV）在整个平台范围内治理带版本的 API 契约。其引擎是一个可独立安装的 C++ 进程，执行有界的 OpenAPI 3.2.0 JSON 验证、确定性的兼容性差异比较，并生成一次性清单。端点语义仍归拥有该领域的向量或模块所有；SACV 治理的是契约结构与兼容性。
+
+## 操作
+
+- **检查与校验（Inspect and check）**：验证 OpenAPI 3.2.0 JSON 文档是否符合有界配置。
+- **差异比较（Diff）**：计算契约版本之间确定性的兼容性差异。
+- **提议（Propose）**：接受调用方针对新增或变更契约声明的注册表提议。
+- **投影（Project）**：为审查者和下游工具输出一次性清单。
+
+## SACV 治理的内容
+
+SACV 约束：
+
+- 契约结构（采用 SACV 配置的 OpenAPI 3.2.0）
+- 版本之间的兼容性分类
+- 已接受契约的注册表成员资格
+
+它不会：
+
+- 拥有端点语义（由各向量或模块自行保留）
+- 生成 SDK、发布工件或签发令牌
+- 暗示存在实际的网络界面（提及未来的私有 API 并不会创建该 API）
+
+<Note>
+  SACV 仅支持读取、查询、验证和提议。所有 SKV 引擎的程序化规范应用均处于禁用状态。
+</Note>
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="SKV 概览" icon="book-open" href="/cn/skv/overview">
+    总体框架与 Contract Quad 模型。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cn/skv/sodv">
+    治理已在 SACV 注册的契约的任何官方发布。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cn/skv/sav">
+    评估已声明组件之间的组合与兼容性。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    运行 `qxctl sacv ...` 以执行 inspect、check、diff 和 propose。
+  </Card>
+</CardGroup>

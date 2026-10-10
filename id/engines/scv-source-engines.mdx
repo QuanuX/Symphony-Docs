@@ -1,0 +1,74 @@
+---
+title: "Engine Pengetahuan Sumber SCV: Realitas Penyedia untuk Symphony"
+description: "Delapan engine SCV, hyperscaler, edge, dan penyedia yang dikemas secara independen mempertahankan revisi sumber yang eksak serta menghasilkan bukti graf dan kueri yang dapat direproduksi."
+sidebarTitle: "Engine SCV"
+---
+
+Engine pengetahuan sumber SCV adalah delapan proses C++26 yang dikemas secara independen, yang menyimpan pengetahuan semantik privat tentang sumber daya, penawaran, region, batasan, dan kemungkinan hibrida dari penyedia offsite. Engine ini mempertahankan revisi sumber yang eksak dan tangkapan terbatas sehingga alat hilir dapat mereproduksi hasilnya.
+
+## Engine
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Engine sumber SCV payung untuk kosakata cloud bersama.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Engine sumber Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Engine sumber edge khusus Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Engine sumber Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Engine sumber Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Engine sumber DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Engine sumber Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Konektor DuckDB opsional untuk pengindeksan graf relasional yang disimpan.
+  </Card>
+</CardGroup>
+
+## Apa yang dilakukan engine SCV
+
+- Mempertahankan revisi sumber yang eksplisit dan tangkapan terbatas
+- Menyimpan klaim yang terkualifikasi dan struktur dokumen native
+- Menghasilkan bukti graf dan kueri yang dapat direproduksi
+- Memasok paket penyedia portabel dan komposisi terbatas yang diarahkan pemanggil
+
+## Apa yang tidak dilakukannya
+
+<Warning>
+  Operasi penyedia dan katalog cloud lengkap tetap berada di luar inkremen ini. Engine SCV menggambarkan apa yang diketahui; engine ini tidak bertindak terhadap penyedia.
+</Warning>
+
+qxctl secara terpisah mengelola perubahan sumber lokal yang diaudit dan pemilihan graf yang koheren melalui alur kerja yang disimpan dan pemilihan graf yang dilindungi. Penelusuran graf khusus dan adaptor operasional tetap merupakan pekerjaan terpisah.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Vektor SCV" icon="cloud" href="/id/vectors/scv">
+    Kontrak Cloud Vector yang diimplementasikan oleh engine-engine ini.
+  </Card>
+
+  <Card title="Vektor SOV" icon="terminal" href="/id/vectors/sov">
+    Ops Vector yang bertindak berdasarkan bukti SCV melalui qxctl.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Pemilihan graf, alur kerja sumber, dan administrasi konektor DuckDB.
+  </Card>
+</CardGroup>

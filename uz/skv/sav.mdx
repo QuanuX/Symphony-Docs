@@ -1,0 +1,50 @@
+---
+title: "SAV: kompozitsiyani baholash uchun Symphony Accordare Vector"
+description: "SAV Accord havolalarini aniqlaydi, kompozitsiyani uch o'q bo'yicha baholaydi, Named Version'larni tasdiqlaydi va kanonik haqiqatni o'zgartirmasdan Installation Blueprint'larni rejalashtiradi."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) e'lon qilingan komponentlar kompozitsiyasi va mosligini aniqlaydi. Uning engine'i muzlatish yo'lidagi (freezing-path), faqat o'qiydigan C++26 jarayonidir. SAV aniq tiplangan proyeksiyalarni tuzadi, lekin hech qachon manba haqiqatini egasi bo'lgan vektorlardan olib qo'ymaydi.
+
+## Amallar
+
+SAV boy baholash amallari to'plamini qo'llab-quvvatlaydi:
+
+- O'zgarmas hosila CURRENT snapshot'lariga **Accord havolalarini aniqlash**
+- **Uch o'qli baholash**, taqqoslash va tushuntirish
+- **Kompozitsiya graflari** va bir martalik proyeksiyalar
+- **Named Version** tekshiruvi va farqi
+- **Extension Capsule** tekshiruvlari
+- **Installation Blueprint** rejalashtirish
+- E'lon qilingan komponentlar o'rtasida **moslik bo'yicha muzokara**
+
+## SAV nimalarni qilmaydi
+
+- SAV o'zi tuzadigan komponentlarning semantik egaligini o'z zimmasiga olmaydi.
+- SAV siz uchun dizayn tanlamaydi; u siz e'lon qilgan narsani baholaydi.
+- SAV kanonik fayllarni o'zgartirmaydi. Uning natijasi dalillar va takliflardir.
+- SAV STAV qo'shish vakolati emas. O'zgarishdan oldingi niyatni qayta ishlash uchun Accordare STAV producer'ga qarang.
+
+<Note>
+  SAV faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun. Dasturiy kanonik qo'llash SKV engine'lari oilasi bo'ylab o'chirilgan holda qoladi.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    Umumiy freymvork va Contract Quad modeli.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/uz/governance/accordare-producer">
+    Cheklangan SAV Named Version audit zanjiri.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/uz/skv/sev">
+    Kompozitsiya o'zgarishlarini SAV tomonidan baholashni ishga tushiradigan evolyutsiya holatlari.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Tasdiqlangan Accordare grammatikasi amalga oshirilgach, `qxctl accord ...` sifatida taqdim etiladi.
+  </Card>
+</CardGroup>

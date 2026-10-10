@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl amallarini boshqarish"
+description: "SOV resurs ajratish, Habitat tayyorlash, Nest yetkazib berish, shina adapterlari va ixtiyoriy masofaviy Node boshqaruvi uchun qxctl tomonidan boshqariladigan operatsiyalar domenini belgilaydi."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) — avtorizatsiya qilingan qxctl buyruqlari infratuzilmangizga ta'sir ko'rsatadigan operatsion boshqaruv tekisligi. U resurs ajratish, Habitat tayyorlash, Nest yetkazib berish, shina adapterini sozlash va ixtiyoriy masofaviy Node boshqaruvi shartnomasiga egalik qiladi. SOV provayder ma'nosi yoki uskuna faktlarini o'ylab topmaydi; u siz allaqachon tanlagan qo'llab-quvvatlanadigan variantlarni bajaradi.
+
+## SOV nimalarni qamrab oladi
+
+SOV — rivojlanayotgan 2-bosqich domeni. Uning doirasiga quyidagilar kiradi:
+
+- **Resurs ajratish (provisioning)**: provayder va o'zingizga tegishli uskunalar resurslarini ajratish ish oqimlari
+- **Habitat tayyorlash**: Node'ga yetkaziladigan aniq OT va paketlar sozlamasi
+- **Nest yetkazib berish**: Node'da ish yuklamasini joylashtirish va yangilash
+- **Shina adapterini o'rnatish**: Node'larni siz tanlagan shina (NATS JetStream, ZeroMQ yoki boshqalar) orqali ulash
+- **Masofaviy Node amallari**: mahalliy shell'ingizdan tashqaridagi Node'larni ixtiyoriy boshqarish
+
+<Note>
+  Provayder protokollari, Terraform bajaruvi, Habitat quruvchilari, Nest joylashtirish buyruqlari va masofaviy amallarni qabul qiluvchilar hali loyihalanishi kerak. Hozirda hech qanday SOV engine'i yoki provayderni o'zgartirish amalga oshirilmagan.
+</Note>
+
+## SOV boshqa vektorlar bilan qanday bog'liq
+
+SOV bilim manbai emas, balki boshqaruv tekisligidir. U boshqa vektorlarga tegishli dalillar asosida harakat qiladi:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/uz/vectors/scv">
+    Provayder va tashqi resurslar haqidagi bilimlarni taqdim etadi. SOV qaysi amallar mos kelishini hal qilish uchun SCV dalillarini o'qiydi.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/uz/vectors/snv">
+    SOV amallari yakunlangandan keyin hosil bo'lgan Node identifikatorlari, klaster a'zoliklari va nomlarni qayd etadi.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/uz/vectors/shv">
+    Keyinchalik resurs ajratish tanlovlarini cheklash uchun batafsil uskuna imkoniyatlari dalillarini taqdim etishi mumkin.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/uz/skv/overview">
+    SOV shartnomalari, o'zgarish oqibatlari, indekslash va hayot sikli integratsiyasini boshqaradi.
+  </Card>
+</CardGroup>
+
+## Buyruqlar interfeysi sifatida qxctl
+
+SOV amallari 373 ta bajariladigan buyruqqa ega Go asosidagi boshqaruv CLI'si `qxctl` orqali taqdim etiladi. qxctl SOV amallarini amalga oshiradi va taqdim etadi, lekin ularning domen ma'nosiga egalik qilmaydi. Semantikaga vektor egalik qiladi; bajarish interfeysiga esa vosita egalik qiladi.
+
+## Foydalanuvchi vakolati chegarasi
+
+Provayderlar, mintaqalar, uskunalar, shinalar, dasturiy ta'minot, joylashtirish topologiyasi va har bir Node'ni boshqarish tartiblarini siz tanlaysiz. SOV qo'llab-quvvatlanadigan variantlarni taqdim etadi va bajaradi. U provayderlarni reytinglamaydi, topologiyalarni tavsiya qilmaydi yoki takliflarni majburiy siyosatga aylantirmaydi.
+
+## Joriy holat
+
+SOV — kanonik arxitektura shartnomasi. Hech qanday engine, Terraform o'rami, Habitat quruvchisi, shina adapteri yoki masofaviy buyruq qabul qiluvchisi amalga oshirilgan deb da'vo qilinmaydi. Kelajakdagi SOV komponentlari umumiy SKV hayot sikli ostida mustaqil o'rnatiladigan, aniq versiya bo'yicha tanlanadigan va orqaga qaytariladigan bo'lib qoladi.

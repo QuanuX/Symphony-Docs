@@ -1,0 +1,48 @@
+---
+title: "SODV: rasmiy hujjatlar va relizlarni boshqarish"
+description: "SODV QuanuX'ning rasmiy nashrlarini faqat qo'shiladigan reliz daftari tekshiruvlari, chaqiruvchi taqdim etgan kuzatuvlarni tekshirish va bir martalik reliz inventarlari bilan boshqaradi."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) SKV freymvorki ichidagi bilimlar qanday qilib rasmiy ommaviy hujjatlar va reliz yozuvlariga aylanishini boshqaradi. Uning engine'i mustaqil o'rnatiladigan C++ jarayoni bo'lib, mahalliy, faqat qo'shiladigan reliz daftari tekshiruvlarini bajaradi va bir martalik reliz inventarlarini ishlab chiqaradi. SODV o'zi hech narsani nashr etmaydi.
+
+## Amallar
+
+- **Inspect va check**: reliz daftari shakli va uzluksizligini tekshirish.
+- **Verify**: nashr etilgan holat bo'yicha chaqiruvchi taqdim etgan kuzatuvlarni tekshirish.
+- **Propose**: provayderga bog'liq bo'lmagan reliz takliflarini qabul qilish.
+- **Recover**: o'zgartirmaydigan tiklashni bajarish.
+- **Project**: bir martalik reliz inventarlarini chiqarish.
+
+## SODV nimalarni qilmaydi
+
+- SODV tarmoqqa kirish huquqiga ega emas.
+- SODV GitHub, Mintlify, paket reyestrlari yoki boshqa hech qanday joyga hech narsa nashr etmaydi.
+- SODV teglar yaratmaydi va relizni yakunlangan deb e'lon qila olmaydi.
+- SODV provayderlarni reytinglamaydi yoki biror nashr yo'lini afzal ko'rmaydi.
+
+Nashr SODV dalillariga murojaat qiladigan alohida avtorizatsiya qilingan vositalar orqali amalga oshiriladi.
+
+## Yakunlangan SODV nashrlari
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go`, teg: `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority`, teg: `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority`, teg: `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Inspect, verify, propose va project uchun `qxctl sodv ...` ni ishga tushiring.
+  </Card>
+</CardGroup>
+
+<Note>
+  Har bir SKV engine'i faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun mo'ljallangan. Kanonik qo'llash har bir engine'ning SSIAG, kutilgan holat tranzaksiyasi, qxctl himoyasi, STAV hodisasi, tiklash va salbiy test shartnomalari yakunlanmaguncha o'chirilgan.
+</Note>

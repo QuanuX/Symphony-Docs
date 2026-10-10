@@ -1,0 +1,50 @@
+---
+title: "Coordinador de sessions de coneixement per als motors de vectors de Symphony"
+description: "El coordinador de sessions de coneixement proporciona compatibilitat acotada, reconciliació d'arbres de treball, sessions autenticades i coordinació del cicle de vida amb capacitat d'aplicació en C++26."
+sidebarTitle: "Coordinador"
+---
+
+El coordinador de sessions de coneixement (`modules/knowledge-session-coordinator`) és un procés C++26 instal·lable de manera independent. Se situa entre qxctl i els motors de vectors i és propietari de la compatibilitat acotada, la reconciliació d'arbres de treball (worktrees), les sessions no canòniques autenticades, el manteniment de SSFV, la planificació del cicle de vida només d'informe i els diaris amb capacitat d'aplicació autoritzats per separat.
+
+## Responsabilitats
+
+- **Comprovacions de compatibilitat** entre qxctl, el coordinador i els motors
+- **Reconciliació d'arbres de treball** amb estat durable basat en ranures
+- **Sessions no canòniques autenticades** sota l'autoritat de SSIAG
+- **Fluxos persistents de manteniment de SSFV**
+- **Planificació del cicle de vida només d'informe** amb evidència determinista
+- **Diaris amb capacitat d'aplicació** amb intents preparats, comparació i intercanvi (compare-and-swap), reobservació, replanificació dinàmica i recuperació
+
+## Què no fa el coordinador
+
+<Warning>
+  El coordinador no executa la semàntica dels vectors ni accions a l'amfitrió. Coordina evidències i diaris; cada motor continua sent propietari del seu domini, i cada acció a l'amfitrió continua autoritzada pel seu propi contracte.
+</Warning>
+
+- Cap aplicació de coneixement canònic
+- Cap execució arbitrària d'ordres
+- Cap observador ocult ni treball resident en segon pla
+
+## Integració amb qxctl
+
+qxctl invoca instal·lacions exactes del coordinador validades per rebut. `qxctl knowledge reconcile ...` i `qxctl knowledge session ...` utilitzen un únic coordinador exacte vinculat per operació, i les mutacions requereixen identificadors d'operació estables i resums (digests) exactes del diari actual per a la comparació i l'intercanvi.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ca/qxctl/reconcile">
+    Gramàtica de reconciliació d'arbres de treball.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ca/qxctl/session">
+    Gramàtica de sessions autenticades i de manteniment de SSFV.
+  </Card>
+
+  <Card title="Biblioteca de fonament" icon="cube" href="/ca/engines/knowledge-vector-foundation">
+    Mecànica compartida en C++ que el coordinador reutilitza.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ca/governance/ssiag">
+    Autoritza les sessions que gestiona el coordinador.
+  </Card>
+</CardGroup>

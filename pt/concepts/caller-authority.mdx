@@ -1,0 +1,28 @@
+---
+title: "Neutralidade quanto à classe do chamador e autoridade do host no Symphony"
+description: "O Symphony não classifica os chamadores por tipo. A autoridade decorre da propriedade do host de destino, da permissão explícita, do estado esperado e das salvaguardas configuradas pelo proprietário."
+sidebarTitle: "Autoridade do chamador"
+---
+
+O Symphony não classifica um chamador como humano, IA, agente, serviço, carga de trabalho, organização ou qualquer outro tipo de ator ao decidir sobre a autoridade. A sua classificação como pessoa ou como sistema automatizado não concede nem retira, por si só, qualquer capacidade. Esta neutralidade quanto à classe do chamador é uma fronteira arquitetónica fundamental que mantém a autorização assente em factos e não em rótulos.
+
+## O que rege a autoridade
+
+As decisões de autorização suportadas utilizam os seguintes elementos:
+
+- **Propriedade do host de destino ou permissões concedidas**: o administrador do host de destino é soberano sobre a governação configurável.
+- **Operação e recurso pedidos**: a ação específica e o objeto sobre o qual atua.
+- **Estado esperado**: o resultado pretendido declarado e o estado atual observado.
+- **Salvaguardas configuradas pelo proprietário**: predefinições conservadoras que o administrador pode ajustar ou remover.
+
+## SSIAG e autoridade do host
+
+O SSIAG pode verificar e projetar a autoridade efetiva do host, mas não cria uma autoridade de registo superior nem veta permanentemente o administrador do host de destino. A garantia reforçada de identidade e os bloqueios de governação são salvaguardas neutras quanto ao chamador e configuradas pelo proprietário. Os requisitos de integridade do protocolo continuam a ser obrigatórios nas ferramentas suportadas.
+
+## O que o Symphony não decide
+
+O Symphony não decide se um ator pode deter propriedade, abrir uma conta, assinar um contrato, assumir responsabilidade ou agir em nome de outra entidade. Esses factos pertencem ao proprietário, ao fornecedor, à contraparte e à legislação aplicável. A plataforma mantém-se dentro do seu papel delimitado: produz evidências de compatibilidade e suporta operações, mas não se estende à determinação da capacidade jurídica ou financeira externa.
+
+## Implicação prática
+
+Quando invoca o qxctl ou um motor de vetor, aplicam-se as mesmas verificações, quer execute o comando manualmente, através de um script ou por meio de uma ferramenta baseada em agentes. O percurso da autoridade é: propriedade do host de destino, permissão explícita, estado esperado, salvaguardas. Nenhum tipo de chamador recebe uma isenção automática nem uma restrição automática.

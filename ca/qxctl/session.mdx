@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: sessions autenticades de Symphony"
+description: "Obriu, feu punts de control, tanqueu i recupereu sessions autenticades del coordinador de Symphony, així com fluxos persistents de manteniment de SSFV amb concessions verificades per SSIAG."
+sidebarTitle: "session"
+---
+
+La gramàtica `qxctl knowledge session ...` obre sessions autenticades no canòniques a través d'un únic coordinador vinculat exacte i un únic endpoint SSIAG d'àmbit TOPS. Una gramàtica separada, `session features ...`, dirigeix el flux persistent de manteniment de SSFV.
+
+## Gramàtica base de sessions
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Cada crida sol·licita una concessió exacta nova i valida:
+
+- La identitat del subjecte i de l'objectiu
+- L'estat de la política i la configuració
+- La caducitat
+- La neutralitat respecte a la classe d'invocador
+- La intransferibilitat
+- La desactivació de l'aplicació canònica
+- La vinculació de capacitats
+
+L'evidència de sessió autoritza només l'operació no canònica protegida indicada. Manteniu separats els diaris de sessió i de reconciliació; feu servir referències de context només per associar-los.
+
+## Flux de manteniment de SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+El flux de funcionalitats és un context separat i persistent de manteniment de SSFV. Les mutacions requereixen:
+
+- Una sessió base autenticada oberta
+- Vinculacions exactes del coordinador i de SSFV
+- Identificadors d'operació estables
+- Compare-and-swap exacte
+- Evidència SSIAG nova
+
+<Note>
+  Preserveu la instantània de referència i la identitat original del seu motor en actualitzacions o reversions compatibles. L'evidència opcional de Maestro ha de ser un inventari autenticat complet; quan Maestro està absent intencionadament, registreu el motiu explícit de no configuració. `review_required` és evidència perquè l'invocador la revisi, no una ratificació.
+</Note>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ca/governance/ssiag">
+    Emet les concessions noves que valida cada sol·licitud de sessió.
+  </Card>
+
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    El motor que dona suport als diaris de sessió i de funcionalitats.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ca/qxctl/reconcile">
+    Contextos de reconciliació que s'aparellen amb sessions.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ca/skv/ssfv">
+    El vector de funcionalitats que manté el flux de funcionalitats.
+  </Card>
+</CardGroup>

@@ -1,0 +1,57 @@
+---
+title: "Symphonyn vektorimoottorit: yleiskatsaus erilliseen asennukseen"
+description: "Jokainen Symphonyn vektorimoottori asennetaan erikseen, toimii prosessin ulkopuolella C++:lla ja pysyy valtuudettomana. Tutustu tässä SKV-, SCV- ja SHV-moottoriperheisiin."
+sidebarTitle: "Moottorien yleiskatsaus"
+---
+
+Jokaisella aktiivisella sovellustason Symphony-vektorilla voi olla erikseen asennettava, prosessin ulkopuolella toimiva C++-moottori. Jaettu valtuudeton C++-mekaniikka sijaitsee hakemistossa `libraries/`; erillinen C++-koordinaattori omistaa todennettujen istuntojen ja työpuun täsmäytyksen mekaniikan. Moottorit tarkastelevat, validoivat, projisoivat ja ehdottavat vektorien omistamien sopimusten puitteissa. Ne eivät saa valtuuksia pelkästään tuottamalla sisältöä.
+
+## Toteutetut moottorit
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector -perusta" icon="cube" href="/fi/engines/knowledge-vector-foundation">
+    C++-prosessikehystys, JSON, SHA-256, tilannevedokset, kuitit ja manifestien löytäminen.
+  </Card>
+
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Todennetut istunnot, työpuun täsmäytys ja elinkaaren soveltamisen koordinointi.
+  </Card>
+
+  <Card title="SCV-lähdemoottorit" icon="cloud" href="/fi/engines/scv-source-engines">
+    Kahdeksan C++26-lähdetietomoottoria SCV:lle, hyperskaalaajille, reunalle ja palveluntarjoajille.
+  </Card>
+
+  <Card title="SHV-moottorit" icon="microchip" href="/fi/engines/shv-engines">
+    Laitteiston lähde-, luettelo-, profiili-, osio-, julkaisu- ja sovitinmoottorit.
+  </Card>
+</CardGroup>
+
+## SKV-moottoriperhe
+
+Jokaisella SKV-pinnalla on oma moottorinsa:
+
+- SKVI-, SCLV-, SACV-, SODV- ja SSFV-moottorit toteuttavat kukin inspect-, check-, propose- ja project-toiminnot (sekä soveltuvin osin palautuksen).
+- SAV- ja SEV-moottorit ovat jäätyvän polun C++26-prosesseja koostamisen arviointiin ja kehitystapauksiin.
+
+<Note>
+  Jokainen nykyinen SKV-moottori on ainoastaan luku-, kysely-, validointi- ja ehdotuskäyttöinen. Ohjelmallinen kanoninen soveltaminen pysyy poissa käytöstä, kunnes kunkin moottorin SSIAG-lupien todentamisen, odotetun tilan transaktion, qxctl-suojauksen, STAV-tapahtuman, palautuksen ja negatiivisten testien sopimukset ovat valmiit.
+</Note>
+
+## Yhteiset takuut
+
+- Erillinen asennus ja asennuksen poisto moduulikohtaisesti
+- Ei repositorion läpikäyntiä ympäristöstä käsin; manifestien löytäminen on eksplisiittistä
+- Ei jaettua valtuutta; jokainen muutosreitti on SSIAG:n ja STAV:n vartioima
+- Ei läsnäoloa kuumalla polulla; moottorit eivät koskaan lisää viivettä reaaliaikaisiin työkuormiin
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="qxctl:n yleiskatsaus" icon="terminal" href="/fi/qxctl/overview">
+    Hallinta-CLI, joka kutsuu tarkkoja, kuitein validoituja moottoreita.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/fi/governance/maestro">
+    Kirjaa moottorien ja reseptorien väliset telakointisuhteet.
+  </Card>
+</CardGroup>

@@ -1,0 +1,48 @@
+---
+title: "SODV: आधिकारिक दस्तावेज़ीकरण और रिलीज़ गवर्नेंस"
+description: "SODV केवल-जोड़ने योग्य रिलीज़-लेजर जाँच, कॉलर-प्रदत्त ऑब्ज़र्वेशन सत्यापन और डिस्पोज़ेबल रिलीज़ इन्वेंटरी के साथ आधिकारिक QuanuX प्रकाशन को शासित करता है।"
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) यह शासित करता है कि SKV फ़्रेमवर्क के भीतर का ज्ञान आधिकारिक सार्वजनिक दस्तावेज़ीकरण और रिलीज़ रिकॉर्ड कैसे बनता है। इसका इंजन एक स्वतंत्र रूप से इंस्टॉल किया जा सकने वाला C++ प्रोसेस है जो स्थानीय केवल-जोड़ने योग्य रिलीज़-लेजर जाँच करता है और डिस्पोज़ेबल रिलीज़ इन्वेंटरी उत्पन्न करता है। SODV स्वयं कुछ भी प्रकाशित नहीं करता।
+
+## ऑपरेशन
+
+- **Inspect और check**: रिलीज़-लेजर के आकार और निरंतरता को मान्य करें।
+- **Verify**: प्रकाशित स्टेट के कॉलर-प्रदत्त ऑब्ज़र्वेशन की जाँच करें।
+- **Propose**: प्रोवाइडर-तटस्थ रिलीज़ प्रस्ताव स्वीकार करें।
+- **Recover**: गैर-म्यूटेटिंग रिकवरी करें।
+- **Project**: डिस्पोज़ेबल रिलीज़ इन्वेंटरी उत्सर्जित करें।
+
+## SODV क्या नहीं करता
+
+- SODV के पास कोई नेटवर्क एक्सेस नहीं है।
+- SODV, GitHub, Mintlify, पैकेज रजिस्ट्री या किसी अन्य सतह पर कुछ भी प्रकाशित नहीं करता।
+- SODV कोई टैग नहीं बनाता और किसी रिलीज़ को पूर्ण घोषित नहीं कर सकता।
+- SODV प्रोवाइडर्स को रैंक नहीं करता और न ही किसी प्रकाशन पथ को प्राथमिकता देता है।
+
+प्रकाशन अलग अधिकृत टूलिंग के माध्यम से होता है जो SODV साक्ष्य से परामर्श करती है।
+
+## पूर्ण हुए SODV प्रकाशन
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    टैग `libraries/stav-protocol-go/v0.2.0` पर `github.com/QuanuX/Symphony/libraries/stav-protocol-go`।
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    टैग `modules/stav-append-authority/v0.1.0` पर `github.com/QuanuX/Symphony/modules/stav-append-authority`।
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    टैग `modules/stav-append-authority/v0.2.0` पर `github.com/QuanuX/Symphony/modules/stav-append-authority`।
+  </Card>
+
+  <Card title="qxctl वेक्टर कमांड" icon="terminal" href="/hi/qxctl/vector-commands">
+    inspect, verify, propose और project के लिए `qxctl sodv ...` चलाएँ।
+  </Card>
+</CardGroup>
+
+<Note>
+  हर SKV इंजन केवल read, query, validate और propose करता है। कैनॉनिकल apply तब तक निष्क्रिय है जब तक हर इंजन के SSIAG, अपेक्षित-स्टेट ट्रांज़ैक्शन, qxctl सुरक्षा उपाय, STAV इवेंट, रिकवरी और नेगेटिव-टेस्ट कॉन्ट्रैक्ट पूर्ण नहीं हो जाते।
+</Note>

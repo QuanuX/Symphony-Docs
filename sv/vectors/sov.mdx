@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: driftstyrning med qxctl"
+description: "SOV definierar den qxctl-administrerade driftdomänen för provisionering, Habitat-konditionering, Nest-leverans, bussadaptrar och valfri fjärradministration av Nodes."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) är det operativa kontrollplanet genom vilket auktoriserade qxctl-kommandon agerar på din infrastruktur. Den äger kontraktet för provisionering, Habitat-konditionering, Nest-leverans, konfiguration av bussadaptrar och valfri fjärradministration av Nodes. SOV hittar inte på leverantörsbetydelser eller hårdvarufakta; den utför stödda val som du redan har gjort.
+
+## Vad SOV omfattar
+
+SOV är en framväxande domän i fas 2. Dess omfattning inkluderar:
+
+- **Provisionering**: arbetsflöden för resursallokering hos leverantörer och på egenägd hårdvara
+- **Habitat-konditionering**: exakt konditionering av operativsystem och paket som levereras till en Node
+- **Nest-leverans**: placering och uppdatering av arbetslaster på en Node
+- **Etablering av bussadaptrar**: anslutning av Nodes via den buss du väljer (NATS JetStream, ZeroMQ eller andra)
+- **Fjärroperationer på Nodes**: valfri administration av Nodes utanför ditt lokala skal
+
+<Note>
+  Leverantörsprotokoll, Terraform-körning, Habitat-byggare, distributionskommandon för Nest och mottagare för fjärroperationer återstår att utforma. Ingen SOV-motor eller leverantörsmutation är implementerad för närvarande.
+</Note>
+
+## Hur SOV förhåller sig till andra vektorer
+
+SOV är kontrollplanet, inte kunskapskällan. Den agerar utifrån evidens som ägs av andra vektorer:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/sv/vectors/scv">
+    Tillhandahåller kunskap om leverantörsresurser och externa resurser. SOV läser SCV-evidens för att avgöra vilka operationer som är kompatibla.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/sv/vectors/snv">
+    Registrerar de resulterande Node-identiteterna, klustermedlemskapen och namnen när SOV-operationerna har slutförts.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/sv/vectors/shv">
+    Kan senare tillhandahålla detaljerad evidens om hårdvarukapacitet för att begränsa provisioneringsval.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/sv/skv/overview">
+    Styr SOV:s kontrakt, ändringskonsekvenser, indexering och livscykelintegration.
+  </Card>
+</CardGroup>
+
+## qxctl som kommandoyta
+
+SOV-operationer exponeras via `qxctl`, det Go-baserade administrativa CLI:t med 373 körbara kommandon. qxctl implementerar och presenterar SOV-operationer, men äger inte deras domänbetydelse. Vektorn äger semantiken; verktyget äger körningsytan.
+
+## Gräns för användarens auktoritet
+
+Du väljer leverantörer, regioner, hårdvara, bussar, programvara, distributionstopologi och administrationsupplägg per Node. SOV exponerar och utför stödda val. Den rangordnar inte leverantörer, rekommenderar inte topologier och omvandlar inte förslag till obligatorisk policy.
+
+## Aktuell status
+
+SOV är ett kanoniskt arkitekturkontrakt. Ingen motor, Terraform-omslutning, Habitat-byggare, bussadapter eller mottagare för fjärrkommandon påstås vara implementerad. Framtida SOV-komponenter kommer att förbli oberoende installerbara, valbara per exakt version och möjliga att rulla tillbaka under den gemensamma SKV-livscykeln.

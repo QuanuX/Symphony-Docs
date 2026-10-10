@@ -1,0 +1,37 @@
+---
+title: "Hot-Path-Isolation in QuanuX Symphony"
+description: "Erfahren Sie, wie Symphony Ausführungspfade vor administrativen Eingriffen schützt: Komponenten auf dem Cold und Freezing Path, Bus-Disziplin und das Konzept des Prima-Parte-Zustandszeugen."
+sidebarTitle: "Hot-Path-Isolation"
+---
+
+Symphony trennt administrative Arbeit von Ausführungsarbeit, damit Live-Trading, Forschung und andere leistungskritische Pfade frei von Jitter, Latenz und versteckten Abhängigkeiten bleiben. qxctl und die Wissensebene sind Administration auf dem Cold oder Freezing Path. Sie dürfen explizit auf einem Node agieren, der auch Live-Arbeit hostet, dürfen aber nicht zu dauerhaften Hot-Path-Abhängigkeiten werden.
+
+## Disziplin auf dem Cold und Freezing Path
+
+qxctl und Vektor-Engines sind administrative Komponenten auf dem Cold oder Freezing Path. Sie dürfen nicht:
+
+- Inline mit Hot- oder Warm-Ausführungspfaden laufen
+- Locks mit Live-Workloads teilen
+- Synchrone Abhängigkeiten erzeugen, die Jitter oder Latenz hinzufügen
+- Zu versteckten Watchern, residenten Interpretern oder unaufgeforderten Hintergrund-Paketmanagern werden
+- Dauerhaft auf Ausführungs-Nodes resident bleiben
+
+Diese Regel gilt für den Knowledge Session Coordinator, die Vektor-Engines und alle von qxctl verwalteten Operationen. Sie erzeugen Nachweise, validieren Zustände und bereiten Pläne vor, nehmen aber nicht am Live-Ausführungspfad teil.
+
+## Bus-Disziplin
+
+Schwere Übertragungen, Steuerung, Forschung und Ausführungsabfälle müssen sich nicht einen Bus teilen. Eine Topologie kann mehrere Busse verwenden oder einen Bus für einen deklarierten Pfad umgehen, insbesondere dort, wo gemeinsamer Datenverkehr Jitter verursachen könnte. NATS JetStream, ZeroMQ und andere Fabrics sind Adapter und Nutzerentscheidungen. Die Existenz der Bus-Administration in qxctl macht das Durchlaufen eines Busses nicht verpflichtend.
+
+Sie wählen die Bus-Topologie, die zu Ihren Latenz- und Durchsatzanforderungen passt. Symphony unterstützt die Konfiguration, ohne eine einzige gemeinsame Fabric vorzuschreiben.
+
+## Prima Parte
+
+**Prima Parte** ist ein ratifiziertes Konzept aus Phase 3 und kein aktuelles ausführbares Programm. Es handelt sich um einen optionalen, äußerst schlanken, Node-lokalen Zustandszeugen in C++, der nach einer wesentlichen Operation explizit von qxctl aufgerufen wird. Er hat keinen Daemon, keinen Listener, keinen Timer, keinen Watcher, keine Polling-Schleife und keine residente Busverbindung.
+
+Sein abgegrenztes, dauerhaftes Vokabular umfasst drei Begriffe:
+
+- `current` — der aktuell beobachtete Zustand
+- `previous` — der Zustand vor der wesentlichen Operation
+- `lastTransmitted` — der Zustand, den der entfernte Node nach Ausführung des zugehörigen Befehls gesendet hat (nicht als empfangen bestätigt)
+
+Prima Parte erfasst nur seinen eigenen Node, wird niemals zu einem kleineren Maestro und beendet sich nach seiner abgegrenzten Arbeit. Es ist kein Maestro-Rezeptor aus Phase 1, und es ist noch kein ausführbares Programm implementiert.

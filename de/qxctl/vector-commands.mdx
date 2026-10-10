@@ -1,0 +1,82 @@
+---
+title: "qxctl-Vektorbefehle: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Entdecken Sie die heute verfügbare vektorspezifische qxctl-Grammatik: SKVI, SCLV, SACV, SODV, SSFV, SHV-Speicher und -Katalog sowie reservierte Accord- und Evolution-Oberflächen."
+sidebarTitle: "Vektorbefehle"
+---
+
+qxctl stellt vektorspezifische Grammatik für jede implementierte SKV-Engine sowie für die SCV- und SHV-Administration bereit. Ratifizierte Accordare- und SEV-Grammatik wird `qxctl accord ...` und `qxctl evolution ...` verwenden, sobald deren Befehlsimplementierungen und stabile Registry-Nachweise existieren.
+
+## SKV-Engine-Grammatik
+
+- `qxctl skvi ...`: inspect, check, propose, project gegen die SKVI-Engine
+- `qxctl sclv ...`: inspect, check, propose, recover, project gegen die SCLV-Engine
+- `qxctl sacv ...`: inspect, check, diff, propose, project gegen die SACV-Engine
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project gegen die SODV-Engine
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph gegen die SSFV-Engine
+
+Jede Grammatik ist durch den Vertrag der verantwortlichen Engine begrenzt. qxctl erfindet niemals eine Operation und umgeht niemals die Engine.
+
+## Accordare-Erweiterungen
+
+Die Accordare-Erweiterungen in qxctl bieten:
+
+- Stabilen Status
+- Abstimmung (spielt nur exakte Kandidaten erneut ab)
+- Installation und Deinstallation des Supervisors (ruft nur die verifizierte receipt-v2-Programmdatei auf)
+- Zwei Grant-Administrationsidentitäten, die ausschließlich die gestoppte STAV-Konfiguration unter SSIAG und mit Erwartungszustands-Wiederherstellung verändern
+
+Der Status trennt dauerhafte Absicht und Append-Rückstand. Die Abstimmung spielt nur exakte Kandidaten erneut ab. Grant-Leaves öffnen niemals eine laufende Konfiguration.
+
+## SHV-Speicher
+
+Dauerhafter SHV-Speicher wird ausschließlich administriert über:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` mit dem aufbewahrten erwarteten Intent-Digest dient zugleich als Wiederherstellung. Es gibt keinen separaten Wiederherstellungsalias. Der Speicherbereich wird in der Eingabe deklariert; die Connector-Identität wird über Flags gesetzt. Struktureller Speicher dupliziert weder das semantische `shv graph validate` noch wählt er einen Katalog-Head aus.
+
+`shv graph store inventory` (Release 0.2) ergänzt einen revisionsgebundenen logischen Lesevorgang mit expliziten aufbewahrten Writer-Identitäten. Die Legacy-Auswahl aus 0.1 wird weiterhin unterstützt.
+
+## SHV-Katalogveröffentlichung
+
+Die Katalogveröffentlichung wird ausschließlich administriert über:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Die Wiederherstellung erfolgt über `apply --operation-id`, das sich mit `--input` gegenseitig ausschließt. Die berechtigungsgestützte lokale Katalogauswahl ist von der Quellaktivierung und vom generischen Graphspeicher zu unterscheiden.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SKV-Übersicht" icon="book-open" href="/de/skv/overview">
+    Vektorsemantik, die die Engines implementieren.
+  </Card>
+
+  <Card title="SHV-Vektor" icon="microchip" href="/de/vectors/shv">
+    Hintergrund zum Hardware Vector und Liste der Engines.
+  </Card>
+
+  <Card title="SHV-Engines" icon="microchip" href="/de/engines/shv-engines">
+    Details auf Engine-Ebene.
+  </Card>
+
+  <Card title="qxctl-Übersicht" icon="terminal" href="/de/qxctl/overview">
+    Vollständige qxctl-Befehlsoberfläche.
+  </Card>
+</CardGroup>

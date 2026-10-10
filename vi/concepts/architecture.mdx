@@ -1,0 +1,33 @@
+---
+title: "Kiến trúc Symphony"
+description: "Hiểu các ranh giới giữa hạ tầng do người dùng chọn, vector contract, engine, qxctl và bằng chứng được quản trị."
+sidebarTitle: "Kiến trúc"
+---
+
+Symphony tách biệt hạ tầng và workload do người dùng chọn khỏi tri thức và hoạt động quản trị của nền tảng. Nền tảng có thể kiểm tra, xác thực và báo cáo khả năng tương thích mà không tuyên bố quyền sở hữu chiến lược của bạn hay coi một khuyến nghị là mệnh lệnh.
+
+## Lớp vật lý và workload
+
+Một [Node](/vi/concepts/node-habitat-nest) là một máy tính vật lý đã được định danh. Một **Habitat** là cấu hình hệ điều hành và gói phần mềm chính xác của nó, còn một **Nest** là workload phục vụ mục đích do người dùng lựa chọn. Các cluster kết nối các Node thông qua một hoặc nhiều bus. Bus fabric, adapter, nhà cung cấp và lựa chọn phần cứng đều được nêu tường minh thay vì là mặc định chung.
+
+[Hot path](/vi/concepts/hot-path-isolation) được giữ tách biệt khỏi sự thường trú của các thành phần quản trị. qxctl và công việc của knowledge plane có thể chủ động quản trị một Node, nhưng chúng không trở thành phụ thuộc liên tục ẩn của quá trình thực thi trực tiếp.
+
+## Quyền sở hữu ngữ nghĩa
+
+[Vector](/vi/concepts/vectors) là các chủ sở hữu có giới hạn và lâu dài đối với ý nghĩa và các thao tác được phép. Mỗi chủ sở hữu công bố một Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` và `SPEC.md`. [Symphony Knowledge Vector (SKV)](/vi/skv/overview) lập chỉ mục các surface chuẩn và giữ lại đường dẫn đến chủ sở hữu của chúng. Các schema, registry và ledger đi kèm vẫn được quản trị mà không trở thành thành viên bổ sung của Quad.
+
+Các giai đoạn triển khai mô tả thời điểm công việc được thực hiện. Chúng không chuyển giao quyền sở hữu ngữ nghĩa từ vector này sang vector khác.
+
+## Engine và surface lệnh
+
+[Vector engine](/vi/engines/overview) là các thành phần có thể cài đặt độc lập, chạy ngoài tiến trình, thực hiện kiểm tra, đối chiếu, chiếu và đề xuất trong phạm vi contract của chủ sở hữu. Chúng không có thêm quyền hạn chỉ vì tạo ra một đề xuất.
+
+[qxctl](/vi/qxctl/overview) sở hữu ngữ pháp lệnh quản trị và cách trình bày. Nó gọi các năng lực có giới hạn, được xác thực bằng biên nhận, trong khi vector định nghĩa một thao tác vẫn giữ ngữ nghĩa của thao tác đó. Bằng chứng ủy quyền và kiểm toán chi phối các route thay đổi trạng thái; chỉ riêng [phân loại bên gọi](/vi/concepts/caller-authority) không cấp bất kỳ quyền hạn nào.
+
+## Sự thật và quá trình tiến hóa
+
+Các contract hiện hành nêu sự thật hiện tại. Các ledger thay đổi và xuất bản lưu giữ bằng chứng được ghi nhận tại một thời điểm cụ thể. Sự bất đồng giữa contract, bằng chứng triển khai và lịch sử được ghi nhận sẽ được nêu ra dưới dạng drift thay vì bị âm thầm viết lại. [SAV](/vi/skv/sav) đánh giá khả năng tương thích khi kết hợp; [SEV](/vi/skv/sev) lập kế hoạch cho quá trình tiến hóa có quản trị.
+
+<Note>
+  Phần tổng quan này là bản đồ các ranh giới. Hãy tham khảo contract hiện hành và bằng chứng triển khai của từng vector được liên kết trước khi coi một năng lực là có sẵn trong một bản cài đặt cụ thể.
+</Note>

@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector để đánh giá thành phần"
+description: "SAV phân giải tham chiếu Accord, đánh giá thành phần trên ba trục, xác thực Named Version và lập kế hoạch Installation Blueprint mà không thay đổi sự thật chuẩn tắc."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) phân giải thành phần (composition) và tính tương thích của các thành phần đã khai báo. Engine của nó là một tiến trình C++26 chỉ đọc, thuộc lộ trình đóng băng (freezing-path). SAV kết hợp các phép chiếu có kiểu chính xác nhưng không bao giờ lấy sự thật nguồn từ các vector sở hữu.
+
+## Thao tác
+
+SAV hỗ trợ một tập hợp phong phú các thao tác đánh giá:
+
+- **Phân giải tham chiếu Accord** thành các snapshot CURRENT được suy ra, bất biến
+- **Đánh giá ba trục**, so sánh và giải thích
+- **Đồ thị thành phần** và các phép chiếu dùng một lần
+- Xác thực và so sánh **Named Version**
+- Kiểm tra **Extension Capsule**
+- Lập kế hoạch **Installation Blueprint**
+- **Đàm phán tương thích** giữa các thành phần đã khai báo
+
+## Những gì SAV không làm
+
+- SAV không nắm quyền sở hữu ngữ nghĩa của các thành phần mà nó kết hợp.
+- SAV không chọn thiết kế thay bạn; nó đánh giá những gì bạn đã khai báo.
+- SAV không thay đổi các tệp chuẩn tắc. Đầu ra của nó là bằng chứng và đề xuất.
+- SAV không phải là cơ quan append của STAV. Xem Accordare STAV producer để biết cách xử lý ý định trước khi thay đổi.
+
+<Note>
+  SAV chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc theo chương trình vẫn bị vô hiệu hóa trên toàn bộ họ SKV engine.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung bao trùm và mô hình Contract Quad.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/vi/governance/accordare-producer">
+    Mạch kiểm toán Named Version của SAV có giới hạn.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/vi/skv/sev">
+    Các trường hợp tiến hóa kích hoạt SAV đánh giá các thay đổi thành phần.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Cú pháp Accordare đã phê chuẩn sẽ có dưới dạng `qxctl accord ...` khi được triển khai.
+  </Card>
+</CardGroup>

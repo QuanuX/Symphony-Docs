@@ -1,0 +1,57 @@
+---
+title: "Symphony Vector 引擎：獨立安裝概觀"
+description: "每個 Symphony vector 引擎都獨立安裝、以 C++ 在程序外執行，且不具權限。在這裡認識 SKV、SCV 與 SHV 引擎系列。"
+sidebarTitle: "引擎概觀"
+---
+
+每個作用中的應用程式層級 Symphony vector 都可以擁有一個可獨立安裝、在程序外執行的 C++ 引擎。共用且不具權限的 C++ 機制位於 `libraries/` 之下；另有一個獨立的 C++ 協調器負責經驗證的工作階段與工作樹協調機制。引擎會在 vector 擁有的合約範圍內進行檢查、驗證、投影與提案。它們不會僅因產生內容就取得權限。
+
+## 已實作的引擎
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector 基礎" icon="cube" href="/zh-Hant/engines/knowledge-vector-foundation">
+    C++ 程序框架、JSON、SHA-256、快照、回執與資訊清單探索。
+  </Card>
+
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    經驗證的工作階段、工作樹協調與生命週期套用協調。
+  </Card>
+
+  <Card title="SCV 來源引擎" icon="cloud" href="/zh-Hant/engines/scv-source-engines">
+    八個 C++26 SCV、超大規模雲端、邊緣與供應商來源知識引擎。
+  </Card>
+
+  <Card title="SHV 引擎" icon="microchip" href="/zh-Hant/engines/shv-engines">
+    硬體來源、目錄、設定檔、分割、發布與轉接器引擎。
+  </Card>
+</CardGroup>
+
+## SKV 引擎系列
+
+每個 SKV 介面都有自己的引擎：
+
+- SKVI、SCLV、SACV、SODV 與 SSFV 引擎各自實作 inspect、check、propose、project（以及適用時的 recovery）。
+- SAV 與 SEV 引擎是凍結路徑的 C++26 程序，用於組合評估與演進案例。
+
+<Note>
+  目前所有 SKV 引擎都僅支援讀取、查詢、驗證與提案。在每個引擎的 SSIAG 權限驗證、預期狀態交易、qxctl 防護措施、STAV 事件、復原與負面測試合約完成之前，程式化的標準套用仍維持停用。
+</Note>
+
+## 共通保證
+
+- 每個模組皆可獨立安裝與解除安裝
+- 不進行周遭儲存庫爬梳；資訊清單探索是明確的
+- 沒有共用權限；每條變更路由都受 SSIAG 與 STAV 把關
+- 不常駐於熱路徑；引擎絕不會為即時工作負載帶來延遲
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="qxctl 概觀" icon="terminal" href="/zh-Hant/qxctl/overview">
+    呼叫經回執驗證之確切引擎的管理 CLI。
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/zh-Hant/governance/maestro">
+    記錄引擎與接收器之間的對接關係。
+  </Card>
+</CardGroup>

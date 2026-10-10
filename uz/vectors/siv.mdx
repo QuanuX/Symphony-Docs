@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: kelajakdagi agentlar hamkorligi"
+description: "SIV kelajakdagi agentli hamkorlik, kengaytirilgan kontekst, tuzilmali uzoq muddatli mantiq va boshqariladigan Symphony o'zaro ta'siriga egalik qiladi. SMCV uning birinchi ixtiyoriy komponenti; SAIV zaxiralangan."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV) agentli hamkorlik, kengaytirilgan mahalliy kontekst, tuzilmali uzoq muddatli mantiq, agentlararo aloqa va Symphony interfeysida inson boshqaruvidagi ishlash uchun kelajakdagi Symphony tomonidan yaratiladigan semantikaga egalik qiladi. Bu kanonik shartnomalarga ega, ammo hali bajariladigan implementatsiyasi bo'lmagan rivojlanayotgan domen.
+
+## Doira va maqsad
+
+SIV quyidagilarni qo'llab-quvvatlashi kutilmoqda:
+
+- Symphony ish oqimlarida mahalliy va masofaviy agentlarning ishtiroki
+- Sessiyalar va vektorlar bo'ylab umumiy kengaytirilgan kontekst
+- Takrorlanuvchi yoki ko'p bosqichli amallar uchun tuzilmali uzoq muddatli mantiq
+- Agentlararo aloqa protokollari
+- Symphony buyruqlar interfeysi bilan boshqariladigan o'zaro ta'sir
+
+SIV chaqiruvchi turiga qarab vakolat bermaydi. Inson, sun'iy intellekt, agent va xizmat chaqiruvchilariga bir xil munosabatda bo'linadi. Vakolat maqsadli xostga egalik, berilgan ruxsat, so'ralgan amal, kutilgan holat va egasi sozlagan himoya choralaridan kelib chiqadi.
+
+## Nomlangan quyi vektorlar
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Ixtiyoriy Markdown konvertatsiya komponenti. Yoqilgan IPC ulanishi ustida qxctl orqali sozlanadigan tarjimon sifatida rejalashtirilgan. Hozircha hech qanday SMCV buyrug'i yoki tarjimoni amalga oshirilmagan.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Keyingi Symphony intellekt integratsiyasi quyi vektori uchun zaxiralangan. Bu zaxira hech qanday implementatsiya, nomlar maydoni xatti-harakati yoki semantik amalni taqdim etmaydi.
+  </Card>
+</CardGroup>
+
+## Doiradan tashqari
+
+SIV aniq ravishda quyidagilarni qilmaydi:
+
+- Vektorga tegishli semantikani almashtirmaydi (domen amallari agent ularni chaqirganda ham tegishli vektorlarga tegishli bo'lib qoladi)
+- Kanonik haqiqatga aylanmaydi yoki SKV shartnomalarini bekor qilmaydi
+- Savdoning tezkor yo'liga (hot path) kirmaydi
+- Sun'iy intellekt bo'yicha eski ishchi hujjatni yakuniy deb hisoblamaydi
+
+## Joriy holat
+
+SIV faqat kanonik arxitektura shartnomasidir. Hozirda hech qanday SIV harness'i, agent pochtasi, uzoq muddatli holat engine'i, model ulanishi, mahalliy/masofaviy agent protokoli, SAIV komponenti, SMCV tarjimoni yoki qxctl boshqaruvi amalga oshirilmagan.
+
+## Til chegarasi
+
+SIV komponentlari uchun Rust talabi belgilanmagan. Komponent tili kelajakdagi unumdorlik, ko'chuvchanlik, xavfsizlik va integratsiya shartnomasiga muvofiq bo'ladi. U hech qanday ishchi hujjatdan meros qilib olinmaydi.
+
+## SIV boshqa vektorlar bilan qanday bog'liq
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/uz/skv/overview">
+    SIV shartnomalari, evolyutsiyasi va rasmiy nashr munosabatlarini boshqaradi.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/uz/vectors/sov">
+    Vektorga tegishli semantikani saqlagan holda agent chaqiradigan amallarni qxctl orqali taqdim etishi mumkin.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/uz/skv/sav">
+    Agent tomonidan yig'ilgan har qanday amallar uchun kompozitsiya va moslikni baholaydi.
+  </Card>
+</CardGroup>

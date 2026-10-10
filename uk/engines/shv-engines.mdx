@@ -1,0 +1,65 @@
+---
+title: "Рушії SHV: джерела та граф Symphony Hardware Vector"
+description: "Рушії SHV каталогізують CPU, GPU, NIC, пам’ять і сховища зі збереженим відтворенням джерел, оцінюванням вимог, обробкою PDF і стійкими графами DuckDB."
+sidebarTitle: "Рушії SHV"
+---
+
+Рушії Symphony Hardware Vector (SHV) каталогізують процесори, топологію CPU, кеші, GPU, NIC і оптоволоконні інтерфейси, материнські плати, RAM і NVMe. Типова курація надає пріоритет оригінальним компонентам і задокументованим варіантам. Кожен рушій встановлюється незалежно й працює лише на читання.
+
+## Рушії
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Апаратне ядро: покриття, визначене викликачем, відтворення каталогу зі збережених джерел, оцінювання вимог і проєкція графа.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Обробка джерел і ревізій для апаратних доказів.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Оцінювання профілів компонентів і систем.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Розбиття каталогізованого обладнання для відтворюваного вибору.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Керована локальна публікація та вибір каталогу.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Явна поверхня транспорту графа.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Стійке сховище графа на основі DuckDB, що адмініструється через qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Інтерпретація джерел PDF для технічних паспортів обладнання.
+  </Card>
+</CardGroup>
+
+## Основні аспекти адміністрування
+
+- **Стійке сховище** адмініструється лише через `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` зі збереженим дайджестом очікуваного наміру також є відновленням; окремого псевдоніма для відновлення немає.
+- **Публікація каталогу** адмініструється лише через `shv catalogue publication inspect|plan|apply|status|schema|template`. Відновлення — це `apply --operation-id`, що взаємовиключне з `--input`.
+- **Інвентаризація** (випуск 0.2) додає `shv graph store inventory`: логічне читання, прив’язане до ревізії, з явними збереженими ідентичностями записувачів. Застарілий вибір 0.1 і надалі підтримується.
+
+<Note>
+  Класи обладнання — це дані відображення та профілів викликача, а не дублікати дерев команд. `--version` вибирає точного основного власника; `--source-version` і `--adapter-version` називають окремі вибрані залежності. Ревізії схем і відображень — це ідентичності даних, а не псевдоніми для встановлених версій рушіїв.
+</Note>
+
+## Пов’язані поверхні
+
+<CardGroup cols={2}>
+  <Card title="Вектор SHV" icon="microchip" href="/uk/vectors/shv">
+    Контракт Hardware Vector, який реалізують ці рушії.
+  </Card>
+
+  <Card title="Команди векторів qxctl" icon="terminal" href="/uk/qxctl/vector-commands">
+    Повний довідник граматики `shv ...`.
+  </Card>
+</CardGroup>

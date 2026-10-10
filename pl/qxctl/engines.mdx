@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: wiązanie, diagnostyka i migracja rejestru"
+description: "Zarządzaj chronionym profilem wiązań silników Symphony w zakresie użytkownika za pomocą poleceń list, inspect, doctor, bind, unbind oraz migrate powiązanego z digestem w qxctl."
+sidebarTitle: "engines"
+---
+
+Gramatyka `qxctl knowledge engines ...` zarządza chronionym profilem wiązań `default` w zakresie użytkownika dla silników wektorowych Symphony. Wiąże wybraną zawartość na potrzeby późniejszej rekoncyliacji. Nie instaluje, nie wywołuje, nie aktywuje, nie dokuje, nie uwierzytelnia, nie autoryzuje ani nie stosuje silnika.
+
+## Polecenia
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Podaj `absent` przy pierwszej mutacji rejestru v2 lub dokładny digest zwrócony przez `list` przy kolejnych mutacjach. Każda mutacja jest operacją compare-and-swap względem tego digestu.
+
+## Migracja z v1 do v2
+
+<Warning>
+  Prawidłowy stan rejestru v1 pozostaje czytelny. Migracja do v2 to osobna, dokładna operacja compare-and-swap i nigdy nie jest operacją wyboru wersji. Nie traktuj migracji jako ścieżki aktualizacji służącej do wyboru silnika.
+</Warning>
+
+- `list` i `inspect` nadal działają na dowodach v1.
+- `migrate` tworzy powiązaną generację v2 bez odrzucania prawdy v1.
+- Po migracji używaj digestów v2 przy przyszłych mutacjach.
+
+## Czym jest wiązanie
+
+Wiązanie wybiera dokładną zawartość do późniejszej rekoncyliacji przez koordynatora. Wiązanie:
+
+- Nie instaluje silnika
+- Nie wywołuje ani nie aktywuje silnika
+- Nie dokuje silnika w Maestro
+- Nie uwierzytelnia wywołującego
+- Nie autoryzuje operacji apply
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/pl/qxctl/reconcile">
+    Rekoncyliacja powiązanej zawartości z koordynatorem.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/pl/qxctl/lifecycle">
+    Plany cyklu życia korzystające z powiązanych silników.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/pl/governance/maestro">
+    Autorytet obecności, który rejestruje dokowanie, a nie wiązania.
+  </Card>
+
+  <Card title="Przegląd silników" icon="cube" href="/pl/engines/overview">
+    Niezależnie instalowalne silniki wektorowe.
+  </Card>
+</CardGroup>

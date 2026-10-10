@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: advarselspolicy for Symphony Validator"
+description: "Administrer beskyttet advarselspolicy, grunnlinje og visningsgrammatikk over den uavhengige Symphony Validator via qxctl uten å endre rå detektorbevis."
+sidebarTitle: "validate"
+---
+
+Grammatikken `qxctl validate ...` administrerer Symphony Validators beskyttede advarselspolicy, grunnlinje og visningsgrammatikk. Den uavhengig installerte C++-validatoren produserer uforanderlig rått bevis; qxctl administrerer kallernøytral beskyttet presentasjon uten å endre deteksjonen.
+
+## Hva qxctl validate dekker
+
+- Ni beskyttede løv for advarselslivssyklus
+- Den eksakte kvitteringsstøttede ruten for rotsammendrag
+- Grunnlinjeadministrasjon og rapportering av endringer
+- Visningsgrammatikk for linjeutdata og strukturert JSON
+
+Hvert løv validerer validatorens eksakte kvittering og strukturerte digester før beskyttet advarselspolicy anvendes.
+
+## Grense
+
+<Warning>
+  qxctl validate kan ikke reparere filer, publisere noe eller overstyre rått detektorbevis. Disponering av advarsler påvirker presentasjonen, ikke deteksjonen.
+</Warning>
+
+- Ingen undertrykking av advarsler utenfor den beskyttede policyen
+- Ingen endring av validatorutdata
+- Ingen fabrikkert dekning for en utilgjengelig rute
+
+## Vanlige bruksområder
+
+- Etablere eller tilbakestille en advarselsgrunnlinje
+- Godkjenne eller gjenåpne en styrt historisk advarsel
+- Sende ut det kvitteringsstøttede rotsammendraget som vises i repositoriets README
+
+Validatoren som ligger til grunn for denne grammatikken, kontrollerer kontraktsform, gjeldende kildelukning, invarianteierskap, funksjonsadministrasjon, utgivelser og det maskineide rotsammendraget.
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/no/governance/validator">
+    Den uavhengige, skrivebeskyttede C++-kontrolløren som qxctl administrerer.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/no/skv/ssfv">
+    Forventninger til funksjonsadministrasjon som kontrolleres i bevis.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/no/skv/sodv">
+    Utgivelsesposter som vises i validatorbevis.
+  </Card>
+
+  <Card title="Oversikt over qxctl" icon="terminal" href="/no/qxctl/overview">
+    Hele kommandoflaten.
+  </Card>
+</CardGroup>

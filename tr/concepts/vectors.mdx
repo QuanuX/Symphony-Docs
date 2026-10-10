@@ -1,0 +1,47 @@
+---
+title: "Symphony Vektörleri ve Teslimat Aşamaları"
+description: "Symphony'nin kalıcı anlamsal sahiplik alanlarını (vektörler) kronolojik teslimat aşamalarından ayırt edin; ayrıca Contract Quad'ı ve mevcut vektör durumunu öğrenin."
+sidebarTitle: "Vektörler ve Aşamalar"
+---
+
+Symphony mimarisini iki fikir etrafında düzenler: **vektörler** kalıcı anlamsal sahiplik alanlarıdır, **aşamalar** ise kronolojik teslimat kampanyalarıdır. Bir bileşenin ilk olarak bir aşamada araştırılmış olması, o aşamayı bileşenin kalıcı sahibi yapmaz. Vektörler, uygulama evrilirken anlamı istikrarlı tutar.
+
+## Vektör nedir?
+
+Vektör, kanonik sözleşmesi o alanın anlamına ve izin verilen işlemlerine sahip olan, kalıcı ve sınırlı bir anlamsal sahiplik alanıdır. Her vektör bir **Contract Quad** alır: `INTENT.md`, `MANIFEST.md`, `SKILL.md` ve `SPEC.md`; ayrıca gerçekten ihtiyaç duyduğu odaklı eşlik eden yüzeyler. Vektör kanonik yüzeylerini ve yetki devri grafiğini bildirir, SKVI her mevcut yüzeyi tam olarak bir kez eşler ve eskimiş eşlik eden yüzeyler, çelişkili bağlam olarak kalmak yerine yönetilen evrim yoluyla geçersiz kılınır.
+
+## Vektör durumu
+
+| Vektör | Durum | Sayfa |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Uygulandı: dizinlenmiş yüzeylerle Aşama 1 temeli | [/tr/skv/overview](/tr/skv/overview) |
+| **SKVI** — Kaynak dizinleme | Uygulandı: inceleme/kontrol/öneri motoru | [/tr/skv/skvi](/tr/skv/skvi) |
+| **SCLV** — Değişiklik defteri | Uygulandı: yalnızca eklemeli defter kontrolleri | [/tr/skv/sclv](/tr/skv/sclv) |
+| **SACV** — API sözleşmesi yönetişimi | Uygulandı: OpenAPI 3.2.0 kontrolleri | [/tr/skv/sacv](/tr/skv/sacv) |
+| **SODV** — Resmî belge/sürüm yönetişimi | Uygulandı: yerel sürüm defteri kontrolleri | [/tr/skv/sodv](/tr/skv/sodv) |
+| **SSFV** — Özellik kimliği/yönetimi | Uygulandı: yapısal özellik kontrolleri | [/tr/skv/ssfv](/tr/skv/ssfv) |
+| **SAV** — Accordare bileşimi | Uygulandı: donuk yol değerlendirmesi | [/tr/skv/sav](/tr/skv/sav) |
+| **SEV** — Evrim | Uygulandı: etki/düzenleme planlaması | [/tr/skv/sev](/tr/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Uygulandı: cgo içermeyen Go temeli | [/tr/governance/ssiag](/tr/governance/ssiag) |
+| **STAV** — TOPS denetim protokolü | Uygulandı: TOPS başına yalnızca eklemeli defter | [/tr/governance/stav](/tr/governance/stav) |
+| **SOV** — Ops Vector | Gelişmekte: hazırlama, Habitat, Nest teslimatı | [/tr/vectors/sov](/tr/vectors/sov) |
+| **SCV** — Cloud Vector | Uygulandı: sekiz C++ kaynak bilgisi motoru | [/tr/vectors/scv](/tr/vectors/scv) |
+| **SNV** — Node Vector | Gelişmekte: SNIV, SNRV, SCIV, SCNV bileşimi | [/tr/vectors/snv](/tr/vectors/snv) |
+| **SQV** — Quantitative Vector | Gelişmekte: SOOV FIX mimarisi alt vektörü | [/tr/vectors/sqv](/tr/vectors/sqv) |
+| **SHV** — Hardware Vector | Uygulandı: C++ kaynak, katalog, profil motorları | [/tr/vectors/shv](/tr/vectors/shv) |
+| **SIV** — Intelligence Vector | Gelişmekte: SMCV isteğe bağlı Markdown; SAIV ayrılmış | [/tr/vectors/siv](/tr/vectors/siv) |
+
+## Contract Quad ve eşlik eden yüzeyler
+
+Her vektör şunları alır:
+
+1. **INTENT.md** — amaç ve kapsam
+2. **MANIFEST.md** — kimlik, bildirilen yüzeyler, yetki devri grafiği
+3. **SKILL.md** — güvenli kullanım ve operasyonel rehberlik
+4. **SPEC.md** — normatif davranış ve sınırlar
+
+`SLANG.md`, `NAMESPACES.md`, kayıt defterleri, şemalar ve profiller gibi eşlik eden yüzeyler, dört üyeli yapının dışında yönetilen yapıtlar olarak kalır. Sahip gerçekliğini yönlendirir veya özelleştirirler, ancak kendi yetkilerini genişletemezler.
+
+## Kanıta dayalı entegrasyon
+
+Ertelenmiş bir motorun uydurulmuş bir makbuzu yoktur. Önerilen bir API'nin uydurulmuş bir kayıt defteri girdisi yoktur. Yayımlanmamış bir sözleşmenin SODV tamamlanma iddiası yoktur. Bu, törensel bir tekrar değil, kanıta dayalı entegrasyondur.

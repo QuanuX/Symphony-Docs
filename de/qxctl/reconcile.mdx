@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Worktree-Abstimmung"
+description: "Stimmen Sie Worktrees gegen einen gebundenen Symphony-Koordinator ab – mit Kompatibilitätsprüfungen, Checkpoint- und Close-Journalen sowie nachweisbasierter Zwei-Slot-Wiederherstellung."
+sidebarTitle: "reconcile"
+---
+
+Die Grammatik `qxctl knowledge reconcile ...` steuert die Worktree-Abstimmung über genau einen gebundenen Knowledge Session Coordinator. Jede Mutation wird über stabile Bezeichner nachverfolgt und ist ein Compare-and-Swap gegen den exakten aktuellen Journal-Digest.
+
+## Befehle
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: prüfen, ob qxctl, der Koordinator und die gebundenen Engines in Protokollversion und Geltungsbereich übereinstimmen.
+- `begin`: einen neuen Abstimmungskontext mit stabilem Operationsbezeichner öffnen.
+- `status`: das aktuelle Journal ohne Mutation untersuchen.
+- `checkpoint`: das Journal dauerhaft per Compare-and-Swap fortschreiben.
+- `close`: den Abstimmungskontext abschließen.
+- `recover --discover`: Discovery-Wiederherstellung, wenn der normale Status den lokalen Zustand nicht validieren kann.
+
+## Wiederherstellungsregeln
+
+<Warning>
+  Die Zwei-Slot-Wiederherstellung ist eine nachweisbasierte Vorwärtsreparatur. Sie ist niemals eine Erlaubnis, ein inkompatibles Journal oder eine unbekannte kritische Erweiterung zu verwerfen. Wenn die Wiederherstellung fehlschlägt, eskalieren Sie, statt sie zu erzwingen.
+</Warning>
+
+Verwenden Sie die Discovery-Wiederherstellung nur, wenn der normale Status den lokalen Zustand nicht validieren kann. Bewahren Sie Blocker; planen Sie erst neu, nachdem sich verifizierte Nachweise geändert haben.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="Session-Koordinator" icon="gears" href="/de/engines/coordinator">
+    Die Engine, die Abstimmungsjournale verantwortet.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/de/qxctl/session">
+    Authentifizierte Sessions, die mit Abstimmungskontexten gekoppelt sind.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/de/qxctl/engines">
+    Die Bindings verwalten, die der Koordinator nutzt.
+  </Card>
+</CardGroup>

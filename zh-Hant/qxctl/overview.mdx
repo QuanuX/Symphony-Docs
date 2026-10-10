@@ -1,0 +1,83 @@
+---
+title: "qxctl：Symphony 代理式管理命令列"
+description: "qxctl 是 Symphony 以 Go 撰寫的管理 CLI。了解其 373 個可執行命令、引擎綁定登錄檔，以及向量引擎經收據驗證的呼叫模型。"
+sidebarTitle: "qxctl 概覽"
+---
+
+`qxctl` 是 Symphony 以 Go 撰寫、以代理（agentic）優先的管理與查詢 CLI。它負責表達命令；其背後的操作與意義則由各領域向量擁有。其簽入版本控制的登錄檔會將每個可執行命令葉節點綁定到穩定的機器識別，以及經審查的功能管理證據。
+
+## qxctl 涵蓋的範圍
+
+qxctl 實作以下管理功能：
+
+- 儲存庫與合約檢查
+- 驗證器、警告、不變式、功能、生命週期、工作階段、協調、綁定與 Maestro 管理
+- SSIAG 身分、STAV 稽核與 Accordare 生產者管理
+- 已實作的向量引擎語法（`skvi`、`sclv`、`sacv`、`sodv`、`ssfv`，以及 SCV 與 SHV 介面）
+
+目前的登錄檔包含 **373** 個可執行命令。
+
+## 安全呼叫模型
+
+qxctl 會呼叫經收據驗證的確切安裝，並使用有界子程序、硬性期限、回應身分與摘要檢查、預期狀態交易，以及持久性復原。它絕不接受以配接器路徑或原始版本取代收據。
+
+## 引擎綁定登錄檔 v2
+
+引擎綁定登錄檔 v2 支援八種既定的引擎角色，以及有界的未來角色識別。舊版 v1 狀態採雙重讀取；遷移至 v2 需要透過 qxctl 執行明確且與摘要綁定的比較並交換，且絕不是版本選擇操作。
+
+## 登錄檔命令
+
+從 `tools/qxctl` 產生並驗證預期的登錄檔：
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+已安裝的用戶端可以輸出與可執行檔綁定的證據：
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+預期證據的用戶端版本、可執行檔摘要與收據摘要皆為 null。觀察證據會綁定確切的用戶端版本與可執行檔摘要，並在可用時加上收據摘要。兩種形式都使用 `symphony.qxctl.command-registry.v1`。
+
+<Note>
+  qxctl 擁有命令語法與呈現方式。它不擁有向量語意或標準知識真相。無論呼叫者類別為何，只有經審查的原始碼變更才能批准新的 `qxcmd` 識別。
+</Note>
+
+## 命令群組
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/zh-Hant/qxctl/knowledge">
+    跨向量生命週期與持久性 SSFV 工作階段管理。
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/zh-Hant/qxctl/lifecycle">
+    設定檔、擁有權、觀察、報告、開機、套用與復原。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/zh-Hant/qxctl/engines">
+    引擎綁定登錄檔與遷移。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/zh-Hant/qxctl/reconcile">
+    協調器工作樹協調。
+  </Card>
+
+  <Card title="session" icon="key" href="/zh-Hant/qxctl/session">
+    已驗證的工作階段與 SSFV 維護串流。
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/zh-Hant/qxctl/maestro">
+    衍生的受體清單與停靠證據。
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/zh-Hant/qxctl/validate">
+    受保護的警告政策與驗證器管理。
+  </Card>
+
+  <Card title="向量命令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    `skvi`、`sclv`、`sacv`、`sodv`、`ssfv`、`shv`，以及未來的 accord／evolution 語法。
+  </Card>
+</CardGroup>

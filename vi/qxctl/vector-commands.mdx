@@ -1,0 +1,82 @@
+---
+title: "Lệnh vector của qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Khám phá cú pháp qxctl dành riêng cho từng vector hiện có: SKVI, SCLV, SACV, SODV, SSFV, lưu trữ và danh mục SHV, cùng các bề mặt accord và evolution được dành sẵn."
+sidebarTitle: "Lệnh vector"
+---
+
+qxctl cung cấp cú pháp dành riêng cho từng vector cho mọi SKV engine đã triển khai và cho việc quản trị SCV và SHV. Cú pháp Accordare và SEV đã được phê chuẩn sẽ dùng `qxctl accord ...` và `qxctl evolution ...` khi phần triển khai lệnh và bằng chứng registry ổn định của chúng tồn tại.
+
+## Cú pháp SKV engine
+
+- `qxctl skvi ...`: inspect, check, propose, project trên SKVI engine
+- `qxctl sclv ...`: inspect, check, propose, recover, project trên SCLV engine
+- `qxctl sacv ...`: inspect, check, diff, propose, project trên SACV engine
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project trên SODV engine
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph trên SSFV engine
+
+Mỗi cú pháp bị giới hạn bởi hợp đồng của engine sở hữu. qxctl không bao giờ tự tạo ra thao tác hay bỏ qua engine.
+
+## Bổ sung cho Accordare
+
+Các bổ sung Accordare trên qxctl cung cấp:
+
+- Trạng thái ổn định
+- Đối soát (chỉ phát lại các ứng viên chính xác)
+- Cài đặt và gỡ cài đặt supervisor (chỉ gọi tệp thực thi receipt-v2 đã được xác minh)
+- Hai định danh quản trị grant chỉ thay đổi cấu hình STAV đang dừng dưới SSIAG và khôi phục theo trạng thái mong đợi
+
+Status tách biệt ý định bền vững và tồn đọng append. Đối soát chỉ phát lại các ứng viên chính xác. Các lệnh lá grant không bao giờ mở một cấu hình đang chạy.
+
+## Lưu trữ SHV
+
+Lưu trữ SHV bền vững chỉ được quản trị thông qua:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` với digest ý định mong đợi đã lưu giữ cũng chính là thao tác khôi phục. Không có bí danh khôi phục riêng. Phạm vi store được khai báo trong đầu vào; định danh connector được đặt qua flag. Lưu trữ cấu trúc không trùng lặp với `shv graph validate` về ngữ nghĩa và không chọn head của danh mục.
+
+`shv graph store inventory` (bản phát hành 0.2) bổ sung một thao tác đọc logic ràng buộc theo revision với các định danh writer được lưu giữ tường minh. Cách chọn kế thừa 0.1 vẫn được hỗ trợ.
+
+## Xuất bản danh mục SHV
+
+Việc xuất bản danh mục chỉ được quản trị thông qua:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Khôi phục là `apply --operation-id`, loại trừ lẫn nhau với `--input`. Việc chọn danh mục cục bộ dựa trên quyền khác biệt với việc kích hoạt nguồn và lưu trữ đồ thị chung.
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Ngữ nghĩa vector mà các engine triển khai.
+  </Card>
+
+  <Card title="Vector SHV" icon="microchip" href="/vi/vectors/shv">
+    Bối cảnh về Hardware Vector và danh sách engine.
+  </Card>
+
+  <Card title="SHV engine" icon="microchip" href="/vi/engines/shv-engines">
+    Chi tiết ở cấp engine.
+  </Card>
+
+  <Card title="Tổng quan qxctl" icon="terminal" href="/vi/qxctl/overview">
+    Toàn bộ bề mặt lệnh qxctl.
+  </Card>
+</CardGroup>

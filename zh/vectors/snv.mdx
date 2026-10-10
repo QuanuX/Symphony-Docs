@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector：Node 标识与集群记录"
+description: "SNV 记录并关联 Node 标识、资源、集群成员关系以及用户指定的名称，但不对其作出规定。由 SNIV、SNRV、SCIV 和 SCNV 子向量组成。"
+sidebarTitle: "Node 向量"
+---
+
+Symphony Node Vector（SNV，Symphony Node 向量）记录并关联你在 Symphony 中使用的物理 Node 的标识、资源、集群成员关系和名称。它由四个子向量组成，每个子向量各自拥有一个独立的语义边界。SNV 不会代表你选择、签发、规定或自动重命名任何内容。
+
+## 子向量组成
+
+SNV 由四个持久的语义领域构成：
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node 标识**：物理 Node 的标识，及其与提供商资源、所选产品和基础设施域之间的精确关联。
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node 资源**：Node 的本地资源事实以及经过明确限定的远程资源事实。
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **集群标识**：集群标识、总线连接以及 Node 与集群之间的关系。
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **统一命名**：在 SNV 范围内，对你或你的提供商已分配的名称进行解析。
+  </Card>
+</CardGroup>
+
+## 记录边界
+
+SNV 记录事实及其沿袭。它不会为你预留名称、分配资源或创建集群。名称由用户指定，Symphony 负责记录；提供商资源由用户选择，Symphony 负责关联；集群拓扑由用户设计，Symphony 负责记载。
+
+## SNV 与其他向量的关系
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/zh/vectors/scv">
+    提供提供商和外部资源知识，说明可以存在哪些 Node。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh/vectors/sov">
+    通过 qxctl 建立和变更基础设施，产生由 SNV 记录的 Node。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/zh/vectors/shv">
+    可能为 Node 内部的物理组件提供详细的硬件能力证据。
+  </Card>
+</CardGroup>
+
+## 当前状态
+
+SNV 是一份新兴的规范架构契约。目前尚未实现任何 SNV 引擎、图、注册表模式、标识编码器、发现服务、命名服务或 qxctl 命令。记录模式和引擎仍被推迟。
+
+## 未来的可安装性
+
+任何未来的 SNV 引擎都必须可独立安装，并能够根据精确的所有者证据重建其投影。任何引擎都不会仅因存储或解析记录而成为标识或命名的权威。

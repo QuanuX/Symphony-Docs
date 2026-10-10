@@ -1,0 +1,47 @@
+---
+title: "SEV: rejalashtirilgan o'zgarishlar uchun Symphony Evolution Vector"
+description: "SEV rejalashtirilgan o'zgarishlar, yangiliklar va hayot sikli o'tishlarini deterministik holatlar, bog'liqliklarga tayyor to'plamlar, bir martalik graflar va qo'llamaydigan tiklash tavsiyalari bilan baholaydi."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) platforma bo'ylab rejalashtirilgan o'zgarishlar va duch kelingan yangiliklar holatlariga egalik qiladi. Uning engine'i muzlatish yo'lidagi (freezing-path), faqat o'qiydigan C++26 jarayonidir. SEV xostni kuzatmaydi va o'tishni qo'llamaydi; u dalillar va qaror bo'yicha tavsiyalar ishlab chiqaradi.
+
+## Amallar
+
+- **Holatlarni baholash**: qo'shish, o'zgartirish, qayta nomlash, almashtirish, eskirgan deb belgilash, iste'foga chiqarish va olib tashlash uchun deterministik evolyutsiya holatlari.
+- **Ta'sir va qarorni rejalashtirish**: har bir holatni uning vakolatli egalariga biriktirish.
+- **Bog'liqliklarga tayyor to'plamni qayta hisoblash**: bog'liq o'tishlarning xavfsiz tartibini aniqlash.
+- **O'tishni tekshirish**: o'tishdan keyin kuzatilgan holat kutilgan shaklga mos kelishini tasdiqlash.
+- **Tiklash tavsiyalari**: o'tish uzilib qolganda xavfsiz oldinga yoki orqaga qadamlarni tasvirlash.
+- **SCSEV baholash**: birinchi boshqariladigan SEV profili bu amallarni faqat hujjatlardan iborat bilim sahifalari evolyutsiyasiga qo'llaydi.
+- **Yangilik va kuzatuv tekshiruvlari**: ko'rib chiquvchining e'tibori uchun yangi yoki kutilmagan sahifalarni aniqlash.
+- **Triggerlarni birlashtirish** va **hayot sikli sessiyasiga bog'lash**: takroriy baholashni kamaytirish va holatlarni sessiyaga bog'lash.
+- **Graf proyeksiyasi**: ko'rib chiqish uchun bir martalik graflar.
+
+## SCSEV profili
+
+SCSEV SSFV funksiyalarni boshqarish, barqaror qxctl buyruq haqiqati va engine amal deskriptorlaridan qayta foydalanadi. U takroriy engine yoki reyestr yaratmaydi. Birinchi engine bosqichi faqat hisobot va faqat taklif uchun; bardoshli tashqi amallar qxctl va knowledge session coordinator orqali alohida avtorizatsiya qilinadi.
+
+<Note>
+  SEV faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun. Kanonik qo'llash SKV engine'lari oilasi bo'ylab o'chirilgan holda qoladi.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    Umumiy freymvork va Contract Quad modeli.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uz/skv/ssfv">
+    SCSEV profili qayta foydalanadigan funksiyalarni boshqarish.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/uz/skv/sav">
+    O'zgartirilgan komponentlar uchun kompozitsiya va moslikni baholash.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Tasdiqlangan evolution grammatikasi amalga oshirilgach, `qxctl evolution ...` sifatida taqdim etiladi.
+  </Card>
+</CardGroup>

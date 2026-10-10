@@ -1,0 +1,43 @@
+---
+title: "Maestro: organ obecności silników wektorów Symphony"
+description: "Maestro rejestruje uwierzytelnione relacje dokowania silników wektorów dla każdego TOPS i receptora, wyprowadzając kompletny inwentarz tylko do odczytu bez uruchamiania silników ani nadzorowania ich."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) to niezależnie instalowany organ obecności C++26 działający na ścieżce zamrożonej. Rejestruje dokładne, uwierzytelnione relacje dokowania silników wektorów dla każdego TOPS i receptora oraz wyprowadza kompletny inwentarz tylko do odczytu tego, co jest obecnie zadokowane. Maestro jest świadkiem, a nie nadzorcą.
+
+## Co rejestruje Maestro
+
+- Dokładne, uwierzytelnione relacje dokowania między silnikami wektorów a receptorami
+- Zakres na poziomie TOPS, dzięki któremu obecność w każdej instalacji pozostaje prywatna dla tej instalacji
+- Wyprowadzony, kompletny inwentarz tylko do odczytu dostępny przez `qxctl maestro inventory`
+
+## Czego Maestro nie robi
+
+<Warning>
+  Maestro nie uruchamia, nie planuje, nie nadzoruje ani nie wywołuje silników. Samo powiązanie, uzgodnienie, koordynacja uwierzytelnionych sesji czy plan cyklu życia nie ustanawiają obecności w Maestro, nie ratyfikują prawdy semantycznej, nie modyfikują wiedzy kanonicznej ani nie dowodzą kompletności zainstalowanego hosta.
+</Warning>
+
+- Maestro nie tworzy procesów.
+- Maestro nigdy nie stosuje zmian w wiedzy kanonicznej.
+- Maestro nigdy nie zastępuje silnika wektora, który jest właścicielem semantyki.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/pl/qxctl/maestro">
+    `qxctl maestro inventory` prezentuje wyprowadzony inwentarz.
+  </Card>
+
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Jest właścicielem mechanizmów uwierzytelnionych sesji i uzgadniania drzew roboczych.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pl/governance/ssiag">
+    Uwierzytelnia relacje dokowania rejestrowane przez Maestro.
+  </Card>
+
+  <Card title="Przegląd silników" icon="cube" href="/pl/engines/overview">
+    Niezależnie instalowane silniki wektorów, które dokują w Maestro.
+  </Card>
+</CardGroup>

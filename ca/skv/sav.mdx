@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector per a l'avaluació de composicions"
+description: "SAV resol referències d'Accord, avalua la composició en tres eixos, valida les Named Versions i planifica Installation Blueprints sense mutar la veritat canònica."
+sidebarTitle: "SAV"
+---
+
+El Symphony Accordare Vector (SAV) resol la composició i la compatibilitat de components declarats. El seu motor és un procés en C++26 de només lectura en via de congelació. SAV compon projeccions tipades exactes, però mai no pren la veritat d'origen dels vectors propietaris.
+
+## Operacions
+
+SAV admet un conjunt ampli d'operacions d'avaluació:
+
+- **Resolució de referències d'Accord** en instantànies CURRENT derivades immutables
+- **Avaluació en tres eixos**, comparació i explicació
+- **Grafs de composició** i projeccions d'un sol ús
+- Validació i diferències de **Named Version**
+- Comprovacions d'**Extension Capsule**
+- Planificació d'**Installation Blueprint**
+- **Negociació de compatibilitat** entre components declarats
+
+## Què no fa SAV
+
+- SAV no assumeix la propietat semàntica dels components que compon.
+- SAV no tria un disseny per vosaltres; avalua el que heu declarat.
+- SAV no muta fitxers canònics. La seva sortida és evidència i propostes.
+- SAV no és l'autoritat d'addició de STAV. Vegeu el productor STAV d'Accordare per a la gestió de la intenció prèvia a la mutació.
+
+<Note>
+  SAV és només de lectura, consulta, validació i proposta. L'aplicació canònica programàtica continua desactivada a tota la família de motors SKV.
+</Note>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Visió general de SKV" icon="book-open" href="/ca/skv/overview">
+    El marc general i el model del Contract Quad.
+  </Card>
+
+  <Card title="Productor d'Accordare" icon="pen-nib" href="/ca/governance/accordare-producer">
+    Circuit d'auditoria acotat de les Named Versions de SAV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ca/skv/sev">
+    Casos d'evolució que desencadenen l'avaluació per part de SAV dels canvis de composició.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    La gramàtica ratificada d'Accordare arribarà com a `qxctl accord ...` un cop s'implementi.
+  </Card>
+</CardGroup>

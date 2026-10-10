@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro : lire l'inventaire de présence des récepteurs Symphony"
+description: "Inspectez l'autorité de présence Maestro de Symphony au moyen de qxctl pour voir les relations d'amarrage authentifiées des moteurs vectoriels et l'inventaire dérivé des récepteurs."
+sidebarTitle: "maestro"
+---
+
+La grammaire `qxctl maestro ...` expose les preuves de présence de Maestro. Maestro est l'autorité de présence; qxctl ne fait que lire et inspecter ce que Maestro consigne. Ni l'un ni l'autre ne crée de relations d'amarrage de lui-même.
+
+## Inventaire
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` présente l'inventaire complet, dérivé et en lecture seule de Maestro des relations d'amarrage authentifiées des moteurs vectoriels, par TOPS et par récepteur.
+
+## Routes d'administration connexes
+
+D'autres feuilles qxctl exposent l'administration liée à Maestro :
+
+- Statut et inspection des preuves d'amarrage
+- Routes de récupération bornées par les propres contrats de Maestro
+- Inscription au cycle de vie fondamental et supervision native pour Maestro lui-même
+
+Chaque route de mutation passe par l'adaptateur exact appartenant au module. qxctl ne produit jamais de descripteurs Maestro à partir d'une analyse interne et n'invoque jamais implicitement la version la plus récente.
+
+<Warning>
+  Maestro ne démarre, ne planifie, ne supervise ni n'invoque de moteurs. `qxctl maestro inventory` est en lecture seule. Une liaison, une réconciliation, une coordination de session ou un plan de cycle de vie, à eux seuls, n'établissent pas la présence dans Maestro.
+</Warning>
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/fr-CA/governance/maestro">
+    Contrat et limites de l'autorité de présence.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/fr-CA/qxctl/engines">
+    Registre de liaison des moteurs (les liaisons ne sont pas des amarrages).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fr-CA/qxctl/session">
+    Sessions authentifiées utilisées pour consigner la présence.
+  </Card>
+
+  <Card title="Aperçu des moteurs" icon="cube" href="/fr-CA/engines/overview">
+    Moteurs vectoriels installables de façon indépendante qui s'amarrent à Maestro.
+  </Card>
+</CardGroup>

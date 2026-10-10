@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: coneixement de recursos de proveïdors"
+description: "SCV manté coneixement privat dels recursos de proveïdors externs a AWS, Azure, GCP, DigitalOcean, Cloudflare i maquinari propietat de l'usuari mitjançant vuit motors en C++ instal·lables de manera independent."
+sidebarTitle: "Cloud Vector"
+---
+
+El Symphony Cloud Vector (SCV) és propietari del coneixement semàntic privat sobre recursos de maquinari externs i sobre les realitats dels proveïdors que configuren els vostres clústers i el vostre treball d'entrenament, recerca i dades. Mapeja les ofertes dels proveïdors, les regions, els dominis d'infraestructura, les restriccions i la disponibilitat observada sense classificar proveïdors ni imposar límits a allò que podeu intentar.
+
+## Cobertura de proveïdors
+
+SCV cobreix els proveïdors i tipus de recursos següents:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Maquinari propietat de l'usuari (quan cal comparar-lo amb recursos externs)
+
+## Motors instal·lats
+
+El coneixement de SCV es lliura mitjançant vuit motors en C++ instal·lables de manera independent. Només cal que instal·leu els que necessiteu:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Motor SCV principal per al coneixement de recursos de proveïdors i la construcció de grafs.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Motor d'evidència del núvol per a la captura acotada i la semàntica de corpus.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Motor d'evidència específic de Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Motor de coneixement de maquinari i recursos específic d'AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Motor de coneixement de maquinari i recursos específic d'Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Motor de coneixement de recursos específic de DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Motor de coneixement de maquinari i recursos específic de GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Connector opcional de grafs relacionals que utilitza DuckDB per a la indexació SQL retinguda.
+  </Card>
+</CardGroup>
+
+## Paquets de proveïdor portables i composició
+
+SCV exposa paquets de proveïdor portables mitjançant qxctl. Conserveu el control sobre els requisits, els permisos dels proveïdors, les receptes alternatives i les decisions d'execució. qxctl admet fluxos de treball retinguts i selecció protegida de grafs, de manera que podeu reproduir evidència exacta sense tornar a consultar els proveïdors.
+
+## Connector opcional de DuckDB
+
+El `scv-graph-duckdb-connector` afegeix una projecció relacional acotada dels grafs natius immutables. DuckDB és la base de dades SQL predeterminada seleccionada per l'usuari. En el futur podreu seleccionar motors de grafs dedicats mitjançant adaptadors addicionals.
+
+## Privadesa i sobirania
+
+Un graf de coneixement SCV instal·lat pertany a la vostra instal·lació privada. Els comptes, saldos, permisos i restriccions contractuals aportats per l'usuari només s'utilitzen mitjançant superfícies d'observació habilitades explícitament. Els fets privats no entren a la veritat de codi font oficial de Symphony.
+
+## Com es relaciona SCV amb altres vectors
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/ca/vectors/sov">
+    El pla de control operatiu que actua sobre l'evidència de SCV. SOV no reescriu el significat dels proveïdors.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ca/vectors/snv">
+    Registra les identitats dels Nodes físics i dels clústers que resulten d'un aprovisionament informat per SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ca/vectors/shv">
+    És propietari del coneixement detallat de les capacitats del maquinari dels components que SCV referencia.
+  </Card>
+</CardGroup>
+
+## Increments d'interfície versionats
+
+Les versions de SCV són additives i amb versions exactes. Les instal·lacions anteriors continuen sent invocables en els seus àmbits exactes. Els increments actuals inclouen operacions natives, instantànies de corpus, perfils d'interpretació, paquets de proveïdor portables, fluxos de treball de composició, seguiment d'obligacions i paquets d'evidència. Cada increment preserva les rutes, els valors predeterminats i els registres anteriors.

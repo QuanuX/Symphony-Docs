@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: Kontrol Operasi qxctl"
+description: "SOV mendefinisikan domain operasi yang diadministrasikan qxctl untuk provisioning, pengondisian Habitat, pengiriman Nest, adapter bus, dan administrasi Node jarak jauh opsional."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) adalah control plane operasional tempat perintah qxctl yang diotorisasi bertindak atas infrastruktur Anda. SOV memiliki kontrak untuk provisioning, pengondisian Habitat, pengiriman Nest, penyiapan adapter bus, dan administrasi Node jarak jauh opsional. SOV tidak menciptakan makna penyedia atau fakta perangkat keras; SOV menjalankan pilihan yang didukung yang telah Anda pilih.
+
+## Cakupan SOV
+
+SOV adalah domain Fase 2 yang sedang berkembang. Cakupannya meliputi:
+
+- **Provisioning**: alur kerja alokasi sumber daya penyedia dan perangkat keras milik sendiri
+- **Pengondisian Habitat**: pengondisian OS dan paket yang persis yang dikirimkan ke sebuah Node
+- **Pengiriman Nest**: penempatan dan pembaruan workload pada sebuah Node
+- **Pembentukan adapter bus**: menghubungkan Node melalui bus pilihan Anda (NATS JetStream, ZeroMQ, atau lainnya)
+- **Operasi Node jarak jauh**: administrasi opsional atas Node di luar shell lokal Anda
+
+<Note>
+  Protokol penyedia, eksekusi Terraform, builder Habitat, perintah deployment Nest, dan penerima operasi jarak jauh masih harus dirancang. Saat ini belum ada engine SOV atau mutasi penyedia yang diimplementasikan.
+</Note>
+
+## Hubungan SOV dengan vektor lain
+
+SOV adalah control plane, bukan sumber pengetahuan. SOV bertindak berdasarkan bukti yang dimiliki vektor lain:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/id/vectors/scv">
+    Menyediakan pengetahuan sumber daya penyedia dan offsite. SOV membaca bukti SCV untuk memutuskan operasi apa yang kompatibel.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/id/vectors/snv">
+    Mencatat identitas Node, keanggotaan klaster, dan nama yang dihasilkan setelah operasi SOV selesai.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/id/vectors/shv">
+    Kelak dapat menyediakan bukti kapabilitas perangkat keras terperinci untuk membatasi pilihan provisioning.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/id/skv/overview">
+    Mengatur kontrak SOV, konsekuensi perubahan, pengindeksan, dan integrasi lifecycle.
+  </Card>
+</CardGroup>
+
+## qxctl sebagai permukaan perintah
+
+Operasi SOV diekspos melalui `qxctl`, CLI admin berbasis Go dengan 373 perintah yang dapat dieksekusi. qxctl mengimplementasikan dan menyajikan operasi SOV, tetapi tidak memiliki makna domainnya. Vektor memiliki semantiknya; alat memiliki permukaan eksekusinya.
+
+## Batas otoritas pengguna
+
+Anda memilih penyedia, region, perangkat keras, bus, perangkat lunak, topologi deployment, dan pengaturan administrasi per Node. SOV mengekspos dan menjalankan pilihan yang didukung. SOV tidak memeringkat penyedia, merekomendasikan topologi, atau mengubah saran menjadi kebijakan wajib.
+
+## Status saat ini
+
+SOV adalah kontrak arsitektur kanonis. Tidak ada engine, wrapper Terraform, builder Habitat, adapter bus, atau penerima perintah jarak jauh yang diklaim telah diimplementasikan. Komponen SOV di masa depan akan tetap dapat diinstal secara independen, dapat dipilih berdasarkan versi persis, dan dapat di-rollback di bawah lifecycle SKV bersama.

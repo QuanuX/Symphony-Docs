@@ -1,0 +1,54 @@
+---
+title: "qxctl validate : politique d’avertissement du validateur Symphony"
+description: "Administrez la politique d’avertissement protégée, la référence et la grammaire d’affichage du validateur Symphony indépendant via qxctl, sans altérer les preuves brutes du détecteur."
+sidebarTitle: "validate"
+---
+
+La grammaire `qxctl validate ...` administre la politique d’avertissement protégée, la référence (baseline) et la grammaire d’affichage du Symphony Validator. Le validateur C++, installé indépendamment, produit des preuves brutes immuables ; qxctl administre une présentation protégée neutre vis-à-vis de l’appelant sans modifier la détection.
+
+## Ce que couvre qxctl validate
+
+- Neuf feuilles protégées de cycle de vie des avertissements
+- La route exacte de résumé racine adossée aux reçus
+- La gestion de la référence et le rapport des écarts
+- La grammaire d’affichage pour la sortie ligne et le JSON structuré
+
+Chaque feuille valide le reçu exact et les digests structurés du validateur avant d’appliquer la politique d’avertissement protégée.
+
+## Limites
+
+<Warning>
+  qxctl validate ne peut ni réparer des fichiers, ni publier quoi que ce soit, ni passer outre les preuves brutes du détecteur. La disposition des avertissements affecte la présentation, pas la détection.
+</Warning>
+
+- Aucune suppression d’avertissement en dehors de la politique protégée
+- Aucune modification de la sortie du validateur
+- Aucune couverture fabriquée pour une route indisponible
+
+## Usages courants
+
+- Établir ou réinitialiser une référence d’avertissements
+- Approuver ou rouvrir un avertissement historique gouverné
+- Émettre le résumé racine adossé aux reçus qui apparaît dans le README du dépôt
+
+Le validateur qui sous-tend cette grammaire vérifie la forme des contrats, la clôture actuelle des sources, la propriété des invariants, l’administration des fonctionnalités, les versions publiées et le résumé racine détenu par la machine.
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="Validateur" icon="clipboard-check" href="/fr/governance/validator">
+    Le vérificateur C++ indépendant en lecture seule que qxctl administre.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fr/skv/ssfv">
+    Attentes d’administration des fonctionnalités vérifiées dans les preuves.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fr/skv/sodv">
+    Enregistrements de versions qui apparaissent dans les preuves du validateur.
+  </Card>
+
+  <Card title="Vue d’ensemble de qxctl" icon="terminal" href="/fr/qxctl/overview">
+    Surface de commandes complète.
+  </Card>
+</CardGroup>

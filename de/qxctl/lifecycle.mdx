@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: Profil, Boot und Apply"
+description: "Verwalten Sie geschützte Lifecycle-Profile, Ownership, Beobachtungen, Boots und apply-kompatible Übergänge über qxctl mit strikten Compare-and-Swap-Schutzmechanismen."
+sidebarTitle: "lifecycle"
+---
+
+Die Grammatik `qxctl knowledge lifecycle ...` administriert geschützte Profile, Ownership, Beobachtungen, Boot-Journale und apply-kompatible Übergänge. Jede Mutation ist ein Compare-and-Swap, und jedes Apply ist an exakte Nachweise gebunden.
+
+## Profil
+
+Legen Sie das geschützte Lifecycle-Profil für ein TOPS fest:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Geben Sie `absent` für ein erstmaliges Profil an oder den exakten Digest, der von einem früheren Lesevorgang gemeldet wurde.
+
+## Ownership
+
+- `ownership status`: einen konfigurierten gemeinsamen Root untersuchen
+- `ownership reconcile`: dessen Nachweise aktualisieren
+- `ownership adopt`: erst übernehmen, nachdem jeder konservative Legacy-Anspruch geprüft wurde
+- `ownership release`: nur für einen exakten Legacy-Beleg freigeben, der absichtlich zurückforderbar gemacht wurde
+
+<Warning>
+  Löschen oder überschreiben Sie niemals von Hand die root-lokale Registry oder deren Kompatibilitätszaun `symphony-root-ownership/1` für das Beleg-Layout. Ältere Lifecycle-Clients müssen auf diesen Zaun stoßen und an ihrem bestehenden Blocker für unbekannte Pakete anhalten.
+</Warning>
+
+## Observe, Report, Boot
+
+- `observe`: verwerfbare Belegnachweise mit festem Layout ausgeben
+- `report`: einen neuen, verwerfbaren Plan erzeugen
+- `boot`: dauerhafte, reine Report-Fortschreibung mit stabiler Operations-ID und exaktem Journal-Zustand
+- `status`: v1-Inspektion
+- `recover --discover`: eine eindeutige v1-Kette wiederherstellen, wenn der normale Status den lokalen Zustand nicht validieren kann
+
+## Apply-kompatible Profile
+
+Rufen Sie bei einem `apply-compatible`-Profil `apply` nur mit dem exakten Boot-Quell-Digest, Compare-and-Swap des Apply-Journals, Compare-and-Swap des angewendeten Zustands, einer stabilen Operations-ID und expliziten Staged Roots auf:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Verwenden Sie `apply-status` zur Beobachtung von Versuchen oder das begrenzte `apply-recover` zur dauerhaften Wiederherstellung. Wählen Sie niemals manuell eine Aktion und bearbeiten Sie niemals geschützten Zustand.
+
+<Note>
+  Eine Beobachtungsaktualisierung, die nur den Zeitstempel betrifft, muss die Dokumentnachweise ändern, ohne stabile semantische Identitäten fortzuschreiben.
+</Note>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="Session-Koordinator" icon="gears" href="/de/engines/coordinator">
+    Die Engine hinter der Koordination von Lifecycle-Plänen und Apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/de/qxctl/engines">
+    Engine-Bindings verwalten, auf die Lifecycle-Pläne verweisen.
+  </Card>
+</CardGroup>

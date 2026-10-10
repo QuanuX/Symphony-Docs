@@ -1,0 +1,82 @@
+---
+title: "Commandes vectorielles qxctl : skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Explorez la grammaire qxctl propre aux vecteurs disponible aujourd’hui : SKVI, SCLV, SACV, SODV, SSFV, stockage et catalogue SHV, ainsi que les surfaces réservées accord et evolution."
+sidebarTitle: "Commandes vectorielles"
+---
+
+qxctl expose une grammaire propre à chaque vecteur pour chaque moteur SKV implémenté ainsi que pour l’administration de SCV et SHV. La grammaire ratifiée d’Accordare et de SEV utilisera `qxctl accord ...` et `qxctl evolution ...` dès que leurs implémentations de commandes et des preuves de registre stables existeront.
+
+## Grammaire des moteurs SKV
+
+- `qxctl skvi ...` : inspect, check, propose, project sur le moteur SKVI
+- `qxctl sclv ...` : inspect, check, propose, recover, project sur le moteur SCLV
+- `qxctl sacv ...` : inspect, check, diff, propose, project sur le moteur SACV
+- `qxctl sodv ...` : inspect, check, verify, propose, recover, project sur le moteur SODV
+- `qxctl ssfv ...` : inspect, check, diff, propose, graph sur le moteur SSFV
+
+Chaque grammaire est bornée par le contrat du moteur propriétaire. qxctl n’invente jamais d’opération et ne contourne jamais le moteur.
+
+## Ajouts Accordare
+
+Les ajouts Accordare dans qxctl fournissent :
+
+- Un statut stable
+- La réconciliation (ne rejoue que des candidats exacts)
+- L’installation et la désinstallation du superviseur (n’invoque que l’exécutable receipt-v2 vérifié)
+- Deux identités d’administration des autorisations qui ne modifient que la configuration STAV arrêtée, sous SSIAG et avec récupération sur état attendu
+
+Le statut distingue l’intention durable et l’arriéré d’ajouts. La réconciliation ne rejoue que des candidats exacts. Les feuilles d’autorisation n’ouvrent jamais une configuration en cours d’exécution.
+
+## Stockage SHV
+
+Le stockage SHV durable est administré uniquement via :
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` avec le digest d’intention attendu conservé sert aussi de récupération. Il n’existe pas d’alias de récupération distinct. La portée du stockage est déclarée dans l’entrée ; l’identité du connecteur est définie dans les options. Le stockage structurel ne duplique pas le `shv graph validate` sémantique et ne sélectionne pas de tête de catalogue.
+
+`shv graph store inventory` (version 0.2) ajoute une lecture logique liée à une révision avec des identités d’écrivain conservées explicites. L’ancienne sélection 0.1 reste prise en charge.
+
+## Publication du catalogue SHV
+
+La publication du catalogue est administrée uniquement via :
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+La récupération s’effectue avec `apply --operation-id`, mutuellement exclusif avec `--input`. La sélection locale du catalogue adossée à des permissions est distincte de l’activation de source et du stockage générique de graphes.
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="Vue d’ensemble de SKV" icon="book-open" href="/fr/skv/overview">
+    Sémantique des vecteurs implémentée par les moteurs.
+  </Card>
+
+  <Card title="Vecteur SHV" icon="microchip" href="/fr/vectors/shv">
+    Contexte du Hardware Vector et liste des moteurs.
+  </Card>
+
+  <Card title="Moteurs SHV" icon="microchip" href="/fr/engines/shv-engines">
+    Détails au niveau des moteurs.
+  </Card>
+
+  <Card title="Vue d’ensemble de qxctl" icon="terminal" href="/fr/qxctl/overview">
+    Surface de commandes qxctl complète.
+  </Card>
+</CardGroup>

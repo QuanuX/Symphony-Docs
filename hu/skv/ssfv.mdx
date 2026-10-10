@@ -1,0 +1,53 @@
+---
+title: "SSFV: a Symphony Semantic Feature Vector és regisztere"
+description: "Az SSFV birtokolja a kanonikus funkcióidentitást, szemantikát, hierarchiát, életciklust és adminisztrációs garanciát minden megvalósított Symphony-modulban és qxctl-felületen."
+sidebarTitle: "SSFV"
+---
+
+A Symphony Semantic Feature Vector (SSFV) birtokolja a kanonikus alkalmazásfunkció-identitást, a szemantikát, a hierarchiát, az életciklust, a megkülönböztetéseket, az elosztott rekordirányítást, a lefedettségi leltárt és a gráfvetítési szerződéseket. Motorja egy függetlenül telepíthető C++ folyamat, amely strukturális és frissességet figyelembe vevő funkcióellenőrzéseket végez.
+
+## Műveletek
+
+- **Vizsgálat és ellenőrzés**: strukturális és frissességet figyelembe vevő funkcióértékelés.
+- **Diff**: tartalomcímzett diffek funkcióállapotok között.
+- **Javaslat**: a hívó által deklarált javaslatok funkciók felvételére vagy módosítására.
+- **Gráf**: determinisztikus, eldobható funkciógráfok áttekintéshez.
+
+## Regisztrált lefedettség
+
+A jelenlegi regisztrált katalógus kifejezetten részleges:
+
+- **110** regisztrált funkció
+- **35** regisztrált tulajdonosi hatókör
+- **76** ratifikált beágyazott funkció
+- **295** áttekintett funkcióadminisztrációs felület (**285** kötelező, **13** bizonyítékkal alátámasztott kivétel, **9** tiltás, **0** nem áttekintett)
+
+A regisztrált tulajdonosi hatókörök minden megvalósított modulra kiterjednek, a `qxctl`-től és a validátortól az SKV-motorokon és az SSIAG-szolgáltatókon át az SCV- és SHV-motorcsaládokig.
+
+## Amit az SSFV nem végez
+
+<Warning>
+  Az SSFV nem dönt arról, hogy valami funkciónak minősül-e, nem talál ki identitásokat, és nem állítja a tároló vagy a gazdagép teljességét. A `review_required` a hívó általi áttekintéshez szolgáló bizonyíték, nem ratifikáció vagy alkalmazási hatáskör.
+</Warning>
+
+A funkciók áttekintése, felvétele és életciklus-változásai az egyes funkciók tulajdonos szerződésénél maradnak.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az SSFV-t irányító átfogó keretrendszer.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/hu/skv/sev">
+    Evolúciós eseteket alkalmaz a funkciók hozzáadására, módosítására és kivezetésére.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/hu/qxctl/session">
+    Tartós SSFV-karbantartási munkamenetek kezelése a qxctl-lel.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Futtassa a `qxctl ssfv ...` parancsot vizsgálathoz, ellenőrzéshez, diffhez, javaslattételhez és gráfkészítéshez.
+  </Card>
+</CardGroup>

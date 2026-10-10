@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphonys agentiske administrative kommandolinje"
+description: "qxctl er Symphonys administrative CLI skrevet i Go. Lær om de 373 kjørbare kommandoene, motorbindingsregisteret og den kvitteringsvaliderte kallmodellen for vektormotorer."
+sidebarTitle: "Oversikt over qxctl"
+---
+
+`qxctl` er Symphonys Go-baserte, agentisk-først administrative CLI for administrasjon og spørringer. Den snakker kommandoer; domenevektorene eier operasjonene og betydningene bak dem. Det innsjekkede registeret binder hvert kjørbare kommandoløv til en stabil maskinidentitet og gjennomgått bevis for funksjonsadministrasjon.
+
+## Hva qxctl dekker
+
+qxctl implementerer administrasjon for:
+
+- Inspeksjon av repositorier og kontrakter
+- Administrasjon av validator, advarsler, invarianter, funksjoner, livssyklus, sesjoner, avstemming, bindinger og Maestro
+- Administrasjon av SSIAG-identitet, STAV-revisjon og Accordare-produsenter
+- Implementert grammatikk for vektormotorer (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, samt SCV- og SHV-flater)
+
+Det nåværende registeret inneholder **373** kjørbare kommandoer.
+
+## Trygg kallmodell
+
+qxctl kaller eksakte, kvitteringsvaliderte installasjoner ved hjelp av avgrensede underprosesser, harde tidsfrister, kontroller av responsidentitet og digest, transaksjoner med forventet tilstand og varig gjenoppretting. Den godtar aldri adapterstier eller rå versjoner i stedet for kvitteringer.
+
+## Motorbindingsregister v2
+
+Motorbindingsregister v2 støtter de åtte etablerte motorrollene og avgrensede fremtidige rolleidentiteter. Eldre v1-tilstand leses parallelt; migrering til v2 krever en eksplisitt digest-bundet compare-and-swap via qxctl og er aldri en versjonsvalgoperasjon.
+
+## Registerkommandoer
+
+Generer og verifiser det forventede registeret fra `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+En installert klient kan sende ut bevis bundet til den kjørbare filen:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Forventet bevis har null som klientversjon, digest for kjørbar fil og kvitteringsdigest. Observert bevis binder den eksakte klientversjonen og digesten for den kjørbare filen, samt en kvitteringsdigest når en slik er tilgjengelig. Begge formene bruker `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl eier kommandogrammatikk og presentasjon. Den eier ikke vektorsemantikk eller kanonisk kunnskapssannhet. Bare gjennomgåtte kildeendringer ratifiserer en ny `qxcmd`-identitet, uavhengig av kallerklasse.
+</Note>
+
+## Kommandogrupper
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/no/qxctl/knowledge">
+    Livssyklus på tvers av vektorer og administrasjon av vedvarende SSFV-sesjoner.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/no/qxctl/lifecycle">
+    Profil, eierskap, observe, report, boot, apply og gjenoppretting.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/no/qxctl/engines">
+    Motorbindingsregister og migrering.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/no/qxctl/reconcile">
+    Avstemming av arbeidstrær via koordinatoren.
+  </Card>
+
+  <Card title="session" icon="key" href="/no/qxctl/session">
+    Autentiserte sesjoner og SSFV-vedlikeholdsstrømmer.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/no/qxctl/maestro">
+    Avledet reseptorinventar og dokkingbevis.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/no/qxctl/validate">
+    Beskyttet advarselspolicy og validatoradministrasjon.
+  </Card>
+
+  <Card title="vektorkommandoer" icon="terminal" href="/no/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` og fremtidig accord-/evolution-grammatikk.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro：读取 Symphony 受体存在性清单"
+description: "通过 qxctl 检查 Symphony 的 Maestro 存在性权威，查看经过认证的向量引擎对接关系和派生的受体清单。"
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` 语法用于呈现 Maestro 的存在性证据。Maestro 是存在性权威；qxctl 只是读取和检查 Maestro 所记录的内容。两者都不会自行创建对接关系。
+
+## 清单
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` 按 TOPS 和受体呈现 Maestro 完整、派生且只读的清单，其中列出经过认证的向量引擎对接关系。
+
+## 相关管理路由
+
+其他 qxctl 叶子命令提供与 Maestro 相关的管理功能：
+
+- 对接证据的状态查看与检查
+- 受 Maestro 自身契约约束的恢复路由
+- Maestro 自身的基础生命周期注册和原生监管
+
+每条修改路由都经过精确的、由模块拥有的适配器。qxctl 绝不会通过内部解析渲染 Maestro 描述符，也不会隐式调用最新版本。
+
+<Warning>
+  Maestro 不会启动、调度、监管或调用引擎。`qxctl maestro inventory` 是只读的。仅凭绑定、协调、会话协调或生命周期计划，均无法建立 Maestro 存在性。
+</Warning>
+
+## 相关内容
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/zh/governance/maestro">
+    存在性权威的契约与边界。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/zh/qxctl/engines">
+    引擎绑定注册表（绑定并不等于对接）。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh/qxctl/session">
+    用于记录存在性的经过认证的会话。
+  </Card>
+
+  <Card title="引擎概览" icon="cube" href="/zh/engines/overview">
+    可独立安装并与 Maestro 对接的向量引擎。
+  </Card>
+</CardGroup>

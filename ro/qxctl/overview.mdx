@@ -1,0 +1,83 @@
+---
+title: "qxctl: linia de comandă administrativă agentică a Symphony"
+description: "qxctl este CLI-ul administrativ Go al Symphony. Aflați despre cele 373 de comenzi executabile, registrul de legare a motoarelor și modelul de invocare validat prin chitanțe pentru motoarele vectoriale."
+sidebarTitle: "Prezentare generală qxctl"
+---
+
+`qxctl` este CLI-ul administrativ și de interogare al Symphony, scris în Go și conceput în primul rând pentru agenți. El vorbește în comenzi; vectorii de domeniu dețin operațiile și semnificațiile din spatele acestora. Registrul său versionat leagă fiecare frunză de comandă executabilă de o identitate de mașină stabilă și de dovezi revizuite de administrare a funcționalităților.
+
+## Ce acoperă qxctl
+
+qxctl implementează administrarea pentru:
+
+- Inspecția depozitului și a contractelor
+- Administrarea validatorului, avertismentelor, invarianților, funcționalităților, ciclului de viață, sesiunilor, reconcilierii, legărilor și Maestro
+- Administrarea identității SSIAG, a auditului STAV și a producătorului Accordare
+- Gramatica motoarelor vectoriale implementate (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, plus suprafețele SCV și SHV)
+
+Registrul actual conține **373** de comenzi executabile.
+
+## Modelul de invocare sigură
+
+qxctl invocă instalări exacte, validate prin chitanțe, folosind subprocese delimitate, termene stricte, verificări ale identității și digest-ului răspunsului, tranzacții pe starea așteptată și recuperare durabilă. Nu acceptă niciodată căi de adaptor sau versiuni brute în locul chitanțelor.
+
+## Registrul de legare a motoarelor v2
+
+Registrul de legare a motoarelor v2 acceptă cele opt roluri de motor consacrate și identități de rol viitoare delimitate. Starea moștenită v1 este citită dual; migrarea la v2 necesită o operație compare-and-swap explicită, legată de digest, prin qxctl și nu este niciodată o operație de selectare a versiunii.
+
+## Comenzi de registru
+
+Generați și verificați registrul așteptat din `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Un client instalat poate emite dovezi legate de executabil:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Dovezile așteptate au versiunea clientului, digest-ul executabilului și digest-ul chitanței nule. Dovezile observate leagă versiunea exactă a clientului și digest-ul executabilului, plus un digest al chitanței atunci când acesta este disponibil. Ambele forme folosesc `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl deține gramatica și prezentarea comenzilor. Nu deține semantica vectorilor sau adevărul canonic al cunoașterii. Doar modificările de sursă revizuite ratifică o nouă identitate `qxcmd`, indiferent de clasa apelantului.
+</Note>
+
+## Grupuri de comenzi
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/ro/qxctl/knowledge">
+    Ciclul de viață între vectori și administrarea persistentă a sesiunilor SSFV.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/ro/qxctl/lifecycle">
+    Profil, proprietate, observare, raportare, pornire, aplicare și recuperare.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ro/qxctl/engines">
+    Registrul de legare a motoarelor și migrarea.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ro/qxctl/reconcile">
+    Reconcilierea arborilor de lucru prin coordonator.
+  </Card>
+
+  <Card title="session" icon="key" href="/ro/qxctl/session">
+    Sesiuni autentificate și fluxuri de mentenanță SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/ro/qxctl/maestro">
+    Inventarul derivat al receptorilor și dovezile de andocare.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/ro/qxctl/validate">
+    Politica protejată de avertismente și administrarea validatorului.
+  </Card>
+
+  <Card title="comenzi vectoriale" icon="terminal" href="/ro/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` și viitoarea gramatică accord/evolution.
+  </Card>
+</CardGroup>

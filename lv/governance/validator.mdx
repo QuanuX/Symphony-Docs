@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: determinētas, tikai lasāmas repozitorija pārbaudes"
+description: "Symphony Validator sagatavo rindu vai strukturēta JSON pierādījumus par līgumiem, avotu slēgumu, invariantiem, funkcijām, laidieniem un mašīnpārbaudīto saknes kopsavilkumu."
+sidebarTitle: "Validators"
+---
+
+Symphony Validator (`tools/symphony-validator`) ir neatkarīgs, determinēts, tikai lasāms C++26 repozitorija pārbaudītājs. Tas sagatavo nemainīgus pierādījumus par repozitorija un tā līgumu pašreizējo stāvokli. Tas neko nevar labot vai publicēt.
+
+## Ko pārbauda validators
+
+- Līgumu formu: nepieciešamos Contract Quad enkurus un struktūru
+- Pašreizējo avotu slēgumu SKVI indeksētajās virsmās
+- Invariantu īpašumtiesības saskaņā ar `knowledge/INVARIANTS.md` un invariantu reģistru
+- Funkciju administrēšanas sagaidāmās vērtības, par kurām ziņo SSFV
+- Laidienu ierakstus, par kuriem ziņo SODV
+- Mašīnai piederošo saknes kopsavilkumu repozitorija README
+
+Pierādījumi tiek izvadīti kā rindu izvade vai strukturēts JSON. Katra izvade ir reproducējama no tā paša repozitorija stāvokļa.
+
+## Ko validators nedara
+
+<Warning>
+  Validators nevar labot failus, pārrakstīt līgumus vai publicēt repozitoriju. Tas nerada kanonisko patiesību ne par ko; tas tikai par to ziņo.
+</Warning>
+
+- Nekādu blakusefektu repozitorijā
+- Nekādas tīkla piekļuves
+- Nekādas brīdinājumu apspiešanas ārpus qxctl aizsargātās brīdinājumu politikas
+
+## qxctl integrācija
+
+qxctl validē validatora precīzo kvīti un strukturētos īssavilkumus, pirms piemēro aizsargāto brīdinājumu politiku. Deviņas aizsargātas brīdinājumu dzīves cikla qxctl lapas (leaves), kā arī precīzais ar kvīti pamatotais saknes kopsavilkuma maršruts nodrošina validācijas administrēšanu, nemainot neapstrādātos detektora pierādījumus.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/lv/qxctl/validate">
+    Aizsargātās brīdinājumu politikas, bāzes līnijas un attēlošanas gramatika.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/lv/skv/ssfv">
+    Funkciju administrēšanas sagaidāmās vērtības, ko pārbauda validators.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Laidienu ieraksti, ko pārbauda validators.
+  </Card>
+
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Vispārējais ietvars, kura līgumus pārbauda validators.
+  </Card>
+</CardGroup>

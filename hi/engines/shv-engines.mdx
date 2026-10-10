@@ -1,0 +1,65 @@
+---
+title: "SHV इंजन: Symphony Hardware Vector स्रोत और ग्राफ़"
+description: "SHV इंजन संरक्षित स्रोत रीप्ले, आवश्यकता मूल्यांकन, PDF अंतर्ग्रहण और DuckDB टिकाऊ ग्राफ़ के साथ CPU, GPU, NIC, मेमोरी और स्टोरेज को कैटलॉग करते हैं।"
+sidebarTitle: "SHV इंजन"
+---
+
+Symphony Hardware Vector (SHV) इंजन प्रोसेसर, CPU टोपोलॉजी, कैश, GPU, NIC और फ़ाइबर इंटरफ़ेस, मदरबोर्ड, RAM और NVMe को कैटलॉग करते हैं। डिफ़ॉल्ट क्यूरेशन मूल घटकों और साक्ष्य-समर्थित वेरिएंट को प्राथमिकता देता है। हर इंजन स्वतंत्र रूप से इंस्टॉल किया जा सकता है और केवल-पठन है।
+
+## इंजन
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    हार्डवेयर कर्नेल: कॉलर-परिभाषित कवरेज, संरक्षित-स्रोत कैटलॉग रीप्ले, आवश्यकता मूल्यांकन और ग्राफ़ प्रक्षेपण।
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    हार्डवेयर साक्ष्य के लिए स्रोत अंतर्ग्रहण और संशोधन प्रबंधन।
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    घटक और सिस्टम प्रोफ़ाइल मूल्यांकन।
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    पुनरुत्पादनीय चयन के लिए कैटलॉग किए गए हार्डवेयर का विभाजन।
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    शासित स्थानीय कैटलॉग प्रकाशन और चयन।
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    स्पष्ट ग्राफ़ ट्रांसपोर्ट सतह।
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    qxctl के माध्यम से प्रशासित, टिकाऊ DuckDB-आधारित ग्राफ़ स्टोरेज।
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    हार्डवेयर डेटाशीट के लिए PDF स्रोत व्याख्या।
+  </Card>
+</CardGroup>
+
+## प्रशासन की मुख्य बातें
+
+- **टिकाऊ स्टोरेज** का प्रशासन केवल `shv graph store inspect|prepare|commit|status|query|export|schema|template` के माध्यम से होता है। संरक्षित अपेक्षित इंटेंट डाइजेस्ट के साथ `commit` ही पुनर्प्राप्ति भी है; कोई अलग पुनर्प्राप्ति उपनाम नहीं है।
+- **कैटलॉग प्रकाशन** का प्रशासन केवल `shv catalogue publication inspect|plan|apply|status|schema|template` के माध्यम से होता है। पुनर्प्राप्ति `apply --operation-id` है, जो `--input` के साथ परस्पर अनन्य है।
+- **इन्वेंटरी** (रिलीज़ 0.2) `shv graph store inventory` जोड़ती है: स्पष्ट संरक्षित राइटर पहचानों के साथ एक संशोधन-बद्ध तार्किक रीड। पुराना 0.1 चयन समर्थित बना रहता है।
+
+<Note>
+  हार्डवेयर वर्ग कॉलर मैपिंग और प्रोफ़ाइल डेटा हैं, डुप्लिकेट कमांड ट्री नहीं। `--version` सटीक प्राथमिक स्वामी का चयन करता है; `--source-version` और `--adapter-version` अलग-अलग चयनित निर्भरताओं को नामित करते हैं। स्कीमा और मैपिंग संशोधन डेटा पहचानें हैं, इंस्टॉल किए गए इंजन संस्करणों के उपनाम नहीं।
+</Note>
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SHV वेक्टर" icon="microchip" href="/hi/vectors/shv">
+    Hardware Vector कॉन्ट्रैक्ट जिसे ये इंजन लागू करते हैं।
+  </Card>
+
+  <Card title="qxctl वेक्टर कमांड" icon="terminal" href="/hi/qxctl/vector-commands">
+    पूर्ण `shv ...` व्याकरण संदर्भ।
+  </Card>
+</CardGroup>

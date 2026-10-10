@@ -1,0 +1,35 @@
+---
+title: "Doctrina de la plataforma QuanuX Symphony"
+description: "Conoce los principios rectores de Symphony: propiedad del usuario sobre la estrategia y la infraestructura, neutralidad respecto a la clase de llamante, protección del hot path y compatibilidad basada en evidencia."
+sidebarTitle: "Doctrina"
+---
+
+La doctrina de Symphony define los límites entre lo que controla la plataforma y lo que controlas tú. Estas reglas rigen cada decisión de diseño en el monorepo y cada interacción con qxctl, los motores de vectores y los contratos de conocimiento.
+
+## Propiedad del usuario
+
+Eres propietario de la lógica de tu estrategia, el propósito del Nest, la elección de proveedor, la elección de hardware, la topología del bus y la selección de adaptadores admitidos. Symphony proporciona evidencia exacta de compatibilidad y operaciones admitidas, pero no convierte las recomendaciones en ley de la plataforma. La plataforma informa de coincidencias, discrepancias, hechos sin resolver y consecuencias. No clasifica proveedores, no prescribe una estrategia ni amplía tu entorno de forma silenciosa.
+
+## Protección del hot path
+
+El hot path está protegido frente a la residencia administrativa y la presión accidental sobre un bus compartido. qxctl y el plano de conocimiento son administración de cold path o freezing path. Pueden actuar explícitamente sobre un Node que también aloje trabajo en vivo, pero no deben convertirse en dependencias continuas del hot path, observadores ocultos, intérpretes residentes ni gestores de paquetes en segundo plano no solicitados. Tu arquitectura explícita sigue siendo soberana.
+
+## Separación entre comandos y semántica
+
+qxctl es propietario de la gramática y la presentación de los comandos. Los vectores de dominio son propietarios de las operaciones y significados que esos comandos exponen. Una ruta de qxctl invoca una capacidad definida por su propietario sin absorber su semántica.
+
+## Nombres y espacios de nombres
+
+Los nombres se registran bajo su ámbito propietario. SNV y SCNV no los dictan, y el NAMESPACES raíz sigue siendo más amplio que SNV. Un nombre registrado dentro de un TOPS o TROG sigue ese ámbito. Con varios clústeres, el nombre corto de un Node puede repetirse en clústeres distintos, pero no puede identificar de forma ambigua a dos Nodes activos del mismo clúster.
+
+## Neutralidad respecto a la clase de llamante
+
+La clasificación de un llamante como humano, IA, agente, servicio o carga de trabajo no otorga ni retira autoridad. Las decisiones de autorización admitidas utilizan la propiedad del host de destino o los permisos concedidos, la operación y el recurso solicitados, el estado esperado y las salvaguardas configuradas por el propietario. El administrador del host de destino es soberano sobre la gobernanza configurable. SSIAG puede verificar y proyectar la autoridad efectiva del host, pero no crea una autoridad de registro superior. La garantía de identidad reforzada y los bloqueos de gobernanza son salvaguardas neutrales respecto al llamante y configuradas por el propietario. Los requisitos de integridad del protocolo siguen siendo obligatorios. Symphony no decide la capacidad legal o financiera externa según el tipo de llamante.
+
+## Verdad y evidencia
+
+Los contratos actuales describen la verdad actual. Los registros inmutables de SCLV y SODV conservan lo que se sabía, se cambió, se autorizó o se completó en su punto registrado de la historia. Cuando los contratos actuales, la evidencia de implementación y el último registro aplicable discrepan, la discrepancia se expone como deriva para su revisión. La historia no se reescribe en silencio para parecerse al presente.
+
+## Doctrina sobre Python
+
+El código fuente propio de Symphony, los generadores, la autoría de esquemas, las pruebas y los auxiliares de aceptación no requieren ninguna implementación de Python ni dependencia de su intérprete. C++ es propietario de las herramientas sustitutas de autoría y de pruebas de procesos. Esta política del repositorio no restringe tus programas escritos por ti ni los Habitats aislados que selecciones explícitamente.

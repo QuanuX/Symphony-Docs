@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: control d'operacions amb qxctl"
+description: "SOV defineix el domini d'operacions administrat amb qxctl per a l'aprovisionament, el condicionament d'Habitat, el lliurament de Nest, els adaptadors de bus i l'administració remota opcional de Nodes."
+sidebarTitle: "Ops Vector"
+---
+
+El Symphony Ops Vector (SOV) és el pla de control operatiu a través del qual les ordres autoritzades de qxctl actuen sobre la vostra infraestructura. És propietari del contracte per a l'aprovisionament, el condicionament d'Habitat (entorn), el lliurament de Nest (càrrega de treball), la configuració d'adaptadors de bus i l'administració remota opcional de Nodes. SOV no inventa el significat dels proveïdors ni fets sobre el maquinari; executa opcions compatibles que ja heu seleccionat.
+
+## Què cobreix SOV
+
+SOV és un domini emergent de la Fase 2. El seu abast inclou:
+
+- **Aprovisionament**: fluxos de treball d'assignació de recursos de proveïdors i de maquinari propi
+- **Condicionament d'Habitat**: condicionament exacte del sistema operatiu i dels paquets lliurat a un Node
+- **Lliurament de Nest**: col·locació i actualització de càrregues de treball en un Node
+- **Establiment d'adaptadors de bus**: connexió de Nodes mitjançant el bus que trieu (NATS JetStream, ZeroMQ o altres)
+- **Operacions remotes de Nodes**: administració opcional de Nodes fora del vostre shell local
+
+<Note>
+  Els protocols de proveïdors, l'execució de Terraform, els constructors d'Habitat, les ordres de desplegament de Nest i els receptors d'operacions remotes encara s'han de dissenyar. Actualment no hi ha implementat cap motor de SOV ni cap mutació de proveïdors.
+</Note>
+
+## Com es relaciona SOV amb altres vectors
+
+SOV és el pla de control, no la font de coneixement. Actua sobre evidència propietat d'altres vectors:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/ca/vectors/scv">
+    Aporta coneixement de proveïdors i de recursos externs. SOV llegeix l'evidència de SCV per decidir quines operacions són compatibles.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ca/vectors/snv">
+    Registra les identitats de Nodes, la pertinença a clústers i els noms resultants un cop completades les operacions de SOV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ca/vectors/shv">
+    Més endavant pot aportar evidència detallada de capacitats del maquinari per restringir les opcions d'aprovisionament.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/ca/skv/overview">
+    Governa els contractes de SOV, les conseqüències dels canvis, la indexació i la integració del cicle de vida.
+  </Card>
+</CardGroup>
+
+## qxctl com a superfície d'ordres
+
+Les operacions de SOV s'exposen mitjançant `qxctl`, la CLI d'administració basada en Go amb 373 ordres executables. qxctl implementa i presenta les operacions de SOV, però no és propietari del seu significat de domini. El vector és propietari de la semàntica; l'eina és propietària de la superfície d'execució.
+
+## Límit de l'autoritat de l'usuari
+
+Vosaltres seleccioneu els proveïdors, les regions, el maquinari, els busos, el programari, la topologia de desplegament i les disposicions d'administració per Node. SOV exposa i executa les opcions compatibles. No classifica proveïdors, no recomana topologies ni converteix suggeriments en polítiques obligatòries.
+
+## Estat actual
+
+SOV és un contracte d'arquitectura canònic. No es declara implementat cap motor, embolcall de Terraform, constructor d'Habitat, adaptador de bus ni receptor d'ordres remotes. Els futurs components de SOV continuaran sent instal·lables de manera independent, seleccionables per versió exacta i reversibles sota el cicle de vida comú de SKV.

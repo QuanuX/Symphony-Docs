@@ -1,0 +1,37 @@
+---
+title: "Symphony’da Node, Habitat va Nest"
+description: "Symphony jismoniy infratuzilmani qanday modellashtirishini oʻrganing: Node — jismoniy kompyuter, Habitat — aniq OT sozlanishi, Nest — foydalanuvchi maqsadidagi ish yuklamasi."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony apparat identifikatsiyasi, dasturiy taʼminot sozlanishi va foydalanuvchi ish yuklamasini ajratadigan uchta jismoniy konsepsiyani belgilaydi. Bu konsepsiyalar infratuzilma masalalarini bir-biridan alohida saqlaydi, shuning uchun har birini mustaqil tahlil qilishingiz mumkin.
+
+## Node
+
+**Node** — aniq identifikatsiya qilingan resurslarga ega maqsadli jismoniy kompyuter resursi. Faqat dasturiy taʼminotni uzish, qayta ulash, qayta ishga tushirish yoki qayta yozish yangi jismoniy Node yaratmaydi. Yoʻq qilish, jismoniy almashtirish yoki muhim mahalliy apparat oʻzgarishi esa yaratadi. Node inkarnatsiyasi — bu Node savdo tizimi, tadqiqot klasteri yoki Symphony asosida qurilgan boshqa tizim ishtirokchisi sifatida bus’ga ulanganda yaratiladigan alohida dalil.
+
+## Habitat
+
+**Habitat** — siz tanlagan ish uchun Node’ga yetkazib beriladigan aniq operatsion tizim va paketlar sozlanishi. Standart holatda u faqat zarur dasturiy taʼminot yuzasidan iborat: aloqasiz paketlar, yashirin runtime’lar, konteynerlar, Kubernetes yoki yashirin virtualizatsiya yoʻq. Keng, umumiy maqsadli Habitat ham foydalanuvchining toʻgʻri, aniq tanlovi boʻlib qoladi.
+
+## Nest
+
+**Nest** siz tanlagan maqsadga xizmat qiladi. Jonli strategiya ijrosi keng tarqalgan boʻlishi kutiladi va bitta strategiya koʻplab modulli kod boʻlimlarini oʻz ichiga olishi mumkin, lekin Symphony Nest maqsadini belgilamaydi yoki uni bitta manba fayli, jarayon, algoritm, broker API yoki maʼlumot interfeysiga tenglashtirmaydi. Strategiya mantigʻi sizning sohangiz boʻlib qoladi.
+
+## Taqqoslash
+
+| Konsepsiya | U nima | Uni nima oʻzgartiradi |
+| --- | --- | --- |
+| **Node** | Muayyan resurslarga ega jismoniy kompyuter | Jismoniy yoʻq qilish, almashtirish yoki muhim apparat oʻzgarishi |
+| **Habitat** | Node’dagi aniq OT va paketlar sozlanishi | Foydalanuvchining aniq tanlovi yoki qxctl boshqaradigan sozlash |
+| **Nest** | Habitat’ga yetkazib berilgan foydalanuvchi maqsadidagi ish yuklamasi | Foydalanuvchi tomonidan strategiya yoki boshqa tanlangan ishni joylashtirish |
+
+## Klaster va bus topologiyasi
+
+Bir nechta Node faqat bir yoki bir nechta bus orqali bir-biriga ulanganda klaster hosil qiladi. Bitta klaster ichida bir nechta bus tarmoqlari birga mavjud boʻlishi mumkin va Node-klasterdagi munosabati jismoniy Node identifikatsiyasini oʻzgartirmasdan tegishli bus’ni aniqlashi mumkin.
+
+NATS JetStream va ZeroMQ kabi bus adapterlari doktrina emas, balki foydalanuvchi tanlovidir. Ogʻir uzatish, boshqaruv, tadqiqot va ijro chiqindilari bitta bus’ni boʻlishishi shart emas. Topologiya bir nechta bus’dan foydalanishi yoki eʼlon qilingan yoʻl uchun bus’ni chetlab oʻtishi mumkin.
+
+## TOPS va TROG doirasi
+
+**TOPS** — ustun Trade Operating System (savdo operatsion tizimi) doirasi. **TROG** — ataylab boʻysundirilgan, global boʻlmagan savdo guruhi doirasi. Tarixiy nomlanishiga qaramay, TROG albatta virtual boʻlishi shart emas. Uning farqlovchi xususiyati — doirasi va qoidalari universal emasligi.

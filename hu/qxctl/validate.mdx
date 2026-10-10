@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: a Symphony Validator figyelmeztetési szabályzata"
+description: "A független Symphony Validator védett figyelmeztetési szabályzatának, alapállapotának és megjelenítési nyelvtanának adminisztrálása a qxctl segítségével, a nyers detektorbizonyítékok módosítása nélkül."
+sidebarTitle: "validate"
+---
+
+A `qxctl validate ...` nyelvtan a Symphony Validator védett figyelmeztetési szabályzatát, alapállapotát és megjelenítési nyelvtanát adminisztrálja. A függetlenül telepített C++ validátor megváltoztathatatlan nyers bizonyítékot állít elő; a qxctl a hívótól független, védett megjelenítést adminisztrálja az észlelés megváltoztatása nélkül.
+
+## Mire terjed ki a qxctl validate
+
+- Kilenc védett figyelmeztetés-életciklus levélparancs
+- A pontos, nyugtával alátámasztott gyökérösszegző útvonal
+- Alapállapot-kezelés és eltérésjelentés
+- Megjelenítési nyelvtan soros kimenethez és strukturált JSON-hoz
+
+Minden levélparancs validálja a validátor pontos nyugtáját és strukturált digestjeit, mielőtt a védett figyelmeztetési szabályzatot alkalmazná.
+
+## Határ
+
+<Warning>
+  A qxctl validate nem tud fájlokat javítani, semmit közzétenni vagy a nyers detektorbizonyítékot felülbírálni. A figyelmeztetések kezelése a megjelenítést befolyásolja, nem az észlelést.
+</Warning>
+
+- Nincs figyelmeztetés-elnyomás a védett szabályzaton kívül
+- Nincs a validátor kimenetének módosítása
+- Nincs kitalált lefedettség egy nem elérhető útvonalhoz
+
+## Gyakori felhasználási módok
+
+- Figyelmeztetési alapállapot létrehozása vagy visszaállítása
+- Szabályozott korábbi figyelmeztetés jóváhagyása vagy újranyitása
+- A tároló README-jében megjelenő, nyugtával alátámasztott gyökérösszegzés kibocsátása
+
+Az e nyelvtan alapjául szolgáló validátor ellenőrzi a szerződések alakját, az aktuális forráslezártságot, az invariánsok tulajdonjogát, a funkcióadminisztrációt, a kiadásokat és a gép tulajdonában lévő gyökérösszegzést.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="Validátor" icon="clipboard-check" href="/hu/governance/validator">
+    A qxctl által adminisztrált független, csak olvasó C++ ellenőrző.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hu/skv/ssfv">
+    A bizonyítékokban ellenőrzött funkcióadminisztrációs elvárások.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    A validátor bizonyítékaiban megjelenő kiadási rekordok.
+  </Card>
+
+  <Card title="qxctl áttekintés" icon="terminal" href="/hu/qxctl/overview">
+    A teljes parancsfelület.
+  </Card>
+</CardGroup>

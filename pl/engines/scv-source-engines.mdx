@@ -1,0 +1,74 @@
+---
+title: "Silniki wiedzy źródłowej SCV: rzeczywistość dostawców w Symphony"
+description: "Osiem niezależnie pakowanych silników SCV, hyperscalerów, edge i dostawców zachowuje dokładne rewizje źródeł i tworzy odtwarzalne dowody grafowe i zapytaniowe."
+sidebarTitle: "Silniki SCV"
+---
+
+Silniki wiedzy źródłowej SCV to osiem niezależnie pakowanych procesów C++26, które przechowują prywatną wiedzę semantyczną o zasobach zewnętrznych dostawców, ich ofertach, regionach, ograniczeniach i możliwościach hybrydowych. Zachowują dokładne rewizje źródeł i ograniczone przechwycenia, aby narzędzia niższego poziomu mogły odtworzyć wyniki.
+
+## Silniki
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Nadrzędny silnik źródłowy SCV dla wspólnego słownictwa chmurowego.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Silnik źródłowy Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Silnik źródłowy edge specyficzny dla Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Silnik źródłowy Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Silnik źródłowy Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Silnik źródłowy DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Silnik źródłowy Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Opcjonalny konektor DuckDB do indeksowania zachowanego grafu relacyjnego.
+  </Card>
+</CardGroup>
+
+## Co robią silniki SCV
+
+- Zachowują jawne rewizje źródeł i ograniczone przechwycenia
+- Zachowują kwalifikowane twierdzenia i natywną strukturę dokumentów
+- Tworzą odtwarzalne dowody grafowe i zapytaniowe
+- Zasilają przenośne pakiety dostawców i skończoną kompozycję kierowaną przez wywołującego
+
+## Czego nie robią
+
+<Warning>
+  Operacje u dostawców i kompletne katalogi chmurowe pozostają poza tym przyrostem. Silniki SCV opisują to, co wiadomo; nie wykonują działań u dostawców.
+</Warning>
+
+qxctl oddzielnie administruje audytowanymi lokalnymi zmianami źródeł i spójnym wyborem grafu za pomocą zachowanych przepływów pracy i chronionego wyboru grafu. Dedykowane przechodzenie grafu i adaptery operacyjne pozostają osobną pracą.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="Wektor SCV" icon="cloud" href="/pl/vectors/scv">
+    Kontrakt Cloud Vector implementowany przez te silniki.
+  </Card>
+
+  <Card title="Wektor SOV" icon="terminal" href="/pl/vectors/sov">
+    Ops Vector, który działa na dowodach SCV za pośrednictwem qxctl.
+  </Card>
+
+  <Card title="Polecenia wektorów qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Wybór grafu, przepływy pracy źródeł i administracja konektorem DuckDB.
+  </Card>
+</CardGroup>

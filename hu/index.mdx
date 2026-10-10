@@ -1,0 +1,32 @@
+---
+title: "QuanuX Symphony dokumentáció"
+description: "Kezdje a Symphony platformdoktrínájával, architektúrájával, tudásvektoraival és a qxctl adminisztratív parancssori felülettel."
+sidebarTitle: "Kezdőlap"
+---
+
+A Symphony egy moduláris, ágensközpontú kereskedési operációs rendszer. Ez a dokumentáció a jelenlegi szerződéseit és határait írja le: hogyan modellezi az infrastruktúrát, hogyan birtokolják a vektorok a jelentést, és hogyan kezeli a qxctl a támogatott műveleteket. Mielőtt bármely adminisztratív felületet használna, kezdje a platformdoktrínával.
+
+<CardGroup cols={2}>
+  <Card title="Gyorsútmutató" icon="rocket" href="/hu/quickstart">
+    Találja meg a legrövidebb olvasási útvonalat a platformhoz, a szerződéseihez és a qxctl-hez.
+  </Card>
+  <Card title="Platformdoktrína" icon="book-open" href="/hu/doctrine">
+    Ismerje meg a felhasználói tulajdonlást, a hívói jogosultságot, a bizonyítékokat és a hot path védelmét.
+  </Card>
+  <Card title="Architektúra" icon="diagram-project" href="/hu/concepts/architecture">
+    Nézze meg, hogyan illeszkednek egymáshoz a Node-ok, Habitatok, Nestek, vektorok, motorok és a qxctl.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/hu/qxctl/overview">
+    Fedezze fel a Symphony adminisztratív és lekérdező parancsfelületét.
+  </Card>
+</CardGroup>
+
+## A dokumentáció felfedezése
+
+- A [Node, Habitat és Nest](/hu/concepts/node-habitat-nest) meghatározza a fizikai erőforrást, annak pontos szoftveres kondicionálását és a felhasználói célú munkaterhelést.
+- A [Vektorok és fázisok](/hu/concepts/vectors) megkülönbözteti a tartós szemantikai tulajdonlást a szállítási kampányoktól.
+- A [Symphony Knowledge Vector](/hu/skv/overview) bemutatja a kanonikus szerződéseket, a kísérőfelületeket és az indexelt tudást.
+- A [Vektormotorok](/hu/engines/overview) a függetlenül telepített, folyamaton kívül futó motorokat írja le.
+- A [Hívói jogosultság](/hu/concepts/caller-authority) és a [hot path elszigetelése](/hu/concepts/hot-path-isolation) két alapvető működési határt rögzít.
+
+Ezek az oldalak a jelenleg dokumentált felületeket írják le. Egy adott komponens pontos állapotáért kövesse a hivatkozott szerződéseket és megvalósítási bizonyítékokat.

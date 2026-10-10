@@ -1,0 +1,48 @@
+---
+title: "SODV: Tata Kelola Dokumentasi Resmi dan Rilis"
+description: "SODV mengatur publikasi resmi QuanuX dengan pemeriksaan ledger rilis append-only, verifikasi observasi yang disediakan pemanggil, dan inventaris rilis sekali pakai."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) mengatur bagaimana pengetahuan di dalam kerangka kerja SKV menjadi dokumentasi publik resmi dan catatan rilis. Engine-nya adalah proses C++ yang dapat diinstal secara independen yang melakukan pemeriksaan ledger rilis append-only lokal dan menghasilkan inventaris rilis sekali pakai. SODV sendiri tidak memublikasikan apa pun.
+
+## Operasi
+
+- **Inspect dan check**: memvalidasi bentuk dan kontinuitas ledger rilis.
+- **Verify**: memeriksa observasi yang disediakan pemanggil atas state yang dipublikasikan.
+- **Propose**: menerima proposal rilis yang netral penyedia.
+- **Recover**: melakukan pemulihan tanpa mutasi.
+- **Project**: menghasilkan inventaris rilis sekali pakai.
+
+## Yang tidak dilakukan SODV
+
+- SODV tidak memiliki akses jaringan.
+- SODV tidak memublikasikan apa pun ke GitHub, Mintlify, registry paket, atau permukaan lainnya.
+- SODV tidak membuat tag dan tidak dapat menyatakan rilis selesai.
+- SODV tidak memeringkat penyedia atau mengutamakan jalur publikasi tertentu.
+
+Publikasi dilakukan melalui tooling terotorisasi yang terpisah yang merujuk bukti SODV.
+
+## Publikasi SODV yang telah selesai
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` pada tag `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` pada tag `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` pada tag `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Jalankan `qxctl sodv ...` untuk inspect, verify, propose, dan project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Setiap engine SKV hanya melakukan read, query, validate, dan propose. Apply kanonis dinonaktifkan hingga kontrak SSIAG, transaksi expected-state, pengaman qxctl, peristiwa STAV, pemulihan, dan pengujian negatif setiap engine selesai.
+</Note>

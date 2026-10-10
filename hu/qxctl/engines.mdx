@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: kötés, diagnosztika, regiszter-migráció"
+description: "A Symphony védett, felhasználói hatókörű motorkötési profiljának kezelése a qxctl segítségével: list, inspect, doctor, bind, unbind és digesthez kötött migrate."
+sidebarTitle: "engines"
+---
+
+A `qxctl knowledge engines ...` nyelvtan a Symphony vektormotorjainak védett, felhasználói hatókörű `default` kötési profilját kezeli. Kiválasztott tartalmat köt meg későbbi egyeztetéshez. Nem telepít, nem hív meg, nem aktivál, nem dokkol, nem hitelesít, nem engedélyez és nem alkalmaz motort.
+
+## Parancsok
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Az első v2 regisztermódosításnál adja meg az `absent` értéket, a későbbi módosításoknál pedig a `list` által jelentett pontos digestet. Minden módosítás compare-and-swap művelet az adott digesttel szemben.
+
+## Migráció v1-ről v2-re
+
+<Warning>
+  Az érvényes v1 regiszterállapot továbbra is olvasható marad. A v2-re való migráció egy különálló, pontos compare-and-swap művelet, és soha nem verzióválasztási művelet. Ne tekintse a migrációt a motorválasztás frissítési útvonalának.
+</Warning>
+
+- A `list` és az `inspect` továbbra is működik v1 bizonyítékokon.
+- A `migrate` egy összekapcsolt v2 generációt hoz létre a v1 igazság elvetése nélkül.
+- A migráció után a további módosításokhoz v2 digesteket használjon.
+
+## Mi a kötés
+
+A kötés pontos tartalmat választ ki a koordinátor általi későbbi egyeztetéshez. A kötés:
+
+- Nem telepít motort
+- Nem hív meg és nem aktivál motort
+- Nem dokkol motort a Maestróhoz
+- Nem hitelesíti a hívót
+- Nem engedélyezi az alkalmazást (apply)
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/hu/qxctl/reconcile">
+    Megkötött tartalom egyeztetése egy koordinátorral.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/hu/qxctl/lifecycle">
+    Megkötött motorokat használó életciklus-tervek.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/hu/governance/maestro">
+    Jelenléti hatóság, amely a dokkolást rögzíti, nem a kötéseket.
+  </Card>
+
+  <Card title="Motorok áttekintése" icon="cube" href="/hu/engines/overview">
+    Egymástól függetlenül telepíthető vektormotorok.
+  </Card>
+</CardGroup>

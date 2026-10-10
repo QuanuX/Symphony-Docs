@@ -1,0 +1,47 @@
+---
+title: "Vecteurs et phases de livraison de Symphony"
+description: "Comprenez la différence entre les domaines durables de propriété sémantique de Symphony (vecteurs) et les phases chronologiques de livraison, ainsi que le Contract Quad et l’état actuel des vecteurs."
+sidebarTitle: "Vecteurs et phases"
+---
+
+Symphony organise son architecture autour de deux idées : les **vecteurs** sont des domaines durables de propriété sémantique, et les **phases** sont des campagnes chronologiques de livraison. Un composant étudié pour la première fois au cours d’une phase ne fait pas de cette phase son propriétaire permanent. Les vecteurs maintiennent la stabilité de la signification pendant que l’implémentation évolue.
+
+## Qu’est-ce qu’un vecteur?
+
+Un vecteur est un domaine durable et borné de propriété sémantique dont le contrat canonique est propriétaire de la signification et des opérations permises de ce domaine. Chaque vecteur reçoit un **Contract Quad** : `INTENT.md`, `MANIFEST.md`, `SKILL.md` et `SPEC.md`, ainsi que les surfaces compagnes ciblées dont il a réellement besoin. Le vecteur déclare ses surfaces canoniques et son graphe de délégation, SKVI associe chaque surface actuelle exactement une fois, et les compagnons obsolètes sont remplacés par une évolution gouvernée plutôt que de subsister comme contexte contradictoire.
+
+## État des vecteurs
+
+| Vecteur | État | Page |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implémenté : fondation de la phase 1 avec surfaces indexées | [/skv/overview](/fr-CA/skv/overview) |
+| **SKVI** — Indexation des sources | Implémenté : moteur d’inspection, de vérification et de proposition | [/skv/skvi](/fr-CA/skv/skvi) |
+| **SCLV** — Registre des modifications | Implémenté : vérifications du registre en ajout seulement | [/skv/sclv](/fr-CA/skv/sclv) |
+| **SACV** — Gouvernance des contrats d’API | Implémenté : vérifications OpenAPI 3.2.0 | [/skv/sacv](/fr-CA/skv/sacv) |
+| **SODV** — Gouvernance de la documentation officielle et des versions | Implémenté : vérifications du registre local des versions | [/skv/sodv](/fr-CA/skv/sodv) |
+| **SSFV** — Identité et administration des fonctionnalités | Implémenté : vérifications structurelles des fonctionnalités | [/skv/ssfv](/fr-CA/skv/ssfv) |
+| **SAV** — Composition Accordare | Implémenté : évaluation à chemin glacial | [/skv/sav](/fr-CA/skv/sav) |
+| **SEV** — Évolution | Implémenté : planification de l’impact et des dispositions | [/skv/sev](/fr-CA/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implémenté : fondation Go sans cgo | [/governance/ssiag](/fr-CA/governance/ssiag) |
+| **STAV** — Protocole d’audit TOPS | Implémenté : registre en ajout seulement par TOPS | [/governance/stav](/fr-CA/governance/stav) |
+| **SOV** — Ops Vector | Émergent : provisionnement, livraison d’Habitat et de Nest | [/vectors/sov](/fr-CA/vectors/sov) |
+| **SCV** — Cloud Vector | Implémenté : huit moteurs C++ de connaissances sur les sources | [/vectors/scv](/fr-CA/vectors/scv) |
+| **SNV** — Node Vector | Émergent : composition SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/fr-CA/vectors/snv) |
+| **SQV** — Quantitative Vector | Émergent : sous-vecteur d’architecture FIX SOOV | [/vectors/sqv](/fr-CA/vectors/sqv) |
+| **SHV** — Hardware Vector | Implémenté : moteurs C++ de sources, de catalogue et de profils | [/vectors/shv](/fr-CA/vectors/shv) |
+| **SIV** — Intelligence Vector | Émergent : SMCV Markdown facultatif; SAIV réservé | [/vectors/siv](/fr-CA/vectors/siv) |
+
+## Contract Quad et surfaces compagnes
+
+Chaque vecteur reçoit :
+
+1. **INTENT.md** — finalité et portée
+2. **MANIFEST.md** — identité, surfaces déclarées, graphe de délégation
+3. **SKILL.md** — utilisation sécuritaire et conseils opérationnels
+4. **SPEC.md** — comportement normatif et frontières
+
+Les surfaces compagnes comme `SLANG.md`, `NAMESPACES.md`, les registres, les schémas et les profils demeurent des artefacts gouvernés en dehors de la structure à quatre membres. Elles acheminent ou spécialisent la vérité du propriétaire, mais ne peuvent pas étendre leur propre autorité.
+
+## Intégration fondée sur des preuves
+
+Un moteur reporté n’a pas de reçu fabriqué. Une API proposée n’a pas d’entrée de registre inventée. Un contrat non publié ne fait l’objet d’aucune déclaration d’achèvement SODV. Il s’agit d’une intégration fondée sur des preuves, et non d’une duplication de pure forme.

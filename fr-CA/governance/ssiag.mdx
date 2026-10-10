@@ -1,0 +1,48 @@
+---
+title: "SSIAG : gouvernance sécurisée de l’identité et de l’accès pour Symphony"
+description: "SSIAG est la fondation d’autorisation de Symphony, neutre quant à l’appelant, avec inscription par TOPS, cycle de vie protégé des politiques, métadonnées d’audit sûres et crochets de supervision natifs."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) est la fondation Go sans cgo, installable indépendamment, qui assure une autorisation neutre quant à l’appelant sur un hôte Symphony. Elle projette l’autorité effective de l’hôte, contrôle les mutations protégées et s’intègre à l’audit STAV avant que toute modification ne devienne visible.
+
+## Ce que fournit SSIAG
+
+- Une autorisation exacte et neutre quant à l’appelant, liée à la propriété de l’hôte cible, aux permissions accordées, à l’opération demandée, à l’état attendu et aux mesures de protection configurées par le propriétaire
+- L’inscription par TOPS et la confiance envers les points de terminaison locaux
+- Le cycle de vie protégé des politiques et le cycle de vie de l’installation des fournisseurs
+- Le cycle de vie des liaisons avec comparaison et permutation (compare-and-swap) entre les liaisons active et précédente
+- Des métadonnées d’audit sûres préparées pour STAV
+- Une supervision native avec launchd et systemd
+
+## Ce qui est délibérément désactivé
+
+<Warning>
+  L’utilisation opérationnelle des identifiants, l’application canonique des connaissances et la livraison de secrets demeurent désactivées. Les mutations fondamentales ordinaires échouent en mode fermé tant que leur route d’audit obligatoire au moyen de STAV n’est pas complète.
+</Warning>
+
+SSIAG ne détermine pas la catégorie de l’appelant. Les appelants humains, IA, agents, services et charges de travail sont traités de façon identique; l’autorité provient de l’hôte cible et de l’opération demandée, et non de l’étiquette de l’acteur.
+
+## Fournisseur Trousseau d’accès macOS
+
+`modules/ssiag-provider-macos-keychain` est un adaptateur de métadonnées Swift doté d’une poignée de main bornée à vérification mutuelle ainsi que d’une observation de l’ensemble signé et de l’état de préparation de la session. Il expose les métadonnées du fournisseur à SSIAG sans accorder d’accès opérationnel au Trousseau d’accès (Keychain), lequel est intentionnellement désactivé pour l’instant.
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/fr-CA/governance/stav">
+    Registre d’audit en ajout seulement par TOPS sur lequel reposent les mutations SSIAG.
+  </Card>
+
+  <Card title="Producteur Accordare" icon="pen-nib" href="/fr-CA/governance/accordare-producer">
+    Circuit d’audit borné des Named Versions SAV qui se compose avec SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/fr-CA/qxctl/lifecycle">
+    Administration du cycle de vie qui consulte SSIAG pour l’autorisation.
+  </Card>
+
+  <Card title="Autorité de l’appelant" icon="user-shield" href="/fr-CA/concepts/caller-authority">
+    La doctrine que met en œuvre SSIAG.
+  </Card>
+</CardGroup>

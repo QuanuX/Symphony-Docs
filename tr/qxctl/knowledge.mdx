@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: Vektörler Arası Yaşam Döngüsü Yönetimi"
+description: "qxctl knowledge komut grubu; vektörler arası yaşam döngüsü, oturum geçişi, değişmez (invariant) sorguları ve kalıcı SSFV bakım yönetiminden sorumludur."
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` grubu, vektörler arası yaşam döngüsü ve kalıcı SSFV oturumu yönetiminden sorumludur. Koordinatör destekli işlemler ve doğrulayıcıya karşı yapılan değişmez (invariant) sorguları için giriş noktasıdır.
+
+## Oturum geçişi
+
+Mevcut bir oturuma bir ana bilgisayar yaşam döngüsü olayını bildirmek için `qxctl knowledge session transition` komutunu kullanın:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Güvenli yeniden denemeler aynı olay kimliğini (event ID) yeniden kullanır. `--recover` bayrağını yalnızca hasarlı yerel oturum kanıtlarından keşif yoluyla kurtarma amaçlandığında ekleyin; bu bayrak reddi, uyumsuz kritik durumu veya belirsizliği kurtarmaz.
+
+<Warning>
+  Symphony bu komut aracılığıyla bir oturum açma kancası (login hook), izleyici (watcher) veya önyükleme birimi kurmaz. Bu komutu yalnızca açık bir ana bilgisayar yaşam döngüsü entegrasyonu kararlı bir olay kimliği sağladığında kullanın.
+</Warning>
+
+## Değişmez sorguları
+
+Dört yaprak komut `ssfv:symphony:qxctl.invariant-assurance` ile bağlanır:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` ayrıca `ssfv:symphony:symphony-validator.invariant-ownership-assurance` ile de bağlanır.
+
+Doğrudan sorgu yaprakları, `semantic_validity=not_asserted` ile `symphony.knowledge.invariant-query-result.v1` çıktısı üretir. `check`, doğrulayıcının tam ve eksiksiz sonucunu döndürür ve 26 çıkış kodunu korur.
+
+## Alt komut grupları
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/tr/qxctl/lifecycle">
+    Profil, sahiplik, gözlem, rapor, önyükleme, uygulama ve kurtarma.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/tr/qxctl/engines">
+    Engine bağlama kayıt defteri için list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/tr/qxctl/reconcile">
+    Koordinatör çalışma ağacı uzlaştırma grameri.
+  </Card>
+
+  <Card title="session" icon="key" href="/tr/qxctl/session">
+    Kimliği doğrulanmış oturumlar ve SSFV bakım akışları.
+  </Card>
+</CardGroup>

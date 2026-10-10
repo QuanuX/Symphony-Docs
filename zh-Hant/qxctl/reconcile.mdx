@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile：工作樹協調"
+description: "針對已綁定的 Symphony 協調器協調工作樹，包含相容性檢查、檢查點與關閉日誌，以及以證據為基礎的雙槽復原。"
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` 語法透過一個確切綁定的知識工作階段協調器（Knowledge Session Coordinator）驅動工作樹協調。每次變更都以穩定識別碼追蹤，並針對目前確切的日誌摘要執行比較並交換。
+
+## 命令
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`：驗證 qxctl、協調器與已綁定的引擎在協定版本與範圍上是否一致。
+- `begin`：以穩定的操作識別碼開啟新的協調情境。
+- `status`：在不變更的情況下檢查目前的日誌。
+- `checkpoint`：以比較並交換持久地推進日誌。
+- `close`：完成協調情境。
+- `recover --discover`：當一般狀態無法驗證本機狀態時進行探索式復原。
+
+## 復原規則
+
+<Warning>
+  雙槽復原是以證據為基礎的向前修復。它絕不代表允許捨棄不相容的日誌或未知的關鍵擴充。若復原失敗，請向上呈報，而非強制執行。
+</Warning>
+
+只有在一般狀態無法驗證本機狀態時，才使用探索式復原。保留阻擋條件；只有在經驗證的證據改變後才重新規劃。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    擁有協調日誌的引擎。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh-Hant/qxctl/session">
+    與協調情境配對的已驗證工作階段。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/zh-Hant/qxctl/engines">
+    管理協調器所使用的綁定。
+  </Card>
+</CardGroup>

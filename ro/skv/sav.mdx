@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector pentru evaluarea compoziției"
+description: "SAV rezolvă referințele Accord, evaluează compoziția pe trei axe, validează Named Versions și planifică Installation Blueprints fără a modifica adevărul canonic."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) rezolvă compoziția și compatibilitatea declarate ale componentelor. Motorul său este un proces C++26 doar în citire, pe calea de înghețare (freezing-path). SAV compune proiecții tipizate exacte, dar nu preia niciodată adevărul sursă de la vectorii proprietari.
+
+## Operații
+
+SAV acceptă un set bogat de operații de evaluare:
+
+- **Rezolvarea referințelor Accord** în instantanee CURRENT derivate și imuabile
+- **Evaluare pe trei axe**, comparație și explicație
+- **Grafuri de compoziție** și proiecții de unică folosință
+- Validarea și compararea **Named Version**
+- Verificări **Extension Capsule**
+- Planificarea **Installation Blueprint**
+- **Negocierea compatibilității** între componentele declarate
+
+## Ce nu face SAV
+
+- SAV nu preia proprietatea semantică asupra componentelor pe care le compune.
+- SAV nu alege un design în locul dumneavoastră; evaluează ceea ce ați declarat.
+- SAV nu modifică fișierele canonice. Rezultatul său constă în dovezi și propuneri.
+- SAV nu este autoritatea de adăugare STAV. Consultați producătorul STAV Accordare pentru gestionarea intenției înainte de mutație.
+
+<Note>
+  SAV este doar de citire, interogare, validare și propunere. Aplicarea canonică programatică rămâne dezactivată în întreaga familie de motoare SKV.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul-umbrelă și modelul Contract Quad.
+  </Card>
+
+  <Card title="Producătorul Accordare" icon="pen-nib" href="/ro/governance/accordare-producer">
+    Circuitul delimitat de audit pentru Named Version SAV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ro/skv/sev">
+    Cazuri de evoluție care declanșează evaluarea SAV a modificărilor de compoziție.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Gramatica Accordare ratificată va sosi ca `qxctl accord ...` odată implementată.
+  </Card>
+</CardGroup>

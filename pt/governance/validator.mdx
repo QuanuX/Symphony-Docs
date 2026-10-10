@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: verificações determinísticas e só de leitura do repositório"
+description: "O Symphony Validator produz evidências em linhas ou em JSON estruturado para contratos, fecho das fontes, invariantes, funcionalidades, versões e o resumo raiz verificado por máquina."
+sidebarTitle: "Validador"
+---
+
+O Symphony Validator (`tools/symphony-validator`) é um verificador de repositório C++26 independente, determinístico e só de leitura. Produz evidências imutáveis sobre o estado atual do repositório e dos seus contratos. Não consegue reparar nem publicar nada.
+
+## O que o validador verifica
+
+- Forma dos contratos: âncoras e estrutura obrigatórias do Contract Quad
+- Fecho atual das fontes em todas as superfícies indexadas pelo SKVI
+- Propriedade das invariantes de acordo com `knowledge/INVARIANTS.md` e o registo de invariantes
+- Expectativas de administração de funcionalidades reportadas pelo SSFV
+- Registos de versões reportados pelo SODV
+- O resumo raiz detido pela máquina no README do repositório
+
+As evidências são emitidas como saída em linhas ou como JSON estruturado. Cada emissão é reprodutível a partir do mesmo estado do repositório.
+
+## O que o validador não faz
+
+<Warning>
+  O validador não consegue reparar ficheiros, reescrever contratos nem publicar o repositório. Não cria verdade canónica sobre nada; limita-se a reportá-la.
+</Warning>
+
+- Sem efeitos secundários no repositório
+- Sem acesso à rede
+- Sem supressão de avisos fora da política protegida de avisos do qxctl
+
+## Integração com o qxctl
+
+O qxctl valida o recibo exato e os digests estruturados do validador antes de aplicar a política protegida de avisos. Nove comandos-folha protegidos do qxctl para o ciclo de vida dos avisos, bem como a rota exata do resumo raiz suportada por recibo, expõem a administração da validação sem alterar as evidências em bruto dos detetores.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/pt/qxctl/validate">
+    Gramática da política protegida de avisos, da linha de base e da apresentação.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pt/skv/ssfv">
+    Expectativas de administração de funcionalidades verificadas pelo validador.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt/skv/sodv">
+    Registos de versões que o validador inspeciona.
+  </Card>
+
+  <Card title="Visão geral do SKV" icon="book-open" href="/pt/skv/overview">
+    O enquadramento abrangente cujos contratos o validador verifica.
+  </Card>
+</CardGroup>

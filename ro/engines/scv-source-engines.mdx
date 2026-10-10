@@ -1,0 +1,74 @@
+---
+title: "Motoarele SCV de cunoaștere a surselor: realitatea furnizorilor pentru Symphony"
+description: "Opt motoare împachetate independent pentru SCV, hyperscaleri, edge și furnizori păstrează reviziile exacte ale surselor și produc dovezi reproductibile de graf și interogare."
+sidebarTitle: "Motoarele SCV"
+---
+
+Motoarele SCV de cunoaștere a surselor sunt opt procese C++26 împachetate independent, care dețin cunoaștere semantică privată despre resursele, ofertele, regiunile, constrângerile și posibilitățile hibride ale furnizorilor externi. Acestea păstrează reviziile exacte ale surselor și capturi delimitate, astfel încât instrumentele din aval să poată reproduce rezultatele.
+
+## Motoare
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Motorul de surse SCV general pentru vocabularul cloud partajat.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Motorul de surse Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Motor de surse edge specific Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Motorul de surse Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Motorul de surse Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Motorul de surse DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Motorul de surse Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Conector DuckDB opțional pentru indexarea grafului relațional reținut.
+  </Card>
+</CardGroup>
+
+## Ce fac motoarele SCV
+
+- Păstrează revizii explicite ale surselor și capturi delimitate
+- Rețin afirmații calificate și structura nativă a documentelor
+- Produc dovezi reproductibile de graf și interogare
+- Alimentează pachete portabile de furnizori și compoziții finite, direcționate de apelant
+
+## Ce nu fac
+
+<Warning>
+  Operațiunile la furnizori și cataloagele cloud complete rămân în afara acestui increment. Motoarele SCV descriu ceea ce se cunoaște; ele nu acționează asupra furnizorilor.
+</Warning>
+
+qxctl administrează separat modificările auditate ale surselor locale și selecția coerentă a grafului, prin fluxuri de lucru reținute și selecție protejată a grafului. Traversarea dedicată a grafului și adaptoarele operaționale rămân lucrări separate.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Vectorul SCV" icon="cloud" href="/ro/vectors/scv">
+    Contractul Cloud Vector pe care îl implementează aceste motoare.
+  </Card>
+
+  <Card title="Vectorul SOV" icon="terminal" href="/ro/vectors/sov">
+    Ops Vector, care acționează pe baza dovezilor SCV prin qxctl.
+  </Card>
+
+  <Card title="Comenzi qxctl pentru vectori" icon="terminal" href="/ro/qxctl/vector-commands">
+    Selecția grafului, fluxurile de lucru pentru surse și administrarea conectorului DuckDB.
+  </Card>
+</CardGroup>

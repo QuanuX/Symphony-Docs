@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector Motoru C++ Temeli: Paylaşılan Mekanizmalar"
+description: "Knowledge Vector Motoru C++ temeli; yetkisiz süreç çerçevelemesi, sınırlı JSON, SHA-256, anlık görüntüler, makbuzlar ve açık manifest keşfi sağlar."
+sidebarTitle: "Temel Kütüphane"
+---
+
+`libraries/knowledge-vector-engine-cpp`, her Symphony vektör motorunun yeniden kullandığı paylaşılan, yetki taşımayan C++ mekanizmalarını sağlar. Her motorun sınırlı, yeniden üretilebilir ve ortam kaynaklı yan etkilerden arınmış kalabilmesi için deterministik yapı taşları sunar.
+
+## Temel kütüphanenin sağladıkları
+
+- **Süreç çerçevelemesi**: her motorun kullandığı, yetki taşımayan yerel süreç protokolü
+- **Sınırlı JSON**: açık boyut ve derinlik sınırlarıyla katı ayrıştırma ve üretim
+- **SHA-256**: kanıtlar ve makbuzlar için içerik adreslemesi
+- **Bağlantı izlemeyen okumalar**: sembolik bağlantıları hiçbir zaman beklenmedik şekilde izlemeyen dosya sistemi okumaları
+- **Deterministik anlık görüntüler**: incelenen durumun tekrarlanabilir anlık görüntüleri
+- **Zamansal doğrulama**: Symphony Temporal Semantics Contract'a uygun kanonik UTC işleme
+- **Sahip manifest keşfi**: sözleşme manifestlerinin kesin keşfi
+- **Sürümlü paketleme**: bağımsız olarak kurulabilen, makbuza ait paketler
+- **Makbuzlar ve makbuza dayalı kaldırma**: yalnızca yapıtı kuran makbuz tarafından yönlendirilen kaldırma
+
+## Manifest keşfi sınırı
+
+<Warning>
+  Manifest keşfi sabit bir önyükleme kümesinden başlar ve yalnızca açık alt düzey bildirimleri izler. Hiçbir zaman ortam genelinde depo taraması yapmaz veya sahipliği dizin adlarından çıkarmaz.
+</Warning>
+
+Temel kütüphaneyi kullanan her vektör motoru bu kuralı devralır.
+
+## Temel kütüphanenin yapmadıkları
+
+- Yetki taşımaz. Onu kullanan motorlar, değişiklikleri yine SSIAG aracılığıyla yetkilendirmelidir.
+- Ağ üzerinden hiçbir şey yayımlamaz veya getirmez.
+- Kanonik dosyaları kendi başına değiştirmez.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Oturumlar ve uzlaştırma için temel kütüphane üzerine kurulmuş C++26 koordinatörü.
+  </Card>
+
+  <Card title="Motorlara genel bakış" icon="cube" href="/tr/engines/overview">
+    Temel kütüphaneyi yeniden kullanan motorlar.
+  </Card>
+
+  <Card title="SKV genel bakış" icon="book-open" href="/tr/skv/overview">
+    Motorların uyguladığı vektör sözleşmeleri.
+  </Card>
+
+  <Card title="qxctl genel bakış" icon="terminal" href="/tr/qxctl/overview">
+    Makbuzla doğrulanmış kesin motorları çağıran yönetim CLI'ı.
+  </Card>
+</CardGroup>

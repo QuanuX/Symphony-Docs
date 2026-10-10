@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: uskuna imkoniyatlari haqidagi bilimlar"
+description: "SHV bir nechta mustaqil o'rnatiladigan C++ engine'lari orqali CPU, GPU, NIC, ona platalar, RAM va NVMe uchun uskuna imkoniyatlari haqidagi bilimlarni yuritadi."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) jismoniy dizayn miqdoriy dasturiy ta'minotni qanday imkon berishi, cheklashi, ko'chirishi yoki kengaytirishi mumkinligini tushunishingizga yordam beradigan uskuna imkoniyatlari haqidagi bilimlarga egalik qiladi. U protsessorlar, CPU yadro turlari, GPU'lar, NIC va optik tolali interfeyslar, ona platalar, kesh ierarxiyalari, xotira, NVMe va to'liq tizim yig'malarini qamrab oladi. Standart saralash 2018-yildan boshlab asl komponentlar va dalillangan variantlarga ustuvorlik beradi.
+
+## Doira va qamrov
+
+SHV dastur dizayni uchun ahamiyatli bo'lgan har qanday dalillangan jismoniy imkoniyatni qamrab olishi mumkin. Qamrov profilini qxctl orqali boshqarasiz. Standart sana asosi — taxmin qilingan alohida ishlab chiqarilgan sana emas, balki modelning taqdim etilgan sanasi. Bu filtrni kengaytirishingiz, toraytirishingiz, almashtirishingiz yoki olib tashlashingiz mumkin.
+
+## Amalga oshirilgan engine'lar
+
+SHV bilimlari bir nechta mustaqil o'rnatiladigan C++ engine'lari orqali yetkaziladi:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Asosiy yadro (0.4.0-dev): qamrov profillari, saqlab qolingan manbalardan katalog yig'ish/qayta ijro etish, talablarni baholash, deterministik graf proyeksiyasi va manbaga asoslangan graf tekshiruvi.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Manba identifikatori, ko'chirish rejalari, baytlarni yig'ishga bog'lash va manbadan qayta ijro etilgan kelib chiqish graflari.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Deklaratsiyaga muvofiqlik, ko'chma retseptlar va aniq mahalliy manbaga bog'lash.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Uskuna bo'limlari va komponentlarni xaritalash amallari.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Himoyalangan chaqiruvchi katalog boshlari, asl manbani qayta ijro etish va bardoshli snapshot tiklash.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Yo'qotishsiz almashinuv uchun umumiy C++ graf porti va xotiradagi ko'chma namunaviy adapter.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Uskuna grafi dalillarining ixtiyoriy DuckDB relyatsion proyeksiyasi.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Cheklangan PDF ajratib olish va hujjatli tasdiqlarni asl baytlardan qayta tekshirish.
+  </Card>
+</CardGroup>
+
+## Manba reviziyasi va kelib chiqishi
+
+`shv-source-engine` barqaror manba identifikatori, aniq ko'chirish rejalari, sof o'tish tekshiruvi, haqiqiy baytlarni yig'ishga bog'lash va manbadan qayta ijro etilgan kelib chiqish graflarini amalga oshiradi. Bular faqat o'qish amallaridir. Asosiy saralash asl komponent identifikatori va dalillangan variantlarga ustuvorlik beradi. Himoyalangan manbani faollashtirish alohida amalga oshiriladi; sof manba engine'i vakolat bermaydi.
+
+## Graf almashinuvi va saqlash
+
+`shv-graph-adapter` yo'qotishsiz almashinuv va tuzilmaviy so'rovlar uchun umumiy C++ graf portini taqdim etadi. Bardoshli saqlash standart DuckDB SQL orqali amalga oshirilgan. Hozircha maxsus graf ma'lumotlar bazasi tanlanmagan.
+
+## PDF dalillari chegarasi
+
+`shv-pdf-adapter` aniq PDF jadvallaridan malakali hujjatli tasdiqlarni ajratib oladi va umumiy graf almashinuvidan keyin ularni asl baytlardan qayta tekshiradi. Umumiy PDF qamrovi alohida doiradagi ish bo'lib qoladi.
+
+## Qolgan ishlar
+
+Keng qamrovli uskuna atlasi, manbalarni avtomatlashtirilgan yig'ish, ko'p manbali ziddiyatlarni jamlash, qo'shimcha sotuvchiga xos ma'lumotlar bazasi drayverlari, maxsus plaginlarni yuklash va Composer integratsiyasi keyingi ishlar bo'lib qoladi. Keng komponent xaritalari va bardoshli sotuvchi drayverlari ham hali ochiq.
+
+## SHV boshqa vektorlar bilan qanday bog'liq
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/uz/vectors/snv">
+    SHV tasvirlaydigan uskunani o'z ichiga olgan Node'larni qayd etadi.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/uz/vectors/scv">
+    SHV batafsil tavsiflaydigan provayder uskuna takliflariga havola qiladi.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/uz/vectors/sov">
+    Node'larga resurs ajratish yoki ularni tayyorlashda SHV dalillari asosida harakat qilishi mumkin.
+  </Card>
+</CardGroup>

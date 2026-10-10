@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance Symphonylle"
+description: "SSIAG on Symphonyn kutsujaneutraali valtuutusperusta, joka tarjoaa TOPS-kohtaisen rekisteröinnin, suojatun käytäntöjen elinkaaren, turvalliset auditointimetatiedot ja natiivit valvontakoukut."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) on erikseen asennettava, cgo-vapaa Go-perusta kutsujaneutraalille valtuutukselle Symphony-isännällä. Se projisoi isännän todellisen valtuuden, vartioi suojattuja muutoksia ja integroituu STAV-auditointiin ennen kuin mikään muutos tulee näkyviin.
+
+## Mitä SSIAG tarjoaa
+
+- Tarkan kutsujaneutraalin valtuutuksen, joka on sidottu kohdeisännän omistajuuteen, myönnettyyn lupaan, pyydettyyn toimintoon, odotettuun tilaan ja omistajan määrittämiin suojauksiin
+- TOPS-kohtaisen rekisteröinnin ja paikallisten päätepisteiden luottamuksen
+- Suojatun käytäntöjen elinkaaren ja palveluntarjoaja-asennusten elinkaaren
+- Sidontojen elinkaaren compare-and-swap-toiminnolla aktiivisten ja edellisten sidontojen välillä
+- STAV:lle valmistellut turvalliset auditointimetatiedot
+- Natiivin launchd- ja systemd-valvonnan
+
+## Mitä on tarkoituksella poistettu käytöstä
+
+<Warning>
+  Tunnistetietojen operatiivinen käyttö, kanonisen tiedon soveltaminen ja salaisuuksien toimitus pysyvät poissa käytöstä. Tavallinen perustason muutos epäonnistuu suljetusti (fail closed), kunnes sen vaatima auditointireitti STAV:n kautta on valmis.
+</Warning>
+
+SSIAG ei päätä kutsujaluokasta. Ihmis-, tekoäly-, agentti-, palvelu- ja työkuormakutsujia kohdellaan samalla tavalla; valtuus tulee kohdeisännästä ja pyydetystä toiminnosta, ei toimijan nimilapusta.
+
+## macOS Keychain -palveluntarjoaja
+
+`modules/ssiag-provider-macos-keychain` on Swift-metatietosovitin, jossa on rajattu, molemminpuolisesti todennettu kättely sekä allekirjoitetun paketin ja istunnon valmiuden havainnointi. Se tuo palveluntarjoajan metatiedot SSIAG:n saataville myöntämättä operatiivista Keychain-pääsyä, joka on tällä hetkellä tarkoituksella poistettu käytöstä.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/fi/governance/stav">
+    TOPS-kohtainen vain lisäävä auditointikirjanpito, johon SSIAG:n muutokset tukeutuvat.
+  </Card>
+
+  <Card title="Accordare-tuottaja" icon="pen-nib" href="/fi/governance/accordare-producer">
+    Rajattu SAV Named Version -auditointipiiri, joka toimii yhdessä SSIAG:n kanssa.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/fi/qxctl/lifecycle">
+    Elinkaaren hallinta, joka konsultoi SSIAG:ta valtuutusta varten.
+  </Card>
+
+  <Card title="Kutsujan valtuus" icon="user-shield" href="/fi/concepts/caller-authority">
+    Doktriini, jonka SSIAG toteuttaa.
+  </Card>
+</CardGroup>

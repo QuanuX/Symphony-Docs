@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat und Nest in Symphony"
+description: "Erfahren Sie, wie Symphony physische Infrastruktur modelliert: Node als physischer Computer, Habitat als exakte Betriebssystemkonditionierung und Nest als zweckgebundener Workload des Nutzers."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definiert drei physische Konzepte, die Hardware-Identität, Softwarekonditionierung und Nutzer-Workload voneinander trennen. Diese Konzepte halten Infrastrukturbelange getrennt, sodass Sie jeden einzeln betrachten können.
+
+## Node
+
+Ein **Node** ist die physische Zielcomputerressource mit konkret identifizierten Ressourcen. Das Trennen, erneute Verbinden, Neustarten oder ausschließliche Neu-Flashen der Software erzeugt keinen neuen physischen Node. Zerstörung, physischer Austausch oder eine wesentliche lokale Hardwareänderung hingegen schon. Eine Node-Inkarnation ist ein separater Nachweis, der entsteht, wenn dieser Node als Teilnehmer eines Trading-Systems, eines Forschungsclusters oder eines anderen mit Symphony gebauten Systems an einen Bus angeschlossen wird.
+
+## Habitat
+
+Ein **Habitat** ist die exakte Betriebssystem- und Paketkonditionierung, die für die von Ihnen gewählte Arbeit an einen Node ausgeliefert wird. Standardmäßig umfasst es nur die erforderliche Softwareoberfläche: keine fremden Pakete, versteckten Laufzeitumgebungen, Container, Kubernetes oder implizite Virtualisierung. Ein breites Allzweck-Habitat bleibt eine gültige explizite Nutzerentscheidung.
+
+## Nest
+
+Ein **Nest** dient einem von Ihnen gewählten Zweck. Die Live-Ausführung von Strategien dürfte häufig sein, und eine Strategie kann viele modulare Codeabschnitte enthalten, doch Symphony definiert weder den Zweck des Nest noch setzt es ihn mit einer Quelldatei, einem Prozess, einem Algorithmus, einer Broker-API oder einer Datenschnittstelle gleich. Strategielogik bleibt Ihre Domäne.
+
+## Vergleich
+
+| Konzept | Was es ist | Was es ändert |
+| --- | --- | --- |
+| **Node** | Physischer Computer mit konkreten Ressourcen | Physische Zerstörung, Austausch oder wesentliche Hardwareänderung |
+| **Habitat** | Exakte Betriebssystem- und Paketkonditionierung auf einem Node | Explizite Nutzerauswahl oder von qxctl verwaltete Konditionierung |
+| **Nest** | Zweckgebundener Nutzer-Workload, der in ein Habitat ausgeliefert wird | Bereitstellung einer Strategie oder anderer ausgewählter Arbeit durch den Nutzer |
+
+## Cluster- und Bus-Topologie
+
+Mehrere Nodes bilden nur dann einen Cluster, wenn sie über einen oder mehrere Busse miteinander verbunden sind. Innerhalb eines Clusters können mehrere Bus-Fabrics koexistieren, und eine Node-im-Cluster-Beziehung kann den relevanten Bus identifizieren, ohne die Identität des physischen Node zu ändern.
+
+Bus-Adapter wie NATS JetStream und ZeroMQ werden vom Nutzer gewählt und sind keine Doktrin. Schwere Übertragungen, Steuerung, Forschung und Ausführungsabfälle müssen sich nicht einen Bus teilen. Eine Topologie kann mehrere Busse verwenden oder einen Bus für einen deklarierten Pfad umgehen.
+
+## Geltungsbereich von TOPS und TROG
+
+**TOPS** ist der dominierende Geltungsbereich des Trade Operating System. Eine **TROG** ist ein bewusst untergeordneter, nicht globaler Geltungsbereich einer Trading-Gruppe. Trotz der historischen Bezeichnung ist eine TROG nicht zwingend virtuell. Ihr unterscheidendes Merkmal ist, dass ihr Geltungsbereich und ihre Regeln nicht universell sind.

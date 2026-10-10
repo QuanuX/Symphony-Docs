@@ -1,0 +1,50 @@
+---
+title: "Coordonatorul sesiunilor de cunoaștere pentru motoarele de vectori Symphony"
+description: "Coordonatorul sesiunilor de cunoaștere oferă compatibilitate delimitată, reconcilierea arborilor de lucru, sesiuni autentificate și coordonarea ciclului de viață cu capacitate de aplicare, în C++26."
+sidebarTitle: "Coordonator"
+---
+
+Coordonatorul sesiunilor de cunoaștere (`modules/knowledge-session-coordinator`) este un proces C++26 instalabil independent. Se situează între qxctl și motoarele de vectori și deține compatibilitatea delimitată, reconcilierea arborilor de lucru (worktree), sesiunile necanonice autentificate, întreținerea SSFV, planificarea ciclului de viață doar cu raportare și jurnalele cu capacitate de aplicare autorizate separat.
+
+## Responsabilități
+
+- **Verificări de compatibilitate** între qxctl, coordonator și motoare
+- **Reconcilierea arborilor de lucru** cu stare durabilă bazată pe sloturi
+- **Sesiuni necanonice autentificate** sub autoritatea SSIAG
+- **Fluxuri persistente de întreținere SSFV**
+- **Planificarea ciclului de viață doar cu raportare**, cu dovezi deterministe
+- **Jurnale cu capacitate de aplicare**, cu încercări pregătite, compare-and-swap, re-observare, replanificare dinamică și recuperare
+
+## Ce nu face coordonatorul
+
+<Warning>
+  Coordonatorul nu execută semantica vectorilor și nici acțiuni pe gazdă. Acesta coordonează dovezi și jurnale; fiecare motor își deține în continuare domeniul, iar fiecare acțiune pe gazdă rămâne autorizată de propriul contract.
+</Warning>
+
+- Nicio aplicare de cunoaștere canonică
+- Nicio execuție de comenzi arbitrare
+- Niciun observator ascuns și nicio activitate rezidentă în fundal
+
+## Integrarea cu qxctl
+
+qxctl invocă instalări exacte ale coordonatorului, validate prin chitanțe. `qxctl knowledge reconcile ...` și `qxctl knowledge session ...` folosesc câte un singur coordonator exact legat pentru fiecare operațiune, iar modificările necesită identificatori de operațiune stabili, plus digesturile exacte ale jurnalului curent pentru compare-and-swap.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ro/qxctl/reconcile">
+    Gramatica reconcilierii arborilor de lucru.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ro/qxctl/session">
+    Gramatica sesiunilor autentificate și a întreținerii SSFV.
+  </Card>
+
+  <Card title="Biblioteca de fundament" icon="cube" href="/ro/engines/knowledge-vector-foundation">
+    Mecanismele C++ partajate pe care le reutilizează coordonatorul.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ro/governance/ssiag">
+    Autorizează sesiunile gestionate de coordonator.
+  </Card>
+</CardGroup>

@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministyczne kontrole repozytorium tylko do odczytu"
+description: "Symphony Validator tworzy dowody w formie wierszy lub ustrukturyzowanego JSON dotyczące kontraktów, domknięcia źródeł, niezmienników, funkcji, wydań i podsumowania głównego sprawdzanego maszynowo."
+sidebarTitle: "Walidator"
+---
+
+Symphony Validator (`tools/symphony-validator`) to niezależne, deterministyczne narzędzie C++26 do sprawdzania repozytorium w trybie tylko do odczytu. Tworzy niezmienne dowody dotyczące bieżącego stanu repozytorium i jego kontraktów. Nie może niczego naprawiać ani publikować.
+
+## Co sprawdza walidator
+
+- Kształt kontraktu: wymagane kotwice i strukturę Contract Quad
+- Bieżące domknięcie źródeł w powierzchniach zindeksowanych przez SKVI
+- Własność niezmienników zgodnie z `knowledge/INVARIANTS.md` i rejestrem niezmienników
+- Oczekiwania dotyczące administracji funkcjami raportowane przez SSFV
+- Rekordy wydań raportowane przez SODV
+- Zarządzane maszynowo podsumowanie główne w pliku README repozytorium
+
+Dowody są emitowane jako dane wyjściowe w formie wierszy lub ustrukturyzowany JSON. Każda emisja jest odtwarzalna z tego samego stanu repozytorium.
+
+## Czego walidator nie robi
+
+<Warning>
+  Walidator nie może naprawiać plików, przepisywać kontraktów ani publikować repozytorium. Nie tworzy kanonicznej prawdy o niczym; jedynie ją raportuje.
+</Warning>
+
+- Brak efektów ubocznych w repozytorium
+- Brak dostępu do sieci
+- Brak wyciszania ostrzeżeń poza chronioną polityką ostrzeżeń qxctl
+
+## Integracja z qxctl
+
+qxctl waliduje dokładne potwierdzenie walidatora i ustrukturyzowane skróty przed zastosowaniem chronionej polityki ostrzeżeń. Dziewięć chronionych liści qxctl dotyczących cyklu życia ostrzeżeń oraz dokładna, oparta na potwierdzeniu trasa podsumowania głównego udostępniają administrację walidacją bez zmieniania surowych dowodów detektora.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/pl/qxctl/validate">
+    Gramatyka chronionej polityki ostrzeżeń, linii bazowej i wyświetlania.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pl/skv/ssfv">
+    Oczekiwania dotyczące administracji funkcjami sprawdzane przez walidator.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pl/skv/sodv">
+    Rekordy wydań sprawdzane przez walidator.
+  </Card>
+
+  <Card title="Przegląd SKV" icon="book-open" href="/pl/skv/overview">
+    Nadrzędna struktura, której kontrakty sprawdza walidator.
+  </Card>
+</CardGroup>

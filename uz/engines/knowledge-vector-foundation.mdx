@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector Engine C++ asosi: umumiy mexanizmlar"
+description: "Knowledge Vector Engine C++ asosi vakolatsiz jarayon freyminglari, chegaralangan JSON, SHA-256, snapshot’lar, kvitansiyalar va aniq manifest aniqlashni taqdim etadi."
+sidebarTitle: "Asos kutubxonasi"
+---
+
+`libraries/knowledge-vector-engine-cpp` har bir Symphony vector engine’i qayta foydalanadigan umumiy, vakolatsiz C++ mexanizmlarini taqdim etadi. U deterministik qurilish bloklarini beradi, shunda har bir engine chegaralangan, qayta tiklanadigan va atrof-muhitga oid nojoʻya taʼsirlardan xoli boʻlib qoladi.
+
+## Asos nimalarni taqdim etadi
+
+- **Jarayon freymingi**: har bir engine foydalanadigan vakolatsiz mahalliy jarayon protokoli
+- **Chegaralangan JSON**: aniq hajm va chuqurlik cheklovlari bilan qatʼiy tahlil va chiqarish
+- **SHA-256**: dalillar va kvitansiyalar uchun kontent manzillash
+- **No-follow oʻqishlar**: hech qachon kutilmaganda simvolik havolalar boʻylab oʻtmaydigan fayl tizimi oʻqishlari
+- **Deterministik snapshot’lar**: tekshirilgan holatning takrorlanadigan snapshot’lari
+- **Vaqt validatsiyasi**: Symphony Temporal Semantics Contract’ga muvofiq kanonik UTC bilan ishlash
+- **Ega-manifest aniqlash**: shartnoma manifestlarini aniq topish
+- **Versiyalangan paketlash**: kvitansiyaga tegishli, mustaqil oʻrnatiladigan paketlar
+- **Kvitansiyalar va kvitansiyaga asoslangan oʻchirish**: faqat artefaktni oʻrnatgan kvitansiya boshqaradigan oʻchirish
+
+## Manifest aniqlash chegarasi
+
+<Warning>
+  Manifest aniqlash belgilangan bootstrap toʻplamidan boshlanadi va faqat aniq boʻysunuvchi deklaratsiyalar boʻylab oʻtadi. U hech qachon repozitoriyni atrofdan skanerlamaydi va egalikni katalog nomlaridan taxmin qilmaydi.
+</Warning>
+
+Asosdan foydalanadigan har bir vector engine ushbu qoidani meros qilib oladi.
+
+## Asos nima qilmaydi
+
+- U vakolatga ega emas. Undan foydalanadigan engine’lar baribir oʻzgartirishlarni SSIAG orqali avtorizatsiya qilishi kerak.
+- U tarmoq orqali hech narsani nashr qilmaydi yoki yuklab olmaydi.
+- U kanonik fayllarni oʻz-oʻzidan oʻzgartirmaydi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Sessiyalar va muvofiqlashtirish uchun asos ustiga qurilgan C++26 koordinatori.
+  </Card>
+
+  <Card title="Engine’lar umumiy koʻrinishi" icon="cube" href="/uz/engines/overview">
+    Asosdan qayta foydalanadigan engine’lar.
+  </Card>
+
+  <Card title="SKV umumiy koʻrinishi" icon="book-open" href="/uz/skv/overview">
+    Engine’lar amalga oshiradigan vector shartnomalari.
+  </Card>
+
+  <Card title="qxctl umumiy koʻrinishi" icon="terminal" href="/uz/qxctl/overview">
+    Aniq, kvitansiya bilan tasdiqlangan engine’larni chaqiradigan maʼmuriy CLI.
+  </Card>
+</CardGroup>

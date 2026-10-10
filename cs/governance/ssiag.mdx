@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance pro Symphony"
+description: "SSIAG je základ autorizace Symphony neutrální vůči volajícímu, s registrací pro každý TOPS, chráněným životním cyklem politik, bezpečnými auditními metadaty a nativními háčky pro dohled."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) je samostatně instalovatelný základ v Go bez cgo pro autorizaci neutrální vůči volajícímu na hostiteli Symphony. Promítá efektivní oprávnění hostitele, hlídá přístup k chráněným změnám a integruje se s auditem STAV dříve, než se jakákoli změna stane viditelnou.
+
+## Co SSIAG poskytuje
+
+- Přesnou autorizaci neutrální vůči volajícímu, vázanou na vlastnictví cílového hostitele, udělené oprávnění, požadovanou operaci, očekávaný stav a ochranná opatření nakonfigurovaná vlastníkem
+- Registraci pro každý TOPS a důvěru v lokální koncové body
+- Chráněný životní cyklus politik a životní cyklus instalace poskytovatelů
+- Životní cyklus vazeb s compare-and-swap mezi aktivními a předchozími vazbami
+- Bezpečná auditní metadata připravená pro STAV
+- Nativní dohled přes launchd a systemd
+
+## Co je záměrně vypnuto
+
+<Warning>
+  Provozní použití pověření, aplikace kanonických znalostí a doručování tajemství zůstávají vypnuté. Běžné základní změny selhávají v uzavřeném stavu (fail closed), dokud nebude dokončena jejich požadovaná auditní cesta přes STAV.
+</Warning>
+
+SSIAG nerozhoduje o třídě volajícího. S lidskými volajícími, AI, agenty, službami i workloady se zachází stejně; oprávnění vychází z cílového hostitele a požadované operace, nikoli z označení aktéra.
+
+## Poskytovatel macOS Keychain
+
+`modules/ssiag-provider-macos-keychain` je metadatový adaptér ve Swiftu s ohraničeným vzájemně ověřeným handshakem a pozorováním podepsaného balíčku a připravenosti relace. Zpřístupňuje metadata poskytovatele pro SSIAG, aniž by uděloval provozní přístup ke Keychain, který je v současnosti záměrně vypnutý.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/cs/governance/stav">
+    Auditní ledger pouze pro připojování pro každý TOPS, na který se změny SSIAG spoléhají.
+  </Card>
+
+  <Card title="Producent Accordare" icon="pen-nib" href="/cs/governance/accordare-producer">
+    Ohraničený auditní okruh pojmenovaných verzí SAV, který spolupracuje se SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/cs/qxctl/lifecycle">
+    Správa životního cyklu, která se ohledně autorizace obrací na SSIAG.
+  </Card>
+
+  <Card title="Oprávnění volajícího" icon="user-shield" href="/cs/concepts/caller-authority">
+    Doktrína, kterou SSIAG implementuje.
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: автентифіковані сесії Symphony"
+description: "Відкривайте, фіксуйте контрольні точки, закривайте й відновлюйте автентифіковані сесії координатора Symphony, а також постійні потоки обслуговування SSFV із дозволами, перевіреними SSIAG."
+sidebarTitle: "session"
+---
+
+Граматика `qxctl knowledge session ...` відкриває неканонічні автентифіковані сесії через один точний прив’язаний координатор і одну кінцеву точку SSIAG з областю дії TOPS. Окрема граматика `session features ...` керує постійним потоком обслуговування SSFV.
+
+## Базова граматика сесій
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Кожен виклик запитує свіжий точний дозвіл і перевіряє:
+
+- Ідентичність суб’єкта та цілі
+- Стан політики та конфігурації
+- Термін дії
+- Нейтральність щодо класу викликача
+- Непередаваність
+- Вимкнення канонічного застосування
+- Прив’язку можливостей
+
+Докази сесії авторизують лише названу захищену неканонічну операцію. Тримайте журнали сесій і узгодження окремо; використовуйте посилання на контекст лише для їх пов’язування.
+
+## Потік обслуговування SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Потік функцій — це окремий постійний контекст обслуговування SSFV. Мутації вимагають:
+
+- Відкритої автентифікованої базової сесії
+- Точних прив’язок координатора та SSFV
+- Стабільних ідентифікаторів операцій
+- Точного compare-and-swap
+- Свіжих доказів SSIAG
+
+<Note>
+  Зберігайте базовий знімок і його початкову ідентичність рушія під час сумісних оновлень або відкатів. Необов’язкові докази Maestro мають бути повним автентифікованим інвентарем; коли Maestro навмисно відсутній, зафіксуйте явну причину відсутності налаштування. `review_required` — це доказ для перегляду викликачем, а не ратифікація.
+</Note>
+
+## Пов’язані поверхні
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/uk/governance/ssiag">
+    Видає свіжі дозволи, які перевіряє кожен запит сесії.
+  </Card>
+
+  <Card title="Координатор сесій" icon="gears" href="/uk/engines/coordinator">
+    Рушій, що забезпечує журнали сесій і функцій.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/uk/qxctl/reconcile">
+    Контексти узгодження, що поєднуються із сесіями.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uk/skv/ssfv">
+    Вектор функцій, який обслуговує потік функцій.
+  </Card>
+</CardGroup>

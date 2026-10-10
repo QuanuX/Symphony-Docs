@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: 제공자 리소스 지식"
+description: "SCV는 독립적으로 설치 가능한 8개의 C++ 엔진을 통해 AWS, Azure, GCP, DigitalOcean, Cloudflare 및 사용자 소유 하드웨어 전반의 외부 제공자 리소스에 대한 비공개 지식을 유지합니다."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector(SCV)는 외부 하드웨어 리소스와, 클러스터·학습·연구·데이터 작업을 좌우하는 제공자 현실에 대한 비공개 의미 지식을 소유합니다. 제공자의 순위를 매기거나 시도할 수 있는 작업에 경계를 두지 않고 제공자 상품, 리전, 인프라 도메인, 제약 조건, 관찰된 가용성을 매핑합니다.
+
+## 제공자 커버리지
+
+SCV는 다음 제공자와 리소스 유형을 다룹니다.
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- 사용자 소유 하드웨어(외부 리소스와의 비교가 필요한 경우)
+
+## 설치되는 엔진
+
+SCV 지식은 독립적으로 설치 가능한 8개의 C++ 엔진을 통해 제공됩니다. 필요한 엔진만 설치하면 됩니다.
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    제공자 리소스 지식과 그래프 구성을 위한 핵심 SCV 엔진입니다.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    범위가 제한된 수집과 코퍼스 의미를 위한 클라우드 증거 엔진입니다.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare 전용 증거 엔진입니다.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS 전용 하드웨어 및 리소스 지식 엔진입니다.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure 전용 하드웨어 및 리소스 지식 엔진입니다.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean 전용 리소스 지식 엔진입니다.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP 전용 하드웨어 및 리소스 지식 엔진입니다.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    보존된 SQL 인덱싱을 위해 DuckDB를 사용하는 선택적 관계형 그래프 커넥터입니다.
+  </Card>
+</CardGroup>
+
+## 이식 가능한 제공자 패키지와 구성
+
+SCV는 qxctl을 통해 이식 가능한 제공자 패키지를 제공합니다. 요구 사항, 제공자 권한, 레시피 대안, 실행 결정에 대한 통제권은 사용자에게 있습니다. qxctl은 보존된 워크플로와 보호된 그래프 선택을 지원하므로 제공자에 다시 쿼리하지 않고도 정확한 증거를 재생할 수 있습니다.
+
+## 선택적 DuckDB 커넥터
+
+`scv-graph-duckdb-connector`는 변경 불가능한 네이티브 그래프의 범위가 제한된 관계형 프로젝션을 추가합니다. DuckDB는 사용자가 선택한 기본 SQL 데이터베이스입니다. 향후에는 추가 어댑터를 통해 전용 그래프 엔진을 선택할 수도 있습니다.
+
+## 개인정보 보호와 주권
+
+설치된 SCV 지식 그래프는 사용자의 비공개 설치본에 속합니다. 사용자가 제공한 계정, 잔액, 권한, 계약상 제약은 명시적으로 활성화된 관찰 인터페이스를 통해서만 사용됩니다. 비공개 사실은 공식 Symphony 소스 진실에 포함되지 않습니다.
+
+## SCV와 다른 벡터의 관계
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/ko/vectors/sov">
+    SCV 증거를 바탕으로 작동하는 운영 제어 평면입니다. SOV는 제공자 의미를 다시 작성하지 않습니다.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ko/vectors/snv">
+    SCV 정보를 기반으로 한 프로비저닝의 결과인 물리적 Node와 클러스터의 식별자를 기록합니다.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ko/vectors/shv">
+    SCV가 참조하는 구성 요소에 대한 상세한 하드웨어 기능 지식을 소유합니다.
+  </Card>
+</CardGroup>
+
+## 버전이 지정된 인터페이스 증분
+
+SCV 릴리스는 추가 방식이며 정확한 버전으로 지정됩니다. 이전 설치본은 정확한 범위에서 계속 호출할 수 있습니다. 현재 증분에는 네이티브 작업, 코퍼스 스냅샷, 해석 프로필, 이식 가능한 제공자 팩, 구성 워크플로, 의무 추적, 증거 번들이 포함됩니다. 각 증분은 이전의 경로, 기본값, 기록을 보존합니다.

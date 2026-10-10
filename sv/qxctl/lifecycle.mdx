@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, boot och apply"
+description: "Hantera skyddade livscykelprofiler, ägarskap, observationer, boots och apply-kompatibla övergångar via qxctl med strikta compare-and-swap-skydd."
+sidebarTitle: "lifecycle"
+---
+
+Grammatiken `qxctl knowledge lifecycle ...` administrerar skyddade profiler, ägarskap, observationer, boot-journaler och apply-kompatibla övergångar. Varje mutation är en compare-and-swap och varje apply är bunden till exakt evidens.
+
+## Profil
+
+Ange den skyddade livscykelprofilen för en TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Ange `absent` för en profil som skapas första gången, eller den exakta digest som rapporterades vid en tidigare läsning.
+
+## Ägarskap
+
+- `ownership status`: inspektera en konfigurerad delad rot
+- `ownership reconcile`: uppdatera dess evidens
+- `ownership adopt`: adoptera endast efter att ha granskat varje konservativt äldre anspråk
+- `ownership release`: släpp endast för ett exakt äldre kvitto som avsiktligt gjorts återtagbart
+
+<Warning>
+  Ta aldrig bort eller skriv om det rotlokala registret eller dess kompatibilitetsspärr för kvittolayout, `symphony-root-ownership/1`, för hand. Äldre livscykelklienter måste stöta på den spärren och stanna vid sin befintliga blockering för okända paket.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: avger engångsevidens i form av kvitton med fast layout
+- `report`: tar fram en ny engångsplan
+- `boot`: beständig progression som bara rapporterar, med ett stabilt operations-ID och exakt journaltillstånd
+- `status`: v1-inspektion
+- `recover --discover`: återställer en unik v1-kedja när vanlig status inte kan validera lokalt tillstånd
+
+## Apply-kompatibla profiler
+
+För en `apply-compatible`-profil anropar du `apply` endast med den exakta digesten för boot-källan, compare-and-swap för apply-journalen, compare-and-swap för tillämpat tillstånd, ett stabilt operations-ID och explicita förberedda rötter:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Använd `apply-status` för att observera försök eller den avgränsade `apply-recover` för beständig återställning. Välj aldrig en åtgärd manuellt och redigera aldrig skyddat tillstånd.
+
+<Note>
+  En observationsuppdatering som bara gäller tidsstämplar måste ändra dokumentevidensen utan att flytta fram stabila semantiska identiteter.
+</Note>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Sessionskoordinator" icon="gears" href="/sv/engines/coordinator">
+    Motorn bakom koordineringen av livscykelplaner och apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/sv/qxctl/engines">
+    Hantera motorbindningar som livscykelplaner refererar till.
+  </Card>
+</CardGroup>

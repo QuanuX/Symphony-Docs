@@ -1,0 +1,43 @@
+---
+title: "Maestro: tilstedeværelsesmyndighed for Symphony-vector-engines"
+description: "Maestro registrerer autentificerede docking-relationer for vector-engines pr. TOPS og receptor og udleder et komplet, skrivebeskyttet inventar uden at starte eller overvåge engines."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) er en uafhængigt installerbar C++26-tilstedeværelsesmyndighed på freezing path. Den registrerer præcise, autentificerede docking-relationer for vector-engines pr. TOPS og receptor og udleder et komplet, skrivebeskyttet inventar over, hvad der aktuelt er docket. Maestro er et vidne, ikke en supervisor.
+
+## Hvad Maestro registrerer
+
+- Præcise, autentificerede docking-relationer mellem vector-engines og receptorer
+- Scope pr. TOPS, så hver installations tilstedeværelse forbliver privat for den pågældende installation
+- Et udledt, komplet, skrivebeskyttet inventar, der er tilgængeligt via `qxctl maestro inventory`
+
+## Hvad Maestro ikke gør
+
+<Warning>
+  Maestro starter, planlægger, overvåger eller kalder ikke engines. Binding, afstemning, koordinering af autentificerede sessioner eller en livscyklusplan alene etablerer ikke Maestro-tilstedeværelse, ratificerer ikke semantisk sandhed, ændrer ikke kanonisk viden og beviser ikke, at den installerede vært er komplet.
+</Warning>
+
+- Maestro opretter ingen processer.
+- Maestro anvender aldrig kanoniske videnændringer.
+- Maestro erstatter aldrig den vector-engine, der ejer semantikken.
+
+## Relaterede overflader
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/da/qxctl/maestro">
+    `qxctl maestro inventory` præsenterer det udledte inventar.
+  </Card>
+
+  <Card title="Sessionskoordinator" icon="gears" href="/da/engines/coordinator">
+    Ejer mekanikken for autentificerede sessioner og afstemning af worktrees.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/da/governance/ssiag">
+    Autentificerer de docking-relationer, som Maestro registrerer.
+  </Card>
+
+  <Card title="Oversigt over engines" icon="cube" href="/da/engines/overview">
+    Uafhængigt installerbare vector-engines, der docker med Maestro.
+  </Card>
+</CardGroup>

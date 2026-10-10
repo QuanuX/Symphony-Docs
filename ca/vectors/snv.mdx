@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: identitat de Nodes i registres de clústers"
+description: "SNV registra i relaciona la identitat dels Nodes, els recursos, la pertinença a clústers i els noms assignats per l'usuari sense dictar-los. Està format pels subvectors SNIV, SNRV, SCIV i SCNV."
+sidebarTitle: "Node Vector"
+---
+
+El Symphony Node Vector (SNV) registra i relaciona les identitats, els recursos, la pertinença a clústers i els noms dels Nodes físics que utilitzeu amb Symphony. Està format per quatre subvectors, cadascun propietari d'un límit semàntic diferent. SNV no tria, emet, dicta ni canvia el nom automàticament de res en nom vostre.
+
+## Composició de subvectors
+
+SNV es construeix a partir de quatre dominis semàntics duradors:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Identitat del Node**: identitat física del Node i les seves associacions exactes amb recursos de proveïdor, ofertes seleccionades i dominis d'infraestructura.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Recursos del Node**: veritat dels recursos locals i remots explícitament qualificats d'un Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Identitat del clúster**: identitat del clúster, connectivitat del bus i relacions de Node dins del clúster.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Denominació consolidada**: resolució, acotada per SNV, de noms ja assignats per vosaltres o pels vostres proveïdors.
+  </Card>
+</CardGroup>
+
+## Límit de registre
+
+SNV registra fets i el seu llinatge. No reserva noms, no assigna recursos ni crea clústers per vosaltres. Els noms els assigna l'usuari; Symphony els registra. Els recursos de proveïdor els selecciona l'usuari; Symphony els relaciona. La topologia del clúster la dissenya l'usuari; Symphony la documenta.
+
+## Com es relaciona SNV amb altres vectors
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/ca/vectors/scv">
+    Aporta coneixement de proveïdors i de recursos externs que determina quins Nodes poden existir.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ca/vectors/sov">
+    Estableix i modifica la infraestructura mitjançant qxctl, i produeix els Nodes que registra SNV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ca/vectors/shv">
+    Pot aportar evidència detallada de capacitats del maquinari per als components físics dins d'un Node.
+  </Card>
+</CardGroup>
+
+## Estat actual
+
+SNV és un contracte d'arquitectura canònic emergent. Actualment no hi ha implementat cap motor, graf, esquema de registre, codificador d'identitat, servei de descobriment, servei de denominació ni ordre de qxctl de SNV. Els esquemes de registre i els motors continuen ajornats.
+
+## Instal·labilitat futura
+
+Qualsevol futur motor de SNV ha de ser instal·lable de manera independent i capaç de reconstruir les seves projeccions a partir de l'evidència exacta del propietari. Cap motor no es converteix en autoritat d'identitat o de denominació pel simple fet d'emmagatzemar o resoldre registres.

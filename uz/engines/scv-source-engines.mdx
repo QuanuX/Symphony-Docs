@@ -1,0 +1,74 @@
+---
+title: "SCV manba-bilim engine’lari: Symphony uchun provayder voqeligi"
+description: "Sakkizta mustaqil paketlangan SCV, hyperscaler, edge va provayder engine’lari aniq manba reviziyalarini saqlaydi hamda qayta tiklanadigan graf va soʻrov dalillarini ishlab chiqaradi."
+sidebarTitle: "SCV engine’lari"
+---
+
+SCV manba-bilim engine’lari — tashqi provayder resurslari, takliflari, mintaqalari, cheklovlari va gibrid imkoniyatlari haqida xususiy semantik bilimlarni saqlaydigan sakkizta mustaqil paketlangan C++26 jarayoni. Ular aniq manba reviziyalari va chegaralangan yigʻmalarni saqlaydi, shunda keyingi vositalar natijalarni qayta tiklay oladi.
+
+## Engine’lar
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Umumiy bulut lugʻati uchun asosiy SCV manba engine’i.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector manba engine’i.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare’ga xos edge manba engine’i.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services manba engine’i.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure manba engine’i.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean manba engine’i.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform manba engine’i.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Saqlangan relyatsion graf indekslash uchun ixtiyoriy DuckDB konnektori.
+  </Card>
+</CardGroup>
+
+## SCV engine’lari nima qiladi
+
+- Aniq manba reviziyalari va chegaralangan yigʻmalarni saqlaydi
+- Malakali daʼvolar va asl hujjat tuzilmasini saqlab qoladi
+- Qayta tiklanadigan graf va soʻrov dalillarini ishlab chiqaradi
+- Koʻchma provayder paketlari va chaqiruvchi yoʻnaltirgan cheklangan kompozitsiyani taʼminlaydi
+
+## Ular nima qilmaydi
+
+<Warning>
+  Provayder operatsiyalari va toʻliq bulut kataloglari ushbu bosqichdan tashqarida qoladi. SCV engine’lari maʼlum boʻlgan narsani tavsiflaydi; ular provayderlar ustida harakat qilmaydi.
+</Warning>
+
+qxctl audit qilingan mahalliy manba oʻzgarishlari va izchil graf tanlovini saqlangan ish oqimlari va himoyalangan graf tanlovi orqali alohida boshqaradi. Maxsus graf boʻylab oʻtish va operatsion adapterlar alohida ish boʻlib qoladi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="SCV vektori" icon="cloud" href="/uz/vectors/scv">
+    Ushbu engine’lar amalga oshiradigan Cloud Vector shartnomasi.
+  </Card>
+
+  <Card title="SOV vektori" icon="terminal" href="/uz/vectors/sov">
+    qxctl orqali SCV dalillari asosida harakat qiladigan Ops Vector.
+  </Card>
+
+  <Card title="qxctl vector buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Graf tanlovi, manba ish oqimlari va DuckDB konnektorini boshqarish.
+  </Card>
+</CardGroup>

@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: budoucí spolupráce agentů"
+description: "SIV vlastní budoucí agentní spolupráci, rozšířený kontext, strukturovanou dlouhodobou logiku a řízenou interakci se Symphony. SMCV je jeho první volitelnou komponentou; SAIV je rezervován."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV) vlastní budoucí sémantiku vytvořenou Symphony pro agentní spolupráci, rozšířený místní kontext, strukturovanou dlouhodobou logiku, komunikaci mezi agenty a provoz řízený člověkem na ploše Symphony. Jde o vznikající doménu s kanonickými kontrakty, ale zatím bez spustitelné implementace.
+
+## Rozsah a účel
+
+Očekává se, že SIV bude podporovat:
+
+- Účast místních i vzdálených agentů v pracovních postupech Symphony
+- Rozšířený kontext sdílený napříč relacemi a vektory
+- Strukturovanou dlouhodobou logiku pro opakující se nebo vícekrokové operace
+- Protokoly komunikace mezi agenty
+- Řízenou interakci s příkazovou plochou Symphony
+
+SIV neuděluje autoritu na základě typu volajícího. S lidmi, AI, agenty i službami se zachází stejně. Autorita vychází z vlastnictví cílového hostitele, uděleného oprávnění, požadované operace, očekávaného stavu a pojistek nakonfigurovaných vlastníkem.
+
+## Pojmenované podvektory
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Volitelná komponenta pro převod Markdownu. Plánována jako překladač konfigurovatelný přes qxctl nad povoleným spojením IPC. Žádný příkaz ani překladač SMCV zatím není implementován.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Rezervováno pro pozdější podvektor integrace inteligence do Symphony. Rezervace neposkytuje žádnou implementaci, chování jmenného prostoru ani sémantickou operaci.
+  </Card>
+</CardGroup>
+
+## Mimo rozsah
+
+SIV výslovně:
+
+- Nenahrazuje sémantiku vlastněnou vektory (doménové operace zůstávají ve vlastnictví příslušných vektorů, i když je vyvolá agent)
+- Nestává se kanonickou pravdou ani nepřepisuje kontrakty SKV
+- Nevstupuje do kritické cesty obchodování (hot path)
+- Nečiní starší pracovní dokument o umělé inteligenci závazným
+
+## Aktuální stav
+
+SIV je pouze kanonickým architektonickým kontraktem. Momentálně není implementován žádný harness SIV, pošta agentů, engine dlouhodobého stavu, připojení k modelu, protokol místních/vzdálených agentů, komponenta SAIV, překladač SMCV ani ovládání přes qxctl.
+
+## Jazyková hranice
+
+Pro komponenty SIV není stanoven žádný požadavek na Rust. Jazyk komponent se bude řídit budoucím kontraktem pro výkon, přenositelnost, bezpečnost a integraci. Nepřebírá se z žádného pracovního dokumentu.
+
+## Jak SIV souvisí s ostatními vektory
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/cs/skv/overview">
+    Spravuje kontrakty SIV, jeho evoluci a vztahy k oficiálním publikacím.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/cs/vectors/sov">
+    Může zpřístupňovat operace vyvolávané agenty prostřednictvím qxctl při zachování sémantiky vlastněné vektory.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cs/skv/sav">
+    Vyhodnocuje kompozici a kompatibilitu všech operací sestavených agenty.
+  </Card>
+</CardGroup>

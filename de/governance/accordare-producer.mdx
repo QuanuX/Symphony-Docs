@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Producer: abgegrenztes Audit von SAV Named Versions"
+description: "Der Accordare STAV Producer hält Absicht, Ergebnis und Wiederherstellung von SAV Named Versions dauerhaft fest – über einen Go-Producer auf dem Freezing Path mit authentifizierten lokalen Peers."
+sidebarTitle: "Accordare Producer"
+---
+
+Der Accordare STAV Producer (`modules/accordare-stav-producer`) ist ein unabhängig installierbarer Go-Producer auf dem Freezing Path für den abgegrenzten Audit-Kreislauf von SAV Named Versions. Er hält die Absicht vor der Mutation und die Wiederherstellung von Anhängevorgängen dauerhaft fest, authentifiziert seine lokalen Peers und übermittelt nur den exakten sicheren Kandidaten, den sein geschlossenes Vokabular zulässt. Er ist nicht selbst die STAV-Append-Autorität.
+
+## Das Muster aus Absicht, Ergebnis und Wiederherstellung
+
+Der Producer folgt für jede auditierte Mutation einem dreistufigen Muster:
+
+<Steps>
+  <Step title="Absicht vor der Mutation">
+    Die erklärte Absicht des Aufrufers dauerhaft erfassen, bevor eine Änderung beobachtbar wird. Der Producer lehnt Kandidaten außerhalb seines geschlossenen Vokabulars ab.
+  </Step>
+  <Step title="Endgültiges Ergebnis">
+    Nachdem die Mutation abgeschlossen ist oder fehlschlägt, das exakte Ergebnis erfassen, damit das Audit die Realität widerspiegelt und nicht einen erhofften Zustand.
+  </Step>
+  <Step title="Abgegrenzte Wiederherstellung">
+    Bei einer Unterbrechung führt der Producer eine abgegrenzte Wiederherstellung des Append-Streams durch, ohne einen Abgleich zu erfinden oder Absichten stillschweigend zu verwerfen.
+  </Step>
+</Steps>
+
+## Grenzen
+
+<Warning>
+  Der Accordare Producer ist nicht die STAV-Append-Autorität. Er authentifiziert lokale Peers und übermittelt Kandidaten; die Append-Autorität validiert, versiegelt und speichert sie dauerhaft. Umgehen Sie diese Trennung niemals.
+</Warning>
+
+- Das Vokabular des Producers ist geschlossen. Er akzeptiert nur Audit-Kandidaten für SAV Named Versions.
+- Der Producer arbeitet auf dem Freezing Path. Er darf nicht zu einer Hot-Path-Abhängigkeit werden.
+- Der Producer authentifiziert lokale Peers; entfernte Aufrufer authentifiziert er nicht.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/de/governance/stav">
+    Die Append-Autorität, die Audit-Einträge versiegelt.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/de/governance/ssiag">
+    Autorisiert die Mutation, die der Producer auditiert.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/de/skv/sav">
+    Die Kompositionssemantik der Named Versions, die dieser Kreislauf auditiert.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Die ratifizierte Accordare-Grammatik erscheint nach der Implementierung als `qxctl accord ...`.
+  </Card>
+</CardGroup>

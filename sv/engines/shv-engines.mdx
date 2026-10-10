@@ -1,0 +1,65 @@
+---
+title: "SHV-motorer: källa och graf för Symphony Hardware Vector"
+description: "SHV-motorerna katalogiserar CPU:er, GPU:er, nätverkskort, minne och lagring med uppspelning av lagrade källor, kravutvärdering, PDF-inläsning och beständiga DuckDB-grafer."
+sidebarTitle: "SHV-motorer"
+---
+
+Motorerna för Symphony Hardware Vector (SHV) katalogiserar processorer, CPU-topologi, cacheminnen, GPU:er, nätverkskort och fibergränssnitt, moderkort, RAM och NVMe. Standardkureringen prioriterar originalkomponenter och belagda varianter. Varje motor är oberoende installerbar och skrivskyddad.
+
+## Motorer
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Hårdvarukärna: anropardefinierad täckning, uppspelning av katalog från lagrade källor, kravutvärdering och grafprojektion.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Källinläsning och revisionshantering för hårdvaruevidens.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Utvärdering av komponent- och systemprofiler.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partitionering av katalogiserad hårdvara för reproducerbart urval.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Styrd lokal katalogpublicering och urval.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Uttrycklig yta för graftransport.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Beständig DuckDB-baserad graflagring som administreras via qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Tolkning av PDF-källor för hårdvarudatablad.
+  </Card>
+</CardGroup>
+
+## Höjdpunkter inom administration
+
+- **Beständig lagring** administreras endast via `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` med det lagrade sammandraget av förväntad avsikt fungerar även som återställning; det finns inget separat återställningsalias.
+- **Katalogpublicering** administreras endast via `shv catalogue publication inspect|plan|apply|status|schema|template`. Återställning sker med `apply --operation-id`, som är ömsesidigt uteslutande med `--input`.
+- **Inventering** (release 0.2) lägger till `shv graph store inventory`: en revisionsbunden logisk läsning med uttryckliga lagrade skrivaridentiteter. Äldre urval i 0.1 stöds fortfarande.
+
+<Note>
+  Hårdvaruklasser är anroparens mappnings- och profildata, inte duplicerade kommandoträd. `--version` väljer den exakta primära ägaren; `--source-version` och `--adapter-version` namnger separata valda beroenden. Schema- och mappningsrevisioner är dataidentiteter, inte alias för installerade motorversioner.
+</Note>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="SHV-vektor" icon="microchip" href="/sv/vectors/shv">
+    Hardware Vector-kontraktet som dessa motorer implementerar.
+  </Card>
+
+  <Card title="qxctl-vektorkommandon" icon="terminal" href="/sv/qxctl/vector-commands">
+    Fullständig grammatikreferens för `shv ...`.
+  </Card>
+</CardGroup>

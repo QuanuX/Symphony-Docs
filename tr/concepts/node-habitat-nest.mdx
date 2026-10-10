@@ -1,0 +1,37 @@
+---
+title: "Symphony'de Node, Habitat ve Nest"
+description: "Symphony'nin fiziksel altyapıyı nasıl modellediğini öğrenin: fiziksel bilgisayar olarak Node, kesin işletim sistemi hazırlığı olarak Habitat ve kullanıcı amaçlı iş yükü olarak Nest."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony; donanım kimliğini, yazılım hazırlığını ve kullanıcı iş yükünü birbirinden ayıran üç fiziksel kavram tanımlar. Bu kavramlar altyapı kaygılarını ayrı tutar, böylece her biri hakkında bağımsız olarak akıl yürütebilirsiniz.
+
+## Node
+
+Bir **Node**, özel olarak tanımlanmış kaynaklara sahip hedef fiziksel bilgisayar kaynağıdır. Bağlantıyı kesmek, yeniden bağlamak, yeniden başlatmak veya yalnızca yazılımı yeniden yüklemek yeni bir fiziksel Node oluşturmaz. İmha, fiziksel değiştirme veya önemli bir yerel donanım değişikliği ise oluşturur. Bir Node enkarnasyonu, o Node bir alım satım sistemine, araştırma kümesine veya Symphony ile oluşturulmuş başka bir sisteme katılımcı olarak bir veri yoluna bağlandığında oluşturulan ayrı bir kanıttır.
+
+## Habitat
+
+Bir **Habitat**, seçtiğiniz iş için bir Node'a teslim edilen kesin işletim sistemi ve paket hazırlığıdır. Varsayılanı yalnızca gerekli yazılım yüzeyidir: ilgisiz paketler, gizli çalışma zamanları, konteynerler, Kubernetes veya örtük sanallaştırma yoktur. Geniş, genel amaçlı bir Habitat da geçerli ve açık bir kullanıcı tercihi olarak kalır.
+
+## Nest
+
+Bir **Nest**, sizin seçtiğiniz bir amaca hizmet eder. Canlı strateji yürütmenin yaygın olması beklenir ve bir strateji birçok modüler kod bölümü içerebilir, ancak Symphony Nest'in amacını tanımlamaz veya onu tek bir kaynak dosyası, süreç, algoritma, aracı kurum API'si veya veri arayüzüyle eşitlemez. Strateji mantığı sizin alanınız olarak kalır.
+
+## Karşılaştırma
+
+| Kavram | Nedir | Neyle değişir |
+| --- | --- | --- |
+| **Node** | Belirli kaynaklara sahip fiziksel bilgisayar | Fiziksel imha, değiştirme veya önemli donanım değişikliği |
+| **Habitat** | Bir Node üzerindeki kesin işletim sistemi ve paket hazırlığı | Açık kullanıcı seçimi veya qxctl tarafından yönetilen hazırlık |
+| **Nest** | Bir Habitat'a teslim edilen kullanıcı amaçlı iş yükü | Kullanıcının strateji veya seçilen başka bir işi dağıtması |
+
+## Küme ve veri yolu topolojisi
+
+Birden fazla Node, yalnızca bir veya daha fazla veri yolu (bus) aracılığıyla birbirine bağlandığında bir küme oluşturur. Bir küme içinde birden fazla veri yolu dokusu bir arada bulunabilir ve bir küme içi Node ilişkisi, fiziksel Node'un kimliğini değiştirmeden ilgili veri yolunu tanımlayabilir.
+
+NATS JetStream ve ZeroMQ gibi veri yolu adaptörleri doktrin değil, kullanıcı tercihidir. Yoğun aktarım, kontrol, araştırma ve yürütme çıktılarının tek bir veri yolunu paylaşması gerekmez. Bir topoloji birden fazla veri yolu kullanabilir veya bildirilen bir yol için veri yolunu atlayabilir.
+
+## TOPS ve TROG kapsamı
+
+**TOPS**, baskın Trade Operating System (Alım Satım İşletim Sistemi) kapsamıdır. Bir **TROG**, kasıtlı olarak alt düzeyde tutulan, küresel olmayan bir alım satım grubu kapsamıdır. Tarihsel ifadeye rağmen bir TROG mutlaka sanal değildir. Ayırt edici özelliği, kapsamının ve kurallarının evrensel olmamasıdır.

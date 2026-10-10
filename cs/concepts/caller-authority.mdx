@@ -1,0 +1,28 @@
+---
+title: "Neutralita vůči třídě volajícího a oprávnění hostitele v Symphony"
+description: "Symphony neklasifikuje volající podle typu. Oprávnění vychází z vlastnictví cílového hostitele, explicitního povolení, očekávaného stavu a ochranných opatření nakonfigurovaných vlastníkem."
+sidebarTitle: "Oprávnění volajícího"
+---
+
+Symphony při rozhodování o oprávnění neklasifikuje volajícího jako člověka, AI, agenta, službu, workload, organizaci ani jiný typ aktéra. To, zda jste osoba, nebo automatizovaný systém, samo o sobě žádnou schopnost neuděluje ani neodebírá. Tato neutralita vůči třídě volajícího je klíčovou architektonickou hranicí, která udržuje autorizaci ukotvenou ve faktech, nikoli v nálepkách.
+
+## Co určuje oprávnění
+
+Podporovaná autorizační rozhodnutí vycházejí z následujících vstupů:
+
+- **Vlastnictví cílového hostitele nebo udělená oprávnění**: Administrátor cílového hostitele je svrchovaný nad konfigurovatelnou správou.
+- **Požadovaná operace a prostředek**: Konkrétní akce a objekt, na který působí.
+- **Očekávaný stav**: Deklarovaný požadovaný výsledek a pozorovaný aktuální stav.
+- **Ochranná opatření nakonfigurovaná vlastníkem**: Konzervativní výchozí nastavení, která může administrátor upravit nebo odstranit.
+
+## SSIAG a oprávnění hostitele
+
+SSIAG může ověřovat a promítat efektivní oprávnění hostitele, ale nevytváří nadřazenou registrační autoritu ani trvale nevetuje administrátora cílového hostitele. Rozšířené ověření identity a správní blokace jsou ochranná opatření neutrální vůči volajícímu a konfigurovaná vlastníkem. Požadavky na integritu protokolu zůstávají v rámci podporovaných nástrojů povinné.
+
+## O čem Symphony nerozhoduje
+
+Symphony nerozhoduje o tom, zda aktér smí vlastnit majetek, otevřít účet, podepsat smlouvu, převzít odpovědnost nebo jednat za jiný subjekt. Tato fakta náleží příslušnému vlastníkovi, poskytovateli, protistraně a platnému právu. Platforma zůstává ve své ohraničené roli: vytváří důkazy o kompatibilitě a podporuje operace, ale nezasahuje do určování externí právní nebo finanční způsobilosti.
+
+## Praktický dopad
+
+Když vyvoláte qxctl nebo vektorový engine, platí stejné kontroly bez ohledu na to, zda příkaz spouštíte ručně, skriptem nebo prostřednictvím agentního nástroje. Cesta oprávnění je: vlastnictví cílového hostitele, explicitní povolení, očekávaný stav, ochranná opatření. Žádný typ volajícího nezískává automatickou výjimku ani automatické omezení.

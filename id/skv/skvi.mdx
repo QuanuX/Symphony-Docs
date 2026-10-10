@@ -1,0 +1,51 @@
+---
+title: "SKVI: Engine Symphony Knowledge Vector Index"
+description: "SKVI mengindeks setiap permukaan SKV kanonis satu kali secara deterministik, memeriksa cakupan yang dideklarasikan manifest, dan menghasilkan proyeksi sekali pakai terikat digest tanpa menyentuh kebenaran."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) adalah engine yang memetakan kebenaran kanonis saat ini di seluruh permukaan SKV. SKVI adalah proses C++ yang dapat diinstal secara independen yang beroperasi secara deterministik dan hanya-baca, serta tidak dapat memutuskan keanggotaan atau menulis file kanonis.
+
+## Yang dilakukan SKVI
+
+SKVI melakukan tiga operasi terbatas:
+
+- **Inspect dan check**: memverifikasi bahwa setiap permukaan wajib yang dideklarasikan manifest diindeks tepat satu kali, dengan pemilik, peran kebenaran, relasi, konsumen, dan kelayakan proyeksi yang stabil.
+- **Propose**: menerima proposal tidak dapat diubah yang dideklarasikan pemanggil untuk perubahan indeks tanpa menerapkannya.
+- **Project**: menghasilkan proyeksi sekali pakai terikat digest atas indeks saat ini untuk konsumen hilir.
+
+## Yang tidak dilakukan SKVI
+
+SKVI tidak pernah memutuskan kelayakan fitur atau keanggotaan manifest. Kepemilikan tetap berada pada Contract Quad setiap vektor. SKVI juga tidak:
+
+- Menulis atau menulis ulang Markdown kanonis
+- Memublikasikan apa pun ke proyeksi publik
+- Memberikan otoritas hanya karena SKVI menghasilkan bukti
+
+## Kapan menggunakannya
+
+Gunakan SKVI untuk memastikan bahwa sebuah repositori tercakup sepenuhnya sebelum Anda mengusulkan perubahan sumber, atau untuk melihat pemilik dan peran kebenaran yang dimiliki suatu permukaan tertentu. Proyeksinya menjadi masukan bagi peninjau proposal, konteks agen, dan baseline validator.
+
+<Note>
+  SKVI adalah salah satu engine read, query, validate, dan propose. Apply kanonis tetap dinonaktifkan di seluruh engine vektor yang telah diratifikasi hingga kontrak SSIAG, transaksi expected-state, pengaman qxctl, peristiwa STAV, pemulihan, dan pengujian negatif setiap engine selesai.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka kerja payung yang mengatur SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/id/skv/sclv">
+    Ledger perubahan append-only yang mencatat perubahan sumber material yang telah selesai.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Jalankan `qxctl skvi ...` untuk memanggil inspect, check, dan propose.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/id/governance/validator">
+    Pemeriksaan hanya-baca independen yang melengkapi cakupan SKVI.
+  </Card>
+</CardGroup>

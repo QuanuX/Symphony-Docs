@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: ワークツリーの調整"
+description: "互換性チェック、checkpoint と close のジャーナル、エビデンスに基づく 2 スロットリカバリーを用いて、バインドされた Symphony コーディネーターに対してワークツリーを調整します。"
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` 文法は、バインドされた 1 つの正確な Knowledge Session Coordinator を通じてワークツリーの調整を実行します。すべての変更は安定した識別子で追跡され、現在の正確なジャーナルダイジェストに対する compare-and-swap として実行されます。
+
+## コマンド
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: qxctl、コーディネーター、バインドされたエンジンがプロトコルバージョンとスコープについて一致していることを検証します。
+- `begin`: 安定したオペレーション識別子を用いて新しい調整コンテキストを開きます。
+- `status`: 変更を加えずに現在のジャーナルを検査します。
+- `checkpoint`: compare-and-swap によってジャーナルを永続的に進めます。
+- `close`: 調整コンテキストを確定します。
+- `recover --discover`: 通常の status でローカル状態を検証できない場合のディスカバリーリカバリー。
+
+## リカバリーのルール
+
+<Warning>
+  2 スロットリカバリーは、エビデンスに基づく前方修復です。互換性のないジャーナルや未知のクリティカル拡張を破棄する許可には決してなりません。リカバリーが失敗した場合は、強制するのではなくエスカレーションしてください。
+</Warning>
+
+ディスカバリーリカバリーは、通常の status でローカル状態を検証できない場合にのみ使用してください。ブロッカーは保持し、検証済みのエビデンスが変化した後にのみ再計画します。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="セッションコーディネーター" icon="gears" href="/ja-jp/engines/coordinator">
+    調整ジャーナルを所有するエンジン。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ja-jp/qxctl/session">
+    調整コンテキストと対になる認証済みセッション。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ja-jp/qxctl/engines">
+    コーディネーターが使用するバインディングを管理します。
+  </Card>
+</CardGroup>

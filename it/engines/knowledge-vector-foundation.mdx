@@ -1,0 +1,53 @@
+---
+title: "Fondamenta C++ dei Knowledge Vector Engine: meccanismi condivisi"
+description: "Le fondamenta C++ dei Knowledge Vector Engine forniscono framing dei processi privo di autorità, JSON delimitato, SHA-256, snapshot, ricevute e rilevamento esplicito dei manifest."
+sidebarTitle: "Libreria di base"
+---
+
+`libraries/knowledge-vector-engine-cpp` fornisce i meccanismi C++ condivisi e privi di autorità che ogni vector engine di Symphony riutilizza. Offre elementi costitutivi deterministici affinché ogni engine possa restare delimitato, riproducibile e privo di effetti collaterali impliciti.
+
+## Cosa forniscono le fondamenta
+
+- **Framing dei processi**: protocollo per processi locali privo di autorità, utilizzato da ogni engine
+- **JSON delimitato**: parsing ed emissione rigorosi con limiti espliciti di dimensione e profondità
+- **SHA-256**: indirizzamento per contenuto di evidenze e ricevute
+- **Letture no-follow**: letture del filesystem che non attraversano mai inaspettatamente i link simbolici
+- **Snapshot deterministici**: snapshot ripetibili dello stato ispezionato
+- **Validazione temporale**: gestione canonica di UTC secondo lo Symphony Temporal Semantics Contract
+- **Rilevamento dei manifest dei proprietari**: rilevamento esatto dei manifest dei contratti
+- **Packaging versionato**: pacchetti installabili in modo indipendente e posseduti da una ricevuta
+- **Ricevute e disinstallazione basata sulla ricevuta**: disinstallazione guidata esclusivamente dalla ricevuta che ha installato l'artefatto
+
+## Confine del rilevamento dei manifest
+
+<Warning>
+  Il rilevamento dei manifest parte da un insieme fisso di bootstrap e attraversa solo le dichiarazioni subordinate esplicite. Non esegue mai una scansione implicita del repository né deduce la proprietà dai nomi delle directory.
+</Warning>
+
+Ogni vector engine che utilizza le fondamenta eredita questa regola.
+
+## Cosa non fanno le fondamenta
+
+- Non detengono autorità. Gli engine che le utilizzano devono comunque autorizzare le modifiche tramite SSIAG.
+- Non pubblicano né scaricano nulla attraverso la rete.
+- Non modificano autonomamente i file canonici.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Coordinatore delle sessioni" icon="gears" href="/it/engines/coordinator">
+    Coordinatore C++26 costruito sulle fondamenta per sessioni e riconciliazione.
+  </Card>
+
+  <Card title="Panoramica degli engine" icon="cube" href="/it/engines/overview">
+    Gli engine che riutilizzano le fondamenta.
+  </Card>
+
+  <Card title="Panoramica di SKV" icon="book-open" href="/it/skv/overview">
+    Contratti dei vector implementati dagli engine.
+  </Card>
+
+  <Card title="Panoramica di qxctl" icon="terminal" href="/it/qxctl/overview">
+    CLI amministrativa che invoca engine esatti validati tramite ricevuta.
+  </Card>
+</CardGroup>

@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Symphony uchun xavfsiz identifikatsiya va kirish boshqaruvi"
+description: "SSIAG — Symphony’ning har bir TOPS uchun roʻyxatga olish, himoyalangan siyosat hayot sikli, xavfsiz audit metamaʼlumotlari va native nazorat ilgaklariga ega, chaqiruvchiga betaraf avtorizatsiya asosi."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) — Symphony xostida chaqiruvchiga betaraf avtorizatsiya uchun mustaqil oʻrnatiladigan, cgo’siz Go asosi. U samarali xost vakolatini proyeksiya qiladi, himoyalangan oʻzgartirishlarni nazorat qiladi va har qanday oʻzgarish koʻrinadigan boʻlishidan oldin STAV auditi bilan integratsiyalashadi.
+
+## SSIAG nimalarni taqdim etadi
+
+- Maqsadli xost egaligi, berilgan ruxsat, soʻralgan operatsiya, kutilgan holat va egasi sozlagan himoya choralariga bogʻlangan, chaqiruvchiga betaraf aniq avtorizatsiya
+- Har bir TOPS uchun roʻyxatga olish va mahalliy endpoint ishonchi
+- Himoyalangan siyosat hayot sikli va provayder oʻrnatish hayot sikli
+- Faol va oldingi bogʻlanishlar oʻrtasida compare-and-swap bilan bogʻlanish hayot sikli
+- STAV uchun tayyorlangan xavfsiz audit metamaʼlumotlari
+- Native launchd va systemd nazorati
+
+## Ataylab nimalar oʻchirilgan
+
+<Warning>
+  Hisob maʼlumotlaridan operatsion foydalanish, kanonik bilimlarni qoʻllash va maxfiy maʼlumotlarni yetkazish oʻchirilgan holda qoladi. Oddiy asosiy oʻzgartirish STAV orqali talab qilinadigan audit marshruti yakunlanmaguncha xavfsiz tarzda rad etiladi (fail closed).
+</Warning>
+
+SSIAG chaqiruvchi sinfini hal qilmaydi. Inson, AI, agent, xizmat va ish yuklamasi chaqiruvchilariga bir xil munosabatda boʻlinadi; vakolat aktor yorligʻidan emas, maqsadli xost va soʻralgan operatsiyadan kelib chiqadi.
+
+## macOS Keychain provayderi
+
+`modules/ssiag-provider-macos-keychain` — chegaralangan oʻzaro tekshiriladigan handshake hamda imzolangan bundle va sessiya tayyorligini kuzatishga ega Swift metamaʼlumot adapteri. U operatsion Keychain kirishini bermasdan provayder metamaʼlumotlarini SSIAG’ga taqdim etadi; bunday kirish hozirda ataylab oʻchirilgan.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/uz/governance/stav">
+    SSIAG oʻzgartirishlari tayanadigan, har bir TOPS uchun faqat qoʻshiladigan audit ledger’i.
+  </Card>
+
+  <Card title="Accordare prodyuseri" icon="pen-nib" href="/uz/governance/accordare-producer">
+    SSIAG bilan birgalikda ishlaydigan chegaralangan SAV Named Version audit sxemasi.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/uz/qxctl/lifecycle">
+    Avtorizatsiya uchun SSIAG’ga murojaat qiladigan hayot sikli boshqaruvi.
+  </Card>
+
+  <Card title="Chaqiruvchi vakolati" icon="user-shield" href="/uz/concepts/caller-authority">
+    SSIAG amalga oshiradigan doktrina.
+  </Card>
+</CardGroup>

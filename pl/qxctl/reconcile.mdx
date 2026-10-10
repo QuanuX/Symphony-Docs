@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: rekoncyliacja drzew roboczych"
+description: "Rekoncyliuj drzewa robocze z powiązanym koordynatorem Symphony, korzystając z kontroli zgodności, dzienników punktów kontrolnych i zamknięcia oraz dwuslotowego odzyskiwania opartego na dowodach."
+sidebarTitle: "reconcile"
+---
+
+Gramatyka `qxctl knowledge reconcile ...` steruje rekoncyliacją drzew roboczych za pośrednictwem jednego dokładnie powiązanego koordynatora sesji wiedzy (Knowledge Session Coordinator). Każda mutacja jest śledzona stabilnym identyfikatorem i wykonywana jako compare-and-swap względem dokładnego bieżącego digestu dziennika.
+
+## Polecenia
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: sprawdza, czy qxctl, koordynator i powiązane silniki zgadzają się co do wersji protokołu i zakresu.
+- `begin`: otwiera nowy kontekst rekoncyliacji ze stabilnym identyfikatorem operacji.
+- `status`: sprawdza bieżący dziennik bez mutacji.
+- `checkpoint`: trwale przesuwa dziennik za pomocą compare-and-swap.
+- `close`: finalizuje kontekst rekoncyliacji.
+- `recover --discover`: odzyskiwanie przez wykrywanie, gdy zwykły status nie może zweryfikować stanu lokalnego.
+
+## Zasady odzyskiwania
+
+<Warning>
+  Dwuslotowe odzyskiwanie to naprawa w przód oparta na dowodach. Nigdy nie daje pozwolenia na odrzucenie niezgodnego dziennika ani nieznanego rozszerzenia krytycznego. Jeśli odzyskiwanie się nie powiedzie, eskaluj problem zamiast wymuszać działanie.
+</Warning>
+
+Używaj odzyskiwania przez wykrywanie tylko wtedy, gdy zwykły status nie może zweryfikować stanu lokalnego. Zachowuj blokady; planuj ponownie dopiero po zmianie zweryfikowanych dowodów.
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Koordynator sesji" icon="gears" href="/pl/engines/coordinator">
+    Silnik będący właścicielem dzienników rekoncyliacji.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pl/qxctl/session">
+    Uwierzytelnione sesje łączone z kontekstami rekoncyliacji.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/pl/qxctl/engines">
+    Zarządzanie wiązaniami wykorzystywanymi przez koordynatora.
+  </Card>
+</CardGroup>

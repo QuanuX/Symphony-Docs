@@ -1,0 +1,33 @@
+---
+title: "クイックスタート: QuanuX Symphony を探索する"
+description: "Symphony のドクトリン、アーキテクチャ、vector コントラクト、qxctl 管理サーフェスをたどるガイド付きルート。"
+sidebarTitle: "クイックスタート"
+---
+
+Symphony を運用する前に、このガイドで全体像を把握してください。ドキュメントは、プラットフォームドクトリン、ユーザーが選択するインフラストラクチャ、vector が所有するセマンティクス、管理コマンドを分けて説明しています。正確なインストール手順と実行手順は、該当するコンポーネントの現在のコントラクトに記載されています。
+
+## 1. 運用上の境界を読む
+
+まず [プラットフォームドクトリン](/jp/doctrine) から始めてください。戦略とインフラストラクチャのユーザー所有、呼び出し元クラスの中立性、エビデンスに基づく互換性、ホットパスの保護を定めています。
+
+## 2. 物理モデルを学ぶ
+
+[Node、Habitat、Nest](/jp/concepts/node-habitat-nest) を読んでください:
+
+- **Node:** 識別された物理コンピューターリソース。
+- **Habitat:** Node に提供される厳密なオペレーティングシステムとパッケージの構成。
+- **Nest:** 適切な Habitat に配置される、ユーザー目的のワークロード。
+
+クラスターのバスとアダプターは、明示的なアーキテクチャ上の選択です。Symphony は、普遍的なプロバイダーや戦略を指示しません。
+
+## 3. 意味の所有をたどる
+
+[アーキテクチャの概要](/jp/concepts/architecture) では、vector コントラクト、エンジン、qxctl、管理されたエビデンスの関係を示します。[Vector とフェーズ](/jp/concepts/vectors) では、配信作業がフェーズを経て進んでも、vector がセマンティックオーナーであり続ける理由を説明します。[Symphony Knowledge Vector](/jp/skv/overview) では、Contract Quad とそのコンパニオンサーフェスについて説明します。
+
+## 4. 管理サーフェスを見つける
+
+[qxctl の概要](/jp/qxctl/overview) では、Go 製の管理およびクエリ用 CLI を紹介します。[knowledge](/jp/qxctl/knowledge)、[lifecycle](/jp/qxctl/lifecycle)、[engines](/jp/qxctl/engines)、[validation](/jp/qxctl/validate) など、特定のコマンドファミリーについては qxctl のページを参照してください。qxctl はコマンドの文法と表示を提供し、vector コントラクトが操作とその意味を所有します。
+
+## 5. 該当するコントラクトとエビデンスを確認する
+
+Node に対して操作したり vector エンジンを呼び出したりする前に、現在のオーナーコントラクト、ターゲットの状態、認可、利用可能なレシートまたは検証のエビデンスを確認してください。[呼び出し元の権限](/jp/concepts/caller-authority) と [ホットパスの分離](/jp/concepts/hot-path-isolation) で、これらの境界について説明しています。新たに登場したサーフェスは、暗黙の運用保証ではありません。

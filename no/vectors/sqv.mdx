@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: rammeverkskontrakter"
+description: "SQV eier gjenbrukbare rammeverkskontrakter for kvantitative systemer og handelssystemer uten å overta brukerens strategilogikk. SOOV er den første navngitte undervektoren for en fremtidig FIX-arkitektur kun i C++."
+sidebarTitle: "Kvantitativ vektor"
+---
+
+Symphony Quantitative Vector (SQV) eier gjenbrukbare rammeverkskontrakter for kvantitativ forskning, bygging av handelssystemer, støtte for ordreutførelse og senere kvantitative motorer. Strategilogikken tilhører alltid deg. SQV leverer rammeverksflater og eksakt kompatibilitetsbevis, men bestemmer aldri instrumentene, datastrømmene, abonnementene, ordrelogikken eller utførelsesmodellen din.
+
+## Grense for brukerstrategi
+
+Du beholder fullt eierskap til strategilogikken. SQV gjør ikke følgende:
+
+- Velger instrumentene eller datastrømmene dine
+- Definerer abonnementsfelt eller markedsdybde
+- Bestemmer feilatferd eller normaliseringsregler
+- Skriver ordrelogikk eller utførelsesmodeller
+- Utformer den interne modulære strukturen din
+
+Symphony gir kompatibilitetsbevis og støttede operasjoner. Den rangerer aldri strategier og pålegger aldri plattformlover på handelsbeslutningene dine.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV er den første navngitte undervektoren under SQV. Den representerer en fremtidig høyytelses FIX-arkitektur kun i C++, basert på erfaringer fra tidligere QuanuX-arbeid. SOOV er planlagt som et avgrenset, deterministisk meldingslag for handelskommunikasjon. Detaljert FIX-atferd er ennå ikke kanonisk; ingen FIX-sesjon, datastrømadapter eller meglerintegrasjon er implementert for øyeblikket.
+
+## Fremtidig omfang
+
+SQV er det planlagte hjemmet for ratifiserte kvantitative rammeverkskomponenter i senere leveransefaser. Forventede områder omfatter:
+
+- Motorer for tilbaketesting
+- C++-API-er for meglere
+- Indikatorbiblioteker
+- Kvantitativ matematikk
+- Arkitektur for datastrømmer
+
+Ingen av disse implementeres før de respektive kontraktene er ratifisert.
+
+## Nåværende status
+
+SQV er kun en kanonisk arkitekturkontrakt. Ingen SQV- eller SOOV-motor, FIX-sesjon, datastrømadapter, strategikjøretid, meglerintegrasjon, tilbaketester, indikatorbibliotek eller datastrømkomponent er implementert for øyeblikket.
+
+## Hvordan SQV forholder seg til andre vektorer
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/no/vectors/shv">
+    Leverer bevis om maskinvarekapabiliteter som begrenser designet av kvantitative motorer.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/no/vectors/snv">
+    Registrerer Nodes der kvantitative arbeidslaster kjøres.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/no/skv/overview">
+    Styrer SQV-kontrakter, evolusjon og relasjoner til offisiell publisering.
+  </Card>
+</CardGroup>

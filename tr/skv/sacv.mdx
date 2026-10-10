@@ -1,0 +1,52 @@
+---
+title: "SACV: QuanuX Symphony için API Sözleşmesi Yönetişimi"
+description: "SACV, sürümlenmiş API sözleşmelerini vektörler genelinde sınırlı OpenAPI 3.2.0 kontrolleri, deterministik uyumluluk farkları ve çağıran tarafından bildirilen kayıt defteri önerileriyle yönetir."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV), platform genelinde sürümlenmiş API sözleşmelerini yönetir. Engine'i; sınırlı OpenAPI 3.2.0 JSON doğrulaması, deterministik uyumluluk farkları ve atılabilir envanterler üreten, bağımsız olarak kurulabilen bir C++ sürecidir. Uç nokta anlamları, alanın sahibi olan vektörde veya modülde kalır; SACV sözleşme biçimini ve uyumluluğu yönetir.
+
+## İşlemler
+
+- **İnceleme ve kontrol**: Bir OpenAPI 3.2.0 JSON belgesinin sınırlı profile uygun olduğunu doğrular.
+- **Fark (diff)**: Sözleşme sürümleri arasında deterministik uyumluluk farklarını hesaplar.
+- **Önerme**: Yeni veya değiştirilmiş sözleşmeler için çağıran tarafından bildirilen kayıt defteri önerilerini kabul eder.
+- **Projeksiyon**: İnceleyiciler ve sonraki araçlar için atılabilir envanterler üretir.
+
+## SACV neyi yönetir
+
+SACV şunları sınırlar:
+
+- Sözleşme biçimi (SACV profiliyle OpenAPI 3.2.0)
+- Sürümler arasındaki uyumluluk sınıflandırması
+- Kabul edilen sözleşmeler için kayıt defteri üyeliği
+
+Şunları yapmaz:
+
+- Uç nokta anlamlarına sahip olmak (bunlar her vektörde veya modülde kalır)
+- SDK üretmek, yapıt yayımlamak veya belirteç (token) vermek
+- Canlı bir ağ yüzeyinin var olduğunu ima etmek (gelecekteki özel bir API'den bahsedilmesi onu oluşturmaz)
+
+<Note>
+  SACV yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Programatik kanonik uygulama, SKV engine'lerinin tamamında devre dışıdır.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    Çatı çerçeve ve Contract Quad modeli.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    SACV'ye kayıtlı bir sözleşmenin her türlü resmî yayınını yönetir.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/tr/skv/sav">
+    Bildirilen bileşenler arasındaki kompozisyonu ve uyumluluğu değerlendirir.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    İnceleme, kontrol, fark ve önerme için `qxctl sacv ...` komutunu çalıştırın.
+  </Card>
+</CardGroup>

@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: vektorlararo hayot siklini boshqarish"
+description: "qxctl knowledge buyruqlar guruhi vektorlararo hayot sikli, sessiya o'tishi, invariant so'rovlari va doimiy SSFV texnik xizmat ko'rsatishni boshqarish uchun javobgar."
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` guruhi vektorlararo hayot sikli va doimiy SSFV sessiyalarini boshqarish uchun javobgar. U koordinator asosidagi amallar va validatorga nisbatan invariant so'rovlari uchun kirish nuqtasidir.
+
+## Sessiya o'tishi
+
+Mavjud sessiyaga xost hayot sikli hodisasi haqida signal berish uchun `qxctl knowledge session transition` dan foydalaning:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Xavfsiz qayta urinishlar bir xil hodisa ID'sidan qayta foydalanadi. `--recover` ni faqat shikastlangan mahalliy sessiya dalillaridan topish orqali tiklash ko'zda tutilgandagina qo'shing; u rad etish, mos kelmaydigan kritik holat yoki noaniqlikni tiklamaydi.
+
+<Warning>
+  Symphony bu buyruq orqali login hook, kuzatuvchi (watcher) yoki yuklash birligini (boot unit) o'rnatmaydi. Undan faqat aniq xost hayot sikli integratsiyasi barqaror hodisa identifikatorini taqdim etgandagina foydalaning.
+</Warning>
+
+## Invariant so'rovlari
+
+To'rtta buyruq `ssfv:symphony:qxctl.invariant-assurance` ni bog'laydi:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` qo'shimcha ravishda `ssfv:symphony:symphony-validator.invariant-ownership-assurance` ni bog'laydi.
+
+To'g'ridan-to'g'ri so'rov buyruqlari `semantic_validity=not_asserted` bilan `symphony.knowledge.invariant-query-result.v1` ni chiqaradi. `check` validatorning aniq to'liq natijasini qaytaradi va 26-chiqish kodini saqlaydi.
+
+## Quyi buyruqlar guruhlari
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/uz/qxctl/lifecycle">
+    Profil, egalik, kuzatish, hisobot, yuklash, qo'llash va tiklash.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/uz/qxctl/engines">
+    Engine bog'lash reyestri: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/uz/qxctl/reconcile">
+    Koordinator ishchi daraxtini muvofiqlashtirish grammatikasi.
+  </Card>
+
+  <Card title="session" icon="key" href="/uz/qxctl/session">
+    Autentifikatsiyalangan sessiyalar va SSFV texnik xizmat oqimlari.
+  </Card>
+</CardGroup>

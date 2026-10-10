@@ -1,0 +1,47 @@
+---
+title: "SEV: Planlı Değişiklikler için Symphony Evolution Vector"
+description: "SEV; planlı değişiklikleri, yenilikleri ve yaşam döngüsü geçişlerini deterministik vakalar, bağımlılığa hazır kümeler, atılabilir grafikler ve uygulamayan kurtarma önerileriyle değerlendirir."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV), platform genelindeki planlı değişiklik ve karşılaşılan yenilik vakalarının sahibidir. Engine'i, dondurma yolunda çalışan, salt okunur bir C++26 sürecidir. SEV ne bir ana bilgisayarı izler ne de bir geçişi uygular; kanıt ve karar önerisi üretir.
+
+## İşlemler
+
+- **Vaka değerlendirmesi**: Eklemeler, değişiklikler, yeniden adlandırmalar, yerine geçmeler, kullanımdan kaldırmalar, emekliye ayırmalar ve kaldırmalar için deterministik evrim vakaları.
+- **Etki ve karar planlaması**: Her vakayı yetkili sahiplerine atar.
+- **Bağımlılığa hazır küme yeniden hesaplaması**: Bağımlı geçişlerin güvenli sırasını türetir.
+- **Geçiş doğrulaması**: Bir geçişten sonra gözlemlenen durumun beklenen biçimle eşleştiğini doğrular.
+- **Kurtarma önerisi**: Bir geçiş kesintiye uğradığında güvenli ileri veya geri adımları açıklar.
+- **SCSEV değerlendirmesi**: Yönetişim altındaki ilk SEV profili, bu işlemleri yalnızca belgelerden oluşan bilgi yüzeyi evrimine uygular.
+- **Yenilik ve izleme kontrolleri**: İnceleyicinin dikkatine sunulmak üzere yeni veya beklenmeyen yüzeyleri tespit eder.
+- **Tetikleyici birleştirme** ve **yaşam döngüsü oturumu bağlama**: Yinelenen değerlendirmeyi azaltır ve vakaları bir oturuma bağlar.
+- **Grafik projeksiyonu**: İnceleme için atılabilir grafikler.
+
+## SCSEV profili
+
+SCSEV; SSFV özellik yönetimini, kararlı qxctl komut gerçeğini ve engine işlem tanımlayıcılarını yeniden kullanır. Yinelenen bir engine veya kayıt defteri oluşturmaz. İlk engine dilimi yalnızca rapor ve yalnızca öneri amaçlıdır; kalıcı harici eylem, qxctl ve knowledge session coordinator aracılığıyla ayrıca yetkilendirilmeye devam eder.
+
+<Note>
+  SEV yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Kanonik uygulama, SKV engine ailesinin tamamında devre dışı kalmaya devam eder.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    Çatı çerçeve ve Contract Quad modeli.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/tr/skv/ssfv">
+    SCSEV profilinin yeniden kullandığı özellik yönetimi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/tr/skv/sav">
+    Değişen bileşenler için kompozisyon ve uyumluluk değerlendirmesi.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    Onaylanmış evolution grameri, uygulandığında `qxctl evolution ...` olarak gelecektir.
+  </Card>
+</CardGroup>

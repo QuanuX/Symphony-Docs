@@ -1,0 +1,47 @@
+---
+title: "Symphony-Vektoren und Auslieferungsphasen"
+description: "Verstehen Sie die dauerhaften semantischen Eigentumsdomänen (Vektoren) von Symphony im Vergleich zu chronologischen Auslieferungsphasen sowie das Contract Quad und den aktuellen Status der Vektoren."
+sidebarTitle: "Vektoren & Phasen"
+---
+
+Symphony organisiert seine Architektur um zwei Ideen: **Vektoren** sind dauerhafte semantische Eigentumsdomänen, und **Phasen** sind chronologische Auslieferungskampagnen. Eine Komponente, die zuerst in einer Phase erforscht wurde, macht diese Phase nicht zu ihrem dauerhaften Eigentümer. Vektoren halten Bedeutung stabil, während sich die Implementierung weiterentwickelt.
+
+## Was ist ein Vektor?
+
+Ein Vektor ist eine dauerhafte, abgegrenzte semantische Eigentumsdomäne, deren kanonischer Vertrag die Bedeutung und die zulässigen Operationen dieser Domäne besitzt. Jeder Vektor erhält ein **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` und `SPEC.md` sowie die gezielten Begleitoberflächen, die er tatsächlich benötigt. Der Vektor deklariert seine kanonischen Oberflächen und seinen Delegationsgraphen, SKVI bildet jede aktuelle Oberfläche genau einmal ab, und veraltete Begleitoberflächen werden durch verwaltete Weiterentwicklung abgelöst, statt als widersprüchlicher Kontext bestehen zu bleiben.
+
+## Status der Vektoren
+
+| Vektor | Status | Seite |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementiert: Grundlage aus Phase 1 mit indexierten Oberflächen | [/skv/overview](/de/skv/overview) |
+| **SKVI** — Quellindexierung | Implementiert: Engine für inspect/check/propose | [/skv/skvi](/de/skv/skvi) |
+| **SCLV** — Änderungs-Ledger | Implementiert: Prüfungen für Append-only-Ledger | [/skv/sclv](/de/skv/sclv) |
+| **SACV** — API-Vertrags-Governance | Implementiert: OpenAPI-3.2.0-Prüfungen | [/skv/sacv](/de/skv/sacv) |
+| **SODV** — Governance offizieller Dokumentation/Releases | Implementiert: lokale Prüfungen des Release-Ledgers | [/skv/sodv](/de/skv/sodv) |
+| **SSFV** — Feature-Identität/-Administration | Implementiert: strukturelle Feature-Prüfungen | [/skv/ssfv](/de/skv/ssfv) |
+| **SAV** — Accordare-Komposition | Implementiert: Bewertung auf dem Freezing Path | [/skv/sav](/de/skv/sav) |
+| **SEV** — Weiterentwicklung | Implementiert: Auswirkungs- und Dispositionsplanung | [/skv/sev](/de/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementiert: cgo-freie Go-Grundlage | [/governance/ssiag](/de/governance/ssiag) |
+| **STAV** — TOPS-Audit-Protokoll | Implementiert: Append-only-Ledger pro TOPS | [/governance/stav](/de/governance/stav) |
+| **SOV** — Ops Vector | Im Entstehen: Provisionierung, Habitat, Nest-Auslieferung | [/vectors/sov](/de/vectors/sov) |
+| **SCV** — Cloud Vector | Implementiert: acht C++-Engines für Quellwissen | [/vectors/scv](/de/vectors/scv) |
+| **SNV** — Node Vector | Im Entstehen: Komposition aus SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/de/vectors/snv) |
+| **SQV** — Quantitative Vector | Im Entstehen: SOOV-FIX-Architektur-Subvektor | [/vectors/sqv](/de/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementiert: C++-Engines für Quellen, Katalog und Profile | [/vectors/shv](/de/vectors/shv) |
+| **SIV** — Intelligence Vector | Im Entstehen: SMCV optionales Markdown; SAIV reserviert | [/vectors/siv](/de/vectors/siv) |
+
+## Contract Quad und Begleitoberflächen
+
+Jeder Vektor erhält:
+
+1. **INTENT.md** — Zweck und Geltungsbereich
+2. **MANIFEST.md** — Identität, deklarierte Oberflächen, Delegationsgraph
+3. **SKILL.md** — sichere Verwendung und Betriebsanleitung
+4. **SPEC.md** — normatives Verhalten und Grenzen
+
+Begleitoberflächen wie `SLANG.md`, `NAMESPACES.md`, Registries, Schemas und Profile bleiben verwaltete Artefakte außerhalb der vierteiligen Struktur. Sie leiten die Wahrheit des Eigentümers weiter oder spezialisieren sie, können aber ihre eigene Autorität nicht erweitern.
+
+## Nachweisbasierte Integration
+
+Eine zurückgestellte Engine hat keine fabrizierte Quittung. Eine vorgeschlagene API hat keinen erfundenen Registry-Eintrag. Ein unveröffentlichter Vertrag hat keinen SODV-Abschlussanspruch. Das ist nachweisbasierte Integration, keine zeremonielle Duplizierung.

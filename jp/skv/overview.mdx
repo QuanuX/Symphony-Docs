@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector：SKV フレームワークの概要"
+description: "SKV は Symphony の宣言的なプラットフォーム知識を包括するフレームワークです。Contract Quad、コンパニオンサーフェス、そして単一のガバナンスモデルのもとにあるすべてのサブベクトルを紹介します。"
+sidebarTitle: "SKV の概要"
+---
+
+Symphony Knowledge Vector（SKV）は、Symphony の宣言的なプラットフォーム知識のための正規フレームワークです。アーキテクチャ上の真実、モジュール境界、コントラクト、ドクトリン、互換性に関する知識を、人間、バリデーター、qxctl、CI、エージェント型ツールが一貫して利用できる構造で保持します。SKV はランタイムではなく、すべてのベクトルが経由する共有の知識レイヤーです。
+
+## Contract Quad
+
+SKV のすべてのセマンティックオーナーは、Contract Quad を公開します。
+
+- **INTENT.md**：目的、スコープ、および対象外の範囲
+- **MANIFEST.md**：正規のサーフェスと委任
+- **SKILL.md**：呼び出し元のための安全な使用手順
+- **SPEC.md**：規範的な動作
+
+スキーマ、レジストリ、プロファイル、台帳、その他の成果物は 4 つのメンバーからなる Quad の外に置かれ、同じオーナーによって引き続き管理されます。
+
+## コンパニオンサーフェス
+
+SKV が所有する 2 つのコンパニオンが、すべてのベクトルにわたるルーティングを担います。
+
+- `knowledge/SLANG.md` は、各プラットフォーム用語を、そのセマンティクスを所有する正確なコントラクトに対応付けます。
+- `knowledge/NAMESPACES.md` は、グラマー、割り当て、ライフサイクル、個々の ID を規定することなく、ID ファミリーの所有権を記録します。
+
+どちらのコンパニオンも、5 番目の Quad メンバー、新しいベクトル、またはランタイムサービスではありません。
+
+## 解釈ルール
+
+現在のコントラクトは現在の真実を記述します。追記専用の SCLV および SODV の記録は、記録された時点で既知であったこと、認可されていたこと、または完了していたことを保持します。コントラクトの状態、実装のエビデンス、適用可能な最新の記録が一致しない場合、その不一致はレビュー対象のドリフトとなります。ツールが黙って調整を作り出してはなりません。
+
+## サブベクトル
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/jp/skv/skvi">
+    現在の各正規サーフェスを正確に 1 回ずつインデックス化します。
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/jp/skv/sclv">
+    完了した重要なソース変更のための追記専用の変更台帳。
+  </Card>
+
+  <Card title="SACV" icon="code" href="/jp/skv/sacv">
+    範囲の限定された OpenAPI 3.2.0 のガバナンスと互換性差分。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/jp/skv/sodv">
+    QuanuX の公式な公開とリリース記録を管理します。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/jp/skv/ssfv">
+    機能の ID、鮮度、管理の保証。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/jp/skv/sav">
+    Accordare の構成と 3 軸の互換性評価。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/jp/skv/sev">
+    エボリューションケース、処置計画、新規性チェック。
+  </Card>
+
+  <Card title="ガバナンス" icon="shield-halved" href="/jp/governance/ssiag">
+    認可された変更のための SSIAG の ID と STAV の監査ガバナンス。
+  </Card>
+</CardGroup>
+
+<Note>
+  現在のすべての SKV エンジンは、読み取り、クエリ、検証、提案のみを行います。プログラムによる正規 apply は、各エンジンの SSIAG 権限、期待状態トランザクション、qxctl の保護機構、STAV イベント、復旧、ネガティブテストのコントラクトが完成するまで無効化されています。
+</Note>

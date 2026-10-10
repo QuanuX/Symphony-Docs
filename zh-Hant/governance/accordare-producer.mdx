@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV 產生器：有界限的 SAV Named Version 稽核"
+description: "Accordare STAV 產生器透過具經驗證本機對等端的凍結路徑 Go 產生器，持久保存 SAV Named Version 的意圖、結果與復原。"
+sidebarTitle: "Accordare 產生器"
+---
+
+Accordare STAV 產生器（`modules/accordare-stav-producer`）是一個可獨立安裝、屬於凍結路徑的 Go 產生器，用於有界限的 SAV Named Version 稽核迴路。它會持久保存變更前的意圖與附加復原資訊、驗證其本機對等端，且只提交其封閉詞彙所接受的確切安全候選項目。它本身並不是 STAV 附加權威。
+
+## 意圖、結果與復原模式
+
+產生器對每一次受稽核的變更都遵循三步驟模式：
+
+<Steps>
+  <Step title="變更前意圖">
+    在任何變更變得可觀測之前，持久記錄呼叫者所陳述的意圖。產生器會拒絕其封閉詞彙以外的候選項目。
+  </Step>
+  <Step title="最終結果">
+    在變更完成或失敗後，擷取確切的結果，讓稽核反映的是實際情況，而非期望中的狀態。
+  </Step>
+  <Step title="有界限的復原">
+    發生中斷時，產生器會對附加串流執行有界限的復原，而不會捏造協調結果或悄悄捨棄意圖。
+  </Step>
+</Steps>
+
+## 界線
+
+<Warning>
+  Accordare 產生器不是 STAV 附加權威。它負責驗證本機對等端並提交候選項目；附加權威則負責驗證、封存並持久儲存這些項目。切勿繞過此分離機制。
+</Warning>
+
+- 產生器的詞彙是封閉的。它只接受 SAV Named Version 稽核候選項目。
+- 產生器屬於凍結路徑。它不得成為熱路徑相依項。
+- 產生器驗證本機對等端；它不驗證遠端呼叫者。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/zh-Hant/governance/stav">
+    封存稽核記錄的附加權威。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hant/governance/ssiag">
+    授權產生器所稽核的變更。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/zh-Hant/skv/sav">
+    此迴路所稽核的 Named Version 組合語意。
+  </Card>
+
+  <Card title="qxctl vector 指令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    已批准的 Accordare 文法在實作後將以 `qxctl accord ...` 的形式提供。
+  </Card>
+</CardGroup>

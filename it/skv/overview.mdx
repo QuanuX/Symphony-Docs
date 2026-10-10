@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: panoramica del framework SKV"
+description: "SKV è il framework ombrello per la conoscenza dichiarativa della piattaforma Symphony. Esplora i Contract Quad, le superfici complementari e ogni sotto-vettore sotto un unico modello di governance."
+sidebarTitle: "Panoramica di SKV"
+---
+
+Il Symphony Knowledge Vector (SKV) è il framework canonico per la conoscenza dichiarativa della piattaforma Symphony. Preserva la verità architetturale, i confini dei moduli, i contratti, la dottrina e le conoscenze di compatibilità in una struttura che persone, validatori, qxctl, CI e strumenti agentici utilizzano in modo coerente. SKV non è un runtime; è il livello di conoscenza condiviso attraverso cui passa ogni vettore.
+
+## Il Contract Quad
+
+Ogni proprietario semantico in SKV pubblica un Contract Quad:
+
+- **INTENT.md**: scopo, ambito ed esclusioni
+- **MANIFEST.md**: superfici canoniche e delega
+- **SKILL.md**: procedura di utilizzo sicuro per i chiamanti
+- **SPEC.md**: comportamento normativo
+
+Schemi, registri, profili, ledger e altri artefatti restano al di fuori del Quad a quattro membri e rimangono governati dallo stesso proprietario.
+
+## Superfici complementari
+
+Due superfici complementari di proprietà di SKV sono trasversali a ogni vettore:
+
+- `knowledge/SLANG.md` associa ogni termine della piattaforma al contratto esatto che ne possiede la semantica.
+- `knowledge/NAMESPACES.md` registra la proprietà delle famiglie di identità senza imporre grammatica, allocazione, ciclo di vita o singole identità.
+
+Nessuna delle due è un quinto membro del Quad, un nuovo vettore o un servizio di runtime.
+
+## Regola di interpretazione
+
+I contratti attuali descrivono la verità attuale. I record append-only di SCLV e SODV preservano ciò che era noto, autorizzato o completato nel momento in cui sono stati registrati. Quando lo stato del contratto, le evidenze di implementazione e il record applicabile più recente non concordano, la discrepanza costituisce una deriva (drift) da sottoporre a revisione. Gli strumenti non devono inventare silenziosamente una riconciliazione.
+
+## Sotto-vettori
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/it/skv/skvi">
+    Indicizza ogni superficie canonica attuale esattamente una volta.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/it/skv/sclv">
+    Ledger append-only delle modifiche sostanziali al codice sorgente completate.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/it/skv/sacv">
+    Governance delimitata di OpenAPI 3.2.0 e diff di compatibilità.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/it/skv/sodv">
+    Governa le pubblicazioni ufficiali di QuanuX e i registri di rilascio.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/it/skv/ssfv">
+    Identità delle funzionalità, aggiornamento e garanzia di amministrazione.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/it/skv/sav">
+    Composizione Accordare e valutazione della compatibilità su tre assi.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/it/skv/sev">
+    Casi di evoluzione, pianificazione delle disposizioni e controlli di novità.
+  </Card>
+
+  <Card title="Governance" icon="shield-halved" href="/it/governance/ssiag">
+    Identità SSIAG e governance dell'audit STAV per le mutazioni autorizzate.
+  </Card>
+</CardGroup>
+
+<Note>
+  Ogni engine SKV attuale è limitato a lettura, interrogazione, validazione e proposta. L'apply canonico programmatico è disabilitato finché non saranno completi, per ciascun engine, i contratti relativi a permessi SSIAG, transazioni sullo stato atteso, salvaguardie qxctl, eventi STAV, recupero e test negativi.
+</Note>

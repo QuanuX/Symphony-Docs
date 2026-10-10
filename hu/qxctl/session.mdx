@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: hitelesített Symphony-munkamenetek"
+description: "Hitelesített Symphony-koordinátor munkamenetek, valamint tartós SSFV-karbantartási folyamok megnyitása, ellenőrzőpontozása, lezárása és helyreállítása SSIAG által ellenőrzött engedélyekkel."
+sidebarTitle: "session"
+---
+
+A `qxctl knowledge session ...` nyelvtan nem kanonikus, hitelesített munkameneteket nyit egyetlen pontos, megkötött koordinátoron és egyetlen TOPS-hatókörű SSIAG-végponton keresztül. Egy különálló `session features ...` nyelvtan vezérli a tartós SSFV-karbantartási folyamot.
+
+## Alap munkamenet-nyelvtan
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Minden hívás friss, pontos engedélyt kér, és a következőket validálja:
+
+- Alany- és célidentitás
+- Szabályzat- és konfigurációs állapot
+- Lejárat
+- Hívóosztály-semlegesség
+- Át nem ruházhatóság
+- A kanonikus alkalmazás letiltása
+- Képességkötés
+
+A munkamenet-bizonyíték csak a megnevezett, védett, nem kanonikus műveletet engedélyezi. Tartsa külön a munkamenet- és az egyeztetési naplókat; összekapcsolásukra csak kontextushivatkozásokat használjon.
+
+## SSFV-karbantartási folyam
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+A features folyam egy különálló, tartós SSFV-karbantartási kontextus. A módosításokhoz szükséges:
+
+- Egy nyitott, hitelesített alap munkamenet
+- Pontos koordinátor- és SSFV-kötések
+- Stabil műveletazonosítók
+- Pontos compare-and-swap
+- Friss SSIAG-bizonyíték
+
+<Note>
+  Őrizze meg az alapállapot-pillanatképet és annak eredeti motoridentitását a kompatibilis frissítések és visszaállítások során. Az opcionális Maestro-bizonyítéknak teljes, hitelesített leltárnak kell lennie; ha a Maestro szándékosan hiányzik, rögzítse az explicit „nincs konfigurálva” okot. A `review_required` a hívó általi áttekintéshez szolgáló bizonyíték, nem ratifikáció.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/hu/governance/ssiag">
+    Kiadja azokat a friss engedélyeket, amelyeket minden munkamenet-kérés validál.
+  </Card>
+
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    A munkamenet- és features naplókat kiszolgáló motor.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/hu/qxctl/reconcile">
+    A munkamenetekkel párosuló egyeztetési kontextusok.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hu/skv/ssfv">
+    A features folyam által karbantartott funkcióvektor.
+  </Card>
+</CardGroup>

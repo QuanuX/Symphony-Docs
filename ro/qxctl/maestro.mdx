@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: citirea inventarului de prezență al receptorilor Symphony"
+description: "Inspectați autoritatea de prezență Maestro din Symphony prin qxctl pentru a vedea relațiile autentificate de andocare ale motoarelor vectoriale și inventarul derivat al receptorilor."
+sidebarTitle: "maestro"
+---
+
+Gramatica `qxctl maestro ...` expune dovezile de prezență Maestro. Maestro este autoritatea de prezență; qxctl doar citește și inspectează ceea ce înregistrează Maestro. Niciunul dintre ele nu creează singur relații de andocare.
+
+## Inventar
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` prezintă inventarul complet, derivat și doar în citire al Maestro, cu relațiile autentificate de andocare ale motoarelor vectoriale pentru fiecare TOPS și receptor.
+
+## Rute administrative asociate
+
+Frunze qxctl suplimentare expun administrarea legată de Maestro:
+
+- Starea și inspecția dovezilor de andocare
+- Rute de recuperare delimitate de propriile contracte ale Maestro
+- Înrolarea de bază în ciclul de viață și supravegherea nativă pentru Maestro însuși
+
+Fiecare rută de mutație trece prin adaptorul exact deținut de modul. qxctl nu generează niciodată descriptori Maestro din parsare internă și nu invocă implicit cea mai nouă versiune.
+
+<Warning>
+  Maestro nu pornește, nu programează, nu supraveghează și nu invocă motoare. `qxctl maestro inventory` este doar în citire. Legarea, reconcilierea, coordonarea sesiunii sau un plan de ciclu de viață, luate separat, nu stabilesc prezența în Maestro.
+</Warning>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/ro/governance/maestro">
+    Contractul și limitele autorității de prezență.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ro/qxctl/engines">
+    Registrul de legare a motoarelor (legările nu sunt andocări).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ro/qxctl/session">
+    Sesiuni autentificate folosite pentru înregistrarea prezenței.
+  </Card>
+
+  <Card title="Prezentare generală a motoarelor" icon="cube" href="/ro/engines/overview">
+    Motoare vectoriale instalabile independent care se andochează la Maestro.
+  </Card>
+</CardGroup>

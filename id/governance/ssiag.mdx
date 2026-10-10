@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance untuk Symphony"
+description: "SSIAG adalah fondasi otorisasi Symphony yang netral terhadap pemanggil dengan pendaftaran per TOPS, siklus hidup kebijakan yang dilindungi, metadata audit yang aman, dan hook supervisi native."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) adalah fondasi Go tanpa cgo yang dapat dipasang secara independen untuk otorisasi yang netral terhadap pemanggil pada host Symphony. SSIAG memproyeksikan otoritas host yang efektif, menjaga mutasi yang dilindungi, dan terintegrasi dengan audit STAV sebelum perubahan apa pun menjadi terlihat.
+
+## Apa yang disediakan SSIAG
+
+- Otorisasi eksak yang netral terhadap pemanggil, terikat pada kepemilikan host target, izin yang diberikan, operasi yang diminta, status yang diharapkan, dan pengaman yang dikonfigurasi pemilik
+- Pendaftaran per TOPS dan kepercayaan endpoint lokal
+- Siklus hidup kebijakan yang dilindungi dan siklus hidup instalasi penyedia
+- Siklus hidup binding dengan compare-and-swap antara binding aktif dan sebelumnya
+- Metadata audit aman yang disiapkan untuk STAV
+- Supervisi native launchd dan systemd
+
+## Apa yang sengaja dinonaktifkan
+
+<Warning>
+  Penggunaan kredensial operasional, penerapan pengetahuan kanonis, dan pengiriman rahasia tetap dinonaktifkan. Mutasi fondasional biasa gagal secara tertutup (fail closed) hingga rute audit yang diperlukan melalui STAV selesai.
+</Warning>
+
+SSIAG tidak menentukan kelas pemanggil. Pemanggil manusia, AI, agen, layanan, dan workload diperlakukan secara identik; otoritas berasal dari host target dan operasi yang diminta, bukan dari label aktor.
+
+## Penyedia macOS Keychain
+
+`modules/ssiag-provider-macos-keychain` adalah adaptor metadata Swift dengan handshake terbatas yang saling diverifikasi serta observasi bundle bertanda tangan dan kesiapan sesi. Adaptor ini mengekspos metadata penyedia ke SSIAG tanpa memberikan akses Keychain operasional, yang saat ini sengaja dinonaktifkan.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/id/governance/stav">
+    Ledger audit append-only per TOPS yang diandalkan oleh mutasi SSIAG.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/id/governance/accordare-producer">
+    Sirkuit audit Named Version SAV terbatas yang berkomposisi dengan SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/id/qxctl/lifecycle">
+    Administrasi siklus hidup yang berkonsultasi dengan SSIAG untuk otorisasi.
+  </Card>
+
+  <Card title="Otoritas pemanggil" icon="user-shield" href="/id/concepts/caller-authority">
+    Doktrin yang diimplementasikan oleh SSIAG.
+  </Card>
+</CardGroup>

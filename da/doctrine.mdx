@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony-platformens doktrin"
+description: "Lær de styrende principper for Symphony: brugerejerskab af strategi og infrastruktur, neutralitet over for kalderklasse, beskyttelse af hot path og evidensbaseret kompatibilitet."
+sidebarTitle: "Doktrin"
+---
+
+Symphony-doktrinen definerer grænserne mellem det, platformen kontrollerer, og det, du kontrollerer. Disse regler styrer enhver designbeslutning i monorepoet og enhver interaktion med qxctl, vector-engines og videnskontrakter.
+
+## Brugerejerskab
+
+Du ejer din strategilogik, dit Nest-formål, dit valg af udbyder, dit valg af hardware, din bustopologi og dit valg af understøttede adaptere. Symphony leverer præcis kompatibilitetsevidens og understøttede operationer, men gør ikke anbefalinger til platformslov. Platformen rapporterer overensstemmelser, uoverensstemmelser, uafklarede fakta og konsekvenser. Den rangordner ikke udbydere, foreskriver ikke en strategi og udvider ikke i det stille dit miljø.
+
+## Beskyttelse af hot path
+
+Hot path er beskyttet mod administrativ tilstedeværelse og utilsigtet pres på en delt bus. qxctl og vidensplanet er administration på cold eller freezing path. De må eksplicit handle på en Node, der også hoster live-arbejde, men de må ikke blive kontinuerlige hot path-afhængigheder, skjulte overvågere, residente fortolkere eller uopfordrede baggrundspakkehåndteringer. Din eksplicitte arkitektur forbliver suveræn.
+
+## Adskillelse af kommandoer og semantik
+
+qxctl ejer kommandogrammatik og præsentation. Domæne-vectors ejer de operationer og betydninger, som disse kommandoer eksponerer. En qxctl-rute kalder en ejerdefineret kapabilitet uden at overtage dens semantik.
+
+## Navne og navnerum
+
+Navne registreres under deres ejende scope. SNV og SCNV dikterer dem ikke, og rodens NAMESPACES forbliver bredere end SNV. Et navn, der er registreret inden for en TOPS eller TROG, følger det pågældende scope. På tværs af flere klynger kan et kort Node-navn gå igen i forskellige klynger, men det må ikke tvetydigt identificere to aktive Nodes i samme klynge.
+
+## Neutralitet over for kalderklasse
+
+En kalders klassificering som menneske, AI, agent, tjeneste eller workload hverken giver eller fjerner autoritet. Understøttede autorisationsbeslutninger bruger ejerskab af målværten eller tildelte tilladelser, den anmodede operation og ressource, forventet tilstand og ejerkonfigurerede sikkerhedsforanstaltninger. Målværtens administrator er suveræn over konfigurerbar governance. SSIAG kan verificere og projicere effektiv værtsautoritet, men opretter ikke en overordnet registreringsmyndighed. Forstærket identitetssikring og governance-spærringer er kalderneutrale, ejerkonfigurerede sikkerhedsforanstaltninger. Krav til protokolintegritet forbliver obligatoriske. Symphony afgør ikke ekstern juridisk eller finansiel kapacitet ud fra kaldertype.
+
+## Sandhed og evidens
+
+Gældende kontrakter beskriver den gældende sandhed. Uforanderlige SCLV- og SODV-poster bevarer, hvad der var kendt, ændret, autoriseret eller fuldført på deres registrerede tidspunkt i historikken. Når gældende kontrakter, implementeringsevidens og den seneste relevante post er uenige, fremlægges uenigheden som drift til gennemgang. Historikken omskrives ikke i det stille, så den ligner nutiden.
+
+## Python-doktrin
+
+Førstepartskildekode, generatorer, skemaforfatning, tests og accepthjælpere i Symphony kræver ingen Python-implementering eller afhængighed af en fortolker. C++ ejer de erstattende værktøjer til forfatning og procestest. Denne repository-politik begrænser ikke dine brugerskrevne programmer eller eksplicit valgte isolerede Habitats.

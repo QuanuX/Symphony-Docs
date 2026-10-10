@@ -1,0 +1,35 @@
+---
+title: "A QuanuX Symphony platform doktrínája"
+description: "Ismerje meg a Symphony irányadó elveit: a stratégia és az infrastruktúra felhasználói tulajdonlása, a hívóosztály-semlegesség, a hot path védelme és a bizonyítékalapú kompatibilitás."
+sidebarTitle: "Doktrína"
+---
+
+A Symphony doktrínája meghatározza a határokat aközött, amit a platform irányít, és amit Ön irányít. Ezek a szabályok szabják meg a monorepo minden tervezési döntését, valamint a qxctl-lel, a vektormotorokkal és a tudásszerződésekkel folytatott minden interakciót.
+
+## Felhasználói tulajdonlás
+
+Önhöz tartozik a stratégialogika, a Nest célja, a szolgáltató kiválasztása, a hardver kiválasztása, a busztopológia és a támogatott adapterek kiválasztása. A Symphony pontos kompatibilitási bizonyítékokat és támogatott műveleteket biztosít, de az ajánlásokat nem teszi platformszintű törvénnyé. A platform jelenti az egyezéseket, eltéréseket, tisztázatlan tényeket és következményeket. Nem rangsorolja a szolgáltatókat, nem ír elő stratégiát, és nem bővíti csendben a környezetét.
+
+## A hot path védelme
+
+A hot path (kritikus végrehajtási útvonal) védett az adminisztratív rezidenciától és a véletlenszerű megosztottbusz-terheléstől. A qxctl és a tudássík cold vagy freezing path adminisztrációt végez. Kifejezetten végezhetnek műveletet olyan Node-on, amely élő munkát is futtat, de nem válhatnak folyamatos hot path függőséggé, rejtett figyelővé, rezidens értelmezővé vagy kéretlen háttérbeli csomagkezelővé. Az Ön kifejezett architektúrája szuverén marad.
+
+## A parancsok és a szemantika szétválasztása
+
+A parancsnyelvtan és a megjelenítés a qxctl hatásköre. A tartományi vektorok birtokolják azokat a műveleteket és jelentéseket, amelyeket ezek a parancsok elérhetővé tesznek. Egy qxctl útvonal a tulajdonos által definiált képességet hívja meg anélkül, hogy annak szemantikáját magába olvasztaná.
+
+## Nevek és névterek
+
+A neveket a tulajdonos hatókörük alatt rögzítik. Az SNV és az SCNV nem írja elő őket, és a gyökérszintű NAMESPACES tágabb az SNV-nél. Egy TOPS-on vagy TROG-on belül regisztrált név az adott hatókört követi. Több klaszter esetén egy Node rövid neve különböző klaszterekben ismétlődhet, de ugyanazon a klaszteren belül nem azonosíthat kétértelműen két aktív Node-ot.
+
+## Hívóosztály-semlegesség
+
+Az, hogy egy hívót embernek, MI-nek, ágensnek, szolgáltatásnak vagy munkaterhelésnek minősítenek, sem nem ad, sem nem vesz el jogosultságot. A támogatott engedélyezési döntések a célgazda tulajdonlásán vagy a megadott engedélyeken, a kért műveleten és erőforráson, az elvárt állapoton és a tulajdonos által konfigurált biztosítékokon alapulnak. A konfigurálható irányítás felett a célgazda rendszergazdája szuverén. Az SSIAG ellenőrizheti és kivetítheti a tényleges gazdagép-jogosultságot, de nem hoz létre felsőbb regisztrációs hatóságot. A fokozott identitásbiztosítás és az irányítási reteszek hívósemleges, a tulajdonos által konfigurált biztosítékok. A protokollintegritási követelmények kötelezőek maradnak. A Symphony nem dönt a hívó típusa alapján külső jogi vagy pénzügyi cselekvőképességről.
+
+## Igazság és bizonyíték
+
+A jelenlegi szerződések a jelenlegi igazságot írják le. A megváltoztathatatlan SCLV- és SODV-rekordok megőrzik, mi volt ismert, mi változott, mit engedélyeztek vagy mi teljesült a rögzített időpontban. Ha a jelenlegi szerződések, a megvalósítási bizonyítékok és a legutóbbi vonatkozó rekord ellentmondanak egymásnak, az eltérés eltolódásként (drift) jelenik meg felülvizsgálatra. Az előzményeket nem írják át csendben, hogy a jelenhez hasonlítsanak.
+
+## Python-doktrína
+
+A Symphony saját forráskódja, generátorai, sémaszerkesztése, tesztjei és elfogadási segédeszközei nem igényelnek Python-implementációt vagy -értelmezőfüggőséget. A helyettesítő szerkesztő és folyamattesztelő eszközök a C++ hatáskörébe tartoznak. Ez a tárolószabályzat nem korlátozza az Ön által írt programokat vagy a kifejezetten kiválasztott, elszigetelt Habitatokat.

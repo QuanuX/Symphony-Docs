@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector 引擎 C++ 基础：共享机制"
+description: "Knowledge Vector 引擎 C++ 基础提供不携带权限的进程封装、有界 JSON、SHA-256、快照、回执以及显式的清单发现。"
+sidebarTitle: "基础库"
+---
+
+`libraries/knowledge-vector-engine-cpp` 提供每个 Symphony vector 引擎都会复用的共享、不携带权限的 C++ 机制。它提供确定性的构建块，使每个引擎都能保持有界、可复现，并且没有环境副作用。
+
+## 基础库提供的内容
+
+- **进程封装**：每个引擎都使用的、不携带权限的本地进程协议
+- **有界 JSON**：具有显式大小和深度限制的严格解析与输出
+- **SHA-256**：用于证据和回执的内容寻址
+- **不跟随读取**：绝不会意外遍历符号链接的文件系统读取
+- **确定性快照**：对已检查状态的可重复快照
+- **时间校验**：按照 Symphony 时间语义契约进行规范的 UTC 处理
+- **所有者清单发现**：对契约清单的精确发现
+- **版本化打包**：可独立安装、由回执拥有的软件包
+- **回执及由回执驱动的卸载**：卸载仅由安装该工件的回执驱动
+
+## 清单发现边界
+
+<Warning>
+  清单发现从一个固定的引导集合开始，并且只遍历显式的从属声明。它从不执行环境式的仓库爬取，也不会根据目录名推断所有权。
+</Warning>
+
+每个使用该基础库的 vector 引擎都会继承此规则。
+
+## 基础库不做的事情
+
+- 它不携带权限。使用它的引擎仍必须通过 SSIAG 对变更进行授权。
+- 它不会通过网络发布或获取任何内容。
+- 它不会自行修改规范文件。
+
+## 相关表面
+
+<CardGroup cols={2}>
+  <Card title="会话协调器" icon="gears" href="/zh-Hans/engines/coordinator">
+    基于该基础库构建、用于会话和协调的 C++26 协调器。
+  </Card>
+
+  <Card title="引擎概览" icon="cube" href="/zh-Hans/engines/overview">
+    复用该基础库的各个引擎。
+  </Card>
+
+  <Card title="SKV 概览" icon="book-open" href="/zh-Hans/skv/overview">
+    引擎所实现的 vector 契约。
+  </Card>
+
+  <Card title="qxctl 概览" icon="terminal" href="/zh-Hans/qxctl/overview">
+    调用经过回执校验的精确引擎的管理 CLI。
+  </Card>
+</CardGroup>

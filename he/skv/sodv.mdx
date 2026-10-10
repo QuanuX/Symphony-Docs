@@ -1,0 +1,48 @@
+---
+title: "SODV: ממשל תיעוד רשמי וגרסאות"
+description: "SODV מנהל את הפרסומים הרשמיים של QuanuX באמצעות בדיקות ספר גרסאות בהוספה בלבד, אימות תצפיות שסופקו על ידי הקורא ומלאי גרסאות חד-פעמיים."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) מנהל את האופן שבו ידע בתוך מסגרת SKV הופך לתיעוד ציבורי רשמי ולרשומות גרסה. המנוע שלו הוא תהליך C++ הניתן להתקנה באופן עצמאי, המבצע בדיקות מקומיות של ספר גרסאות בהוספה בלבד ומפיק מלאי גרסאות חד-פעמיים. SODV אינו מפרסם דבר בעצמו.
+
+## פעולות
+
+- **Inspect ו-check**: אימות צורת ספר הגרסאות והרציפות שלו.
+- **Verify**: בדיקת תצפיות שסופקו על ידי הקורא לגבי מצב שפורסם.
+- **Propose**: קבלת הצעות גרסה ניטרליות לספק.
+- **Recover**: ביצוע שחזור שאינו משנה.
+- **Project**: פליטת מלאי גרסאות חד-פעמיים.
+
+## מה SODV אינו עושה
+
+- ל-SODV אין גישה לרשת.
+- SODV אינו מפרסם דבר ל-GitHub, ל-Mintlify, לרישומי חבילות או לכל משטח אחר.
+- SODV אינו יוצר תגיות ואינו יכול להכריז שגרסה הושלמה.
+- SODV אינו מדרג ספקים ואינו מעדיף נתיב פרסום.
+
+הפרסום מתבצע באמצעות כלים מורשים נפרדים המתייעצים עם ראיות SODV.
+
+## פרסומי SODV שהושלמו
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` בתגית `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` בתגית `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` בתגית `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="פקודות הווקטורים של qxctl" icon="terminal" href="/he/qxctl/vector-commands">
+    הריצו `qxctl sodv ...` כדי לבצע inspect, verify, propose ו-project.
+  </Card>
+</CardGroup>
+
+<Note>
+  כל מנוע SKV מוגבל לקריאה, שאילתה, אימות והצעה בלבד. apply קנוני מושבת עד שחוזי SSIAG, טרנזקציית המצב הצפוי, אמצעי ההגנה של qxctl, אירוע STAV, השחזור ובדיקות השלילה של כל מנוע יושלמו.
+</Note>

@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector va reyestri"
+description: "SSFV amalga oshirilgan har bir Symphony moduli va qxctl sahifasi bo'ylab kanonik funksiya identifikatori, semantikasi, ierarxiyasi, hayot sikli va boshqaruv kafolatiga egalik qiladi."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) kanonik ilova funksiyalari identifikatori, semantikasi, ierarxiyasi, hayot sikli, farqlari, taqsimlangan yozuvlarni yo'naltirish, qamrov inventari va graf-proyeksiya shartnomalariga egalik qiladi. Uning engine'i mustaqil o'rnatiladigan C++ jarayoni bo'lib, tuzilmaviy va dolzarblikni hisobga oluvchi funksiya tekshiruvlarini bajaradi.
+
+## Amallar
+
+- **Inspect va check**: tuzilmaviy va dolzarblikni hisobga oluvchi funksiyalarni baholash.
+- **Diff**: funksiya holatlari o'rtasidagi kontentga asoslangan farqlar.
+- **Propose**: funksiyani qabul qilish yoki o'zgartirish uchun chaqiruvchi e'lon qilgan takliflar.
+- **Graph**: ko'rib chiqish uchun deterministik bir martalik funksiya graflari.
+
+## Ro'yxatga olingan qamrov
+
+Joriy ro'yxatga olingan katalog ochiqdan-ochiq qisman:
+
+- **110** ta ro'yxatga olingan funksiya
+- **35** ta ro'yxatga olingan egalik doirasi
+- **76** ta tasdiqlangan ichki funksiya
+- **295** ta ko'rib chiqilgan funksiyalarni boshqarish sahifasi (**285** ta majburiy, **13** ta dalillarga asoslangan istisno, **9** ta taqiq, **0** ta ko'rib chiqilmagan)
+
+Ro'yxatga olingan egalik doiralari `qxctl` va validatordan tortib SKV engine'lari va SSIAG provayderlarigacha, SCV va SHV engine oilalarigacha bo'lgan har bir amalga oshirilgan modulni qamrab oladi.
+
+## SSFV nimalarni qilmaydi
+
+<Warning>
+  SSFV funksiyaning ahamiyatliligi haqida qaror qabul qilmaydi, identifikatorlarni o'ylab topmaydi va repozitoriy yoki xostning to'liqligini da'vo qilmaydi. `review_required` — tasdiqlash yoki qo'llash vakolati emas, balki chaqiruvchi ko'rib chiqishi uchun dalil.
+</Warning>
+
+Funksiyani ko'rib chiqish, qabul qilish va hayot sikli o'zgarishlari har bir funksiyaning egasi bo'lgan shartnomada qoladi.
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    SSFV'ni boshqaradigan umumiy freymvork.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/uz/skv/sev">
+    Evolyutsiya holatlarini funksiyalarni qo'shish, o'zgartirish va iste'foga chiqarishga qo'llaydi.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/uz/qxctl/session">
+    Doimiy SSFV texnik xizmat sessiyalarini qxctl orqali boshqaring.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Inspect, check, diff, propose va graph uchun `qxctl ssfv ...` ni ishga tushiring.
+  </Card>
+</CardGroup>

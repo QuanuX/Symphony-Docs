@@ -1,0 +1,37 @@
+---
+title: "Isolering af hot path i QuanuX Symphony"
+description: "Lær, hvordan Symphony beskytter udførelsesstier mod administrativ indblanding: komponenter på cold og freezing path, busdisciplin og Prima Parte-konceptet som tilstandsvidne."
+sidebarTitle: "Isolering af hot path"
+---
+
+Symphony adskiller administrativt arbejde fra udførelsesarbejde, så live-handel, forskning og andre ydelsesfølsomme stier forbliver fri for jitter, latens og skjulte afhængigheder. qxctl og vidensplanet er administration på cold eller freezing path. De må eksplicit handle på en Node, der også hoster live-arbejde, men de må ikke blive kontinuerlige hot path-afhængigheder.
+
+## Disciplin for cold og freezing path
+
+qxctl og vector-engines er administrative komponenter på cold eller freezing path. De må ikke:
+
+- Udføres inline med hot eller warm udførelsesstier
+- Dele låse med live-workloads
+- Skabe synkrone afhængigheder, der tilføjer jitter eller latens
+- Blive skjulte overvågere, residente fortolkere eller uopfordrede baggrundspakkehåndteringer
+- Opretholde kontinuerlig tilstedeværelse på udførelses-Nodes
+
+Denne regel gælder for vidensessionskoordinatoren, vector-engines og alle operationer administreret af qxctl. De producerer evidens, validerer tilstand og forbereder planer, men deltager ikke i den levende udførelsessti.
+
+## Busdisciplin
+
+Tung overførsel, kontrol, forskning og udførelsesudstødning behøver ikke at dele én bus. En topologi kan bruge flere busser eller omgå en bus for en erklæret sti, især hvor delt trafik kunne introducere jitter. NATS JetStream, ZeroMQ og andre fabrics er adaptere og brugervalg. At qxctl kan administrere busser, gør ikke bustraversering obligatorisk.
+
+Du vælger den bustopologi, der passer til dine krav til latens og gennemløb. Symphony understøtter konfigurationen uden at påtvinge én enkelt delt fabric.
+
+## Prima Parte
+
+**Prima Parte** er et ratificeret Phase 3-koncept, ikke et aktuelt eksekverbart program. Det er et valgfrit, ekstremt letvægts C++-tilstandsvidne lokalt på en Node, som qxctl eksplicit kalder efter en væsentlig operation. Det har ingen daemon, listener, timer, overvåger, polling-løkke eller resident busforbindelse.
+
+Dets afgrænsede, holdbare ordforråd omfatter tre termer:
+
+- `current` — den nuværende observerede tilstand
+- `previous` — tilstanden før den væsentlige operation
+- `lastTransmitted` — tilstanden sendt af den fjerne Node, efter at den tilknyttede kommando blev udført (ikke bekræftet modtaget)
+
+Prima Parte registrerer kun sin egen Node, bliver aldrig en mindre Maestro og afslutter efter sit afgrænsede arbejde. Det er ikke en Phase 1 Maestro-receptor, og der er endnu ikke implementeret noget eksekverbart program.

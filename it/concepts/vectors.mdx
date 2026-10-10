@@ -1,0 +1,47 @@
+---
+title: "Vector e fasi di consegna di Symphony"
+description: "Comprendi i domini duraturi di proprietà semantica di Symphony (vector) rispetto alle fasi cronologiche di consegna, oltre al Contract Quad e allo stato attuale dei vector."
+sidebarTitle: "Vector e fasi"
+---
+
+Symphony organizza la propria architettura attorno a due idee: i **vector** sono domini duraturi di proprietà semantica, mentre le **fasi** sono campagne cronologiche di consegna. Un componente studiato per la prima volta in una fase non rende quella fase il suo proprietario permanente. I vector mantengono stabile il significato mentre l'implementazione evolve.
+
+## Che cos'è un vector?
+
+Un vector è un dominio di proprietà semantica duraturo e delimitato, il cui contratto canonico è proprietario del significato e delle operazioni consentite di quel dominio. Ogni vector riceve un **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` e `SPEC.md`, più le superfici companion mirate di cui ha effettivamente bisogno. Il vector dichiara le proprie superfici canoniche e il proprio grafo di delega, SKVI mappa ogni superficie corrente esattamente una volta e i companion obsoleti vengono sostituiti tramite un'evoluzione governata, invece di restare come contesto contraddittorio.
+
+## Stato dei vector
+
+| Vector | Stato | Pagina |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementato: fondamenta della Fase 1 con superfici indicizzate | [/it/skv/overview](/it/skv/overview) |
+| **SKVI** — Indicizzazione delle sorgenti | Implementato: engine di ispezione/verifica/proposta | [/it/skv/skvi](/it/skv/skvi) |
+| **SCLV** — Ledger delle modifiche | Implementato: verifiche del ledger append-only | [/it/skv/sclv](/it/skv/sclv) |
+| **SACV** — Governance dei contratti API | Implementato: verifiche OpenAPI 3.2.0 | [/it/skv/sacv](/it/skv/sacv) |
+| **SODV** — Governance della documentazione ufficiale e dei rilasci | Implementato: verifiche del ledger locale dei rilasci | [/it/skv/sodv](/it/skv/sodv) |
+| **SSFV** — Identità e amministrazione delle funzionalità | Implementato: verifiche strutturali delle funzionalità | [/it/skv/ssfv](/it/skv/ssfv) |
+| **SAV** — Composizione Accordare | Implementato: valutazione di freezing path | [/it/skv/sav](/it/skv/sav) |
+| **SEV** — Evoluzione | Implementato: pianificazione di impatto e disposizione | [/it/skv/sev](/it/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementato: fondamenta Go senza cgo | [/it/governance/ssiag](/it/governance/ssiag) |
+| **STAV** — Protocollo di audit TOPS | Implementato: ledger append-only per ogni TOPS | [/it/governance/stav](/it/governance/stav) |
+| **SOV** — Ops Vector | Emergente: provisioning, consegna di Habitat e Nest | [/it/vectors/sov](/it/vectors/sov) |
+| **SCV** — Cloud Vector | Implementato: otto engine C++ di conoscenza delle sorgenti | [/it/vectors/scv](/it/vectors/scv) |
+| **SNV** — Node Vector | Emergente: composizione SNIV, SNRV, SCIV, SCNV | [/it/vectors/snv](/it/vectors/snv) |
+| **SQV** — Quantitative Vector | Emergente: subvector di architettura FIX SOOV | [/it/vectors/sqv](/it/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementato: engine C++ per sorgenti, catalogo e profili | [/it/vectors/shv](/it/vectors/shv) |
+| **SIV** — Intelligence Vector | Emergente: SMCV Markdown opzionale; SAIV riservato | [/it/vectors/siv](/it/vectors/siv) |
+
+## Contract Quad e superfici companion
+
+Ogni vector riceve:
+
+1. **INTENT.md** — scopo e ambito
+2. **MANIFEST.md** — identità, superfici dichiarate, grafo di delega
+3. **SKILL.md** — uso sicuro e indicazioni operative
+4. **SPEC.md** — comportamento normativo e confini
+
+Le superfici companion come `SLANG.md`, `NAMESPACES.md`, registri, schemi e profili restano artefatti governati al di fuori della struttura a quattro membri. Instradano o specializzano la verità del proprietario, ma non possono ampliare la propria autorità.
+
+## Integrazione basata sulle evidenze
+
+Un engine rinviato non ha ricevute fabbricate. Un'API proposta non ha voci di registro inventate. Un contratto non pubblicato non ha alcuna dichiarazione di completamento SODV. Questa è integrazione basata sulle evidenze, non duplicazione cerimoniale.

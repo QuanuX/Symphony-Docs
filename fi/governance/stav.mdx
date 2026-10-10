@@ -1,0 +1,54 @@
+---
+title: "STAV: TOPS-kohtainen vain lisäävä auditointikirjanpito Symphonylle"
+description: "STAV Append Authority ylläpitää TOPS-kohtaisia vain lisääviä auditointikirjanpitoja todennetulla IPC:llä, fsync-ennen-kuittia-pysyvyydellä, rajatuilla lukemisilla, todentamisella ja palautuksella."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) määrittelee TOPS-kohtaisen vain lisäävän auditointikirjanpidon protokollan. Sen ajonaikainen viranomainen sijaitsee moduulissa `modules/stav-append-authority`, joka on erikseen asennettava Go-palvelu. TOPS-kohtaiset operatiiviset kirjanpidot ovat kunkin TOPS-asennuksen yksityisiä; ne eivät ole SKV-sisältöä.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` tarjoaa:
+
+- TOPS-kohtaiset vain lisäävät auditointikirjanpidot
+- Molemminpuolisesti todennetun paikallisen IPC:n
+- Tarkat tuottaja- ja lukijaoikeudet
+- Fsync ennen kuittia -pysyvyyden
+- Rajatut lukemiset, todentamisen ja palautuksen
+- Rekisteröinnin ja natiivin valvonnan (launchd, systemd)
+
+<Warning>
+  qxctl ei koskaan saa raakaa lisäysvaltuutta. Se koordinoi rekisteröintiä, todentamista ja oikeuksia tarkan moduulin omistaman sovittimen kautta, mutta kirjanpitoon lisääminen pysyy sinetöitynä lisäysviranomaisen prosessin sisällä.
+</Warning>
+
+## STAV-protokolla Golle
+
+`libraries/stav-protocol-go` on valtuudeton Go-kirjasto, joka toteuttaa kanonisen STAV v1 -koodekin, tiukan validoinnin, tiivisteet, kehystyksen, vaatimustenmukaisuussäännöt ja suljetun tuottajasanaston. Mikä tahansa tuottaja tai lukija voi ottaa protokollan käyttöön perimättä valtuutta.
+
+## Valmistuneet SODV-julkaisut
+
+Jokainen SODV:n kautta tällä hetkellä julkaistu STAV-artefakti on Go-lähdemoduuliversio, ei binäärijulkaisu:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/fi/governance/ssiag">
+    Valtuuttaa suojatut muutokset, jotka STAV sitten auditoi.
+  </Card>
+
+  <Card title="Accordare-tuottaja" icon="pen-nib" href="/fi/governance/accordare-producer">
+    Lähettää muutosta edeltävän aikomuksen ja lopulliset lopputulokset STAV:iin.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/fi/qxctl/lifecycle">
+    Elinkaaren hallinta, joka toimii yhdessä STAV-rekisteröinnin kanssa.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Hallinnoi STAV-komponenttien virallisia julkaisutietueita.
+  </Card>
+</CardGroup>

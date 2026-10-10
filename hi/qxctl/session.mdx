@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: प्रमाणित Symphony सेशन"
+description: "SSIAG-सत्यापित ग्रांट के साथ प्रमाणित Symphony कोऑर्डिनेटर सेशन और स्थायी SSFV मेंटेनेंस स्ट्रीम को खोलें, checkpoint करें, बंद करें और रिकवर करें।"
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` ग्रामर एक सटीक बाइंड किए गए कोऑर्डिनेटर और एक TOPS-स्कोप्ड SSIAG एंडपॉइंट के माध्यम से गैर-कैनॉनिकल प्रमाणित सेशन खोलता है। एक अलग `session features ...` ग्रामर स्थायी SSFV मेंटेनेंस स्ट्रीम संचालित करता है।
+
+## बेस सेशन ग्रामर
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+हर कॉल एक नया सटीक ग्रांट माँगता है और निम्न को मान्य करता है:
+
+- सब्जेक्ट और टारगेट पहचान
+- नीति और कॉन्फ़िगरेशन स्टेट
+- समाप्ति (expiry)
+- कॉलर-क्लास तटस्थता
+- अहस्तांतरणीयता
+- कैनॉनिकल-apply निष्क्रियता
+- क्षमता बाइंडिंग
+
+सेशन साक्ष्य केवल नामित संरक्षित गैर-कैनॉनिकल ऑपरेशन को अधिकृत करता है। सेशन और रिकंसिलिएशन जर्नल को अलग रखें; उन्हें जोड़ने के लिए केवल संदर्भ रेफ़रेंस का उपयोग करें।
+
+## SSFV मेंटेनेंस स्ट्रीम
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+features स्ट्रीम एक अलग स्थायी SSFV मेंटेनेंस संदर्भ है। म्यूटेशन के लिए आवश्यक है:
+
+- एक खुला प्रमाणित बेस सेशन
+- सटीक कोऑर्डिनेटर और SSFV बाइंडिंग
+- स्थिर ऑपरेशन पहचानकर्ता
+- सटीक compare-and-swap
+- नया SSIAG साक्ष्य
+
+<Note>
+  संगत अपग्रेड या रोलबैक के दौरान बेसलाइन स्नैपशॉट और उसकी मूल इंजन पहचान को संरक्षित रखें। वैकल्पिक Maestro साक्ष्य एक पूर्ण प्रमाणित इन्वेंटरी होना चाहिए; जब Maestro जानबूझकर अनुपस्थित हो, तो स्पष्ट not-configured कारण रिकॉर्ड करें। `review_required` कॉलर की समीक्षा के लिए साक्ष्य है, अनुमोदन नहीं।
+</Note>
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/hi/governance/ssiag">
+    वे नए ग्रांट जारी करता है जिन्हें हर सेशन अनुरोध मान्य करता है।
+  </Card>
+
+  <Card title="सेशन कोऑर्डिनेटर" icon="gears" href="/hi/engines/coordinator">
+    सेशन और features जर्नल के पीछे का इंजन।
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/hi/qxctl/reconcile">
+    रिकंसिलिएशन संदर्भ जो सेशन के साथ जुड़ते हैं।
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hi/skv/ssfv">
+    वह फ़ीचर वेक्टर जिसे features स्ट्रीम बनाए रखती है।
+  </Card>
+</CardGroup>

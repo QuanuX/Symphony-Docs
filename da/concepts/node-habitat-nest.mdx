@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat og Nest i Symphony"
+description: "Lær, hvordan Symphony modellerer fysisk infrastruktur: Node som den fysiske computer, Habitat som præcis OS-konditionering og Nest som workload med brugerdefineret formål."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definerer tre fysiske koncepter, der adskiller hardwareidentitet, softwarekonditionering og brugerens workload. Disse koncepter holder infrastrukturhensyn adskilt, så du kan ræsonnere om hvert enkelt uafhængigt.
+
+## Node
+
+En **Node** er den fysiske målcomputerressource med specifikt identificerede ressourcer. At frakoble, genforbinde, genstarte eller blot genflashe software skaber ikke en ny fysisk Node. Det gør destruktion, fysisk udskiftning eller en væsentlig lokal hardwareændring. En Node-inkarnation er separat evidens, der oprettes, når Noden tilsluttes en bus som deltager i et handelssystem, en forskningsklynge eller et andet system bygget med Symphony.
+
+## Habitat
+
+En **Habitat** er den præcise konditionering af operativsystem og pakker, der leveres til en Node til det arbejde, du vælger. Som standard omfatter den kun den påkrævede softwareoverflade: ingen uvedkommende pakker, skjulte runtimes, containere, Kubernetes eller implicit virtualisering. En bred, generel Habitat forbliver et gyldigt eksplicit brugervalg.
+
+## Nest
+
+En **Nest** (rede) tjener et formål, som du vælger. Live-udførelse af strategier forventes at være almindelig, og én strategi kan indeholde mange modulære kodeafsnit, men Symphony definerer ikke Nestens formål og sidestiller den ikke med én kildefil, proces, algoritme, mægler-API eller datagrænseflade. Strategilogik forbliver dit domæne.
+
+## Sammenligning
+
+| Koncept | Hvad det er | Hvad ændrer det |
+| --- | --- | --- |
+| **Node** | Fysisk computer med specifikke ressourcer | Fysisk destruktion, udskiftning eller væsentlig hardwareændring |
+| **Habitat** | Præcis OS- og pakkekonditionering på en Node | Eksplicit brugervalg eller konditionering administreret af qxctl |
+| **Nest** | Workload med brugerdefineret formål leveret i en Habitat | Brugerens udrulning af strategi eller andet valgt arbejde |
+
+## Klynge- og bustopologi
+
+Flere Nodes udgør kun en klynge, når de er forbundet med hinanden gennem en eller flere busser. Flere busfabrics kan sameksistere i én klynge, og en Node-i-klynge-relation kan identificere den relevante bus uden at ændre den fysiske Nodes identitet.
+
+Busadaptere som NATS JetStream og ZeroMQ vælges af brugeren og er ikke doktrin. Tung overførsel, kontrol, forskning og udførelsesudstødning behøver ikke at dele én bus. En topologi kan bruge flere busser eller omgå en bus for en erklæret sti.
+
+## TOPS- og TROG-scope
+
+**TOPS** er det dominerende scope for Trade Operating System. En **TROG** er et bevidst underordnet, ikke-globalt scope for handelsgrupper. Trods den historiske formulering er en TROG ikke nødvendigvis virtuel. Dens kendetegnende egenskab er, at dens scope og regler ikke er universelle.

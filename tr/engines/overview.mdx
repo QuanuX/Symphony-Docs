@@ -1,0 +1,57 @@
+---
+title: "Symphony Vektör Motorları: Bağımsız Kurulum Genel Bakışı"
+description: "Her Symphony vektör motoru bağımsız olarak kurulur, C++ ile süreç dışında çalışır ve yetki taşımaz. SKV, SCV ve SHV motor aileleriyle burada tanışın."
+sidebarTitle: "Motorlara Genel Bakış"
+---
+
+Her etkin uygulama düzeyindeki Symphony vektörü, bağımsız olarak kurulabilen ve süreç dışında çalışan bir C++ motoruna sahip olabilir. Paylaşılan, yetki taşımayan C++ mekanizmaları `libraries/` altında bulunur; ayrı bir C++ koordinatörü ise kimliği doğrulanmış oturum ve çalışma ağacı uzlaştırma mekanizmalarının sahibidir. Motorlar, vektörlere ait sözleşmeler dahilinde inceleme, doğrulama, projeksiyon ve öneri yapar. Yalnızca içerik üretmiş olmaları onlara yetki kazandırmaz.
+
+## Uygulanmış motorlar
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector temeli" icon="cube" href="/tr/engines/knowledge-vector-foundation">
+    C++ süreç çerçevelemesi, JSON, SHA-256, anlık görüntüler, makbuzlar ve manifest keşfi.
+  </Card>
+
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Kimliği doğrulanmış oturumlar, çalışma ağacı uzlaştırması ve yaşam döngüsü uygulama koordinasyonu.
+  </Card>
+
+  <Card title="SCV kaynak motorları" icon="cloud" href="/tr/engines/scv-source-engines">
+    Sekiz C++26 SCV, hiper ölçekleyici, uç ve sağlayıcı kaynak bilgisi motoru.
+  </Card>
+
+  <Card title="SHV motorları" icon="microchip" href="/tr/engines/shv-engines">
+    Donanım kaynak, katalog, profil, bölümleme, yayın ve adaptör motorları.
+  </Card>
+</CardGroup>
+
+## SKV motor ailesi
+
+SKV yüzeylerinin her birinin kendi motoru vardır:
+
+- SKVI, SCLV, SACV, SODV ve SSFV motorlarının her biri inceleme, kontrol, öneri ve projeksiyon (ve uygulanabildiği yerlerde kurtarma) işlemlerini uygular.
+- SAV ve SEV motorları, bileşim değerlendirmesi ve evrim vakaları için donuk yol C++26 süreçleridir.
+
+<Note>
+  Mevcut her SKV motoru yalnızca okuma, sorgulama, doğrulama ve öneri yapar. Programatik kanonik uygulama, her motorun SSIAG izin doğrulaması, beklenen durum işlemi, qxctl güvenlik önlemi, STAV olayı, kurtarma ve negatif test sözleşmeleri tamamlanana kadar devre dışı kalır.
+</Note>
+
+## Ortak garantiler
+
+- Modül başına bağımsız kurulum ve kaldırma
+- Ortam genelinde depo taraması yok; manifest keşfi açıktır
+- Paylaşılan yetki yok; her değişiklik rotası SSIAG ve STAV ile denetlenir
+- Sıcak yolda yerleşiklik yok; motorlar canlı iş yüklerine asla gecikme eklemez
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="qxctl genel bakış" icon="terminal" href="/tr/qxctl/overview">
+    Makbuzla doğrulanmış kesin motorları çağıran yönetim CLI'ı.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/tr/governance/maestro">
+    Motorlar ve alıcılar arasındaki yanaşma ilişkilerini kaydeder.
+  </Card>
+</CardGroup>

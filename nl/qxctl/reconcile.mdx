@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: worktree-reconciliatie"
+description: "Reconcilieer worktrees met een gebonden Symphony-coördinator, met compatibiliteitscontroles, checkpoint- en close-journals en op bewijs gebaseerd herstel met twee slots."
+sidebarTitle: "reconcile"
+---
+
+De grammatica `qxctl knowledge reconcile ...` stuurt worktree-reconciliatie aan via één exact gebonden Knowledge Session Coordinator. Elke mutatie wordt gevolgd met een stabiele identificatie en is een compare-and-swap tegen de exacte huidige journaldigest.
+
+## Commando's
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifieer dat qxctl, de coördinator en de gebonden engines het eens zijn over protocolversie en scope.
+- `begin`: open een nieuwe reconciliatiecontext met een stabiele bewerkingsidentificatie.
+- `status`: inspecteer het huidige journal zonder mutatie.
+- `checkpoint`: breng het journal duurzaam verder met compare-and-swap.
+- `close`: rond de reconciliatiecontext af.
+- `recover --discover`: discovery-herstel wanneer de gewone status de lokale toestand niet kan valideren.
+
+## Herstelregels
+
+<Warning>
+  Herstel met twee slots is op bewijs gebaseerde voorwaartse reparatie. Het is nooit een vrijbrief om een incompatibel journal of een onbekende kritieke extensie te verwerpen. Als herstel mislukt, escaleer dan in plaats van te forceren.
+</Warning>
+
+Gebruik discovery-herstel alleen wanneer de gewone status de lokale toestand niet kan valideren. Behoud blokkades; plan pas opnieuw nadat geverifieerd bewijs is veranderd.
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    De engine die eigenaar is van reconciliatiejournals.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/nl/qxctl/session">
+    Geauthenticeerde sessies die samengaan met reconciliatiecontexten.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/nl/qxctl/engines">
+    Beheer de bindingen die de coördinator gebruikt.
+  </Card>
+</CardGroup>

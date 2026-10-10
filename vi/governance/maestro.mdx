@@ -1,0 +1,43 @@
+---
+title: "Maestro: cơ quan ghi nhận sự hiện diện vector engine của Symphony"
+description: "Maestro ghi nhận các quan hệ kết nối vector engine có xác thực theo từng TOPS và bộ tiếp nhận, suy ra một bản kiểm kê chỉ đọc đầy đủ mà không khởi chạy hay giám sát engine."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) là một cơ quan ghi nhận sự hiện diện C++26 thuộc freezing path, có thể cài đặt độc lập. Nó ghi nhận chính xác các quan hệ kết nối (docking) vector engine có xác thực theo từng TOPS và bộ tiếp nhận, và suy ra một bản kiểm kê chỉ đọc đầy đủ về những gì hiện đang được kết nối. Maestro là một nhân chứng, không phải một bộ giám sát.
+
+## Những gì Maestro ghi nhận
+
+- Các quan hệ kết nối có xác thực chính xác giữa vector engine và bộ tiếp nhận
+- Phạm vi theo từng TOPS để sự hiện diện của mỗi bản cài đặt luôn riêng tư với bản cài đặt đó
+- Một bản kiểm kê chỉ đọc, đầy đủ, được suy ra, có sẵn thông qua `qxctl maestro inventory`
+
+## Những gì Maestro không làm
+
+<Warning>
+  Maestro không khởi chạy, lập lịch, giám sát hay gọi các engine. Chỉ riêng việc liên kết, đối soát, điều phối phiên có xác thực hay một kế hoạch vòng đời không thiết lập sự hiện diện trong Maestro, không phê chuẩn sự thật ngữ nghĩa, không thay đổi tri thức chuẩn tắc, và không chứng minh tính đầy đủ của máy chủ đã cài đặt.
+</Warning>
+
+- Maestro không tạo ra tiến trình nào.
+- Maestro không bao giờ áp dụng các thay đổi tri thức chuẩn tắc.
+- Maestro không bao giờ thay thế vector engine sở hữu ngữ nghĩa.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/vi/qxctl/maestro">
+    `qxctl maestro inventory` trình bày bản kiểm kê được suy ra.
+  </Card>
+
+  <Card title="Bộ điều phối phiên" icon="gears" href="/vi/engines/coordinator">
+    Sở hữu các cơ chế phiên có xác thực và đối soát worktree.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/vi/governance/ssiag">
+    Xác thực các quan hệ kết nối mà Maestro ghi nhận.
+  </Card>
+
+  <Card title="Tổng quan engine" icon="cube" href="/vi/engines/overview">
+    Các vector engine có thể cài đặt độc lập kết nối với Maestro.
+  </Card>
+</CardGroup>

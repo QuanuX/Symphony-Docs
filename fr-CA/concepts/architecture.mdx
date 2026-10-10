@@ -1,0 +1,33 @@
+---
+title: "Architecture de Symphony"
+description: "Comprenez les frontières entre l’infrastructure choisie par l’utilisateur, les contrats de vecteurs, les moteurs, qxctl et les preuves gouvernées."
+sidebarTitle: "Architecture"
+---
+
+Symphony sépare l’infrastructure et les charges de travail choisies par l’utilisateur des connaissances et de l’administration de la plateforme. La plateforme peut inspecter, valider et signaler la compatibilité sans revendiquer la propriété de votre stratégie ni traiter une recommandation comme une obligation.
+
+## Couche physique et couche des charges de travail
+
+Un [Node](/fr-CA/concepts/node-habitat-nest) est un ordinateur physique identifié. Un **Habitat** est son conditionnement exact du système d’exploitation et des paquets, et un **Nest** est une charge de travail répondant à une finalité choisie par l’utilisateur. Les grappes relient les Nodes au moyen d’un ou de plusieurs bus. Les infrastructures de bus, les adaptateurs, les fournisseurs et les choix de matériel sont explicites plutôt que des valeurs par défaut universelles.
+
+Le [chemin critique](/fr-CA/concepts/hot-path-isolation) demeure séparé de la résidence administrative. Le travail de qxctl et du plan de connaissances peut administrer explicitement un Node, mais ne devient pas une dépendance continue et cachée de l’exécution en direct.
+
+## Propriété sémantique
+
+Les [vecteurs](/fr-CA/concepts/vectors) sont des propriétaires bornés et durables de la signification et des opérations permises. Chaque propriétaire publie un Contract Quad : `INTENT.md`, `MANIFEST.md`, `SKILL.md` et `SPEC.md`. Le [Symphony Knowledge Vector (SKV)](/fr-CA/skv/overview) indexe les surfaces canoniques et préserve un chemin vers leur propriétaire. Les schémas, registres et registres comptables compagnons demeurent gouvernés sans devenir des membres supplémentaires du Quad.
+
+Les phases de livraison décrivent le moment où le travail est fait. Elles ne transfèrent pas la propriété sémantique d’un vecteur à un autre.
+
+## Moteurs et surface de commandes
+
+Les [moteurs de vecteurs](/fr-CA/engines/overview) sont des composants installables indépendamment et exécutés hors processus qui inspectent, vérifient, projettent et proposent dans le cadre des contrats de leurs propriétaires. Ils n’acquièrent aucune autorité du simple fait de produire une proposition.
+
+[qxctl](/fr-CA/qxctl/overview) est propriétaire de la grammaire et de la présentation des commandes administratives. Il invoque des capacités bornées et validées par reçu, tandis que le vecteur qui définit une opération en conserve la sémantique. Les preuves d’autorisation et d’audit régissent les routes de mutation; la [classification de l’appelant](/fr-CA/concepts/caller-authority) n’accorde à elle seule aucune autorité.
+
+## Vérité et évolution
+
+Les contrats actuels énoncent la vérité actuelle. Les registres des modifications et des publications préservent les preuves consignées à un moment précis. Les divergences entre les contrats, les preuves d’implémentation et l’historique consigné sont signalées comme une dérive plutôt que réécrites en silence. [SAV](/fr-CA/skv/sav) évalue la compatibilité de composition; [SEV](/fr-CA/skv/sev) planifie l’évolution gouvernée.
+
+<Note>
+  Cet aperçu est une carte des frontières. Consultez le contrat actuel et les preuves d’implémentation de chaque vecteur en lien avant de considérer une capacité comme disponible dans une installation précise.
+</Note>

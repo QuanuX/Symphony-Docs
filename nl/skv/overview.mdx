@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: overzicht van het SKV-framework"
+description: "SKV is het overkoepelende framework voor de declaratieve platformkennis van Symphony. Verken Contract Quads, begeleidende onderdelen en elke subvector onder één governancemodel."
+sidebarTitle: "Overzicht van SKV"
+---
+
+De Symphony Knowledge Vector (SKV) is het canonieke framework voor de declaratieve platformkennis van Symphony. Het bewaart architecturale waarheid, modulegrenzen, contracten, doctrine en compatibiliteitskennis in een structuur die mensen, validators, qxctl, CI en agentische tools consistent gebruiken. SKV is geen runtime; het is de gedeelde kennislaag waar elke vector doorheen loopt.
+
+## De Contract Quad
+
+Elke semantische eigenaar in SKV publiceert een Contract Quad:
+
+- **INTENT.md**: doel, scope en wat buiten de scope valt
+- **MANIFEST.md**: canonieke onderdelen en delegatie
+- **SKILL.md**: veilige gebruiksprocedure voor aanroepers
+- **SPEC.md**: normatief gedrag
+
+Schema's, registers, profielen, grootboeken en andere artefacten blijven buiten de Quad van vier leden en worden door dezelfde eigenaar beheerd.
+
+## Begeleidende onderdelen
+
+Twee begeleidende onderdelen die eigendom zijn van SKV lopen door elke vector heen:
+
+- `knowledge/SLANG.md` koppelt elke platformterm aan het exacte contract dat eigenaar is van de semantiek ervan.
+- `knowledge/NAMESPACES.md` legt het eigendom van identiteitsfamilies vast zonder grammatica, toewijzing, levenscyclus of individuele identiteiten voor te schrijven.
+
+Geen van beide is een vijfde Quad-lid, een nieuwe vector of een runtimedienst.
+
+## Interpretatieregel
+
+Huidige contracten beschrijven de huidige waarheid. Append-only SCLV- en SODV-records bewaren wat bekend, geautoriseerd of voltooid was op het vastgelegde tijdstip. Wanneer contractstatus, implementatiebewijs en het meest recente toepasselijke record niet overeenkomen, is die onenigheid drift die beoordeeld moet worden. Tooling mag niet stilzwijgend een reconciliatie verzinnen.
+
+## Subvectoren
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/nl/skv/skvi">
+    Indexeert elk huidig canoniek onderdeel precies één keer.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/nl/skv/sclv">
+    Append-only wijzigingsgrootboek voor voltooide materiële bronwijzigingen.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/nl/skv/sacv">
+    Begrensde OpenAPI 3.2.0-governance en compatibiliteitsdiffs.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/nl/skv/sodv">
+    Beheert officiële QuanuX-publicaties en releaserecords.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/nl/skv/ssfv">
+    Feature-identiteit, actualiteit en zekerheid over beheer.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/nl/skv/sav">
+    Accordare-compositie en compatibiliteitsevaluatie langs drie assen.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/nl/skv/sev">
+    Evolutiecases, afhandelingsplanning en noviteitscontroles.
+  </Card>
+
+  <Card title="Governance" icon="shield-halved" href="/nl/governance/ssiag">
+    SSIAG-identiteit en STAV-auditgovernance voor geautoriseerde mutaties.
+  </Card>
+</CardGroup>
+
+<Note>
+  Elke huidige SKV-engine is uitsluitend bedoeld voor lezen, query's, valideren en voorstellen. Programmatische canonieke apply is uitgeschakeld totdat voor elke engine de contracten voor SSIAG-permissies, transacties op verwachte status, qxctl-waarborgen, STAV-gebeurtenissen, herstel en negatieve tests voltooid zijn.
+</Note>

@@ -1,0 +1,37 @@
+---
+title: "Aïllament del camí crític a QuanuX Symphony"
+description: "Descobriu com Symphony protegeix els camins d'execució de les interferències administratives: components de camí fred i de congelació, disciplina de bus i el concepte de testimoni d'estat Prima Parte."
+sidebarTitle: "Aïllament del camí crític"
+---
+
+Symphony separa el treball administratiu del treball d'execució perquè la negociació en directe, la recerca i altres camins sensibles al rendiment es mantinguin lliures de fluctuacions (jitter), latència i dependències ocultes. qxctl i el pla de coneixement són administració de camí fred o de congelació. Poden actuar explícitament sobre un Node que també allotgi treball en directe, però no s'han de convertir en dependències contínues del camí crític.
+
+## Disciplina de camí fred i de congelació
+
+qxctl i els motors de vectors són components administratius de camí fred o de congelació. No han de:
+
+- Executar-se en línia amb camins d'execució crítics o tebis
+- Compartir bloquejos amb càrregues de treball en directe
+- Crear dependències síncrones que afegeixin fluctuacions o latència
+- Convertir-se en observadors ocults, intèrprets residents o gestors de paquets en segon pla no sol·licitats
+- Mantenir una residència contínua als Nodes d'execució
+
+Aquesta regla s'aplica al coordinador de sessions de coneixement, als motors de vectors i a totes les operacions administrades per qxctl. Produeixen evidència, validen l'estat i preparen plans, però no participen en el camí d'execució en directe.
+
+## Disciplina de bus
+
+La transferència pesada, el control, la recerca i els residus d'execució no han de compartir necessàriament un sol bus. Una topologia pot utilitzar diversos busos o evitar un bus per a un camí declarat, especialment quan el trànsit compartit podria introduir fluctuacions. NATS JetStream, ZeroMQ i altres teixits són adaptadors i eleccions de l'usuari. L'existència de l'administració de busos de qxctl no fa obligatori travessar un bus.
+
+Trieu la topologia de bus que s'ajusti als vostres requisits de latència i rendiment. Symphony admet la configuració sense imposar un únic teixit compartit.
+
+## Prima Parte
+
+**Prima Parte** és un concepte ratificat de la fase 3, no un executable actual. És un testimoni d'estat local del Node, opcional i extremadament lleuger, escrit en C++, que qxctl invoca explícitament després d'una operació material. No té cap dimoni, escoltador, temporitzador, observador, bucle de sondeig ni connexió de bus resident.
+
+El seu vocabulari durable acotat inclou tres termes:
+
+- `current` — l'estat observat actual
+- `previous` — l'estat anterior a l'operació material
+- `lastTransmitted` — l'estat enviat pel Node remot després que s'executés l'ordre associada (no es confirma que s'hagi rebut)
+
+Prima Parte només registra el seu propi Node, mai no es converteix en un Maestro més petit i finalitza després del seu treball acotat. No és un receptor de Maestro de la fase 1, i encara no s'ha implementat cap executable.

@@ -1,0 +1,57 @@
+---
+title: "Symphony-vectorengines: overzicht van onafhankelijke installatie"
+description: "Elke Symphony-vectorengine wordt onafhankelijk geïnstalleerd, draait buiten het proces in C++ en blijft autoriteitsvrij. Maak hier kennis met de enginefamilies SKV, SCV en SHV."
+sidebarTitle: "Overzicht van engines"
+---
+
+Elke actieve Symphony-vector op applicatieniveau kan een onafhankelijk installeerbare C++-engine hebben die buiten het proces draait. Gedeelde autoriteitsvrije C++-mechanismen bevinden zich onder `libraries/`; een afzonderlijke C++-coördinator is eigenaar van de mechanismen voor geauthenticeerde sessies en worktree-reconciliatie. Engines inspecteren, valideren, projecteren en doen voorstellen binnen contracten in eigendom van vectoren. Ze verwerven geen autoriteit enkel door inhoud te genereren.
+
+## Geïmplementeerde engines
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector-fundament" icon="cube" href="/nl/engines/knowledge-vector-foundation">
+    C++-procesframing, JSON, SHA-256, snapshots, ontvangstbewijzen en manifestdetectie.
+  </Card>
+
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    Geauthenticeerde sessies, worktree-reconciliatie en coördinatie van lifecycle-apply.
+  </Card>
+
+  <Card title="SCV-bronengines" icon="cloud" href="/nl/engines/scv-source-engines">
+    Acht C++26-engines voor bronkennis van SCV, hyperscalers, edge en providers.
+  </Card>
+
+  <Card title="SHV-engines" icon="microchip" href="/nl/engines/shv-engines">
+    Engines voor hardwarebronnen, catalogus, profielen, partities, publicatie en adapters.
+  </Card>
+</CardGroup>
+
+## SKV-enginefamilie
+
+De SKV-oppervlakken hebben elk hun eigen engine:
+
+- De engines voor SKVI, SCLV, SACV, SODV en SSFV implementeren elk inspect, check, propose, project (en recovery waar van toepassing).
+- De engines voor SAV en SEV zijn C++26-processen op het freezing path voor de evaluatie van samenstellingen en evolutiecases.
+
+<Note>
+  Elke huidige SKV-engine is uitsluitend bedoeld voor lezen, queryen, valideren en voorstellen. Programmatische canonieke apply blijft uitgeschakeld totdat voor elke engine de contracten voor SSIAG-rechtenverificatie, expected-state-transacties, qxctl-waarborgen, STAV-events, herstel en negatieve tests voltooid zijn.
+</Note>
+
+## Gemeenschappelijke garanties
+
+- Onafhankelijke installatie en de-installatie per module
+- Geen impliciete crawl van de repository; manifestdetectie is expliciet
+- Geen gedeelde autoriteit; elke mutatieroute wordt afgeschermd door SSIAG plus STAV
+- Geen residentie op het hot path; engines voegen nooit latentie toe aan live workloads
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="qxctl-overzicht" icon="terminal" href="/nl/qxctl/overview">
+    Administratieve CLI die exacte, door ontvangstbewijzen gevalideerde engines aanroept.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/nl/governance/maestro">
+    Legt dockingrelaties tussen engines en receptoren vast.
+  </Card>
+</CardGroup>

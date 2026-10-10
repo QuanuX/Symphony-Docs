@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: contractes de marc"
+description: "SQV és propietari de contractes de marc reutilitzables per a sistemes quantitatius i de negociació sense adquirir la lògica d'estratègia de l'usuari. SOOV és el seu primer subvector amb nom per a una futura arquitectura FIX exclusivament en C++."
+sidebarTitle: "Quantitative Vector"
+---
+
+El Symphony Quantitative Vector (SQV) és propietari de contractes de marc reutilitzables per a la recerca quantitativa, la construcció de sistemes de negociació, el suport a l'execució i futurs motors quantitatius. La lògica d'estratègia sempre us pertany. SQV proporciona superfícies de marc i evidència exacta de compatibilitat, però mai no determina els vostres instruments, fonts de dades, subscripcions, lògica d'ordres ni model d'execució.
+
+## Límit de l'estratègia de l'usuari
+
+Conserveu la propietat completa de la lògica d'estratègia. SQV no:
+
+- Selecciona els vostres instruments ni fonts de dades
+- Defineix camps de subscripció ni la profunditat de mercat
+- Determina el comportament davant d'errors ni les regles de normalització
+- Escriu lògica d'ordres ni models d'execució
+- Dissenya la vostra estructura modular interna
+
+Symphony ofereix evidència de compatibilitat i operacions compatibles. Mai no classifica estratègies ni imposa normes de la plataforma a les vostres decisions de negociació.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV és el primer subvector amb nom de SQV. Representa una futura arquitectura FIX d'alt rendiment, exclusivament en C++, inspirada en la feina històrica de QuanuX. SOOV està previst com una capa de missatgeria acotada i determinista per a la comunicació de negociació. El comportament detallat de FIX encara no és canònic; actualment no hi ha implementada cap sessió FIX, adaptador de fonts de dades ni integració amb brokers.
+
+## Abast futur
+
+SQV és la ubicació prevista per als components de marc quantitatiu ratificats en fases de lliurament posteriors. Les àrees previstes inclouen:
+
+- Motors de backtesting
+- API de brokers en C++
+- Biblioteques d'indicadors
+- Matemàtiques quantitatives
+- Arquitectura de fluxos de dades
+
+Cap d'aquests elements no s'implementarà fins que no es ratifiquin els seus contractes respectius.
+
+## Estat actual
+
+SQV és només un contracte d'arquitectura canònic. Actualment no hi ha implementat cap motor de SQV o SOOV, sessió FIX, adaptador de fonts de dades, entorn d'execució d'estratègies, integració amb brokers, eina de backtesting, biblioteca d'indicadors ni component de fluxos de dades.
+
+## Com es relaciona SQV amb altres vectors
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/ca/vectors/shv">
+    Aporta evidència de capacitats del maquinari que restringeix el disseny dels motors quantitatius.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ca/vectors/snv">
+    Registra els Nodes on s'executen les càrregues de treball quantitatives.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/ca/skv/overview">
+    Governa els contractes, l'evolució i les relacions de publicació oficial de SQV.
+  </Card>
+</CardGroup>

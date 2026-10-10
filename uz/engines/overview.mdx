@@ -1,0 +1,57 @@
+---
+title: "Symphony vector engine’lari: mustaqil oʻrnatish boʻyicha umumiy koʻrinish"
+description: "Har bir Symphony vector engine’i mustaqil oʻrnatiladi, C++ tilida jarayondan tashqarida ishlaydi va vakolatsiz qoladi. Bu yerda SKV, SCV va SHV engine oilalari bilan tanishing."
+sidebarTitle: "Engine’lar umumiy koʻrinishi"
+---
+
+Har bir faol ilova darajasidagi Symphony vektori mustaqil oʻrnatiladigan, jarayondan tashqarida ishlaydigan C++ engine’iga ega boʻlishi mumkin. Umumiy vakolatsiz C++ mexanizmlari `libraries/` ostida joylashgan; alohida C++ koordinatori autentifikatsiyalangan sessiya va worktree muvofiqlashtirish mexanizmlariga egalik qiladi. Engine’lar vektorga tegishli shartnomalar doirasida tekshiradi, validatsiya qiladi, proyeksiya qiladi va taklif beradi. Ular shunchaki kontent yaratgani uchun vakolat olmaydi.
+
+## Amalga oshirilgan engine’lar
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector asosi" icon="cube" href="/uz/engines/knowledge-vector-foundation">
+    C++ jarayon freymingi, JSON, SHA-256, snapshot’lar, kvitansiyalar va manifest aniqlash.
+  </Card>
+
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Autentifikatsiyalangan sessiyalar, worktree muvofiqlashtirish va hayot siklini qoʻllash koordinatsiyasi.
+  </Card>
+
+  <Card title="SCV manba engine’lari" icon="cloud" href="/uz/engines/scv-source-engines">
+    Sakkizta C++26 SCV, hyperscaler, edge va provayder manba-bilim engine’lari.
+  </Card>
+
+  <Card title="SHV engine’lari" icon="microchip" href="/uz/engines/shv-engines">
+    Apparat manbasi, katalog, profil, boʻlimlash, nashr va adapter engine’lari.
+  </Card>
+</CardGroup>
+
+## SKV engine oilasi
+
+SKV yuzalarining har biri oʻz engine’iga ega:
+
+- SKVI, SCLV, SACV, SODV va SSFV engine’larining har biri inspect, check, propose, project (va kerak boʻlganda recovery) amallarini amalga oshiradi.
+- SAV va SEV engine’lari kompozitsiyani baholash va evolyutsiya holatlari uchun freezing-path C++26 jarayonlaridir.
+
+<Note>
+  Hozirgi barcha SKV engine’lari faqat oʻqish, soʻrov, validatsiya va taklif uchun moʻljallangan. Har bir engine’ning SSIAG ruxsatini tekshirish, kutilgan holat tranzaksiyasi, qxctl himoya chorasi, STAV hodisasi, tiklash va salbiy test shartnomalari yakunlanmaguncha dasturiy kanonik qoʻllash oʻchirilgan holda qoladi.
+</Note>
+
+## Umumiy kafolatlar
+
+- Har bir modulni mustaqil oʻrnatish va oʻchirish
+- Repozitoriyni atrofdan skanerlash yoʻq; manifest aniqlash aniq belgilangan
+- Umumiy vakolat yoʻq; har bir oʻzgartirish marshruti SSIAG va STAV bilan nazorat qilinadi
+- Hot-path rezidentligi yoʻq; engine’lar hech qachon jonli ish yuklamalariga kechikish kiritmaydi
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="qxctl umumiy koʻrinishi" icon="terminal" href="/uz/qxctl/overview">
+    Aniq, kvitansiya bilan tasdiqlangan engine’larni chaqiradigan maʼmuriy CLI.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/uz/governance/maestro">
+    Engine’lar va retseptorlar oʻrtasidagi ulanish munosabatlarini qayd etadi.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector ve Kayıt Defteri"
+description: "SSFV; uygulanmış her Symphony modülü ve qxctl yüzeyi genelinde kanonik özellik kimliğinin, anlamlarının, hiyerarşisinin, yaşam döngüsünün ve yönetim güvencesinin sahibidir."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV); kanonik uygulama özelliği kimliğinin, anlamlarının, hiyerarşisinin, yaşam döngüsünün, ayrımlarının, dağıtık kayıt yönlendirmesinin, kapsam envanterinin ve grafik projeksiyonu sözleşmelerinin sahibidir. Engine'i, yapısal ve güncelliği dikkate alan özellik kontrolleri yapan, bağımsız olarak kurulabilen bir C++ sürecidir.
+
+## İşlemler
+
+- **İnceleme ve kontrol**: Yapısal ve güncelliği dikkate alan özellik değerlendirmesi.
+- **Fark (diff)**: Özellik durumları arasında içerik adresli farklar.
+- **Önerme**: Özellik kabulü veya değişikliği için çağıran tarafından bildirilen öneriler.
+- **Grafik**: İnceleme için deterministik, atılabilir özellik grafikleri.
+
+## Kayıtlı kapsam
+
+Mevcut kayıtlı katalog açıkça kısmidir:
+
+- **110** kayıtlı özellik
+- **35** kayıtlı sahip kapsamı
+- **76** onaylanmış iç içe özellik
+- **295** incelenmiş özellik yönetimi yüzeyi (**285** gerekli, **13** kanıta dayalı muafiyet, **9** yasak, **0** incelenmemiş)
+
+Kayıtlı sahip kapsamları, `qxctl` ve doğrulayıcıdan SKV engine'leri ve SSIAG sağlayıcılarına, oradan da SCV ve SHV engine ailelerine kadar uygulanmış her modülü kapsar.
+
+## SSFV neler yapmaz
+
+<Warning>
+  SSFV özellik değerine karar vermez, kimlik icat etmez veya depo ya da ana bilgisayar bütünlüğü iddiasında bulunmaz. `review_required`, onay veya uygulama yetkisi değil, çağıranın incelemesi için kanıttır.
+</Warning>
+
+Özellik incelemesi, kabulü ve yaşam döngüsü değişiklikleri her özelliğin sahibi olan sözleşmede kalır.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    SSFV'yi yöneten çatı çerçeve.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/tr/skv/sev">
+    Evrim vakalarını özellik eklemelerine, değişikliklerine ve emekliye ayırmalarına uygular.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/tr/qxctl/session">
+    Kalıcı SSFV bakım oturumlarını qxctl üzerinden yönetin.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    İnceleme, kontrol, fark, önerme ve grafik için `qxctl ssfv ...` komutunu çalıştırın.
+  </Card>
+</CardGroup>

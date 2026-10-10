@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Afstemning af worktrees"
+description: "Afstem worktrees mod en bundet Symphony-koordinator med kompatibilitetskontrol, checkpoint- og lukkejournaler samt evidensbaseret gendannelse med to slots."
+sidebarTitle: "reconcile"
+---
+
+Grammatikken `qxctl knowledge reconcile ...` driver afstemning af worktrees gennem én nøjagtig bundet Knowledge Session Coordinator. Hver ændring spores med en stabil identifikator og er en compare-and-swap mod det nøjagtige aktuelle journaldigest.
+
+## Kommandoer
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verificer, at qxctl, koordinatoren og de bundne motorer er enige om protokolversion og scope.
+- `begin`: åbn en ny afstemningskontekst med en stabil operationsidentifikator.
+- `status`: inspicer den aktuelle journal uden ændring.
+- `checkpoint`: fremfør journalen varigt med compare-and-swap.
+- `close`: afslut afstemningskonteksten.
+- `recover --discover`: discovery-gendannelse, når almindelig status ikke kan validere lokal tilstand.
+
+## Regler for gendannelse
+
+<Warning>
+  Gendannelse med to slots er evidensbaseret fremadrettet reparation. Det er aldrig en tilladelse til at kassere en inkompatibel journal eller en ukendt kritisk udvidelse. Hvis gendannelsen mislykkes, så eskaler i stedet for at gennemtvinge.
+</Warning>
+
+Brug kun discovery-gendannelse, når almindelig status ikke kan validere lokal tilstand. Bevar blokeringer; planlæg kun igen, når verificeret evidens ændrer sig.
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Sessionskoordinator" icon="gears" href="/da/engines/coordinator">
+    Motoren, der ejer afstemningsjournaler.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/da/qxctl/session">
+    Autentificerede sessioner, der parres med afstemningskontekster.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/da/qxctl/engines">
+    Administrer de bindinger, som koordinatoren forbruger.
+  </Card>
+</CardGroup>

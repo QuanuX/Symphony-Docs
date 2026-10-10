@@ -1,0 +1,64 @@
+---
+title: "Symphony 智慧向量：未來的代理協作"
+description: "SIV 擁有未來的代理式協作、延伸情境、結構化長期邏輯，以及受治理的 Symphony 互動。SMCV 是其第一個選用元件；SAIV 為保留項目。"
+sidebarTitle: "智慧向量"
+---
+
+Symphony 智慧向量（Symphony Intelligence Vector，SIV）擁有未來由 Symphony 制定的語意，涵蓋代理式協作、延伸的本機情境、結構化長期邏輯、代理間通訊，以及在 Symphony 介面上由人類主導的操作。它是一個新興領域，已有標準合約，但尚無可執行的實作。
+
+## 範圍與目的
+
+SIV 預期將支援：
+
+- 本機與遠端代理參與 Symphony 工作流程
+- 跨工作階段與向量共享的延伸情境
+- 適用於重複或多步驟操作的結構化長期邏輯
+- 代理間通訊協定
+- 與 Symphony 命令介面的受治理互動
+
+SIV 不會依據呼叫者類型授予權限。人類、AI、代理與服務呼叫者都受到相同對待。權限來自目標主機擁有權、已授予的權限、所請求的操作、預期狀態，以及擁有者設定的防護機制。
+
+## 具名子向量
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    選用的 Markdown 轉換元件。規劃為建立在已啟用 IPC 連線之上、可由 qxctl 設定的轉譯器。目前尚未實作任何 SMCV 命令或轉譯器。
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    保留給日後的 Symphony 智慧整合子向量。此保留不提供任何實作、命名空間行為或語意操作。
+  </Card>
+</CardGroup>
+
+## 非範圍
+
+SIV 明確不會：
+
+- 取代向量所擁有的語意（即使由代理呼叫，領域操作仍歸各自的向量所有）
+- 成為標準真相或覆寫 SKV 合約
+- 進入交易熱路徑
+- 讓較早的人工智慧工作文件成為定論
+
+## 目前狀態
+
+SIV 目前僅是標準架構合約。目前尚未實作任何 SIV 測試框架、代理郵件、長期狀態引擎、模型連線、本機／遠端代理協定、SAIV 元件、SMCV 轉譯器或 qxctl 控制項。
+
+## 語言邊界
+
+SIV 元件未訂定 Rust 需求。元件語言將依照最終的效能、可攜性、安全性與整合合約決定，而非承襲自任何工作文件。
+
+## SIV 與其他向量的關係
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/zh-Hant/skv/overview">
+    治理 SIV 的合約、演進與官方發布關係。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh-Hant/vectors/sov">
+    可能透過 qxctl 提供由代理呼叫的操作，同時保留向量所擁有的語意。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/zh-Hant/skv/sav">
+    評估任何由代理組裝之操作的組合與相容性。
+  </Card>
+</CardGroup>

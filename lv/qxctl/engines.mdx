@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: piesaiste, diagnostika un reģistra migrācija"
+description: "Pārvaldiet Symphony aizsargāto lietotāja tvēruma dzinēju piesaistes profilu ar list, inspect, doctor, bind, unbind un ar jaucējvērtību piesaistītu migrate, izmantojot qxctl."
+sidebarTitle: "engines"
+---
+
+Gramatika `qxctl knowledge engines ...` pārvalda Symphony vektoru dzinēju aizsargāto lietotāja tvēruma `default` piesaistes profilu. Tā piesaista atlasīto saturu vēlākai saskaņošanai. Tā neinstalē, neizsauc, neaktivizē, nepievieno (dock), neautentificē, neautorizē un nepiemēro dzinēju.
+
+## Komandas
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Pirmajai v2 reģistra izmaiņai norādiet `absent`, bet turpmākajām izmaiņām — precīzo jaucējvērtību, ko atgriež `list`. Katra izmaiņa ir compare-and-swap operācija pret šo jaucējvērtību.
+
+## Migrācija no v1 uz v2
+
+<Warning>
+  Derīgs v1 reģistra stāvoklis joprojām ir nolasāms. Migrācija uz v2 ir atsevišķa precīza compare-and-swap operācija un nekad nav versijas izvēles operācija. Neuzskatiet migrāciju par dzinēja izvēles jaunināšanas ceļu.
+</Warning>
+
+- `list` un `inspect` turpina darboties ar v1 pierādījumiem.
+- `migrate` izveido saistītu v2 paaudzi, neatmetot v1 patiesību.
+- Pēc migrācijas turpmākajām izmaiņām izmantojiet v2 jaucējvērtības.
+
+## Kas ir piesaiste
+
+Piesaiste atlasa precīzu saturu, ko koordinators vēlāk saskaņos. Tā:
+
+- Neinstalē dzinēju
+- Neizsauc un neaktivizē dzinēju
+- Nepievieno (dock) dzinēju Maestro
+- Neautentificē izsaucēju
+- Neautorizē piemērošanu (apply)
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/lv/qxctl/reconcile">
+    Saskaņojiet piesaistīto saturu ar koordinatoru.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/lv/qxctl/lifecycle">
+    Dzīves cikla plāni, kas izmanto piesaistītos dzinējus.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/lv/governance/maestro">
+    Klātbūtnes autoritāte, kas reģistrē pievienošanu (docking), nevis piesaistes.
+  </Card>
+
+  <Card title="Dzinēju pārskats" icon="cube" href="/lv/engines/overview">
+    Neatkarīgi instalējami vektoru dzinēji.
+  </Card>
+</CardGroup>

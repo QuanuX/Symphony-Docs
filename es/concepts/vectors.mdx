@@ -1,0 +1,47 @@
+---
+title: "Vectores y fases de entrega de Symphony"
+description: "Comprende los dominios duraderos de propiedad semántica de Symphony (vectores) frente a las fases cronológicas de entrega, además del Contract Quad y el estado actual de los vectores."
+sidebarTitle: "Vectores y fases"
+---
+
+Symphony organiza su arquitectura en torno a dos ideas: los **vectores** son dominios duraderos de propiedad semántica y las **fases** son campañas cronológicas de entrega. Que un componente se investigara por primera vez en una fase no convierte a esa fase en su propietaria permanente. Los vectores mantienen estable el significado mientras la implementación evoluciona.
+
+## ¿Qué es un vector?
+
+Un vector es un dominio duradero y acotado de propiedad semántica cuyo contrato canónico es propietario del significado y de las operaciones permitidas de ese dominio. Cada vector recibe un **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` y `SPEC.md`, además de las superficies complementarias específicas que realmente necesita. El vector declara sus superficies canónicas y su grafo de delegación, SKVI asigna cada superficie actual exactamente una vez, y los complementos obsoletos se sustituyen mediante una evolución gobernada en lugar de perdurar como contexto contradictorio.
+
+## Estado de los vectores
+
+| Vector | Estado | Página |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementado: base de la Fase 1 con superficies indexadas | [/skv/overview](/es/skv/overview) |
+| **SKVI** — Indexación de fuentes | Implementado: motor de inspección/comprobación/propuesta | [/skv/skvi](/es/skv/skvi) |
+| **SCLV** — Libro mayor de cambios | Implementado: comprobaciones del libro mayor de solo anexión | [/skv/sclv](/es/skv/sclv) |
+| **SACV** — Gobernanza de contratos de API | Implementado: comprobaciones de OpenAPI 3.2.0 | [/skv/sacv](/es/skv/sacv) |
+| **SODV** — Gobernanza de documentación oficial y versiones | Implementado: comprobaciones del libro mayor local de versiones | [/skv/sodv](/es/skv/sodv) |
+| **SSFV** — Identidad y administración de funcionalidades | Implementado: comprobaciones estructurales de funcionalidades | [/skv/ssfv](/es/skv/ssfv) |
+| **SAV** — Composición Accordare | Implementado: evaluación de freezing path | [/skv/sav](/es/skv/sav) |
+| **SEV** — Evolución | Implementado: planificación de impacto y disposición | [/skv/sev](/es/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementado: base en Go sin cgo | [/governance/ssiag](/es/governance/ssiag) |
+| **STAV** — Protocolo de auditoría de TOPS | Implementado: libro mayor de solo anexión por TOPS | [/governance/stav](/es/governance/stav) |
+| **SOV** — Ops Vector | Emergente: aprovisionamiento y entrega de Habitat y Nest | [/vectors/sov](/es/vectors/sov) |
+| **SCV** — Cloud Vector | Implementado: ocho motores C++ de conocimiento de fuentes | [/vectors/scv](/es/vectors/scv) |
+| **SNV** — Node Vector | Emergente: composición de SNIV, SNRV, SCIV y SCNV | [/vectors/snv](/es/vectors/snv) |
+| **SQV** — Quantitative Vector | Emergente: subvector de arquitectura FIX SOOV | [/vectors/sqv](/es/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementado: motores C++ de fuentes, catálogo y perfiles | [/vectors/shv](/es/vectors/shv) |
+| **SIV** — Intelligence Vector | Emergente: SMCV Markdown opcional; SAIV reservado | [/vectors/siv](/es/vectors/siv) |
+
+## Contract Quad y superficies complementarias
+
+Cada vector recibe:
+
+1. **INTENT.md** — propósito y alcance
+2. **MANIFEST.md** — identidad, superficies declaradas y grafo de delegación
+3. **SKILL.md** — uso seguro y orientación operativa
+4. **SPEC.md** — comportamiento normativo y límites
+
+Las superficies complementarias como `SLANG.md`, `NAMESPACES.md`, los registros, los esquemas y los perfiles siguen siendo artefactos gobernados fuera de la estructura de cuatro miembros. Enrutan o especializan la verdad del propietario, pero no pueden ampliar su propia autoridad.
+
+## Integración basada en evidencia
+
+Un motor diferido no tiene un recibo inventado. Una API propuesta no tiene una entrada de registro inventada. Un contrato no publicado no tiene una declaración de finalización de SODV. Esto es integración basada en evidencia, no duplicación ceremonial.

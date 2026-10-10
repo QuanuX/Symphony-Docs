@@ -1,0 +1,48 @@
+---
+title: "SODV：官方文档与发行治理"
+description: "SODV 通过仅追加的发行账本检查、调用方提供的观察结果验证以及一次性发行清单，治理 QuanuX 的官方发布。"
+sidebarTitle: "SODV"
+---
+
+Symphony 官方文档向量（Symphony Official Documentation Vector，SODV）治理 SKV 框架中的知识如何成为官方公开文档和发行记录。其引擎是一个可独立安装的 C++ 进程，执行本地仅追加的发行账本检查，并生成一次性发行清单。SODV 本身不发布任何内容。
+
+## 操作
+
+- **检查与校验（Inspect and check）**：验证发行账本的结构和连续性。
+- **验证（Verify）**：检查调用方提供的已发布状态观察结果。
+- **提议（Propose）**：接受与提供方无关的发行提议。
+- **恢复（Recover）**：执行非变更式恢复。
+- **投影（Project）**：输出一次性发行清单。
+
+## SODV 不做什么
+
+- SODV 没有网络访问权限。
+- SODV 不会向 GitHub、Mintlify、软件包注册表或任何其他界面发布内容。
+- SODV 不会创建标签，也不能宣布某个发行已完成。
+- SODV 不会对提供方进行排名，也不偏向任何发布路径。
+
+发布通过参考 SODV 证据的独立授权工具进行。
+
+## 已完成的 SODV 发布
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go`，标签为 `libraries/stav-protocol-go/v0.2.0`。
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority`，标签为 `modules/stav-append-authority/v0.1.0`。
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority`，标签为 `modules/stav-append-authority/v0.2.0`。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    运行 `qxctl sodv ...` 以执行 inspect、verify、propose 和 project。
+  </Card>
+</CardGroup>
+
+<Note>
+  所有 SKV 引擎都仅支持读取、查询、验证和提议。在每个引擎的 SSIAG、预期状态事务、qxctl 保护措施、STAV 事件、恢复以及负面测试契约全部完成之前，规范应用处于禁用状态。
+</Note>

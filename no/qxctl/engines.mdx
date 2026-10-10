@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: bind, doctor og migrering av registeret"
+description: "Administrer Symphonys beskyttede bindingsprofil for motorer på brukernivå med list, inspect, doctor, bind, unbind og digest-bundet migrate via qxctl."
+sidebarTitle: "engines"
+---
+
+Grammatikken `qxctl knowledge engines ...` administrerer den beskyttede `default`-bindingsprofilen på brukernivå for Symphonys vektormotorer. Den binder valgt innhold for senere avstemming. Den installerer, kaller, aktiverer, dokker, autentiserer, autoriserer eller anvender ikke en motor.
+
+## Kommandoer
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Oppgi `absent` for den første endringen av v2-registeret, eller den nøyaktige digesten som `list` rapporterer for senere endringer. Hver endring er en compare-and-swap mot den digesten.
+
+## Migrering fra v1 til v2
+
+<Warning>
+  Gyldig v1-registertilstand forblir lesbar. Migrering til v2 er en separat, eksakt compare-and-swap og er aldri en versjonsvalgoperasjon. Ikke behandle migrering som en oppgraderingsvei for motorvalg.
+</Warning>
+
+- `list` og `inspect` fortsetter å fungere på v1-bevis.
+- `migrate` produserer en koblet v2-generasjon uten å forkaste v1-sannheten.
+- Etter migrering bruker du v2-digester for fremtidige endringer.
+
+## Hva en binding er
+
+En binding velger eksakt innhold for senere avstemming av koordinatoren. Den:
+
+- Installerer ikke en motor
+- Kaller ikke eller aktiverer ikke en motor
+- Dokker ikke en motor med Maestro
+- Autentiserer ikke en kaller
+- Autoriserer ikke apply
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/no/qxctl/reconcile">
+    Avstem bundet innhold med en koordinator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/no/qxctl/lifecycle">
+    Livssyklusplaner som bruker bundne motorer.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/no/governance/maestro">
+    Tilstedeværelsesautoriteten som registrerer dokking, ikke bindinger.
+  </Card>
+
+  <Card title="Oversikt over motorer" icon="cube" href="/no/engines/overview">
+    Uavhengig installerbare vektormotorer.
+  </Card>
+</CardGroup>

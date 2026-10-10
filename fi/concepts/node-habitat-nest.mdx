@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat ja Nest Symphonyssä"
+description: "Opi, miten Symphony mallintaa fyysisen infrastruktuurin: Node fyysisenä tietokoneena, Habitat tarkkana käyttöjärjestelmäkonditiointina ja Nest käyttäjän tarkoitusta palvelevana työkuormana."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony määrittelee kolme fyysistä käsitettä, jotka erottavat laitteiston identiteetin, ohjelmistokonditioinnin ja käyttäjän työkuorman. Nämä käsitteet pitävät infrastruktuurin osa-alueet erillään, jotta voit tarkastella kutakin itsenäisesti.
+
+## Node
+
+**Node** on kohteena oleva fyysinen tietokoneresurssi, jonka resurssit on yksilöity. Pelkän ohjelmiston irrottaminen, uudelleenyhdistäminen, uudelleenkäynnistys tai uudelleenflashaus ei luo uutta fyysistä Nodea. Tuhoutuminen, fyysinen korvaaminen tai olennainen paikallinen laitteistomuutos luo. Noden inkarnaatio on erillistä näyttöä, joka syntyy, kun Node liitetään väylään osallistujaksi kaupankäyntijärjestelmään, tutkimusklusteriin tai muuhun Symphonyllä rakennettuun järjestelmään.
+
+## Habitat
+
+**Habitat** on tarkka käyttöjärjestelmä- ja pakettikonditiointi, joka toimitetaan Nodelle valitsemaasi työtä varten. Oletuksena se sisältää vain vaaditun ohjelmistopinnan: ei asiaankuulumattomia paketteja, piilotettuja ajoympäristöjä, kontteja, Kubernetesia tai implisiittistä virtualisointia. Laaja yleiskäyttöinen Habitat on edelleen kelvollinen eksplisiittinen käyttäjän valinta.
+
+## Nest
+
+**Nest** (”pesä”) palvelee valitsemaasi tarkoitusta. Reaaliaikaisen strategian suorituksen odotetaan olevan yleistä, ja yksi strategia voi sisältää monia modulaarisia koodiosioita, mutta Symphony ei määrittele Nestin tarkoitusta eikä rinnasta sitä yhteen lähdetiedostoon, prosessiin, algoritmiin, välittäjän API:in tai datarajapintaan. Strategialogiikka pysyy sinun toimialueenasi.
+
+## Vertailu
+
+| Käsite | Mikä se on | Mikä sitä muuttaa |
+| --- | --- | --- |
+| **Node** | Fyysinen tietokone, jolla on tietyt resurssit | Fyysinen tuhoutuminen, korvaaminen tai olennainen laitteistomuutos |
+| **Habitat** | Tarkka käyttöjärjestelmä- ja pakettikonditiointi Nodella | Käyttäjän eksplisiittinen valinta tai qxctl:n hallinnoima konditiointi |
+| **Nest** | Habitatiin toimitettu käyttäjän tarkoitusta palveleva työkuorma | Käyttäjän strategian tai muun valitun työn käyttöönotto |
+
+## Klusteri- ja väylätopologia
+
+Useat Nodet muodostavat klusterin vain, kun ne on yhdistetty toisiinsa yhden tai useamman väylän kautta. Yhden klusterin sisällä voi olla rinnakkain useita väyläkankaita, ja Node-klusterissa-suhde voi yksilöidä asiaankuuluvan väylän muuttamatta fyysisen Noden identiteettiä.
+
+Väyläsovittimet, kuten NATS JetStream ja ZeroMQ, ovat käyttäjän valitsemia eivätkä doktriinia. Raskaan siirron, ohjauksen, tutkimuksen ja suorituksen poistovirtojen ei tarvitse jakaa yhtä väylää. Topologia voi käyttää useita väyliä tai ohittaa väylän ilmoitetulla polulla.
+
+## TOPS- ja TROG-laajuus
+
+**TOPS** on hallitseva Trade Operating System -laajuus. **TROG** on tarkoituksellisesti alisteinen, ei-globaali kaupankäyntiryhmän laajuus. Historiallisesta sanamuodosta huolimatta TROG ei välttämättä ole virtuaalinen. Sen erottava ominaisuus on, että sen laajuus ja säännöt eivät ole yleispäteviä.

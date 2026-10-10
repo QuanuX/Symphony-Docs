@@ -1,0 +1,48 @@
+---
+title: "SSIAG：Symphony 的安全身分與存取治理"
+description: "SSIAG 是 Symphony 與呼叫者無關的授權基礎，提供依 TOPS 的註冊、受保護的政策生命週期、安全的稽核中繼資料，以及原生監督掛鉤。"
+sidebarTitle: "SSIAG"
+---
+
+Symphony 安全身分與存取治理（Secure Identity and Access Governance，SSIAG）是可獨立安裝、不使用 cgo 的 Go 基礎，用於在 Symphony 主機上進行與呼叫者無關的授權。它會投影有效的主機權限、把關受保護的變更，並在任何變更變得可見之前與 STAV 稽核整合。
+
+## SSIAG 提供的功能
+
+- 與目標主機所有權、已授予的權限、所請求的操作、預期狀態及擁有者設定的防護措施相連結的精確、與呼叫者無關的授權
+- 依 TOPS 的註冊與本機端點信任
+- 受保護的政策生命週期與供應商安裝生命週期
+- 在作用中與先前繫結之間進行比較並交換（compare-and-swap）的繫結生命週期
+- 為 STAV 準備的安全稽核中繼資料
+- 原生 launchd 與 systemd 監督
+
+## 刻意停用的功能
+
+<Warning>
+  營運用途的憑證使用、標準知識套用與機密傳遞仍維持停用。一般的基礎變更在其所需的 STAV 稽核路由完成之前，都會以封閉方式失敗（fail closed）。
+</Warning>
+
+SSIAG 不會決定呼叫者類別。人類、AI、代理程式、服務與工作負載呼叫者皆受到相同對待；權限來自目標主機與所請求的操作，而非行為者標籤。
+
+## macOS Keychain 供應商
+
+`modules/ssiag-provider-macos-keychain` 是一個 Swift 中繼資料轉接器，具備有界限的相互驗證交握，以及已簽署套件組合與工作階段就緒狀態的觀測。它向 SSIAG 公開供應商中繼資料，但不授予營運用途的 Keychain 存取權，而此存取權目前是刻意停用的。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/zh-Hant/governance/stav">
+    SSIAG 變更所依賴、依 TOPS 劃分的僅附加稽核帳本。
+  </Card>
+
+  <Card title="Accordare 產生器" icon="pen-nib" href="/zh-Hant/governance/accordare-producer">
+    與 SSIAG 組合運作、有界限的 SAV Named Version 稽核迴路。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/zh-Hant/qxctl/lifecycle">
+    向 SSIAG 查詢授權的生命週期管理。
+  </Card>
+
+  <Card title="呼叫者權限" icon="user-shield" href="/zh-Hant/concepts/caller-authority">
+    SSIAG 所實作的準則。
+  </Card>
+</CardGroup>

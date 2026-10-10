@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance dla Symphony"
+description: "SSIAG to neutralny wobec wywołującego fundament autoryzacji Symphony z rejestracją na poziomie TOPS, chronionym cyklem życia polityk, bezpiecznymi metadanymi audytu i natywnymi mechanizmami nadzoru."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) to niezależnie instalowany fundament w Go bez cgo, służący do neutralnej wobec wywołującego autoryzacji na hoście Symphony. Odwzorowuje efektywne uprawnienia hosta, chroni zabezpieczone mutacje i integruje się z audytem STAV, zanim jakakolwiek zmiana stanie się widoczna.
+
+## Co zapewnia SSIAG
+
+- Dokładną, neutralną wobec wywołującego autoryzację powiązaną z własnością hosta docelowego, przyznanym uprawnieniem, żądaną operacją, oczekiwanym stanem i zabezpieczeniami skonfigurowanymi przez właściciela
+- Rejestrację na poziomie TOPS i zaufanie do lokalnych punktów końcowych
+- Chroniony cykl życia polityk i cykl życia instalacji dostawców
+- Cykl życia powiązań z operacją compare-and-swap między aktywnymi a poprzednimi powiązaniami
+- Bezpieczne metadane audytu przygotowane dla STAV
+- Natywny nadzór przez launchd i systemd
+
+## Co jest celowo wyłączone
+
+<Warning>
+  Operacyjne użycie poświadczeń, stosowanie zmian w wiedzy kanonicznej i dostarczanie sekretów pozostają wyłączone. Zwykła mutacja fundamentalna kończy się bezpiecznym odrzuceniem, dopóki wymagana ścieżka audytu przez STAV nie zostanie ukończona.
+</Warning>
+
+SSIAG nie rozstrzyga o klasie wywołującego. Wywołujący będący ludźmi, AI, agentami, usługami i obciążeniami są traktowani identycznie; uprawnienia wynikają z hosta docelowego i żądanej operacji, a nie z etykiety podmiotu.
+
+## Dostawca macOS Keychain
+
+`modules/ssiag-provider-macos-keychain` to adapter metadanych w Swift z ograniczonym, wzajemnie weryfikowanym uzgadnianiem połączenia oraz obserwacją podpisanego pakietu i gotowości sesji. Udostępnia metadane dostawcy dla SSIAG bez przyznawania operacyjnego dostępu do Keychain, który obecnie jest celowo wyłączony.
+
+## Powiązane powierzchnie
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/pl/governance/stav">
+    Księga audytu append-only na poziomie TOPS, na której opierają się mutacje SSIAG.
+  </Card>
+
+  <Card title="Producent Accordare" icon="pen-nib" href="/pl/governance/accordare-producer">
+    Ograniczony obwód audytu SAV Named Version współpracujący z SSIAG.
+  </Card>
+
+  <Card title="Cykl życia qxctl" icon="terminal" href="/pl/qxctl/lifecycle">
+    Administracja cyklem życia, która konsultuje się z SSIAG w sprawie autoryzacji.
+  </Card>
+
+  <Card title="Uprawnienia wywołującego" icon="user-shield" href="/pl/concepts/caller-authority">
+    Doktryna implementowana przez SSIAG.
+  </Card>
+</CardGroup>

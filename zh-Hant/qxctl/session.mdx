@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session：已驗證的 Symphony 工作階段"
+description: "開啟、檢查點、關閉並復原已驗證的 Symphony 協調器工作階段，以及使用經 SSIAG 驗證授權的持久性 SSFV 維護串流。"
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` 語法透過一個確切綁定的協調器與一個 TOPS 範圍的 SSIAG 端點，開啟非標準的已驗證工作階段。另一個獨立的 `session features ...` 語法則驅動持久性 SSFV 維護串流。
+
+## 基本工作階段語法
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+每次呼叫都會請求一個全新的確切授權，並驗證：
+
+- 主體與目標身分
+- 政策與設定狀態
+- 到期時間
+- 呼叫者類別中立性
+- 不可轉讓性
+- 標準套用停用
+- 能力綁定
+
+工作階段證據僅授權所指名的受保護非標準操作。請將工作階段日誌與協調日誌分開保存；只使用情境參照來關聯兩者。
+
+## SSFV 維護串流
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+features 串流是一個獨立的持久性 SSFV 維護情境。變更需要：
+
+- 一個已開啟的已驗證基本工作階段
+- 確切的協調器與 SSFV 綁定
+- 穩定的操作識別碼
+- 確切的比較並交換
+- 全新的 SSIAG 證據
+
+<Note>
+  在相容的升級或回復過程中，請保留基準快照及其原始引擎身分。選用的 Maestro 證據必須是完整的已驗證清單；若刻意不使用 Maestro，請記錄明確的未設定原因。`review_required` 是供呼叫者審查的證據，而非批准。
+</Note>
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hant/governance/ssiag">
+    核發每個工作階段請求所驗證的全新授權。
+  </Card>
+
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    支援工作階段與 features 日誌的引擎。
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/zh-Hant/qxctl/reconcile">
+    與工作階段配對的協調情境。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh-Hant/skv/ssfv">
+    features 串流所維護的功能向量。
+  </Card>
+</CardGroup>

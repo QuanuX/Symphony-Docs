@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: leer el inventario de presencia de receptores de Symphony"
+description: "Inspecciona la autoridad de presencia Maestro de Symphony mediante qxctl para ver las relaciones de acoplamiento autenticadas de los motores vectoriales y el inventario derivado de receptores."
+sidebarTitle: "maestro"
+---
+
+La gramática `qxctl maestro ...` expone la evidencia de presencia de Maestro. Maestro es la autoridad de presencia; qxctl simplemente lee e inspecciona lo que Maestro registra. Ninguno de los dos crea relaciones de acoplamiento por sí mismo.
+
+## Inventario
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` presenta el inventario completo, derivado y de solo lectura de Maestro con las relaciones de acoplamiento autenticadas de los motores vectoriales por TOPS y receptor.
+
+## Rutas administrativas relacionadas
+
+Otros comandos hoja de qxctl exponen administración relacionada con Maestro:
+
+- Estado e inspección de la evidencia de acoplamiento
+- Rutas de recuperación acotadas por los propios contratos de Maestro
+- Inscripción fundamental en el ciclo de vida y supervisión nativa del propio Maestro
+
+Cada ruta de mutación pasa por el adaptador exacto propiedad del módulo. qxctl nunca genera descriptores de Maestro a partir de análisis internos ni invoca una versión más reciente implícita.
+
+<Warning>
+  Maestro no inicia, programa, supervisa ni invoca motores. `qxctl maestro inventory` es de solo lectura. Una vinculación, una reconciliación, la coordinación de sesiones o un plan de ciclo de vida por sí solos no establecen la presencia en Maestro.
+</Warning>
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/es/governance/maestro">
+    Contrato y límites de la autoridad de presencia.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/es/qxctl/engines">
+    Registro de vinculación de motores (las vinculaciones no son acoplamientos).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/es/qxctl/session">
+    Sesiones autenticadas que se usan para registrar la presencia.
+  </Card>
+
+  <Card title="Descripción general de los motores" icon="cube" href="/es/engines/overview">
+    Motores vectoriales instalables de forma independiente que se acoplan con Maestro.
+  </Card>
+</CardGroup>

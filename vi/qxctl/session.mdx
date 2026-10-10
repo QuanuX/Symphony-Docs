@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Phiên Symphony đã xác thực"
+description: "Mở, checkpoint, đóng và khôi phục các phiên coordinator Symphony đã xác thực cùng các luồng bảo trì SSFV lâu dài với các grant được SSIAG xác minh."
+sidebarTitle: "session"
+---
+
+Cú pháp `qxctl knowledge session ...` mở các phiên đã xác thực không chuẩn tắc (noncanonical) thông qua đúng một coordinator đã ràng buộc và một endpoint SSIAG theo phạm vi TOPS. Một cú pháp `session features ...` riêng điều khiển luồng bảo trì SSFV lâu dài.
+
+## Cú pháp phiên cơ sở
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Mỗi lần gọi đều yêu cầu một grant chính xác mới và xác thực:
+
+- Định danh chủ thể và mục tiêu
+- Trạng thái chính sách và cấu hình
+- Thời hạn hết hiệu lực
+- Tính trung lập với loại bên gọi
+- Tính không thể chuyển nhượng
+- Việc vô hiệu hóa apply chuẩn tắc
+- Ràng buộc năng lực (capability)
+
+Bằng chứng phiên chỉ ủy quyền cho đúng thao tác không chuẩn tắc được bảo vệ đã nêu tên. Giữ riêng nhật ký phiên và nhật ký đối soát; chỉ dùng tham chiếu ngữ cảnh để liên kết chúng.
+
+## Luồng bảo trì SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Luồng features là một ngữ cảnh bảo trì SSFV lâu dài riêng biệt. Các thay đổi yêu cầu:
+
+- Một phiên cơ sở đã xác thực đang mở
+- Ràng buộc coordinator và SSFV chính xác
+- Định danh thao tác ổn định
+- Compare-and-swap chính xác
+- Bằng chứng SSIAG mới
+
+<Note>
+  Giữ nguyên snapshot cơ sở và định danh engine ban đầu của nó qua các lần nâng cấp hoặc rollback tương thích. Bằng chứng Maestro tùy chọn phải là một bản kiểm kê đầy đủ đã xác thực; khi Maestro được chủ ý vắng mặt, hãy ghi lại lý do not-configured tường minh. `review_required` là bằng chứng để bên gọi xem xét, không phải sự phê chuẩn.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/vi/governance/ssiag">
+    Cấp các grant mới mà mỗi yêu cầu phiên xác thực.
+  </Card>
+
+  <Card title="Session coordinator" icon="gears" href="/vi/engines/coordinator">
+    Engine hỗ trợ nhật ký phiên và features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/vi/qxctl/reconcile">
+    Các ngữ cảnh đối soát đi kèm với phiên.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/vi/skv/ssfv">
+    Vector tính năng mà luồng features duy trì.
+  </Card>
+</CardGroup>

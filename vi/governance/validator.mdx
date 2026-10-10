@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: kiểm tra kho mã xác định, chỉ đọc"
+description: "Symphony Validator tạo ra bằng chứng dạng dòng hoặc JSON có cấu trúc cho contract, tính khép kín của nguồn, bất biến, tính năng, bản phát hành và bản tóm tắt gốc được máy kiểm tra."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) là một công cụ kiểm tra kho mã C++26 độc lập, xác định và chỉ đọc. Nó tạo ra bằng chứng bất biến về trạng thái hiện tại của kho mã và các contract của nó. Nó không thể sửa chữa hay xuất bản bất cứ thứ gì.
+
+## Những gì validator kiểm tra
+
+- Hình dạng contract: các điểm neo và cấu trúc Contract Quad bắt buộc
+- Tính khép kín của nguồn hiện tại trên các surface được SKVI lập chỉ mục
+- Quyền sở hữu bất biến theo `knowledge/INVARIANTS.md` và registry bất biến
+- Các kỳ vọng về quản trị tính năng do SSFV báo cáo
+- Các bản ghi phát hành do SODV báo cáo
+- Bản tóm tắt gốc do máy sở hữu trong README của kho mã
+
+Bằng chứng được xuất dưới dạng đầu ra theo dòng hoặc JSON có cấu trúc. Mọi lần xuất đều có thể tái tạo từ cùng một trạng thái kho mã.
+
+## Những gì validator không làm
+
+<Warning>
+  Validator không thể sửa tệp, viết lại contract hay xuất bản kho mã. Nó không tạo ra sự thật chuẩn tắc về bất cứ điều gì; nó chỉ báo cáo sự thật đó.
+</Warning>
+
+- Không có tác dụng phụ lên kho mã
+- Không truy cập mạng
+- Không ẩn cảnh báo ngoài chính sách cảnh báo được bảo vệ của qxctl
+
+## Tích hợp với qxctl
+
+qxctl xác thực biên nhận chính xác và các digest có cấu trúc của validator trước khi áp dụng chính sách cảnh báo được bảo vệ. Chín lệnh lá qxctl được bảo vệ cho vòng đời cảnh báo, cùng với route tóm tắt gốc chính xác dựa trên biên nhận, cung cấp khả năng quản trị việc xác thực mà không làm thay đổi bằng chứng thô của bộ phát hiện.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/vi/qxctl/validate">
+    Ngữ pháp chính sách cảnh báo được bảo vệ, baseline và hiển thị.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/vi/skv/ssfv">
+    Các kỳ vọng về quản trị tính năng được validator kiểm tra.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Các bản ghi phát hành mà validator kiểm tra.
+  </Card>
+
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung tổng thể có các contract được validator kiểm tra.
+  </Card>
+</CardGroup>

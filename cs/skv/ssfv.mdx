@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector a registr"
+description: "SSFV vlastní kanonickou identitu funkcí, jejich sémantiku, hierarchii, životní cyklus a zajištění správy napříč všemi implementovanými moduly Symphony a plochami qxctl."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) vlastní kanonickou identitu aplikačních funkcí, jejich sémantiku, hierarchii, životní cyklus, rozlišení, distribuované směrování záznamů, inventář pokrytí a kontrakty projekce grafů. Jeho engine je nezávisle instalovatelný proces v C++, který provádí strukturální kontroly funkcí zohledňující aktuálnost.
+
+## Operace
+
+- **Inspect a check**: strukturální vyhodnocení funkcí zohledňující aktuálnost.
+- **Diff**: obsahově adresované rozdíly mezi stavy funkcí.
+- **Propose**: návrhy na přijetí nebo změnu funkcí deklarované volajícím.
+- **Graph**: deterministické jednorázové grafy funkcí ke kontrole.
+
+## Registrované pokrytí
+
+Aktuální registrovaný katalog je výslovně částečný:
+
+- **110** registrovaných funkcí
+- **35** registrovaných rozsahů vlastníků
+- **76** ratifikovaných vnořených funkcí
+- **295** zkontrolovaných ploch správy funkcí (**285** povinných, **13** výjimek podložených důkazy, **9** zákazů, **0** nezkontrolovaných)
+
+Registrované rozsahy vlastníků pokrývají všechny implementované moduly, od `qxctl` a validátoru přes enginy SKV a poskytovatele SSIAG až po rodiny enginů SCV a SHV.
+
+## Co SSFV nedělá
+
+<Warning>
+  SSFV nerozhoduje o tom, zda si něco zaslouží být funkcí, nevymýšlí identity ani netvrdí úplnost repozitáře či hostitele. `review_required` je důkaz pro kontrolu volajícím, nikoli ratifikace ani oprávnění k apply.
+</Warning>
+
+Kontrola, přijetí a změny životního cyklu funkcí zůstávají u kontraktu, který danou funkci vlastní.
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující framework, který spravuje SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/cs/skv/sev">
+    Uplatňuje případy evoluce na přidání, změny a vyřazení funkcí.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/cs/qxctl/session">
+    Správa perzistentních relací údržby SSFV přes qxctl.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Spusťte `qxctl ssfv ...` pro inspect, check, diff, propose a graph.
+  </Card>
+</CardGroup>

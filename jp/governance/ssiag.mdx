@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Symphony のための Secure Identity and Access Governance"
+description: "SSIAG は、TOPS ごとの登録、保護されたポリシーライフサイクル、安全な監査メタデータ、ネイティブな監視フックを備えた、Symphony の呼び出し元に中立な認可基盤です。"
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) は、Symphony ホスト上で呼び出し元に中立な認可を行うための、個別にインストール可能で cgo を使用しない Go 基盤です。有効なホスト権限を投影し、保護された変更をゲートし、変更が可視化される前に STAV の監査と統合します。
+
+## SSIAG が提供するもの
+
+- ターゲットホストの所有権、付与された権限、要求された操作、期待される状態、オーナーが設定したセーフガードに紐づく、厳密で呼び出し元に中立な認可
+- TOPS ごとの登録とローカルエンドポイントの信頼
+- 保護されたポリシーのライフサイクルと、プロバイダーのインストールのライフサイクル
+- アクティブなバインディングと以前のバインディングの間のコンペアアンドスワップを伴うバインディングのライフサイクル
+- STAV 向けに準備された安全な監査メタデータ
+- ネイティブな launchd および systemd による監視
+
+## 意図的に無効化されているもの
+
+<Warning>
+  運用上のクレデンシャル使用、正規のナレッジの適用、シークレットの配信は無効のままです。通常の基盤的な変更は、STAV を経由する必要な監査ルートが完成するまで、フェイルクローズで失敗します。
+</Warning>
+
+SSIAG は呼び出し元のクラスを判断しません。人間、AI、エージェント、サービス、ワークロードの呼び出し元は同一に扱われ、権限はアクターのラベルではなく、ターゲットホストと要求された操作から導かれます。
+
+## macOS Keychain プロバイダー
+
+`modules/ssiag-provider-macos-keychain` は、範囲が限定された相互検証ハンドシェイクと、署名済みバンドルおよびセッション準備状態の観測を備えた Swift のメタデータアダプターです。運用上の Keychain アクセスを付与することなく、プロバイダーのメタデータを SSIAG に公開します。運用上の Keychain アクセスは、現時点では意図的に無効化されています。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/jp/governance/stav">
+    SSIAG の変更が依存する、TOPS ごとの追記専用監査台帳。
+  </Card>
+
+  <Card title="Accordare プロデューサー" icon="pen-nib" href="/jp/governance/accordare-producer">
+    SSIAG と組み合わせて動作する、範囲が限定された SAV Named Version 監査回路。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/jp/qxctl/lifecycle">
+    認可のために SSIAG を参照するライフサイクル管理。
+  </Card>
+
+  <Card title="呼び出し元の権限" icon="user-shield" href="/jp/concepts/caller-authority">
+    SSIAG が実装するドクトリン。
+  </Card>
+</CardGroup>

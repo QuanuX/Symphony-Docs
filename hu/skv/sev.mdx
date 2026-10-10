@@ -1,0 +1,47 @@
+---
+title: "SEV: a Symphony Evolution Vector a tervezett változásokhoz"
+description: "Az SEV determinisztikus esetekkel, függőségkész halmazokkal, eldobható gráfokkal és nem alkalmazó helyreállítási tanácsokkal értékeli a tervezett változásokat, az újdonságokat és az életciklus-átmeneteket."
+sidebarTitle: "SEV"
+---
+
+A Symphony Evolution Vector (SEV) birtokolja a tervezett változásokra és a felmerült újdonságokra vonatkozó eseteket az egész platformon. Motorja egy fagyasztási útvonalon futó, csak olvasó C++26 folyamat. Az SEV nem figyel gazdagépet és nem alkalmaz átmenetet; bizonyítékot és döntési tanácsot állít elő.
+
+## Műveletek
+
+- **Esetértékelés**: determinisztikus evolúciós esetek hozzáadásokhoz, módosításokhoz, átnevezésekhez, felváltásokhoz, elavulttá nyilvánításokhoz, kivezetésekhez és eltávolításokhoz.
+- **Hatás- és döntéstervezés**: minden eset hozzárendelése a mérvadó tulajdonosaihoz.
+- **Függőségkész halmaz újraszámítása**: a függő átmenetek biztonságos sorrendjének levezetése.
+- **Átmenet-ellenőrzés**: annak megerősítése, hogy az átmenet utáni megfigyelt állapot megfelel az elvárt alaknak.
+- **Helyreállítási tanács**: biztonságos előre- vagy visszalépések leírása, ha egy átmenet megszakad.
+- **SCSEV-értékelés**: az első szabályozott SEV-profil ezeket a műveleteket a csak dokumentációt érintő tudásfelület-evolúcióra alkalmazza.
+- **Újdonság- és figyelési ellenőrzések**: új vagy váratlan felületek észlelése az áttekintők számára.
+- **Triggerösszevonás** és **életciklus-munkamenet kötés**: a duplikált értékelések csökkentése és az esetek munkamenethez kötése.
+- **Gráfvetítés**: eldobható gráfok áttekintéshez.
+
+## SCSEV-profil
+
+Az SCSEV újrahasznosítja az SSFV funkcióadminisztrációját, a stabil qxctl-parancsigazságot és a motorművelet-leírókat. Nem hoz létre duplikált motort vagy regisztert. Az első motorszelet csak jelentést és javaslatot készít; a tartós külső művelet továbbra is külön engedélyezett a qxctl-en és a tudásmunkamenet-koordinátoron keresztül.
+
+<Note>
+  Az SEV kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A kanonikus alkalmazás az SKV-motorcsalád egészében továbbra is le van tiltva.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az átfogó keretrendszer és a Contract Quad modell.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hu/skv/ssfv">
+    Az SCSEV-profil által újrahasznosított funkcióadminisztráció.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/hu/skv/sav">
+    Kompozíció- és kompatibilitás-értékelés a módosított komponensekhez.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    A ratifikált evolúciós nyelvtan a megvalósítás után `qxctl evolution ...` formában érkezik.
+  </Card>
+</CardGroup>

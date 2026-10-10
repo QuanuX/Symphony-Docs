@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphonyn agenttinen hallinnan komentorivi"
+description: "qxctl on Symphonyn Go-kielinen hallinnan CLI. Tutustu sen 373 suoritettavaan komentoon, moottorien sidontarekisteriin ja vektorimoottorien kuittivalidoituun kutsumalliin."
+sidebarTitle: "qxctl-yleiskatsaus"
+---
+
+`qxctl` on Symphonyn Go-pohjainen, ensisijaisesti agenteille suunniteltu hallinta- ja kysely-CLI. Se puhuu komentoja; toimialavektorit omistavat niiden takana olevat operaatiot ja merkitykset. Sen versionhallintaan tallennettu rekisteri sitoo jokaisen suoritettavan komentolehden vakaaseen koneidentiteettiin ja tarkastettuihin ominaisuushallinnan todisteisiin.
+
+## Mitä qxctl kattaa
+
+qxctl toteuttaa hallinnan seuraaville:
+
+- Repositorion ja sopimusten tarkastelu
+- Validaattorin, varoitusten, invarianttien, ominaisuuksien, elinkaaren, istuntojen, täsmäytyksen, sidontojen ja Maestron hallinta
+- SSIAG-identiteetin, STAV-auditoinnin ja Accordare-tuottajien hallinta
+- Toteutettujen vektorimoottorien kielioppi (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv` sekä SCV- ja SHV-pinnat)
+
+Nykyinen rekisteri sisältää **373** suoritettavaa komentoa.
+
+## Turvallinen kutsumalli
+
+qxctl kutsuu tarkkoja, kuittivalidoituja asennuksia käyttäen rajattuja aliprosesseja, ehdottomia määräaikoja, vastauksen identiteetti- ja digest-tarkistuksia, odotetun tilan transaktioita ja pysyvää palautusta. Se ei koskaan hyväksy adapteripolkuja tai raakoja versioita kuittien sijaan.
+
+## Moottorien sidontarekisteri v2
+
+Moottorien sidontarekisteri v2 tukee kahdeksaa vakiintunutta moottoriroolia ja rajattuja tulevia roolien identiteettejä. Vanhaa v1-tilaa luetaan rinnakkain; migraatio v2:een edellyttää eksplisiittistä, digestiin sidottua compare-and-swap-operaatiota qxctl:n kautta, eikä se koskaan ole versionvalintaoperaatio.
+
+## Rekisterikomennot
+
+Luo ja tarkista odotettu rekisteri hakemistosta `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Asennettu asiakas voi tuottaa suoritettavaan tiedostoon sidottuja todisteita:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Odotetuissa todisteissa asiakasversio, suoritettavan tiedoston digest ja kuitin digest ovat null. Havaitut todisteet sitovat tarkan asiakasversion ja suoritettavan tiedoston digestin sekä kuitin digestin, kun sellainen on saatavilla. Molemmat muodot käyttävät skeemaa `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl omistaa komentojen kieliopin ja esitystavan. Se ei omista vektorien semantiikkaa eikä kanonista tietototuutta. Vain tarkastetut lähdekoodimuutokset ratifioivat uuden `qxcmd`-identiteetin kutsujaluokasta riippumatta.
+</Note>
+
+## Komentoryhmät
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/fi/qxctl/knowledge">
+    Vektorien välinen elinkaari ja pysyvien SSFV-istuntojen hallinta.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/fi/qxctl/lifecycle">
+    Profiili, omistajuus, havainnointi, raportointi, käynnistys, soveltaminen ja palautus.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/fi/qxctl/engines">
+    Moottorien sidontarekisteri ja migraatio.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/fi/qxctl/reconcile">
+    Koordinaattorin työpuiden täsmäytys.
+  </Card>
+
+  <Card title="session" icon="key" href="/fi/qxctl/session">
+    Todennetut istunnot ja SSFV-ylläpitovirrat.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/fi/qxctl/maestro">
+    Johdettu reseptori-inventaario ja telakointitodisteet.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/fi/qxctl/validate">
+    Suojattu varoituskäytäntö ja validaattorin hallinta.
+  </Card>
+
+  <Card title="vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` sekä tuleva accord- ja evolution-kielioppi.
+  </Card>
+</CardGroup>

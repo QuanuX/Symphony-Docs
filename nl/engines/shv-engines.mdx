@@ -1,0 +1,65 @@
+---
+title: "SHV-engines: bron en graaf van de Symphony Hardware Vector"
+description: "De SHV-engines catalogiseren CPU's, GPU's, NIC's, geheugen en opslag met replay van bewaarde bronnen, evaluatie van vereisten, PDF-ingestie en duurzame DuckDB-grafen."
+sidebarTitle: "SHV-engines"
+---
+
+De engines van de Symphony Hardware Vector (SHV) catalogiseren processors, CPU-topologie, caches, GPU's, NIC's en glasvezelinterfaces, moederborden, RAM en NVMe. De standaardcuratie geeft voorrang aan originele componenten en aantoonbare varianten. Elke engine is onafhankelijk installeerbaar en alleen-lezen.
+
+## Engines
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Hardwarekernel: door de aanroeper gedefinieerde dekking, catalogusreplay van bewaarde bronnen, evaluatie van vereisten en graafprojectie.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Bronningestie en revisieafhandeling voor hardwarebewijs.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Evaluatie van component- en systeemprofielen.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partitionering van gecatalogiseerde hardware voor reproduceerbare selectie.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Beheerde publicatie en selectie van de lokale catalogus.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Expliciet transportoppervlak voor grafen.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Duurzame, door DuckDB ondersteunde graafopslag, beheerd via qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretatie van PDF-bronnen voor hardwaredatasheets.
+  </Card>
+</CardGroup>
+
+## Hoogtepunten van het beheer
+
+- **Duurzame opslag** wordt uitsluitend beheerd via `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` met de bewaarde expected intent digest dient ook als herstel; er is geen afzonderlijke alias voor herstel.
+- **Cataloguspublicatie** wordt uitsluitend beheerd via `shv catalogue publication inspect|plan|apply|status|schema|template`. Herstel gebeurt met `apply --operation-id`, dat wederzijds exclusief is met `--input`.
+- **Inventaris** (release 0.2) voegt `shv graph store inventory` toe: een aan een revisie gebonden logische leesbewerking met expliciete bewaarde schrijveridentiteiten. De verouderde 0.1-selectie blijft ondersteund.
+
+<Note>
+  Hardwareklassen zijn mapping- en profieldata van de aanroeper, geen dubbele opdrachtbomen. `--version` selecteert de exacte primaire eigenaar; `--source-version` en `--adapter-version` benoemen afzonderlijk geselecteerde afhankelijkheden. Schema- en mappingrevisies zijn data-identiteiten, geen aliassen voor geïnstalleerde engineversies.
+</Note>
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="SHV-vector" icon="microchip" href="/nl/vectors/shv">
+    Hardware Vector-contract dat deze engines implementeren.
+  </Card>
+
+  <Card title="qxctl-vectoropdrachten" icon="terminal" href="/nl/qxctl/vector-commands">
+    Volledige grammaticareferentie voor `shv ...`.
+  </Card>
+</CardGroup>

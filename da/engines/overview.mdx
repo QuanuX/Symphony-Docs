@@ -1,0 +1,57 @@
+---
+title: "Symphony-vector-engines: oversigt over uafhængig installation"
+description: "Hver Symphony-vector-engine installeres uafhængigt, kører uden for processen i C++ og forbliver autoritetsfri. Mød engine-familierne SKV, SCV og SHV her."
+sidebarTitle: "Oversigt over engines"
+---
+
+Hver aktiv Symphony-vector på applikationsniveau kan have en uafhængigt installerbar C++-engine, der kører uden for processen. Fælles autoritetsfri C++-mekanik ligger under `libraries/`; en separat C++-koordinator ejer mekanikken for autentificerede sessioner og afstemning af worktrees. Engines inspicerer, validerer, projicerer og foreslår inden for vector-ejede kontrakter. De opnår ikke autoritet blot ved at generere indhold.
+
+## Implementerede engines
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector-fundament" icon="cube" href="/da/engines/knowledge-vector-foundation">
+    C++-procesindramning, JSON, SHA-256, snapshots, kvitteringer og manifest-opdagelse.
+  </Card>
+
+  <Card title="Sessionskoordinator" icon="gears" href="/da/engines/coordinator">
+    Autentificerede sessioner, afstemning af worktrees og koordinering af livscyklus-apply.
+  </Card>
+
+  <Card title="SCV-kilde-engines" icon="cloud" href="/da/engines/scv-source-engines">
+    Otte C++26-engines til kildeviden om SCV, hyperscalere, edge og udbydere.
+  </Card>
+
+  <Card title="SHV-engines" icon="microchip" href="/da/engines/shv-engines">
+    Hardware-engines til kilder, katalog, profiler, partitioner, publicering og adaptere.
+  </Card>
+</CardGroup>
+
+## SKV-engine-familien
+
+SKV-overfladerne har hver deres egen engine:
+
+- SKVI-, SCLV-, SACV-, SODV- og SSFV-engines implementerer hver især inspect, check, propose, project (og recovery, hvor det er relevant).
+- SAV- og SEV-engines er C++26-processer på freezing path til evaluering af sammensætninger og udviklingssager.
+
+<Note>
+  Alle nuværende SKV-engines kan kun læse, forespørge, validere og foreslå. Programmatisk kanonisk anvendelse forbliver deaktiveret, indtil hver engines kontrakter for SSIAG-tilladelsesverifikation, expected-state-transaktion, qxctl-sikkerhedsforanstaltning, STAV-hændelse, gendannelse og negative tests er færdige.
+</Note>
+
+## Fælles garantier
+
+- Uafhængig installation og afinstallation pr. modul
+- Ingen automatisk gennemsøgning af repositoriet; manifest-opdagelse er eksplicit
+- Ingen delt autoritet; hver mutationsrute er beskyttet af SSIAG plus STAV
+- Ingen tilstedeværelse på hot path; engines tilføjer aldrig latens til live-workloads
+
+## Relaterede overflader
+
+<CardGroup cols={2}>
+  <Card title="qxctl-oversigt" icon="terminal" href="/da/qxctl/overview">
+    Administrativ CLI, der kalder præcise, kvitteringsvaliderede engines.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/da/governance/maestro">
+    Registrerer docking-relationer mellem engines og receptorer.
+  </Card>
+</CardGroup>

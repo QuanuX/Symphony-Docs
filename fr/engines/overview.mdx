@@ -1,0 +1,57 @@
+---
+title: "Moteurs de vecteurs Symphony : vue d'ensemble de l'installation indépendante"
+description: "Chaque moteur de vecteur Symphony s'installe indépendamment, s'exécute hors processus en C++ et reste sans autorité. Découvrez ici les familles de moteurs SKV, SCV et SHV."
+sidebarTitle: "Vue d'ensemble des moteurs"
+---
+
+Chaque vecteur Symphony actif de niveau applicatif peut disposer d'un moteur C++ hors processus, installable indépendamment. Les mécanismes C++ partagés et sans autorité se trouvent sous `libraries/` ; un coordinateur C++ distinct est propriétaire des mécanismes de sessions authentifiées et de réconciliation des worktrees. Les moteurs inspectent, valident, projettent et proposent dans le cadre de contrats dont les vecteurs sont propriétaires. Ils n'acquièrent aucune autorité du simple fait de générer du contenu.
+
+## Moteurs implémentés
+
+<CardGroup cols={2}>
+  <Card title="Fondation Knowledge Vector" icon="cube" href="/fr/engines/knowledge-vector-foundation">
+    Cadrage de processus C++, JSON, SHA-256, instantanés, reçus et découverte des manifestes.
+  </Card>
+
+  <Card title="Coordinateur de sessions" icon="gears" href="/fr/engines/coordinator">
+    Sessions authentifiées, réconciliation des worktrees et coordination de l'application du cycle de vie.
+  </Card>
+
+  <Card title="Moteurs de sources SCV" icon="cloud" href="/fr/engines/scv-source-engines">
+    Huit moteurs C++26 de connaissance des sources SCV, hyperscalers, edge et fournisseurs.
+  </Card>
+
+  <Card title="Moteurs SHV" icon="microchip" href="/fr/engines/shv-engines">
+    Moteurs matériels de sources, de catalogue, de profils, de partitionnement, de publication et d'adaptateurs.
+  </Card>
+</CardGroup>
+
+## Famille de moteurs SKV
+
+Chaque surface SKV dispose de son propre moteur :
+
+- Les moteurs SKVI, SCLV, SACV, SODV et SSFV implémentent chacun inspect, check, propose, project (et la reprise le cas échéant).
+- Les moteurs SAV et SEV sont des processus C++26 en chemin glacial destinés à l'évaluation de la composition et aux cas d'évolution.
+
+<Note>
+  Chaque moteur SKV actuel se limite à la lecture, à la requête, à la validation et à la proposition. L'application canonique programmatique reste désactivée jusqu'à ce que les contrats de vérification des permissions SSIAG, de transaction à état attendu, de garde-fou qxctl, d'événement STAV, de reprise et de tests négatifs de chaque moteur soient complets.
+</Note>
+
+## Garanties communes
+
+- Installation et désinstallation indépendantes par module
+- Aucune exploration ambiante du dépôt ; la découverte des manifestes est explicite
+- Aucune autorité partagée ; chaque route de mutation est soumise à SSIAG et STAV
+- Aucune résidence sur le chemin critique ; les moteurs n'injectent jamais de latence dans les charges de travail en direct
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="Vue d'ensemble de qxctl" icon="terminal" href="/fr/qxctl/overview">
+    CLI d'administration qui invoque des moteurs exacts validés par reçu.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/fr/governance/maestro">
+    Enregistre les relations d'amarrage entre moteurs et récepteurs.
+  </Card>
+</CardGroup>

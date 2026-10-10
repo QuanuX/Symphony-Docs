@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector og register"
+description: "SSFV eier kanonisk funksjonsidentitet, semantikk, hierarki, livssyklus og forsikring om administrasjon på tvers av alle implementerte Symphony-moduler og qxctl-flater."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) eier kontraktene for kanonisk identitet for applikasjonsfunksjoner, semantikk, hierarki, livssyklus, distinksjoner, distribuert ruting av poster, dekningsinventar og grafprojeksjon. Motoren er en uavhengig installerbar C++-prosess som utfører strukturelle og ferskhetsbevisste funksjonskontroller.
+
+## Operasjoner
+
+- **Inspect og check**: strukturell og ferskhetsbevisst funksjonsevaluering.
+- **Diff**: innholdsadresserte differ mellom funksjonstilstander.
+- **Propose**: kallerdeklarerte forslag til opptak eller endring av funksjoner.
+- **Graph**: deterministiske engangsgrafer over funksjoner for gjennomgang.
+
+## Registrert dekning
+
+Den nåværende registrerte katalogen er eksplisitt delvis:
+
+- **110** registrerte funksjoner
+- **35** registrerte eieromfang
+- **76** ratifiserte nestede funksjoner
+- **295** gjennomgåtte flater for funksjonsadministrasjon (**285** påkrevde, **13** bevisstøttede unntak, **9** forbud, **0** ikke gjennomgått)
+
+Registrerte eieromfang spenner over alle implementerte moduler, fra `qxctl` og validatoren via SKV-motorer og SSIAG-leverandører til SCV- og SHV-motorfamiliene.
+
+## Hva SSFV ikke gjør
+
+<Warning>
+  SSFV avgjør ikke om noe fortjener å være en funksjon, finner ikke opp identiteter og hevder ikke at et repositorium eller en vert er komplett. `review_required` er bevis for gjennomgang hos kalleren, ikke ratifisering eller apply-autoritet.
+</Warning>
+
+Funksjonsgjennomgang, opptak og livssyklusendringer forblir hos hver funksjons eierkontrakt.
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Oversikt over SKV" icon="book-open" href="/no/skv/overview">
+    Paraplyrammeverket som styrer SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/no/skv/sev">
+    Anvender evolusjonssaker på tillegg, endringer og avvikling av funksjoner.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/no/qxctl/session">
+    Administrer vedvarende SSFV-vedlikeholdssesjoner via qxctl.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/no/qxctl/vector-commands">
+    Kjør `qxctl ssfv ...` for inspect, check, diff, propose og graph.
+  </Card>
+</CardGroup>

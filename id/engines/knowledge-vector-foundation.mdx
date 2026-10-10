@@ -1,0 +1,53 @@
+---
+title: "Fondasi C++ Knowledge Vector Engine: Mekanika Bersama"
+description: "Fondasi C++ Knowledge Vector Engine menyediakan framing proses tanpa otoritas, JSON terbatas, SHA-256, snapshot, tanda terima, dan penemuan manifest yang eksplisit."
+sidebarTitle: "Pustaka Fondasi"
+---
+
+`libraries/knowledge-vector-engine-cpp` menyediakan mekanika C++ bersama tanpa otoritas yang digunakan ulang oleh setiap engine vektor Symphony. Pustaka ini menyediakan blok bangunan deterministik sehingga setiap engine dapat tetap terbatas, dapat direproduksi, dan bebas dari efek samping ambien.
+
+## Apa yang disediakan fondasi
+
+- **Framing proses**: protokol proses lokal tanpa otoritas yang digunakan oleh setiap engine
+- **JSON terbatas**: parsing dan emisi yang ketat dengan batas ukuran dan kedalaman yang eksplisit
+- **SHA-256**: pengalamatan konten untuk bukti dan tanda terima
+- **Pembacaan no-follow**: pembacaan sistem file yang tidak pernah menelusuri tautan simbolik secara tak terduga
+- **Snapshot deterministik**: snapshot yang dapat diulang dari status yang diinspeksi
+- **Validasi temporal**: penanganan UTC kanonis sesuai Symphony Temporal Semantics Contract
+- **Penemuan manifest pemilik**: penemuan manifest kontrak secara eksak
+- **Pengemasan berversi**: paket milik tanda terima yang dapat dipasang secara independen
+- **Tanda terima dan uninstall milik tanda terima**: uninstall yang hanya digerakkan oleh tanda terima yang memasang artefak tersebut
+
+## Batas penemuan manifest
+
+<Warning>
+  Penemuan manifest dimulai dari set bootstrap yang tetap dan hanya menelusuri deklarasi subordinat yang eksplisit. Proses ini tidak pernah melakukan penjelajahan repositori secara ambien atau menyimpulkan kepemilikan dari nama direktori.
+</Warning>
+
+Setiap engine vektor yang menggunakan fondasi ini mewarisi aturan tersebut.
+
+## Apa yang tidak dilakukan fondasi
+
+- Fondasi tidak membawa otoritas. Engine yang menggunakannya tetap harus mengotorisasi mutasi melalui SSIAG.
+- Fondasi tidak menerbitkan atau mengambil apa pun melalui jaringan.
+- Fondasi tidak memutasi file kanonis dengan sendirinya.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Koordinator sesi" icon="gears" href="/id/engines/coordinator">
+    Koordinator C++26 yang dibangun di atas fondasi untuk sesi dan rekonsiliasi.
+  </Card>
+
+  <Card title="Ikhtisar engine" icon="cube" href="/id/engines/overview">
+    Engine-engine yang menggunakan ulang fondasi.
+  </Card>
+
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kontrak vektor yang diimplementasikan oleh engine.
+  </Card>
+
+  <Card title="Ikhtisar qxctl" icon="terminal" href="/id/qxctl/overview">
+    CLI administratif yang memanggil engine yang eksak dan tervalidasi tanda terima.
+  </Card>
+</CardGroup>

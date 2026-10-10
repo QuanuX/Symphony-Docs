@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator pro vektorové enginy Symphony"
+description: "Knowledge Session Coordinator zajišťuje v C++26 ohraničenou kompatibilitu, rekonciliaci pracovních stromů, autentizované relace a koordinaci životního cyklu se schopností aplikace."
+sidebarTitle: "Koordinátor"
+---
+
+Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) je samostatně instalovatelný proces v C++26. Nachází se mezi qxctl a vektorovými enginy a vlastní ohraničenou kompatibilitu, rekonciliaci pracovních stromů (worktree), autentizované nekanonické relace, údržbu SSFV, plánování životního cyklu pouze formou reportů a samostatně autorizované žurnály se schopností aplikace.
+
+## Odpovědnosti
+
+- **Kontroly kompatibility** mezi qxctl, koordinátorem a enginy
+- **Rekonciliace pracovních stromů** s trvalým stavem založeným na slotech
+- **Autentizované nekanonické relace** pod oprávněním SSIAG
+- **Trvalé proudy údržby SSFV**
+- **Plánování životního cyklu pouze formou reportů** s deterministickými důkazy
+- **Žurnály se schopností aplikace** s připravenými pokusy, compare-and-swap, opětovným pozorováním, dynamickým přeplánováním a obnovou
+
+## Co koordinátor nedělá
+
+<Warning>
+  Koordinátor neprovádí sémantiku vektorů ani akce na hostiteli. Koordinuje důkazy a žurnály; každý engine nadále vlastní svou doménu a každá akce na hostiteli zůstává autorizována vlastním kontraktem.
+</Warning>
+
+- Žádná aplikace kanonických znalostí
+- Žádné spouštění libovolných příkazů
+- Žádní skrytí pozorovatelé ani rezidentní práce na pozadí
+
+## Integrace s qxctl
+
+qxctl vyvolává přesné instalace koordinátoru validované potvrzením. `qxctl knowledge reconcile ...` a `qxctl knowledge session ...` používají pro každou operaci jeden přesně navázaný koordinátor a změny vyžadují stabilní identifikátory operací a přesné aktuální digesty žurnálu pro compare-and-swap.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/cs/qxctl/reconcile">
+    Gramatika rekonciliace pracovních stromů.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/cs/qxctl/session">
+    Gramatika autentizovaných relací a údržby SSFV.
+  </Card>
+
+  <Card title="Základní knihovna" icon="cube" href="/cs/engines/knowledge-vector-foundation">
+    Sdílené mechanismy v C++, které koordinátor znovu využívá.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/cs/governance/ssiag">
+    Autorizuje relace, které koordinátor spravuje.
+  </Card>
+</CardGroup>

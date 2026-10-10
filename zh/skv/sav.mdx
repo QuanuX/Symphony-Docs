@@ -1,0 +1,50 @@
+---
+title: "SAV：用于组合评估的 Symphony Accordare Vector"
+description: "SAV 解析 Accord 引用、在三个轴上评估组合、验证 Named Version，并规划 Installation Blueprint，而不会修改规范事实。"
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector（SAV）负责解析已声明组件的组合与兼容性。其引擎是一个冻结路径、只读的 C++26 进程。SAV 组合精确的类型化投影，但绝不会从所有者向量那里接管源事实。
+
+## 操作
+
+SAV 支持丰富的评估操作：
+
+- **Accord 引用解析**：解析为不可变的派生 CURRENT 快照
+- **三轴评估**、比较与解释
+- **组合图**与一次性投影
+- **Named Version** 验证与差异比较
+- **Extension Capsule** 检查
+- **Installation Blueprint** 规划
+- 已声明组件之间的**兼容性协商**
+
+## SAV 不做的事情
+
+- SAV 不会接管其所组合组件的语义所有权。
+- SAV 不会替你选择设计方案；它只评估你所声明的内容。
+- SAV 不会修改规范文件。它的输出是证据和提议。
+- SAV 不是 STAV 追加权威。有关修改前意图的处理，请参阅 Accordare STAV 生产者。
+
+<Note>
+  SAV 仅支持读取、查询、验证和提议。在整个 SKV 引擎家族中，程序化规范 apply 仍处于禁用状态。
+</Note>
+
+## 相关内容
+
+<CardGroup cols={2}>
+  <Card title="SKV 概览" icon="book-open" href="/zh/skv/overview">
+    总体框架与 Contract Quad 模型。
+  </Card>
+
+  <Card title="Accordare 生产者" icon="pen-nib" href="/zh/governance/accordare-producer">
+    有界的 SAV Named Version 审计链路。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/zh/skv/sev">
+    触发 SAV 评估组合变更的演进案例。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh/qxctl/vector-commands">
+    已批准的 Accordare 语法实现后将以 `qxctl accord ...` 形式提供。
+  </Card>
+</CardGroup>

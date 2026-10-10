@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node identifikatori va klaster yozuvlari"
+description: "SNV Node identifikatori, resurslari, klaster a'zoliklari va foydalanuvchi bergan nomlarni ularni belgilamasdan qayd etadi va bog'laydi. SNIV, SNRV, SCIV va SCNV quyi vektorlaridan tashkil topgan."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector (SNV) Symphony bilan ishlatadigan jismoniy Node'laringizning identifikatorlari, resurslari, klaster a'zoliklari va nomlarini qayd etadi va o'zaro bog'laydi. U har biri alohida semantik chegaraga egalik qiluvchi to'rtta quyi vektordan iborat. SNV siz uchun hech narsani tanlamaydi, bermaydi, belgilamaydi yoki avtomatik ravishda qayta nomlamaydi.
+
+## Quyi vektorlar tarkibi
+
+SNV to'rtta barqaror semantik domendan qurilgan:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node identifikatori**: jismoniy Node identifikatori va uning aniq provayder resursi, tanlangan taklif va infratuzilma domeni bilan bog'liqliklari.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node resurslari**: Node uchun mahalliy va aniq malakalangan masofaviy resurslar haqidagi haqiqat.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Klaster identifikatori**: klaster identifikatori, shina ulanishi va Node'ning klasterdagi munosabatlari.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Birlashtirilgan nomlash**: siz yoki provayderlaringiz tomonidan allaqachon berilgan nomlarni SNV doirasida aniqlash.
+  </Card>
+</CardGroup>
+
+## Qayd etish chegarasi
+
+SNV faktlarni va ularning kelib chiqishini qayd etadi. U siz uchun nomlarni zaxiralamaydi, resurslarni ajratmaydi yoki klasterlar yaratmaydi. Nomlarni foydalanuvchi beradi; Symphony ularni qayd etadi. Provayder resurslarini foydalanuvchi tanlaydi; Symphony ularni o'zaro bog'laydi. Klaster topologiyasini foydalanuvchi loyihalaydi; Symphony uni hujjatlashtiradi.
+
+## SNV boshqa vektorlar bilan qanday bog'liq
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/uz/vectors/scv">
+    Qanday Node'lar mavjud bo'lishi mumkinligini belgilovchi provayder va tashqi resurslar haqidagi bilimlarni taqdim etadi.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/uz/vectors/sov">
+    qxctl orqali infratuzilmani o'rnatadi va o'zgartiradi, natijada SNV qayd etadigan Node'larni hosil qiladi.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/uz/vectors/shv">
+    Node ichidagi jismoniy komponentlar uchun batafsil uskuna imkoniyatlari dalillarini taqdim etishi mumkin.
+  </Card>
+</CardGroup>
+
+## Joriy holat
+
+SNV — rivojlanayotgan kanonik arxitektura shartnomasi. Hozirda hech qanday SNV engine'i, grafi, reyestr sxemasi, identifikator kodlovchisi, aniqlash xizmati, nomlash xizmati yoki qxctl buyrug'i amalga oshirilmagan. Yozuv sxemalari va engine'lar keyinga qoldirilgan.
+
+## Kelajakda o'rnatish imkoniyati
+
+Kelajakdagi har qanday SNV engine'i mustaqil o'rnatiladigan va o'z proyeksiyalarini aniq egasi dalillaridan qayta qura oladigan bo'lishi kerak. Hech bir engine faqat yozuvlarni saqlagani yoki aniqlagani uchun identifikator yoki nomlash vakolatiga aylanmaydi.

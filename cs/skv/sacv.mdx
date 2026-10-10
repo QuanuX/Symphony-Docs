@@ -1,0 +1,52 @@
+---
+title: "SACV: správa API kontraktů pro QuanuX Symphony"
+description: "SACV spravuje verzované API kontrakty prostřednictvím ohraničených kontrol OpenAPI 3.2.0, deterministických rozdílů kompatibility a návrhů registru deklarovaných volajícím napříč vektory."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) spravuje verzované API kontrakty napříč platformou. Jeho engine je nezávisle instalovatelný proces v C++, který provádí ohraničenou validaci JSON podle OpenAPI 3.2.0, deterministické rozdíly kompatibility a jednorázové inventáře. Sémantika koncových bodů zůstává u vektoru nebo modulu, který vlastní danou doménu; SACV spravuje tvar a kompatibilitu kontraktů.
+
+## Operace
+
+- **Inspect a check**: ověří, že dokument JSON podle OpenAPI 3.2.0 odpovídá ohraničenému profilu.
+- **Diff**: vypočítá deterministické rozdíly kompatibility mezi verzemi kontraktů.
+- **Propose**: přijímá návrhy registru deklarované volajícím pro nové nebo změněné kontrakty.
+- **Project**: emituje jednorázové inventáře pro recenzenty a navazující nástroje.
+
+## Co SACV spravuje
+
+SACV ohraničuje:
+
+- Tvar kontraktu (OpenAPI 3.2.0 s profilem SACV)
+- Klasifikaci kompatibility mezi verzemi
+- Členství přijatých kontraktů v registru
+
+SACV naopak:
+
+- Nevlastní sémantiku koncových bodů (tu si ponechává každý vektor nebo modul)
+- Negeneruje SDK, nepublikuje artefakty ani nevydává tokeny
+- Neimplikuje existenci živé síťové plochy (zmínka o budoucím privátním API žádné nevytváří)
+
+<Note>
+  SACV slouží pouze ke čtení, dotazování, validaci a navrhování. Programové kanonické apply je napříč enginy SKV zakázáno.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující framework a model Contract Quad.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Spravuje jakoukoli oficiální publikaci kontraktu registrovaného v SACV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cs/skv/sav">
+    Vyhodnocuje kompozici a kompatibilitu napříč deklarovanými komponentami.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Spusťte `qxctl sacv ...` pro inspect, check, diff a propose.
+  </Card>
+</CardGroup>

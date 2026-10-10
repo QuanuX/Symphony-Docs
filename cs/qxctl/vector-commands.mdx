@@ -1,0 +1,82 @@
+---
+title: "Vektorové příkazy qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Prozkoumejte vektorově specifickou gramatiku qxctl dostupnou již dnes: SKVI, SCLV, SACV, SODV, SSFV, úložiště a katalog SHV a také rezervované oblasti accord a evolution."
+sidebarTitle: "Vektorové příkazy"
+---
+
+qxctl zpřístupňuje vektorově specifickou gramatiku pro každý implementovaný engine SKV a pro správu SCV a SHV. Ratifikovaná gramatika Accordare a SEV bude používat `qxctl accord ...` a `qxctl evolution ...`, jakmile budou existovat implementace jejich příkazů a stabilní důkazy v registru.
+
+## Gramatika enginů SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project vůči enginu SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project vůči enginu SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project vůči enginu SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project vůči enginu SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph vůči enginu SSFV
+
+Každá gramatika je ohraničena kontraktem vlastnícího enginu. qxctl si nikdy nevymýšlí operace ani engine neobchází.
+
+## Doplňky Accordare
+
+Doplňky Accordare v qxctl poskytují:
+
+- Stabilní status
+- Rekonciliaci (přehrává pouze přesné kandidáty)
+- Instalaci a odinstalaci supervizoru (vyvolává pouze ověřený spustitelný soubor se stvrzenkou v2)
+- Dvě identity správy grantů, které mutují pouze zastavenou konfiguraci STAV pod SSIAG a obnovou s očekávaným stavem
+
+Status odděluje trvalý záměr a nevyřízené připojování. Rekonciliace přehrává pouze přesné kandidáty. Listové příkazy grantů nikdy neotevírají běžící konfiguraci.
+
+## Úložiště SHV
+
+Trvalé úložiště SHV se spravuje výhradně prostřednictvím:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` s uchovaným očekávaným digestem záměru slouží zároveň jako obnova. Neexistuje žádný samostatný alias pro obnovu. Rozsah úložiště se deklaruje ve vstupu; identita konektoru se nastavuje pomocí přepínačů. Strukturální úložiště neduplikuje sémantické `shv graph validate` ani nevybírá hlavu katalogu.
+
+`shv graph store inventory` (vydání 0.2) přidává logické čtení vázané na revizi s explicitními uchovanými identitami zapisovatelů. Starší výběr z verze 0.1 zůstává podporován.
+
+## Publikace katalogu SHV
+
+Publikace katalogu se spravuje výhradně prostřednictvím:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Obnova probíhá přes `apply --operation-id`, které se vzájemně vylučuje s `--input`. Místní výběr katalogu podložený oprávněními je odlišný od aktivace zdroje i od obecného úložiště grafů.
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Sémantika vektorů, kterou enginy implementují.
+  </Card>
+
+  <Card title="Vektor SHV" icon="microchip" href="/cs/vectors/shv">
+    Kontext hardwarového vektoru a seznam enginů.
+  </Card>
+
+  <Card title="Enginy SHV" icon="microchip" href="/cs/engines/shv-engines">
+    Podrobnosti na úrovni enginů.
+  </Card>
+
+  <Card title="Přehled qxctl" icon="terminal" href="/cs/qxctl/overview">
+    Úplná sada příkazů qxctl.
+  </Card>
+</CardGroup>

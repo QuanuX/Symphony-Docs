@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: प्रोफ़ाइल, बूट और Apply"
+description: "सख़्त compare-and-swap सुरक्षा उपायों के साथ qxctl के माध्यम से संरक्षित लाइफ़साइकल प्रोफ़ाइल, ओनरशिप, ऑब्ज़र्वेशन, बूट और apply-संगत ट्रांज़िशन प्रबंधित करें।"
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` ग्रामर संरक्षित प्रोफ़ाइल, ओनरशिप, ऑब्ज़र्वेशन, बूट जर्नल और apply-संगत ट्रांज़िशन का प्रशासन करता है। हर म्यूटेशन compare-and-swap होता है और हर apply सटीक साक्ष्य से बद्ध होता है।
+
+## प्रोफ़ाइल
+
+किसी TOPS के लिए संरक्षित लाइफ़साइकल प्रोफ़ाइल सेट करें:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+पहली बार की प्रोफ़ाइल के लिए `absent` दें, या किसी पिछले रीड द्वारा रिपोर्ट किया गया सटीक डाइजेस्ट दें।
+
+## ओनरशिप
+
+- `ownership status`: एक कॉन्फ़िगर किए गए साझा रूट का निरीक्षण करें
+- `ownership reconcile`: उसके साक्ष्य को रीफ़्रेश करें
+- `ownership adopt`: हर रूढ़िवादी लेगेसी दावे की समीक्षा के बाद ही अपनाएँ
+- `ownership release`: केवल उस एक सटीक लेगेसी रसीद के लिए रिलीज़ करें जिसे जानबूझकर पुनः दावा योग्य बनाया गया हो
+
+<Warning>
+  रूट-लोकल रजिस्ट्री या उसकी `symphony-root-ownership/1` रसीद-लेआउट संगतता फ़ेंस को कभी भी हाथ से न हटाएँ और न ही दोबारा लिखें। पुराने लाइफ़साइकल क्लाइंट्स को उस फ़ेंस का सामना करना चाहिए और अपने मौजूदा unknown-package ब्लॉकर पर रुक जाना चाहिए।
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: डिस्पोज़ेबल फ़िक्स्ड-लेआउट रसीद साक्ष्य उत्सर्जित करें
+- `report`: एक नई डिस्पोज़ेबल योजना बनाएँ
+- `boot`: स्थिर ऑपरेशन ID और सटीक जर्नल स्टेट के साथ टिकाऊ, केवल-रिपोर्ट प्रगति
+- `status`: v1 निरीक्षण
+- `recover --discover`: जब सामान्य status स्थानीय स्टेट को मान्य न कर सके, तब एक अद्वितीय v1 चेन रिकवर करें
+
+## Apply-संगत प्रोफ़ाइल
+
+किसी `apply-compatible` प्रोफ़ाइल के लिए, `apply` को केवल सटीक बूट सोर्स डाइजेस्ट, apply-जर्नल compare-and-swap, applied-state compare-and-swap, स्थिर ऑपरेशन ID और स्पष्ट स्टेज्ड रूट्स के साथ ही कॉल करें:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+प्रयास के ऑब्ज़र्वेशन के लिए `apply-status` का, या टिकाऊ रिकवरी के लिए सीमित `apply-recover` का उपयोग करें। कभी भी मैन्युअल रूप से कोई क्रिया न चुनें और न ही संरक्षित स्टेट को संपादित करें।
+
+<Note>
+  केवल-टाइमस्टैम्प ऑब्ज़र्वेशन रीफ़्रेश को स्थिर सिमेंटिक पहचानों को आगे बढ़ाए बिना दस्तावेज़ साक्ष्य बदलना चाहिए।
+</Note>
+
+## संबंधित सतहें
+
+<CardGroup cols={2}>
+  <Card title="सेशन कोऑर्डिनेटर" icon="gears" href="/hi/engines/coordinator">
+    लाइफ़साइकल योजना और apply समन्वय के पीछे का इंजन।
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/hi/qxctl/engines">
+    लाइफ़साइकल योजनाओं द्वारा संदर्भित इंजन बाइंडिंग प्रबंधित करें।
+  </Card>
+</CardGroup>

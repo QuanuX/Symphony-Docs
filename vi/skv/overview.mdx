@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: Tổng quan khung SKV"
+description: "SKV là khung bao trùm cho tri thức nền tảng khai báo của Symphony. Khám phá Contract Quad, các bề mặt đồng hành và mọi vector con dưới một mô hình quản trị duy nhất."
+sidebarTitle: "Tổng quan SKV"
+---
+
+Symphony Knowledge Vector (SKV) là khung chuẩn tắc cho tri thức nền tảng khai báo của Symphony. Nó lưu giữ sự thật kiến trúc, ranh giới module, hợp đồng, học thuyết (doctrine) và tri thức tương thích trong một cấu trúc mà con người, validator, qxctl, CI và các công cụ agentic sử dụng một cách nhất quán. SKV không phải là một runtime; nó là lớp tri thức dùng chung mà mọi vector đều đi qua.
+
+## Contract Quad
+
+Mỗi chủ sở hữu ngữ nghĩa trong SKV đều công bố một Contract Quad:
+
+- **INTENT.md**: mục đích, phạm vi và những gì nằm ngoài phạm vi
+- **MANIFEST.md**: các bề mặt chuẩn tắc và sự ủy quyền
+- **SKILL.md**: quy trình sử dụng an toàn cho bên gọi
+- **SPEC.md**: hành vi quy chuẩn
+
+Schema, registry, hồ sơ, sổ cái và các tạo phẩm khác nằm ngoài Quad bốn thành phần và vẫn được quản trị bởi cùng một chủ sở hữu.
+
+## Các bề mặt đồng hành
+
+Hai bề mặt đồng hành do SKV sở hữu định tuyến xuyên suốt mọi vector:
+
+- `knowledge/SLANG.md` ánh xạ từng thuật ngữ nền tảng tới đúng hợp đồng sở hữu ngữ nghĩa của nó.
+- `knowledge/NAMESPACES.md` ghi nhận quyền sở hữu các họ định danh mà không quy định cú pháp, cách cấp phát, vòng đời hay các định danh riêng lẻ.
+
+Không bề mặt đồng hành nào là thành phần thứ năm của Quad, một vector mới hay một dịch vụ runtime.
+
+## Quy tắc diễn giải
+
+Các hợp đồng hiện tại mô tả sự thật hiện tại. Các bản ghi chỉ-thêm (append-only) của SCLV và SODV lưu giữ những gì đã được biết, được ủy quyền hoặc được hoàn thành tại thời điểm ghi nhận. Khi trạng thái hợp đồng, bằng chứng triển khai và bản ghi áp dụng mới nhất không thống nhất, sự bất đồng đó là độ lệch (drift) cần được xem xét. Công cụ không được âm thầm tự tạo ra một cách hòa giải.
+
+## Các vector con
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/vi/skv/skvi">
+    Lập chỉ mục mỗi bề mặt chuẩn tắc hiện tại đúng một lần.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/vi/skv/sclv">
+    Sổ cái thay đổi chỉ-thêm cho các thay đổi mã nguồn quan trọng đã hoàn tất.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/vi/skv/sacv">
+    Quản trị OpenAPI 3.2.0 có giới hạn và so sánh tương thích.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Quản trị việc xuất bản chính thức và các bản ghi phát hành của QuanuX.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/vi/skv/ssfv">
+    Định danh tính năng, độ mới và bảo đảm quản trị.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/vi/skv/sav">
+    Thành phần Accordare và đánh giá tương thích ba trục.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/vi/skv/sev">
+    Các trường hợp tiến hóa, lập kế hoạch xử lý và kiểm tra tính mới.
+  </Card>
+
+  <Card title="Quản trị" icon="shield-halved" href="/vi/governance/ssiag">
+    Quản trị định danh SSIAG và kiểm toán STAV cho các thay đổi được ủy quyền.
+  </Card>
+</CardGroup>
+
+<Note>
+  Mọi SKV engine hiện tại chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc theo chương trình bị vô hiệu hóa cho đến khi các hợp đồng về quyền SSIAG, giao dịch theo trạng thái mong đợi, biện pháp bảo vệ qxctl, sự kiện STAV, khôi phục và kiểm thử phủ định của từng engine được hoàn thiện.
+</Note>

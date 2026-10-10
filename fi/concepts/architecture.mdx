@@ -1,0 +1,33 @@
+---
+title: "Symphonyn arkkitehtuuri"
+description: "Ymmärrä rajat käyttäjän valitseman infrastruktuurin, vektorisopimusten, moottorien, qxctl:n ja hallitun näytön välillä."
+sidebarTitle: "Arkkitehtuuri"
+---
+
+Symphony erottaa käyttäjän valitseman infrastruktuurin ja työkuormat alustan tiedosta ja hallinnasta. Alusta voi tarkastella, validoida ja raportoida yhteensopivuutta väittämättä omistavansa strategiaasi tai käsittelemättä suositusta määräyksenä.
+
+## Fyysinen taso ja työkuormataso
+
+[Node](/fi/concepts/node-habitat-nest) on tunnistettu fyysinen tietokone. **Habitat** on sen tarkka käyttöjärjestelmä- ja pakettikonditiointi, ja **Nest** (”pesä”) on työkuorma, joka palvelee käyttäjän valitsemaa tarkoitusta. Klusterit yhdistävät Nodet yhden tai useamman väylän kautta. Väyläkankaat, sovittimet, palveluntarjoajat ja laitteistovalinnat ovat eksplisiittisiä eivätkä yleispäteviä oletuksia.
+
+[Kuuma polku](/fi/concepts/hot-path-isolation) pysyy erillään hallinnollisesta läsnäolosta. qxctl ja tietotason työ voivat eksplisiittisesti hallinnoida Nodea, mutta niistä ei tule reaaliaikaisen suorituksen piilotettuja jatkuvia riippuvuuksia.
+
+## Semanttinen omistajuus
+
+[Vektorit](/fi/concepts/vectors) ovat rajattuja, pysyviä merkityksen ja sallittujen toimintojen omistajia. Jokainen omistaja julkaisee Contract Quadin: `INTENT.md`, `MANIFEST.md`, `SKILL.md` ja `SPEC.md`. [Symphony Knowledge Vector (SKV)](/fi/skv/overview) indeksoi kanoniset pinnat ja säilyttää reitin niiden omistajaan. Liitännäisskeemat, rekisterit ja kirjanpidot pysyvät hallittuina muuttumatta Quadin lisäjäseniksi.
+
+Toimitusvaiheet kuvaavat, milloin työ tehdään. Ne eivät siirrä semanttista omistajuutta vektorilta toiselle.
+
+## Moottorit ja komentopinta
+
+[Vektorimoottorit](/fi/engines/overview) ovat erikseen asennettavia, prosessin ulkopuolella toimivia komponentteja, jotka tarkastelevat, tarkistavat, projisoivat ja ehdottavat omistajasopimustensa puitteissa. Ne eivät saa valtuuksia pelkästään tuottamalla ehdotuksen.
+
+[qxctl](/fi/qxctl/overview) omistaa hallinnollisen komentokieliopin ja esitystavan. Se kutsuu rajattuja, kuitein validoituja kyvykkyyksiä, kun taas toiminnon määrittelevä vektori säilyttää sen semantiikan. Valtuutus- ja auditointinäyttö hallitsevat muutosreittejä; pelkkä [kutsujan luokittelu](/fi/concepts/caller-authority) ei myönnä valtuuksia.
+
+## Totuus ja kehitys
+
+Nykyiset sopimukset ilmaisevat nykyisen totuuden. Muutos- ja julkaisukirjanpidot säilyttävät tiettynä ajankohtana kirjatun näytön. Sopimusten, toteutusnäytön ja kirjatun historian väliset ristiriidat nostetaan esiin ajautumana sen sijaan, että ne kirjoitettaisiin hiljaisesti uudelleen. [SAV](/fi/skv/sav) arvioi koostamisen yhteensopivuutta; [SEV](/fi/skv/sev) suunnittelee hallittua kehitystä.
+
+<Note>
+  Tämä yleiskatsaus on rajojen kartta. Tutustu kunkin linkitetyn vektorin nykyiseen sopimukseen ja toteutusnäyttöön ennen kuin oletat kyvykkyyden olevan saatavilla tietyssä asennuksessa.
+</Note>

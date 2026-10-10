@@ -1,0 +1,82 @@
+---
+title: "qxctl ベクトルコマンド: skvi、sclv、sacv、sodv、ssfv、shv"
+description: "現在利用可能なベクトル固有の qxctl グラマーを紹介します。SKVI、SCLV、SACV、SODV、SSFV、SHV のストレージとカタログ、および予約済みの accord と evolution のサーフェスです。"
+sidebarTitle: "ベクトルコマンド"
+---
+
+qxctl は、実装済みのすべての SKV エンジンと、SCV および SHV の管理向けにベクトル固有のグラマーを公開しています。承認済みの Accordare と SEV のグラマーは、コマンドの実装と安定したレジストリエビデンスが揃い次第、`qxctl accord ...` と `qxctl evolution ...` を使用します。
+
+## SKV エンジングラマー
+
+- `qxctl skvi ...`: SKVI エンジンに対する inspect、check、propose、project
+- `qxctl sclv ...`: SCLV エンジンに対する inspect、check、propose、recover、project
+- `qxctl sacv ...`: SACV エンジンに対する inspect、check、diff、propose、project
+- `qxctl sodv ...`: SODV エンジンに対する inspect、check、verify、propose、recover、project
+- `qxctl ssfv ...`: SSFV エンジンに対する inspect、check、diff、propose、graph
+
+各グラマーは、所有するエンジンのコントラクトによって制約されます。qxctl が操作を独自に作り出したり、エンジンをバイパスしたりすることはありません。
+
+## Accordare の追加機能
+
+qxctl における Accordare の追加機能は次のとおりです。
+
+- 安定した status
+- reconciliation（正確な候補のみをリプレイ）
+- スーパーバイザーのインストールとアンインストール（検証済みの receipt-v2 実行可能ファイルのみを呼び出す）
+- SSIAG と期待状態リカバリーの下で、停止中の STAV 構成のみを変更する 2 つのグラント管理 ID
+
+status は永続的な意図と追記バックログを分離します。reconciliation は正確な候補のみをリプレイします。グラントのリーフが実行中の構成を開くことはありません。
+
+## SHV ストレージ
+
+永続的な SHV ストレージは、次のコマンドを通じてのみ管理されます。
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+保持された期待インテントダイジェストを指定した `commit` は、リカバリーも兼ねます。別のリカバリーエイリアスはありません。ストアのスコープは入力で宣言し、コネクター ID はフラグで設定します。構造的ストレージは、セマンティックな `shv graph validate` を重複して行ったり、カタログヘッドを選択したりしません。
+
+`shv graph store inventory`（リリース 0.2）は、明示的に保持されたライター ID を伴う、リビジョンにバインドされた論理読み取りを追加します。レガシーの 0.1 の選択も引き続きサポートされます。
+
+## SHV カタログの公開
+
+カタログの公開は、次のコマンドを通じてのみ管理されます。
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+リカバリーは `apply --operation-id` で行い、`--input` とは同時に指定できません。パーミッションに裏付けられたローカルカタログの選択は、ソースの有効化や汎用グラフストレージとは別物です。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SKV の概要" icon="book-open" href="/ja/skv/overview">
+    エンジンが実装するベクトルのセマンティクス。
+  </Card>
+
+  <Card title="SHV ベクトル" icon="microchip" href="/ja/vectors/shv">
+    Hardware Vector の背景とエンジン一覧。
+  </Card>
+
+  <Card title="SHV エンジン" icon="microchip" href="/ja/engines/shv-engines">
+    エンジンレベルの詳細。
+  </Card>
+
+  <Card title="qxctl の概要" icon="terminal" href="/ja/qxctl/overview">
+    qxctl コマンドサーフェスの全体。
+  </Card>
+</CardGroup>

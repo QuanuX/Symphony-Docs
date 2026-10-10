@@ -1,0 +1,54 @@
+---
+title: "qxctl validate：Symphony 驗證器警告政策"
+description: "透過 qxctl 管理獨立 Symphony 驗證器上受保護的警告政策、基準與顯示語法，且不會變更原始偵測器證據。"
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` 語法用於管理 Symphony 驗證器受保護的警告政策、基準與顯示語法。獨立安裝的 C++ 驗證器會產生不可變的原始證據；qxctl 則管理呼叫者中立的受保護呈現方式，且不會變更偵測結果。
+
+## qxctl validate 涵蓋的範圍
+
+- 九個受保護的警告生命週期葉節點命令
+- 確切的收據支援根摘要路由
+- 基準管理與差異報告
+- 行輸出與結構化 JSON 的顯示語法
+
+每個葉節點命令在套用受保護的警告政策之前，都會驗證驗證器的確切收據與結構化摘要。
+
+## 邊界
+
+<Warning>
+  qxctl validate 無法修復檔案、發布任何內容，或覆寫原始偵測器證據。警告處置影響的是呈現方式，而非偵測結果。
+</Warning>
+
+- 不得在受保護政策之外抑制警告
+- 不得修改驗證器輸出
+- 不得為無法使用的路由捏造涵蓋範圍
+
+## 常見用途
+
+- 建立或重設警告基準
+- 核准或重新開啟受治理的歷史警告
+- 輸出出現在儲存庫 README 中的收據支援根摘要
+
+支撐此語法的驗證器會檢查合約結構、目前原始碼封閉性、不變式擁有權、功能管理、版本發布，以及機器擁有的根摘要。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="驗證器" icon="clipboard-check" href="/zh-Hant/governance/validator">
+    qxctl 所管理的獨立唯讀 C++ 檢查器。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh-Hant/skv/ssfv">
+    在證據中檢查的功能管理預期。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh-Hant/skv/sodv">
+    出現在驗證器證據中的版本發布紀錄。
+  </Card>
+
+  <Card title="qxctl 概覽" icon="terminal" href="/zh-Hant/qxctl/overview">
+    完整的命令介面。
+  </Card>
+</CardGroup>

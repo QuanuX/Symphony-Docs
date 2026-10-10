@@ -1,0 +1,54 @@
+---
+title: "STAV: Revisjonshovedbok per TOPS som kun tillater tillegg, for Symphony"
+description: "STAV Append Authority driver revisjonshovedbøker per TOPS som kun tillater tillegg, med autentisert IPC, fsync før kvittering, avgrensede lesinger, verifisering og gjenoppretting."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) definerer protokollen for revisjonshovedboken per TOPS som kun tillater tillegg. Kjøretidsautoriteten ligger i `modules/stav-append-authority`, en uavhengig installerbar Go-tjeneste. Operative hovedbøker per TOPS er private for hver TOPS-installasjon; de er ikke SKV-innhold.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` leverer:
+
+- Revisjonshovedbøker per TOPS som kun tillater tillegg
+- Gjensidig autentisert lokal IPC
+- Eksakte tildelinger for produsenter og lesere
+- Varighet med fsync før kvittering
+- Avgrensede lesinger, verifisering og gjenoppretting
+- Registrering og innebygd tilsyn (launchd, systemd)
+
+<Warning>
+  qxctl mottar aldri rå tilleggsautoritet. Det koordinerer registrering, verifisering og tildelinger gjennom den eksakte, moduleide adapteren, men tillegg i hovedboken forblir forseglet inne i prosessen for tilleggsautoriteten.
+</Warning>
+
+## STAV-protokoll for Go
+
+`libraries/stav-protocol-go` er et Go-bibliotek uten autoritet som implementerer den kanoniske STAV v1-kodeken, streng validering, sammendrag, rammer, samsvarsregler og det lukkede produsentvokabularet. Enhver produsent eller leser kan ta i bruk protokollen uten å arve autoritet.
+
+## Fullførte SODV-publiseringer
+
+Hvert STAV-artefakt som for tiden er publisert gjennom SODV, er en versjon av en Go-kildemodul, ikke en binær utgivelse:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/no/governance/ssiag">
+    Autoriserer beskyttede mutasjoner som STAV deretter reviderer.
+  </Card>
+
+  <Card title="Accordare-produsent" icon="pen-nib" href="/no/governance/accordare-producer">
+    Sender hensikt før mutasjon og endelige utfall inn i STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/no/qxctl/lifecycle">
+    Livssyklusadministrasjon som settes sammen med STAV-registrering.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/no/skv/sodv">
+    Styrer offisielle publiseringsposter for STAV-komponenter.
+  </Card>
+</CardGroup>

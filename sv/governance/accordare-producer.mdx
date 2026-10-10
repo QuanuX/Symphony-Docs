@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV-producent: avgränsad granskning av SAV Named Version"
+description: "Accordare STAV-producenten håller avsikt, utfall och återställning för SAV Named Version beständiga genom en Go-producent på den frysande vägen med autentiserade lokala parter."
+sidebarTitle: "Accordare-producent"
+---
+
+Accordare STAV-producenten (`modules/accordare-stav-producer`) är en oberoende installerbar Go-producent på den frysande vägen för den avgränsade granskningskretsen för SAV Named Version. Den håller avsikt före mutation och återställning av tillägg beständiga, autentiserar sina lokala parter och skickar endast in den exakta säkra kandidat som släpps in av dess slutna vokabulär. Den är inte själv tilläggsmyndigheten för STAV.
+
+## Mönstret avsikt, utfall, återställning
+
+Producenten följer ett mönster i tre steg för varje granskad mutation:
+
+<Steps>
+  <Step title="Avsikt före mutation">
+    Registrera anroparens angivna avsikt beständigt innan någon ändring blir observerbar. Producenten avvisar kandidater utanför sitt slutna vokabulär.
+  </Step>
+  <Step title="Slutligt utfall">
+    När mutationen har slutförts eller misslyckats fångas det exakta utfallet så att granskningen återspeglar verkligheten, inte ett önskat tillstånd.
+  </Step>
+  <Step title="Avgränsad återställning">
+    Vid avbrott utför producenten en avgränsad återställning av tilläggsströmmen utan att hitta på en avstämning eller i tysthet kasta bort avsikt.
+  </Step>
+</Steps>
+
+## Gränser
+
+<Warning>
+  Accordare-producenten är inte tilläggsmyndigheten för STAV. Den autentiserar lokala parter och skickar in kandidater; tilläggsmyndigheten validerar, förseglar och lagrar dem beständigt. Kringgå aldrig denna separation.
+</Warning>
+
+- Producentens vokabulär är slutet. Den accepterar endast granskningskandidater för SAV Named Version.
+- Producenten verkar på den frysande vägen. Den får inte bli ett beroende för den heta vägen.
+- Producenten autentiserar lokala parter; den autentiserar inte fjärranslutna anropare.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/sv/governance/stav">
+    Tilläggsmyndigheten som förseglar granskningsposter.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/sv/governance/ssiag">
+    Auktoriserar mutationen som producenten granskar.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/sv/skv/sav">
+    Semantiken för sammansättning av Named Version som denna krets granskar.
+  </Card>
+
+  <Card title="qxctl-vektorkommandon" icon="terminal" href="/sv/qxctl/vector-commands">
+    Ratificerad Accordare-grammatik kommer som `qxctl accord ...` när den har implementerats.
+  </Card>
+</CardGroup>

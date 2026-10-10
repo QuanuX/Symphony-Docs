@@ -1,0 +1,82 @@
+---
+title: "qxctl vektorparancsok: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Ismerje meg a ma elérhető vektorspecifikus qxctl nyelvtant: SKVI, SCLV, SACV, SODV, SSFV, SHV tárolás és katalógus, valamint a fenntartott accord és evolution felületek."
+sidebarTitle: "Vektorparancsok"
+---
+
+A qxctl vektorspecifikus nyelvtant biztosít minden megvalósított SKV-motorhoz, valamint az SCV- és SHV-adminisztrációhoz. A ratifikált Accordare- és SEV-nyelvtan a `qxctl accord ...` és a `qxctl evolution ...` formát fogja használni, amint a parancsok megvalósítása és a stabil regiszterbizonyíték elkészül.
+
+## SKV-motornyelvtan
+
+- `qxctl skvi ...`: inspect, check, propose, project az SKVI-motorral szemben
+- `qxctl sclv ...`: inspect, check, propose, recover, project az SCLV-motorral szemben
+- `qxctl sacv ...`: inspect, check, diff, propose, project a SACV-motorral szemben
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project az SODV-motorral szemben
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph az SSFV-motorral szemben
+
+Minden nyelvtant a tulajdonos motor szerződése korlátoz. A qxctl soha nem talál ki műveletet, és soha nem kerüli meg a motort.
+
+## Accordare-kiegészítések
+
+A qxctl Accordare-kiegészítései a következőket biztosítják:
+
+- Stabil állapot
+- Egyeztetés (csak pontos jelölteket játszik vissza)
+- Felügyelő telepítése és eltávolítása (csak az ellenőrzött receipt-v2 végrehajtható fájlt hívja meg)
+- Két engedélyadminisztrációs identitás, amelyek csak a leállított STAV-konfigurációt módosítják SSIAG és elvárt állapotú helyreállítás mellett
+
+Az állapot elkülöníti a tartós szándékot és a hozzáfűzési hátralékot. Az egyeztetés csak pontos jelölteket játszik vissza. Az engedély-levélparancsok soha nem nyitnak meg futó konfigurációt.
+
+## SHV-tárolás
+
+A tartós SHV-tárolás kizárólag a következőkön keresztül adminisztrálható:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+A megőrzött elvárt szándékdigesttel végrehajtott `commit` egyben helyreállítás is. Nincs külön helyreállítási alias. A tároló hatókörét a bemenet deklarálja; a konnektoridentitást kapcsolók állítják be. A strukturális tárolás nem duplikálja a szemantikai `shv graph validate` parancsot, és nem választ katalógusfejet.
+
+A `shv graph store inventory` (0.2-es kiadás) revízióhoz kötött logikai olvasást ad hozzá explicit, megőrzött íróidentitásokkal. Az örökölt 0.1-es kiválasztás továbbra is támogatott.
+
+## SHV-katalógus közzététele
+
+A katalógus közzététele kizárólag a következőkön keresztül adminisztrálható:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+A helyreállítás az `apply --operation-id`, amely kölcsönösen kizárja az `--input` kapcsolót. Az engedélyalapú helyi katalógusválasztás különbözik a forrásaktiválástól és az általános gráftárolástól.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    A motorok által megvalósított vektorszemantika.
+  </Card>
+
+  <Card title="SHV vektor" icon="microchip" href="/hu/vectors/shv">
+    A hardvervektor háttere és motorlistája.
+  </Card>
+
+  <Card title="SHV-motorok" icon="microchip" href="/hu/engines/shv-engines">
+    Motorszintű részletek.
+  </Card>
+
+  <Card title="qxctl áttekintés" icon="terminal" href="/hu/qxctl/overview">
+    A qxctl teljes parancsfelülete.
+  </Card>
+</CardGroup>

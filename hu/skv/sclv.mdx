@@ -1,0 +1,48 @@
+---
+title: "SCLV: a Symphony Change Ledger Vector a forrásmódosításokhoz"
+description: "Az SCLV a befejezett forrásmódosítások csak hozzáfűzhető főkönyvét vezeti szolgáltatósemleges javaslatokkal, nem módosító helyreállítással és eldobható vetületekkel."
+sidebarTitle: "SCLV"
+---
+
+A Symphony Change Ledger Vector (SCLV) az SKV-felületeken idővel végrehajtott változásokat rögzíti. Motorja egy függetlenül telepíthető C++ folyamat, amely determinisztikus, csak hozzáfűzhető főkönyv-ellenőrzéseket végez, és eldobható vetületeket állít elő. A főkönyvbe csak azután kerül bejegyzés, hogy egy lényegi forrásmódosítás befejeződött.
+
+## Műveletek
+
+- **Vizsgálat és ellenőrzés**: a főkönyv alakjának, folytonosságának és bizonyítékainak validálása.
+- **Javaslat (v3)**: a hívó által deklarált, szolgáltatósemleges javaslatok fogadása új rekordokhoz.
+- **Helyreállítás**: a megszakadt vagy kétértelmű állapot nem módosító helyreállítása.
+- **Vetítés**: a főkönyv állapotáról készült eldobható leltárak kibocsátása kérésre.
+
+## Felvétel és kivezetés
+
+Minden felvett SCLV-rekord a rögzítés időpontjában aktuális indexelt bizonyítékhoz kötődik. Egy felület későbbi, jogszerű kivezetése megőrzi a megváltoztathatatlan történeti eredetet anélkül, hogy a törölt aktuális szöveget visszakényszerítené az SKVI-be. A történet történet marad; az aktuális igazság aktuális marad.
+
+## Amit az SCLV nem végez
+
+- Az SCLV nem hoz létre és nem hagy jóvá forrásmódosításokat.
+- Az SCLV nem írja át a meglévő rekordokat; csak hozzáfűzhető.
+- Az SCLV semmit nem tesz közzé. A nyilvános vetítés az SODV feladata.
+
+<Note>
+  Minden jelenlegi SKV-motor kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A kanonikus alkalmazás le van tiltva, amíg az egyes motorok teljes hatósági és auditszerződései el nem készülnek.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/hu/skv/skvi">
+    Az aktuális kanonikus igazságot indexeli, amelyhez az SCLV-rekordok kötődnek.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    A főkönyvi információk hivatalos nyilvános vetítését irányítja.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/hu/skv/sev">
+    Az evolúciós esetek értékelik a változásokat, mielőtt az SCLV rögzítené őket.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Futtassa a `qxctl sclv ...` parancsot vizsgálathoz, ellenőrzéshez, javaslattételhez és helyreállításhoz.
+  </Card>
+</CardGroup>

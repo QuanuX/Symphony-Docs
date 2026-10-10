@@ -1,0 +1,51 @@
+---
+title: "SKVI: Symphony Knowledge Vector Index -moottori"
+description: "SKVI indeksoi deterministisesti jokaisen kanonisen SKV-pinnan kerran, tarkistaa manifestissa ilmoitetun kattavuuden ja tuottaa kertakäyttöisiä digestiin sidottuja projektioita koskematta totuuteen."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) on moottori, joka kartoittaa nykyisen kanonisen totuuden kaikilla SKV-pinnoilla. Se on itsenäisesti asennettava C++-prosessi, joka toimii deterministisesti ja vain luku -tilassa, eikä se voi päättää jäsenyydestä tai kirjoittaa kanonisia tiedostoja.
+
+## Mitä SKVI tekee
+
+SKVI suorittaa kolme rajattua operaatiota:
+
+- **Tarkastelu ja tarkistus**: varmista, että jokainen manifestissa ilmoitettu vaadittu pinta on indeksoitu tasan kerran vakaalla omistajalla, totuusroolilla, suhteilla, käyttäjillä ja projektiokelpoisuudella.
+- **Ehdotus**: ota vastaan kutsujan ilmoittamia muuttumattomia indeksimuutosehdotuksia soveltamatta niitä.
+- **Projektio**: tuota nykyisestä indeksistä kertakäyttöisiä digestiin sidottuja projektioita jatkokäyttäjille.
+
+## Mitä SKVI ei tee
+
+SKVI ei koskaan päätä ominaisuuksien arvokkuudesta tai manifestin jäsenyydestä. Omistajuus pysyy kunkin vektorin Contract Quadilla. Lisäksi SKVI ei:
+
+- Kirjoita tai kirjoita uudelleen kanonista Markdownia
+- Julkaise mitään julkiseen projektioon
+- Myönnä auktoriteettia pelkästään siksi, että se tuotti todisteita
+
+## Milloin sitä käytetään
+
+Käytä SKVI:tä varmistaaksesi, että repositorio on täysin katettu ennen kuin ehdotat lähdemuutosta, tai nähdäksesi, mikä omistaja ja totuusrooli tietyllä pinnalla on. Sen projektiot syöttävät ehdotusten tarkastajia, agenttien kontekstia ja validaattorin perustasoja.
+
+<Note>
+  SKVI on yksi vain luku-, kysely-, validointi- ja ehdotusmoottoreista. Kanoninen soveltaminen on edelleen poissa käytöstä ratifioiduissa vektorimoottoreissa, kunnes kunkin moottorin SSIAG-, odotetun tilan transaktio-, qxctl-suojaus-, STAV-tapahtuma-, palautus- ja negatiivitestisopimukset ovat valmiit.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys, joka hallinnoi SKVI:tä.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/fi/skv/sclv">
+    Vain lisäyksiä salliva muutoskirjanpito, joka kirjaa valmiit olennaiset lähdemuutokset.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Suorita `qxctl skvi ...` kutsuaksesi tarkastelua, tarkistusta ja ehdotusta.
+  </Card>
+
+  <Card title="Validaattori" icon="clipboard-check" href="/fi/governance/validator">
+    Itsenäiset vain luku -tarkistukset, jotka täydentävät SKVI:n kattavuutta.
+  </Card>
+</CardGroup>

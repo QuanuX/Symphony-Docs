@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: جلسات Symphony المصادق عليها"
+description: "افتح جلسات منسّق Symphony المصادق عليها وأنشئ نقاط تحقق لها وأغلقها واستردها، إضافةً إلى تدفقات صيانة SSFV المستمرة بمنح موثّقة عبر SSIAG."
+sidebarTitle: "session"
+---
+
+تفتح قواعد الأوامر `qxctl knowledge session ...` جلسات مصادقًا عليها غير قانونية (noncanonical) عبر منسّق واحد دقيق مربوط ونقطة نهاية SSIAG واحدة ضمن نطاق TOPS. وتقود قواعد أوامر منفصلة `session features ...` تدفق صيانة SSFV المستمر.
+
+## قواعد أوامر الجلسة الأساسية
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+يطلب كل استدعاء منحة جديدة دقيقة ويتحقق من:
+
+- هوية الموضوع والهدف
+- حالة السياسة والتكوين
+- انتهاء الصلاحية
+- حيادية فئة المستدعي
+- عدم قابلية النقل
+- تعطيل التطبيق القانوني
+- ربط القدرات
+
+لا تخوّل أدلة الجلسة سوى العملية المحمية غير القانونية المسمّاة. أبقِ سجلات الجلسات والتسوية منفصلة؛ واستخدم مراجع السياق فقط لربطها ببعضها.
+
+## تدفق صيانة SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+تدفق الميزات هو سياق صيانة SSFV مستمر ومنفصل. تتطلب التعديلات:
+
+- جلسة أساسية مفتوحة ومصادقًا عليها
+- روابط دقيقة للمنسّق وSSFV
+- معرّفات عمليات مستقرة
+- مقارنة ومبادلة دقيقة
+- أدلة SSIAG حديثة
+
+<Note>
+  حافظ على اللقطة الأساسية وهوية محركها الأصلية عبر الترقيات أو التراجعات المتوافقة. يجب أن تكون أدلة Maestro الاختيارية جردًا كاملًا مصادقًا عليه؛ وعندما يكون Maestro غائبًا عمدًا، سجّل السبب الصريح لعدم تكوينه. إن `review_required` دليل لمراجعة المستدعي، وليس إقرارًا.
+</Note>
+
+## واجهات ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ar/governance/ssiag">
+    يصدر المنح الجديدة التي يتحقق منها كل طلب جلسة.
+  </Card>
+
+  <Card title="منسّق الجلسات" icon="gears" href="/ar/engines/coordinator">
+    المحرك الذي يدعم سجلات الجلسات والميزات.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ar/qxctl/reconcile">
+    سياقات التسوية التي تقترن بالجلسات.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ar/skv/ssfv">
+    متجه الميزات الذي يصونه تدفق الميزات.
+  </Card>
+</CardGroup>

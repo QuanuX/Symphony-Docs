@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: Pengetahuan Kapabilitas Perangkat Keras"
+description: "SHV memelihara pengetahuan kapabilitas perangkat keras untuk CPU, GPU, NIC, motherboard, RAM, dan NVMe melalui beberapa engine C++ yang dapat diinstal secara independen."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) memiliki pengetahuan kapabilitas perangkat keras yang membantu Anda memahami bagaimana desain fisik dapat memungkinkan, membatasi, memporting, atau memperluas perangkat lunak kuantitatif. SHV mencakup prosesor, jenis core CPU, GPU, NIC dan antarmuka fiber, motherboard, hierarki cache, memori, NVMe, dan rakitan sistem lengkap. Kurasi default memprioritaskan komponen asli dan varian yang didukung bukti mulai dari tahun 2018.
+
+## Cakupan
+
+SHV dapat mencakup setiap kapabilitas fisik yang didukung bukti dan relevan dengan desain program. Anda mengendalikan profil cakupan melalui qxctl. Dasar tanggal default adalah peluncuran model, bukan tanggal produksi individual yang disimpulkan. Anda dapat memperluas, mempersempit, mengganti, atau menghapus filter ini.
+
+## Engine yang telah diimplementasikan
+
+Pengetahuan SHV disampaikan melalui beberapa engine C++ yang dapat diinstal secara independen:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Kernel inti (0.4.0-dev): profil cakupan, build/replay katalog dari sumber yang dipertahankan, evaluasi persyaratan, proyeksi graf deterministik, dan validasi graf yang didukung sumber.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Identitas sumber, rencana relokasi, binding penangkapan byte, dan graf provenans yang diputar ulang dari sumber.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Kesesuaian deklarasi, resep portabel, dan binding sumber lokal yang persis.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operasi partisi perangkat keras dan pemetaan komponen.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Head katalog pemanggil yang terlindungi, replay sumber asli, dan pemulihan snapshot yang tahan lama.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Port graf C++ generik dan adapter referensi portabel dalam memori untuk pertukaran tanpa kehilangan data.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Proyeksi relasional DuckDB opsional atas bukti graf perangkat keras.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Ekstraksi PDF terbatas dan validasi ulang asersi dokumenter dari byte asli.
+  </Card>
+</CardGroup>
+
+## Revisi sumber dan provenans
+
+`shv-source-engine` mengimplementasikan identitas sumber yang stabil, rencana relokasi eksplisit, validasi transisi murni, binding penangkapan byte aktual, dan graf provenans yang diputar ulang dari sumber. Ini adalah operasi hanya-baca. Kurasi inti memprioritaskan identitas komponen asli dan varian yang didukung bukti. Aktivasi sumber terlindungi ditangani secara terpisah; engine sumber murni tidak memberikan otoritas.
+
+## Pertukaran dan penyimpanan graf
+
+`shv-graph-adapter` menyediakan port graf C++ generik untuk pertukaran tanpa kehilangan data dan kueri struktural. Penyimpanan tahan lama diimplementasikan melalui default SQL DuckDB. Saat ini belum ada database graf khusus yang dipilih.
+
+## Batas bukti PDF
+
+`shv-pdf-adapter` mengekstrak asersi dokumenter yang memenuhi syarat dari tabel PDF eksplisit dan memvalidasinya ulang dari byte asli setelah pertukaran graf generik. Cakupan PDF umum tetap merupakan pekerjaan terpisah dengan cakupannya sendiri.
+
+## Pekerjaan yang tersisa
+
+Atlas perangkat keras yang luas, akuisisi sumber otomatis, agregasi konflik multisumber, driver database tambahan khusus vendor, pemuatan plugin kustom, dan integrasi Composer tetap menjadi pekerjaan berikutnya. Pemetaan komponen yang luas dan driver vendor yang tahan lama juga masih terbuka.
+
+## Hubungan SHV dengan vektor lain
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/id/vectors/snv">
+    Mencatat Node yang berisi perangkat keras yang dijelaskan SHV.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/id/vectors/scv">
+    Merujuk penawaran perangkat keras penyedia yang dikarakterisasi SHV secara terperinci.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/id/vectors/sov">
+    Dapat bertindak berdasarkan bukti SHV saat melakukan provisioning atau pengondisian Node.
+  </Card>
+</CardGroup>

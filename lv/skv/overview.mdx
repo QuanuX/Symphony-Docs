@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: SKV ietvara pārskats"
+description: "SKV ir Symphony deklaratīvo platformas zināšanu jumta ietvars. Iepazīstiet Contract Quad, pavadošās virsmas un visus apakšvektorus vienotā pārvaldības modelī."
+sidebarTitle: "SKV pārskats"
+---
+
+Symphony Knowledge Vector (SKV) ir Symphony deklaratīvo platformas zināšanu kanoniskais ietvars. Tas saglabā arhitektūras patiesību, moduļu robežas, līgumus, doktrīnu un saderības zināšanas struktūrā, ko cilvēki, validatori, qxctl, CI un aģentiski rīki izmanto konsekventi. SKV nav izpildlaiks; tas ir koplietojams zināšanu slānis, caur kuru iet katrs vektors.
+
+## Contract Quad
+
+Katrs semantiskais īpašnieks SKV publicē Contract Quad:
+
+- **INTENT.md**: mērķis, tvērums un tas, kas neietilpst tvērumā
+- **MANIFEST.md**: kanoniskās virsmas un deleģēšana
+- **SKILL.md**: droša lietošanas procedūra izsaucējiem
+- **SPEC.md**: normatīvā uzvedība
+
+Shēmas, reģistri, profili, virsgrāmatas un citi artefakti paliek ārpus četru dalībnieku Quad, un tos pārvalda tas pats īpašnieks.
+
+## Pavadošās virsmas
+
+Divas SKV piederošas pavadošās virsmas aptver visus vektorus:
+
+- `knowledge/SLANG.md` piesaista katru platformas terminu precīzam līgumam, kam pieder tā semantika.
+- `knowledge/NAMESPACES.md` reģistrē identitāšu saimju īpašumtiesības, nenosakot gramatiku, piešķiršanu, dzīves ciklu vai atsevišķas identitātes.
+
+Neviena no tām nav piektais Quad dalībnieks, jauns vektors vai izpildlaika pakalpojums.
+
+## Interpretācijas noteikums
+
+Pašreizējie līgumi apraksta pašreizējo patiesību. Tikai papildināmie SCLV un SODV ieraksti saglabā to, kas bija zināms, autorizēts vai pabeigts to reģistrētajā laika brīdī. Ja līguma stāvoklis, implementācijas pierādījumi un jaunākais piemērojamais ieraksts nesakrīt, šī neatbilstība ir novirze, kas jāpārskata. Rīki nedrīkst klusi izdomāt saskaņošanu.
+
+## Apakšvektori
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/lv/skv/skvi">
+    Indeksē katru pašreizējo kanonisko virsmu tieši vienu reizi.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/lv/skv/sclv">
+    Tikai papildināma izmaiņu virsgrāmata pabeigtām būtiskām pirmkoda izmaiņām.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/lv/skv/sacv">
+    Ierobežota OpenAPI 3.2.0 pārvaldība un saderības salīdzinājumi.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/lv/skv/sodv">
+    Pārvalda oficiālās QuanuX publikācijas un laidienu ierakstus.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/lv/skv/ssfv">
+    Funkciju identitāte, aktualitāte un administrēšanas nodrošinājums.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/lv/skv/sav">
+    Accordare kompozīcija un trīs asu saderības novērtēšana.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/lv/skv/sev">
+    Evolūcijas gadījumi, risinājumu plānošana un jaunuma pārbaudes.
+  </Card>
+
+  <Card title="Pārvaldība" icon="shield-halved" href="/lv/governance/ssiag">
+    SSIAG identitātes un STAV audita pārvaldība autorizētām izmaiņām.
+  </Card>
+</CardGroup>
+
+<Note>
+  Katrs pašreizējais SKV dzinējs tikai lasa, vaicā, validē un ierosina. Programmatiska kanoniskā piemērošana ir atspējota, līdz katra dzinēja SSIAG atļauju, gaidītā stāvokļa transakcijas, qxctl aizsardzības, STAV notikuma, atkopšanas un negatīvo testu līgumi ir pabeigti.
+</Note>

@@ -1,0 +1,57 @@
+---
+title: "Symphony Vector エンジン: 個別インストールの概要"
+description: "すべての Symphony vector エンジンは個別にインストールされ、C++ でプロセス外で実行され、権限を持ちません。ここでは SKV、SCV、SHV のエンジンファミリーを紹介します。"
+sidebarTitle: "エンジンの概要"
+---
+
+アクティブなアプリケーションレベルの Symphony vector はそれぞれ、個別にインストール可能なプロセス外の C++ エンジンを持つことができます。権限を持たない共有 C++ メカニズムは `libraries/` の下にあり、独立した C++ コーディネーターが認証済みセッションとワークツリー調整のメカニズムを所有します。エンジンは、vector が所有するコントラクトの範囲内で検査、検証、プロジェクション、提案を行います。コンテンツを生成したというだけで権限を得ることはありません。
+
+## 実装済みのエンジン
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector 基盤" icon="cube" href="/jp/engines/knowledge-vector-foundation">
+    C++ のプロセスフレーミング、JSON、SHA-256、スナップショット、レシート、マニフェスト検出。
+  </Card>
+
+  <Card title="セッションコーディネーター" icon="gears" href="/jp/engines/coordinator">
+    認証済みセッション、ワークツリーの調整、ライフサイクル適用の調整。
+  </Card>
+
+  <Card title="SCV ソースエンジン" icon="cloud" href="/jp/engines/scv-source-engines">
+    SCV、ハイパースケーラー、エッジ、プロバイダー向けの 8 つの C++26 ソースナレッジエンジン。
+  </Card>
+
+  <Card title="SHV エンジン" icon="microchip" href="/jp/engines/shv-engines">
+    ハードウェアのソース、カタログ、プロファイル、パーティション、公開、アダプターの各エンジン。
+  </Card>
+</CardGroup>
+
+## SKV エンジンファミリー
+
+SKV の各サーフェスには、それぞれ専用のエンジンがあります:
+
+- SKVI、SCLV、SACV、SODV、SSFV の各エンジンは、inspect、check、propose、project (および該当する場合は recovery) を実装します。
+- SAV と SEV のエンジンは、合成の評価と進化のケースのためのフリージングパスの C++26 プロセスです。
+
+<Note>
+  現在のすべての SKV エンジンは、読み取り、クエリ、検証、提案のみを行います。プログラムによる正規の適用は、各エンジンの SSIAG 権限検証、期待状態トランザクション、qxctl セーフガード、STAV イベント、リカバリー、ネガティブテストのコントラクトが完成するまで無効のままです。
+</Note>
+
+## 共通の保証
+
+- モジュールごとの個別のインストールとアンインストール
+- リポジトリの暗黙的なクロールはなく、マニフェストの検出は明示的
+- 共有の権限はなく、すべての変更ルートは SSIAG と STAV によってゲートされる
+- ホットパスへの常駐はなく、エンジンがライブワークロードにレイテンシーを持ち込むことはない
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl の概要" icon="terminal" href="/jp/qxctl/overview">
+    レシートで厳密に検証されたエンジンを呼び出す管理 CLI。
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/jp/governance/maestro">
+    エンジンとレセプター間のドッキング関係を記録します。
+  </Card>
+</CardGroup>

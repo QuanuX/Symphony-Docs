@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony のベクターエンジンのプレゼンス権限"
+description: "Maestro は、TOPS とレセプターごとに認証済みのベクターエンジンのドッキング関係を記録し、エンジンを起動または監督することなく、完全な読み取り専用のインベントリを導出します。"
+sidebarTitle: "Maestro"
+---
+
+Maestro（`modules/maestro`）は、個別にインストール可能なフリージングパスの C++26 プレゼンス権限です。TOPS とレセプターごとに、認証済みのベクターエンジンの正確なドッキング関係を記録し、現在ドッキングしているものの完全な読み取り専用インベントリを導出します。Maestro は監督者ではなく、立会人です。
+
+## Maestro が記録するもの
+
+- ベクターエンジンとレセプター間の、正確な認証済みのドッキング関係
+- 各インストールのプレゼンスをそのインストール内に閉じておくための TOPS ごとのスコープ
+- `qxctl maestro inventory` で利用できる、導出された完全な読み取り専用のインベントリ
+
+## Maestro が行わないこと
+
+<Warning>
+  Maestro は、エンジンの起動、スケジューリング、監督、呼び出しを行いません。バインディング、調整、認証済みセッションの調整、またはライフサイクル計画だけでは、Maestro のプレゼンスが確立されたり、セマンティックな真実が承認されたり、正規のナレッジが変更されたり、インストール先ホストの完全性が証明されたりすることはありません。
+</Warning>
+
+- Maestro はプロセスを作成しません。
+- Maestro は正規のナレッジの変更を適用しません。
+- Maestro は、セマンティクスを所有するベクターエンジンに取って代わることはありません。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/ja/qxctl/maestro">
+    `qxctl maestro inventory` は導出されたインベントリを表示します。
+  </Card>
+
+  <Card title="セッションコーディネーター" icon="gears" href="/ja/engines/coordinator">
+    認証済みセッションとワークツリー調整のメカニズムを担います。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ja/governance/ssiag">
+    Maestro が記録するドッキング関係を認証します。
+  </Card>
+
+  <Card title="エンジンの概要" icon="cube" href="/ja/engines/overview">
+    Maestro にドッキングする、個別にインストール可能なベクターエンジン。
+  </Card>
+</CardGroup>

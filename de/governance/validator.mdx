@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministische, schreibgeschützte Repository-Prüfungen"
+description: "Der Symphony Validator erzeugt zeilenbasierte oder strukturierte JSON-Nachweise für Verträge, Quellabschluss, Invarianten, Features, Releases und die maschinell geprüfte Root-Zusammenfassung."
+sidebarTitle: "Validator"
+---
+
+Der Symphony Validator (`tools/symphony-validator`) ist ein unabhängiger, deterministischer, schreibgeschützter C++26-Repository-Prüfer. Er erzeugt unveränderliche Nachweise über den aktuellen Zustand des Repositorys und seiner Verträge. Er kann nichts reparieren oder veröffentlichen.
+
+## Was der Validator prüft
+
+- Vertragsform: erforderliche Anker und Struktur des Contract Quad
+- Aktueller Quellabschluss über die von SKVI indexierten Oberflächen
+- Invarianten-Eigentum gemäß `knowledge/INVARIANTS.md` und der Invarianten-Registry
+- Von SSFV gemeldete Erwartungen an die Feature-Administration
+- Von SODV gemeldete Release-Einträge
+- Die maschinell verwaltete Root-Zusammenfassung in der README des Repositorys
+
+Nachweise werden als Zeilenausgabe oder strukturiertes JSON ausgegeben. Jede Ausgabe ist aus demselben Repository-Zustand reproduzierbar.
+
+## Was der Validator nicht tut
+
+<Warning>
+  Der Validator kann keine Dateien reparieren, keine Verträge umschreiben und das Repository nicht veröffentlichen. Er erschafft keinerlei kanonische Wahrheit; er berichtet sie nur.
+</Warning>
+
+- Keine Seiteneffekte auf das Repository
+- Kein Netzwerkzugriff
+- Keine Unterdrückung von Warnungen außerhalb der geschützten Warnungsrichtlinie von qxctl
+
+## qxctl-Integration
+
+qxctl validiert die exakte Quittung und die strukturierten Digests des Validators, bevor die geschützte Warnungsrichtlinie angewendet wird. Neun geschützte qxctl-Befehle für den Warnungslebenszyklus sowie die exakte, quittungsgestützte Route für die Root-Zusammenfassung stellen die Validierungsadministration bereit, ohne die rohen Detektornachweise zu verändern.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/de/qxctl/validate">
+    Grammatik für geschützte Warnungsrichtlinie, Baseline und Anzeige.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/de/skv/ssfv">
+    Erwartungen an die Feature-Administration, die der Validator prüft.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/de/skv/sodv">
+    Release-Einträge, die der Validator untersucht.
+  </Card>
+
+  <Card title="SKV-Überblick" icon="book-open" href="/de/skv/overview">
+    Das übergeordnete Framework, dessen Verträge der Validator prüft.
+  </Card>
+</CardGroup>

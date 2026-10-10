@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Đọc kiểm kê hiện diện receptor của Symphony"
+description: "Kiểm tra cơ quan hiện diện Maestro của Symphony thông qua qxctl để xem các quan hệ docking vector engine đã xác thực và kiểm kê receptor được suy ra."
+sidebarTitle: "maestro"
+---
+
+Cú pháp `qxctl maestro ...` hiển thị bằng chứng hiện diện của Maestro. Maestro là cơ quan hiện diện (presence authority); qxctl chỉ đọc và kiểm tra những gì Maestro ghi nhận. Không bên nào tự tạo ra quan hệ docking.
+
+## Kiểm kê
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` trình bày bản kiểm kê đầy đủ, được suy ra, chỉ đọc của Maestro về các quan hệ docking vector engine đã xác thực theo từng TOPS và receptor.
+
+## Các lộ trình quản trị liên quan
+
+Các lệnh lá qxctl bổ sung cung cấp khả năng quản trị liên quan đến Maestro:
+
+- Trạng thái và kiểm tra bằng chứng docking
+- Các lộ trình khôi phục được giới hạn bởi chính các hợp đồng của Maestro
+- Đăng ký vòng đời nền tảng và giám sát gốc (native supervision) cho chính Maestro
+
+Mọi lộ trình thay đổi đều đi qua đúng adapter do module sở hữu. qxctl không bao giờ dựng descriptor của Maestro từ việc phân tích nội bộ hay gọi một phiên bản mới nhất ngầm định.
+
+<Warning>
+  Maestro không khởi động, lập lịch, giám sát hay gọi engine. `qxctl maestro inventory` là chỉ đọc. Riêng việc ràng buộc, đối soát, điều phối phiên hoặc một kế hoạch vòng đời không thiết lập sự hiện diện trong Maestro.
+</Warning>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/vi/governance/maestro">
+    Hợp đồng và ranh giới của cơ quan hiện diện.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/vi/qxctl/engines">
+    Registry ràng buộc engine (ràng buộc không phải là docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/vi/qxctl/session">
+    Các phiên đã xác thực được dùng để ghi nhận sự hiện diện.
+  </Card>
+
+  <Card title="Tổng quan về engine" icon="cube" href="/vi/engines/overview">
+    Các vector engine có thể cài đặt độc lập và dock với Maestro.
+  </Card>
+</CardGroup>

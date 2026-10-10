@@ -1,0 +1,47 @@
+---
+title: "Symphony の Vector と配信フェーズ"
+description: "Symphony の永続的なセマンティック所有ドメイン (vector) と時系列の配信フェーズの違い、そして Contract Quad と現在の vector のステータスを理解します。"
+sidebarTitle: "Vector とフェーズ"
+---
+
+Symphony のアーキテクチャは 2 つの考え方を軸に構成されています。**vector** は永続的なセマンティック所有ドメインであり、**フェーズ** は時系列の配信キャンペーンです。あるフェーズで最初に調査されたコンポーネントであっても、そのフェーズが恒久的なオーナーになるわけではありません。vector は、実装が進化しても意味を安定させます。
+
+## vector とは
+
+vector は、永続的で境界づけられたセマンティック所有ドメインであり、その正規のコントラクトがドメインの意味と許可された操作を所有します。各 vector は **Contract Quad** を受け取ります: `INTENT.md`、`MANIFEST.md`、`SKILL.md`、`SPEC.md`、および実際に必要となる焦点を絞ったコンパニオンサーフェスです。vector は自身の正規サーフェスと委任グラフを宣言し、SKVI は現在の各サーフェスを正確に 1 回マッピングします。廃止されたコンパニオンは、矛盾するコンテキストとして残り続けるのではなく、管理された進化を通じて置き換えられます。
+
+## Vector のステータス
+
+| Vector | ステータス | ページ |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | 実装済み: インデックス化されたサーフェスを備えた Phase 1 基盤 | [/skv/overview](/jp/skv/overview) |
+| **SKVI** — ソースのインデックス化 | 実装済み: inspect/check/propose エンジン | [/skv/skvi](/jp/skv/skvi) |
+| **SCLV** — 変更台帳 | 実装済み: 追記専用台帳のチェック | [/skv/sclv](/jp/skv/sclv) |
+| **SACV** — API コントラクトガバナンス | 実装済み: OpenAPI 3.2.0 のチェック | [/skv/sacv](/jp/skv/sacv) |
+| **SODV** — 公式ドキュメント/リリースガバナンス | 実装済み: ローカルリリース台帳のチェック | [/skv/sodv](/jp/skv/sodv) |
+| **SSFV** — 機能のアイデンティティ/管理 | 実装済み: 構造的な機能チェック | [/skv/ssfv](/jp/skv/ssfv) |
+| **SAV** — Accordare 合成 | 実装済み: フリージングパス評価 | [/skv/sav](/jp/skv/sav) |
+| **SEV** — 進化 | 実装済み: 影響/処置の計画 | [/skv/sev](/jp/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | 実装済み: cgo を使用しない Go 基盤 | [/governance/ssiag](/jp/governance/ssiag) |
+| **STAV** — TOPS 監査プロトコル | 実装済み: TOPS ごとの追記専用台帳 | [/governance/stav](/jp/governance/stav) |
+| **SOV** — Ops Vector | 新興: プロビジョニング、Habitat、Nest の配信 | [/vectors/sov](/jp/vectors/sov) |
+| **SCV** — Cloud Vector | 実装済み: 8 つの C++ ソースナレッジエンジン | [/vectors/scv](/jp/vectors/scv) |
+| **SNV** — Node Vector | 新興: SNIV、SNRV、SCIV、SCNV の合成 | [/vectors/snv](/jp/vectors/snv) |
+| **SQV** — Quantitative Vector | 新興: SOOV FIX アーキテクチャのサブ vector | [/vectors/sqv](/jp/vectors/sqv) |
+| **SHV** — Hardware Vector | 実装済み: C++ のソース、カタログ、プロファイルエンジン | [/vectors/shv](/jp/vectors/shv) |
+| **SIV** — Intelligence Vector | 新興: SMCV オプションの Markdown、SAIV は予約済み | [/vectors/siv](/jp/vectors/siv) |
+
+## Contract Quad とコンパニオンサーフェス
+
+すべての vector は次のものを受け取ります:
+
+1. **INTENT.md** — 目的と範囲
+2. **MANIFEST.md** — アイデンティティ、宣言されたサーフェス、委任グラフ
+3. **SKILL.md** — 安全な使用方法と運用ガイダンス
+4. **SPEC.md** — 規範的な動作と境界
+
+`SLANG.md`、`NAMESPACES.md`、レジストリ、スキーマ、プロファイルなどのコンパニオンサーフェスは、4 つのメンバーからなる構造の外にある管理対象の成果物です。これらはオーナーの真実をルーティングまたは特化しますが、自らの権限を拡大することはできません。
+
+## エビデンスに基づく統合
+
+延期されたエンジンには捏造されたレシートはありません。提案中の API には架空のレジストリエントリはありません。未公開のコントラクトには SODV の完了の主張はありません。これは形式的な重複ではなく、エビデンスに基づく統合です。

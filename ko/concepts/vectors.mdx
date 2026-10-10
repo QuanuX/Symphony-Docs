@@ -1,0 +1,47 @@
+---
+title: "Symphony Vector와 전달 단계"
+description: "Symphony의 지속적인 의미 소유 도메인(vector)과 시간 순서에 따른 전달 단계의 차이, 그리고 Contract Quad와 현재 vector 상태를 이해하세요."
+sidebarTitle: "Vector와 단계"
+---
+
+Symphony는 두 가지 개념을 중심으로 아키텍처를 구성합니다. **vector**는 지속적인 의미 소유 도메인이고, **단계(phase)**는 시간 순서에 따른 전달 캠페인입니다. 어떤 구성 요소가 특정 단계에서 처음 연구되었다고 해서 그 단계가 영구적인 소유자가 되는 것은 아닙니다. vector는 구현이 발전하는 동안에도 의미를 안정적으로 유지합니다.
+
+## Vector란 무엇인가요?
+
+vector는 경계가 정해진 지속적인 의미 소유 도메인으로, 그 정식 계약이 해당 도메인의 의미와 허용된 작업을 소유합니다. 각 vector는 **Contract Quad**인 `INTENT.md`, `MANIFEST.md`, `SKILL.md`, `SPEC.md`와 함께 실제로 필요한 집중된 보조 표면을 받습니다. vector는 자신의 정식 표면과 위임 그래프를 선언하고, SKVI는 각 현재 표면을 정확히 한 번 매핑하며, 더 이상 사용되지 않는 보조 표면은 모순된 컨텍스트로 남지 않고 거버넌스가 적용되는 진화를 통해 대체됩니다.
+
+## Vector 상태
+
+| Vector | 상태 | 페이지 |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | 구현됨: 인덱싱된 표면을 갖춘 Phase 1 기반 | [/ko/skv/overview](/ko/skv/overview) |
+| **SKVI** — 소스 인덱싱 | 구현됨: inspect/check/propose 엔진 | [/ko/skv/skvi](/ko/skv/skvi) |
+| **SCLV** — 변경 원장 | 구현됨: 추가 전용 원장 검사 | [/ko/skv/sclv](/ko/skv/sclv) |
+| **SACV** — API 계약 거버넌스 | 구현됨: OpenAPI 3.2.0 검사 | [/ko/skv/sacv](/ko/skv/sacv) |
+| **SODV** — 공식 문서/릴리스 거버넌스 | 구현됨: 로컬 릴리스 원장 검사 | [/ko/skv/sodv](/ko/skv/sodv) |
+| **SSFV** — 기능 식별/관리 | 구현됨: 구조적 기능 검사 | [/ko/skv/ssfv](/ko/skv/ssfv) |
+| **SAV** — Accordare 구성 | 구현됨: 프리징 패스 평가 | [/ko/skv/sav](/ko/skv/sav) |
+| **SEV** — 진화 | 구현됨: 영향/처리 계획 | [/ko/skv/sev](/ko/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | 구현됨: cgo 없는 Go 기반 | [/ko/governance/ssiag](/ko/governance/ssiag) |
+| **STAV** — TOPS 감사 프로토콜 | 구현됨: TOPS별 추가 전용 원장 | [/ko/governance/stav](/ko/governance/stav) |
+| **SOV** — Ops Vector | 개발 중: 프로비저닝, Habitat, Nest 전달 | [/ko/vectors/sov](/ko/vectors/sov) |
+| **SCV** — Cloud Vector | 구현됨: 여덟 개의 C++ 소스 지식 엔진 | [/ko/vectors/scv](/ko/vectors/scv) |
+| **SNV** — Node Vector | 개발 중: SNIV, SNRV, SCIV, SCNV 구성 | [/ko/vectors/snv](/ko/vectors/snv) |
+| **SQV** — Quantitative Vector | 개발 중: SOOV FIX 아키텍처 하위 vector | [/ko/vectors/sqv](/ko/vectors/sqv) |
+| **SHV** — Hardware Vector | 구현됨: C++ 소스, 카탈로그, 프로필 엔진 | [/ko/vectors/shv](/ko/vectors/shv) |
+| **SIV** — Intelligence Vector | 개발 중: SMCV 선택적 Markdown, SAIV 예약됨 | [/ko/vectors/siv](/ko/vectors/siv) |
+
+## Contract Quad와 보조 표면
+
+모든 vector는 다음을 받습니다.
+
+1. **INTENT.md** — 목적과 범위
+2. **MANIFEST.md** — 식별, 선언된 표면, 위임 그래프
+3. **SKILL.md** — 안전한 사용법과 운영 안내
+4. **SPEC.md** — 규범적 동작과 경계
+
+`SLANG.md`, `NAMESPACES.md`, 레지스트리, 스키마, 프로필과 같은 보조 표면은 네 구성원 구조 밖에 있는, 거버넌스가 적용되는 아티팩트로 유지됩니다. 이들은 소유자의 진실을 라우팅하거나 특화하지만 자신의 권한을 확장할 수는 없습니다.
+
+## 증거 기반 통합
+
+연기된 엔진에는 조작된 영수증이 없습니다. 제안된 API에는 꾸며낸 레지스트리 항목이 없습니다. 게시되지 않은 계약에는 SODV 완료 주장이 없습니다. 이것은 형식적인 중복이 아니라 증거 기반 통합입니다.

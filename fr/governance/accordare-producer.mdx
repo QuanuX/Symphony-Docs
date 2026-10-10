@@ -1,0 +1,53 @@
+---
+title: "Producteur STAV Accordare : audit borné des Named Versions SAV"
+description: "Le producteur STAV Accordare rend durables l'intention, le résultat et la reprise des Named Versions SAV grâce à un producteur Go en chemin glacial doté de pairs locaux authentifiés."
+sidebarTitle: "Producteur Accordare"
+---
+
+Le producteur STAV Accordare (`modules/accordare-stav-producer`) est un producteur Go en chemin glacial, installable indépendamment, destiné au circuit d'audit borné des Named Versions SAV. Il rend durables l'intention préalable à la mutation et la reprise des ajouts, authentifie ses pairs locaux et ne soumet que le candidat sûr exact admis par son vocabulaire fermé. Il n'est pas lui-même l'autorité d'ajout STAV.
+
+## Le modèle intention, résultat, reprise
+
+Le producteur suit un modèle en trois étapes pour chaque mutation auditée :
+
+<Steps>
+  <Step title="Intention préalable à la mutation">
+    Enregistrer de manière durable l'intention déclarée de l'appelant avant que toute modification ne devienne observable. Le producteur refuse les candidats situés en dehors de son vocabulaire fermé.
+  </Step>
+  <Step title="Résultat final">
+    Une fois la mutation achevée ou échouée, capturer le résultat exact afin que l'audit reflète la réalité et non un état espéré.
+  </Step>
+  <Step title="Reprise bornée">
+    En cas d'interruption, le producteur effectue une reprise bornée du flux d'ajouts sans inventer de réconciliation ni écarter silencieusement l'intention.
+  </Step>
+</Steps>
+
+## Frontières
+
+<Warning>
+  Le producteur Accordare n'est pas l'autorité d'ajout STAV. Il authentifie les pairs locaux et soumet des candidats ; l'autorité d'ajout les valide, les scelle et les stocke de manière durable. Ne contournez jamais cette séparation.
+</Warning>
+
+- Le vocabulaire du producteur est fermé. Il n'accepte que les candidats d'audit des Named Versions SAV.
+- Le producteur fonctionne en chemin glacial. Il ne doit pas devenir une dépendance du chemin critique.
+- Le producteur authentifie les pairs locaux ; il n'authentifie pas les appelants distants.
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/fr/governance/stav">
+    L'autorité d'ajout qui scelle les enregistrements d'audit.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fr/governance/ssiag">
+    Autorise la mutation auditée par le producteur.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fr/skv/sav">
+    La sémantique de composition des Named Versions auditée par ce circuit.
+  </Card>
+
+  <Card title="Commandes de vecteur qxctl" icon="terminal" href="/fr/qxctl/vector-commands">
+    La grammaire Accordare ratifiée arrivera sous la forme `qxctl accord ...` une fois implémentée.
+  </Card>
+</CardGroup>

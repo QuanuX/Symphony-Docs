@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: מדיניות האזהרות של Symphony Validator"
+description: "ניהול מדיניות אזהרות מוגנת, baseline ודקדוק תצוגה מעל Symphony Validator העצמאי באמצעות qxctl, מבלי לשנות את ראיות הגלאי הגולמיות."
+sidebarTitle: "validate"
+---
+
+הדקדוק `qxctl validate ...` מנהל את מדיניות האזהרות המוגנת, ה-baseline ודקדוק התצוגה של Symphony Validator. ה-validator ב-C++, המותקן באופן עצמאי, מפיק ראיות גולמיות בלתי ניתנות לשינוי; qxctl מנהל הצגה מוגנת וניטרלית לקורא מבלי לשנות את הזיהוי.
+
+## מה qxctl validate מכסה
+
+- תשעה עלים מוגנים של מחזור חיי אזהרות
+- נתיב ה-root-summary המדויק המגובה בקבלה
+- ניהול baseline ודיווח על הפרשים (delta)
+- דקדוק תצוגה לפלט שורות ול-JSON מובנה
+
+כל עלה מאמת את הקבלה המדויקת של ה-validator ואת ה-digest-ים המובנים לפני החלת מדיניות האזהרות המוגנת.
+
+## גבול
+
+<Warning>
+  qxctl validate אינו יכול לתקן קבצים, לפרסם דבר כלשהו או לעקוף ראיות גלאי גולמיות. סיווג האזהרות משפיע על ההצגה, לא על הזיהוי.
+</Warning>
+
+- אין השתקת אזהרות מחוץ למדיניות המוגנת
+- אין שינוי של פלט ה-validator
+- אין כיסוי מפוברק עבור נתיב שאינו זמין
+
+## שימושים נפוצים
+
+- קביעה או איפוס של baseline אזהרות
+- אישור או פתיחה מחדש של אזהרה היסטורית מנוהלת
+- פליטת סיכום השורש המגובה בקבלה שמופיע ב-README של המאגר
+
+ה-validator שעליו נשען דקדוק זה בודק את צורת החוזים, סגירות המקור הנוכחית, בעלות על אינווריאנטים, ניהול תכונות, גרסאות (releases) וסיכום השורש שבבעלות המכונה.
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/he/governance/validator">
+    הבודק העצמאי והקריא בלבד ב-C++ ש-qxctl מנהל.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/he/skv/ssfv">
+    ציפיות ניהול התכונות הנבדקות בראיות.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/he/skv/sodv">
+    רשומות גרסה שמופיעות בראיות ה-validator.
+  </Card>
+
+  <Card title="סקירת qxctl" icon="terminal" href="/he/qxctl/overview">
+    משטח הפקודות המלא.
+  </Card>
+</CardGroup>

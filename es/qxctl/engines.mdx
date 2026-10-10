@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: vincular, diagnosticar y migrar el registro"
+description: "Gestiona el perfil protegido de vinculación de motores de ámbito de usuario de Symphony con list, inspect, doctor, bind, unbind y migrate ligado a digest mediante qxctl."
+sidebarTitle: "engines"
+---
+
+La gramática `qxctl knowledge engines ...` gestiona el perfil de vinculación protegido `default` de ámbito de usuario para los motores vectoriales de Symphony. Vincula contenido seleccionado para una reconciliación posterior. No instala, invoca, activa, acopla, autentica, autoriza ni aplica ningún motor.
+
+## Comandos
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Indica `absent` para la primera mutación del registro v2 o el digest exacto que informe `list` para las mutaciones posteriores. Cada mutación es una operación compare-and-swap contra ese digest.
+
+## Migración de v1 a v2
+
+<Warning>
+  El estado válido del registro v1 sigue siendo legible. La migración a v2 es una operación compare-and-swap exacta e independiente, y nunca es una operación de selección de versión. No trates la migración como una ruta de actualización para la selección de motores.
+</Warning>
+
+- `list` e `inspect` siguen funcionando con evidencia v1.
+- `migrate` produce una generación v2 enlazada sin descartar la verdad v1.
+- Después de la migración, usa digests v2 para las mutaciones futuras.
+
+## Qué es una vinculación
+
+Una vinculación (bind) selecciona contenido exacto para que el coordinador lo reconcilie más adelante. Una vinculación:
+
+- No instala un motor
+- No invoca ni activa un motor
+- No acopla un motor con Maestro
+- No autentica a quien llama
+- No autoriza la aplicación (apply)
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/es/qxctl/reconcile">
+    Reconcilia el contenido vinculado con un coordinador.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/es/qxctl/lifecycle">
+    Planes de ciclo de vida que usan motores vinculados.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/es/governance/maestro">
+    Autoridad de presencia que registra acoplamientos, no vinculaciones.
+  </Card>
+
+  <Card title="Descripción general de los motores" icon="cube" href="/es/engines/overview">
+    Motores vectoriales instalables de forma independiente.
+  </Card>
+</CardGroup>

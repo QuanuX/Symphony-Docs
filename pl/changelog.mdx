@@ -1,0 +1,25 @@
+---
+title: "Dziennik zmian"
+description: "Nowe funkcje, aktualizacje i poprawki wprowadzone w QuanuX Symphony."
+rss: true
+---
+
+<Update label="2 października 2026" description="Tydzień od 25 września" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Nowe funkcje
+
+- **Silniki Symphony Node Vector.** Pięć niezależnie instalowanych silników C++26 obejmuje teraz tożsamość Node (SNIV), zasoby (SNRV), relacje klastrowe (SCIV), nazwy (SCNV) oraz kompozycję i retencję SNV. Dostarczonymi dowodami, wybranymi widokami i zachowaną historią możesz administrować za pomocą qxctl. Obserwacja na żywo i provisioning SOV nie są jeszcze uwzględnione. Zobacz [Node Vector](/pl/vectors/snv).
+- **Opcjonalny lokalny obserwator SNV.** qxctl może wywołać oddzielny lokalny obserwator, który raportuje wybrane obserwacje CPU i pamięci z jawnie określoną niepewnością. Nigdy nie przypisuje tożsamości, członkostwa ani nazw.
+- **Podstawy danych badawczych SQV.** Nowe biblioteki C++26 obejmują przechwytywanie z oryginalnymi bajtami i pochodzeniem źródła (SQAV), metadane (SQMV), przepływ (SQFV), dokładną konwersję liczb całkowitych z rodowodem (SQTV), lokalną retencję (SQPV) oraz dostarczanie z punktami kontrolnymi i dokładnym wznawianiem (SQDV). Zobacz [Quantitative Vector](/pl/vectors/sqv).
+- **Administracja SQV przez qxctl.** Siedem niezależnie instalowanych silników administracyjnych udostępnia walidację żądań i konfiguracji, projekcje metadanych oraz inspekcję zachowanego stanu w trybie tylko do odczytu. Zobacz [Polecenia wektorów](/pl/qxctl/vector-commands).
+- **Adaptery Databento i brokerów.** SQV obsługuje teraz przechwytywanie Databento DBNv3 MBO, zachowuje próbki DBNv1 i DBNv3 oraz planuje ograniczone żądania historyczne z dowodami pokrycia. Dostępne są również adaptery odczytu źródeł i brokerów działające poza trybem na żywo. Uwierzytelnione wykonywanie u dostawców i zbieranie danych na żywo pozostają przyszłą pracą.
+
+## Aktualizacje
+
+- **Dopuszczanie poświadczeń w SSIAG.** SSIAG dodaje jednorazowe zabezpieczenia użycia poświadczeń, uwierzytelnione dopuszczanie wysyłki, trwały dziennik żądań poświadczeń z odzyskiwaniem oraz natywną walidację peerów w systemie macOS. Operacyjne użycie poświadczeń pozostaje wyłączone. Zobacz [SSIAG](/pl/governance/ssiag).
+- **Pokrycie poleceń qxctl.** qxctl ma teraz 399 stabilnych tożsamości poleceń, w porównaniu z 383 wcześniej. Powiązania silników obsługują 13 ustalonych ról, w tym pięć silników SNV. Zobacz [Przegląd qxctl](/pl/qxctl/overview).
+- **Interfejs wsadowy SQFV.** Biblioteka wsadowa SQFV używa teraz API C++26 zamiast C ABI. Zaktualizuj wszelkie integracje, które wywoływały poprzedni interfejs.
+- **Pojemność SKVI.** [SKVI](/pl/skv/skvi) indeksuje więcej powierzchni, w tym nowych właścicieli danych badawczych SQV.
+- **Wskazówki dotyczące instalacji silników.** Wskazówki instalacyjne wyjaśniają teraz, że każdy silnik instalujesz, aktualizujesz i usuwasz osobno. Zobacz [Przegląd silników](/pl/engines/overview).
+
+</Update>

@@ -1,0 +1,57 @@
+---
+title: "Engines de vetor do Symphony: visão geral da instalação independente"
+description: "Cada engine de vetor do Symphony é instalada de forma independente, executada fora do processo em C++ e permanece sem autoridade. Conheça aqui as famílias de engines SKV, SCV e SHV."
+sidebarTitle: "Visão geral das engines"
+---
+
+Cada vetor ativo do Symphony no nível de aplicação pode ter uma engine C++ instalável de forma independente e executada fora do processo. As mecânicas compartilhadas em C++, sem autoridade, ficam em `libraries/`; um coordenador C++ separado é dono das mecânicas de sessões autenticadas e de reconciliação de worktrees. As engines inspecionam, validam, projetam e propõem dentro dos contratos de propriedade dos vetores. Elas não adquirem autoridade simplesmente por gerar conteúdo.
+
+## Engines implementadas
+
+<CardGroup cols={2}>
+  <Card title="Fundação do Knowledge Vector" icon="cube" href="/pt-BR/engines/knowledge-vector-foundation">
+    Enquadramento de processos em C++, JSON, SHA-256, snapshots, recibos e descoberta de manifestos.
+  </Card>
+
+  <Card title="Coordenador de sessões" icon="gears" href="/pt-BR/engines/coordinator">
+    Sessões autenticadas, reconciliação de worktrees e coordenação da aplicação de ciclo de vida.
+  </Card>
+
+  <Card title="Engines de fontes do SCV" icon="cloud" href="/pt-BR/engines/scv-source-engines">
+    Oito engines C++26 de conhecimento de fontes para SCV, hyperscalers, edge e provedores.
+  </Card>
+
+  <Card title="Engines do SHV" icon="microchip" href="/pt-BR/engines/shv-engines">
+    Engines de fontes, catálogo, perfis, particionamento, publicação e adaptadores de hardware.
+  </Card>
+</CardGroup>
+
+## Família de engines do SKV
+
+Cada superfície do SKV tem a sua própria engine:
+
+- As engines do SKVI, SCLV, SACV, SODV e SSFV implementam, cada uma, inspeção, verificação, proposta e projeção (e recuperação, quando aplicável).
+- As engines do SAV e do SEV são processos C++26 de caminho congelado para avaliação de composição e casos de evolução.
+
+<Note>
+  Todas as engines atuais do SKV são apenas de leitura, consulta, validação e proposta. A aplicação canônica programática permanece desativada até que os contratos de verificação de permissões do SSIAG, transação de estado esperado, salvaguarda do qxctl, evento do STAV, recuperação e testes negativos de cada engine estejam concluídos.
+</Note>
+
+## Garantias comuns
+
+- Instalação e desinstalação independentes por módulo
+- Nenhuma varredura ambiente do repositório; a descoberta de manifestos é explícita
+- Nenhuma autoridade compartilhada; toda rota de mutação é controlada pelo SSIAG e pelo STAV
+- Nenhuma residência no hot path; as engines nunca injetam latência em workloads ao vivo
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Visão geral do qxctl" icon="terminal" href="/pt-BR/qxctl/overview">
+    CLI administrativa que invoca engines exatas validadas por recibo.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/pt-BR/governance/maestro">
+    Registra os relacionamentos de acoplamento entre engines e receptores.
+  </Card>
+</CardGroup>

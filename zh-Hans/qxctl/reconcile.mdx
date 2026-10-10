@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile：工作树协调"
+description: "针对已绑定的 Symphony 协调器协调工作树，包括兼容性检查、checkpoint 与 close 日志，以及基于证据的双槽恢复。"
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` 语法通过一个确切的、已绑定的 Knowledge Session Coordinator（知识会话协调器）驱动工作树协调。每一次变更都以稳定标识符进行跟踪，并针对当前确切的日志摘要执行比较并交换。
+
+## 命令
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`：验证 qxctl、协调器以及已绑定的引擎在协议版本和作用域上一致。
+- `begin`：使用稳定的操作标识符开启新的协调上下文。
+- `status`：在不做变更的情况下检查当前日志。
+- `checkpoint`：通过比较并交换持久地推进日志。
+- `close`：结束协调上下文。
+- `recover --discover`：当常规 status 无法验证本地状态时进行发现式恢复。
+
+## 恢复规则
+
+<Warning>
+  双槽恢复是基于证据的前向修复。它绝不意味着允许丢弃不兼容的日志或未知的关键扩展。如果恢复失败，请上报处理，而不是强制执行。
+</Warning>
+
+仅当常规 status 无法验证本地状态时才使用发现式恢复。保留阻断项；只有在经验证的证据发生变化后才重新规划。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="会话协调器" icon="gears" href="/zh-Hans/engines/coordinator">
+    拥有协调日志的引擎。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh-Hans/qxctl/session">
+    与协调上下文配对的已认证会话。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/zh-Hans/qxctl/engines">
+    管理协调器所使用的绑定。
+  </Card>
+</CardGroup>

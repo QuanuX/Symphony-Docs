@@ -1,0 +1,28 @@
+---
+title: "Neutralitet over for kalderklasse og værtsautoritet i Symphony"
+description: "Symphony klassificerer ikke kaldere efter type. Autoritet udspringer af ejerskab af målværten, eksplicit tilladelse, forventet tilstand og ejerkonfigurerede sikkerhedsforanstaltninger."
+sidebarTitle: "Kalderautoritet"
+---
+
+Symphony klassificerer ikke en kalder som menneske, AI, agent, tjeneste, workload, organisation eller nogen anden aktørtype, når der træffes beslutning om autoritet. Din klassificering som person eller automatiseret system giver eller fjerner ikke i sig selv nogen kapabilitet. Denne neutralitet over for kalderklasse er en central arkitektonisk grænse, der holder autorisation forankret i fakta frem for etiketter.
+
+## Hvad styrer autoritet
+
+Understøttede autorisationsbeslutninger bruger følgende input:
+
+- **Ejerskab af målværten eller tildelte tilladelser**: Målværtens administrator er suveræn over konfigurerbar governance.
+- **Anmodet operation og ressource**: Den konkrete handling og det objekt, den handler på.
+- **Forventet tilstand**: Det erklærede ønskede resultat og den observerede aktuelle tilstand.
+- **Ejerkonfigurerede sikkerhedsforanstaltninger**: Konservative standarder, som administratoren kan justere eller fjerne.
+
+## SSIAG og værtsautoritet
+
+SSIAG kan verificere og projicere effektiv værtsautoritet, men opretter ikke en overordnet registreringsmyndighed og nedlægger ikke permanent veto mod målværtens administrator. Forstærket identitetssikring og governance-spærringer er kalderneutrale, ejerkonfigurerede sikkerhedsforanstaltninger. Krav til protokolintegritet forbliver obligatoriske i understøttede værktøjer.
+
+## Hvad Symphony ikke afgør
+
+Symphony afgør ikke, om en aktør må eje ejendom, åbne en konto, underskrive en kontrakt, påtage sig ansvar eller handle på vegne af en anden enhed. Disse forhold tilhører den relevante ejer, udbyder, modpart og gældende lovgivning. Platformen holder sig inden for sin afgrænsede rolle: Den producerer kompatibilitetsevidens og understøtter operationer, men strækker sig ikke til at fastslå ekstern juridisk eller finansiel kapacitet.
+
+## Praktisk betydning
+
+Når du kalder qxctl eller en vector-engine, gælder de samme kontroller, uanset om du kører kommandoen manuelt, via et script eller gennem et agentisk værktøj. Autoritetsvejen er: ejerskab af målværten, eksplicit tilladelse, forventet tilstand, sikkerhedsforanstaltninger. Ingen kaldertype får automatisk omgåelse eller automatisk begrænsning.

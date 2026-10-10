@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: vektorokon átívelő életciklus-adminisztráció"
+description: "A qxctl knowledge parancscsoport felel a vektorokon átívelő életciklusért, a munkamenet-átmenetekért, az invariáns-lekérdezésekért és a tartós SSFV-karbantartási adminisztrációért."
+sidebarTitle: "knowledge"
+---
+
+A `qxctl knowledge ...` csoport felel a vektorokon átívelő életciklusért és a tartós SSFV-munkamenetek adminisztrációjáért. Ez a belépési pont a koordinátor által támogatott műveletekhez és a validátorral szembeni invariáns-lekérdezésekhez.
+
+## Munkamenet-átmenet
+
+A `qxctl knowledge session transition` paranccsal jelezhet egy gazdagép-életciklus eseményt egy meglévő munkamenetnek:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+A biztonságos újrapróbálkozások ugyanazt az eseményazonosítót használják újra. A `--recover` kapcsolót csak akkor adja hozzá, ha a sérült helyi munkamenet-bizonyítékokból történő felderítéses helyreállítás a cél; ez nem állítja helyre az elutasítást, az inkompatibilis kritikus állapotot vagy a kétértelműséget.
+
+<Warning>
+  A Symphony ezzel a paranccsal nem telepít bejelentkezési hookot, figyelőt vagy rendszerindítási egységet. Csak akkor használja, ha egy explicit gazdagép-életciklus integráció stabil eseményidentitást biztosít.
+</Warning>
+
+## Invariáns-lekérdezések
+
+Négy levélparancs köti a `ssfv:symphony:qxctl.invariant-assurance` azonosítót:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+A `check` ezenfelül a `ssfv:symphony:symphony-validator.invariant-ownership-assurance` azonosítót is köti.
+
+A közvetlen lekérdező levélparancsok `symphony.knowledge.invariant-query-result.v1` eredményt adnak `semantic_validity=not_asserted` értékkel. A `check` a validátor pontos, teljes eredményét adja vissza, és megőrzi a 26-os kilépési kódot.
+
+## Alparancscsoportok
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/hu/qxctl/lifecycle">
+    Profil, tulajdonjog, megfigyelés, jelentés, rendszerindítás, alkalmazás és helyreállítás.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/hu/qxctl/engines">
+    Motorkötési regiszter: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/hu/qxctl/reconcile">
+    Koordinátoros munkafa-egyeztetési nyelvtan.
+  </Card>
+
+  <Card title="session" icon="key" href="/hu/qxctl/session">
+    Hitelesített munkamenetek és SSFV-karbantartási folyamok.
+  </Card>
+</CardGroup>

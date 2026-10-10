@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: administration av livscykel över vektorer"
+description: "Kommandogruppen qxctl knowledge äger livscykel över vektorer, sessionsövergångar, invariantfrågor och administration av beständigt SSFV-underhåll."
+sidebarTitle: "knowledge"
+---
+
+Gruppen `qxctl knowledge ...` äger livscykel över vektorer och administration av beständiga SSFV-sessioner. Den är ingångspunkten för koordinatorstödda operationer och för invariantfrågor mot validatorn.
+
+## Sessionsövergång
+
+Använd `qxctl knowledge session transition` för att signalera en livscykelhändelse i värden till en befintlig session:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Säkra omförsök återanvänder samma händelse-ID. Lägg bara till `--recover` när återställning via upptäckt från skadad lokal sessionsevidens är avsedd; den återställer inte nekande, inkompatibelt kritiskt tillstånd eller tvetydighet.
+
+<Warning>
+  Symphony installerar ingen inloggningskrok, bevakare eller startenhet via det här kommandot. Använd det bara när en explicit livscykelintegration i värden tillhandahåller en stabil händelseidentitet.
+</Warning>
+
+## Invariantfrågor
+
+Fyra löv binder `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` binder dessutom `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Direkta frågelöv avger `symphony.knowledge.invariant-query-result.v1` med `semantic_validity=not_asserted`. `check` returnerar det exakta, fullständiga validatorresultatet och bevarar slutkod 26.
+
+## Underkommandogrupper
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/sv/qxctl/lifecycle">
+    Profil, ägarskap, observe, report, boot, apply och återställning.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/sv/qxctl/engines">
+    Bindningsregister för motorer: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/sv/qxctl/reconcile">
+    Grammatik för avstämning av arbetsträd via koordinatorn.
+  </Card>
+
+  <Card title="session" icon="key" href="/sv/qxctl/session">
+    Autentiserade sessioner och SSFV-underhållsströmmar.
+  </Card>
+</CardGroup>

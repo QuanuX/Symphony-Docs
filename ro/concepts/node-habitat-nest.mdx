@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat și Nest în Symphony"
+description: "Aflați cum modelează Symphony infrastructura fizică: Node ca computer fizic, Habitat ca condiționare exactă a sistemului de operare și Nest ca sarcină de lucru cu scopul ales de utilizator."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definește trei concepte fizice care separă identitatea hardware, condiționarea software și sarcina de lucru a utilizatorului. Aceste concepte mențin distincte preocupările legate de infrastructură, astfel încât să puteți analiza fiecare dintre ele independent.
+
+## Node
+
+Un **Node** este resursa de calcul fizică țintă, cu resurse identificate în mod specific. Deconectarea, reconectarea, repornirea sau rescrierea doar a software-ului nu creează un nou Node fizic. Distrugerea, înlocuirea fizică sau o modificare hardware locală semnificativă creează unul. O încarnare a unui Node este o dovadă separată, creată atunci când acel Node este atașat la o magistrală ca participant într-un sistem de tranzacționare, un cluster de cercetare sau alt sistem construit cu Symphony.
+
+## Habitat
+
+Un **Habitat** este sistemul de operare exact și condiționarea pachetelor livrate unui Node pentru activitatea pe care o selectați. Implicit, acesta cuprinde doar suprafața software necesară: fără pachete fără legătură, runtime-uri ascunse, containere, Kubernetes sau virtualizare implicită. Un Habitat larg, de uz general, rămâne o alegere explicită validă a utilizatorului.
+
+## Nest
+
+Un **Nest** (în traducere, „cuib”) servește unui scop ales de dumneavoastră. Este de așteptat ca execuția live a strategiilor să fie frecventă, iar o strategie poate conține multe secțiuni de cod modulare, dar Symphony nu definește scopul unui Nest și nu îl echivalează cu un singur fișier sursă, proces, algoritm, API de broker sau interfață de date. Logica strategiei rămâne domeniul dumneavoastră.
+
+## Comparație
+
+| Concept | Ce este | Ce îl modifică |
+| --- | --- | --- |
+| **Node** | Computer fizic cu resurse specifice | Distrugerea fizică, înlocuirea sau o modificare hardware semnificativă |
+| **Habitat** | Condiționarea exactă a sistemului de operare și a pachetelor pe un Node | Selecția explicită a utilizatorului sau condiționarea administrată de qxctl |
+| **Nest** | Sarcină de lucru cu scopul ales de utilizator, livrată într-un Habitat | Implementarea de către utilizator a strategiei sau a altei activități selectate |
+
+## Topologia clusterelor și a magistralelor
+
+Mai multe Node-uri formează un cluster doar atunci când sunt conectate între ele prin una sau mai multe magistrale. Mai multe rețele de magistrale pot coexista într-un singur cluster, iar o relație Node-în-cluster poate identifica magistrala relevantă fără a modifica identitatea Node-ului fizic.
+
+Adaptoarele de magistrală precum NATS JetStream și ZeroMQ sunt alese de utilizator, nu impuse de doctrină. Transferurile voluminoase, controlul, cercetarea și datele reziduale ale execuției nu trebuie să partajeze aceeași magistrală. O topologie poate folosi mai multe magistrale sau poate ocoli o magistrală pentru o cale declarată.
+
+## Domeniul TOPS și TROG
+
+**TOPS** este domeniul dominant al sistemului de operare pentru tranzacționare (Trade Operating System). Un **TROG** este un domeniu de grup de tranzacționare deliberat subordonat și non-global. În ciuda formulării istorice, un TROG nu este neapărat virtual. Proprietatea sa distinctivă este că domeniul și regulile sale nu sunt universale.

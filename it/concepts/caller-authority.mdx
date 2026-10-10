@@ -1,0 +1,28 @@
+---
+title: "Neutralità rispetto alla classe del chiamante e autorità dell'host in Symphony"
+description: "Symphony non classifica i chiamanti per tipo. L'autorità deriva dalla proprietà dell'host di destinazione, dai permessi espliciti, dallo stato atteso e dalle salvaguardie configurate dal proprietario."
+sidebarTitle: "Autorità del chiamante"
+---
+
+Symphony non classifica un chiamante come umano, IA, agente, servizio, workload, organizzazione o qualsiasi altro tipo di attore quando decide l'autorità. La tua classificazione come persona o come sistema automatizzato non concede né revoca, di per sé, alcuna capacità. Questa neutralità rispetto alla classe del chiamante è un confine architetturale fondamentale che mantiene l'autorizzazione ancorata ai fatti anziché alle etichette.
+
+## Cosa governa l'autorità
+
+Le decisioni di autorizzazione supportate utilizzano i seguenti input:
+
+- **Proprietà dell'host di destinazione o permessi concessi**: l'amministratore dell'host di destinazione è sovrano sulla governance configurabile.
+- **Operazione e risorsa richieste**: l'azione specifica e l'oggetto su cui agisce.
+- **Stato atteso**: il risultato desiderato dichiarato e lo stato corrente osservato.
+- **Salvaguardie configurate dal proprietario**: impostazioni predefinite conservative che l'amministratore può modificare o rimuovere.
+
+## SSIAG e autorità dell'host
+
+SSIAG può verificare e proiettare l'autorità effettiva dell'host, ma non crea un'autorità di registrazione superiore né pone un veto permanente sull'amministratore dell'host di destinazione. Le garanzie di identità rafforzate e gli interblocchi di governance sono salvaguardie neutrali rispetto al chiamante e configurate dal proprietario. I requisiti di integrità del protocollo restano obbligatori all'interno degli strumenti supportati.
+
+## Cosa Symphony non decide
+
+Symphony non decide se un attore possa possedere beni, aprire un conto, firmare un contratto, assumersi responsabilità o agire per conto di un'altra entità. Questi fatti appartengono al proprietario, al provider, alla controparte pertinenti e alla legge applicabile. La piattaforma resta all'interno del suo ruolo delimitato: produce evidenze di compatibilità e supporta le operazioni, ma non si estende alla determinazione della capacità legale o finanziaria esterna.
+
+## Implicazioni pratiche
+
+Quando invochi qxctl o un vector engine, si applicano gli stessi controlli indipendentemente dal fatto che tu esegua il comando manualmente, tramite uno script o attraverso uno strumento agentico. Il percorso dell'autorità è: proprietà dell'host di destinazione, permesso esplicito, stato atteso, salvaguardie. Nessun tipo di chiamante riceve un bypass automatico o una restrizione automatica.

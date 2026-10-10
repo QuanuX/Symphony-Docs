@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profilo, boot e apply"
+description: "Gestisci tramite qxctl profili di ciclo di vita protetti, ownership, osservazioni, boot e transizioni compatibili con l'apply, con rigorose salvaguardie compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+La grammatica `qxctl knowledge lifecycle ...` amministra profili protetti, ownership, osservazioni, journal di boot e transizioni compatibili con l'apply. Ogni mutazione è un compare-and-swap e ogni apply è vincolato a evidenze esatte.
+
+## Profilo
+
+Imposta il profilo di ciclo di vita protetto per un TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Specifica `absent` per un profilo creato per la prima volta, oppure il digest esatto riportato da una lettura precedente.
+
+## Ownership
+
+- `ownership status`: ispeziona una radice condivisa configurata
+- `ownership reconcile`: aggiorna le relative evidenze
+- `ownership adopt`: adotta solo dopo aver esaminato ogni rivendicazione legacy conservativa
+- `ownership release`: rilascia solo per una specifica ricevuta legacy resa intenzionalmente rivendicabile
+
+<Warning>
+  Non eliminare né riscrivere mai a mano il registro locale della radice o la relativa barriera di compatibilità del layout delle ricevute `symphony-root-ownership/1`. I client di ciclo di vita meno recenti devono incontrare quella barriera e arrestarsi sul loro blocco esistente per pacchetto sconosciuto.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: emette evidenze di ricevuta usa e getta a layout fisso
+- `report`: produce un nuovo piano usa e getta
+- `boot`: progressione durevole di sola segnalazione con un ID operazione stabile e uno stato del journal esatto
+- `status`: ispezione v1
+- `recover --discover`: recupera una catena v1 univoca quando lo status ordinario non riesce a validare lo stato locale
+
+## Profili compatibili con l'apply
+
+Per un profilo `apply-compatible`, chiama `apply` solo con il digest esatto della sorgente di boot, il compare-and-swap del journal di apply, il compare-and-swap dello stato applicato, un ID operazione stabile e radici di staging esplicite:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Usa `apply-status` per osservare i tentativi oppure `apply-recover`, con limiti definiti, per il recupero durevole. Non scegliere mai un'azione manualmente e non modificare lo stato protetto.
+
+<Note>
+  Un aggiornamento dell'osservazione che riguarda solo il timestamp deve modificare le evidenze del documento senza far avanzare le identità semantiche stabili.
+</Note>
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Coordinatore di sessione" icon="gears" href="/it/engines/coordinator">
+    L'engine alla base della coordinazione di piani e apply del ciclo di vita.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/it/qxctl/engines">
+    Gestisci i binding degli engine a cui fanno riferimento i piani di ciclo di vita.
+  </Card>
+</CardGroup>

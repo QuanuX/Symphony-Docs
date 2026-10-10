@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profiel, boot en apply"
+description: "Beheer beschermde levenscyclusprofielen, eigendom, observaties, boots en apply-compatibele transities via qxctl met strikte compare-and-swap-waarborgen."
+sidebarTitle: "lifecycle"
+---
+
+De grammatica `qxctl knowledge lifecycle ...` beheert beschermde profielen, eigendom, observaties, boot-journals en apply-compatibele transities. Elke mutatie is een compare-and-swap en elke apply is gebonden aan exact bewijs.
+
+## Profiel
+
+Stel het beschermde levenscyclusprofiel in voor een TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Geef `absent` op voor een eerste profiel, of de exacte digest die een eerdere leesbewerking rapporteerde.
+
+## Eigendom
+
+- `ownership status`: inspecteer één geconfigureerde gedeelde root
+- `ownership reconcile`: ververs het bijbehorende bewijs
+- `ownership adopt`: adopteer pas na beoordeling van elke conservatieve legacy-claim
+- `ownership release`: geef alleen vrij voor één exact legacy-ontvangstbewijs dat bewust terugvorderbaar is gemaakt
+
+<Warning>
+  Verwijder of herschrijf nooit handmatig het root-lokale register of de bijbehorende compatibiliteitsgrens voor de ontvangstbewijsindeling `symphony-root-ownership/1`. Oudere levenscyclusclients moeten op die grens stuiten en stoppen bij hun bestaande blokkade voor onbekende pakketten.
+</Warning>
+
+## Observeren, rapporteren, booten
+
+- `observe`: geef wegwerpbaar ontvangstbewijs met vaste indeling uit
+- `report`: produceer een vers, wegwerpbaar plan
+- `boot`: duurzame, uitsluitend rapporterende voortgang met een stabiele bewerkings-ID en exacte journalstatus
+- `status`: v1-inspectie
+- `recover --discover`: herstel een unieke v1-keten wanneer de gewone status de lokale toestand niet kan valideren
+
+## Apply-compatibele profielen
+
+Roep voor een `apply-compatible`-profiel `apply` alleen aan met de exacte boot-brondigest, compare-and-swap van het apply-journal, compare-and-swap van de toegepaste status, een stabiele bewerkings-ID en expliciete staged roots:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Gebruik `apply-status` om pogingen te observeren of het begrensde `apply-recover` voor duurzaam herstel. Kies nooit handmatig een actie en bewerk nooit beschermde status.
+
+<Note>
+  Een observatieverversing die alleen de tijdstempel wijzigt, moet het documentbewijs veranderen zonder stabiele semantische identiteiten op te hogen.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    De engine achter de coördinatie van levenscyclusplannen en apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/nl/qxctl/engines">
+    Beheer engine-bindingen waarnaar levenscyclusplannen verwijzen.
+  </Card>
+</CardGroup>

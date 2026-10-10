@@ -1,0 +1,83 @@
+---
+title: "qxctl：Symphony 智能体式管理命令行"
+description: "qxctl 是 Symphony 基于 Go 的管理 CLI。了解其 373 个可执行命令、引擎绑定注册表，以及面向向量引擎的回执验证调用模型。"
+sidebarTitle: "qxctl 概览"
+---
+
+`qxctl` 是 Symphony 基于 Go、以智能体优先的管理与查询 CLI。它负责表达命令；其背后的操作与含义则由各领域向量拥有。其签入的注册表将每个可执行命令叶绑定到一个稳定的机器标识以及经过审查的功能管理证据。
+
+## qxctl 涵盖的内容
+
+qxctl 实现了以下方面的管理：
+
+- 仓库与契约检查
+- 验证器、警告、不变量、功能、生命周期、会话、协调、绑定以及 Maestro 管理
+- SSIAG 身份、STAV 审计以及 Accordare 生产者管理
+- 已实现的向量引擎语法（`skvi`、`sclv`、`sacv`、`sodv`、`ssfv`，以及 SCV 和 SHV 界面）
+
+当前注册表包含 **373** 个可执行命令。
+
+## 安全调用模型
+
+qxctl 通过有界子进程、硬性截止时间、响应身份与摘要检查、预期状态事务以及持久化恢复，来调用经过回执验证的确切安装。它从不接受以适配器路径或原始版本号代替回执。
+
+## 引擎绑定注册表 v2
+
+引擎绑定注册表 v2 支持八种既定的引擎角色以及有界的未来角色标识。遗留的 v1 状态支持双读；迁移到 v2 需要通过 qxctl 执行显式的、绑定摘要的比较并交换，且绝不是版本选择操作。
+
+## 注册表命令
+
+在 `tools/qxctl` 中生成并验证预期注册表：
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+已安装的客户端可以输出与可执行文件绑定的证据：
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+预期证据中的客户端版本、可执行文件摘要和回执摘要均为 null。观察到的证据会绑定确切的客户端版本和可执行文件摘要，并在可用时绑定回执摘要。两种形式都使用 `symphony.qxctl.command-registry.v1`。
+
+<Note>
+  qxctl 拥有命令语法和呈现方式。它不拥有向量语义或规范知识事实。无论调用方类别如何，只有经过审查的源代码变更才能批准新的 `qxcmd` 标识。
+</Note>
+
+## 命令组
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/cn/qxctl/knowledge">
+    跨向量生命周期与持久化 SSFV 会话管理。
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/cn/qxctl/lifecycle">
+    配置文件、所有权、观察、报告、启动、应用和恢复。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/cn/qxctl/engines">
+    引擎绑定注册表与迁移。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/cn/qxctl/reconcile">
+    协调器工作树协调。
+  </Card>
+
+  <Card title="session" icon="key" href="/cn/qxctl/session">
+    经过认证的会话和 SSFV 维护流。
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/cn/qxctl/maestro">
+    派生的受体清单与停靠证据。
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/cn/qxctl/validate">
+    受保护的警告策略与验证器管理。
+  </Card>
+
+  <Card title="向量命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    `skvi`、`sclv`、`sacv`、`sodv`、`ssfv`、`shv`，以及未来的 accord/evolution 语法。
+  </Card>
+</CardGroup>

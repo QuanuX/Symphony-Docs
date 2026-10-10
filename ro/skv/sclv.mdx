@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector pentru modificările de sursă"
+description: "SCLV menține un registru append-only al modificărilor de sursă finalizate, cu propuneri neutre față de furnizor, recuperare fără mutații și proiecții de unică folosință ale înregistrărilor."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) înregistrează în timp modificările aduse suprafețelor SKV. Motorul său este un proces C++ instalabil independent, care efectuează verificări deterministe ale registrului append-only și produce proiecții de unică folosință. Registrul este scris doar după ce o modificare materială a sursei este finalizată.
+
+## Operații
+
+- **Inspectare și verificare**: validează forma, continuitatea și dovezile registrului.
+- **Propunere (v3)**: acceptă propuneri declarate de apelant, neutre față de furnizor, pentru înregistrări noi.
+- **Recuperare**: efectuează recuperarea fără mutații a stărilor întrerupte sau ambigue.
+- **Proiecție**: emite la cerere inventare de unică folosință ale stării registrului.
+
+## Admitere și retragere
+
+Fiecare înregistrare SCLV admisă leagă dovezile indexate curente din momentul în care este scrisă. Retragerea legitimă ulterioară a unei suprafețe păstrează proveniența istorică imuabilă fără a forța reintroducerea în SKVI a textului curent șters. Istoria rămâne istorie; adevărul curent rămâne curent.
+
+## Ce nu face SCLV
+
+- SCLV nu creează și nu aprobă modificări de sursă.
+- SCLV nu rescrie înregistrările existente; este append-only.
+- SCLV nu publică nimic. Proiecția publică aparține SODV.
+
+<Note>
+  Fiecare motor SKV curent este doar de citire, interogare, validare și propunere. Aplicarea canonică este dezactivată până când contractele complete de autoritate și audit ale fiecărui motor sunt finalizate.
+</Note>
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/ro/skv/skvi">
+    Indexează adevărul canonic curent de care se leagă înregistrările SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ro/skv/sodv">
+    Guvernează proiecția publică oficială a informațiilor din registru.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ro/skv/sev">
+    Cazurile de evoluție evaluează modificările înainte ca SCLV să le înregistreze.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Rulați `qxctl sclv ...` pentru inspect, check, propose și recover.
+  </Card>
+</CardGroup>

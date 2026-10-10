@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: determinisztikus, csak olvasó tárolóellenőrzések"
+description: "A Symphony Validator soros vagy strukturált JSON-bizonyítékot állít elő a szerződésekről, a forrászártságról, az invariánsokról, a funkciókról, a kiadásokról és a gép által ellenőrzött gyökérösszefoglalóról."
+sidebarTitle: "Validator"
+---
+
+A Symphony Validator (`tools/symphony-validator`) egy független, determinisztikus, csak olvasó C++26 tárolóellenőrző. Megváltoztathatatlan bizonyítékot állít elő a tároló és szerződései jelenlegi állapotáról. Semmit nem tud javítani vagy közzétenni.
+
+## Amit a validátor ellenőriz
+
+- A szerződések alakja: a Contract Quad kötelező horgonyai és szerkezete
+- Az aktuális forrászártság az SKVI által indexelt felületeken
+- Az invariánsok tulajdonlása a `knowledge/INVARIANTS.md` és az invariánsnyilvántartás szerint
+- Az SSFV által jelentett funkcióadminisztrációs elvárások
+- Az SODV által jelentett kiadási rekordok
+- A tároló README-fájljában található, gép által kezelt gyökérösszefoglaló
+
+A bizonyíték soros kimenetként vagy strukturált JSON-ként jelenik meg. Minden kibocsátás reprodukálható ugyanabból a tárolóállapotból.
+
+## Amit a validátor nem végez
+
+<Warning>
+  A validátor nem tud fájlokat javítani, szerződéseket átírni vagy a tárolót közzétenni. Semmiről nem hoz létre kanonikus igazságot; csak jelenti azt.
+</Warning>
+
+- Nincs mellékhatása a tárolóra
+- Nincs hálózati hozzáférése
+- Nem nyom el figyelmeztetéseket a qxctl védett figyelmeztetési szabályzatán kívül
+
+## qxctl-integráció
+
+A qxctl validálja a validátor pontos nyugtáját és strukturált kivonatait, mielőtt a védett figyelmeztetési szabályzatot alkalmazná. Kilenc védett, figyelmeztetési életciklushoz tartozó qxctl-levélparancs, valamint a pontos, nyugtával alátámasztott gyökérösszefoglaló-útvonal teszi elérhetővé a validálási adminisztrációt anélkül, hogy a nyers detektorbizonyítékot módosítaná.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/hu/qxctl/validate">
+    A védett figyelmeztetési szabályzat, az alapállapot és a megjelenítés nyelvtana.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/hu/skv/ssfv">
+    A validátor által ellenőrzött funkcióadminisztrációs elvárások.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    A validátor által vizsgált kiadási rekordok.
+  </Card>
+
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az átfogó keretrendszer, amelynek szerződéseit a validátor ellenőrzi.
+  </Card>
+</CardGroup>

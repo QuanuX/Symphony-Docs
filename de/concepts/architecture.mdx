@@ -1,0 +1,33 @@
+---
+title: "Symphony-Architektur"
+description: "Verstehen Sie die Grenzen zwischen vom Nutzer ausgewählter Infrastruktur, Vektorverträgen, Engines, qxctl und verwalteten Nachweisen."
+sidebarTitle: "Architektur"
+---
+
+Symphony trennt vom Nutzer ausgewählte Infrastruktur und Workloads von Plattformwissen und Administration. Die Plattform kann Kompatibilität prüfen, validieren und melden, ohne Eigentum an Ihrer Strategie zu beanspruchen oder eine Empfehlung als Vorgabe zu behandeln.
+
+## Physische und Workload-Ebene
+
+Ein [Node](/de/concepts/node-habitat-nest) ist ein identifizierter physischer Computer. Ein **Habitat** ist seine exakte Betriebssystem- und Paketkonditionierung, und ein **Nest** ist ein Workload, der einem vom Nutzer gewählten Zweck dient. Cluster verbinden Nodes über einen oder mehrere Busse. Bus-Fabrics, Adapter, Anbieter und Hardwareentscheidungen sind explizit und keine universellen Standardvorgaben.
+
+Der [Hot Path](/de/concepts/hot-path-isolation) bleibt von administrativer Residenz getrennt. qxctl und Arbeiten der Wissensebene dürfen einen Node explizit verwalten, werden aber nicht zu versteckten, dauerhaften Abhängigkeiten der Live-Ausführung.
+
+## Semantisches Eigentum
+
+[Vektoren](/de/concepts/vectors) sind abgegrenzte, dauerhafte Eigentümer von Bedeutung und zulässigen Operationen. Jeder Eigentümer veröffentlicht ein Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` und `SPEC.md`. Der [Symphony Knowledge Vector (SKV)](/de/skv/overview) indexiert kanonische Oberflächen und bewahrt einen Weg zu ihrem Eigentümer. Begleitende Schemas, Registries und Ledger bleiben verwaltet, ohne zusätzliche Mitglieder des Quad zu werden.
+
+Auslieferungsphasen beschreiben, wann Arbeit erledigt wird. Sie übertragen kein semantisches Eigentum von einem Vektor auf einen anderen.
+
+## Engines und Befehlsoberfläche
+
+[Vektor-Engines](/de/engines/overview) sind unabhängig installierbare, prozessexterne Komponenten, die innerhalb ihrer Eigentümerverträge prüfen, kontrollieren, projizieren und vorschlagen. Sie erlangen keine Autorität allein dadurch, dass sie einen Vorschlag erzeugen.
+
+[qxctl](/de/qxctl/overview) ist für administrative Befehlsgrammatik und Darstellung zuständig. Es ruft abgegrenzte, per Quittung validierte Fähigkeiten auf, während der Vektor, der eine Operation definiert, deren Semantik behält. Autorisierungs- und Audit-Nachweise steuern Mutationsrouten; die [Aufruferklassifizierung](/de/concepts/caller-authority) allein gewährt keine Autorität.
+
+## Wahrheit und Weiterentwicklung
+
+Aktuelle Verträge geben die aktuelle Wahrheit an. Die Änderungs- und Veröffentlichungs-Ledger bewahren die zu einem bestimmten Zeitpunkt erfassten Nachweise. Abweichungen zwischen Verträgen, Implementierungsnachweisen und erfasster Historie werden als Drift sichtbar gemacht, statt stillschweigend umgeschrieben zu werden. [SAV](/de/skv/sav) bewertet die Kompatibilität von Kompositionen; [SEV](/de/skv/sev) plant die verwaltete Weiterentwicklung.
+
+<Note>
+  Dieser Überblick ist eine Karte der Grenzen. Konsultieren Sie den aktuellen Vertrag und die Implementierungsnachweise jedes verlinkten Vektors, bevor Sie eine Fähigkeit in einer bestimmten Installation als verfügbar betrachten.
+</Note>

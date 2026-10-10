@@ -1,0 +1,47 @@
+---
+title: "Symphonyn vektorit ja toimitusvaiheet"
+description: "Ymmärrä Symphonyn pysyvät semanttisen omistajuuden alueet (vektorit) suhteessa kronologisiin toimitusvaiheisiin sekä Contract Quad ja vektorien nykyinen tila."
+sidebarTitle: "Vektorit ja vaiheet"
+---
+
+Symphony järjestää arkkitehtuurinsa kahden ajatuksen ympärille: **vektorit** ovat pysyviä semanttisen omistajuuden alueita, ja **vaiheet** ovat kronologisia toimituskampanjoita. Se, että komponenttia on ensin tutkittu tietyssä vaiheessa, ei tee kyseisestä vaiheesta sen pysyvää omistajaa. Vektorit pitävät merkityksen vakaana toteutuksen kehittyessä.
+
+## Mikä on vektori?
+
+Vektori on pysyvä, rajattu semanttisen omistajuuden alue, jonka kanoninen sopimus omistaa alueen merkityksen ja sallitut toiminnot. Jokainen vektori saa **Contract Quadin**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` ja `SPEC.md` sekä ne kohdennetut liitännäispinnat, joita se todella tarvitsee. Vektori ilmoittaa kanoniset pintansa ja delegointigraafinsa, SKVI kartoittaa jokaisen nykyisen pinnan täsmälleen kerran, ja vanhentuneet liitännäiset korvataan hallitun kehityksen kautta sen sijaan, että ne jäisivät ristiriitaiseksi kontekstiksi.
+
+## Vektorien tila
+
+| Vektori | Tila | Sivu |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Toteutettu: vaiheen 1 perusta indeksoiduin pinnoin | [/fi/skv/overview](/fi/skv/overview) |
+| **SKVI** — Lähteiden indeksointi | Toteutettu: inspect/check/propose-moottori | [/fi/skv/skvi](/fi/skv/skvi) |
+| **SCLV** — Muutoskirjanpito | Toteutettu: vain lisäävän kirjanpidon tarkistukset | [/fi/skv/sclv](/fi/skv/sclv) |
+| **SACV** — API-sopimusten hallinta | Toteutettu: OpenAPI 3.2.0 -tarkistukset | [/fi/skv/sacv](/fi/skv/sacv) |
+| **SODV** — Virallisen dokumentaation ja julkaisujen hallinta | Toteutettu: paikallisen julkaisukirjanpidon tarkistukset | [/fi/skv/sodv](/fi/skv/sodv) |
+| **SSFV** — Ominaisuuksien identiteetti ja hallinta | Toteutettu: ominaisuuksien rakennetarkistukset | [/fi/skv/ssfv](/fi/skv/ssfv) |
+| **SAV** — Accordare-koostaminen | Toteutettu: jäätyvän polun arviointi | [/fi/skv/sav](/fi/skv/sav) |
+| **SEV** — Kehitys | Toteutettu: vaikutusten ja käsittelyn suunnittelu | [/fi/skv/sev](/fi/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Toteutettu: cgo-vapaa Go-perusta | [/fi/governance/ssiag](/fi/governance/ssiag) |
+| **STAV** — TOPS-auditointiprotokolla | Toteutettu: TOPS-kohtainen vain lisäävä kirjanpito | [/fi/governance/stav](/fi/governance/stav) |
+| **SOV** — Ops Vector | Kehittymässä: provisiointi, Habitat, Nest-toimitus | [/fi/vectors/sov](/fi/vectors/sov) |
+| **SCV** — Cloud Vector | Toteutettu: kahdeksan C++-lähdetietomoottoria | [/fi/vectors/scv](/fi/vectors/scv) |
+| **SNV** — Node Vector | Kehittymässä: SNIV-, SNRV-, SCIV-, SCNV-koostaminen | [/fi/vectors/snv](/fi/vectors/snv) |
+| **SQV** — Quantitative Vector | Kehittymässä: SOOV FIX -arkkitehtuurin alivektori | [/fi/vectors/sqv](/fi/vectors/sqv) |
+| **SHV** — Hardware Vector | Toteutettu: C++-lähde-, luettelo- ja profiilimoottorit | [/fi/vectors/shv](/fi/vectors/shv) |
+| **SIV** — Intelligence Vector | Kehittymässä: SMCV valinnainen Markdown; SAIV varattu | [/fi/vectors/siv](/fi/vectors/siv) |
+
+## Contract Quad ja liitännäispinnat
+
+Jokainen vektori saa:
+
+1. **INTENT.md** — tarkoitus ja laajuus
+2. **MANIFEST.md** — identiteetti, ilmoitetut pinnat, delegointigraafi
+3. **SKILL.md** — turvallinen käyttö ja operatiiviset ohjeet
+4. **SPEC.md** — normatiivinen käyttäytyminen ja rajat
+
+Liitännäispinnat, kuten `SLANG.md`, `NAMESPACES.md`, rekisterit, skeemat ja profiilit, pysyvät hallittuina artefakteina nelijäsenisen rakenteen ulkopuolella. Ne reitittävät tai erikoistavat omistajan totuutta, mutta eivät voi laajentaa omaa valtuuttaan.
+
+## Näyttöön perustuva integraatio
+
+Lykätyllä moottorilla ei ole keksittyä kuittia. Ehdotetulla API:lla ei ole keksittyä rekisterimerkintää. Julkaisemattomalla sopimuksella ei ole SODV:n valmistumisväitettä. Tämä on näyttöön perustuvaa integraatiota, ei seremoniallista päällekkäisyyttä.

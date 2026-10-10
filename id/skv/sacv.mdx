@@ -1,0 +1,52 @@
+---
+title: "SACV: Tata Kelola Kontrak API untuk QuanuX Symphony"
+description: "SACV mengatur kontrak API berversi melalui pemeriksaan OpenAPI 3.2.0 yang terbatas, diff kompatibilitas deterministik, dan proposal registry yang dideklarasikan pemanggil di seluruh vektor."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) mengatur kontrak API berversi di seluruh platform. Engine-nya adalah proses C++ yang dapat diinstal secara independen yang melakukan validasi JSON OpenAPI 3.2.0 yang terbatas, diff kompatibilitas deterministik, dan inventaris sekali pakai. Semantik endpoint tetap berada pada vektor atau modul pemilik domain; SACV mengatur bentuk dan kompatibilitas kontrak.
+
+## Operasi
+
+- **Inspect dan check**: memvalidasi bahwa dokumen JSON OpenAPI 3.2.0 sesuai dengan profil yang terbatas.
+- **Diff**: menghitung diff kompatibilitas deterministik antarversi kontrak.
+- **Propose**: menerima proposal registry yang dideklarasikan pemanggil untuk kontrak baru atau yang diubah.
+- **Project**: menghasilkan inventaris sekali pakai untuk peninjau dan alat hilir.
+
+## Yang diatur SACV
+
+SACV membatasi:
+
+- Bentuk kontrak (OpenAPI 3.2.0 dengan profil SACV)
+- Klasifikasi kompatibilitas antarversi
+- Keanggotaan registry untuk kontrak yang diterima
+
+SACV tidak:
+
+- Memiliki semantik endpoint (setiap vektor atau modul mempertahankannya)
+- Menghasilkan SDK, memublikasikan artefak, atau menerbitkan token
+- Menyiratkan adanya permukaan jaringan yang aktif (penyebutan API privat di masa depan tidak menciptakannya)
+
+<Note>
+  SACV hanya melakukan read, query, validate, dan propose. Apply kanonis secara terprogram dinonaktifkan di seluruh engine SKV.
+</Note>
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Ikhtisar SKV" icon="book-open" href="/id/skv/overview">
+    Kerangka kerja payung dan model Contract Quad.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/id/skv/sodv">
+    Mengatur setiap publikasi resmi kontrak yang terdaftar di SACV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/id/skv/sav">
+    Mengevaluasi komposisi dan kompatibilitas di seluruh komponen yang dideklarasikan.
+  </Card>
+
+  <Card title="Perintah vektor qxctl" icon="terminal" href="/id/qxctl/vector-commands">
+    Jalankan `qxctl sacv ...` untuk inspect, check, diff, dan propose.
+  </Card>
+</CardGroup>

@@ -1,0 +1,35 @@
+---
+title: "Học thuyết nền tảng QuanuX Symphony"
+description: "Tìm hiểu các nguyên tắc chi phối Symphony: quyền sở hữu chiến lược và hạ tầng của người dùng, tính trung lập đối với loại bên gọi, bảo vệ hot path, và khả năng tương thích dựa trên bằng chứng."
+sidebarTitle: "Học thuyết"
+---
+
+Học thuyết Symphony xác định ranh giới giữa những gì nền tảng kiểm soát và những gì bạn kiểm soát. Các quy tắc này chi phối mọi quyết định thiết kế trong monorepo và mọi tương tác với qxctl, các vector engine và các knowledge contract.
+
+## Quyền sở hữu của người dùng
+
+Bạn sở hữu logic chiến lược, mục đích của Nest, lựa chọn nhà cung cấp, lựa chọn phần cứng, cấu trúc bus và việc chọn adapter được hỗ trợ. Symphony cung cấp bằng chứng tương thích chính xác và các thao tác được hỗ trợ, nhưng không biến khuyến nghị thành luật của nền tảng. Nền tảng báo cáo các điểm khớp, điểm không khớp, các dữ kiện chưa được xác định và hệ quả. Nó không xếp hạng nhà cung cấp, không áp đặt chiến lược, và không âm thầm mở rộng môi trường của bạn.
+
+## Bảo vệ hot path
+
+Hot path được bảo vệ khỏi sự thường trú của các thành phần quản trị và áp lực vô tình lên bus dùng chung. qxctl và knowledge plane là phần quản trị thuộc cold path hoặc freezing path. Chúng có thể chủ động tác động lên một Node đồng thời đang chạy công việc trực tiếp, nhưng không được trở thành phụ thuộc liên tục của hot path, bộ theo dõi ẩn, trình thông dịch thường trú, hay trình quản lý gói chạy nền tự ý. Kiến trúc tường minh của bạn vẫn giữ quyền tối cao.
+
+## Tách biệt lệnh và ngữ nghĩa
+
+qxctl sở hữu ngữ pháp lệnh và cách trình bày. Các domain vector sở hữu các thao tác và ý nghĩa mà những lệnh đó cung cấp. Một route của qxctl gọi một năng lực do chủ sở hữu định nghĩa mà không hấp thụ ngữ nghĩa của nó.
+
+## Tên và namespace
+
+Tên được ghi nhận dưới phạm vi sở hữu của chúng. SNV và SCNV không áp đặt tên, và NAMESPACES gốc vẫn rộng hơn SNV. Một tên được đăng ký trong một TOPS hoặc TROG tuân theo phạm vi đó. Trong nhiều cluster, tên ngắn của một Node có thể lặp lại ở các cluster khác nhau nhưng không được định danh mơ hồ hai Node đang hoạt động trong cùng một cluster.
+
+## Tính trung lập đối với loại bên gọi
+
+Việc một bên gọi được phân loại là con người, AI, agent, dịch vụ hay workload không cấp hoặc tước bỏ quyền hạn. Các quyết định ủy quyền được hỗ trợ dựa trên quyền sở hữu máy chủ đích hoặc các quyền đã được cấp, thao tác và tài nguyên được yêu cầu, trạng thái mong đợi, và các biện pháp bảo vệ do chủ sở hữu cấu hình. Quản trị viên của máy chủ đích có quyền tối cao đối với phần quản trị có thể cấu hình. SSIAG có thể xác minh và phản ánh quyền hạn hiệu lực trên máy chủ, nhưng không tạo ra một cơ quan đăng ký cấp cao hơn. Các cơ chế đảm bảo danh tính nâng cao và khóa liên động quản trị là những biện pháp bảo vệ trung lập với bên gọi, do chủ sở hữu cấu hình. Các yêu cầu về toàn vẹn giao thức vẫn là bắt buộc. Symphony không quyết định năng lực pháp lý hay tài chính bên ngoài dựa trên loại bên gọi.
+
+## Sự thật và bằng chứng
+
+Các contract hiện hành mô tả sự thật hiện tại. Các bản ghi SCLV và SODV bất biến lưu giữ những gì đã được biết, thay đổi, ủy quyền hoặc hoàn tất tại thời điểm được ghi nhận trong lịch sử. Khi các contract hiện hành, bằng chứng triển khai và bản ghi áp dụng mới nhất không thống nhất, sự bất đồng đó được nêu ra dưới dạng drift để xem xét. Lịch sử không bị âm thầm viết lại cho giống với hiện tại.
+
+## Học thuyết về Python
+
+Mã nguồn Symphony của bên thứ nhất, các trình sinh mã, việc soạn schema, kiểm thử và các công cụ hỗ trợ nghiệm thu không yêu cầu bất kỳ phụ thuộc nào vào bản triển khai hoặc trình thông dịch Python. C++ sở hữu công cụ soạn thảo thay thế và công cụ kiểm thử tiến trình. Chính sách kho mã này không hạn chế các chương trình do bạn tự viết hoặc các Habitat cô lập được chọn một cách tường minh.

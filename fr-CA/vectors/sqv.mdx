@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector : contrats de cadre"
+description: "SQV possède des contrats de cadre réutilisables pour les systèmes quantitatifs et de négociation sans s'approprier la logique de stratégie de l'utilisateur. SOOV est son premier sous-vecteur nommé, destiné à une future architecture FIX exclusivement en C++."
+sidebarTitle: "Vecteur quantitatif"
+---
+
+Le Symphony Quantitative Vector (SQV) possède des contrats de cadre réutilisables pour la recherche quantitative, la construction de systèmes de négociation, le soutien à l'exécution et les futurs moteurs quantitatifs. La logique de stratégie vous appartient toujours. SQV fournit des surfaces de cadre et des preuves de compatibilité exactes, mais ne détermine jamais vos instruments, vos flux de données, vos abonnements, votre logique d'ordres ni votre modèle d'exécution.
+
+## Limite de la stratégie de l'utilisateur
+
+Vous conservez l'entière propriété de la logique de stratégie. SQV ne fait pas ce qui suit :
+
+- Sélectionner vos instruments ou vos flux de données
+- Définir les champs d'abonnement ou la profondeur de marché
+- Déterminer le comportement en cas de défaillance ou les règles de normalisation
+- Écrire la logique d'ordres ou les modèles d'exécution
+- Concevoir votre structure modulaire interne
+
+Symphony fournit des preuves de compatibilité et des opérations prises en charge. Elle ne classe jamais les stratégies et n'impose jamais de règles de plateforme à vos décisions de négociation.
+
+## SOOV : Symphony Orchestra Omega Vector
+
+SOOV est le premier sous-vecteur nommé de SQV. Il représente une future architecture FIX à haute performance, exclusivement en C++, éclairée par les travaux historiques de QuanuX. SOOV est prévu comme une couche de messagerie bornée et déterministe pour les communications de négociation. Le comportement FIX détaillé n'est pas encore canonique; aucune session FIX, aucun adaptateur de flux ni aucune intégration de courtier n'est actuellement mis en œuvre.
+
+## Portée future
+
+SQV est le foyer prévu des composants de cadre quantitatif ratifiés au cours des phases de livraison ultérieures. Les domaines prévus comprennent :
+
+- Les moteurs de simulation historique (backtesting)
+- Les API C++ des courtiers
+- Les bibliothèques d'indicateurs
+- Les mathématiques quantitatives
+- L'architecture des flux de données
+
+Aucun de ces éléments ne sera mis en œuvre avant la ratification de son contrat respectif.
+
+## État actuel
+
+SQV n'est qu'un contrat d'architecture canonique. Aucun moteur SQV ou SOOV, session FIX, adaptateur de flux, environnement d'exécution de stratégies, intégration de courtier, outil de simulation historique, bibliothèque d'indicateurs ni composant de flux de données n'est actuellement mis en œuvre.
+
+## Liens entre SQV et les autres vecteurs
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/fr-CA/vectors/shv">
+    Fournit des preuves des capacités matérielles qui encadrent la conception des moteurs quantitatifs.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/fr-CA/vectors/snv">
+    Consigne les Nodes où s'exécutent les charges de travail quantitatives.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/fr-CA/skv/overview">
+    Régit les contrats de SQV, son évolution et ses relations de publication officielle.
+  </Card>
+</CardGroup>

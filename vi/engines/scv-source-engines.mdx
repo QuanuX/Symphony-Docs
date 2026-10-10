@@ -1,0 +1,74 @@
+---
+title: "Engine tri thức nguồn SCV: thực tế nhà cung cấp cho Symphony"
+description: "Tám engine SCV, hyperscaler, edge và nhà cung cấp được đóng gói độc lập, lưu giữ chính xác các bản sửa đổi nguồn và tạo ra bằng chứng đồ thị và truy vấn có thể tái tạo."
+sidebarTitle: "Engine SCV"
+---
+
+Các engine tri thức nguồn SCV là tám tiến trình C++26 được đóng gói độc lập, nắm giữ tri thức ngữ nghĩa riêng về tài nguyên, dịch vụ cung cấp, khu vực, ràng buộc và khả năng kết hợp lai của các nhà cung cấp bên ngoài. Chúng lưu giữ chính xác các bản sửa đổi nguồn và các bản thu thập có giới hạn để các công cụ phía sau có thể tái tạo kết quả.
+
+## Các engine
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Engine nguồn SCV tổng quát cho bộ từ vựng đám mây dùng chung.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Engine nguồn Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Engine nguồn edge dành riêng cho Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Engine nguồn Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Engine nguồn Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Engine nguồn DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Engine nguồn Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Connector DuckDB tùy chọn để lập chỉ mục đồ thị quan hệ được lưu giữ.
+  </Card>
+</CardGroup>
+
+## Các engine SCV làm gì
+
+- Lưu giữ các bản sửa đổi nguồn tường minh và các bản thu thập có giới hạn
+- Giữ lại các tuyên bố có điều kiện và cấu trúc tài liệu gốc
+- Tạo ra bằng chứng đồ thị và truy vấn có thể tái tạo
+- Cung cấp dữ liệu cho các gói nhà cung cấp có tính di động và việc kết hợp hữu hạn theo chỉ định của bên gọi
+
+## Những gì chúng không làm
+
+<Warning>
+  Các thao tác với nhà cung cấp và danh mục đám mây đầy đủ vẫn nằm ngoài phạm vi của đợt bổ sung này. Các engine SCV mô tả những gì đã biết; chúng không tác động lên nhà cung cấp.
+</Warning>
+
+qxctl quản trị riêng các thay đổi nguồn cục bộ có kiểm toán và việc chọn đồ thị nhất quán thông qua các quy trình được lưu giữ và cơ chế chọn đồ thị được bảo vệ. Việc duyệt đồ thị chuyên dụng và các adapter vận hành vẫn là công việc riêng.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="Vector SCV" icon="cloud" href="/vi/vectors/scv">
+    Contract Cloud Vector mà các engine này triển khai.
+  </Card>
+
+  <Card title="Vector SOV" icon="terminal" href="/vi/vectors/sov">
+    Ops Vector tác động dựa trên bằng chứng SCV thông qua qxctl.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chọn đồ thị, quy trình nguồn và quản trị connector DuckDB.
+  </Card>
+</CardGroup>

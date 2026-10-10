@@ -1,0 +1,33 @@
+---
+title: "快速入門：探索 QuanuX Symphony"
+description: "帶你依序了解 Symphony 的準則、架構、vector 合約與 qxctl 管理介面。"
+sidebarTitle: "快速入門"
+---
+
+在操作 Symphony 之前，請先透過本指南建立基本認識。本文件將平台準則、使用者選擇的基礎架構、vector 擁有的語意，以及管理指令分開說明。確切的安裝與執行步驟，請依照相關元件的現行合約。
+
+## 1. 閱讀營運界線
+
+從 [平台準則](/zh-Hant/doctrine) 開始。它確立了使用者對策略與基礎架構的所有權、呼叫者類別中立、以證據為基礎的相容性，以及對熱路徑的保護。
+
+## 2. 了解實體模型
+
+閱讀 [Node、Habitat 與 Nest](/zh-Hant/concepts/node-habitat-nest)：
+
+- **Node：** 已識別的實體電腦資源。
+- **Habitat：** 交付給 Node 的精確作業系統與套件配置。
+- **Nest：** 放置於合適 Habitat 中、服務使用者用途的工作負載。
+
+叢集的匯流排與轉接器都是明確的架構選擇。Symphony 不會規定通用的供應商或策略。
+
+## 3. 追溯意義的所有權
+
+[架構概觀](/zh-Hant/concepts/architecture) 說明 vector 合約、引擎、qxctl 與受治理證據之間的關係。[Vector 與階段](/zh-Hant/concepts/vectors) 說明為何即使交付工作在各階段之間推進，vector 仍是語意的擁有者。[Symphony Knowledge Vector](/zh-Hant/skv/overview) 說明 Contract Quad 及其附屬介面。
+
+## 4. 找到管理介面
+
+[qxctl 概觀](/zh-Hant/qxctl/overview) 介紹以 Go 撰寫的管理與查詢 CLI。針對特定指令系列，請使用 qxctl 相關頁面，例如 [knowledge](/zh-Hant/qxctl/knowledge)、[lifecycle](/zh-Hant/qxctl/lifecycle)、[engines](/zh-Hant/qxctl/engines) 或 [validation](/zh-Hant/qxctl/validate)。qxctl 提供指令文法與呈現方式；vector 合約則擁有操作及其意義。
+
+## 5. 檢查相關合約與證據
+
+在對 Node 執行操作或呼叫 vector 引擎之前，請檢查現行的擁有者合約、目標狀態、授權，以及可用的回執或驗證證據。[呼叫者權限](/zh-Hant/concepts/caller-authority) 與 [熱路徑隔離](/zh-Hant/concepts/hot-path-isolation) 說明了這些界線。新興的介面並不代表隱含的營運保證。

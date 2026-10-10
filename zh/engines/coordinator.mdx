@@ -1,0 +1,50 @@
+---
+title: "Symphony Vector 引擎的知识会话协调器"
+description: "知识会话协调器以 C++26 提供有界兼容性、工作树协调、经过身份验证的会话以及支持应用的生命周期协调。"
+sidebarTitle: "协调器"
+---
+
+知识会话协调器（`modules/knowledge-session-coordinator`）是一个可独立安装的 C++26 进程。它位于 qxctl 与 vector 引擎之间，负责有界兼容性、工作树协调、经过身份验证的非规范会话、SSFV 维护、仅报告的生命周期规划，以及单独授权的支持应用的日志。
+
+## 职责
+
+- qxctl、协调器和引擎之间的**兼容性检查**
+- 基于持久化槽位状态的**工作树协调**
+- 在 SSIAG 权限下的**经过身份验证的非规范会话**
+- **持久化的 SSFV 维护**流
+- 基于确定性证据的**仅报告生命周期规划**
+- **支持应用的日志**，包括预备尝试、比较并交换（compare-and-swap）、重新观测、动态重新规划和恢复
+
+## 协调器不做的事情
+
+<Warning>
+  协调器不执行 vector 语义或主机操作。它协调证据和日志；每个引擎仍拥有自己的领域，每项主机操作仍由其自身的契约授权。
+</Warning>
+
+- 不执行规范知识的应用
+- 不执行任意命令
+- 没有隐藏的监视器或常驻后台工作
+
+## qxctl 集成
+
+qxctl 调用经过精确回执验证的协调器安装。`qxctl knowledge reconcile ...` 和 `qxctl knowledge session ...` 每次操作使用一个精确绑定的协调器，变更操作需要稳定的操作标识符以及用于比较并交换的精确当前日志摘要。
+
+## 相关表面
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/zh/qxctl/reconcile">
+    工作树协调语法。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh/qxctl/session">
+    经过身份验证的会话和 SSFV 维护语法。
+  </Card>
+
+  <Card title="基础库" icon="cube" href="/zh/engines/knowledge-vector-foundation">
+    协调器复用的共享 C++ 机制。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/zh/governance/ssiag">
+    为协调器管理的会话提供授权。
+  </Card>
+</CardGroup>

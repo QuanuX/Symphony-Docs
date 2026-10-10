@@ -1,0 +1,43 @@
+---
+title: "Maestro: autorita přítomnosti vektorových enginů v Symphony"
+description: "Maestro zaznamenává autentizované vztahy ukotvení vektorových enginů pro každý TOPS a receptor a odvozuje úplný inventář pouze pro čtení, aniž by enginy spouštěl nebo dohlížel na ně."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) je samostatně instalovatelná autorita přítomnosti v C++26 na mrazivé cestě. Zaznamenává přesné autentizované vztahy ukotvení (docking) vektorových enginů pro každý TOPS a receptor a odvozuje úplný inventář pouze pro čtení toho, co je aktuálně ukotveno. Maestro je svědek, nikoli dohlížitel.
+
+## Co Maestro zaznamenává
+
+- Přesné autentizované vztahy ukotvení mezi vektorovými enginy a receptory
+- Vymezení rozsahu pro každý TOPS, takže přítomnost každé instalace zůstává soukromá pro danou instalaci
+- Odvozený, úplný inventář pouze pro čtení, dostupný prostřednictvím `qxctl maestro inventory`
+
+## Co Maestro nedělá
+
+<Warning>
+  Maestro enginy nespouští, neplánuje, nedohlíží na ně ani je nevyvolává. Samotné navázání, rekonciliace, koordinace autentizovaných relací nebo plán životního cyklu neustavují přítomnost v Maestru, neratifikují sémantickou pravdu, nemění kanonické znalosti ani neprokazují úplnost nainstalovaného hostitele.
+</Warning>
+
+- Maestro nevytváří žádné procesy.
+- Maestro nikdy neaplikuje změny kanonických znalostí.
+- Maestro nikdy nenahrazuje vektorový engine, který vlastní sémantiku.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/cs/qxctl/maestro">
+    `qxctl maestro inventory` zobrazuje odvozený inventář.
+  </Card>
+
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Vlastní mechanismy autentizovaných relací a rekonciliace pracovních stromů.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/cs/governance/ssiag">
+    Autentizuje vztahy ukotvení, které Maestro zaznamenává.
+  </Card>
+
+  <Card title="Přehled enginů" icon="cube" href="/cs/engines/overview">
+    Samostatně instalovatelné vektorové enginy, které se ukotvují v Maestru.
+  </Card>
+</CardGroup>

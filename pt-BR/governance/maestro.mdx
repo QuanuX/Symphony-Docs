@@ -1,0 +1,43 @@
+---
+title: "Maestro: autoridade de presença das engines de vetor do Symphony"
+description: "O Maestro registra relacionamentos autenticados de acoplamento de engines de vetor por TOPS e por receptor, derivando um inventário completo e somente leitura sem iniciar nem supervisionar engines."
+sidebarTitle: "Maestro"
+---
+
+O Maestro (`modules/maestro`) é uma autoridade de presença C++26 de caminho congelado, instalável de forma independente. Ele registra os relacionamentos exatos e autenticados de acoplamento de engines de vetor por TOPS e por receptor e deriva um inventário completo e somente leitura do que está acoplado no momento. O Maestro é uma testemunha, não um supervisor.
+
+## O que o Maestro registra
+
+- Relacionamentos exatos e autenticados de acoplamento entre engines de vetor e receptores
+- Escopo por TOPS, para que a presença de cada instalação permaneça privada a essa instalação
+- Um inventário derivado, completo e somente leitura, disponível por meio de `qxctl maestro inventory`
+
+## O que o Maestro não faz
+
+<Warning>
+  O Maestro não inicia, agenda, supervisiona nem invoca engines. Vinculação, reconciliação, coordenação de sessões autenticadas ou um plano de ciclo de vida, por si sós, não estabelecem presença no Maestro, não ratificam a verdade semântica, não alteram o conhecimento canônico nem comprovam a completude do host instalado.
+</Warning>
+
+- O Maestro não cria processos.
+- O Maestro nunca aplica alterações de conhecimento canônico.
+- O Maestro nunca substitui a engine de vetor que é dona da semântica.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/pt-BR/qxctl/maestro">
+    `qxctl maestro inventory` apresenta o inventário derivado.
+  </Card>
+
+  <Card title="Coordenador de sessões" icon="gears" href="/pt-BR/engines/coordinator">
+    É dono das mecânicas de sessões autenticadas e de reconciliação de worktrees.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pt-BR/governance/ssiag">
+    Autentica os relacionamentos de acoplamento que o Maestro registra.
+  </Card>
+
+  <Card title="Visão geral das engines" icon="cube" href="/pt-BR/engines/overview">
+    Engines de vetor instaláveis de forma independente que se acoplam ao Maestro.
+  </Card>
+</CardGroup>

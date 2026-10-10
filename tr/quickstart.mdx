@@ -1,0 +1,33 @@
+---
+title: "Hızlı Başlangıç: QuanuX Symphony'yi Keşfedin"
+description: "Symphony'nin doktrini, mimarisi, vektör sözleşmeleri ve qxctl yönetim yüzeyi boyunca rehberli bir rota."
+sidebarTitle: "Hızlı Başlangıç"
+---
+
+Symphony'yi işletmeden önce yönünüzü bulmak için bu kılavuzu kullanın. Belgeler; platform doktrinini, kullanıcı tarafından seçilen altyapıyı, vektörlere ait anlamları ve yönetim komutlarını birbirinden ayırır. Kesin kurulum ve yürütme adımları, ilgili bileşenin mevcut sözleşmesine aittir.
+
+## 1. İşletim sınırlarını okuyun
+
+[Platform doktrini](/tr/doctrine) ile başlayın. Doktrin; strateji ve altyapının kullanıcıya ait olmasını, çağıran sınıfı tarafsızlığını, kanıta dayalı uyumluluğu ve sıcak yolun korunmasını belirler.
+
+## 2. Fiziksel modeli öğrenin
+
+[Node, Habitat ve Nest](/tr/concepts/node-habitat-nest) sayfasını okuyun:
+
+- **Node:** tanımlanmış fiziksel bilgisayar kaynağı.
+- **Habitat:** bir Node'a teslim edilen kesin işletim sistemi ve paket hazırlığı.
+- **Nest:** uygun bir Habitat'a yerleştirilen kullanıcı amaçlı iş yükü.
+
+Bir kümenin veri yolları ve adaptörleri açık mimari tercihlerdir. Symphony evrensel bir sağlayıcı veya strateji dayatmaz.
+
+## 3. Anlam sahipliğini izleyin
+
+[Mimariye genel bakış](/tr/concepts/architecture), vektör sözleşmeleri, motorlar, qxctl ve yönetilen kanıtlar arasındaki ilişkiyi gösterir. [Vektörler ve aşamalar](/tr/concepts/vectors), teslimat çalışmaları aşamalar boyunca ilerlese bile bir vektörün neden anlamsal sahip olarak kaldığını açıklar. [Symphony Knowledge Vector](/tr/skv/overview), Contract Quad'ı ve ona eşlik eden yüzeyleri açıklar.
+
+## 4. Yönetim yüzeyini bulun
+
+[qxctl genel bakış](/tr/qxctl/overview), Go ile yazılmış yönetim ve sorgu CLI'ını tanıtır. Belirli bir komut ailesi için qxctl sayfalarını kullanın; örneğin [knowledge](/tr/qxctl/knowledge), [lifecycle](/tr/qxctl/lifecycle), [engines](/tr/qxctl/engines) veya [doğrulama](/tr/qxctl/validate). qxctl komut dil bilgisini ve sunumu sağlar; işlemlerin ve anlamlarının sahibi vektör sözleşmeleridir.
+
+## 5. İlgili sözleşmeyi ve kanıtı kontrol edin
+
+Bir Node üzerinde işlem yapmadan veya bir vektör motorunu çağırmadan önce mevcut sahip sözleşmesini, hedef durumu, yetkilendirmeyi ve mevcut makbuz ya da doğrulama kanıtını kontrol edin. [Çağıran yetkisi](/tr/concepts/caller-authority) ve [sıcak yol yalıtımı](/tr/concepts/hot-path-isolation) bu sınırları açıklar. Gelişmekte olan bir yüzey, örtük bir operasyonel garanti değildir.

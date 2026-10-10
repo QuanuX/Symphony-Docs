@@ -1,0 +1,28 @@
+---
+title: "Neutralität gegenüber Aufruferklassen und Host-Autorität in Symphony"
+description: "Symphony klassifiziert Aufrufer nicht nach Typ. Autorität ergibt sich aus dem Eigentum am Zielhost, expliziten Berechtigungen, dem erwarteten Zustand und vom Eigentümer konfigurierten Schutzmaßnahmen."
+sidebarTitle: "Aufruferautorität"
+---
+
+Symphony klassifiziert einen Aufrufer bei Autoritätsentscheidungen nicht als Mensch, KI, Agent, Dienst, Workload, Organisation oder einen anderen Akteurstyp. Ihre Einordnung als Person oder als automatisiertes System gewährt oder entzieht für sich genommen keine Fähigkeit. Diese Neutralität gegenüber Aufruferklassen ist eine zentrale Architekturgrenze, die Autorisierung auf Fakten statt auf Etiketten stützt.
+
+## Was Autorität bestimmt
+
+Unterstützte Autorisierungsentscheidungen verwenden die folgenden Eingaben:
+
+- **Eigentum am Zielhost oder gewährte Berechtigungen**: Der Administrator des Zielhosts ist souverän über die konfigurierbare Governance.
+- **Angeforderte Operation und Ressource**: Die konkrete Aktion und das Objekt, auf das sie wirkt.
+- **Erwarteter Zustand**: Das deklarierte gewünschte Ergebnis und der beobachtete aktuelle Zustand.
+- **Vom Eigentümer konfigurierte Schutzmaßnahmen**: Konservative Standardwerte, die der Administrator anpassen oder entfernen kann.
+
+## SSIAG und Host-Autorität
+
+SSIAG kann die effektive Host-Autorität verifizieren und projizieren, schafft aber keine übergeordnete Registrierungsautorität und hat kein dauerhaftes Vetorecht gegenüber dem Administrator des Zielhosts. Erweiterte Identitätssicherung und Governance-Sperren sind aufruferneutrale, vom Eigentümer konfigurierte Schutzmaßnahmen. Anforderungen an die Protokollintegrität bleiben innerhalb unterstützter Werkzeuge verpflichtend.
+
+## Was Symphony nicht entscheidet
+
+Symphony entscheidet nicht, ob ein Akteur Eigentum besitzen, ein Konto eröffnen, einen Vertrag unterzeichnen, Haftung übernehmen oder für eine andere Entität handeln darf. Diese Fakten gehören dem jeweiligen Eigentümer, Anbieter, Vertragspartner und dem anwendbaren Recht. Die Plattform bleibt in ihrer abgegrenzten Rolle: Sie erzeugt Kompatibilitätsnachweise und unterstützt Operationen, erstreckt sich aber nicht auf die Feststellung externer rechtlicher oder finanzieller Handlungsfähigkeit.
+
+## Praktische Auswirkung
+
+Wenn Sie qxctl oder eine Vektor-Engine aufrufen, gelten dieselben Prüfungen, unabhängig davon, ob Sie den Befehl manuell, über ein Skript oder über ein agentisches Werkzeug ausführen. Der Autoritätspfad lautet: Eigentum am Zielhost, explizite Berechtigung, erwarteter Zustand, Schutzmaßnahmen. Kein Aufrufertyp erhält eine automatische Umgehung oder eine automatische Einschränkung.

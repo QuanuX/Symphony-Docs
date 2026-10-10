@@ -1,0 +1,83 @@
+---
+title: "qxctl: שורת הפקודה הניהולית והאייג'נטית של Symphony"
+description: "qxctl הוא ה-CLI הניהולי של Symphony הכתוב ב-Go. למדו על 373 הפקודות הניתנות להרצה שלו, על רישום קישורי המנועים ועל מודל ההפעלה המאומת-בקבלות עבור מנועי וקטורים."
+sidebarTitle: "סקירת qxctl"
+---
+
+`qxctl` הוא ה-CLI הניהולי ולשאילתות של Symphony, מבוסס Go ומתוכנן בראש ובראשונה לסוכנים (agentic-first). הוא מדבר בפקודות; וקטורי התחום הם הבעלים של הפעולות והמשמעויות שמאחוריהן. הרישום שלו, השמור במאגר, מקשר כל עלה פקודה ניתן להרצה לזהות מכונה יציבה ולראיות סקורות של ניהול תכונות.
+
+## מה qxctl מכסה
+
+qxctl מממש ניהול עבור:
+
+- בדיקת מאגר וחוזים
+- ניהול validator, אזהרות, אינווריאנטים, תכונות, מחזור חיים, סשנים, התאמה, קישורים ו-Maestro
+- ניהול זהות SSIAG, ביקורת STAV ומפיקי Accordare
+- דקדוק מנועי וקטורים ממומשים (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, וכן משטחי SCV ו-SHV)
+
+הרישום הנוכחי מכיל **373** פקודות ניתנות להרצה.
+
+## מודל הפעלה בטוח
+
+qxctl מפעיל התקנות מדויקות המאומתות בקבלות (receipts) באמצעות תתי-תהליכים מוגבלים, מועדים קשיחים, בדיקות זהות ו-digest של התגובה, טרנזקציות של מצב צפוי ושחזור עמיד. הוא לעולם אינו מקבל נתיבי adapter או גרסאות גולמיות במקום קבלות.
+
+## רישום קישורי המנועים v2
+
+רישום קישורי המנועים v2 תומך בשמונה תפקידי המנוע המבוססים ובזהויות תפקיד עתידיות מוגבלות. מצב v1 מדור קודם נקרא בקריאה כפולה; העברה ל-v2 דורשת compare-and-swap מפורש הקשור ל-digest דרך qxctl, ולעולם אינה פעולת בחירת גרסה.
+
+## פקודות הרישום
+
+הפיקו ואמתו את הרישום הצפוי מתוך `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+לקוח מותקן יכול לפלוט ראיות הקשורות לקובץ ההרצה:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+לראיות הצפויות יש גרסת לקוח, digest של קובץ ההרצה ו-digest של הקבלה בערך null. ראיות נצפות קשורות לגרסת הלקוח המדויקת ול-digest של קובץ ההרצה, וכן ל-digest של הקבלה כאשר הוא זמין. שתי הצורות משתמשות ב-`symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl הוא הבעלים של דקדוק הפקודות ושל ההצגה. הוא אינו הבעלים של הסמנטיקה של הווקטורים או של אמת הידע הקנונית. רק שינויי מקור סקורים מאשררים זהות `qxcmd` חדשה, ללא קשר למחלקת הקורא.
+</Note>
+
+## קבוצות פקודות
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/he/qxctl/knowledge">
+    ניהול מחזור חיים חוצה-וקטורים וסשנים מתמשכים של SSFV.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/he/qxctl/lifecycle">
+    פרופיל, בעלות, observe, report, boot, apply ושחזור.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/he/qxctl/engines">
+    רישום קישורי המנועים והעברה.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/he/qxctl/reconcile">
+    התאמת worktree של המתאם.
+  </Card>
+
+  <Card title="session" icon="key" href="/he/qxctl/session">
+    סשנים מאומתים וזרמי תחזוקה של SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/he/qxctl/maestro">
+    מלאי רצפטורים נגזר וראיות עגינה.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/he/qxctl/validate">
+    מדיניות אזהרות מוגנת וניהול ה-validator.
+  </Card>
+
+  <Card title="פקודות וקטורים" icon="terminal" href="/he/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv`, ודקדוק accord/evolution עתידי.
+  </Card>
+</CardGroup>

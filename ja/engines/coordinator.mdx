@@ -1,0 +1,50 @@
+---
+title: "Symphony ベクターエンジン向け Knowledge Session Coordinator"
+description: "Knowledge Session Coordinator は、範囲を限定した互換性チェック、ワークツリーの調整、認証済みセッション、適用可能なライフサイクル調整を C++26 で提供します。"
+sidebarTitle: "コーディネーター"
+---
+
+Knowledge Session Coordinator（`modules/knowledge-session-coordinator`）は、個別にインストール可能な C++26 プロセスです。qxctl とベクターエンジンの間に位置し、範囲を限定した互換性チェック、ワークツリーの調整、認証済みの非正規セッション、SSFV のメンテナンス、レポートのみのライフサイクル計画、および個別に認可された適用可能なジャーナルを担います。
+
+## 責務
+
+- qxctl、コーディネーター、エンジン間の**互換性チェック**
+- スロットベースの永続的な状態による**ワークツリーの調整**
+- SSIAG の権限の下での**認証済みの非正規セッション**
+- **永続的な SSFV メンテナンス**ストリーム
+- 決定論的なエビデンスを伴う**レポートのみのライフサイクル計画**
+- 準備済みの試行、compare-and-swap、再観測、動的な再計画、リカバリーを備えた**適用可能なジャーナル**
+
+## コーディネーターが行わないこと
+
+<Warning>
+  コーディネーターは、ベクターのセマンティクスやホストアクションを実行しません。エビデンスとジャーナルを調整するだけであり、各エンジンは引き続き自身のドメインを所有し、各ホストアクションは独自のコントラクトによって認可されます。
+</Warning>
+
+- 正規のナレッジの適用は行わない
+- 任意のコマンドは実行しない
+- 隠れたウォッチャーや常駐するバックグラウンド処理は持たない
+
+## qxctl との統合
+
+qxctl は、レシートで検証された正確なコーディネーターのインストールを呼び出します。`qxctl knowledge reconcile ...` と `qxctl knowledge session ...` は、操作ごとに正確にバインドされた 1 つのコーディネーターを使用します。変更を伴う操作には、安定した操作識別子と、compare-and-swap のための正確な現在のジャーナルダイジェストが必要です。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ja/qxctl/reconcile">
+    ワークツリー調整の文法。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ja/qxctl/session">
+    認証済みセッションと SSFV メンテナンスの文法。
+  </Card>
+
+  <Card title="基盤ライブラリ" icon="cube" href="/ja/engines/knowledge-vector-foundation">
+    コーディネーターが再利用する共有 C++ メカニズム。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ja/governance/ssiag">
+    コーディネーターが管理するセッションを認可します。
+  </Card>
+</CardGroup>

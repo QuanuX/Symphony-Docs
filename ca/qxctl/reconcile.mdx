@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: reconciliació d'arbres de treball"
+description: "Reconcilieu arbres de treball amb un coordinador de Symphony vinculat amb comprovacions de compatibilitat, diaris de punt de control i tancament, i recuperació de dues ranures basada en evidència."
+sidebarTitle: "reconcile"
+---
+
+La gramàtica `qxctl knowledge reconcile ...` dirigeix la reconciliació d'arbres de treball a través d'un únic Knowledge Session Coordinator vinculat exacte. Cada mutació es fa seguir amb un identificador estable i és un compare-and-swap contra el digest exacte del diari actual.
+
+## Ordres
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifica que qxctl, el coordinador i els motors vinculats coincideixen en la versió del protocol i l'àmbit.
+- `begin`: obre un nou context de reconciliació amb un identificador d'operació estable.
+- `status`: inspecciona el diari actual sense mutar-lo.
+- `checkpoint`: fa avançar el diari de manera duradora amb compare-and-swap.
+- `close`: finalitza el context de reconciliació.
+- `recover --discover`: recuperació per descobriment quan l'estat ordinari no pot validar l'estat local.
+
+## Regles de recuperació
+
+<Warning>
+  La recuperació de dues ranures és una reparació cap endavant basada en evidència. Mai no és un permís per descartar un diari incompatible o una extensió crítica desconeguda. Si la recuperació falla, escaleu el problema en lloc de forçar-la.
+</Warning>
+
+Feu servir la recuperació per descobriment només quan l'estat ordinari no pugui validar l'estat local. Preserveu els bloquejadors; torneu a planificar només després que canviï l'evidència verificada.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    El motor propietari dels diaris de reconciliació.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ca/qxctl/session">
+    Sessions autenticades que s'aparellen amb contextos de reconciliació.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ca/qxctl/engines">
+    Gestioneu les vinculacions que consumeix el coordinador.
+  </Card>
+</CardGroup>

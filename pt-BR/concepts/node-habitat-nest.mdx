@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat e Nest no Symphony"
+description: "Saiba como o Symphony modela a infraestrutura física: o Node como o computador físico, o Habitat como o condicionamento exato do sistema operacional e o Nest como o workload com o propósito do usuário."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+O Symphony define três conceitos físicos que separam a identidade do hardware, o condicionamento do software e o workload do usuário. Esses conceitos mantêm as preocupações de infraestrutura distintas para que você possa raciocinar sobre cada uma de forma independente.
+
+## Node
+
+Um **Node** é o recurso computacional físico de destino com recursos especificamente identificados. Desconectar, reconectar, reiniciar ou regravar apenas o software não cria um novo Node físico. A destruição, a substituição física ou uma alteração relevante no hardware local, sim. Uma encarnação de Node é uma evidência separada, criada quando esse Node é conectado a um barramento como participante de um sistema de trading, de um cluster de pesquisa ou de outro sistema construído com o Symphony.
+
+## Habitat
+
+Um **Habitat** é o condicionamento exato de sistema operacional e pacotes entregue a um Node para o trabalho que você seleciona. Seu padrão é apenas a superfície de software necessária: sem pacotes não relacionados, runtimes ocultos, contêineres, Kubernetes ou virtualização implícita. Um Habitat amplo e de uso geral continua sendo uma escolha explícita válida do usuário.
+
+## Nest
+
+Um **Nest** (ninho) atende a um propósito escolhido por você. Espera-se que a execução de estratégias ao vivo seja comum, e uma estratégia pode conter muitas seções de código modulares, mas o Symphony não define o propósito do Nest nem o equipara a um único arquivo-fonte, processo, algoritmo, API de corretora ou interface de dados. A lógica da estratégia continua sendo domínio seu.
+
+## Comparação
+
+| Conceito | O que é | O que o altera |
+| --- | --- | --- |
+| **Node** | Computador físico com recursos específicos | Destruição física, substituição ou alteração relevante de hardware |
+| **Habitat** | Condicionamento exato de sistema operacional e pacotes em um Node | Seleção explícita do usuário ou condicionamento administrado pelo qxctl |
+| **Nest** | Workload com o propósito do usuário entregue em um Habitat | Implantação pelo usuário de uma estratégia ou de outro trabalho selecionado |
+
+## Topologia de cluster e barramentos
+
+Vários Nodes formam um cluster somente quando estão conectados entre si por meio de um ou mais barramentos. Várias malhas de barramento podem coexistir dentro de um cluster, e um relacionamento Node-no-cluster pode identificar o barramento relevante sem alterar a identidade do Node físico.
+
+Adaptadores de barramento como NATS JetStream e ZeroMQ são escolhidos pelo usuário, e não definidos pela doutrina. Transferências pesadas, controle, pesquisa e resíduos de execução não precisam compartilhar um único barramento. Uma topologia pode usar vários barramentos ou contornar um barramento em um caminho declarado.
+
+## Escopo de TOPS e TROG
+
+**TOPS** é o escopo dominante do Trade Operating System. Um **TROG** é um escopo de grupo de trading deliberadamente subordinado e não global. Apesar da terminologia histórica, um TROG não é necessariamente virtual. Sua propriedade distintiva é que o seu escopo e as suas regras não são universais.

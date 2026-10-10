@@ -1,0 +1,28 @@
+---
+title: "Neutralność wobec klasy wywołującego i uprawnienia hosta w Symphony"
+description: "Symphony nie klasyfikuje wywołujących według typu. Uprawnienia wynikają z własności hosta docelowego, jawnych zezwoleń, oczekiwanego stanu i zabezpieczeń skonfigurowanych przez właściciela."
+sidebarTitle: "Uprawnienia wywołującego"
+---
+
+Przy rozstrzyganiu o uprawnieniach Symphony nie klasyfikuje wywołującego jako człowieka, AI, agenta, usługi, obciążenia, organizacji ani żadnego innego typu podmiotu. To, czy jesteś osobą, czy zautomatyzowanym systemem, samo w sobie nie nadaje ani nie odbiera żadnej zdolności. Ta neutralność wobec klasy wywołującego jest podstawową granicą architektoniczną, która opiera autoryzację na faktach, a nie na etykietach.
+
+## Co decyduje o uprawnieniach
+
+Obsługiwane decyzje autoryzacyjne wykorzystują następujące dane wejściowe:
+
+- **Własność hosta docelowego lub przyznane uprawnienia**: administrator hosta docelowego jest suwerenny w zakresie konfigurowalnego zarządzania.
+- **Żądana operacja i zasób**: konkretne działanie i obiekt, na którym jest wykonywane.
+- **Oczekiwany stan**: zadeklarowany pożądany wynik i zaobserwowany stan bieżący.
+- **Zabezpieczenia skonfigurowane przez właściciela**: zachowawcze ustawienia domyślne, które administrator może dostosować lub usunąć.
+
+## SSIAG i uprawnienia hosta
+
+SSIAG może weryfikować i odwzorowywać efektywne uprawnienia hosta, ale nie tworzy nadrzędnego organu rejestracyjnego ani nie ma stałego prawa weta wobec administratora hosta docelowego. Wzmocnione zapewnienie tożsamości i blokady zarządcze są neutralnymi wobec wywołującego zabezpieczeniami konfigurowanymi przez właściciela. Wymagania dotyczące integralności protokołu pozostają obowiązkowe w obrębie obsługiwanych narzędzi.
+
+## O czym Symphony nie decyduje
+
+Symphony nie decyduje, czy podmiot może posiadać mienie, otworzyć konto, podpisać umowę, przyjąć odpowiedzialność lub działać w imieniu innego podmiotu. Te kwestie należą do właściwego właściciela, dostawcy, kontrahenta i obowiązującego prawa. Platforma pozostaje w swojej ograniczonej roli: tworzy dowody kompatybilności i obsługuje operacje, ale nie rozstrzyga o zewnętrznej zdolności prawnej ani finansowej.
+
+## Praktyczne konsekwencje
+
+Gdy wywołujesz qxctl lub silnik wektora, obowiązują te same kontrole niezależnie od tego, czy uruchamiasz polecenie ręcznie, za pomocą skryptu, czy przez narzędzie agentowe. Ścieżka uprawnień to: własność hosta docelowego, jawne zezwolenie, oczekiwany stan, zabezpieczenia. Żaden typ wywołującego nie otrzymuje automatycznego obejścia ani automatycznego ograniczenia.

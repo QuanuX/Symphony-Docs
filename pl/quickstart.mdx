@@ -1,0 +1,33 @@
+---
+title: "Szybki start: poznaj QuanuX Symphony"
+description: "Przewodnik po doktrynie Symphony, architekturze, kontraktach wektorów i administracyjnej powierzchni qxctl."
+sidebarTitle: "Szybki start"
+---
+
+Skorzystaj z tego przewodnika, aby zorientować się w Symphony, zanim zaczniesz go obsługiwać. Dokumentacja rozdziela doktrynę platformy, infrastrukturę wybraną przez użytkownika, semantykę należącą do wektorów oraz polecenia administracyjne. Dokładne kroki instalacji i wykonywania należą do bieżącego kontraktu danego komponentu.
+
+## 1. Przeczytaj granice operacyjne
+
+Zacznij od [doktryny platformy](/pl/doctrine). Ustanawia ona własność strategii i infrastruktury po stronie użytkownika, neutralność wobec klasy wywołującego, kompatybilność opartą na dowodach oraz ochronę ścieżki krytycznej.
+
+## 2. Poznaj model fizyczny
+
+Przeczytaj [Node, Habitat i Nest](/pl/concepts/node-habitat-nest):
+
+- **Node:** zidentyfikowany fizyczny zasób obliczeniowy.
+- **Habitat:** dokładne przygotowanie systemu operacyjnego i pakietów dostarczone do Node.
+- **Nest:** obciążenie realizujące cel użytkownika, umieszczone w odpowiednim Habitacie.
+
+Magistrale i adaptery klastra są jawnymi wyborami architektonicznymi. Symphony nie narzuca uniwersalnego dostawcy ani strategii.
+
+## 3. Prześledź własność znaczenia
+
+[Przegląd architektury](/pl/concepts/architecture) pokazuje relacje między kontraktami wektorów, silnikami, qxctl i zarządzanymi dowodami. [Wektory i fazy](/pl/concepts/vectors) wyjaśnia, dlaczego wektor pozostaje właścicielem semantycznym, nawet gdy prace nad dostarczaniem przechodzą przez kolejne fazy. [Symphony Knowledge Vector](/pl/skv/overview) opisuje Contract Quad i jego powierzchnie towarzyszące.
+
+## 4. Znajdź powierzchnię administracyjną
+
+[Przegląd qxctl](/pl/qxctl/overview) przedstawia administracyjne i zapytaniowe CLI napisane w Go. Korzystaj ze stron qxctl w przypadku konkretnej rodziny poleceń, takiej jak [wiedza](/pl/qxctl/knowledge), [cykl życia](/pl/qxctl/lifecycle), [silniki](/pl/qxctl/engines) lub [walidacja](/pl/qxctl/validate). qxctl zapewnia gramatykę poleceń i prezentację; kontrakty wektorów są właścicielami operacji i ich znaczenia.
+
+## 5. Sprawdź odpowiedni kontrakt i dowody
+
+Zanim podejmiesz działanie na Node lub wywołasz silnik wektora, sprawdź bieżący kontrakt właściciela, stan docelowy, autoryzację oraz dostępne potwierdzenia lub dowody walidacji. [Uprawnienia wywołującego](/pl/concepts/caller-authority) i [izolacja ścieżki krytycznej](/pl/concepts/hot-path-isolation) wyjaśniają te granice. Powstająca powierzchnia nie stanowi dorozumianej gwarancji operacyjnej.

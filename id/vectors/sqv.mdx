@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: Kontrak Kerangka Kerja"
+description: "SQV memiliki kontrak kerangka kerja kuantitatif dan sistem trading yang dapat digunakan ulang tanpa mengambil logika strategi pengguna. SOOV adalah subvektor bernama pertamanya untuk arsitektur FIX khusus C++ di masa depan."
+sidebarTitle: "Quantitative Vector"
+---
+
+Symphony Quantitative Vector (SQV) memiliki kontrak kerangka kerja yang dapat digunakan ulang untuk riset kuantitatif, konstruksi sistem trading, dukungan eksekusi, dan engine kuantitatif di kemudian hari. Logika strategi selalu menjadi milik Anda. SQV menyediakan permukaan kerangka kerja dan bukti kompatibilitas yang persis, tetapi tidak pernah menentukan instrumen, feed, langganan, logika order, atau model eksekusi Anda.
+
+## Batas strategi pengguna
+
+Anda mempertahankan kepemilikan penuh atas logika strategi. SQV tidak:
+
+- Memilih instrumen atau feed data Anda
+- Mendefinisikan field langganan atau kedalaman pasar
+- Menentukan perilaku kegagalan atau aturan normalisasi
+- Menulis logika order atau model eksekusi
+- Merancang struktur modular internal Anda
+
+Symphony memberikan bukti kompatibilitas dan operasi yang didukung. Symphony tidak pernah memeringkat strategi atau memaksakan aturan platform pada keputusan trading Anda.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV adalah subvektor bernama pertama di bawah SQV. SOOV mewakili arsitektur FIX khusus C++ berperforma tinggi di masa depan yang terinspirasi oleh pekerjaan historis QuanuX. SOOV direncanakan sebagai lapisan perpesanan yang terbatas dan deterministik untuk komunikasi trading. Perilaku FIX yang terperinci belum kanonis; saat ini belum ada sesi FIX, adapter feed, atau integrasi broker yang diimplementasikan.
+
+## Cakupan masa depan
+
+SQV adalah wadah yang direncanakan untuk komponen kerangka kerja kuantitatif yang telah diratifikasi di seluruh fase pengiriman berikutnya. Area yang diharapkan meliputi:
+
+- Engine backtesting
+- API C++ broker
+- Library indikator
+- Matematika kuantitatif
+- Arsitektur aliran data
+
+Tidak satu pun dari ini diimplementasikan sampai kontrak masing-masing diratifikasi.
+
+## Status saat ini
+
+SQV hanya berupa kontrak arsitektur kanonis. Saat ini belum ada engine SQV atau SOOV, sesi FIX, adapter feed, runtime strategi, integrasi broker, backtester, library indikator, atau komponen aliran data yang diimplementasikan.
+
+## Hubungan SQV dengan vektor lain
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/id/vectors/shv">
+    Menyediakan bukti kapabilitas perangkat keras yang membatasi desain engine kuantitatif.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/id/vectors/snv">
+    Mencatat Node tempat workload kuantitatif dijalankan.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/id/skv/overview">
+    Mengatur kontrak, evolusi, dan hubungan publikasi resmi SQV.
+  </Card>
+</CardGroup>

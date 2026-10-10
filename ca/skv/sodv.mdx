@@ -1,0 +1,48 @@
+---
+title: "SODV: governança de la documentació oficial i les versions"
+description: "SODV governa la publicació oficial de QuanuX amb comprovacions del llibre de versions de només addició, verificació d'observacions aportades per l'invocador i inventaris de versions d'un sol ús."
+sidebarTitle: "SODV"
+---
+
+El Symphony Official Documentation Vector (SODV) governa com el coneixement dins del marc SKV es converteix en documentació pública oficial i en registres de versions. El seu motor és un procés en C++ instal·lable de manera independent que fa comprovacions locals del llibre de versions de només addició i produeix inventaris de versions d'un sol ús. SODV no publica res per si mateix.
+
+## Operacions
+
+- **Inspecció i comprovació**: valida la forma i la continuïtat del llibre de versions.
+- **Verificació**: comprova les observacions de l'estat publicat aportades per l'invocador.
+- **Proposta**: accepta propostes de versió neutrals respecte al proveïdor.
+- **Recuperació**: fa una recuperació sense mutacions.
+- **Projecció**: emet inventaris de versions d'un sol ús.
+
+## Què no fa SODV
+
+- SODV no té accés a la xarxa.
+- SODV no publica res a GitHub, Mintlify, registres de paquets ni cap altra superfície.
+- SODV no crea etiquetes i no pot declarar una versió com a completada.
+- SODV no classifica proveïdors ni afavoreix cap via de publicació.
+
+La publicació es fa mitjançant eines autoritzades separades que consulten l'evidència de SODV.
+
+## Publicacions de SODV completades
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` a l'etiqueta `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` a l'etiqueta `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` a l'etiqueta `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    Executeu `qxctl sodv ...` per inspeccionar, verificar, proposar i projectar.
+  </Card>
+</CardGroup>
+
+<Note>
+  Tots els motors SKV són només de lectura, consulta, validació i proposta. L'aplicació canònica està desactivada fins que no es completin els contractes de SSIAG, transacció d'estat esperat, salvaguarda de qxctl, esdeveniment STAV, recuperació i proves negatives de cada motor.
+</Note>

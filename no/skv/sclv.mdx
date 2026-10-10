@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector for kildeendringer"
+description: "SCLV fører en kun-tilleggs-logg over fullførte kildeendringer med leverandørnøytrale forslag, ikke-endrende gjenoppretting og engangsprojeksjoner for registeret."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) registrerer endringer som gjøres i SKV-flater over tid. Motoren er en uavhengig installerbar C++-prosess som utfører deterministiske kontroller av en kun-tilleggs-logg og produserer engangsprojeksjoner. Loggen skrives først etter at en vesentlig kildeendring er fullført.
+
+## Operasjoner
+
+- **Inspect og check**: valider loggens form, kontinuitet og bevis.
+- **Propose (v3)**: ta imot kallerdeklarerte, leverandørnøytrale forslag til nye poster.
+- **Recover**: utfør ikke-endrende gjenoppretting av avbrutt eller tvetydig tilstand.
+- **Project**: send ut engangsinventarer over loggtilstanden på forespørsel.
+
+## Opptak og avvikling
+
+Hver godkjent SCLV-post binder gjeldende indeksert bevis på tidspunktet den skrives. Senere legitim avvikling av en flate bevarer den uforanderlige historiske proveniensen uten å tvinge slettet gjeldende tekst tilbake inn i SKVI. Historikk forblir historikk; gjeldende sannhet forblir gjeldende.
+
+## Hva SCLV ikke gjør
+
+- SCLV oppretter eller godkjenner ikke kildeendringer.
+- SCLV omskriver ikke eksisterende poster; den er kun-tilleggs.
+- SCLV publiserer ingenting. Offentlig projeksjon tilhører SODV.
+
+<Note>
+  Hver nåværende SKV-motor er kun for lesing, spørring, validering og forslag. Kanonisk apply er deaktivert inntil hver motors fullstendige autoritets- og revisjonskontrakter er fullført.
+</Note>
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/no/skv/skvi">
+    Indekserer gjeldende kanonisk sannhet som SCLV-poster binder seg til.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/no/skv/sodv">
+    Styrer offisiell offentlig projeksjon av logginformasjon.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/no/skv/sev">
+    Evolusjonssaker vurderer endringer før SCLV registrerer dem.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/no/qxctl/vector-commands">
+    Kjør `qxctl sclv ...` for inspect, check, propose og recover.
+  </Card>
+</CardGroup>

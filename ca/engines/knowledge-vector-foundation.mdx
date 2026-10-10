@@ -1,0 +1,53 @@
+---
+title: "Fonament C++ dels motors del Knowledge Vector: mecànica compartida"
+description: "El fonament C++ dels motors del Knowledge Vector proporciona l'enquadrament de processos sense autoritat, JSON acotat, SHA-256, instantànies, rebuts i descobriment explícit de manifests."
+sidebarTitle: "Biblioteca de fonament"
+---
+
+`libraries/knowledge-vector-engine-cpp` proporciona la mecànica C++ compartida i sense autoritat que reutilitza cada motor de vectors de Symphony. Ofereix blocs de construcció deterministes perquè cada motor es mantingui acotat, reproduïble i lliure d'efectes secundaris ambientals.
+
+## Què proporciona el fonament
+
+- **Enquadrament de processos**: protocol de processos locals sense autoritat que utilitzen tots els motors
+- **JSON acotat**: anàlisi i emissió estrictes amb límits explícits de mida i profunditat
+- **SHA-256**: adreçament per contingut per a evidències i rebuts
+- **Lectures sense seguiment**: lectures del sistema de fitxers que mai no travessen enllaços simbòlics de manera inesperada
+- **Instantànies deterministes**: instantànies repetibles de l'estat inspeccionat
+- **Validació temporal**: tractament canònic d'UTC segons el contracte de semàntica temporal de Symphony
+- **Descobriment de manifests del propietari**: descobriment exacte dels manifests de contracte
+- **Empaquetament versionat**: paquets propietat de rebuts instal·lables de manera independent
+- **Rebuts i desinstal·lació propietat del rebut**: desinstal·lació dirigida únicament pel rebut que va instal·lar l'artefacte
+
+## Límit del descobriment de manifests
+
+<Warning>
+  El descobriment de manifests comença a partir d'un conjunt fix d'arrencada i només travessa declaracions subordinades explícites. Mai no fa un rastreig ambiental del repositori ni dedueix la propietat a partir dels noms dels directoris.
+</Warning>
+
+Tot motor de vectors que utilitzi el fonament hereta aquesta regla.
+
+## Què no fa el fonament
+
+- No porta autoritat. Els motors que l'utilitzen han d'autoritzar igualment les mutacions mitjançant SSIAG.
+- No publica ni obté res a través de la xarxa.
+- No modifica fitxers canònics pel seu compte.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    Coordinador C++26 construït sobre el fonament per a sessions i reconciliació.
+  </Card>
+
+  <Card title="Visió general dels motors" icon="cube" href="/ca/engines/overview">
+    Els motors que reutilitzen el fonament.
+  </Card>
+
+  <Card title="Visió general de SKV" icon="book-open" href="/ca/skv/overview">
+    Contractes de vectors que implementen els motors.
+  </Card>
+
+  <Card title="Visió general de qxctl" icon="terminal" href="/ca/qxctl/overview">
+    CLI administrativa que invoca motors exactes validats per rebut.
+  </Card>
+</CardGroup>

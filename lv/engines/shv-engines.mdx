@@ -1,0 +1,65 @@
+---
+title: "SHV dzinēji: Symphony Hardware Vector avoti un grafs"
+description: "SHV dzinēji katalogizē CPU, GPU, NIC, atmiņu un krātuvi ar saglabātu avotu atkārtošanu, prasību izvērtēšanu, PDF ievadi un noturīgiem DuckDB grafiem."
+sidebarTitle: "SHV dzinēji"
+---
+
+Symphony Hardware Vector (SHV) dzinēji katalogizē procesorus, CPU topoloģiju, kešatmiņas, GPU, NIC un optiskās šķiedras saskarnes, mātesplates, RAM un NVMe. Noklusējuma atlase dod priekšroku oriģinālajiem komponentiem un ar pierādījumiem pamatotiem variantiem. Katrs dzinējs ir neatkarīgi instalējams un paredzēts tikai lasīšanai.
+
+## Dzinēji
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Aparatūras kodols: izsaucēja definēts pārklājums, saglabāto avotu kataloga atkārtošana, prasību izvērtēšana un grafa projekcija.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Avotu ievade un revīziju apstrāde aparatūras pierādījumiem.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Komponentu un sistēmu profilu izvērtēšana.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Katalogizētās aparatūras sadalīšana reproducējamai atlasei.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Pārvaldīta lokālā kataloga publicēšana un atlase.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Skaidra grafa transporta virsma.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Noturīga, uz DuckDB balstīta grafa krātuve, ko administrē ar qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    PDF avotu interpretācija aparatūras datu lapām.
+  </Card>
+</CardGroup>
+
+## Administrēšanas galvenie aspekti
+
+- **Noturīgā krātuve** tiek administrēta tikai ar `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` ar saglabāto sagaidāmā nodoma īssavilkumu kalpo arī kā atkopšana; atsevišķa atkopšanas aizstājvārda nav.
+- **Kataloga publicēšana** tiek administrēta tikai ar `shv catalogue publication inspect|plan|apply|status|schema|template`. Atkopšana ir `apply --operation-id`, kas ir savstarpēji izslēdzoša ar `--input`.
+- **Inventārs** (laidiens 0.2) pievieno `shv graph store inventory`: revīzijai piesaistītu loģisku lasīšanu ar skaidrām saglabāto rakstītāju identitātēm. Mantotā 0.1 atlase joprojām tiek atbalstīta.
+
+<Note>
+  Aparatūras klases ir izsaucēja kartēšanas un profilu dati, nevis dublēti komandu koki. `--version` atlasa precīzu primāro īpašnieku; `--source-version` un `--adapter-version` nosauc atsevišķas atlasītās atkarības. Shēmu un kartēšanas revīzijas ir datu identitātes, nevis instalēto dzinēju versiju aizstājvārdi.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SHV vektors" icon="microchip" href="/lv/vectors/shv">
+    Hardware Vector līgums, ko īsteno šie dzinēji.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Pilna `shv ...` gramatikas atsauce.
+  </Card>
+</CardGroup>

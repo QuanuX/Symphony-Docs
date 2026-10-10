@@ -1,0 +1,25 @@
+---
+title: "Ändringslogg"
+description: "Nya funktioner, uppdateringar och korrigeringar som levererats till QuanuX Symphony."
+rss: true
+---
+
+<Update label="October 2, 2026" description="Week of September 25" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Nya funktioner
+
+- **Symphony Node Vector-motorer.** Fem oberoende installerbara C++26-motorer täcker nu Node-identitet (SNIV), resurser (SNRV), klusterrelationer (SCIV), namn (SCNV) samt SNV-sammansättning och lagring. Du kan administrera tillhandahållen evidens, valda vyer och lagrad historik via qxctl. Liveobservation och SOV-provisionering ingår ännu inte. Se [Node Vector](/sv/vectors/snv).
+- **Valfri lokal SNV-observatör.** qxctl kan anropa en separat lokal observatör som rapporterar utvalda CPU- och minnesobservationer med uttrycklig osäkerhet. Den tilldelar aldrig identitet, medlemskap eller namn.
+- **Grunder för SQV-forskningsdata.** Nya C++26-bibliotek täcker insamling med ursprungliga byte och källproveniens (SQAV), metadata (SQMV), flöde (SQFV), exakt heltalskonvertering med härkomst (SQTV), lokal lagring (SQPV) samt leverans med kontrollpunkter och exakt återupptagning (SQDV). Se [Quantitative Vector](/sv/vectors/sqv).
+- **SQV-administration via qxctl.** Sju oberoende installerbara administrationsmotorer exponerar validering av förfrågningar och konfiguration, metadataprojektioner och skrivskyddad inspektion av lagrat tillstånd. Se [Vektorkommandon](/sv/qxctl/vector-commands).
+- **Databento- och mäklaradaptrar.** SQV stöder nu Databento DBNv3 MBO-insamling, bevarar DBNv1- och DBNv3-exempel och planerar avgränsade historiska förfrågningar med täckningsevidens. Adaptrar för icke-live-källor och mäklarläsning finns också tillgängliga. Autentiserad leverantörskörning och live-insamling återstår som framtida arbete.
+
+## Uppdateringar
+
+- **SSIAG-autentiseringsinsläpp.** SSIAG lägger till engångsskydd för användning av autentiseringsuppgifter, autentiserat insläpp av utskick, en beständig journal över förfrågningar om autentiseringsuppgifter med återställning samt inbyggd peer-validering på macOS. Operativ användning av autentiseringsuppgifter förblir inaktiverad. Se [SSIAG](/sv/governance/ssiag).
+- **Kommandotäckning i qxctl.** qxctl har nu 399 stabila kommandoidentiteter, upp från 383. Motorbindningar stöder 13 etablerade roller, inklusive de fem SNV-motorerna. Se [qxctl-översikt](/sv/qxctl/overview).
+- **SQFV-batchgränssnitt.** SQFV-batchbiblioteket använder nu ett C++26-API i stället för ett C-ABI. Uppdatera alla integrationer som anropade det tidigare gränssnittet.
+- **SKVI-kapacitet.** [SKVI](/sv/skv/skvi) indexerar fler ytor, inklusive de nya ägarna av SQV-forskningsdata.
+- **Vägledning för motorinstallation.** Installationsvägledningen förtydligar nu att du installerar, uppdaterar och tar bort varje motor individuellt. Se [Översikt över motorer](/sv/engines/overview).
+
+</Update>

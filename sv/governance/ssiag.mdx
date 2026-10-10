@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance för Symphony"
+description: "SSIAG är Symphonys anroparneutrala auktoriseringsgrund med registrering per TOPS, skyddad policylivscykel, säker granskningsmetadata och inbyggda övervakningskrokar."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) är den oberoende installerbara, cgo-fria Go-grunden för anroparneutral auktorisering på en Symphony-värd. Den projicerar effektiv värdbefogenhet, spärrar skyddade mutationer och integreras med STAV-granskning innan någon ändring blir synlig.
+
+## Vad SSIAG tillhandahåller
+
+- Exakt anroparneutral auktorisering knuten till ägande av målvärden, beviljad behörighet, begärd åtgärd, förväntat tillstånd och ägarkonfigurerade skyddsåtgärder
+- Registrering per TOPS och förtroende för lokala slutpunkter
+- Skyddad policylivscykel och livscykel för leverantörsinstallationer
+- Bindningslivscykel med compare-and-swap mellan aktiva och tidigare bindningar
+- Säker granskningsmetadata förberedd för STAV
+- Inbyggd övervakning med launchd och systemd
+
+## Vad som medvetet är inaktiverat
+
+<Warning>
+  Operativ användning av autentiseringsuppgifter, kanonisk tillämpning av kunskap och leverans av hemligheter förblir inaktiverade. Vanlig grundläggande mutation misslyckas stängt tills dess obligatoriska granskningsrutt via STAV är komplett.
+</Warning>
+
+SSIAG avgör inte anroparklass. Anropare som är människor, AI, agenter, tjänster och arbetslaster behandlas identiskt; befogenhet kommer från målvärden och den begärda åtgärden, inte från aktörsetiketten.
+
+## macOS Keychain-leverantör
+
+`modules/ssiag-provider-macos-keychain` är en metadataadapter i Swift med ett avgränsat ömsesidigt verifierat handslag samt observation av signerat paket och sessionsberedskap. Den exponerar leverantörsmetadata för SSIAG utan att ge operativ åtkomst till Keychain, vilket avsiktligt är inaktiverat i dag.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/sv/governance/stav">
+    Endast tilläggsbar granskningsliggare per TOPS som SSIAG-mutationer förlitar sig på.
+  </Card>
+
+  <Card title="Accordare-producent" icon="pen-nib" href="/sv/governance/accordare-producer">
+    Avgränsad granskningskrets för SAV Named Version som samverkar med SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/sv/qxctl/lifecycle">
+    Livscykeladministration som konsulterar SSIAG för auktorisering.
+  </Card>
+
+  <Card title="Anroparbefogenhet" icon="user-shield" href="/sv/concepts/caller-authority">
+    Doktrinen som SSIAG implementerar.
+  </Card>
+</CardGroup>

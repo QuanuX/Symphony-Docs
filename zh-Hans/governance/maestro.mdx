@@ -1,0 +1,43 @@
+---
+title: "Maestro：Symphony Vector 引擎的在场权威"
+description: "Maestro 按 TOPS 和接收器记录经过身份验证的 vector 引擎对接关系，并推导出完整的只读清单，而不会启动或监管引擎。"
+sidebarTitle: "Maestro"
+---
+
+Maestro（`modules/maestro`）是一个可独立安装的冻结路径 C++26 在场权威。它按 TOPS 和接收器记录精确的、经过身份验证的 vector 引擎对接关系，并推导出当前已对接内容的完整只读清单。Maestro 是见证者，而不是监管者。
+
+## Maestro 记录的内容
+
+- vector 引擎与接收器之间精确的、经过身份验证的对接关系
+- 按 TOPS 划分的作用域，使每个安装的在场信息仅对该安装可见
+- 通过 `qxctl maestro inventory` 提供的、推导得出的完整只读清单
+
+## Maestro 不做的事情
+
+<Warning>
+  Maestro 不会启动、调度、监管或调用引擎。仅凭绑定、协调、经过身份验证的会话协调或生命周期计划，并不能确立 Maestro 在场、批准语义事实、修改规范知识或证明已安装主机的完整性。
+</Warning>
+
+- Maestro 不创建任何进程。
+- Maestro 从不应用规范知识变更。
+- Maestro 从不取代拥有语义的 vector 引擎。
+
+## 相关表面
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/zh-Hans/qxctl/maestro">
+    `qxctl maestro inventory` 呈现推导得出的清单。
+  </Card>
+
+  <Card title="会话协调器" icon="gears" href="/zh-Hans/engines/coordinator">
+    负责经过身份验证的会话和工作树协调机制。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hans/governance/ssiag">
+    对 Maestro 所记录的对接关系进行身份验证。
+  </Card>
+
+  <Card title="引擎概览" icon="cube" href="/zh-Hans/engines/overview">
+    与 Maestro 对接的可独立安装的 vector 引擎。
+  </Card>
+</CardGroup>

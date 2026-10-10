@@ -1,0 +1,53 @@
+---
+title: "Produtor STAV do Accordare: auditoria delimitada de Named Versions do SAV"
+description: "O produtor STAV do Accordare mantém duráveis a intenção, o resultado e a recuperação de Named Versions do SAV por meio de um produtor Go de caminho congelado com pares locais autenticados."
+sidebarTitle: "Produtor do Accordare"
+---
+
+O produtor STAV do Accordare (`modules/accordare-stav-producer`) é um produtor Go de caminho congelado, instalável de forma independente, para o circuito delimitado de auditoria de Named Versions do SAV. Ele mantém duráveis a intenção pré-mutação e a recuperação de acréscimos, autentica seus pares locais e envia apenas o candidato seguro exato admitido pelo seu vocabulário fechado. Ele não é, em si, a autoridade de acréscimo do STAV.
+
+## O padrão de intenção, resultado e recuperação
+
+O produtor segue um padrão de três etapas para cada mutação auditada:
+
+<Steps>
+  <Step title="Intenção pré-mutação">
+    Registra de forma durável a intenção declarada pelo chamador antes que qualquer alteração se torne observável. O produtor recusa candidatos fora do seu vocabulário fechado.
+  </Step>
+  <Step title="Resultado terminal">
+    Depois que a mutação é concluída ou falha, captura o resultado exato para que a auditoria reflita a realidade, e não um estado desejado.
+  </Step>
+  <Step title="Recuperação delimitada">
+    Em caso de interrupção, o produtor realiza uma recuperação delimitada do fluxo de acréscimos sem inventar uma reconciliação nem descartar silenciosamente a intenção.
+  </Step>
+</Steps>
+
+## Limites
+
+<Warning>
+  O produtor do Accordare não é a autoridade de acréscimo do STAV. Ele autentica pares locais e envia candidatos; a autoridade de acréscimo os valida, sela e armazena de forma durável. Nunca contorne essa separação.
+</Warning>
+
+- O vocabulário do produtor é fechado. Ele aceita apenas candidatos de auditoria de Named Versions do SAV.
+- O produtor é de caminho congelado. Ele não deve se tornar uma dependência do hot path.
+- O produtor autentica pares locais; ele não autentica chamadores remotos.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/pt-BR/governance/stav">
+    A autoridade de acréscimo que sela os registros de auditoria.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pt-BR/governance/ssiag">
+    Autoriza a mutação que o produtor audita.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/pt-BR/skv/sav">
+    A semântica de composição de Named Versions que este circuito audita.
+  </Card>
+
+  <Card title="Comandos de vetor do qxctl" icon="terminal" href="/pt-BR/qxctl/vector-commands">
+    A gramática ratificada do Accordare chegará como `qxctl accord ...` quando for implementada.
+  </Card>
+</CardGroup>

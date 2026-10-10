@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: darba koka saskaņošana"
+description: "Saskaņojiet darba kokus ar piesaistītu Symphony koordinatoru, izmantojot saderības pārbaudes, kontrolpunktu un slēgšanas žurnālus un uz pierādījumiem balstītu divu slotu atkopšanu."
+sidebarTitle: "reconcile"
+---
+
+Gramatika `qxctl knowledge reconcile ...` vada darba koka saskaņošanu caur vienu precīzi piesaistītu Knowledge Session Coordinator. Katra izmaiņa tiek izsekota ar stabilu identifikatoru un ir compare-and-swap operācija pret precīzu pašreizējā žurnāla jaucējvērtību.
+
+## Komandas
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: pārbaudīt, vai qxctl, koordinators un piesaistītie dzinēji vienojas par protokola versiju un tvērumu.
+- `begin`: atvērt jaunu saskaņošanas kontekstu ar stabilu operācijas identifikatoru.
+- `status`: pārbaudīt pašreizējo žurnālu bez izmaiņām.
+- `checkpoint`: noturīgi pārvirzīt žurnālu ar compare-and-swap.
+- `close`: pabeigt saskaņošanas kontekstu.
+- `recover --discover`: atklāšanas atkopšana, ja parastais statuss nevar validēt lokālo stāvokli.
+
+## Atkopšanas noteikumi
+
+<Warning>
+  Divu slotu atkopšana ir uz pierādījumiem balstīts labojums uz priekšu. Tā nekad nav atļauja atmest nesaderīgu žurnālu vai nezināmu kritisku paplašinājumu. Ja atkopšana neizdodas, eskalējiet, nevis spiediet ar varu.
+</Warning>
+
+Izmantojiet atklāšanas atkopšanu tikai tad, ja parastais statuss nevar validēt lokālo stāvokli. Saglabājiet bloķētājus; plānojiet no jauna tikai pēc tam, kad mainījušies pārbaudīti pierādījumi.
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="Sesiju koordinators" icon="gears" href="/lv/engines/coordinator">
+    Dzinējs, kam pieder saskaņošanas žurnāli.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/lv/qxctl/session">
+    Autentificētas sesijas, kas veido pārus ar saskaņošanas kontekstiem.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/lv/qxctl/engines">
+    Pārvaldiet piesaistes, ko izmanto koordinators.
+  </Card>
+</CardGroup>

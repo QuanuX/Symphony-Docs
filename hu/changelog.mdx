@@ -1,0 +1,25 @@
+---
+title: "Változásnapló"
+description: "A QuanuX Symphony új funkciói, frissítései és javításai."
+rss: true
+---
+
+<Update label="2026. október 2." description="Szeptember 25-i hét" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Új funkciók
+
+- **Symphony Node Vector motorok.** Öt, egymástól függetlenül telepíthető C++26 motor fedi le a Node-identitást (SNIV), az erőforrásokat (SNRV), a klaszterkapcsolatokat (SCIV), a neveket (SCNV), valamint az SNV-kompozíciót és -megőrzést. A szolgáltatott bizonyítékokat, a kiválasztott nézeteket és a megőrzött előzményeket a qxctl segítségével kezelheti. Az élő megfigyelés és az SOV-alapú kiépítés még nem része a kiadásnak. Lásd: [Node Vector](/hu/vectors/snv).
+- **Opcionális helyi SNV-megfigyelő.** A qxctl meghívhat egy különálló helyi megfigyelőt, amely kiválasztott CPU- és memóriamegfigyeléseket jelent, kifejezetten megjelölt bizonytalansággal. Soha nem rendel hozzá identitást, tagságot vagy nevet.
+- **SQV kutatási adatalapok.** Új C++26 könyvtárak fedik le a rögzítést az eredeti bájtokkal és a forrás eredetével (SQAV), a metaadatokat (SQMV), az adatfolyamot (SQFV), a pontos egész számú konverziót leszármazással (SQTV), a helyi megőrzést (SQPV), valamint a kézbesítést ellenőrzőpontokkal és pontos folytatással (SQDV). Lásd: [Quantitative Vector](/hu/vectors/sqv).
+- **SQV-adminisztráció a qxctl-en keresztül.** Hét, egymástól függetlenül telepíthető adminisztrációs motor biztosít kérés- és konfigurációellenőrzést, metaadat-projekciókat és a megőrzött állapot csak olvasható vizsgálatát. Lásd: [Vektorparancsok](/hu/qxctl/vector-commands).
+- **Databento- és brókeradapterek.** Az SQV mostantól támogatja a Databento DBNv3 MBO rögzítést, megőrzi a DBNv1 és DBNv3 mintákat, és lefedettségi bizonyítékokkal tervez korlátos historikus kéréseket. Nem élő forrás- és brókerolvasó adapterek is elérhetők. A hitelesített szolgáltatói végrehajtás és az élő gyűjtés továbbra is jövőbeli feladat.
+
+## Frissítések
+
+- **SSIAG hitelesítőadat-befogadás.** Az SSIAG egyszeri hitelesítőadat-használati őröket, hitelesített kiküldés-befogadást, helyreállítással rendelkező tartós hitelesítőadat-kérési naplót, valamint natív partnerellenőrzést vezet be macOS-en. Az operatív hitelesítőadat-használat továbbra is letiltva marad. Lásd: [SSIAG](/hu/governance/ssiag).
+- **qxctl parancslefedettség.** A qxctl mostantól 399 stabil parancsidentitással rendelkezik a korábbi 383 helyett. A motorkötések 13 bevett szerepkört támogatnak, köztük az öt SNV-motort. Lásd: [qxctl áttekintés](/hu/qxctl/overview).
+- **SQFV kötegelt interfész.** Az SQFV kötegelt könyvtár mostantól C ABI helyett C++26 API-t használ. Frissítse azokat az integrációkat, amelyek a korábbi interfészt hívták.
+- **SKVI kapacitás.** Az [SKVI](/hu/skv/skvi) több felületet indexel, köztük az új SQV kutatási adatok tulajdonosait.
+- **Motortelepítési útmutató.** A telepítési útmutató mostantól egyértelművé teszi, hogy minden motort külön-külön telepít, frissít és távolít el. Lásd: [Motorok áttekintése](/hu/engines/overview).
+
+</Update>

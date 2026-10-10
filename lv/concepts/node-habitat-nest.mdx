@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat un Nest Symphony"
+description: "Uzziniet, kā Symphony modelē fizisko infrastruktūru: Node kā fizisko datoru, Habitat kā precīzu OS sagatavojumu un Nest kā lietotāja mērķa darba slodzi."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definē trīs fiziskas koncepcijas, kas nošķir aparatūras identitāti, programmatūras sagatavojumu un lietotāja darba slodzi. Šīs koncepcijas uztur infrastruktūras jautājumus atsevišķi, lai jūs varētu spriest par katru no tiem neatkarīgi.
+
+## Node
+
+**Node** ir mērķa fiziskais datora resurss ar konkrēti identificētiem resursiem. Atvienošana, atkārtota pievienošana, restartēšana vai tikai programmatūras pārrakstīšana neizveido jaunu fizisko Node. To izveido iznīcināšana, fiziska nomaiņa vai būtiskas lokālas aparatūras izmaiņas. Node inkarnācija ir atsevišķs pierādījums, kas tiek izveidots, kad šis Node tiek pievienots kopnei kā dalībnieks tirdzniecības sistēmā, pētniecības klasterī vai citā ar Symphony veidotā sistēmā.
+
+## Habitat
+
+**Habitat** ir precīzs operētājsistēmas un pakotņu sagatavojums, kas piegādāts Node jūsu izvēlētajam darbam. Pēc noklusējuma tas ietver tikai nepieciešamo programmatūras virsmu: nekādu nesaistītu pakotņu, slēptu izpildvidu, konteineru, Kubernetes vai netiešas virtualizācijas. Plašs vispārējas nozīmes Habitat paliek derīga, skaidri izdarīta lietotāja izvēle.
+
+## Nest
+
+**Nest** (ligzda) kalpo jūsu izvēlētam mērķim. Paredzams, ka tiešraides stratēģiju izpilde būs izplatīta, un viena stratēģija var ietvert daudzas modulāras koda sadaļas, taču Symphony nenosaka Nest mērķi un nepielīdzina to vienam pirmkoda failam, procesam, algoritmam, brokera API vai datu saskarnei. Stratēģijas loģika paliek jūsu pārziņā.
+
+## Salīdzinājums
+
+| Koncepcija | Kas tā ir | Kas to maina |
+| --- | --- | --- |
+| **Node** | Fizisks dators ar konkrētiem resursiem | Fiziska iznīcināšana, nomaiņa vai būtiskas aparatūras izmaiņas |
+| **Habitat** | Precīzs OS un pakotņu sagatavojums Node | Skaidra lietotāja izvēle vai qxctl administrēts sagatavojums |
+| **Nest** | Lietotāja mērķa darba slodze, kas piegādāta Habitat | Lietotāja veikta stratēģijas vai cita izvēlēta darba izvietošana |
+
+## Klastera un kopņu topoloģija
+
+Vairāki Node veido klasteri tikai tad, ja tie ir savstarpēji savienoti ar vienu vai vairākām kopnēm. Vienā klasterī var līdzāspastāvēt vairākas kopņu struktūras, un attiecība Node-klasterī var identificēt attiecīgo kopni, nemainot fiziskā Node identitāti.
+
+Kopņu adapteri, piemēram, NATS JetStream un ZeroMQ, ir lietotāja izvēle, nevis doktrīna. Lielapjoma pārsūtīšanai, vadībai, pētniecībai un izpildes izplūdes datiem nav jākoplieto viena kopne. Topoloģija var izmantot vairākas kopnes vai apiet kopni deklarētam ceļam.
+
+## TOPS un TROG tvērums
+
+**TOPS** ir dominējošais tirdzniecības operētājsistēmas (Trade Operating System) tvērums. **TROG** ir apzināti pakārtots, neglobāls tirdzniecības grupas tvērums. Neraugoties uz vēsturisko formulējumu, TROG ne vienmēr ir virtuāls. Tā atšķirīgā īpašība ir tā, ka tā tvērums un noteikumi nav universāli.

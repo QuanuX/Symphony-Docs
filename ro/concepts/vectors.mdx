@@ -1,0 +1,47 @@
+---
+title: "Vectorii Symphony și fazele de livrare"
+description: "Înțelegeți domeniile durabile de proprietate semantică ale Symphony (vectorii) față de fazele cronologice de livrare, plus Contract Quad și starea curentă a vectorilor."
+sidebarTitle: "Vectori și faze"
+---
+
+Symphony își organizează arhitectura în jurul a două idei: **vectorii** sunt domenii durabile de proprietate semantică, iar **fazele** sunt campanii cronologice de livrare. O componentă cercetată pentru prima dată într-o anumită fază nu face din acea fază proprietarul său permanent. Vectorii mențin semnificația stabilă în timp ce implementarea evoluează.
+
+## Ce este un vector?
+
+Un vector este un domeniu durabil și delimitat de proprietate semantică, al cărui contract canonic deține semnificația și operațiunile permise ale acelui domeniu. Fiecare vector primește un **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` și `SPEC.md`, plus suprafețele însoțitoare specifice de care are cu adevărat nevoie. Vectorul își declară suprafețele canonice și graful de delegare, SKVI mapează fiecare suprafață curentă exact o dată, iar suprafețele însoțitoare învechite sunt înlocuite prin evoluție guvernată, în loc să persiste ca un context contradictoriu.
+
+## Starea vectorilor
+
+| Vector | Stare | Pagină |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementat: fundamentul Fazei 1 cu suprafețe indexate | [/skv/overview](/ro/skv/overview) |
+| **SKVI** — Indexarea surselor | Implementat: motor de inspectare/verificare/propunere | [/skv/skvi](/ro/skv/skvi) |
+| **SCLV** — Registrul modificărilor | Implementat: verificări ale registrului de tip append-only | [/skv/sclv](/ro/skv/sclv) |
+| **SACV** — Guvernanța contractelor API | Implementat: verificări OpenAPI 3.2.0 | [/skv/sacv](/ro/skv/sacv) |
+| **SODV** — Guvernanța documentației oficiale/lansărilor | Implementat: verificări locale ale registrului de lansări | [/skv/sodv](/ro/skv/sodv) |
+| **SSFV** — Identitatea/administrarea funcționalităților | Implementat: verificări structurale ale funcționalităților | [/skv/ssfv](/ro/skv/ssfv) |
+| **SAV** — Compoziția Accordare | Implementat: evaluare pe calea înghețată | [/skv/sav](/ro/skv/sav) |
+| **SEV** — Evoluție | Implementat: planificarea impactului/dispoziției | [/skv/sev](/ro/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementat: fundament Go fără cgo | [/governance/ssiag](/ro/governance/ssiag) |
+| **STAV** — Protocolul de audit TOPS | Implementat: registru append-only per TOPS | [/governance/stav](/ro/governance/stav) |
+| **SOV** — Ops Vector | Emergent: provizionare, livrare Habitat și Nest | [/vectors/sov](/ro/vectors/sov) |
+| **SCV** — Cloud Vector | Implementat: opt motoare C++ de cunoaștere a surselor | [/vectors/scv](/ro/vectors/scv) |
+| **SNV** — Node Vector | Emergent: compoziție SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/ro/vectors/snv) |
+| **SQV** — Quantitative Vector | Emergent: subvectorul de arhitectură FIX SOOV | [/vectors/sqv](/ro/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementat: motoare C++ pentru surse, catalog și profiluri | [/vectors/shv](/ro/vectors/shv) |
+| **SIV** — Intelligence Vector | Emergent: SMCV Markdown opțional; SAIV rezervat | [/vectors/siv](/ro/vectors/siv) |
+
+## Contract Quad și suprafețele însoțitoare
+
+Fiecare vector primește:
+
+1. **INTENT.md** — scop și domeniu de aplicare
+2. **MANIFEST.md** — identitate, suprafețe declarate, graf de delegare
+3. **SKILL.md** — utilizare sigură și îndrumări operaționale
+4. **SPEC.md** — comportament normativ și granițe
+
+Suprafețele însoțitoare precum `SLANG.md`, `NAMESPACES.md`, registrele, schemele și profilurile rămân artefacte guvernate în afara structurii cu patru membri. Acestea direcționează sau specializează adevărul proprietarului, dar nu își pot extinde propria autoritate.
+
+## Integrare bazată pe dovezi
+
+Un motor amânat nu are o chitanță fabricată. Un API propus nu are o intrare inventată în registru. Un contract nepublicat nu are o declarație de finalizare SODV. Aceasta este integrare bazată pe dovezi, nu duplicare ceremonială.

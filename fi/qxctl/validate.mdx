@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony Validatorin varoituskäytäntö"
+description: "Hallitse itsenäisen Symphony Validatorin suojattua varoituskäytäntöä, perustasoa ja esityskielioppia qxctl:n kautta muuttamatta raakoja tunnistintodisteita."
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` -kielioppi hallinnoi Symphony Validatorin suojattua varoituskäytäntöä, perustasoa ja esityskielioppia. Itsenäisesti asennettu C++-validaattori tuottaa muuttumattomia raakatodisteita; qxctl hallinnoi kutsujaneutraalia suojattua esitystä muuttamatta tunnistusta.
+
+## Mitä qxctl validate kattaa
+
+- Yhdeksän suojattua varoitusten elinkaaren lehtikomentoa
+- Tarkan kuittiin perustuvan juuriyhteenvedon reitin
+- Perustason hallinnan ja muutosraportoinnin
+- Esityskieliopin riviulostulolle ja rakenteiselle JSONille
+
+Jokainen lehtikomento validoi validaattorin tarkan kuitin ja rakenteiset digestit ennen suojatun varoituskäytännön soveltamista.
+
+## Raja
+
+<Warning>
+  qxctl validate ei voi korjata tiedostoja, julkaista mitään eikä ohittaa raakoja tunnistintodisteita. Varoitusten käsittely vaikuttaa esitykseen, ei tunnistukseen.
+</Warning>
+
+- Ei varoitusten vaimentamista suojatun käytännön ulkopuolella
+- Ei validaattorin tulosteen muokkaamista
+- Ei keksittyä kattavuutta saatavilla olemattomalle reitille
+
+## Yleiset käyttötavat
+
+- Varoitusten perustason luominen tai nollaaminen
+- Hallinnoidun historiallisen varoituksen hyväksyminen tai uudelleen avaaminen
+- Repositorion README-tiedostossa näkyvän kuittiin perustuvan juuriyhteenvedon tuottaminen
+
+Tämän kieliopin taustalla oleva validaattori tarkistaa sopimusten muodon, nykyisen lähdesulkeuman, invarianttien omistajuuden, ominaisuushallinnan, julkaisut ja koneen omistaman juuriyhteenvedon.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="Validaattori" icon="clipboard-check" href="/fi/governance/validator">
+    Itsenäinen vain luku -C++-tarkistin, jota qxctl hallinnoi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fi/skv/ssfv">
+    Todisteissa tarkistettavat ominaisuushallinnan odotukset.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Validaattorin todisteissa näkyvät julkaisutietueet.
+  </Card>
+
+  <Card title="qxctl-yleiskatsaus" icon="terminal" href="/fi/qxctl/overview">
+    Koko komentopinta.
+  </Card>
+</CardGroup>

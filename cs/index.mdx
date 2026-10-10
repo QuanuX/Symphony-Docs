@@ -1,0 +1,32 @@
+---
+title: "Dokumentace QuanuX Symphony"
+description: "Začněte doktrínou platformy Symphony, její architekturou, znalostními vektory a správním CLI qxctl."
+sidebarTitle: "Rejstřík"
+---
+
+Symphony je modulární obchodní operační systém navržený především pro agenty (agentic-first). Tato dokumentace popisuje jeho aktuální kontrakty a hranice: jak se modeluje infrastruktura, jak vektory vlastní význam a jak qxctl spravuje podporované operace. Než začnete používat jakýkoli správní povrch, začněte doktrínou platformy.
+
+<CardGroup cols={2}>
+  <Card title="Rychlý start" icon="rocket" href="/cs/quickstart">
+    Najděte nejkratší cestu ke čtení o platformě, jejích kontraktech a qxctl.
+  </Card>
+  <Card title="Doktrína platformy" icon="book-open" href="/cs/doctrine">
+    Pochopte vlastnictví uživatelem, oprávnění volajícího, důkazy a ochranu hot path.
+  </Card>
+  <Card title="Architektura" icon="diagram-project" href="/cs/concepts/architecture">
+    Podívejte se, jak do sebe zapadají Nody, Habitaty, Nesty, vektory, enginy a qxctl.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/cs/qxctl/overview">
+    Prozkoumejte správní a dotazovací příkazový povrch Symphony.
+  </Card>
+</CardGroup>
+
+## Prozkoumejte dokumentaci
+
+- [Node, Habitat a Nest](/cs/concepts/node-habitat-nest) definuje fyzický prostředek, jeho přesné softwarové vybavení a workload sloužící účelu uživatele.
+- [Vektory a fáze](/cs/concepts/vectors) rozlišuje trvalé sémantické vlastnictví od kampaní dodávky.
+- [Symphony Knowledge Vector](/cs/skv/overview) vysvětluje kanonické kontrakty, doprovodné povrchy a indexované znalosti.
+- [Vektorové enginy](/cs/engines/overview) popisuje samostatně instalované enginy běžící mimo proces.
+- [Oprávnění volajícího](/cs/concepts/caller-authority) a [izolace hot path](/cs/concepts/hot-path-isolation) stanovují dvě zásadní provozní hranice.
+
+Tyto stránky popisují aktuálně dokumentované povrchy. Přesný stav konkrétní komponenty zjistíte z odkazovaných kontraktů a důkazů o implementaci.

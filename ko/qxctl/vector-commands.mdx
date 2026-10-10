@@ -1,0 +1,82 @@
+---
+title: "qxctl 벡터 명령: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "현재 사용 가능한 벡터별 qxctl 문법을 살펴보세요: SKVI, SCLV, SACV, SODV, SSFV, SHV 저장소 및 카탈로그, 그리고 예약된 accord 및 evolution 기능."
+sidebarTitle: "벡터 명령"
+---
+
+qxctl은 구현된 모든 SKV 엔진과 SCV 및 SHV 관리를 위한 벡터별 문법을 제공합니다. 승인된 Accordare 및 SEV 문법은 명령 구현과 안정적인 레지스트리 증거가 마련되면 `qxctl accord ...` 및 `qxctl evolution ...`을 사용하게 됩니다.
+
+## SKV 엔진 문법
+
+- `qxctl skvi ...`: SKVI 엔진에 대한 inspect, check, propose, project
+- `qxctl sclv ...`: SCLV 엔진에 대한 inspect, check, propose, recover, project
+- `qxctl sacv ...`: SACV 엔진에 대한 inspect, check, diff, propose, project
+- `qxctl sodv ...`: SODV 엔진에 대한 inspect, check, verify, propose, recover, project
+- `qxctl ssfv ...`: SSFV 엔진에 대한 inspect, check, diff, propose, graph
+
+각 문법은 소유 엔진의 계약으로 범위가 제한됩니다. qxctl은 절대 작업을 만들어 내거나 엔진을 우회하지 않습니다.
+
+## Accordare 추가 기능
+
+qxctl의 Accordare 추가 기능은 다음을 제공합니다.
+
+- 안정적인 상태 확인
+- 조정(정확한 후보만 재생)
+- 수퍼바이저 설치 및 제거(검증된 receipt-v2 실행 파일만 호출)
+- SSIAG 및 예상 상태 복구 하에서 중지된 STAV 구성만 변경하는 두 개의 권한 부여 관리 식별자
+
+상태는 영구적인 의도와 추가(append) 백로그를 분리합니다. 조정은 정확한 후보만 재생합니다. 권한 부여 리프는 실행 중인 구성을 절대 열지 않습니다.
+
+## SHV 저장소
+
+영구 SHV 저장소는 다음을 통해서만 관리됩니다.
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+보존된 예상 의도 다이제스트를 사용하는 `commit`은 복구이기도 합니다. 별도의 복구 별칭은 없습니다. 저장소 범위는 입력에서 선언되고 커넥터 식별자는 플래그로 설정됩니다. 구조적 저장소는 의미적인 `shv graph validate`를 중복하거나 카탈로그 헤드를 선택하지 않습니다.
+
+`shv graph store inventory`(릴리스 0.2)는 명시적으로 보존된 작성자 식별자와 함께 리비전에 바인딩된 논리적 읽기를 추가합니다. 레거시 0.1 선택도 계속 지원됩니다.
+
+## SHV 카탈로그 게시
+
+카탈로그 게시는 다음을 통해서만 관리됩니다.
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+복구는 `apply --operation-id`이며 `--input`과 상호 배타적입니다. 권한 기반 로컬 카탈로그 선택은 소스 활성화 및 일반 그래프 저장소와 구별됩니다.
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SKV 개요" icon="book-open" href="/ko/skv/overview">
+    엔진이 구현하는 벡터 의미입니다.
+  </Card>
+
+  <Card title="SHV 벡터" icon="microchip" href="/ko/vectors/shv">
+    Hardware Vector 배경 및 엔진 목록입니다.
+  </Card>
+
+  <Card title="SHV 엔진" icon="microchip" href="/ko/engines/shv-engines">
+    엔진 수준의 세부 정보입니다.
+  </Card>
+
+  <Card title="qxctl 개요" icon="terminal" href="/ko/qxctl/overview">
+    전체 qxctl 명령 목록입니다.
+  </Card>
+</CardGroup>

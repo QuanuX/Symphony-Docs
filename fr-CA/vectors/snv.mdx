@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector : identité des Nodes et registres de grappes"
+description: "SNV consigne et met en relation l'identité, les ressources, l'appartenance aux grappes et les noms attribués par l'utilisateur des Nodes, sans les dicter. Composé des sous-vecteurs SNIV, SNRV, SCIV et SCNV."
+sidebarTitle: "Vecteur de Nodes"
+---
+
+Le Symphony Node Vector (SNV) consigne et met en relation les identités, les ressources, l'appartenance aux grappes et les noms des Nodes physiques que vous utilisez avec Symphony. Il se compose de quatre sous-vecteurs qui possèdent chacun une limite sémantique distincte. SNV ne choisit, n'émet, ne dicte ni ne renomme automatiquement quoi que ce soit en votre nom.
+
+## Composition des sous-vecteurs
+
+SNV repose sur quatre domaines sémantiques durables :
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Identité des Nodes** : identité physique du Node et ses associations exactes avec les ressources des fournisseurs, l'offre sélectionnée et le domaine d'infrastructure.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Ressources des Nodes** : vérité sur les ressources locales et les ressources distantes explicitement qualifiées d'un Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Identité des grappes** : identité des grappes, connectivité du bus et relations entre Nodes et grappes.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Nommage consolidé** : résolution, bornée par SNV, des noms déjà attribués par vous ou vos fournisseurs.
+  </Card>
+</CardGroup>
+
+## Limite de consignation
+
+SNV consigne des faits et leur lignée. Il ne réserve pas de noms, n'attribue pas de ressources et ne crée pas de grappes pour vous. Les noms sont attribués par l'utilisateur; Symphony les consigne. Les ressources des fournisseurs sont sélectionnées par l'utilisateur; Symphony les met en relation. La topologie des grappes est conçue par l'utilisateur; Symphony la documente.
+
+## Liens entre SNV et les autres vecteurs
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/fr-CA/vectors/scv">
+    Fournit les connaissances sur les ressources des fournisseurs et les ressources externes qui déterminent quels Nodes peuvent exister.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/fr-CA/vectors/sov">
+    Établit et modifie l'infrastructure au moyen de qxctl, produisant les Nodes que consigne SNV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/fr-CA/vectors/shv">
+    Peut fournir des preuves détaillées des capacités matérielles des composants physiques d'un Node.
+  </Card>
+</CardGroup>
+
+## État actuel
+
+SNV est un contrat d'architecture canonique émergent. Aucun moteur, graphe, schéma de registre, encodeur d'identité, service de découverte, service de nommage ni commande qxctl SNV n'est actuellement mis en œuvre. Les schémas de registres et les moteurs demeurent reportés.
+
+## Installabilité future
+
+Tout futur moteur SNV devra être installable de façon indépendante et capable de reconstruire ses projections à partir des preuves exactes du propriétaire. Aucun moteur ne devient une autorité d'identité ou de nommage du simple fait qu'il stocke ou résout des registres.

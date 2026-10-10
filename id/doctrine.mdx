@@ -1,0 +1,35 @@
+---
+title: "Doktrin Platform QuanuX Symphony"
+description: "Pelajari prinsip-prinsip yang mengatur Symphony: kepemilikan pengguna atas strategi dan infrastruktur, netralitas kelas pemanggil, perlindungan hot path, dan kompatibilitas berbasis bukti."
+sidebarTitle: "Doktrin"
+---
+
+Doktrin Symphony menetapkan batas antara apa yang dikendalikan platform dan apa yang Anda kendalikan. Aturan-aturan ini mengatur setiap keputusan desain di monorepo serta setiap interaksi dengan qxctl, engine vektor, dan kontrak pengetahuan.
+
+## Kepemilikan pengguna
+
+Anda memiliki logika strategi, tujuan Nest, pilihan penyedia, pilihan perangkat keras, topologi bus, dan pemilihan adaptor yang didukung. Symphony menyediakan bukti kompatibilitas yang eksak dan operasi yang didukung, tetapi tidak mengubah rekomendasi menjadi hukum platform. Platform melaporkan kecocokan, ketidakcocokan, fakta yang belum terselesaikan, dan konsekuensinya. Platform tidak memeringkat penyedia, tidak meresepkan strategi, dan tidak diam-diam memperluas lingkungan Anda.
+
+## Perlindungan hot path
+
+Hot path dilindungi dari residensi administratif dan tekanan bus bersama yang tidak disengaja. qxctl dan bidang pengetahuan adalah administrasi cold path atau freezing path. Keduanya dapat secara eksplisit bertindak pada Node yang juga menjalankan pekerjaan langsung, tetapi tidak boleh menjadi dependensi hot path yang berkelanjutan, pengamat tersembunyi, interpreter residen, atau manajer paket latar belakang yang tidak diminta. Arsitektur eksplisit Anda tetap berdaulat.
+
+## Pemisahan perintah dan semantik
+
+qxctl memiliki tata bahasa perintah dan penyajiannya. Vektor domain memiliki operasi dan makna yang diekspos oleh perintah-perintah tersebut. Rute qxctl memanggil kapabilitas yang didefinisikan oleh pemiliknya tanpa menyerap semantiknya.
+
+## Nama dan namespace
+
+Nama dicatat di bawah cakupan pemiliknya. SNV dan SCNV tidak mendiktekannya, dan root NAMESPACES tetap lebih luas daripada SNV. Nama yang didaftarkan dalam TOPS atau TROG mengikuti cakupan tersebut. Di beberapa klaster, nama pendek Node dapat muncul berulang di klaster yang berbeda, tetapi tidak boleh secara ambigu mengidentifikasi dua Node aktif dalam klaster yang sama.
+
+## Netralitas kelas pemanggil
+
+Klasifikasi pemanggil sebagai manusia, AI, agen, layanan, atau workload tidak memberikan maupun mencabut otoritas. Keputusan otorisasi yang didukung menggunakan kepemilikan host target atau izin yang diberikan, operasi dan sumber daya yang diminta, status yang diharapkan, serta pengaman yang dikonfigurasi pemilik. Administrator host target berdaulat atas tata kelola yang dapat dikonfigurasi. SSIAG dapat memverifikasi dan memproyeksikan otoritas host yang efektif, tetapi tidak menciptakan otoritas pendaftaran yang lebih tinggi. Jaminan identitas yang ditingkatkan dan interlock tata kelola adalah pengaman yang netral terhadap pemanggil dan dikonfigurasi oleh pemilik. Persyaratan integritas protokol tetap wajib. Symphony tidak menentukan kapasitas hukum atau finansial eksternal berdasarkan jenis pemanggil.
+
+## Kebenaran dan bukti
+
+Kontrak saat ini menggambarkan kebenaran saat ini. Catatan SCLV dan SODV yang tidak dapat diubah mempertahankan apa yang diketahui, diubah, diotorisasi, atau diselesaikan pada titik sejarah yang tercatat. Ketika kontrak saat ini, bukti implementasi, dan catatan terbaru yang berlaku tidak sesuai, ketidaksesuaian tersebut dimunculkan sebagai drift untuk ditinjau. Sejarah tidak ditulis ulang secara diam-diam agar menyerupai masa kini.
+
+## Doktrin Python
+
+Sumber Symphony pihak pertama, generator, penulisan skema, pengujian, dan helper penerimaan tidak memerlukan implementasi Python maupun dependensi interpreter. C++ memiliki tooling pengganti untuk penulisan dan pengujian proses. Kebijakan repositori ini tidak membatasi program yang Anda tulis sendiri atau Habitat terisolasi yang Anda pilih secara eksplisit.

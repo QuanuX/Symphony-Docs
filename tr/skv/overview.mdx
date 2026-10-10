@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: SKV Çerçevesine Genel Bakış"
+description: "SKV, Symphony'nin bildirimsel platform bilgisi için çatı çerçevedir. Contract Quad'ları, eşlik eden yüzeyleri ve tek bir yönetişim modeli altındaki her alt vektörü keşfedin."
+sidebarTitle: "SKV'ye Genel Bakış"
+---
+
+Symphony Knowledge Vector (SKV), Symphony'nin bildirimsel platform bilgisi için kanonik çerçevedir. Mimari gerçeği, modül sınırlarını, sözleşmeleri, doktrini ve uyumluluk bilgisini; insanların, doğrulayıcıların, qxctl'in, CI'ın ve ajan araçlarının tutarlı biçimde kullandığı bir yapıda korur. SKV bir çalışma zamanı değildir; her vektörün içinden geçtiği ortak bilgi katmanıdır.
+
+## Contract Quad
+
+SKV'deki her anlamsal sahip bir Contract Quad yayımlar:
+
+- **INTENT.md**: amaç, kapsam ve kapsam dışı
+- **MANIFEST.md**: kanonik yüzeyler ve yetki devri
+- **SKILL.md**: çağıranlar için güvenli kullanım prosedürü
+- **SPEC.md**: normatif davranış
+
+Şemalar, kayıt defterleri, profiller, defterler ve diğer yapıtlar dört üyeli Quad'ın dışında kalır ve aynı sahip tarafından yönetilmeye devam eder.
+
+## Eşlik eden yüzeyler
+
+SKV'nin sahip olduğu iki eşlik eden yüzey her vektörü kapsar:
+
+- `knowledge/SLANG.md`, her platform terimini anlamlarının sahibi olan kesin sözleşmeye eşler.
+- `knowledge/NAMESPACES.md`, gramer, tahsis, yaşam döngüsü veya bireysel kimlikleri dikte etmeden kimlik ailesi sahipliğini kaydeder.
+
+Bu eşlik eden yüzeylerin hiçbiri Quad'ın beşinci üyesi, yeni bir vektör veya bir çalışma zamanı hizmeti değildir.
+
+## Yorumlama kuralı
+
+Mevcut sözleşmeler mevcut gerçeği tanımlar. Yalnızca eklemeli SCLV ve SODV kayıtları, kaydedildikleri anda bilineni, yetkilendirileni veya tamamlananı korur. Sözleşme durumu, uygulama kanıtı ve geçerli en son kayıt birbiriyle çeliştiğinde, bu çelişki incelenmesi gereken bir sapmadır (drift). Araçlar sessizce bir uzlaştırma icat etmemelidir.
+
+## Alt vektörler
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/tr/skv/skvi">
+    Her mevcut kanonik yüzeyi tam olarak bir kez dizinler.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/tr/skv/sclv">
+    Tamamlanmış önemli kaynak değişiklikleri için yalnızca eklemeli değişiklik defteri.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/tr/skv/sacv">
+    Sınırlı OpenAPI 3.2.0 yönetişimi ve uyumluluk farkları.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    Resmî QuanuX yayınlarını ve sürüm kayıtlarını yönetir.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/tr/skv/ssfv">
+    Özellik kimliği, güncellik ve yönetim güvencesi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/tr/skv/sav">
+    Accordare kompozisyonu ve üç eksenli uyumluluk değerlendirmesi.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/tr/skv/sev">
+    Evrim vakaları, karar planlaması ve yenilik kontrolleri.
+  </Card>
+
+  <Card title="Yönetişim" icon="shield-halved" href="/tr/governance/ssiag">
+    Yetkilendirilmiş değişiklikler için SSIAG kimliği ve STAV denetim yönetişimi.
+  </Card>
+</CardGroup>
+
+<Note>
+  Mevcut her SKV engine'i yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Programatik kanonik uygulama (apply), her engine'in SSIAG izni, beklenen durum işlemi, qxctl güvencesi, STAV olayı, kurtarma ve negatif test sözleşmeleri tamamlanana kadar devre dışıdır.
+</Note>

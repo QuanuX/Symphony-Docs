@@ -1,0 +1,47 @@
+---
+title: "Wektory i fazy dostarczania w Symphony"
+description: "Zrozum różnicę między trwałymi domenami własności semantycznej Symphony (wektorami) a chronologicznymi fazami dostarczania, a także poznaj Contract Quad i bieżący status wektorów."
+sidebarTitle: "Wektory i fazy"
+---
+
+Symphony organizuje swoją architekturę wokół dwóch idei: **wektory** to trwałe domeny własności semantycznej, a **fazy** to chronologiczne kampanie dostarczania. Komponent, nad którym badania rozpoczęto w danej fazie, nie czyni tej fazy jego stałym właścicielem. Wektory utrzymują stabilność znaczenia, podczas gdy implementacja ewoluuje.
+
+## Czym jest wektor?
+
+Wektor to trwała, ograniczona domena własności semantycznej, której kanoniczny kontrakt jest właścicielem znaczenia tej domeny i dozwolonych operacji. Każdy wektor otrzymuje **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` i `SPEC.md`, a także ukierunkowane powierzchnie towarzyszące, których faktycznie potrzebuje. Wektor deklaruje swoje powierzchnie kanoniczne i graf delegacji, SKVI mapuje każdą bieżącą powierzchnię dokładnie raz, a przestarzałe powierzchnie towarzyszące są zastępowane w drodze zarządzanej ewolucji, zamiast pozostawać jako sprzeczny kontekst.
+
+## Status wektorów
+
+| Wektor | Status | Strona |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Zaimplementowany: fundament Fazy 1 ze zindeksowanymi powierzchniami | [/skv/overview](/pl/skv/overview) |
+| **SKVI** — Indeksowanie źródeł | Zaimplementowany: silnik inspect/check/propose | [/skv/skvi](/pl/skv/skvi) |
+| **SCLV** — Księga zmian | Zaimplementowany: kontrole księgi typu append-only | [/skv/sclv](/pl/skv/sclv) |
+| **SACV** — Zarządzanie kontraktami API | Zaimplementowany: kontrole OpenAPI 3.2.0 | [/skv/sacv](/pl/skv/sacv) |
+| **SODV** — Zarządzanie oficjalną dokumentacją/wydaniami | Zaimplementowany: lokalne kontrole księgi wydań | [/skv/sodv](/pl/skv/sodv) |
+| **SSFV** — Tożsamość/administracja funkcji | Zaimplementowany: strukturalne kontrole funkcji | [/skv/ssfv](/pl/skv/ssfv) |
+| **SAV** — Kompozycja Accordare | Zaimplementowany: ocena na ścieżce zamrożonej | [/skv/sav](/pl/skv/sav) |
+| **SEV** — Ewolucja | Zaimplementowany: planowanie wpływu/dyspozycji | [/skv/sev](/pl/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Zaimplementowany: fundament w Go bez cgo | [/governance/ssiag](/pl/governance/ssiag) |
+| **STAV** — Protokół audytu TOPS | Zaimplementowany: księga append-only dla każdego TOPS | [/governance/stav](/pl/governance/stav) |
+| **SOV** — Ops Vector | Powstający: provisioning, dostarczanie Habitat i Nest | [/vectors/sov](/pl/vectors/sov) |
+| **SCV** — Cloud Vector | Zaimplementowany: osiem silników wiedzy źródłowej w C++ | [/vectors/scv](/pl/vectors/scv) |
+| **SNV** — Node Vector | Powstający: kompozycja SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/pl/vectors/snv) |
+| **SQV** — Quantitative Vector | Powstający: subwektor architektury FIX SOOV | [/vectors/sqv](/pl/vectors/sqv) |
+| **SHV** — Hardware Vector | Zaimplementowany: silniki źródeł, katalogu i profili w C++ | [/vectors/shv](/pl/vectors/shv) |
+| **SIV** — Intelligence Vector | Powstający: SMCV — opcjonalny Markdown; SAIV zarezerwowany | [/vectors/siv](/pl/vectors/siv) |
+
+## Contract Quad i powierzchnie towarzyszące
+
+Każdy wektor otrzymuje:
+
+1. **INTENT.md** — cel i zakres
+2. **MANIFEST.md** — tożsamość, zadeklarowane powierzchnie, graf delegacji
+3. **SKILL.md** — bezpieczne użycie i wskazówki operacyjne
+4. **SPEC.md** — zachowanie normatywne i granice
+
+Powierzchnie towarzyszące, takie jak `SLANG.md`, `NAMESPACES.md`, rejestry, schematy i profile, pozostają zarządzanymi artefaktami poza strukturą czteroelementową. Kierują do prawdy właściciela lub ją specjalizują, ale nie mogą rozszerzać własnych uprawnień.
+
+## Integracja oparta na dowodach
+
+Odroczony silnik nie ma sfabrykowanego potwierdzenia. Proponowane API nie ma wymyślonego wpisu w rejestrze. Nieopublikowany kontrakt nie ma deklaracji ukończenia w SODV. To integracja oparta na dowodach, a nie ceremonialne powielanie.

@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: ベクトル横断のライフサイクル管理"
+description: "qxctl knowledge コマンドグループは、ベクトル横断のライフサイクル、セッション遷移、不変条件クエリ、および永続的な SSFV メンテナンス管理を担います。"
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` グループは、ベクトル横断のライフサイクルと永続的な SSFV セッションの管理を担います。コーディネーターを利用する操作や、バリデーターに対する不変条件クエリのエントリポイントです。
+
+## セッション遷移
+
+既存のセッションにホストのライフサイクルイベントを通知するには、`qxctl knowledge session transition` を使用します。
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+安全な再試行では同じイベント ID を再利用します。`--recover` は、破損したローカルセッションのエビデンスからのディスカバリーリカバリーを意図する場合にのみ追加してください。拒否、互換性のないクリティカルな状態、または曖昧さからの回復は行いません。
+
+<Warning>
+  Symphony はこのコマンドを通じてログインフック、ウォッチャー、ブートユニットをインストールしません。明示的なホストライフサイクル統合が安定したイベント ID を提供する場合にのみ使用してください。
+</Warning>
+
+## 不変条件クエリ
+
+4 つのリーフが `ssfv:symphony:qxctl.invariant-assurance` にバインドされています。
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` はさらに `ssfv:symphony:symphony-validator.invariant-ownership-assurance` にもバインドされます。
+
+直接クエリのリーフは `semantic_validity=not_asserted` を伴う `symphony.knowledge.invariant-query-result.v1` を出力します。`check` はバリデーターの完全な結果をそのまま返し、終了コード 26 を保持します。
+
+## サブコマンドグループ
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ja/qxctl/lifecycle">
+    プロファイル、所有権、observe、report、boot、apply、およびリカバリー。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ja/qxctl/engines">
+    エンジンバインディングレジストリの list、inspect、doctor、bind、unbind、migrate。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ja/qxctl/reconcile">
+    コーディネーターのワークツリー reconciliation グラマー。
+  </Card>
+
+  <Card title="session" icon="key" href="/ja/qxctl/session">
+    認証済みセッションと SSFV メンテナンスストリーム。
+  </Card>
+</CardGroup>

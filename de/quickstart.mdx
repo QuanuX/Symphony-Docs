@@ -1,0 +1,33 @@
+---
+title: "Schnellstart: QuanuX Symphony erkunden"
+description: "Ein geführter Weg durch Doktrin, Architektur, Vektorverträge und die administrative Oberfläche qxctl von Symphony."
+sidebarTitle: "Schnellstart"
+---
+
+Nutzen Sie diesen Leitfaden zur Orientierung, bevor Sie Symphony betreiben. Die Dokumentation trennt Plattformdoktrin, vom Nutzer ausgewählte Infrastruktur, vektoreigene Semantik und administrative Befehle. Genaue Installations- und Ausführungsschritte gehören zum aktuellen Vertrag der jeweiligen Komponente.
+
+## 1. Die Betriebsgrenzen lesen
+
+Beginnen Sie mit der [Plattformdoktrin](/de/doctrine). Sie legt das Eigentum der Nutzer an Strategie und Infrastruktur, die Neutralität gegenüber Aufruferklassen, nachweisbasierte Kompatibilität und den Schutz des Hot Path fest.
+
+## 2. Das physische Modell kennenlernen
+
+Lesen Sie [Node, Habitat und Nest](/de/concepts/node-habitat-nest):
+
+- **Node:** die identifizierte physische Computerressource.
+- **Habitat:** die exakte Betriebssystem- und Paketkonditionierung, die an einen Node ausgeliefert wird.
+- **Nest:** der zweckgebundene Workload des Nutzers, der in ein geeignetes Habitat platziert wird.
+
+Die Busse und Adapter eines Clusters sind explizite Architekturentscheidungen. Symphony schreibt keinen universellen Anbieter und keine universelle Strategie vor.
+
+## 3. Das Eigentum an Bedeutung nachvollziehen
+
+Der [Architekturüberblick](/de/concepts/architecture) zeigt die Beziehung zwischen Vektorverträgen, Engines, qxctl und verwalteten Nachweisen. [Vektoren und Phasen](/de/concepts/vectors) erklärt, warum ein Vektor der semantische Eigentümer bleibt, auch wenn die Auslieferungsarbeit verschiedene Phasen durchläuft. Der [Symphony Knowledge Vector](/de/skv/overview) beschreibt das Contract Quad und seine Begleitoberflächen.
+
+## 4. Die administrative Oberfläche finden
+
+Der [qxctl-Überblick](/de/qxctl/overview) stellt die administrative Go-CLI für Verwaltung und Abfragen vor. Verwenden Sie die qxctl-Seiten für eine bestimmte Befehlsfamilie, etwa [knowledge](/de/qxctl/knowledge), [lifecycle](/de/qxctl/lifecycle), [engines](/de/qxctl/engines) oder [Validierung](/de/qxctl/validate). qxctl stellt Befehlsgrammatik und Darstellung bereit; Vektorverträge besitzen die Operationen und deren Bedeutung.
+
+## 5. Den maßgeblichen Vertrag und die Nachweise prüfen
+
+Bevor Sie auf einem Node agieren oder eine Vektor-Engine aufrufen, prüfen Sie den aktuellen Eigentümervertrag, den Zielzustand, die Autorisierung sowie verfügbare Quittungs- oder Validierungsnachweise. [Aufruferautorität](/de/concepts/caller-authority) und [Hot-Path-Isolation](/de/concepts/hot-path-isolation) erläutern diese Grenzen. Eine im Entstehen begriffene Oberfläche ist keine implizite Betriebsgarantie.

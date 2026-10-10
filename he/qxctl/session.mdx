@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: סשנים מאומתים של Symphony"
+description: "פתיחה, checkpoint, סגירה ושחזור של סשנים מאומתים של מתאם Symphony, וכן זרמי תחזוקה מתמשכים של SSFV עם הרשאות (grants) מאומתות ב-SSIAG."
+sidebarTitle: "session"
+---
+
+הדקדוק `qxctl knowledge session ...` פותח סשנים מאומתים לא-קנוניים באמצעות מתאם מקושר ומדויק אחד ונקודת קצה SSIAG אחת בהיקף TOPS. דקדוק נפרד, `session features ...`, מניע את זרם התחזוקה המתמשך של SSFV.
+
+## דקדוק הסשן הבסיסי
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+כל קריאה מבקשת הרשאה (grant) מדויקת וטרייה ומאמתת:
+
+- זהות הנושא והיעד
+- מצב המדיניות והתצורה
+- תפוגה
+- ניטרליות מחלקת הקורא
+- אי-העברה
+- השבתת apply קנוני
+- קישור יכולות
+
+ראיות הסשן מעניקות הרשאה רק לפעולה הלא-קנונית המוגנת ששמה צוין. שמרו על הפרדה בין יומני הסשן ויומני ההתאמה; השתמשו בהפניות הקשר רק כדי לשייך ביניהם.
+
+## זרם התחזוקה של SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+זרם התכונות הוא הקשר תחזוקה מתמשך ונפרד של SSFV. שינויים דורשים:
+
+- סשן בסיס מאומת ופתוח
+- קישורים מדויקים של המתאם ושל SSFV
+- מזהי פעולה יציבים
+- compare-and-swap מדויק
+- ראיות SSIAG טריות
+
+<Note>
+  שמרו על תמונת המצב הבסיסית (baseline snapshot) ועל זהות המנוע המקורית שלה לאורך שדרוגים או החזרות לאחור תואמים. ראיות Maestro אופציונליות חייבות להיות מלאי מאומת ומלא; כאשר Maestro נעדר במכוון, תעדו את הסיבה המפורשת not-configured. `review_required` הוא ראיה לסקירת הקורא, לא אשרור.
+</Note>
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/he/governance/ssiag">
+    מנפיק את ההרשאות הטריות שכל בקשת סשן מאמתת.
+  </Card>
+
+  <Card title="מתאם הסשנים" icon="gears" href="/he/engines/coordinator">
+    המנוע שמגבה את יומני הסשן והתכונות.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/he/qxctl/reconcile">
+    הקשרי התאמה המשתלבים עם סשנים.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/he/skv/ssfv">
+    וקטור התכונות שזרם התכונות מתחזק.
+  </Card>
+</CardGroup>

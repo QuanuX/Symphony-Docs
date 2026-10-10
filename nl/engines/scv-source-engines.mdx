@@ -1,0 +1,74 @@
+---
+title: "SCV-engines voor bronkennis: providerrealiteit voor Symphony"
+description: "Acht onafhankelijk verpakte engines voor SCV, hyperscalers, edge en providers bewaren exacte bronrevisies en produceren reproduceerbaar graaf- en querybewijs."
+sidebarTitle: "SCV-engines"
+---
+
+De SCV-engines voor bronkennis zijn acht onafhankelijk verpakte C++26-processen die private semantische kennis bevatten over externe providerresources, aanbiedingen, regio's, beperkingen en hybride mogelijkheden. Ze bewaren exacte bronrevisies en begrensde vastleggingen, zodat downstream-tools resultaten kunnen reproduceren.
+
+## Engines
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Overkoepelende SCV-bronengine voor het gedeelde cloudvocabulaire.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Bronengine voor de Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-specifieke edge-bronengine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Bronengine voor Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Bronengine voor Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Bronengine voor DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Bronengine voor Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Optionele DuckDB-connector voor bewaarde relationele graafindexering.
+  </Card>
+</CardGroup>
+
+## Wat de SCV-engines doen
+
+- Expliciete bronrevisies en begrensde vastleggingen bewaren
+- Gekwalificeerde claims en de native documentstructuur behouden
+- Reproduceerbaar graaf- en querybewijs produceren
+- Draagbare providerpakketten en eindige, door de aanroeper gestuurde samenstelling voeden
+
+## Wat ze niet doen
+
+<Warning>
+  Providerbewerkingen en volledige cloudcatalogi vallen buiten deze increment. De SCV-engines beschrijven wat bekend is; ze handelen niet op providers.
+</Warning>
+
+qxctl beheert afzonderlijk geauditeerde lokale bronwijzigingen en coherente graafselectie via bewaarde workflows en beschermde graafselectie. Specifieke graaftraversal en operationele adapters blijven afzonderlijk werk.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="SCV-vector" icon="cloud" href="/nl/vectors/scv">
+    Cloud Vector-contract dat deze engines implementeren.
+  </Card>
+
+  <Card title="SOV-vector" icon="terminal" href="/nl/vectors/sov">
+    Ops Vector die via qxctl op SCV-bewijs handelt.
+  </Card>
+
+  <Card title="qxctl-vectoropdrachten" icon="terminal" href="/nl/qxctl/vector-commands">
+    Graafselectie, bronworkflows en beheer van de DuckDB-connector.
+  </Card>
+</CardGroup>

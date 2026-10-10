@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector cho các thay đổi có kế hoạch"
+description: "SEV đánh giá các thay đổi có kế hoạch, tính mới và chuyển đổi vòng đời bằng các trường hợp tất định, tập sẵn sàng phụ thuộc, đồ thị dùng một lần và tư vấn khôi phục không apply."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) sở hữu các trường hợp thay đổi có kế hoạch và tính mới gặp phải trên toàn nền tảng. Engine của nó là một tiến trình C++26 chỉ đọc, thuộc lộ trình đóng băng (freezing-path). SEV không theo dõi máy chủ cũng không áp dụng chuyển đổi; nó tạo ra bằng chứng và tư vấn cách xử lý.
+
+## Thao tác
+
+- **Đánh giá trường hợp**: các trường hợp tiến hóa tất định cho bổ sung, thay đổi, đổi tên, thay thế, ngừng khuyến nghị, loại bỏ và gỡ bỏ.
+- **Lập kế hoạch tác động và xử lý**: gán mỗi trường hợp cho các chủ sở hữu có thẩm quyền của nó.
+- **Tính lại tập sẵn sàng phụ thuộc**: suy ra thứ tự an toàn của các chuyển đổi phụ thuộc.
+- **Xác minh chuyển đổi**: xác nhận trạng thái quan sát được sau một chuyển đổi khớp với hình dạng mong đợi.
+- **Tư vấn khôi phục**: mô tả các bước tiến hoặc lùi an toàn khi một chuyển đổi bị gián đoạn.
+- **Đánh giá SCSEV**: hồ sơ SEV được quản trị đầu tiên áp dụng các thao tác này cho sự tiến hóa của bề mặt tri thức chỉ gồm tài liệu.
+- **Kiểm tra tính mới và theo dõi**: phát hiện các bề mặt mới hoặc bất ngờ để người xem xét chú ý.
+- **Gộp kích hoạt** và **ràng buộc phiên vòng đời**: giảm đánh giá trùng lặp và ràng buộc các trường hợp với một phiên.
+- **Chiếu đồ thị**: các đồ thị dùng một lần để xem xét.
+
+## Hồ sơ SCSEV
+
+SCSEV tái sử dụng việc quản trị tính năng SSFV, sự thật lệnh qxctl ổn định và các descriptor thao tác engine. Nó không tạo ra engine hay registry trùng lặp. Lát engine đầu tiên chỉ báo cáo và chỉ đề xuất; hành động bên ngoài bền vững vẫn được ủy quyền riêng thông qua qxctl và knowledge session coordinator.
+
+<Note>
+  SEV chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc vẫn bị vô hiệu hóa trên toàn bộ họ SKV engine.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung bao trùm và mô hình Contract Quad.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/vi/skv/ssfv">
+    Quản trị tính năng được hồ sơ SCSEV tái sử dụng.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/vi/skv/sav">
+    Đánh giá thành phần và tính tương thích cho các thành phần đã thay đổi.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Cú pháp evolution đã phê chuẩn sẽ có dưới dạng `qxctl evolution ...` khi được triển khai.
+  </Card>
+</CardGroup>

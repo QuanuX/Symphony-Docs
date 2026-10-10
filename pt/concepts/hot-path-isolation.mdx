@@ -1,0 +1,37 @@
+---
+title: "Isolamento do hot path no QuanuX Symphony"
+description: "Saiba como o Symphony protege os caminhos de execução contra interferências administrativas: componentes de cold path e freezing path, disciplina de bus e o conceito de testemunha de estado Prima Parte."
+sidebarTitle: "Isolamento do hot path"
+---
+
+O Symphony separa o trabalho administrativo do trabalho de execução para que o trading em produção, a investigação e outros caminhos sensíveis ao desempenho se mantenham livres de jitter, latência e dependências ocultas. O qxctl e o plano de conhecimento são administração de cold path ou freezing path. Podem atuar explicitamente sobre um Node que também aloje trabalho em produção, mas não podem tornar-se dependências contínuas do hot path.
+
+## Disciplina de cold path e freezing path
+
+O qxctl e os motores de vetores são componentes administrativos de cold path ou freezing path. Não podem:
+
+- Executar em linha com caminhos de execução hot ou warm
+- Partilhar bloqueios com cargas de trabalho em produção
+- Criar dependências síncronas que acrescentem jitter ou latência
+- Tornar-se observadores ocultos, interpretadores residentes ou gestores de pacotes em segundo plano não solicitados
+- Manter residência contínua em Nodes de execução
+
+Esta regra aplica-se ao coordenador de sessões de conhecimento, aos motores de vetores e a todas as operações administradas pelo qxctl. Estes produzem evidências, validam o estado e preparam planos, mas não participam no caminho de execução em produção.
+
+## Disciplina de bus
+
+As transferências pesadas, o controlo, a investigação e os resíduos de execução não têm de partilhar um único bus. Uma topologia pode utilizar múltiplos buses ou contornar um bus para um caminho declarado, sobretudo quando o tráfego partilhado possa introduzir jitter. O NATS JetStream, o ZeroMQ e outras malhas são adaptadores e escolhas do utilizador. A existência da administração de bus no qxctl não torna obrigatória a travessia de um bus.
+
+É o utilizador quem escolhe a topologia de bus adequada aos seus requisitos de latência e débito. O Symphony suporta a configuração sem impor uma única malha partilhada.
+
+## Prima Parte
+
+A **Prima Parte** é um conceito ratificado da Fase 3, e não um executável atual. Trata-se de uma testemunha de estado local ao Node, opcional e extremamente leve, escrita em C++, invocada explicitamente pelo qxctl após uma operação material. Não tem daemon, listener, temporizador, observador, ciclo de polling nem ligação residente a um bus.
+
+O seu vocabulário durável e delimitado inclui três termos:
+
+- `current` — o estado presente observado
+- `previous` — o estado anterior à operação material
+- `lastTransmitted` — o estado enviado pelo Node remoto após a execução do comando associado (sem confirmação de receção)
+
+A Prima Parte regista apenas o seu próprio Node, nunca se torna um Maestro mais pequeno e termina após concluir o seu trabalho delimitado. Não é um recetor do Maestro da Fase 1, e ainda não existe nenhum executável implementado.

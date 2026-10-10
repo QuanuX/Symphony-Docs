@@ -1,0 +1,33 @@
+---
+title: "Snelstart: verken QuanuX Symphony"
+description: "Een begeleide route door de doctrine, architectuur, vectorcontracten en het administratieve oppervlak qxctl van Symphony."
+sidebarTitle: "Snelstart"
+---
+
+Gebruik deze gids om u te oriënteren voordat u Symphony gaat gebruiken. De documentatie scheidt platformdoctrine, door de gebruiker geselecteerde infrastructuur, semantiek in eigendom van vectoren en administratieve opdrachten. Exacte installatie- en uitvoeringsstappen horen bij het huidige contract van het betreffende onderdeel.
+
+## 1. Lees de operationele grenzen
+
+Begin met de [platformdoctrine](/nl/doctrine). Deze legt het gebruikerseigendom van strategie en infrastructuur vast, evenals neutraliteit ten aanzien van aanroeperklassen, op bewijs gebaseerde compatibiliteit en bescherming van het hot path.
+
+## 2. Leer het fysieke model
+
+Lees [Node, Habitat en Nest](/nl/concepts/node-habitat-nest):
+
+- **Node:** de geïdentificeerde fysieke computerresource.
+- **Habitat:** de exacte conditionering van besturingssysteem en pakketten die aan een Node wordt geleverd.
+- **Nest:** de workload voor het doel van de gebruiker, geplaatst in een geschikte Habitat.
+
+De bussen en adapters van een cluster zijn expliciete architectuurkeuzes. Symphony schrijft geen universele provider of strategie voor.
+
+## 3. Volg het eigendom van betekenis
+
+Het [architectuuroverzicht](/nl/concepts/architecture) toont de relatie tussen vectorcontracten, engines, qxctl en beheerd bewijs. [Vectoren en fasen](/nl/concepts/vectors) legt uit waarom een vector de semantische eigenaar blijft, zelfs wanneer leveringswerk door fasen beweegt. De [Symphony Knowledge Vector](/nl/skv/overview) beschrijft de Contract Quad en de begeleidende oppervlakken.
+
+## 4. Vind het administratieve oppervlak
+
+Het [qxctl-overzicht](/nl/qxctl/overview) introduceert de administratieve en query-CLI in Go. Gebruik de qxctl-pagina's voor een specifieke opdrachtfamilie, zoals [knowledge](/nl/qxctl/knowledge), [lifecycle](/nl/qxctl/lifecycle), [engines](/nl/qxctl/engines) of [validatie](/nl/qxctl/validate). qxctl levert de opdrachtgrammatica en presentatie; vectorcontracten zijn eigenaar van de bewerkingen en hun betekenis.
+
+## 5. Controleer het relevante contract en bewijs
+
+Controleer, voordat u op een Node handelt of een vectorengine aanroept, het huidige eigenaarscontract, de doelstatus, de autorisatie en het beschikbare ontvangstbewijs of validatiebewijs. [Aanroeperautoriteit](/nl/concepts/caller-authority) en [hot-path-isolatie](/nl/concepts/hot-path-isolation) leggen die grenzen uit. Een opkomend oppervlak is geen impliciete operationele garantie.

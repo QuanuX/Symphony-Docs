@@ -1,0 +1,81 @@
+---
+title: "Symphony 硬體向量：硬體能力知識"
+description: "SHV 透過多個可獨立安裝的 C++ 引擎，維護 CPU、GPU、NIC、主機板、RAM 與 NVMe 的硬體能力知識。"
+sidebarTitle: "硬體向量"
+---
+
+Symphony 硬體向量（Symphony Hardware Vector，SHV）擁有硬體能力知識，協助你了解實體設計如何促成、限制、移植或擴充量化軟體。它涵蓋處理器、CPU 核心類型、GPU、NIC 與光纖介面、主機板、快取階層、記憶體、NVMe 以及完整的系統組裝。預設的策展範圍以 2018 年起的原始元件與有證據的變體為優先。
+
+## 範圍與涵蓋
+
+SHV 可涵蓋任何與程式設計相關且有證據支持的實體能力。你可以透過 qxctl 控制涵蓋設定檔。預設的日期基準是型號推出時間，而非推斷的個別製造日期。你可以擴大、縮小、取代或移除此篩選條件。
+
+## 已實作的引擎
+
+SHV 知識透過多個可獨立安裝的 C++ 引擎提供：
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    核心內核（0.4.0-dev）：涵蓋設定檔、保留來源目錄的建置／重播、需求評估、確定性圖形投影，以及以來源為依據的圖形驗證。
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    來源身分、重新定位計畫、位元組擷取綁定，以及來源重播的出處圖。
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    宣告一致性、可攜式配方，以及確切的本機來源綁定。
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    硬體分割與元件對應操作。
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    受保護的呼叫者目錄頭、原始來源重播，以及持久性快照復原。
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    通用的 C++ 圖形埠，以及用於無損交換的記憶體內可攜式參考配接器。
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    選用的硬體圖形證據 DuckDB 關聯式投影。
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    有界的 PDF 擷取，以及從原始位元組重新驗證文件性斷言。
+  </Card>
+</CardGroup>
+
+## 來源修訂與出處
+
+`shv-source-engine` 實作穩定的來源身分、明確的重新定位計畫、純粹的轉換驗證、實際位元組擷取綁定，以及來源重播的出處圖。這些都是唯讀操作。核心策展以原始元件身分與有證據的變體為優先。受保護的來源啟用另行處理；純粹的來源引擎不會授予權限。
+
+## 圖形交換與儲存
+
+`shv-graph-adapter` 提供通用的 C++ 圖形埠，用於無損交換與結構性查詢。持久性儲存透過預設的 DuckDB SQL 實作。目前尚未選定專用的圖形資料庫。
+
+## PDF 證據邊界
+
+`shv-pdf-adapter` 會從明確的 PDF 表格中擷取合格的文件性斷言，並在通用圖形交換之後，從原始位元組重新驗證這些斷言。一般 PDF 涵蓋仍是另行界定範圍的工作。
+
+## 尚待完成的工作
+
+廣泛的硬體圖譜、自動化來源取得、多來源衝突彙整、其他供應商專屬的資料庫驅動程式、自訂外掛程式載入，以及 Composer 整合，仍屬後續工作。廣泛的元件對應與持久性供應商驅動程式也仍待完成。
+
+## SHV 與其他向量的關係
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/zh-Hant/vectors/snv">
+    記錄包含 SHV 所描述硬體的 Node。
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/zh-Hant/vectors/scv">
+    參照由 SHV 詳細描述特性的供應商硬體產品。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh-Hant/vectors/sov">
+    在佈建或調整 Node 時，可能會依據 SHV 證據採取行動。
+  </Card>
+</CardGroup>

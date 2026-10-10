@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: cunoașterea resurselor furnizorilor"
+description: "SCV menține cunoașterea privată a resurselor externe ale furnizorilor din AWS, Azure, GCP, DigitalOcean, Cloudflare și hardware deținut de utilizator, prin opt motoare C++ instalabile independent."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) deține cunoașterea semantică privată despre resursele hardware externe și realitățile furnizorilor care vă modelează clusterele, antrenarea, cercetarea și lucrul cu date. Acesta cartografiază ofertele furnizorilor, regiunile, domeniile de infrastructură, constrângerile și disponibilitatea observată, fără a clasifica furnizorii sau a impune limite asupra a ceea ce puteți încerca.
+
+## Acoperirea furnizorilor
+
+SCV acoperă următorii furnizori și tipuri de resurse:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Hardware deținut de utilizator (acolo unde este necesară compararea cu resursele externe)
+
+## Motoare instalate
+
+Cunoașterea SCV este livrată prin opt motoare C++ instalabile independent. Instalați doar pe cele de care aveți nevoie:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Motorul SCV de bază pentru cunoașterea resurselor furnizorilor și construirea grafurilor.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Motor de dovezi cloud pentru captură delimitată și semantica corpusului.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Motor de dovezi specific Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Motor de cunoaștere a hardware-ului și resurselor specific AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Motor de cunoaștere a hardware-ului și resurselor specific Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Motor de cunoaștere a resurselor specific DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Motor de cunoaștere a hardware-ului și resurselor specific GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Conector opțional pentru grafuri relaționale, care folosește DuckDB pentru indexarea SQL păstrată.
+  </Card>
+</CardGroup>
+
+## Pachete portabile de furnizor și compoziție
+
+SCV expune pachete portabile de furnizor prin qxctl. Păstrați controlul asupra cerințelor, permisiunilor furnizorilor, alternativelor de rețete și deciziilor de execuție. qxctl acceptă fluxuri de lucru păstrate și selecția protejată a grafurilor, astfel încât puteți reda dovezi exacte fără a reinteroga furnizorii.
+
+## Conector DuckDB opțional
+
+`scv-graph-duckdb-connector` adaugă o proiecție relațională delimitată a grafurilor native imuabile. DuckDB este baza de date SQL implicită selectată de utilizator. În viitor, puteți selecta motoare de grafuri dedicate prin adaptoare suplimentare.
+
+## Confidențialitate și suveranitate
+
+Un graf de cunoaștere SCV instalat aparține instalării dumneavoastră private. Conturile, soldurile, permisiunile și constrângerile contractuale furnizate de utilizator sunt folosite doar prin suprafețe de observare activate explicit. Faptele private nu intră în adevărul sursă oficial al Symphony.
+
+## Cum se raportează SCV la alți vectori
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/ro/vectors/sov">
+    Planul de control operațional care acționează pe baza dovezilor SCV. SOV nu rescrie semnificația furnizorilor.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ro/vectors/snv">
+    Înregistrează identitățile Node-urilor fizice și ale clusterelor rezultate din provizionarea informată de SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ro/vectors/shv">
+    Deține cunoașterea detaliată a capabilităților hardware pentru componentele la care face referire SCV.
+  </Card>
+</CardGroup>
+
+## Incremente de interfață versionate
+
+Versiunile SCV sunt aditive și au versiuni exacte. Instalările anterioare rămân invocabile în domeniile lor exacte. Incrementele curente includ operații native, instantanee de corpus, profiluri de interpretare, pachete portabile de furnizor, fluxuri de lucru de compoziție, urmărirea obligațiilor și pachete de dovezi. Fiecare increment păstrează rutele, valorile implicite și înregistrările anterioare.

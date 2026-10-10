@@ -1,0 +1,74 @@
+---
+title: "Motores de conhecimento de fontes SCV: a realidade dos fornecedores para o Symphony"
+description: "Oito motores SCV, de hyperscalers, de edge e de fornecedores, empacotados de forma independente, preservam revisões exatas das fontes e produzem evidências reprodutíveis de grafos e consultas."
+sidebarTitle: "Motores SCV"
+---
+
+Os motores de conhecimento de fontes SCV são oito processos C++26 empacotados de forma independente que detêm conhecimento semântico privado sobre recursos, ofertas, regiões, restrições e possibilidades híbridas de fornecedores externos. Preservam revisões exatas das fontes e capturas delimitadas para que as ferramentas a jusante possam reproduzir os resultados.
+
+## Motores
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Motor de fontes SCV abrangente para o vocabulário partilhado de cloud.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Motor de fontes do Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Motor de fontes de edge específico da Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Motor de fontes da Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Motor de fontes do Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Motor de fontes da DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Motor de fontes da Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Conector DuckDB opcional para a indexação de grafos relacionais retidos.
+  </Card>
+</CardGroup>
+
+## O que os motores SCV fazem
+
+- Preservam revisões explícitas das fontes e capturas delimitadas
+- Retêm afirmações qualificadas e a estrutura nativa dos documentos
+- Produzem evidências reprodutíveis de grafos e consultas
+- Alimentam pacotes portáteis de fornecedores e composições finitas dirigidas pelo chamador
+
+## O que não fazem
+
+<Warning>
+  As operações junto de fornecedores e os catálogos completos de cloud continuam fora deste incremento. Os motores SCV descrevem o que se sabe; não atuam sobre os fornecedores.
+</Warning>
+
+O qxctl administra separadamente as alterações locais auditadas das fontes e a seleção coerente de grafos, através de fluxos de trabalho retidos e de seleção protegida de grafos. A travessia dedicada de grafos e os adaptadores operacionais continuam a ser trabalho separado.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Vetor SCV" icon="cloud" href="/pt/vectors/scv">
+    Contrato do Cloud Vector que estes motores implementam.
+  </Card>
+
+  <Card title="Vetor SOV" icon="terminal" href="/pt/vectors/sov">
+    Ops Vector que atua sobre as evidências do SCV através do qxctl.
+  </Card>
+
+  <Card title="Comandos de vetor do qxctl" icon="terminal" href="/pt/qxctl/vector-commands">
+    Seleção de grafos, fluxos de trabalho de fontes e administração do conector DuckDB.
+  </Card>
+</CardGroup>

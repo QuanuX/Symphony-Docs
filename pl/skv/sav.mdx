@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector do oceny kompozycji"
+description: "SAV rozwiązuje odwołania Accord, ocenia kompozycję w trzech osiach, waliduje Named Versions i planuje Installation Blueprints bez mutowania kanonicznej prawdy."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) rozwiązuje zadeklarowaną kompozycję komponentów i ich zgodność. Jego silnik to działający tylko w trybie odczytu proces C++26 na ścieżce zamrażania (freezing path). SAV komponuje dokładne, typowane projekcje, ale nigdy nie przejmuje prawdy źródłowej od wektorów-właścicieli.
+
+## Operacje
+
+SAV obsługuje bogaty zestaw operacji oceny:
+
+- **Rozwiązywanie odwołań Accord** do niezmiennych, pochodnych migawek CURRENT
+- **Ocena trójosiowa**, porównanie i wyjaśnienie
+- **Grafy kompozycji** i jednorazowe projekcje
+- Walidacja i diff **Named Version**
+- Kontrole **Extension Capsule**
+- Planowanie **Installation Blueprint**
+- **Negocjacja zgodności** między zadeklarowanymi komponentami
+
+## Czego SAV nie robi
+
+- SAV nie przejmuje semantycznej własności komponentów, które komponuje.
+- SAV nie wybiera projektu za Ciebie; ocenia to, co zadeklarowano.
+- SAV nie mutuje plików kanonicznych. Jego wynikiem są dowody i propozycje.
+- SAV nie jest autorytetem dopisywania STAV. Obsługę intencji przed mutacją opisuje producent STAV Accordare.
+
+<Note>
+  SAV służy wyłącznie do odczytu, zapytań, walidacji i propozycji. Programowe kanoniczne apply pozostaje wyłączone w całej rodzinie silników SKV.
+</Note>
+
+## Powiązane obszary
+
+<CardGroup cols={2}>
+  <Card title="Przegląd SKV" icon="book-open" href="/pl/skv/overview">
+    Nadrzędny framework i model Contract Quad.
+  </Card>
+
+  <Card title="Producent Accordare" icon="pen-nib" href="/pl/governance/accordare-producer">
+    Ograniczony obwód audytu Named Version SAV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/pl/skv/sev">
+    Przypadki ewolucji wyzwalające ocenę zmian kompozycji przez SAV.
+  </Card>
+
+  <Card title="Polecenia wektorowe qxctl" icon="terminal" href="/pl/qxctl/vector-commands">
+    Ratyfikowana gramatyka Accordare pojawi się jako `qxctl accord ...` po implementacji.
+  </Card>
+</CardGroup>

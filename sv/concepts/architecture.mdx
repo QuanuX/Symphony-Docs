@@ -1,0 +1,33 @@
+---
+title: "Symphonys arkitektur"
+description: "Förstå gränserna mellan användarvald infrastruktur, vektorkontrakt, motorer, qxctl och styrd evidens."
+sidebarTitle: "Arkitektur"
+---
+
+Symphony skiljer användarvald infrastruktur och arbetslaster från plattformskunskap och administration. Plattformen kan inspektera, validera och rapportera kompatibilitet utan att göra anspråk på ägande av din strategi eller behandla en rekommendation som ett mandat.
+
+## Fysiskt lager och arbetslastlager
+
+En [Node](/sv/concepts/node-habitat-nest) är en identifierad fysisk dator. Ett **Habitat** är dess exakta konditionering av operativsystem och paket, och ett **Nest** är en arbetslast som tjänar ett syfte valt av användaren. Kluster kopplar samman Nodes via en eller flera bussar. Bussväv, adaptrar, leverantörer och hårdvaruval är uttryckliga snarare än universella standardval.
+
+Den [heta vägen](/sv/concepts/hot-path-isolation) hålls åtskild från administrativ residens. Arbete i qxctl och kunskapsplanet kan uttryckligen administrera en Node, men blir inte dolda kontinuerliga beroenden för live-körning.
+
+## Semantiskt ägande
+
+[Vektorer](/sv/concepts/vectors) är avgränsade, bestående ägare av betydelse och tillåtna åtgärder. Varje ägare publicerar en Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` och `SPEC.md`. [Symphony Knowledge Vector (SKV)](/sv/skv/overview) indexerar kanoniska ytor och bevarar en väg till deras ägare. Kompletterande scheman, register och liggare förblir styrda utan att bli extra medlemmar i Quad.
+
+Leveransfaser beskriver när arbete utförs. De överför inte semantiskt ägande från en vektor till en annan.
+
+## Motorer och kommandoyta
+
+[Vektormotorer](/sv/engines/overview) är oberoende installerbara komponenter som körs utanför processen och som inspekterar, kontrollerar, projicerar och föreslår inom sina ägarkontrakt. De får ingen befogenhet enbart genom att producera ett förslag.
+
+[qxctl](/sv/qxctl/overview) äger administrativ kommandogrammatik och presentation. Det anropar avgränsade, kvittovaliderade förmågor, medan den vektor som definierar en åtgärd behåller dess semantik. Auktorisering och granskningsevidens styr mutationsrutter; [anroparklassificering](/sv/concepts/caller-authority) ger i sig ingen befogenhet.
+
+## Sanning och utveckling
+
+Aktuella kontrakt anger aktuell sanning. Ändrings- och publiceringsliggarna bevarar den evidens som registrerades vid en viss tidpunkt. Oenighet mellan kontrakt, implementationsevidens och registrerad historik lyfts fram som drift i stället för att i tysthet skrivas om. [SAV](/sv/skv/sav) utvärderar sammansättningskompatibilitet; [SEV](/sv/skv/sev) planerar styrd utveckling.
+
+<Note>
+  Denna översikt är en karta över gränser. Läs varje länkad vektors aktuella kontrakt och implementationsevidens innan du behandlar en förmåga som tillgänglig i en specifik installation.
+</Note>

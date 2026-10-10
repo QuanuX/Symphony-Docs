@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: Framework-Verträge"
+description: "SQV verantwortet wiederverwendbare Framework-Verträge für quantitative und Handelssysteme, ohne Strategielogik von Benutzern zu übernehmen. SOOV ist sein erster benannter Untervektor für eine künftige reine C++-FIX-Architektur."
+sidebarTitle: "Quantitative Vector"
+---
+
+Der Symphony Quantitative Vector (SQV) verantwortet wiederverwendbare Framework-Verträge für quantitative Forschung, den Aufbau von Handelssystemen, Ausführungsunterstützung und spätere quantitative Engines. Die Strategielogik gehört immer Ihnen. SQV liefert Framework-Oberflächen und exakte Kompatibilitätsnachweise, bestimmt aber niemals Ihre Instrumente, Feeds, Abonnements, Orderlogik oder Ihr Ausführungsmodell.
+
+## Grenze zur Benutzerstrategie
+
+Sie behalten die vollständige Ownership über die Strategielogik. SQV tut Folgendes nicht:
+
+- Ihre Instrumente oder Datenfeeds auswählen
+- Abonnementfelder oder Markttiefe definieren
+- Fehlerverhalten oder Normalisierungsregeln festlegen
+- Orderlogik oder Ausführungsmodelle schreiben
+- Ihre interne modulare Struktur entwerfen
+
+Symphony liefert Kompatibilitätsnachweise und unterstützte Operationen. Es bewertet niemals Strategien und zwingt Ihren Handelsentscheidungen keine Plattformregeln auf.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV ist der erste benannte Untervektor unter SQV. Er steht für eine künftige, hochperformante, reine C++-FIX-Architektur, die auf früheren QuanuX-Arbeiten aufbaut. SOOV ist als begrenzte, deterministische Messaging-Schicht für die Handelskommunikation geplant. Detailliertes FIX-Verhalten ist noch nicht kanonisch; derzeit sind weder eine FIX-Session, ein Feed-Adapter noch eine Broker-Integration implementiert.
+
+## Künftiger Umfang
+
+SQV ist das geplante Zuhause für ratifizierte quantitative Framework-Komponenten in späteren Auslieferungsphasen. Erwartete Bereiche umfassen:
+
+- Backtesting-Engines
+- Broker-C++-APIs
+- Indikatorbibliotheken
+- Quantitative Mathematik
+- Datenstrom-Architektur
+
+Keiner dieser Bereiche wird implementiert, bevor die jeweiligen Verträge ratifiziert sind.
+
+## Aktueller Stand
+
+SQV ist ausschließlich ein kanonischer Architekturvertrag. Derzeit sind weder eine SQV- oder SOOV-Engine, eine FIX-Session, ein Feed-Adapter, eine Strategie-Laufzeit, eine Broker-Integration, ein Backtester, eine Indikatorbibliothek noch eine Datenstrom-Komponente implementiert.
+
+## Wie SQV mit anderen Vektoren zusammenhängt
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/de/vectors/shv">
+    Liefert Nachweise zu Hardwarefähigkeiten, die das Design quantitativer Engines eingrenzen.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/de/vectors/snv">
+    Erfasst die Nodes, auf denen quantitative Workloads ausgeführt werden.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/de/skv/overview">
+    Regelt SQV-Verträge, Evolution und Beziehungen zur offiziellen Veröffentlichung.
+  </Card>
+</CardGroup>

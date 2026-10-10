@@ -1,0 +1,32 @@
+---
+title: "QuanuX Symphony -dokumentaatio"
+description: "Aloita Symphonyn alustadoktriinista, arkkitehtuurista, tietovektoreista ja qxctl-hallinta-CLI:stä."
+sidebarTitle: "Hakemisto"
+---
+
+Symphony on modulaarinen, ensisijaisesti agenttipohjainen kaupankäynnin käyttöjärjestelmä. Tämä dokumentaatio kuvaa sen nykyiset sopimukset ja rajat: miten infrastruktuuri mallinnetaan, miten vektorit omistavat merkityksen ja miten qxctl hallinnoi tuettuja toimintoja. Aloita alustadoktriinista ennen minkään hallintapinnan käyttämistä.
+
+<CardGroup cols={2}>
+  <Card title="Pikaopas" icon="rocket" href="/fi/quickstart">
+    Löydä lyhin lukupolku alustaan, sen sopimuksiin ja qxctl:ään.
+  </Card>
+  <Card title="Alustadoktriini" icon="book-open" href="/fi/doctrine">
+    Ymmärrä käyttäjän omistajuus, kutsujan valtuus, näyttö ja kuuman polun suojaus.
+  </Card>
+  <Card title="Arkkitehtuuri" icon="diagram-project" href="/fi/concepts/architecture">
+    Katso, miten Nodet, Habitatit, Nestit, vektorit, moottorit ja qxctl liittyvät toisiinsa.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/fi/qxctl/overview">
+    Tutustu Symphonyn hallinta- ja kyselykomentopintaan.
+  </Card>
+</CardGroup>
+
+## Tutustu dokumentaatioon
+
+- [Node, Habitat ja Nest](/fi/concepts/node-habitat-nest) määrittelee fyysisen resurssin, sen tarkan ohjelmistokonditioinnin ja käyttäjän tarkoitusta palvelevan työkuorman.
+- [Vektorit ja vaiheet](/fi/concepts/vectors) erottaa pysyvän semanttisen omistajuuden toimituskampanjoista.
+- [Symphony Knowledge Vector](/fi/skv/overview) selittää kanoniset sopimukset, liitännäispinnat ja indeksoidun tiedon.
+- [Vektorimoottorit](/fi/engines/overview) kuvaa erikseen asennettavat, prosessin ulkopuolella toimivat moottorit.
+- [Kutsujan valtuus](/fi/concepts/caller-authority) ja [kuuman polun eristäminen](/fi/concepts/hot-path-isolation) esittävät kaksi keskeistä toimintarajaa.
+
+Nämä sivut kuvaavat nykyisiä dokumentoituja pintoja. Seuraa linkitettyjä sopimuksia ja toteutusnäyttöä nähdäksesi tietyn komponentin tarkan tilan.

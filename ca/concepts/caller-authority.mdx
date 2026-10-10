@@ -1,0 +1,28 @@
+---
+title: "Neutralitat de classe de l'invocador i autoritat de l'amfitrió a Symphony"
+description: "Symphony no classifica els invocadors per tipus. L'autoritat deriva de la propietat de l'amfitrió de destinació, el permís explícit, l'estat esperat i les salvaguardes configurades pel propietari."
+sidebarTitle: "Autoritat de l'invocador"
+---
+
+Symphony no classifica un invocador com a humà, IA, agent, servei, càrrega de treball, organització ni cap altre tipus d'actor a l'hora de decidir l'autoritat. La vostra classificació com a persona o com a sistema automatitzat no atorga ni retira cap capacitat per si mateixa. Aquesta neutralitat de classe de l'invocador és un límit arquitectònic fonamental que manté l'autorització basada en fets i no en etiquetes.
+
+## Què regeix l'autoritat
+
+Les decisions d'autorització compatibles utilitzen les entrades següents:
+
+- **Propietat de l'amfitrió de destinació o permisos atorgats**: l'administrador de l'amfitrió de destinació és sobirà sobre la governança configurable.
+- **Operació i recurs sol·licitats**: l'acció concreta i l'objecte sobre el qual actua.
+- **Estat esperat**: el resultat desitjat declarat i l'estat actual observat.
+- **Salvaguardes configurades pel propietari**: valors predeterminats conservadors que l'administrador pot ajustar o eliminar.
+
+## SSIAG i l'autoritat de l'amfitrió
+
+SSIAG pot verificar i projectar l'autoritat efectiva de l'amfitrió, però no crea cap autoritat de registre superior ni veta permanentment l'administrador de l'amfitrió de destinació. La garantia d'identitat reforçada i els bloquejos de governança són salvaguardes neutrals respecte a l'invocador i configurades pel propietari. Els requisits d'integritat del protocol continuen sent obligatoris dins de les eines compatibles.
+
+## Què no decideix Symphony
+
+Symphony no decideix si un actor pot posseir béns, obrir un compte, signar un contracte, assumir responsabilitats o actuar en nom d'una altra entitat. Aquests fets corresponen al propietari, al proveïdor, a la contrapart i a la legislació aplicable. La plataforma es manté dins del seu paper acotat: produeix evidència de compatibilitat i dona suport a operacions, però no s'estén a la determinació de la capacitat legal o financera externa.
+
+## Implicació pràctica
+
+Quan invoqueu qxctl o un motor de vector, s'apliquen les mateixes comprovacions tant si executeu l'ordre manualment, mitjançant un script o a través d'una eina agèntica. La ruta d'autoritat és: propietat de l'amfitrió de destinació, permís explícit, estat esperat, salvaguardes. Cap tipus d'invocador rep una omissió automàtica ni una restricció automàtica.

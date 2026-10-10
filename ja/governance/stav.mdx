@@ -1,0 +1,54 @@
+---
+title: "STAV: Symphony のための TOPS ごとの追記専用監査台帳"
+description: "STAV Append Authority は、認証済み IPC、レシート発行前の fsync による永続性、範囲を限定した読み取り、検証、リカバリーを備えた、TOPS ごとの追記専用監査台帳を運用します。"
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector（STAV）は、TOPS ごとの追記専用監査台帳のプロトコルを定義します。そのランタイム権限は、個別にインストール可能な Go サービスである `modules/stav-append-authority` にあります。TOPS ごとの運用台帳は各 TOPS インストールに固有のものであり、SKV のコンテンツではありません。
+
+## STAV Append Authority
+
+`modules/stav-append-authority` は次の機能を提供します。
+
+- TOPS ごとの追記専用監査台帳
+- 相互認証されたローカル IPC
+- 正確なプロデューサーとリーダーの権限付与
+- レシート発行前の fsync による永続性
+- 範囲を限定した読み取り、検証、リカバリー
+- 登録とネイティブな監視（launchd、systemd）
+
+<Warning>
+  qxctl が生の追記権限を受け取ることはありません。モジュールが所有する正確なアダプターを通じて登録、検証、権限付与を調整しますが、台帳への追記は追記権限プロセスの内部に封じられたままです。
+</Warning>
+
+## Go 向け STAV プロトコル
+
+`libraries/stav-protocol-go` は、正規の STAV v1 コーデック、厳格な検証、ダイジェスト、フレーミング、適合ルール、閉じたプロデューサー語彙を実装する、権限を持たない Go ライブラリです。どのプロデューサーやリーダーも、権限を継承することなくこのプロトコルを採用できます。
+
+## 完了した SODV の公開
+
+現在 SODV を通じて公開されているすべての STAV 成果物は、バイナリリリースではなく Go のソースモジュールのバージョンです。
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ja/governance/ssiag">
+    STAV が後で監査する、保護された変更を認可します。
+  </Card>
+
+  <Card title="Accordare Producer" icon="pen-nib" href="/ja/governance/accordare-producer">
+    変更前のインテントと最終的な結果を STAV に送信します。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/ja/qxctl/lifecycle">
+    STAV の登録と組み合わせて使用されるライフサイクル管理。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ja/skv/sodv">
+    STAV コンポーネントの公式な公開レコードを管理します。
+  </Card>
+</CardGroup>

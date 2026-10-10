@@ -1,0 +1,37 @@
+---
+title: "Izolace hot path v QuanuX Symphony"
+description: "Zjistěte, jak Symphony chrání cesty provádění před zásahy správy: komponenty na studené a mrazivé cestě, disciplína sběrnic a koncept stavového svědka Prima Parte."
+sidebarTitle: "Izolace hot path"
+---
+
+Symphony odděluje správní práci od práce provádění, aby živé obchodování, výzkum a další cesty citlivé na výkon zůstaly bez jitteru, latence a skrytých závislostí. qxctl a znalostní rovina představují správu na studené (cold) nebo mrazivé (freezing) cestě. Mohou explicitně působit na Node, který zároveň hostuje živou práci, ale nesmějí se stát trvalými závislostmi hot path.
+
+## Disciplína studené a mrazivé cesty
+
+qxctl a vektorové enginy jsou správní komponenty na studené nebo mrazivé cestě. Nesmějí:
+
+- Běžet inline s horkými (hot) nebo teplými (warm) cestami provádění
+- Sdílet zámky s živými workloady
+- Vytvářet synchronní závislosti, které přidávají jitter nebo latenci
+- Stát se skrytými pozorovateli, rezidentními interprety nebo nevyžádanými správci balíčků běžícími na pozadí
+- Udržovat trvalou rezidenci na Nodech provádění
+
+Toto pravidlo platí pro koordinátor znalostních relací, vektorové enginy a všechny operace spravované přes qxctl. Vytvářejí důkazy, validují stav a připravují plány, ale neúčastní se živé cesty provádění.
+
+## Disciplína sběrnic
+
+Přenosy velkých objemů, řízení, výzkum a výstupy provádění nemusejí sdílet jednu sběrnici. Topologie může používat více sběrnic nebo pro deklarovanou cestu sběrnici obejít, zejména tam, kde by sdílený provoz mohl způsobit jitter. NATS JetStream, ZeroMQ a další struktury jsou adaptéry a volbou uživatele. Existence správy sběrnic v qxctl neznamená, že průchod sběrnicí je povinný.
+
+Zvolíte topologii sběrnic odpovídající vašim požadavkům na latenci a propustnost. Symphony tuto konfiguraci podporuje, aniž by vnucovala jedinou sdílenou strukturu.
+
+## Prima Parte
+
+**Prima Parte** je ratifikovaný koncept fáze 3, nikoli aktuální spustitelný program. Jde o volitelného, extrémně odlehčeného stavového svědka v C++, lokálního pro Node, kterého qxctl explicitně vyvolá po podstatné operaci. Nemá žádného démona, posluchače, časovač, pozorovatele, dotazovací smyčku ani rezidentní připojení ke sběrnici.
+
+Jeho ohraničený trvalý slovník obsahuje tři pojmy:
+
+- `current` — aktuální pozorovaný stav
+- `previous` — stav před podstatnou operací
+- `lastTransmitted` — stav odeslaný vzdáleným Nodem po provedení souvisejícího příkazu (přijetí není potvrzeno)
+
+Prima Parte zaznamenává pouze vlastní Node, nikdy se nestává menším Maestrem a po dokončení své ohraničené práce skončí. Není receptorem Maestra z fáze 1 a zatím není implementován žádný spustitelný program.

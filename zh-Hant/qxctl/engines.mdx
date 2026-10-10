@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines：綁定、診斷與遷移登錄檔"
+description: "透過 qxctl 的 list、inspect、doctor、bind、unbind 以及與摘要綁定的 migrate，管理 Symphony 受保護的使用者範圍引擎綁定設定檔。"
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` 語法用於管理 Symphony 向量引擎受保護的使用者範圍 `default` 綁定設定檔。它會綁定所選內容以供後續協調（reconciliation）使用。它不會安裝、呼叫、啟用、停靠（dock）、驗證、授權或套用（apply）任何引擎。
+
+## 命令
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+第一次變更 v2 登錄檔時請提供 `absent`，之後的變更則提供 `list` 所回報的確切摘要。每次變更都會針對該摘要執行比較並交換（compare-and-swap）。
+
+## 從 v1 遷移至 v2
+
+<Warning>
+  有效的 v1 登錄檔狀態仍可讀取。遷移至 v2 是一項獨立的精確比較並交換操作，絕不是版本選擇操作。請勿將遷移視為引擎選擇的升級途徑。
+</Warning>
+
+- `list` 與 `inspect` 仍可在 v1 證據上運作。
+- `migrate` 會產生一個連結的 v2 世代，且不會捨棄 v1 的真實狀態。
+- 遷移之後，後續的變更請使用 v2 摘要。
+
+## 什麼是綁定
+
+綁定會選定確切內容，以供協調器後續進行協調。它：
+
+- 不會安裝引擎
+- 不會呼叫或啟用引擎
+- 不會讓引擎停靠於 Maestro
+- 不會驗證呼叫者身分
+- 不會授權套用
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/zh-Hant/qxctl/reconcile">
+    將已綁定的內容與協調器進行協調。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/zh-Hant/qxctl/lifecycle">
+    使用已綁定引擎的生命週期計畫。
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/zh-Hant/governance/maestro">
+    記錄停靠（而非綁定）的存在權威。
+  </Card>
+
+  <Card title="引擎概覽" icon="cube" href="/zh-Hant/engines/overview">
+    可獨立安裝的向量引擎。
+  </Card>
+</CardGroup>

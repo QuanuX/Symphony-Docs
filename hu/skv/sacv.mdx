@@ -1,0 +1,52 @@
+---
+title: "SACV: API-szerződések irányítása a QuanuX Symphonyban"
+description: "Az SACV korlátozott OpenAPI 3.2.0 ellenőrzésekkel, determinisztikus kompatibilitási diffekkel és a hívó által deklarált regiszterjavaslatokkal irányítja a verziózott API-szerződéseket a vektorokon át."
+sidebarTitle: "SACV"
+---
+
+A Symphony API Contract Vector (SACV) a platform verziózott API-szerződéseit irányítja. Motorja egy függetlenül telepíthető C++ folyamat, amely korlátozott OpenAPI 3.2.0 JSON-validálást, determinisztikus kompatibilitási diffeket és eldobható leltárakat készít. A végpontok szemantikája a tartományt birtokló vektornál vagy modulnál marad; az SACV a szerződések alakját és kompatibilitását irányítja.
+
+## Műveletek
+
+- **Vizsgálat és ellenőrzés**: annak validálása, hogy egy OpenAPI 3.2.0 JSON-dokumentum megfelel-e a korlátozott profilnak.
+- **Diff**: determinisztikus kompatibilitási diffek számítása szerződésverziók között.
+- **Javaslat**: a hívó által deklarált regiszterjavaslatok fogadása új vagy módosított szerződésekhez.
+- **Vetítés**: eldobható leltárak kibocsátása az áttekintők és a későbbi eszközök számára.
+
+## Mit irányít az SACV
+
+Az SACV korlátozza:
+
+- A szerződés alakját (OpenAPI 3.2.0 az SACV-profillal)
+- A verziók közötti kompatibilitási besorolást
+- Az elfogadott szerződések regisztertagságát
+
+Nem végzi a következőket:
+
+- Nem birtokolja a végpontok szemantikáját (ezt minden vektor vagy modul megtartja)
+- Nem generál SDK-kat, nem tesz közzé artefaktumokat és nem bocsát ki tokeneket
+- Nem utal élő hálózati felület létezésére (egy jövőbeli privát API említése nem hoz létre ilyet)
+
+<Note>
+  Az SACV kizárólag olvasásra, lekérdezésre, validálásra és javaslattételre képes. A programozott kanonikus alkalmazás az SKV-motorok mindegyikében le van tiltva.
+</Note>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SKV áttekintés" icon="book-open" href="/hu/skv/overview">
+    Az átfogó keretrendszer és a Contract Quad modell.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    Az SACV-ben regisztrált szerződések minden hivatalos közzétételét irányítja.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/hu/skv/sav">
+    A deklarált komponensek kompozícióját és kompatibilitását értékeli.
+  </Card>
+
+  <Card title="qxctl vektorparancsok" icon="terminal" href="/hu/qxctl/vector-commands">
+    Futtassa a `qxctl sacv ...` parancsot vizsgálathoz, ellenőrzéshez, diffhez és javaslattételhez.
+  </Card>
+</CardGroup>

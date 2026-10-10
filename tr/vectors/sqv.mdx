@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: Çerçeve Sözleşmeleri"
+description: "SQV, kullanıcı strateji mantığını edinmeden yeniden kullanılabilir nicel ve alım satım sistemi çerçeve sözleşmelerinin sahibidir. SOOV, gelecekteki yalnızca C++ tabanlı FIX mimarisi için ilk adlandırılmış alt vektörüdür."
+sidebarTitle: "Quantitative Vector"
+---
+
+Symphony Quantitative Vector (SQV); nicel araştırma, alım satım sistemi oluşturma, yürütme desteği ve sonraki nicel engine'ler için yeniden kullanılabilir çerçeve sözleşmelerinin sahibidir. Strateji mantığı her zaman size aittir. SQV çerçeve yüzeyleri ve kesin uyumluluk kanıtı sağlar, ancak enstrümanlarınızı, veri akışlarınızı, aboneliklerinizi, emir mantığınızı veya yürütme modelinizi hiçbir zaman belirlemez.
+
+## Kullanıcı stratejisi sınırı
+
+Strateji mantığının tam sahipliği sizde kalır. SQV şunları yapmaz:
+
+- Enstrümanlarınızı veya veri akışlarınızı seçmek
+- Abonelik alanlarını veya piyasa derinliğini tanımlamak
+- Hata davranışını veya normalleştirme kurallarını belirlemek
+- Emir mantığı veya yürütme modelleri yazmak
+- Dahili modüler yapınızı tasarlamak
+
+Symphony uyumluluk kanıtı ve desteklenen işlemler sağlar. Stratejileri hiçbir zaman sıralamaz veya alım satım kararlarınıza platform kuralı dayatmaz.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV, SQV altındaki ilk adlandırılmış alt vektördür. Geçmişteki QuanuX çalışmalarından beslenen, gelecekteki yüksek performanslı, yalnızca C++ tabanlı bir FIX mimarisini temsil eder. SOOV, alım satım iletişimi için sınırlı ve deterministik bir mesajlaşma katmanı olarak planlanmaktadır. Ayrıntılı FIX davranışı henüz kanonik değildir; şu anda hiçbir FIX oturumu, veri akışı bağdaştırıcısı veya aracı kurum entegrasyonu uygulanmamıştır.
+
+## Gelecekteki kapsam
+
+SQV, sonraki teslim aşamalarında onaylanacak nicel çerçeve bileşenleri için planlanan merkezdir. Beklenen alanlar şunlardır:
+
+- Geriye dönük test (backtesting) engine'leri
+- Aracı kurum C++ API'leri
+- Gösterge kütüphaneleri
+- Nicel matematik
+- Veri akışı mimarisi
+
+Bunların hiçbiri, ilgili sözleşmeleri onaylanana kadar uygulanmaz.
+
+## Mevcut durum
+
+SQV yalnızca kanonik bir mimari sözleşmedir. Şu anda hiçbir SQV veya SOOV engine'i, FIX oturumu, veri akışı bağdaştırıcısı, strateji çalışma zamanı, aracı kurum entegrasyonu, geriye dönük test aracı, gösterge kütüphanesi veya veri akışı bileşeni uygulanmamıştır.
+
+## SQV'nin diğer vektörlerle ilişkisi
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/tr/vectors/shv">
+    Nicel engine tasarımını kısıtlayan donanım yeteneği kanıtını sağlar.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/tr/vectors/snv">
+    Nicel iş yüklerinin yürütüldüğü Node'ları kaydeder.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/tr/skv/overview">
+    SQV sözleşmelerini, evrimini ve resmî yayın ilişkilerini yönetir.
+  </Card>
+</CardGroup>

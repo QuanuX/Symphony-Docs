@@ -1,0 +1,28 @@
+---
+title: "Neutralitatea față de clasa apelantului și autoritatea gazdei în Symphony"
+description: "Symphony nu clasifică apelanții după tip. Autoritatea derivă din proprietatea asupra gazdei țintă, permisiunea explicită, starea așteptată și măsurile de protecție configurate de proprietar."
+sidebarTitle: "Autoritatea apelantului"
+---
+
+Symphony nu clasifică un apelant ca om, IA, agent, serviciu, sarcină de lucru, organizație sau orice alt tip de actor atunci când decide asupra autorității. Clasificarea dumneavoastră ca persoană sau ca sistem automatizat nu acordă și nu retrage, prin ea însăși, nicio capabilitate. Această neutralitate față de clasa apelantului este o graniță arhitecturală fundamentală care menține autorizarea ancorată în fapte, nu în etichete.
+
+## Ce guvernează autoritatea
+
+Deciziile de autorizare acceptate folosesc următoarele date de intrare:
+
+- **Proprietatea asupra gazdei țintă sau permisiunile acordate**: Administratorul gazdei țintă este suveran asupra guvernanței configurabile.
+- **Operațiunea și resursa solicitate**: Acțiunea specifică și obiectul asupra căruia acționează.
+- **Starea așteptată**: Rezultatul dorit declarat și starea curentă observată.
+- **Măsurile de protecție configurate de proprietar**: Valori implicite conservatoare pe care administratorul le poate ajusta sau elimina.
+
+## SSIAG și autoritatea gazdei
+
+SSIAG poate verifica și proiecta autoritatea efectivă a gazdei, dar nu creează o autoritate de înregistrare superioară și nu impune un veto permanent asupra administratorului gazdei țintă. Asigurarea sporită a identității și blocajele de guvernanță sunt măsuri de protecție neutre față de apelant și configurate de proprietar. Cerințele de integritate a protocolului rămân obligatorii în cadrul instrumentelor acceptate.
+
+## Ce nu decide Symphony
+
+Symphony nu decide dacă un actor poate deține proprietăți, deschide un cont, semna un contract, își poate asuma răspunderea sau poate acționa în numele altei entități. Aceste fapte aparțin proprietarului, furnizorului, contrapărții relevante și legislației aplicabile. Platforma rămâne în rolul său delimitat: produce dovezi de compatibilitate și sprijină operațiuni, dar nu se extinde la determinarea capacității juridice sau financiare externe.
+
+## Implicație practică
+
+Când invocați qxctl sau un motor de vector, se aplică aceleași verificări indiferent dacă rulați comanda manual, printr-un script sau printr-un instrument agentic. Traseul autorității este: proprietatea asupra gazdei țintă, permisiunea explicită, starea așteptată, măsurile de protecție. Niciun tip de apelant nu primește o ocolire automată sau o restricție automată.

@@ -1,0 +1,33 @@
+---
+title: "Symphony-arkitektur"
+description: "Forstå grænserne mellem brugervalgt infrastruktur, vector-kontrakter, engines, qxctl og styret evidens."
+sidebarTitle: "Arkitektur"
+---
+
+Symphony adskiller brugervalgt infrastruktur og workloads fra platformsviden og administration. Platformen kan inspicere, validere og rapportere kompatibilitet uden at gøre krav på ejerskab af din strategi eller behandle en anbefaling som et påbud.
+
+## Fysisk lag og workload-lag
+
+En [Node](/da/concepts/node-habitat-nest) er en identificeret fysisk computer. En **Habitat** er dens præcise konditionering af operativsystem og pakker, og en **Nest** er en workload, der tjener et formål valgt af brugeren. Klynger forbinder Nodes gennem en eller flere busser. Busfabrics, adaptere, udbydere og hardwarevalg er eksplicitte frem for universelle standarder.
+
+[Hot path](/da/concepts/hot-path-isolation) holdes adskilt fra administrativ tilstedeværelse. Arbejde i qxctl og vidensplanet kan eksplicit administrere en Node, men bliver ikke skjulte, kontinuerlige afhængigheder af live-udførelse.
+
+## Semantisk ejerskab
+
+[Vectors](/da/concepts/vectors) er afgrænsede, varige ejere af betydning og tilladte operationer. Hver ejer udgiver en Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` og `SPEC.md`. [Symphony Knowledge Vector (SKV)](/da/skv/overview) indekserer kanoniske overflader og bevarer en rute til deres ejer. Ledsagende skemaer, registre og ledgers forbliver styrede uden at blive ekstra medlemmer af Quad'en.
+
+Leverancefaser beskriver, hvornår arbejdet udføres. De overfører ikke semantisk ejerskab fra én vector til en anden.
+
+## Engines og kommandooverflade
+
+[Vector-engines](/da/engines/overview) er uafhængigt installerbare komponenter, der kører uden for processen, og som inspicerer, kontrollerer, projicerer og foreslår inden for deres ejerkontrakter. De opnår ikke autoritet blot ved at producere et forslag.
+
+[qxctl](/da/qxctl/overview) ejer administrativ kommandogrammatik og præsentation. Den kalder afgrænsede, kvitteringsvaliderede kapabiliteter, mens den vector, der definerer en operation, bevarer dens semantik. Autorisations- og revisionsevidens styrer mutationsruter; [kalderklassificering](/da/concepts/caller-authority) alene giver ingen autoritet.
+
+## Sandhed og udvikling
+
+Gældende kontrakter angiver den gældende sandhed. Ændrings- og publiceringsledgers bevarer den evidens, der blev registreret på et bestemt tidspunkt. Uenighed mellem kontrakter, implementeringsevidens og registreret historik fremlægges som drift i stedet for at blive omskrevet i det stille. [SAV](/da/skv/sav) evaluerer kompatibilitet i sammensætninger; [SEV](/da/skv/sev) planlægger styret udvikling.
+
+<Note>
+  Denne oversigt er et kort over grænser. Konsultér hver linket vectors gældende kontrakt og implementeringsevidens, før du betragter en kapabilitet som tilgængelig i en bestemt installation.
+</Note>

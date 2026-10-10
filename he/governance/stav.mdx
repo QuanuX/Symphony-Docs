@@ -1,0 +1,54 @@
+---
+title: "STAV: פנקס ביקורת לכל TOPS שמאפשר הוספה בלבד עבור Symphony"
+description: "STAV Append Authority מפעילה פנקסי ביקורת לכל TOPS שמאפשרים הוספה בלבד, עם IPC מאומת, עמידות fsync-לפני-קבלה, קריאות תחומות, אימות ושחזור."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) מגדיר את פרוטוקול פנקס הביקורת לכל TOPS שמאפשר הוספה בלבד. רשות זמן הריצה שלו נמצאת ב-`modules/stav-append-authority`, שירות Go הניתן להתקנה עצמאית. הפנקסים התפעוליים לכל TOPS פרטיים לכל התקנת TOPS; הם אינם תוכן SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` מספק:
+
+- פנקסי ביקורת לכל TOPS שמאפשרים הוספה בלבד
+- IPC מקומי מאומת הדדית
+- הענקות מדויקות ליצרנים ולקוראים
+- עמידות fsync-לפני-קבלה
+- קריאות תחומות, אימות ושחזור
+- רישום ופיקוח מקורי (launchd, systemd)
+
+<Warning>
+  qxctl לעולם אינו מקבל סמכות הוספה גולמית. הוא מתאם רישום, אימות והענקות באמצעות המתאם המדויק שבבעלות המודול, אך ההוספה לפנקס נותרת חתומה בתוך תהליך רשות ההוספה.
+</Warning>
+
+## פרוטוקול STAV עבור Go
+
+`libraries/stav-protocol-go` היא ספריית Go נטולת סמכות המממשת את ה-codec הקנוני של STAV v1, אימות קפדני, תקצירים, מסגור, כללי התאמה ואת אוצר המילים הסגור של היצרנים. כל יצרן או קורא יכול לאמץ את הפרוטוקול מבלי לרשת סמכות.
+
+## פרסומי SODV שהושלמו
+
+כל תוצר STAV שמפורסם כיום באמצעות SODV הוא גרסת מודול מקור של Go, לא גרסה בינארית:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## משטחים קשורים
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/he/governance/ssiag">
+    מאשר שינויים מוגנים ש-STAV מבקר לאחר מכן.
+  </Card>
+
+  <Card title="יצרן Accordare" icon="pen-nib" href="/he/governance/accordare-producer">
+    פולט ל-STAV כוונה שלפני השינוי ותוצאות סופיות.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/he/qxctl/lifecycle">
+    ניהול מחזור חיים שמשתלב עם רישום STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/he/skv/sodv">
+    מנהל את רשומות הפרסום הרשמיות של רכיבי STAV.
+  </Card>
+</CardGroup>

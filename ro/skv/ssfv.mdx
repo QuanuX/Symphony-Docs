@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector și registrul său"
+description: "SSFV deține identitatea canonică a funcționalităților, semantica, ierarhia, ciclul de viață și asigurarea administrării în fiecare modul Symphony implementat și în fiecare suprafață qxctl."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) deține identitatea canonică a funcționalităților aplicației, semantica, ierarhia, ciclul de viață, distincțiile, rutarea distribuită a înregistrărilor, inventarul de acoperire și contractele de proiecție a grafurilor. Motorul său este un proces C++ instalabil independent, care efectuează verificări structurale ale funcționalităților, ținând cont de actualitatea acestora.
+
+## Operații
+
+- **Inspectare și verificare**: evaluare structurală a funcționalităților, ținând cont de actualitate.
+- **Diff**: diferențe adresate prin conținut între stările funcționalităților.
+- **Propunere**: propuneri declarate de apelant pentru admiterea sau modificarea funcționalităților.
+- **Graf**: grafuri de funcționalități deterministe, de unică folosință, pentru revizuire.
+
+## Acoperirea înregistrată
+
+Catalogul înregistrat curent este explicit parțial:
+
+- **110** funcționalități înregistrate
+- **35** domenii de proprietar înregistrate
+- **76** funcționalități imbricate ratificate
+- **295** suprafețe de administrare a funcționalităților revizuite (**285** obligatorii, **13** excepții susținute de dovezi, **9** interdicții, **0** nerevizuite)
+
+Domeniile de proprietar înregistrate acoperă fiecare modul implementat, de la `qxctl` și validator, prin motoarele SKV și furnizorii SSIAG, până la familiile de motoare SCV și SHV.
+
+## Ce nu face SSFV
+
+<Warning>
+  SSFV nu decide dacă ceva merită să fie o funcționalitate, nu inventează identități și nu pretinde completitudinea depozitului sau a gazdei. `review_required` reprezintă dovezi pentru revizuirea de către apelant, nu o ratificare sau o autoritate de aplicare.
+</Warning>
+
+Revizuirea, admiterea și modificările de ciclu de viață ale funcționalităților rămân la contractul care deține fiecare funcționalitate.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="Prezentare generală SKV" icon="book-open" href="/ro/skv/overview">
+    Cadrul-umbrelă care guvernează SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ro/skv/sev">
+    Aplică cazuri de evoluție pentru adăugări, modificări și retrageri de funcționalități.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/ro/qxctl/session">
+    Gestionați sesiunile persistente de mentenanță SSFV prin qxctl.
+  </Card>
+
+  <Card title="Comenzi vectoriale qxctl" icon="terminal" href="/ro/qxctl/vector-commands">
+    Rulați `qxctl ssfv ...` pentru inspect, check, diff, propose și graph.
+  </Card>
+</CardGroup>

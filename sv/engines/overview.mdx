@@ -1,0 +1,57 @@
+---
+title: "Symphonys vektormotorer: översikt över oberoende installation"
+description: "Varje Symphony-vektormotor installeras oberoende, körs utanför processen i C++ och förblir befogenhetsfri. Möt motorfamiljerna SKV, SCV och SHV här."
+sidebarTitle: "Översikt över motorer"
+---
+
+Varje aktiv Symphony-vektor på applikationsnivå kan ha en oberoende installerbar C++-motor som körs utanför processen. Delad befogenhetsfri C++-mekanik finns under `libraries/`; en separat C++-koordinator äger mekaniken för autentiserade sessioner och avstämning av arbetsträd. Motorer inspekterar, validerar, projicerar och föreslår inom vektorägda kontrakt. De får ingen befogenhet enbart genom att generera innehåll.
+
+## Implementerade motorer
+
+<CardGroup cols={2}>
+  <Card title="Knowledge Vector-grund" icon="cube" href="/sv/engines/knowledge-vector-foundation">
+    C++-processinramning, JSON, SHA-256, ögonblicksbilder, kvitton och manifestupptäckt.
+  </Card>
+
+  <Card title="Sessionskoordinator" icon="gears" href="/sv/engines/coordinator">
+    Autentiserade sessioner, avstämning av arbetsträd och koordinering av livscykeltillämpning.
+  </Card>
+
+  <Card title="SCV-källmotorer" icon="cloud" href="/sv/engines/scv-source-engines">
+    Åtta C++26-motorer för källkunskap om SCV, hyperskalare, edge och leverantörer.
+  </Card>
+
+  <Card title="SHV-motorer" icon="microchip" href="/sv/engines/shv-engines">
+    Motorer för hårdvarukällor, katalog, profil, partitionering, publicering och adaptrar.
+  </Card>
+</CardGroup>
+
+## SKV-motorfamiljen
+
+SKV-ytorna har var sin egen motor:
+
+- Motorerna för SKVI, SCLV, SACV, SODV och SSFV implementerar var och en inspektion, kontroll, förslag och projektion (samt återställning där det är tillämpligt).
+- Motorerna för SAV och SEV är C++26-processer på den frysande vägen för utvärdering av sammansättning och utvecklingsfall.
+
+<Note>
+  Varje aktuell SKV-motor är enbart för läsning, frågor, validering och förslag. Programmatisk kanonisk tillämpning förblir inaktiverad tills varje motors kontrakt för SSIAG-behörighetsverifiering, transaktion med förväntat tillstånd, qxctl-skyddsåtgärd, STAV-händelse, återställning och negativa tester är kompletta.
+</Note>
+
+## Gemensamma garantier
+
+- Oberoende installation och avinstallation per modul
+- Ingen genomsökning av repositoriet på måfå; manifestupptäckt är uttrycklig
+- Ingen delad befogenhet; varje mutationsrutt spärras av SSIAG plus STAV
+- Ingen residens på den heta vägen; motorer tillför aldrig latens till live-arbetslaster
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="qxctl-översikt" icon="terminal" href="/sv/qxctl/overview">
+    Administrativt CLI som anropar exakta, kvittovaliderade motorer.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/sv/governance/maestro">
+    Registrerar dockningsrelationer mellan motorer och receptorer.
+  </Card>
+</CardGroup>

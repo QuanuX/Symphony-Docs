@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV-produsent: Avgrenset revisjon av SAV Named Version"
+description: "Accordare STAV-produsenten holder hensikt, utfall og gjenoppretting for SAV Named Version varige gjennom en Go-produsent på den frosne stien med autentiserte lokale motparter."
+sidebarTitle: "Accordare-produsent"
+---
+
+Accordare STAV-produsenten (`modules/accordare-stav-producer`) er en uavhengig installerbar Go-produsent på den frosne stien for den avgrensede revisjonskretsen for SAV Named Version. Den holder hensikt før mutasjon og gjenoppretting av tillegg varige, autentiserer sine lokale motparter og sender bare den eksakte, trygge kandidaten som slippes inn av det lukkede vokabularet. Den er ikke selv tilleggsautoriteten i STAV.
+
+## Mønsteret hensikt, utfall, gjenoppretting
+
+Produsenten følger et mønster i tre trinn for hver revidert mutasjon:
+
+<Steps>
+  <Step title="Hensikt før mutasjon">
+    Registrer kallerens erklærte hensikt varig før noen endring blir observerbar. Produsenten avviser kandidater utenfor sitt lukkede vokabular.
+  </Step>
+  <Step title="Endelig utfall">
+    Etter at mutasjonen er fullført eller har mislyktes, fang opp det eksakte utfallet slik at revisjonen gjenspeiler virkeligheten, ikke en ønsket tilstand.
+  </Step>
+  <Step title="Avgrenset gjenoppretting">
+    Ved avbrudd utfører produsenten avgrenset gjenoppretting av tilleggsstrømmen uten å finne opp en avstemming eller i det stille forkaste hensikt.
+  </Step>
+</Steps>
+
+## Grenser
+
+<Warning>
+  Accordare-produsenten er ikke tilleggsautoriteten i STAV. Den autentiserer lokale motparter og sender kandidater; tilleggsautoriteten validerer, forsegler og lagrer dem varig. Gå aldri utenom dette skillet.
+</Warning>
+
+- Produsentens vokabular er lukket. Den godtar bare revisjonskandidater for SAV Named Version.
+- Produsenten befinner seg på den frosne stien. Den må ikke bli en avhengighet i den varme stien.
+- Produsenten autentiserer lokale motparter; den autentiserer ikke eksterne kallere.
+
+## Relaterte overflater
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/no/governance/stav">
+    Tilleggsautoriteten som forsegler revisjonsposter.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/no/governance/ssiag">
+    Autoriserer mutasjonen som produsenten reviderer.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/no/skv/sav">
+    Sammensetningssemantikken for Named Version som denne kretsen reviderer.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/no/qxctl/vector-commands">
+    Ratifisert Accordare-grammatikk kommer som `qxctl accord ...` når den er implementert.
+  </Card>
+</CardGroup>

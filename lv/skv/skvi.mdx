@@ -1,0 +1,51 @@
+---
+title: "SKVI: Symphony Knowledge Vector Index dzinējs"
+description: "SKVI deterministiski indeksē katru kanonisko SKV virsmu vienu reizi, pārbauda manifestā deklarēto pārklājumu un izvada vienreizējas, ar jaucējvērtību piesaistītas projekcijas, neskarot patiesību."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) ir dzinējs, kas kartē pašreizējo kanonisko patiesību visās SKV virsmās. Tas ir neatkarīgi instalējams C++ process, kas darbojas deterministiski, tikai lasīšanas režīmā, un nevar lemt par dalību vai rakstīt kanoniskos failus.
+
+## Ko dara SKVI
+
+SKVI veic trīs ierobežotas operācijas:
+
+- **Inspect un check**: pārbauda, vai katra manifestā deklarētā obligātā virsma ir indeksēta tieši vienu reizi, ar stabilu īpašnieku, patiesības lomu, attiecībām, patērētājiem un projekcijas atbilstību.
+- **Propose**: pieņem izsaucēja deklarētus nemainīgus indeksa izmaiņu priekšlikumus, tos nepiemērojot.
+- **Project**: izvada pašreizējā indeksa vienreizējas, ar jaucējvērtību piesaistītas projekcijas lejupējiem patērētājiem.
+
+## Ko SKVI nedara
+
+SKVI nekad nelemj par funkcijas vērtīgumu vai dalību manifestā. Īpašumtiesības paliek katra vektora Contract Quad. SKVI arī:
+
+- Neraksta un nepārraksta kanonisko Markdown
+- Neko nepublicē publiskā projekcijā
+- Nepiešķir autoritāti tikai tāpēc, ka ir ģenerējis pierādījumus
+
+## Kad to izmantot
+
+Izmantojiet SKVI, lai pirms pirmkoda izmaiņu ierosināšanas pārliecinātos, ka repozitorijs ir pilnībā pārklāts, vai lai redzētu, kāds īpašnieks un patiesības loma ir konkrētai virsmai. Tā projekcijas nodrošina datus priekšlikumu pārskatītājiem, aģentu kontekstam un validatora bāzlīnijām.
+
+<Note>
+  SKVI ir viens no dzinējiem, kas tikai lasa, vaicā, validē un ierosina. Kanoniskā piemērošana joprojām ir atspējota ratificētajiem vektoru dzinējiem, līdz katra dzinēja SSIAG, gaidītā stāvokļa transakcijas, qxctl aizsardzības, STAV notikuma, atkopšanas un negatīvo testu līgumi ir pabeigti.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Jumta ietvars, kas pārvalda SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/lv/skv/sclv">
+    Tikai papildināmā izmaiņu virsgrāmata, kas reģistrē pabeigtas būtiskas pirmkoda izmaiņas.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Palaidiet `qxctl skvi ...`, lai izsauktu inspect, check un propose.
+  </Card>
+
+  <Card title="Validators" icon="clipboard-check" href="/lv/governance/validator">
+    Neatkarīgas tikai lasāmas pārbaudes, kas papildina SKVI pārklājumu.
+  </Card>
+</CardGroup>

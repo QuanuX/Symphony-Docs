@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge：跨向量生命週期管理"
+description: "qxctl knowledge 命令群組負責跨向量生命週期、工作階段轉換、不變式查詢，以及持久性 SSFV 維護管理。"
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` 群組負責跨向量生命週期與持久性 SSFV 工作階段的管理。它是由協調器支援之操作的進入點，也是對驗證器進行不變式查詢的進入點。
+
+## 工作階段轉換
+
+使用 `qxctl knowledge session transition` 向既有的工作階段發送主機生命週期事件訊號：
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+安全的重試會重複使用相同的事件 ID。只有在確實打算從損毀的本機工作階段證據進行探索式復原時，才加上 `--recover`；它不會復原拒絕、不相容的關鍵狀態或模稜兩可的情況。
+
+<Warning>
+  Symphony 不會透過此命令安裝登入掛鉤、監看程式或開機單元。只有在明確的主機生命週期整合提供穩定的事件識別時，才使用此命令。
+</Warning>
+
+## 不變式查詢
+
+有四個葉節點命令綁定 `ssfv:symphony:qxctl.invariant-assurance`：
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` 另外還綁定 `ssfv:symphony:symphony-validator.invariant-ownership-assurance`。
+
+直接查詢的葉節點命令會輸出 `symphony.knowledge.invariant-query-result.v1`，並帶有 `semantic_validity=not_asserted`。`check` 會回傳驗證器確切且完整的結果，並保留結束代碼 26。
+
+## 子命令群組
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/zh-Hant/qxctl/lifecycle">
+    設定檔、擁有權、觀察、報告、開機、套用與復原。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/zh-Hant/qxctl/engines">
+    引擎綁定登錄檔的 list、inspect、doctor、bind、unbind、migrate。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/zh-Hant/qxctl/reconcile">
+    協調器工作樹協調語法。
+  </Card>
+
+  <Card title="session" icon="key" href="/zh-Hant/qxctl/session">
+    已驗證的工作階段與 SSFV 維護串流。
+  </Card>
+</CardGroup>

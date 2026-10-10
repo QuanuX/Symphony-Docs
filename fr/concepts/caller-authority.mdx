@@ -1,0 +1,28 @@
+---
+title: "Neutralité vis-à-vis de la classe d'appelant et autorité de l'hôte dans Symphony"
+description: "Symphony ne classe pas les appelants par type. L'autorité découle de la propriété de l'hôte cible, des permissions explicites, de l'état attendu et des garde-fous configurés par le propriétaire."
+sidebarTitle: "Autorité de l'appelant"
+---
+
+Symphony ne classe pas un appelant comme humain, IA, agent, service, charge de travail, organisation ou tout autre type d'acteur lorsqu'il statue sur l'autorité. Votre classification en tant que personne ou système automatisé n'accorde ni ne retire, à elle seule, aucune capacité. Cette neutralité vis-à-vis de la classe d'appelant est une frontière architecturale fondamentale qui ancre l'autorisation dans des faits plutôt que dans des étiquettes.
+
+## Ce qui régit l'autorité
+
+Les décisions d'autorisation prises en charge utilisent les entrées suivantes :
+
+- **Propriété de l'hôte cible ou permissions accordées** : l'administrateur de l'hôte cible est souverain sur la gouvernance configurable.
+- **Opération et ressource demandées** : l'action spécifique et l'objet sur lequel elle porte.
+- **État attendu** : le résultat souhaité déclaré et l'état actuel observé.
+- **Garde-fous configurés par le propriétaire** : des valeurs par défaut prudentes que l'administrateur peut ajuster ou supprimer.
+
+## SSIAG et autorité de l'hôte
+
+SSIAG peut vérifier et projeter l'autorité effective de l'hôte, mais ne crée pas d'autorité d'enregistrement supérieure et n'oppose pas de veto permanent à l'administrateur de l'hôte cible. L'assurance d'identité renforcée et les verrouillages de gouvernance sont des garde-fous neutres vis-à-vis de l'appelant et configurés par le propriétaire. Les exigences d'intégrité du protocole restent obligatoires au sein de l'outillage pris en charge.
+
+## Ce que Symphony ne décide pas
+
+Symphony ne décide pas si un acteur peut posséder un bien, ouvrir un compte, signer un contrat, assumer une responsabilité ou agir pour le compte d'une autre entité. Ces faits relèvent du propriétaire, du fournisseur, de la contrepartie concernés et du droit applicable. La plateforme reste dans son rôle borné : elle produit des preuves de compatibilité et prend en charge des opérations, mais ne s'étend pas à la détermination de la capacité juridique ou financière externe.
+
+## Implication pratique
+
+Lorsque vous invoquez qxctl ou un moteur de vecteur, les mêmes vérifications s'appliquent, que vous exécutiez la commande manuellement, via un script ou au moyen d'un outil agentique. Le chemin d'autorité est le suivant : propriété de l'hôte cible, permission explicite, état attendu, garde-fous. Aucun type d'appelant ne bénéficie d'un contournement automatique ni d'une restriction automatique.

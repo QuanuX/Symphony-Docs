@@ -1,0 +1,43 @@
+---
+title: "Maestro: a Symphony vektormotor-jelenléti hatósága"
+description: "A Maestro TOPS-onként és receptoronként rögzíti a hitelesített vektormotor-dokkolási kapcsolatokat, és teljes, csak olvasható leltárt vezet le belőlük anélkül, hogy motorokat indítana vagy felügyelne."
+sidebarTitle: "Maestro"
+---
+
+A Maestro (`modules/maestro`) egy függetlenül telepíthető, freezing path C++26 jelenléti hatóság. TOPS-onként és receptoronként rögzíti a pontos, hitelesített vektormotor-dokkolási kapcsolatokat, és teljes, csak olvasható leltárt vezet le arról, ami jelenleg dokkolva van. A Maestro tanú, nem felügyelő.
+
+## Amit a Maestro rögzít
+
+- A vektormotorok és receptorok közötti pontos, hitelesített dokkolási kapcsolatokat
+- TOPS-onkénti hatókört, így minden telepítés jelenléte az adott telepítésre korlátozódik
+- Egy levezetett, teljes, csak olvasható leltárt, amely a `qxctl maestro inventory` paranccsal érhető el
+
+## Amit a Maestro nem végez
+
+<Warning>
+  A Maestro nem indít, ütemez, felügyel vagy hív meg motorokat. A kötés, az egyeztetés, a hitelesített munkamenetek koordinálása vagy egy életciklusterv önmagában nem hozza létre a Maestro-jelenlétet, nem ratifikálja a szemantikai igazságot, nem módosítja a kanonikus tudást, és nem bizonyítja a telepített gazdagép teljességét.
+</Warning>
+
+- A Maestro nem hoz létre folyamatokat.
+- A Maestro soha nem alkalmaz kanonikus tudásváltozásokat.
+- A Maestro soha nem helyettesíti a szemantikát birtokló vektormotort.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/hu/qxctl/maestro">
+    A `qxctl maestro inventory` megjeleníti a levezetett leltárt.
+  </Card>
+
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    A hitelesített munkamenetek és a munkafa-egyeztetés mechanizmusaiért felel.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/hu/governance/ssiag">
+    Hitelesíti a Maestro által rögzített dokkolási kapcsolatokat.
+  </Card>
+
+  <Card title="Motorok áttekintése" icon="cube" href="/hu/engines/overview">
+    Függetlenül telepíthető vektormotorok, amelyek a Maestróhoz dokkolnak.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Productor STAV d'Accordare: auditoria acotada de les Named Versions de SAV"
+description: "El productor STAV d'Accordare manté durables la intenció, el resultat i la recuperació de les Named Versions de SAV mitjançant un productor en Go de camí de congelació amb iguals locals autenticats."
+sidebarTitle: "Productor Accordare"
+---
+
+El productor STAV d'Accordare (`modules/accordare-stav-producer`) és un productor en Go de camí de congelació, instal·lable de manera independent, per al circuit acotat d'auditoria de les Named Versions de SAV. Manté durables la intenció prèvia a la mutació i la recuperació de les addicions, autentica els seus iguals locals i només envia el candidat segur exacte admès pel seu vocabulari tancat. No és l'autoritat d'addició de STAV en si mateixa.
+
+## El patró d'intenció, resultat i recuperació
+
+El productor segueix un patró de tres passos per a cada mutació auditada:
+
+<Steps>
+  <Step title="Intenció prèvia a la mutació">
+    Registra de manera durable la intenció declarada de l'invocador abans que cap canvi sigui observable. El productor rebutja els candidats que queden fora del seu vocabulari tancat.
+  </Step>
+  <Step title="Resultat terminal">
+    Quan la mutació es completa o falla, captura el resultat exacte perquè l'auditoria reflecteixi la realitat i no un estat desitjat.
+  </Step>
+  <Step title="Recuperació acotada">
+    En cas d'interrupció, el productor fa una recuperació acotada del flux d'addicions sense inventar cap reconciliació ni descartar silenciosament la intenció.
+  </Step>
+</Steps>
+
+## Límits
+
+<Warning>
+  El productor d'Accordare no és l'autoritat d'addició de STAV. Autentica els iguals locals i envia candidats; l'autoritat d'addició els valida, els segella i els emmagatzema de manera durable. No eludiu mai aquesta separació.
+</Warning>
+
+- El vocabulari del productor és tancat. Només accepta candidats d'auditoria de Named Versions de SAV.
+- El productor és de camí de congelació. No s'ha de convertir en una dependència del camí crític.
+- El productor autentica iguals locals; no autentica invocadors remots.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/ca/governance/stav">
+    L'autoritat d'addició que segella els registres d'auditoria.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ca/governance/ssiag">
+    Autoritza la mutació que audita el productor.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ca/skv/sav">
+    La semàntica de composició de les Named Versions que audita aquest circuit.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    La gramàtica ratificada d'Accordare arribarà com a `qxctl accord ...` quan s'implementi.
+  </Card>
+</CardGroup>

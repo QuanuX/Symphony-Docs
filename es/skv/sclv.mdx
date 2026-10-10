@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector para cambios en el código fuente"
+description: "SCLV mantiene un libro mayor de solo anexado de los cambios completados en el código fuente con propuestas neutrales respecto al proveedor, recuperación sin mutación y proyecciones desechables del registro."
+sidebarTitle: "SCLV"
+---
+
+El Symphony Change Ledger Vector (SCLV) registra los cambios realizados en las superficies de SKV a lo largo del tiempo. Su motor es un proceso en C++ instalable de forma independiente que realiza comprobaciones deterministas del libro mayor de solo anexado y produce proyecciones desechables. El libro mayor solo se escribe después de que se complete un cambio material en el código fuente.
+
+## Operaciones
+
+- **Inspeccionar y comprobar**: valida la forma, la continuidad y la evidencia del libro mayor.
+- **Proponer (v3)**: acepta propuestas declaradas por quien llama y neutrales respecto al proveedor para nuevos registros.
+- **Recuperar**: realiza una recuperación sin mutación de estados interrumpidos o ambiguos.
+- **Proyectar**: emite inventarios desechables del estado del libro mayor bajo demanda.
+
+## Admisión y retirada
+
+Cada registro de SCLV admitido vincula la evidencia indexada actual en el momento en que se escribe. Una retirada legítima posterior de una superficie preserva la procedencia histórica inmutable sin obligar a reintroducir en SKVI la prosa actual eliminada. La historia sigue siendo historia; la verdad actual sigue siendo actual.
+
+## Qué no hace SCLV
+
+- SCLV no crea ni aprueba cambios en el código fuente.
+- SCLV no reescribe registros existentes; es de solo anexado.
+- SCLV no publica nada. La proyección pública corresponde a SODV.
+
+<Note>
+  Todos los motores SKV actuales son únicamente de lectura, consulta, validación y propuesta. La aplicación canónica está desactivada hasta que se completen todos los contratos de autoridad y auditoría de cada motor.
+</Note>
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/es/skv/skvi">
+    Indexa la verdad canónica actual a la que se vinculan los registros de SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/es/skv/sodv">
+    Gobierna la proyección pública oficial de la información del libro mayor.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/es/skv/sev">
+    Los casos de evolución evalúan los cambios antes de que SCLV los registre.
+  </Card>
+
+  <Card title="Comandos de vectores de qxctl" icon="terminal" href="/es/qxctl/vector-commands">
+    Ejecuta `qxctl sclv ...` para inspeccionar, comprobar, proponer y recuperar.
+  </Card>
+</CardGroup>

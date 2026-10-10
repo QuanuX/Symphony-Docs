@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector for planlagte ændringer"
+description: "SEV evaluerer planlagte ændringer, nyheder og livscyklusovergange med deterministiske sager, afhængighedsklare sæt, engangsgrafer og gendannelsesråd uden apply."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) ejer sager om planlagte ændringer og påtrufne nyheder på tværs af platformen. Dens motor er en skrivebeskyttet C++26-proces på freezing-stien. SEV hverken overvåger en vært eller anvender en overgang; den producerer evidens og dispositionsråd.
+
+## Operationer
+
+- **Sagsevaluering**: deterministiske evolutionssager for tilføjelser, ændringer, omdøbninger, afløsninger, udfasninger, pensioneringer og fjernelser.
+- **Planlægning af påvirkning og disposition**: tildel hver sag til dens autoritative ejere.
+- **Genberegning af afhængighedsklare sæt**: udled den sikre rækkefølge af afhængige overgange.
+- **Verifikation af overgange**: bekræft, at den observerede tilstand efter en overgang svarer til den forventede form.
+- **Gendannelsesråd**: beskriv sikre trin frem eller tilbage, når en overgang afbrydes.
+- **SCSEV-vurdering**: den første styrede SEV-profil anvender disse operationer på evolution af vidensflader, der kun omfatter dokumentation.
+- **Nyheds- og overvågningskontroller**: registrer nye eller uventede flader til reviewerens opmærksomhed.
+- **Sammenlægning af triggere** og **binding til livscyklussessioner**: reducer dobbelt evaluering og bind sager til en session.
+- **Grafprojektion**: engangsgrafer til gennemgang.
+
+## SCSEV-profil
+
+SCSEV genbruger SSFV-funktionsadministration, stabil qxctl-kommandosandhed og deskriptorer for motoroperationer. Den opretter ikke en duplikeret motor eller et duplikeret register. Den første motordel er kun til rapportering og forslag; varig ekstern handling forbliver separat autoriseret via qxctl og vidensessionskoordinatoren.
+
+<Note>
+  SEV understøtter kun læsning, forespørgsel, validering og forslag. Kanonisk apply forbliver deaktiveret på tværs af SKV-motorfamilien.
+</Note>
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Oversigt over SKV" icon="book-open" href="/da/skv/overview">
+    Det overordnede rammeværk og Contract Quad-modellen.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/da/skv/ssfv">
+    Funktionsadministration, som SCSEV-profilen genbruger.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/da/skv/sav">
+    Evaluering af komposition og kompatibilitet for ændrede komponenter.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/da/qxctl/vector-commands">
+    Ratificeret evolutionsgrammatik kommer som `qxctl evolution ...`, når den er implementeret.
+  </Card>
+</CardGroup>

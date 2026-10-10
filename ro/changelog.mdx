@@ -1,0 +1,25 @@
+---
+title: "Jurnal de modificări"
+description: "Funcționalități noi, actualizări și remedieri livrate în QuanuX Symphony."
+rss: true
+---
+
+<Update label="2 octombrie 2026" description="Săptămâna din 25 septembrie" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Funcționalități noi
+
+- **Motoarele Symphony Node Vector.** Cinci motoare C++26 instalabile independent acoperă acum identitatea Node (SNIV), resursele (SNRV), relațiile de cluster (SCIV), numele (SCNV) și compoziția și retenția SNV. Puteți administra prin qxctl dovezile furnizate, vizualizările selectate și istoricul reținut. Observarea în timp real și provizionarea SOV nu sunt încă incluse. Consultați [Node Vector](/ro/vectors/snv).
+- **Observator local SNV opțional.** qxctl poate invoca un observator local separat care raportează observații selectate despre CPU și memorie, cu incertitudine explicită. Acesta nu atribuie niciodată identitate, apartenență sau nume.
+- **Fundamente de date de cercetare SQV.** Noi biblioteci C++26 acoperă captura cu octeții originali și proveniența sursei (SQAV), metadatele (SQMV), fluxul (SQFV), conversia exactă în numere întregi cu descendență (SQTV), retenția locală (SQPV) și livrarea cu puncte de control și reluare exactă (SQDV). Consultați [Quantitative Vector](/ro/vectors/sqv).
+- **Administrarea SQV prin qxctl.** Șapte motoare de administrare instalabile independent expun validarea cererilor și a configurației, proiecții de metadate și inspecția în mod doar-citire a stării reținute. Consultați [Comenzi pentru vectori](/ro/qxctl/vector-commands).
+- **Adaptoare Databento și pentru brokeri.** SQV acceptă acum captura Databento DBNv3 MBO, păstrează eșantioanele DBNv1 și DBNv3 și planifică cereri istorice delimitate, cu dovezi de acoperire. Sunt disponibile și adaptoare de citire pentru surse și brokeri care nu funcționează în timp real. Execuția autentificată la furnizori și colectarea în timp real rămân lucrări viitoare.
+
+## Actualizări
+
+- **Admiterea credențialelor SSIAG.** SSIAG adaugă protecții pentru utilizarea unică a credențialelor, admiterea autentificată a expedierii, un jurnal durabil al cererilor de credențiale cu recuperare și validarea nativă a peer-ilor pe macOS. Utilizarea operațională a credențialelor rămâne dezactivată. Consultați [SSIAG](/ro/governance/ssiag).
+- **Acoperirea comenzilor qxctl.** qxctl are acum 399 de identități de comandă stabile, față de 383. Legăturile cu motoarele acceptă 13 roluri stabilite, inclusiv cele cinci motoare SNV. Consultați [Prezentarea generală qxctl](/ro/qxctl/overview).
+- **Interfața batch SQFV.** Biblioteca batch SQFV folosește acum un API C++26 în locul unui ABI C. Actualizați toate integrările care apelau interfața anterioară.
+- **Capacitatea SKVI.** [SKVI](/ro/skv/skvi) indexează mai multe suprafețe, inclusiv noii proprietari de date de cercetare SQV.
+- **Ghid de instalare a motoarelor.** Ghidul de instalare clarifică acum faptul că fiecare motor se instalează, se actualizează și se elimină individual. Consultați [Prezentarea generală a motoarelor](/ro/engines/overview).
+
+</Update>

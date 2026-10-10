@@ -1,0 +1,43 @@
+---
+title: "Maestro: autoritatea de prezență a motoarelor de vectori Symphony"
+description: "Maestro înregistrează relațiile autentificate de andocare ale motoarelor de vectori pentru fiecare TOPS și receptor, derivând un inventar complet, doar pentru citire, fără a porni sau supraveghea motoare."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) este o autoritate de prezență C++26 instalabilă independent, pe calea înghețată. Înregistrează relațiile exacte și autentificate de andocare ale motoarelor de vectori pentru fiecare TOPS și receptor și derivă un inventar complet, doar pentru citire, al elementelor andocate în prezent. Maestro este un martor, nu un supraveghetor.
+
+## Ce înregistrează Maestro
+
+- Relațiile exacte și autentificate de andocare dintre motoarele de vectori și receptori
+- Delimitarea per TOPS, astfel încât prezența fiecărei instalări să rămână privată pentru acea instalare
+- Un inventar derivat, complet, doar pentru citire, disponibil prin `qxctl maestro inventory`
+
+## Ce nu face Maestro
+
+<Warning>
+  Maestro nu pornește, nu programează, nu supraveghează și nu invocă motoare. Legarea, reconcilierea, coordonarea sesiunilor autentificate sau un plan de ciclu de viață, luate singure, nu stabilesc prezența în Maestro, nu ratifică adevărul semantic, nu modifică cunoașterea canonică și nu dovedesc completitudinea gazdei instalate.
+</Warning>
+
+- Maestro nu creează procese.
+- Maestro nu aplică niciodată modificări ale cunoașterii canonice.
+- Maestro nu înlocuiește niciodată motorul de vector care deține semantica.
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/ro/qxctl/maestro">
+    `qxctl maestro inventory` prezintă inventarul derivat.
+  </Card>
+
+  <Card title="Coordonatorul sesiunilor" icon="gears" href="/ro/engines/coordinator">
+    Deține mecanismele sesiunilor autentificate și ale reconcilierii arborilor de lucru.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ro/governance/ssiag">
+    Autentifică relațiile de andocare înregistrate de Maestro.
+  </Card>
+
+  <Card title="Prezentarea generală a motoarelor" icon="cube" href="/ro/engines/overview">
+    Motoare de vectori instalabile independent care se andochează la Maestro.
+  </Card>
+</CardGroup>

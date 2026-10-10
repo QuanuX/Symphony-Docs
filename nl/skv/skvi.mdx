@@ -1,0 +1,51 @@
+---
+title: "SKVI: de Symphony Knowledge Vector Index-engine"
+description: "SKVI indexeert elk canoniek SKV-onderdeel deterministisch één keer, controleert de in het manifest gedeclareerde dekking en geeft wegwerpbare digest-gebonden projecties uit zonder de waarheid aan te raken."
+sidebarTitle: "SKVI"
+---
+
+De Symphony Knowledge Vector Index (SKVI) is de engine die de huidige canonieke waarheid over alle SKV-onderdelen in kaart brengt. Het is een onafhankelijk installeerbaar C++-proces dat deterministisch en alleen-lezen werkt en geen lidmaatschap kan bepalen of canonieke bestanden kan schrijven.
+
+## Wat SKVI doet
+
+SKVI voert drie begrensde bewerkingen uit:
+
+- **Inspecteren en controleren**: verifieer dat elk in het manifest gedeclareerd vereist onderdeel precies één keer is geïndexeerd, met een stabiele eigenaar, waarheidsrol, relaties, consumenten en projectiegeschiktheid.
+- **Voorstellen**: accepteer door de aanroeper gedeclareerde, onveranderlijke voorstellen voor indexwijzigingen zonder ze toe te passen.
+- **Projecteren**: geef wegwerpbare, digest-gebonden projecties van de huidige index uit voor downstream-consumenten.
+
+## Wat SKVI niet doet
+
+SKVI bepaalt nooit of iets een feature waard is of tot het manifest behoort. Het eigendom blijft bij de Contract Quad van elke vector. SKVI doet ook het volgende niet:
+
+- Canonieke Markdown schrijven of herschrijven
+- Iets publiceren naar een publieke projectie
+- Autoriteit verlenen alleen omdat het bewijs heeft gegenereerd
+
+## Wanneer gebruiken
+
+Gebruik SKVI om te bevestigen dat een repository volledig gedekt is voordat u een bronwijziging voorstelt, of om te zien welke eigenaar en waarheidsrol een specifiek onderdeel heeft. De projecties voeden reviewers van voorstellen, agentcontext en validatorbaselines.
+
+<Note>
+  SKVI is een van de engines voor lezen, query's, valideren en voorstellen. Canonieke apply blijft uitgeschakeld in de bekrachtigde vector-engines totdat voor elke engine de contracten voor SSIAG, transacties op verwachte status, qxctl-waarborgen, STAV-gebeurtenissen, herstel en negatieve tests voltooid zijn.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Overzicht van SKV" icon="book-open" href="/nl/skv/overview">
+    Het overkoepelende framework dat SKVI beheert.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/nl/skv/sclv">
+    Het append-only wijzigingsgrootboek dat voltooide materiële bronwijzigingen vastlegt.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Voer `qxctl skvi ...` uit om inspect, check en propose aan te roepen.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/nl/governance/validator">
+    Onafhankelijke alleen-lezen controles die de SKVI-dekking aanvullen.
+  </Card>
+</CardGroup>

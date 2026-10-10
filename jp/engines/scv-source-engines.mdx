@@ -1,0 +1,74 @@
+---
+title: "SCV ソースナレッジエンジン: Symphony のためのプロバイダーの実態"
+description: "個別にパッケージ化された 8 つの SCV、ハイパースケーラー、エッジ、プロバイダーのエンジンが、厳密なソースリビジョンを保持し、再現可能なグラフとクエリのエビデンスを生成します。"
+sidebarTitle: "SCV エンジン"
+---
+
+SCV ソースナレッジエンジンは、個別にパッケージ化された 8 つの C++26 プロセスで、オフサイトのプロバイダーのリソース、提供サービス、リージョン、制約、ハイブリッドの可能性に関するプライベートなセマンティックナレッジを保持します。厳密なソースリビジョンと範囲が限定されたキャプチャを保持するため、下流のツールが結果を再現できます。
+
+## エンジン
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    共有クラウド語彙のための包括的な SCV ソースエンジン。
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector のソースエンジン。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare 固有のエッジソースエンジン。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services のソースエンジン。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure のソースエンジン。
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean のソースエンジン。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform のソースエンジン。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    保持されたリレーショナルグラフのインデックス化のためのオプションの DuckDB コネクター。
+  </Card>
+</CardGroup>
+
+## SCV エンジンが行うこと
+
+- 明示的なソースリビジョンと範囲が限定されたキャプチャを保持する
+- 限定付きの主張とネイティブなドキュメント構造を保持する
+- 再現可能なグラフとクエリのエビデンスを生成する
+- ポータブルなプロバイダーパッケージと、呼び出し元が指示する有限の合成に入力を提供する
+
+## SCV エンジンが行わないこと
+
+<Warning>
+  プロバイダーの操作と完全なクラウドカタログは、このインクリメントの対象外です。SCV エンジンは既知の事柄を記述するだけで、プロバイダーに対して操作を行うことはありません。
+</Warning>
+
+qxctl は、保持されたワークフローと保護されたグラフ選択を通じて、監査済みのローカルソース変更と一貫したグラフ選択を別途管理します。専用のグラフ走査と運用アダプターは、別の作業として残されています。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SCV vector" icon="cloud" href="/jp/vectors/scv">
+    これらのエンジンが実装する Cloud Vector のコントラクト。
+  </Card>
+
+  <Card title="SOV vector" icon="terminal" href="/jp/vectors/sov">
+    qxctl を介して SCV のエビデンスに基づいて操作を行う Ops Vector。
+  </Card>
+
+  <Card title="qxctl vector コマンド" icon="terminal" href="/jp/qxctl/vector-commands">
+    グラフ選択、ソースワークフロー、DuckDB コネクターの管理。
+  </Card>
+</CardGroup>

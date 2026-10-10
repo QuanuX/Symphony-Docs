@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministiset vain luku -repositoriotarkistukset"
+description: "Symphony Validator tuottaa rivimuotoista tai jäsenneltyä JSON-näyttöä sopimuksista, lähteiden sulkeumasta, invarianteista, ominaisuuksista, julkaisuista ja koneellisesti tarkistetusta juuriyhteenvedosta."
+sidebarTitle: "Validaattori"
+---
+
+Symphony Validator (`tools/symphony-validator`) on itsenäinen, deterministinen, vain luku -tyyppinen C++26-repositoriotarkistin. Se tuottaa muuttumatonta näyttöä repositorion ja sen sopimusten nykyisestä tilasta. Se ei voi korjata tai julkaista mitään.
+
+## Mitä validaattori tarkistaa
+
+- Sopimusten muoto: vaaditut Contract Quadin ankkurit ja rakenne
+- Nykyisten lähteiden sulkeuma SKVI:n indeksoimien pintojen yli
+- Invarianttien omistajuus tiedoston `knowledge/INVARIANTS.md` ja invarianttirekisterin mukaisesti
+- SSFV:n raportoimat ominaisuuksien hallinnan odotukset
+- SODV:n raportoimat julkaisutietueet
+- Koneen omistama juuriyhteenveto repositorion README-tiedostossa
+
+Näyttö tuotetaan rivitulosteena tai jäsenneltynä JSONina. Jokainen tuloste on toistettavissa samasta repositorion tilasta.
+
+## Mitä validaattori ei tee
+
+<Warning>
+  Validaattori ei voi korjata tiedostoja, kirjoittaa sopimuksia uudelleen tai julkaista repositoriota. Se ei luo kanonista totuutta mistään; se ainoastaan raportoi sen.
+</Warning>
+
+- Ei sivuvaikutuksia repositorioon
+- Ei verkkoyhteyttä
+- Ei varoitusten vaimentamista qxctl:n suojatun varoituskäytännön ulkopuolella
+
+## qxctl-integraatio
+
+qxctl validoi validaattorin tarkan kuitin ja jäsennellyt tiivisteet ennen suojatun varoituskäytännön soveltamista. Yhdeksän suojattua varoitusten elinkaaren qxctl-lehtikomentoa sekä tarkka, kuittiin perustuva juuriyhteenvetoreitti tuovat validoinnin hallinnan saataville muuttamatta tunnistimen raakaa näyttöä.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/fi/qxctl/validate">
+    Suojattu varoituskäytäntö, perustaso ja näyttökielioppi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fi/skv/ssfv">
+    Validaattorin tarkistamat ominaisuuksien hallinnan odotukset.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Julkaisutietueet, joita validaattori tarkastelee.
+  </Card>
+
+  <Card title="SKV:n yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys, jonka sopimukset validaattori tarkistaa.
+  </Card>
+</CardGroup>

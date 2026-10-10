@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: identidade de Nodes e registros de clusters"
+description: "O SNV registra e relaciona a identidade, os recursos, as associações a clusters e os nomes atribuídos pelo usuário dos Nodes, sem ditá-los. É composto pelos subvetores SNIV, SNRV, SCIV e SCNV."
+sidebarTitle: "Node Vector"
+---
+
+O Symphony Node Vector (SNV) registra e relaciona as identidades, os recursos, as associações a clusters e os nomes dos Nodes físicos que você usa com o Symphony. Ele é composto por quatro subvetores, cada um dono de um limite semântico distinto. O SNV não escolhe, emite, dita nem renomeia automaticamente nada em seu nome.
+
+## Composição dos subvetores
+
+O SNV é construído a partir de quatro domínios semânticos duradouros:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Identidade do Node**: identidade física do Node e suas associações exatas com recursos de provedores, ofertas selecionadas e domínios de infraestrutura.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Recursos do Node**: verdade sobre os recursos locais e remotos explicitamente qualificados de um Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Identidade do cluster**: identidade do cluster, conectividade de barramento e relações de Nodes dentro do cluster.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Nomenclatura consolidada**: resolução, delimitada pelo SNV, de nomes já atribuídos por você ou pelos seus provedores.
+  </Card>
+</CardGroup>
+
+## Limite de registro
+
+O SNV registra fatos e sua linhagem. Ele não reserva nomes, aloca recursos nem cria clusters por você. Os nomes são atribuídos pelo usuário; o Symphony os registra. Os recursos de provedores são selecionados pelo usuário; o Symphony os relaciona. A topologia do cluster é projetada pelo usuário; o Symphony a documenta.
+
+## Como o SNV se relaciona com outros vetores
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/pt-BR/vectors/scv">
+    Fornece conhecimento sobre provedores e recursos externos que informa quais Nodes podem existir.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/pt-BR/vectors/sov">
+    Estabelece e altera a infraestrutura por meio do qxctl, produzindo os Nodes que o SNV registra.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/pt-BR/vectors/shv">
+    Pode fornecer evidências detalhadas de capacidades de hardware para os componentes físicos dentro de um Node.
+  </Card>
+</CardGroup>
+
+## Status atual
+
+O SNV é um contrato canônico de arquitetura emergente. Nenhuma engine, grafo, schema de registro, codificador de identidade, serviço de descoberta, serviço de nomenclatura ou comando do qxctl do SNV está implementado no momento. Os schemas de registro e as engines continuam adiados.
+
+## Instalabilidade futura
+
+Qualquer futura engine do SNV deve ser instalável de forma independente e capaz de reconstruir suas projeções a partir das evidências exatas do dono. Nenhuma engine se torna uma autoridade de identidade ou de nomenclatura apenas por armazenar ou resolver registros.

@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator untuk Engine Vektor Symphony"
+description: "Knowledge Session Coordinator menyediakan kompatibilitas terbatas, rekonsiliasi worktree, sesi terautentikasi, dan koordinasi siklus hidup yang mampu menerapkan perubahan (apply) dalam C++26."
+sidebarTitle: "Koordinator"
+---
+
+Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) adalah proses C++26 yang dapat dipasang secara independen. Koordinator ini berada di antara qxctl dan engine vektor serta memiliki kompatibilitas terbatas, rekonsiliasi worktree, sesi nonkanonis yang terautentikasi, pemeliharaan SSFV, perencanaan siklus hidup khusus laporan, dan jurnal yang mampu menerapkan perubahan dengan otorisasi terpisah.
+
+## Tanggung jawab
+
+- **Pemeriksaan kompatibilitas** antara qxctl, koordinator, dan engine
+- **Rekonsiliasi worktree** dengan status berbasis slot yang tahan lama
+- **Sesi nonkanonis yang terautentikasi** di bawah otoritas SSIAG
+- **Aliran pemeliharaan SSFV** yang persisten
+- **Perencanaan siklus hidup khusus laporan** dengan bukti deterministik
+- **Jurnal yang mampu menerapkan perubahan** dengan percobaan yang disiapkan, compare-and-swap, observasi ulang, perencanaan ulang dinamis, dan pemulihan
+
+## Apa yang tidak dilakukan koordinator
+
+<Warning>
+  Koordinator tidak mengeksekusi semantik vektor atau tindakan host. Koordinator mengoordinasikan bukti dan jurnal; setiap engine tetap memiliki domainnya, dan setiap tindakan host tetap diotorisasi oleh kontraknya sendiri.
+</Warning>
+
+- Tidak ada penerapan pengetahuan kanonis
+- Tidak ada eksekusi perintah sembarang
+- Tidak ada pengamat tersembunyi atau pekerjaan latar belakang residen
+
+## Integrasi qxctl
+
+qxctl memanggil instalasi koordinator yang eksak dan tervalidasi tanda terima. `qxctl knowledge reconcile ...` dan `qxctl knowledge session ...` menggunakan tepat satu koordinator terikat per operasi, dan mutasi memerlukan pengidentifikasi operasi yang stabil serta digest jurnal saat ini yang eksak untuk compare-and-swap.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/id/qxctl/reconcile">
+    Tata bahasa rekonsiliasi worktree.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/id/qxctl/session">
+    Tata bahasa sesi terautentikasi dan pemeliharaan SSFV.
+  </Card>
+
+  <Card title="Pustaka fondasi" icon="cube" href="/id/engines/knowledge-vector-foundation">
+    Mekanika C++ bersama yang digunakan ulang oleh koordinator.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/id/governance/ssiag">
+    Mengotorisasi sesi yang dikelola koordinator.
+  </Card>
+</CardGroup>

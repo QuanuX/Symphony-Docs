@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: تسوية شجرة العمل"
+description: "سوِّ أشجار العمل مقابل منسّق Symphony مربوط مع فحوص التوافق، وسجلات نقاط التحقق والإغلاق، والاسترداد ثنائي الخانات القائم على الأدلة."
+sidebarTitle: "reconcile"
+---
+
+تقود قواعد الأوامر `qxctl knowledge reconcile ...` تسوية شجرة العمل عبر منسّق جلسات معرفة (Knowledge Session Coordinator) واحد دقيق مربوط. يُتتبَّع كل تعديل بمعرّف مستقر، وهو عملية مقارنة ومبادلة مقابل الملخص الدقيق للسجل الحالي.
+
+## الأوامر
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: التحقق من اتفاق qxctl والمنسّق والمحركات المربوطة على إصدار البروتوكول ونطاقه.
+- `begin`: فتح سياق تسوية جديد بمعرّف عملية مستقر.
+- `status`: فحص السجل الحالي دون تعديل.
+- `checkpoint`: تقديم السجل بشكل دائم عبر المقارنة والمبادلة.
+- `close`: إنهاء سياق التسوية.
+- `recover --discover`: الاسترداد بالاكتشاف عندما يتعذر على الحالة العادية التحقق من الحالة المحلية.
+
+## قواعد الاسترداد
+
+<Warning>
+  الاسترداد ثنائي الخانات هو إصلاح أمامي قائم على الأدلة. وليس أبدًا إذنًا بالتخلص من سجل غير متوافق أو امتداد حرج غير معروف. إذا فشل الاسترداد، فصعّد المشكلة بدلًا من الفرض.
+</Warning>
+
+استخدم الاسترداد بالاكتشاف فقط عندما يتعذر على الحالة العادية التحقق من الحالة المحلية. حافظ على العوائق؛ ولا تُعِد التخطيط إلا بعد تغيّر أدلة تم التحقق منها.
+
+## واجهات ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="منسّق الجلسات" icon="gears" href="/ar/engines/coordinator">
+    المحرك الذي يملك سجلات التسوية.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ar/qxctl/session">
+    الجلسات المصادق عليها التي تقترن بسياقات التسوية.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ar/qxctl/engines">
+    إدارة الروابط التي يستهلكها المنسّق.
+  </Card>
+</CardGroup>

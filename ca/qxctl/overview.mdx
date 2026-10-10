@@ -1,0 +1,83 @@
+---
+title: "qxctl: línia d'ordres administrativa agèntica de Symphony"
+description: "qxctl és la CLI administrativa en Go de Symphony. Coneixeu les seves 373 ordres executables, el registre de vinculació de motors i el model d'invocació validat per rebuts per als motors vectorials."
+sidebarTitle: "Visió general de qxctl"
+---
+
+`qxctl` és la CLI administrativa i de consulta de Symphony, basada en Go i pensada principalment per a agents. Parla en ordres; els vectors de domini són propietaris de les operacions i dels significats que hi ha al darrere. El seu registre versionat vincula cada fulla d'ordre executable a una identitat de màquina estable i a evidència revisada d'administració de funcionalitats.
+
+## Què cobreix qxctl
+
+qxctl implementa l'administració de:
+
+- Inspecció de repositoris i contractes
+- Administració del validador, avisos, invariants, funcionalitats, cicle de vida, sessions, reconciliació, vinculació i Maestro
+- Administració d'identitat SSIAG, auditoria STAV i productors d'Accordare
+- Gramàtica implementada dels motors vectorials (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, a més de les superfícies SCV i SHV)
+
+El registre actual conté **373** ordres executables.
+
+## Model d'invocació segura
+
+qxctl invoca instal·lacions exactes validades per rebuts mitjançant subprocessos acotats, terminis estrictes, comprovacions d'identitat i digest de les respostes, transaccions d'estat esperat i recuperació duradora. Mai no accepta camins d'adaptadors ni versions en brut en lloc de rebuts.
+
+## Registre de vinculació de motors v2
+
+El registre de vinculació de motors v2 admet els vuit rols de motor establerts i identitats de rol futures acotades. L'estat heretat v1 es llegeix de manera dual; la migració a v2 requereix un compare-and-swap explícit lligat a digest mitjançant qxctl i mai no és una operació de selecció de versió.
+
+## Ordres del registre
+
+Genereu i verifiqueu el registre esperat des de `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Un client instal·lat pot emetre evidència vinculada a l'executable:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+L'evidència esperada té nuls la versió del client, el digest de l'executable i el digest del rebut. L'evidència observada vincula la versió exacta del client i el digest de l'executable, a més d'un digest de rebut quan n'hi ha un de disponible. Ambdues formes utilitzen `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl és propietari de la gramàtica i la presentació de les ordres. No és propietari de la semàntica dels vectors ni de la veritat canònica del coneixement. Només els canvis de codi font revisats ratifiquen una nova identitat `qxcmd`, independentment de la classe d'invocador.
+</Note>
+
+## Grups d'ordres
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/ca/qxctl/knowledge">
+    Cicle de vida entre vectors i administració de sessions SSFV persistents.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/ca/qxctl/lifecycle">
+    Perfil, propietat, observació, informe, arrencada, aplicació i recuperació.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ca/qxctl/engines">
+    Registre de vinculació de motors i migració.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ca/qxctl/reconcile">
+    Reconciliació d'arbres de treball del coordinador.
+  </Card>
+
+  <Card title="session" icon="key" href="/ca/qxctl/session">
+    Sessions autenticades i fluxos de manteniment de SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/ca/qxctl/maestro">
+    Inventari de receptors derivat i evidència d'acoblament.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/ca/qxctl/validate">
+    Política d'avisos protegida i administració del validador.
+  </Card>
+
+  <Card title="ordres de vectors" icon="terminal" href="/ca/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` i la futura gramàtica d'accord/evolution.
+  </Card>
+</CardGroup>

@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: správa životního cyklu napříč vektory"
+description: "Skupina příkazů qxctl knowledge zajišťuje životní cyklus napříč vektory, přechody relací, dotazy na invarianty a správu perzistentní údržby SSFV."
+sidebarTitle: "knowledge"
+---
+
+Skupina `qxctl knowledge ...` zajišťuje životní cyklus napříč vektory a správu perzistentních relací SSFV. Je vstupním bodem pro operace podporované koordinátorem a pro dotazy na invarianty vůči validátoru.
+
+## Přechod relace
+
+Pomocí `qxctl knowledge session transition` signalizujete existující relaci událost životního cyklu hostitele:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Bezpečné opakované pokusy znovu používají stejné ID události. `--recover` přidejte pouze tehdy, je-li záměrem obnova zjišťováním z poškozených místních důkazů relace; neobnovuje zamítnutí, nekompatibilní kritický stav ani nejednoznačnost.
+
+<Warning>
+  Symphony prostřednictvím tohoto příkazu neinstaluje žádný přihlašovací hook, watcher ani spouštěcí jednotku. Používejte jej pouze tehdy, když explicitní integrace životního cyklu hostitele poskytuje stabilní identitu události.
+</Warning>
+
+## Dotazy na invarianty
+
+Čtyři listové příkazy se vážou na `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` se navíc váže na `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Přímé dotazovací listové příkazy emitují `symphony.knowledge.invariant-query-result.v1` s `semantic_validity=not_asserted`. `check` vrací přesný úplný výsledek validátoru a zachovává návratový kód 26.
+
+## Skupiny podpříkazů
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/cs/qxctl/lifecycle">
+    Profil, vlastnictví, pozorování, report, boot, apply a obnova.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/cs/qxctl/engines">
+    Registr vazeb enginů: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/cs/qxctl/reconcile">
+    Gramatika rekonciliace pracovních stromů koordinátoru.
+  </Card>
+
+  <Card title="session" icon="key" href="/cs/qxctl/session">
+    Autentizované relace a proudy údržby SSFV.
+  </Card>
+</CardGroup>

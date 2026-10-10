@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: perfil, arrencada i aplicació"
+description: "Gestioneu perfils de cicle de vida protegits, propietat, observacions, arrencades i transicions compatibles amb l'aplicació mitjançant qxctl amb salvaguardes estrictes de compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+La gramàtica `qxctl knowledge lifecycle ...` administra perfils protegits, propietat, observacions, diaris d'arrencada i transicions compatibles amb l'aplicació. Cada mutació és un compare-and-swap i cada aplicació està vinculada a evidència exacta.
+
+## Perfil
+
+Establiu el perfil de cicle de vida protegit per a un TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Indiqueu `absent` per a un perfil nou o el digest exacte informat per una lectura anterior.
+
+## Propietat
+
+- `ownership status`: inspecciona una arrel compartida configurada
+- `ownership reconcile`: n'actualitza l'evidència
+- `ownership adopt`: adopta només després de revisar cada reclamació heretada conservadora
+- `ownership release`: allibera només per a un rebut heretat exacte que s'ha fet reclamable intencionadament
+
+<Warning>
+  No suprimiu ni reescriviu mai a mà el registre local de l'arrel ni la seva tanca de compatibilitat de disposició de rebuts `symphony-root-ownership/1`. Els clients de cicle de vida més antics han de trobar aquesta tanca i aturar-se en el seu bloquejador existent de paquet desconegut.
+</Warning>
+
+## Observació, informe, arrencada
+
+- `observe`: emet evidència de rebut d'un sol ús amb disposició fixa
+- `report`: produeix un pla nou d'un sol ús
+- `boot`: progressió duradora només d'informe amb un identificador d'operació estable i un estat de diari exacte
+- `status`: inspecció v1
+- `recover --discover`: recupera una cadena v1 única quan l'estat ordinari no pot validar l'estat local
+
+## Perfils compatibles amb l'aplicació
+
+Per a un perfil `apply-compatible`, crideu `apply` només amb el digest exacte de l'origen d'arrencada, el compare-and-swap del diari d'aplicació, el compare-and-swap de l'estat aplicat, un identificador d'operació estable i arrels preparades explícites:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Feu servir `apply-status` per observar intents o `apply-recover` acotat per a una recuperació duradora. No trieu mai una acció manualment ni editeu l'estat protegit.
+
+<Note>
+  Una actualització d'observació que només canviï la marca de temps ha de canviar l'evidència del document sense fer avançar les identitats semàntiques estables.
+</Note>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    El motor darrere de la coordinació de plans i aplicacions del cicle de vida.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ca/qxctl/engines">
+    Gestioneu les vinculacions de motors referenciades pels plans de cicle de vida.
+  </Card>
+</CardGroup>

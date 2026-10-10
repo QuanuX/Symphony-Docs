@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector kompozīcijas novērtēšanai"
+description: "SAV atrisina Accord atsauces, novērtē kompozīciju trīs asīs, validē Named Versions un plāno Installation Blueprints, nemainot kanonisko patiesību."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) atrisina deklarēto komponentu kompozīciju un saderību. Tā dzinējs ir iesaldēšanas ceļa (freezing-path), tikai lasāms C++26 process. SAV veido precīzu tipizētu projekciju kompozīcijas, bet nekad nepārņem avota patiesību no īpašniekvektoriem.
+
+## Operācijas
+
+SAV atbalsta plašu novērtēšanas operāciju kopu:
+
+- **Accord atsauču atrisināšana** nemainīgos atvasinātos CURRENT momentuzņēmumos
+- **Trīs asu novērtēšana**, salīdzināšana un skaidrošana
+- **Kompozīcijas grafi** un vienreizējas projekcijas
+- **Named Version** validācija un salīdzināšana
+- **Extension Capsule** pārbaudes
+- **Installation Blueprint** plānošana
+- **Saderības saskaņošana** starp deklarētajiem komponentiem
+
+## Ko SAV nedara
+
+- SAV nepārņem semantiskās īpašumtiesības uz komponentiem, ko tas komponē.
+- SAV neizvēlas dizainu jūsu vietā; tas novērtē to, ko jūs deklarējāt.
+- SAV nemaina kanoniskos failus. Tā izvade ir pierādījumi un priekšlikumi.
+- SAV nav STAV papildināšanas autoritāte. Pirmsizmaiņu nodomu apstrādi skatiet Accordare STAV producentā.
+
+<Note>
+  SAV tikai lasa, vaicā, validē un ierosina. Programmatiska kanoniskā piemērošana joprojām ir atspējota visā SKV dzinēju saimē.
+</Note>
+
+## Saistītās virsmas
+
+<CardGroup cols={2}>
+  <Card title="SKV pārskats" icon="book-open" href="/lv/skv/overview">
+    Jumta ietvars un Contract Quad modelis.
+  </Card>
+
+  <Card title="Accordare producents" icon="pen-nib" href="/lv/governance/accordare-producer">
+    Ierobežota SAV Named Version audita ķēde.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/lv/skv/sev">
+    Evolūcijas gadījumi, kas izraisa SAV kompozīcijas izmaiņu novērtēšanu.
+  </Card>
+
+  <Card title="qxctl vektoru komandas" icon="terminal" href="/lv/qxctl/vector-commands">
+    Ratificētā Accordare gramatika pēc implementēšanas būs pieejama kā `qxctl accord ...`.
+  </Card>
+</CardGroup>

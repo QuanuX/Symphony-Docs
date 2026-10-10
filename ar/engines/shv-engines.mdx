@@ -1,0 +1,65 @@
+---
+title: "محركات SHV: مصادر Symphony Hardware Vector ورسومه البيانية"
+description: "تفهرس محركات SHV المعالجات ووحدات GPU وبطاقات الشبكة والذاكرة والتخزين مع إعادة تشغيل المصادر المحتفظ بها، وتقييم المتطلبات، واستيعاب ملفات PDF، ورسوم DuckDB البيانية الدائمة."
+sidebarTitle: "محركات SHV"
+---
+
+تفهرس محركات Symphony Hardware Vector ‏(SHV) المعالجات، وطوبولوجيا وحدة المعالجة المركزية، وذواكر التخزين المؤقت، ووحدات GPU، وبطاقات الشبكة وواجهات الألياف، واللوحات الأم، وذاكرة RAM، وأقراص NVMe. تعطي المعالجة الافتراضية الأولوية للمكوّنات الأصلية والمتغيرات المدعومة بالأدلة. كل محرك قابل للتثبيت بشكل مستقل ومخصص للقراءة فقط.
+
+## المحركات
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    نواة العتاد: تغطية يحددها المستدعي، وإعادة تشغيل الفهرس من المصادر المحتفظ بها، وتقييم المتطلبات، وإسقاط الرسوم البيانية.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    استيعاب المصادر ومعالجة المراجعات لأدلة العتاد.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    تقييم الملفات التعريفية للمكوّنات والأنظمة.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    تقسيم العتاد المفهرس من أجل اختيار قابل لإعادة الإنتاج.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    نشر الفهرس المحلي واختياره تحت الحوكمة.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    سطح نقل صريح للرسوم البيانية.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    تخزين دائم للرسوم البيانية مدعوم بـ DuckDB ويُدار عبر qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    تفسير مصادر PDF لأوراق بيانات العتاد.
+  </Card>
+</CardGroup>
+
+## أبرز جوانب الإدارة
+
+- **التخزين الدائم** يُدار فقط عبر `shv graph store inspect|prepare|commit|status|query|export|schema|template`. ويُعد `commit` مع ملخص النية المتوقعة المحتفظ به استردادًا أيضًا؛ ولا يوجد اسم بديل منفصل للاسترداد.
+- **نشر الفهرس** يُدار فقط عبر `shv catalogue publication inspect|plan|apply|status|schema|template`. والاسترداد هو `apply --operation-id`، وهو متنافٍ مع `--input`.
+- **الجرد** (الإصدار 0.2) يضيف `shv graph store inventory`: قراءة منطقية مرتبطة بالمراجعة مع هويات صريحة للكتّاب المحتفظ بهم. ويبقى اختيار الإصدار القديم 0.1 مدعومًا.
+
+<Note>
+  فئات العتاد بيانات ربط وملفات تعريفية خاصة بالمستدعي، وليست أشجار أوامر مكررة. يختار `--version` المالك الأساسي الدقيق؛ ويسمّي `--source-version` و`--adapter-version` تبعيات مختارة مميزة. ومراجعات المخططات والربط هويات بيانات، وليست أسماء بديلة لإصدارات المحركات المثبتة.
+</Note>
+
+## أسطح ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="متجه SHV" icon="microchip" href="/ar/vectors/shv">
+    عقد Hardware Vector الذي تنفّذه هذه المحركات.
+  </Card>
+
+  <Card title="أوامر المتجهات في qxctl" icon="terminal" href="/ar/qxctl/vector-commands">
+    المرجع الكامل لقواعد صياغة `shv ...`.
+  </Card>
+</CardGroup>

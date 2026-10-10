@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: szolgáltatói erőforrás-tudás"
+description: "Az SCV nyolc függetlenül telepíthető C++ motoron keresztül privát tudást tart fenn a telephelyen kívüli szolgáltatói erőforrásokról az AWS, az Azure, a GCP, a DigitalOcean, a Cloudflare és a felhasználó saját hardvere esetében."
+sidebarTitle: "Cloud Vector"
+---
+
+A Symphony Cloud Vector (SCV) birtokolja a telephelyen kívüli hardvererőforrásokra vonatkozó privát szemantikai tudást, valamint azokat a szolgáltatói adottságokat, amelyek a klasztereit, a tanítást, a kutatást és az adatmunkát alakítják. Feltérképezi a szolgáltatói ajánlatokat, régiókat, infrastruktúra-tartományokat, korlátokat és a megfigyelt rendelkezésre állást anélkül, hogy rangsorolná a szolgáltatókat, vagy korlátozná, mivel próbálkozhat.
+
+## Szolgáltatói lefedettség
+
+Az SCV a következő szolgáltatókat és erőforrástípusokat fedi le:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Felhasználói tulajdonú hardver (ahol a telephelyen kívüli erőforrásokkal való összehasonlítás szükséges)
+
+## Telepített motorok
+
+Az SCV-tudást nyolc függetlenül telepíthető C++ motor szolgáltatja. Csak azokat telepíti, amelyekre szüksége van:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Az SCV alapmotorja a szolgáltatói erőforrás-tudáshoz és a gráfépítéshez.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Felhőbizonyíték-motor a korlátozott rögzítéshez és a korpuszszemantikához.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-specifikus bizonyítékmotor.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-specifikus hardver- és erőforrás-tudásmotor.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-specifikus hardver- és erőforrás-tudásmotor.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-specifikus erőforrás-tudásmotor.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-specifikus hardver- és erőforrás-tudásmotor.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Opcionális relációs gráfkonnektor, amely DuckDB-t használ a megőrzött SQL-indexeléshez.
+  </Card>
+</CardGroup>
+
+## Hordozható szolgáltatói csomagok és kompozíció
+
+Az SCV hordozható szolgáltatói csomagokat tesz elérhetővé a qxctl-en keresztül. Ön tartja kézben a követelményeket, a szolgáltatói engedélyeket, a receptalternatívákat és a végrehajtási döntéseket. A qxctl támogatja a megőrzött munkafolyamatokat és a védett gráfválasztást, így a pontos bizonyítékokat a szolgáltatók újbóli lekérdezése nélkül játszhatja vissza.
+
+## Opcionális DuckDB-konnektor
+
+A `scv-graph-duckdb-connector` a megváltoztathatatlan natív gráfok korlátozott relációs vetületét adja hozzá. A DuckDB a felhasználó által választott alapértelmezett SQL-adatbázis. A jövőben további adaptereken keresztül dedikált gráfmotorokat is választhat.
+
+## Adatvédelem és szuverenitás
+
+A telepített SCV-tudásgráf az Ön privát telepítéséhez tartozik. A felhasználó által megadott fiókokat, egyenlegeket, engedélyeket és szerződéses korlátokat kizárólag kifejezetten engedélyezett megfigyelési felületeken keresztül használja. A privát tények nem kerülnek be a Symphony hivatalos forrásigazságába.
+
+## Hogyan kapcsolódik az SCV más vektorokhoz
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/hu/vectors/sov">
+    Az operatív vezérlősík, amely az SCV-bizonyítékok alapján cselekszik. Az SOV nem írja át a szolgáltatói jelentést.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/hu/vectors/snv">
+    Rögzíti az SCV-alapú kiépítésből létrejövő fizikai Node-ok és klaszterek identitását.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/hu/vectors/shv">
+    Birtokolja az SCV által hivatkozott komponensek részletes hardverképesség-tudását.
+  </Card>
+</CardGroup>
+
+## Verziózott interfésznövekmények
+
+Az SCV-kiadások additívak és pontosan verziózottak. A korábbi telepítések a pontos hatókörükben továbbra is meghívhatók. A jelenlegi növekmények közé tartoznak a natív műveletek, a korpusz-pillanatképek, az értelmezési profilok, a hordozható szolgáltatói csomagok, a kompozíciós munkafolyamatok, a kötelezettségkövetés és a bizonyítékcsomagok. Minden növekmény megőrzi a korábbi útvonalakat, alapértelmezéseket és rekordokat.

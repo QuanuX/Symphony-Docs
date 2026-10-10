@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat i Nest a Symphony"
+description: "Descobriu com Symphony modela la infraestructura física: el Node com a ordinador físic, l'Habitat com a condicionament exacte del sistema operatiu i el Nest com a càrrega de treball amb el propòsit de l'usuari."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony defineix tres conceptes físics que separen la identitat del maquinari, el condicionament del programari i la càrrega de treball de l'usuari. Aquests conceptes mantenen diferenciats els aspectes de la infraestructura perquè pugueu raonar sobre cadascun de manera independent.
+
+## Node
+
+Un **Node** és el recurs informàtic físic de destinació, amb uns recursos identificats específicament. Desconnectar-lo, tornar-lo a connectar, reiniciar-lo o tornar a gravar-ne només el programari no crea un nou Node físic. La destrucció, la substitució física o un canvi material del maquinari local sí que ho fan. Una encarnació del Node és una evidència independent que es crea quan aquest Node s'adjunta a un bus com a participant en un sistema de negociació, un clúster de recerca o un altre sistema construït amb Symphony.
+
+## Habitat
+
+Un **Habitat** és el condicionament exacte del sistema operatiu i dels paquets que es lliura a un Node per al treball que seleccioneu. Per defecte, només inclou la superfície de programari necessària: cap paquet no relacionat, entorns d'execució ocults, contenidors, Kubernetes ni virtualització implícita. Un Habitat ampli i de propòsit general continua sent una elecció explícita vàlida de l'usuari.
+
+## Nest
+
+Un **Nest** (literalment, «niu») serveix un propòsit que trieu vosaltres. S'espera que l'execució d'estratègies en directe sigui habitual, i una estratègia pot contenir moltes seccions de codi modulars, però Symphony no defineix el propòsit del Nest ni l'equipara a un sol fitxer font, procés, algorisme, API de broker o interfície de dades. La lògica de l'estratègia continua sent el vostre domini.
+
+## Comparació
+
+| Concepte | Què és | Què el canvia |
+| --- | --- | --- |
+| **Node** | Ordinador físic amb recursos específics | Destrucció física, substitució o canvi material del maquinari |
+| **Habitat** | Condicionament exacte del sistema operatiu i dels paquets en un Node | Selecció explícita de l'usuari o condicionament administrat per qxctl |
+| **Nest** | Càrrega de treball amb el propòsit de l'usuari lliurada en un Habitat | Desplegament per part de l'usuari d'una estratègia o d'un altre treball seleccionat |
+
+## Topologia de clúster i de bus
+
+Diversos Nodes formen un clúster només quan estan connectats entre si a través d'un o més busos. Diversos teixits de bus poden coexistir dins d'un mateix clúster, i una relació de Node en un clúster pot identificar el bus corresponent sense canviar la identitat del Node físic.
+
+Els adaptadors de bus com NATS JetStream i ZeroMQ són eleccions de l'usuari, no doctrina. La transferència pesada, el control, la recerca i els residus d'execució no han de compartir necessàriament un sol bus. Una topologia pot utilitzar diversos busos o evitar un bus per a un camí declarat.
+
+## Àmbit TOPS i TROG
+
+**TOPS** és l'àmbit dominant del sistema operatiu de negociació (Trade Operating System). Un **TROG** és un àmbit de grup de negociació deliberadament subordinat i no global. Malgrat la formulació històrica, un TROG no és necessàriament virtual. La seva propietat distintiva és que el seu àmbit i les seves regles no són universals.

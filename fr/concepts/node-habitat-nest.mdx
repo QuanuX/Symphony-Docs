@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat et Nest dans Symphony"
+description: "Découvrez comment Symphony modélise l'infrastructure physique : le Node comme ordinateur physique, l'Habitat comme conditionnement exact du système d'exploitation et le Nest comme charge de travail répondant à la finalité de l'utilisateur."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony définit trois concepts physiques qui séparent l'identité matérielle, le conditionnement logiciel et la charge de travail de l'utilisateur. Ces concepts maintiennent les préoccupations d'infrastructure distinctes afin que vous puissiez raisonner sur chacune indépendamment.
+
+## Node
+
+Un **Node** est la ressource informatique physique cible, dotée de ressources spécifiquement identifiées. Déconnecter, reconnecter, redémarrer ou reflasher uniquement le logiciel ne crée pas un nouveau Node physique. La destruction, le remplacement physique ou une modification matérielle locale significative, en revanche, en créent un. Une incarnation de Node est une preuve distincte créée lorsque ce Node est rattaché à un bus en tant que participant à un système de trading, un cluster de recherche ou tout autre système construit avec Symphony.
+
+## Habitat
+
+Un **Habitat** est le conditionnement exact du système d'exploitation et des paquets livré à un Node pour le travail que vous sélectionnez. Par défaut, il ne contient que la surface logicielle requise : pas de paquets sans rapport, de runtimes cachés, de conteneurs, de Kubernetes ni de virtualisation implicite. Un Habitat généraliste étendu reste un choix explicite valide de l'utilisateur.
+
+## Nest
+
+Un **Nest** (« nid ») sert une finalité que vous choisissez. L'exécution de stratégies en direct devrait être courante, et une stratégie peut contenir de nombreuses sections de code modulaires, mais Symphony ne définit pas la finalité du Nest et ne l'assimile pas à un fichier source, un processus, un algorithme, une API de courtier ou une interface de données uniques. La logique de stratégie reste votre domaine.
+
+## Comparaison
+
+| Concept | Ce que c'est | Ce qui le modifie |
+| --- | --- | --- |
+| **Node** | Ordinateur physique doté de ressources spécifiques | Destruction physique, remplacement ou modification matérielle significative |
+| **Habitat** | Conditionnement exact du système d'exploitation et des paquets sur un Node | Sélection explicite de l'utilisateur ou conditionnement administré par qxctl |
+| **Nest** | Charge de travail répondant à la finalité de l'utilisateur, livrée dans un Habitat | Déploiement par l'utilisateur d'une stratégie ou d'un autre travail sélectionné |
+
+## Topologie de cluster et de bus
+
+Plusieurs Nodes ne forment un cluster que lorsqu'ils sont reliés entre eux par un ou plusieurs bus. Plusieurs fabrics de bus peuvent coexister au sein d'un même cluster, et une relation Node-dans-cluster peut identifier le bus concerné sans modifier l'identité du Node physique.
+
+Les adaptateurs de bus tels que NATS JetStream et ZeroMQ sont choisis par l'utilisateur et ne relèvent pas de la doctrine. Les transferts lourds, le contrôle, la recherche et les flux d'échappement de l'exécution n'ont pas à partager un même bus. Une topologie peut utiliser plusieurs bus ou contourner un bus pour un chemin déclaré.
+
+## Portée TOPS et TROG
+
+**TOPS** est la portée dominante du Trade Operating System. Un **TROG** est une portée de groupe de trading délibérément subordonnée et non globale. Malgré la formulation historique, un TROG n'est pas nécessairement virtuel. Sa propriété distinctive est que sa portée et ses règles ne sont pas universelles.

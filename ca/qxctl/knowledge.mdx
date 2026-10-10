@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: administració del cicle de vida entre vectors"
+description: "El grup d'ordres qxctl knowledge s'encarrega del cicle de vida entre vectors, la transició de sessions, les consultes d'invariants i l'administració del manteniment persistent de SSFV."
+sidebarTitle: "knowledge"
+---
+
+El grup `qxctl knowledge ...` s'encarrega del cicle de vida entre vectors i de l'administració de sessions SSFV persistents. És el punt d'entrada per a les operacions recolzades pel coordinador i per a les consultes d'invariants contra el validador.
+
+## Transició de sessió
+
+Feu servir `qxctl knowledge session transition` per senyalitzar un esdeveniment del cicle de vida de l'amfitrió a una sessió existent:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Els reintents segurs reutilitzen el mateix identificador d'esdeveniment. Afegiu `--recover` només quan es pretengui una recuperació per descobriment a partir d'evidència local de sessió malmesa; no recupera denegacions, estats crítics incompatibles ni ambigüitats.
+
+<Warning>
+  Symphony no instal·la cap hook d'inici de sessió, vigilant ni unitat d'arrencada mitjançant aquesta ordre. Feu-la servir només quan una integració explícita amb el cicle de vida de l'amfitrió proporcioni una identitat d'esdeveniment estable.
+</Warning>
+
+## Consultes d'invariants
+
+Quatre fulles vinculen `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` vincula, a més, `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Les fulles de consulta directa emeten `symphony.knowledge.invariant-query-result.v1` amb `semantic_validity=not_asserted`. `check` retorna el resultat exacte i complet del validador i preserva el codi de sortida 26.
+
+## Grups de subordres
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ca/qxctl/lifecycle">
+    Perfil, propietat, observació, informe, arrencada, aplicació i recuperació.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ca/qxctl/engines">
+    Registre de vinculació de motors: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ca/qxctl/reconcile">
+    Gramàtica de reconciliació d'arbres de treball del coordinador.
+  </Card>
+
+  <Card title="session" icon="key" href="/ca/qxctl/session">
+    Sessions autenticades i fluxos de manteniment de SSFV.
+  </Card>
+</CardGroup>

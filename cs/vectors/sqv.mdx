@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: kontrakty frameworku"
+description: "SQV vlastní znovupoužitelné kontrakty frameworku pro kvantitativní a obchodní systémy, aniž by přebíral logiku uživatelských strategií. SOOV je jeho první pojmenovaný podvektor pro budoucí architekturu FIX výhradně v C++."
+sidebarTitle: "Quantitative Vector"
+---
+
+Symphony Quantitative Vector (SQV) vlastní znovupoužitelné kontrakty frameworku pro kvantitativní výzkum, konstrukci obchodních systémů, podporu provádění a pozdější kvantitativní enginy. Logika strategií vždy patří vám. SQV poskytuje plochy frameworku a přesné důkazy kompatibility, ale nikdy neurčuje vaše instrumenty, datové feedy, odběry, logiku příkazů ani model provádění.
+
+## Hranice uživatelské strategie
+
+Úplné vlastnictví logiky strategií si ponecháváte vy. SQV:
+
+- Nevybírá vaše instrumenty ani datové feedy
+- Nedefinuje pole odběrů ani hloubku trhu
+- Neurčuje chování při selhání ani pravidla normalizace
+- Nepíše logiku příkazů ani modely provádění
+- Nenavrhuje vaši vnitřní modulární strukturu
+
+Symphony poskytuje důkazy kompatibility a podporované operace. Nikdy neřadí strategie ani nevnucuje vašim obchodním rozhodnutím pravidla platformy.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV je první pojmenovaný podvektor v rámci SQV. Představuje budoucí vysoce výkonnou architekturu FIX výhradně v C++, inspirovanou historickou prací na QuanuX. SOOV je plánován jako ohraničená, deterministická vrstva zasílání zpráv pro obchodní komunikaci. Podrobné chování FIX zatím není kanonické; momentálně není implementována žádná relace FIX, adaptér feedů ani integrace s brokerem.
+
+## Budoucí rozsah
+
+SQV je plánovaným domovem pro ratifikované komponenty kvantitativního frameworku v pozdějších fázích dodávky. Očekávané oblasti zahrnují:
+
+- Enginy pro backtesting
+- C++ API brokerů
+- Knihovny indikátorů
+- Kvantitativní matematiku
+- Architekturu datových proudů
+
+Nic z toho nebude implementováno, dokud nebudou ratifikovány příslušné kontrakty.
+
+## Aktuální stav
+
+SQV je pouze kanonickým architektonickým kontraktem. Momentálně není implementován žádný engine SQV ani SOOV, relace FIX, adaptér feedů, runtime strategií, integrace s brokerem, backtester, knihovna indikátorů ani komponenta datových proudů.
+
+## Jak SQV souvisí s ostatními vektory
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/cs/vectors/shv">
+    Poskytuje důkazy o hardwarových schopnostech, které omezují návrh kvantitativních enginů.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/cs/vectors/snv">
+    Zaznamenává Nodes, na kterých běží kvantitativní pracovní zátěže.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/cs/skv/overview">
+    Spravuje kontrakty SQV, jeho evoluci a vztahy k oficiálním publikacím.
+  </Card>
+</CardGroup>

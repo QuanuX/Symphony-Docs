@@ -1,0 +1,74 @@
+---
+title: "Motors de coneixement de fonts SCV: la realitat dels proveïdors per a Symphony"
+description: "Vuit motors de SCV, hiperescaladors, edge i proveïdors, empaquetats de manera independent, conserven les revisions exactes de les fonts i produeixen evidència reproduïble de grafs i consultes."
+sidebarTitle: "Motors SCV"
+---
+
+Els motors de coneixement de fonts SCV són vuit processos C++26 empaquetats de manera independent que contenen coneixement semàntic privat sobre els recursos, les ofertes, les regions, les restriccions i les possibilitats híbrides dels proveïdors externs. Conserven les revisions exactes de les fonts i captures acotades perquè les eines posteriors puguin reproduir-ne els resultats.
+
+## Motors
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Motor de fonts SCV general per al vocabulari compartit del núvol.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Motor de fonts del Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Motor de fonts edge específic de Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Motor de fonts d'Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Motor de fonts de Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Motor de fonts de DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Motor de fonts de Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Connector opcional de DuckDB per a la indexació de grafs relacionals retinguts.
+  </Card>
+</CardGroup>
+
+## Què fan els motors SCV
+
+- Conserven revisions explícites de les fonts i captures acotades
+- Retenen afirmacions qualificades i l'estructura nativa dels documents
+- Produeixen evidència reproduïble de grafs i consultes
+- Alimenten paquets portables de proveïdors i una composició finita dirigida per l'invocador
+
+## Què no fan
+
+<Warning>
+  Les operacions amb proveïdors i els catàlegs complets del núvol queden fora d'aquest increment. Els motors SCV descriuen el que se sap; no actuen sobre els proveïdors.
+</Warning>
+
+qxctl administra per separat els canvis auditats de les fonts locals i la selecció coherent de grafs mitjançant fluxos de treball retinguts i una selecció de grafs protegida. El recorregut dedicat de grafs i els adaptadors operatius continuen sent treball independent.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Vector SCV" icon="cloud" href="/ca/vectors/scv">
+    Contracte del Cloud Vector que implementen aquests motors.
+  </Card>
+
+  <Card title="Vector SOV" icon="terminal" href="/ca/vectors/sov">
+    Ops Vector que actua sobre l'evidència de SCV mitjançant qxctl.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    Selecció de grafs, fluxos de treball de fonts i administració del connector de DuckDB.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Rekonsiliasi Worktree"
+description: "Rekonsiliasi worktree terhadap coordinator Symphony yang terikat dengan pemeriksaan kompatibilitas, jurnal checkpoint dan close, serta pemulihan dua slot berbasis bukti."
+sidebarTitle: "reconcile"
+---
+
+Grammar `qxctl knowledge reconcile ...` menjalankan rekonsiliasi worktree melalui satu Knowledge Session Coordinator terikat yang persis. Setiap mutasi dilacak dengan identifier yang stabil dan merupakan compare-and-swap terhadap digest jurnal saat ini yang persis.
+
+## Perintah
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: memverifikasi bahwa qxctl, coordinator, dan engine yang terikat menyepakati versi protokol dan cakupan.
+- `begin`: membuka konteks rekonsiliasi baru dengan identifier operasi yang stabil.
+- `status`: memeriksa jurnal saat ini tanpa mutasi.
+- `checkpoint`: memajukan jurnal secara tahan lama dengan compare-and-swap.
+- `close`: memfinalisasi konteks rekonsiliasi.
+- `recover --discover`: pemulihan discovery ketika status biasa tidak dapat memvalidasi state lokal.
+
+## Aturan pemulihan
+
+<Warning>
+  Pemulihan dua slot adalah perbaikan maju berbasis bukti. Pemulihan ini tidak pernah menjadi izin untuk membuang jurnal yang tidak kompatibel atau ekstensi kritis yang tidak dikenal. Jika pemulihan gagal, lakukan eskalasi alih-alih memaksa.
+</Warning>
+
+Gunakan pemulihan discovery hanya ketika status biasa tidak dapat memvalidasi state lokal. Pertahankan blocker; rencanakan ulang hanya setelah bukti terverifikasi berubah.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/id/engines/coordinator">
+    Engine yang memiliki jurnal rekonsiliasi.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/id/qxctl/session">
+    Sesi terautentikasi yang berpasangan dengan konteks rekonsiliasi.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/id/qxctl/engines">
+    Kelola binding yang dikonsumsi coordinator.
+  </Card>
+</CardGroup>

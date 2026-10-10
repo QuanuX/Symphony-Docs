@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl-operaatioiden ohjaus"
+description: "SOV määrittelee qxctl:llä hallinnoidun operaatiotoimialan provisiointia, Habitat-valmistelua, Nest-toimitusta, väyläadaptereita ja valinnaista Node-etähallintaa varten."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) on operatiivinen ohjaustaso, jonka kautta valtuutetut qxctl-komennot toimivat infrastruktuurissasi. Se omistaa sopimuksen provisioinnille, Habitat-valmistelulle, Nest-toimitukselle, väyläadapterien käyttöönotolle ja valinnaiselle Node-etähallinnalle. SOV ei keksi palveluntarjoajien merkityksiä tai laitteistotosiasioita; se suorittaa jo valitsemiasi tuettuja vaihtoehtoja.
+
+## Mitä SOV kattaa
+
+SOV on kehittyvä vaiheen 2 toimiala. Sen laajuuteen kuuluvat:
+
+- **Provisiointi**: palveluntarjoajien ja omistetun laitteiston resurssien allokoinnin työnkulut
+- **Habitat-valmistelu**: Nodelle toimitettava tarkka käyttöjärjestelmän ja pakettien valmistelu
+- **Nest-toimitus**: työkuormien sijoittaminen ja päivittäminen Nodella
+- **Väyläadapterien perustaminen**: Nodejen yhdistäminen valitsemasi väylän kautta (NATS JetStream, ZeroMQ tai muut)
+- **Node-etäoperaatiot**: paikallisen komentotulkkisi ulkopuolella olevien Nodejen valinnainen hallinta
+
+<Note>
+  Palveluntarjoajaprotokollat, Terraform-suoritus, Habitat-rakentajat, Nest-käyttöönottokomennot ja etäoperaatioiden vastaanottimet ovat vielä suunnittelematta. SOV-moottoria tai palveluntarjoajamuutoksia ei ole tällä hetkellä toteutettu.
+</Note>
+
+## Miten SOV liittyy muihin vektoreihin
+
+SOV on ohjaustaso, ei tietolähde. Se toimii muiden vektorien omistamien todisteiden pohjalta:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/fi/vectors/scv">
+    Tarjoaa palveluntarjoaja- ja ulkoista resurssitietoa. SOV lukee SCV-todisteita päättääkseen, mitkä operaatiot ovat yhteensopivia.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/fi/vectors/snv">
+    Kirjaa syntyvät Node-identiteetit, klusterijäsenyydet ja nimet SOV-operaatioiden valmistuttua.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/fi/vectors/shv">
+    Voi myöhemmin tarjota yksityiskohtaisia laitteistokyvykkyystodisteita provisiointivalintojen rajaamiseksi.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/fi/skv/overview">
+    Hallinnoi SOV:n sopimuksia, muutosten seurauksia, indeksointia ja elinkaari-integraatiota.
+  </Card>
+</CardGroup>
+
+## qxctl komentopintana
+
+SOV-operaatiot tarjotaan `qxctl`:n kautta, joka on Go-pohjainen hallinta-CLI, jossa on 373 suoritettavaa komentoa. qxctl toteuttaa ja esittää SOV-operaatiot, mutta se ei omista niiden toimialamerkitystä. Vektori omistaa semantiikan; työkalu omistaa suorituspinnan.
+
+## Käyttäjän auktoriteetin raja
+
+Sinä valitset palveluntarjoajat, alueet, laitteiston, väylät, ohjelmistot, käyttöönottotopologian ja Node-kohtaiset hallintajärjestelyt. SOV tarjoaa ja suorittaa tuettuja vaihtoehtoja. Se ei aseta palveluntarjoajia paremmuusjärjestykseen, suosittele topologioita eikä muuta ehdotuksia pakollisiksi käytännöiksi.
+
+## Nykytila
+
+SOV on kanoninen arkkitehtuurisopimus. Mitään moottoria, Terraform-käärettä, Habitat-rakentajaa, väyläadapteria tai etäkomentojen vastaanotinta ei väitetä toteutetuksi. Tulevat SOV-komponentit pysyvät itsenäisesti asennettavina, tarkalla versiolla valittavina ja palautettavina yhteisen SKV-elinkaaren alaisuudessa.

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Kimliği Doğrulanmış Symphony Oturumları"
+description: "Kimliği doğrulanmış Symphony koordinatör oturumlarını ve kalıcı SSFV bakım akışlarını SSIAG ile doğrulanmış yetkilerle açın, kontrol noktası oluşturun, kapatın ve kurtarın."
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` grameri, tek bir kesin bağlanmış koordinatör ve TOPS kapsamlı tek bir SSIAG uç noktası aracılığıyla kanonik olmayan, kimliği doğrulanmış oturumlar açar. Ayrı bir `session features ...` grameri ise kalıcı SSFV bakım akışını yürütür.
+
+## Temel oturum grameri
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Her çağrı yeni ve kesin bir yetki (grant) ister ve şunları doğrular:
+
+- Özne ve hedef kimliği
+- Politika ve yapılandırma durumu
+- Son kullanma süresi
+- Çağıran sınıfı tarafsızlığı
+- Devredilemezlik
+- Kanonik uygulamanın devre dışı olması
+- Yetenek bağlaması
+
+Oturum kanıtı yalnızca adı belirtilen korumalı, kanonik olmayan işlemi yetkilendirir. Oturum ve uzlaştırma günlüklerini ayrı tutun; bunları ilişkilendirmek için yalnızca bağlam referanslarını kullanın.
+
+## SSFV bakım akışı
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Features akışı, ayrı ve kalıcı bir SSFV bakım bağlamıdır. Değişiklikler şunları gerektirir:
+
+- Açık ve kimliği doğrulanmış bir temel oturum
+- Kesin koordinatör ve SSFV bağlamaları
+- Kararlı işlem tanımlayıcıları
+- Kesin compare-and-swap
+- Güncel SSIAG kanıtı
+
+<Note>
+  Uyumlu yükseltmeler veya geri almalar boyunca temel anlık görüntüyü ve onun özgün engine kimliğini koruyun. İsteğe bağlı Maestro kanıtı, eksiksiz ve kimliği doğrulanmış bir envanter olmalıdır; Maestro bilinçli olarak mevcut değilse, açık "yapılandırılmamış" gerekçesini kaydedin. `review_required`, onay değil, çağıranın incelemesi için kanıttır.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/tr/governance/ssiag">
+    Her oturum isteğinin doğruladığı güncel yetkileri verir.
+  </Card>
+
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Oturum ve features günlüklerini destekleyen engine.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/tr/qxctl/reconcile">
+    Oturumlarla eşleşen uzlaştırma bağlamları.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/tr/skv/ssfv">
+    Features akışının sürdürdüğü özellik vektörü.
+  </Card>
+</CardGroup>

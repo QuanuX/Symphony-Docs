@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: прив’язка, діагностика, міграція реєстру"
+description: "Керуйте захищеним профілем прив’язки рушіїв Symphony в області користувача за допомогою list, inspect, doctor, bind, unbind і прив’язаної до дайджесту migrate через qxctl."
+sidebarTitle: "engines"
+---
+
+Граматика `qxctl knowledge engines ...` керує захищеним профілем прив’язки `default` в області користувача для векторних рушіїв Symphony. Вона прив’язує вибраний вміст для подальшого узгодження. Вона не встановлює, не викликає, не активує, не пристиковує, не автентифікує, не авторизує і не застосовує рушій.
+
+## Команди
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Передайте `absent` для першої мутації реєстру v2 або точний дайджест, повідомлений командою `list`, для наступних мутацій. Кожна мутація виконується як compare-and-swap відносно цього дайджесту.
+
+## Міграція з v1 на v2
+
+<Warning>
+  Коректний стан реєстру v1 залишається доступним для читання. Міграція на v2 — це окрема точна операція compare-and-swap і ніколи не є операцією вибору версії. Не розглядайте міграцію як шлях оновлення для вибору рушія.
+</Warning>
+
+- `list` та `inspect` і надалі працюють із доказами v1.
+- `migrate` створює пов’язане покоління v2, не відкидаючи істину v1.
+- Після міграції використовуйте дайджести v2 для майбутніх мутацій.
+
+## Що таке прив’язка
+
+Прив’язка вибирає точний вміст для подальшого узгодження координатором. Вона:
+
+- Не встановлює рушій
+- Не викликає й не активує рушій
+- Не пристиковує рушій до Maestro
+- Не автентифікує викликача
+- Не авторизує застосування
+
+## Пов’язані поверхні
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/uk/qxctl/reconcile">
+    Узгодження прив’язаного вмісту з координатором.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/uk/qxctl/lifecycle">
+    Плани життєвого циклу, що використовують прив’язані рушії.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/uk/governance/maestro">
+    Авторитет присутності, що фіксує пристикування, а не прив’язки.
+  </Card>
+
+  <Card title="Огляд рушіїв" icon="cube" href="/uk/engines/overview">
+    Незалежно встановлювані векторні рушії.
+  </Card>
+</CardGroup>

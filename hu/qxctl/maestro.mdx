@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: a Symphony receptorjelenléti leltárának olvasása"
+description: "A Symphony Maestro jelenléti hatóságának vizsgálata a qxctl segítségével a hitelesített vektormotor-dokkolási kapcsolatok és a származtatott receptorleltár megtekintéséhez."
+sidebarTitle: "maestro"
+---
+
+A `qxctl maestro ...` nyelvtan a Maestro jelenléti bizonyítékait teszi elérhetővé. A Maestro a jelenléti hatóság; a qxctl csupán olvassa és vizsgálja azt, amit a Maestro rögzít. Egyikük sem hoz létre önállóan dokkolási kapcsolatokat.
+
+## Leltár
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+A `qxctl maestro inventory` a Maestro teljes, származtatott, csak olvasható leltárát mutatja be a hitelesített vektormotor-dokkolási kapcsolatokról, TOPS-onként és receptoronként.
+
+## Kapcsolódó adminisztratív útvonalak
+
+További qxctl levélparancsok Maestróhoz kapcsolódó adminisztrációt tesznek elérhetővé:
+
+- A dokkolási bizonyítékok állapota és vizsgálata
+- A Maestro saját szerződései által korlátozott helyreállítási útvonalak
+- Alapszintű életciklus-regisztráció és natív felügyelet magához a Maestróhoz
+
+Minden módosító útvonal a pontos, modul tulajdonában lévő adapteren keresztül halad. A qxctl soha nem állít elő Maestro-leírókat belső elemzésből, és soha nem hív meg implicit módon legújabb verziót.
+
+<Warning>
+  A Maestro nem indít, nem ütemez, nem felügyel és nem hív meg motorokat. A `qxctl maestro inventory` csak olvasható. A kötés, az egyeztetés, a munkamenet-koordináció vagy egy életciklus-terv önmagában nem hozza létre a Maestro-jelenlétet.
+</Warning>
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/hu/governance/maestro">
+    A jelenléti hatóság szerződése és határai.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/hu/qxctl/engines">
+    Motorkötési regiszter (a kötés nem dokkolás).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/hu/qxctl/session">
+    A jelenlét rögzítéséhez használt hitelesített munkamenetek.
+  </Card>
+
+  <Card title="Motorok áttekintése" icon="cube" href="/hu/engines/overview">
+    Egymástól függetlenül telepíthető vektormotorok, amelyek a Maestróhoz dokkolnak.
+  </Card>
+</CardGroup>

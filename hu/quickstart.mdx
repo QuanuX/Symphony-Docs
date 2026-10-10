@@ -1,0 +1,33 @@
+---
+title: "Gyorsútmutató: a QuanuX Symphony felfedezése"
+description: "Vezetett útvonal a Symphony doktrínáján, architektúráján, vektorszerződésein és a qxctl adminisztratív felületén keresztül."
+sidebarTitle: "Gyorsútmutató"
+---
+
+Ezzel az útmutatóval tájékozódhat, mielőtt a Symphonyt üzemeltetné. A dokumentáció elkülöníti a platformdoktrínát, a felhasználó által választott infrastruktúrát, a vektorok által birtokolt szemantikát és az adminisztratív parancsokat. A pontos telepítési és végrehajtási lépések az adott komponens jelenlegi szerződéséhez tartoznak.
+
+## 1. Olvassa el a működési határokat
+
+Kezdje a [platformdoktrínával](/hu/doctrine). Ez rögzíti a stratégia és az infrastruktúra felhasználói tulajdonlását, a hívóosztály-semlegességet, a bizonyítékalapú kompatibilitást és a hot path védelmét.
+
+## 2. Ismerje meg a fizikai modellt
+
+Olvassa el a [Node, Habitat és Nest](/hu/concepts/node-habitat-nest) oldalt:
+
+- **Node:** az azonosított fizikai számítógépes erőforrás.
+- **Habitat:** a Node-ra telepített pontos operációs rendszer és csomagkondicionálás.
+- **Nest:** a megfelelő Habitatba helyezett, felhasználói célú munkaterhelés.
+
+Egy klaszter buszai és adapterei kifejezett architekturális döntések. A Symphony nem ír elő univerzális szolgáltatót vagy stratégiát.
+
+## 3. Kövesse nyomon a jelentés tulajdonlását
+
+Az [architektúra áttekintése](/hu/concepts/architecture) bemutatja a vektorszerződések, a motorok, a qxctl és a szabályozott bizonyítékok közötti kapcsolatot. A [Vektorok és fázisok](/hu/concepts/vectors) elmagyarázza, miért marad egy vektor a szemantikai tulajdonos akkor is, amikor a szállítási munka fázisokon halad át. A [Symphony Knowledge Vector](/hu/skv/overview) a Contract Quadot és annak kísérőfelületeit írja le.
+
+## 4. Keresse meg az adminisztratív felületet
+
+A [qxctl áttekintés](/hu/qxctl/overview) bemutatja a Go nyelvű adminisztratív és lekérdező CLI-t. Egy adott parancscsaládhoz használja a qxctl oldalakat, például: [knowledge](/hu/qxctl/knowledge), [lifecycle](/hu/qxctl/lifecycle), [engines](/hu/qxctl/engines) vagy [validálás](/hu/qxctl/validate). A qxctl biztosítja a parancsnyelvtant és a megjelenítést; a műveletek és azok jelentése a vektorszerződésekhez tartozik.
+
+## 5. Ellenőrizze a vonatkozó szerződést és bizonyítékot
+
+Mielőtt egy Node-on műveletet végezne vagy vektormotort hívna meg, ellenőrizze a tulajdonos jelenlegi szerződését, a célállapotot, az engedélyezést, valamint a rendelkezésre álló nyugta- vagy validálási bizonyítékot. A [Hívói jogosultság](/hu/concepts/caller-authority) és a [hot path elszigetelése](/hu/concepts/hot-path-isolation) ezeket a határokat magyarázza el. Egy kialakulóban lévő felület nem jelent hallgatólagos működési garanciát.

@@ -1,0 +1,82 @@
+---
+title: "qxctl-vektorkommandoer: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Utforsk den vektorspesifikke qxctl-grammatikken som er tilgjengelig i dag: SKVI, SCLV, SACV, SODV, SSFV, SHV-lagring og -katalog, pluss reserverte accord- og evolution-flater."
+sidebarTitle: "Vektorkommandoer"
+---
+
+qxctl eksponerer vektorspesifikk grammatikk for hver implementert SKV-motor og for administrasjon av SCV og SHV. Ratifisert Accordare- og SEV-grammatikk vil bruke `qxctl accord ...` og `qxctl evolution ...` når kommandoimplementasjonene og stabilt registerbevis for dem finnes.
+
+## Grammatikk for SKV-motorer
+
+- `qxctl skvi ...`: inspect, check, propose, project mot SKVI-motoren
+- `qxctl sclv ...`: inspect, check, propose, recover, project mot SCLV-motoren
+- `qxctl sacv ...`: inspect, check, diff, propose, project mot SACV-motoren
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project mot SODV-motoren
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph mot SSFV-motoren
+
+Hver grammatikk er avgrenset av kontrakten til motoren som eier den. qxctl finner aldri opp en operasjon eller omgår motoren.
+
+## Accordare-tillegg
+
+Accordare-tilleggene i qxctl gir:
+
+- Stabil status
+- Avstemming (spiller bare av eksakte kandidater på nytt)
+- Installasjon og avinstallasjon av supervisor (kaller bare den verifiserte receipt-v2-kjørbare filen)
+- To identiteter for tildelingsadministrasjon som bare endrer den stoppede STAV-konfigurasjonen under SSIAG og gjenoppretting med forventet tilstand
+
+Status skiller mellom varig intensjon og etterslep av tillegg. Avstemming spiller bare av eksakte kandidater på nytt. Tildelingsløv åpner aldri en kjørende konfigurasjon.
+
+## SHV-lagring
+
+Varig SHV-lagring administreres bare gjennom:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` med den bevarte forventede intensjonsdigesten er også gjenoppretting. Det finnes ikke noe separat alias for gjenoppretting. Lagringsomfanget deklareres i inndataene; konnektoridentiteten angis i flagg. Strukturell lagring dupliserer ikke den semantiske `shv graph validate` og velger ikke et kataloghode.
+
+`shv graph store inventory` (utgivelse 0.2) legger til en revisjonsbundet logisk lesing med eksplisitte bevarte skriveridentiteter. Eldre 0.1-utvalg støttes fortsatt.
+
+## SHV-katalogpublisering
+
+Katalogpublisering administreres bare gjennom:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Gjenoppretting er `apply --operation-id`, som utelukker `--input`. Tillatelsesstøttet lokalt katalogvalg er atskilt fra kildeaktivering og generisk graflagring.
+
+## Relaterte flater
+
+<CardGroup cols={2}>
+  <Card title="Oversikt over SKV" icon="book-open" href="/no/skv/overview">
+    Vektorsemantikken som motorene implementerer.
+  </Card>
+
+  <Card title="SHV-vektoren" icon="microchip" href="/no/vectors/shv">
+    Bakgrunn for maskinvarevektoren og liste over motorer.
+  </Card>
+
+  <Card title="SHV-motorer" icon="microchip" href="/no/engines/shv-engines">
+    Detaljer på motornivå.
+  </Card>
+
+  <Card title="Oversikt over qxctl" icon="terminal" href="/no/qxctl/overview">
+    Hele qxctl-kommandoflaten.
+  </Card>
+</CardGroup>

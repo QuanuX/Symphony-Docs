@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Üreticisi: Sınırlı SAV Named Version Denetimi"
+description: "Accordare STAV üreticisi; SAV Named Version niyetini, sonucunu ve kurtarmasını, kimliği doğrulanmış yerel eşlere sahip donuk yol Go üreticisi aracılığıyla kalıcı tutar."
+sidebarTitle: "Accordare Üreticisi"
+---
+
+Accordare STAV üreticisi (`modules/accordare-stav-producer`), sınırlı SAV Named Version denetim devresi için bağımsız olarak kurulabilen, donuk yol (freezing-path) bir Go üreticisidir. Değişiklik öncesi niyeti ve ekleme kurtarmasını kalıcı tutar, yerel eşlerinin kimliğini doğrular ve yalnızca kapalı sözcük dağarcığının kabul ettiği kesin ve güvenli adayı gönderir. STAV ekleme yetkisinin kendisi değildir.
+
+## Niyet, sonuç, kurtarma kalıbı
+
+Üretici, denetlenen her değişiklik için üç adımlı bir kalıp izler:
+
+<Steps>
+  <Step title="Değişiklik öncesi niyet">
+    Herhangi bir değişiklik gözlemlenebilir hâle gelmeden önce çağıranın belirttiği niyeti kalıcı olarak kaydedin. Üretici, kapalı sözcük dağarcığının dışındaki adayları reddeder.
+  </Step>
+  <Step title="Nihai sonuç">
+    Değişiklik tamamlandıktan veya başarısız olduktan sonra, denetimin umulan bir durumu değil gerçekliği yansıtması için kesin sonucu yakalayın.
+  </Step>
+  <Step title="Sınırlı kurtarma">
+    Bir kesinti durumunda üretici, bir uzlaştırma uydurmadan veya niyeti sessizce atmadan ekleme akışının sınırlı kurtarmasını gerçekleştirir.
+  </Step>
+</Steps>
+
+## Sınırlar
+
+<Warning>
+  Accordare üreticisi STAV ekleme yetkisi değildir. Yerel eşlerin kimliğini doğrular ve adayları gönderir; ekleme yetkisi ise bunları doğrular, mühürler ve kalıcı olarak depolar. Bu ayrımı asla atlatmayın.
+</Warning>
+
+- Üreticinin sözcük dağarcığı kapalıdır. Yalnızca SAV Named Version denetim adaylarını kabul eder.
+- Üretici donuk yoldadır. Bir sıcak yol bağımlılığına dönüşmemelidir.
+- Üretici yerel eşlerin kimliğini doğrular; uzak çağıranların kimliğini doğrulamaz.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/tr/governance/stav">
+    Denetim kayıtlarını mühürleyen ekleme yetkisi.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/tr/governance/ssiag">
+    Üreticinin denetlediği değişikliği yetkilendirir.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/tr/skv/sav">
+    Bu devrenin denetlediği Named Version bileşim anlamları.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    Onaylanmış Accordare dil bilgisi, uygulandığında `qxctl accord ...` olarak gelir.
+  </Card>
+</CardGroup>

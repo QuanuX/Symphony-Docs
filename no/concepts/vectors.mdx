@@ -1,0 +1,47 @@
+---
+title: "Symphony-vektorer og leveransefaser"
+description: "Forstå Symphonys varige domener for semantisk eierskap (vektorer) kontra kronologiske leveransefaser, samt Contract Quad og gjeldende vektorstatus."
+sidebarTitle: "Vektorer og faser"
+---
+
+Symphony organiserer arkitekturen rundt to ideer: **vektorer** er varige domener for semantisk eierskap, og **faser** er kronologiske leveransekampanjer. At en komponent først ble utforsket i én fase, gjør ikke den fasen til dens permanente eier. Vektorer holder betydningen stabil mens implementasjonen utvikler seg.
+
+## Hva er en vektor?
+
+En vektor er et varig, avgrenset domene for semantisk eierskap der den kanoniske kontrakten eier domenets betydning og tillatte operasjoner. Hver vektor får en **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` og `SPEC.md`, pluss de fokuserte ledsagende overflatene den faktisk trenger. Vektoren erklærer sine kanoniske overflater og sin delegeringsgraf, SKVI kartlegger hver gjeldende overflate nøyaktig én gang, og foreldede ledsagere erstattes gjennom styrt utvikling i stedet for å bli liggende igjen som motstridende kontekst.
+
+## Vektorstatus
+
+| Vektor | Status | Side |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementert: fase 1-fundament med indekserte overflater | [/no/skv/overview](/no/skv/overview) |
+| **SKVI** — Kildeindeksering | Implementert: motor for inspect/check/propose | [/no/skv/skvi](/no/skv/skvi) |
+| **SCLV** — Endringshovedbok | Implementert: kontroller av hovedbok som kun tillater tillegg | [/no/skv/sclv](/no/skv/sclv) |
+| **SACV** — Styring av API-kontrakter | Implementert: OpenAPI 3.2.0-kontroller | [/no/skv/sacv](/no/skv/sacv) |
+| **SODV** — Styring av offisiell dokumentasjon/utgivelser | Implementert: lokale kontroller av utgivelseshovedbok | [/no/skv/sodv](/no/skv/sodv) |
+| **SSFV** — Funksjonsidentitet/-administrasjon | Implementert: strukturelle funksjonskontroller | [/no/skv/ssfv](/no/skv/ssfv) |
+| **SAV** — Accordare-sammensetning | Implementert: vurdering på den frosne stien | [/no/skv/sav](/no/skv/sav) |
+| **SEV** — Utvikling | Implementert: planlegging av konsekvens/disposisjon | [/no/skv/sev](/no/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementert: cgo-fritt Go-fundament | [/no/governance/ssiag](/no/governance/ssiag) |
+| **STAV** — TOPS-revisjonsprotokoll | Implementert: hovedbok per TOPS som kun tillater tillegg | [/no/governance/stav](/no/governance/stav) |
+| **SOV** — Ops Vector | Fremvoksende: klargjøring, levering av Habitat og Nest | [/no/vectors/sov](/no/vectors/sov) |
+| **SCV** — Cloud Vector | Implementert: åtte C++-motorer for kildekunnskap | [/no/vectors/scv](/no/vectors/scv) |
+| **SNV** — Node Vector | Fremvoksende: sammensetning av SNIV, SNRV, SCIV, SCNV | [/no/vectors/snv](/no/vectors/snv) |
+| **SQV** — Quantitative Vector | Fremvoksende: SOOV FIX-arkitekturdelvektor | [/no/vectors/sqv](/no/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementert: C++-motorer for kilde, katalog og profil | [/no/vectors/shv](/no/vectors/shv) |
+| **SIV** — Intelligence Vector | Fremvoksende: SMCV valgfri Markdown; SAIV reservert | [/no/vectors/siv](/no/vectors/siv) |
+
+## Contract Quad og ledsagende overflater
+
+Hver vektor får:
+
+1. **INTENT.md** — formål og omfang
+2. **MANIFEST.md** — identitet, erklærte overflater, delegeringsgraf
+3. **SKILL.md** — trygg bruk og operativ veiledning
+4. **SPEC.md** — normativ atferd og grenser
+
+Ledsagende overflater som `SLANG.md`, `NAMESPACES.md`, registre, skjemaer og profiler forblir styrte artefakter utenfor strukturen med fire medlemmer. De ruter eller spesialiserer eiersannhet, men kan ikke utvide sin egen autoritet.
+
+## Evidensbasert integrasjon
+
+En utsatt motor har ingen fabrikkert kvittering. Et foreslått API har ingen oppdiktet registeroppføring. En upublisert kontrakt har ingen SODV-fullføringspåstand. Dette er evidensbasert integrasjon, ikke seremoniell duplisering.

@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: bind, doctor, migrarea registrului"
+description: "Gestionați profilul protejat de legare a motoarelor din domeniul utilizatorului în Symphony cu list, inspect, doctor, bind, unbind și migrate legat de digest prin qxctl."
+sidebarTitle: "engines"
+---
+
+Gramatica `qxctl knowledge engines ...` gestionează profilul protejat de legare `default` din domeniul utilizatorului pentru motoarele vectoriale Symphony. Aceasta leagă conținutul selectat pentru o reconciliere ulterioară. Nu instalează, nu invocă, nu activează, nu andochează, nu autentifică, nu autorizează și nu aplică un motor.
+
+## Comenzi
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Furnizați `absent` pentru prima mutație a registrului v2 sau digest-ul exact raportat de `list` pentru mutațiile ulterioare. Fiecare mutație este o operație compare-and-swap față de acel digest.
+
+## Migrarea de la v1 la v2
+
+<Warning>
+  Starea validă a registrului v1 rămâne lizibilă. Migrarea la v2 este o operație compare-and-swap exactă și separată și nu este niciodată o operație de selectare a versiunii. Nu tratați migrarea ca pe o cale de actualizare pentru selectarea motorului.
+</Warning>
+
+- `list` și `inspect` continuă să funcționeze pe dovezile v1.
+- `migrate` produce o generație v2 legată, fără a renunța la adevărul v1.
+- După migrare, folosiți digest-urile v2 pentru mutațiile viitoare.
+
+## Ce este o legare
+
+O legare (bind) selectează conținutul exact pentru reconcilierea ulterioară de către coordonator. Aceasta:
+
+- Nu instalează un motor
+- Nu invocă și nu activează un motor
+- Nu andochează un motor la Maestro
+- Nu autentifică un apelant
+- Nu autorizează aplicarea (apply)
+
+## Suprafețe asociate
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ro/qxctl/reconcile">
+    Reconciliați conținutul legat cu un coordonator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/ro/qxctl/lifecycle">
+    Planuri de ciclu de viață care folosesc motoarele legate.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ro/governance/maestro">
+    Autoritatea de prezență care înregistrează andocările, nu legările.
+  </Card>
+
+  <Card title="Prezentare generală a motoarelor" icon="cube" href="/ro/engines/overview">
+    Motoare vectoriale instalabile independent.
+  </Card>
+</CardGroup>

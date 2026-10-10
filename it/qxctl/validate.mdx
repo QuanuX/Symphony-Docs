@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: policy degli avvisi del Symphony Validator"
+description: "Amministra tramite qxctl la policy protetta degli avvisi, la baseline e la grammatica di visualizzazione sul Symphony Validator indipendente, senza alterare le evidenze grezze del rilevatore."
+sidebarTitle: "validate"
+---
+
+La grammatica `qxctl validate ...` amministra la policy protetta degli avvisi, la baseline e la grammatica di visualizzazione del Symphony Validator. Il validatore C++ installato in modo indipendente produce evidenze grezze immutabili; qxctl amministra una presentazione protetta e neutrale rispetto al chiamante senza modificare il rilevamento.
+
+## Cosa copre qxctl validate
+
+- Nove foglie protette per il ciclo di vita degli avvisi
+- L'esatto percorso di riepilogo radice supportato da ricevuta
+- Gestione della baseline e report delle differenze
+- Grammatica di visualizzazione per output a righe e JSON strutturato
+
+Ogni foglia valida la ricevuta esatta del validatore e i digest strutturati prima di applicare la policy protetta degli avvisi.
+
+## Confini
+
+<Warning>
+  qxctl validate non può riparare file, pubblicare nulla né scavalcare le evidenze grezze del rilevatore. La disposizione degli avvisi influisce sulla presentazione, non sul rilevamento.
+</Warning>
+
+- Nessuna soppressione di avvisi al di fuori della policy protetta
+- Nessuna modifica dell'output del validatore
+- Nessuna copertura fittizia per un percorso non disponibile
+
+## Usi comuni
+
+- Stabilire o reimpostare una baseline degli avvisi
+- Approvare o riaprire un avviso storico governato
+- Emettere il riepilogo radice supportato da ricevuta che compare nel README del repository
+
+Il validatore alla base di questa grammatica controlla la forma dei contratti, la chiusura delle sorgenti correnti, l'ownership degli invarianti, l'amministrazione delle funzionalità, i rilasci e il riepilogo radice di proprietà della macchina.
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Validatore" icon="clipboard-check" href="/it/governance/validator">
+    Il controllore C++ indipendente e di sola lettura amministrato da qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/it/skv/ssfv">
+    Aspettative di amministrazione delle funzionalità verificate nelle evidenze.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/it/skv/sodv">
+    Registri di rilascio che compaiono nelle evidenze del validatore.
+  </Card>
+
+  <Card title="Panoramica di qxctl" icon="terminal" href="/it/qxctl/overview">
+    Superficie completa dei comandi.
+  </Card>
+</CardGroup>

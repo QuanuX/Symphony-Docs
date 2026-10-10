@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: узгодження робочих дерев"
+description: "Узгоджуйте робочі дерева з прив’язаним координатором Symphony за допомогою перевірок сумісності, журналів контрольних точок і закриття та двослотового відновлення на основі доказів."
+sidebarTitle: "reconcile"
+---
+
+Граматика `qxctl knowledge reconcile ...` керує узгодженням робочих дерев через один точний прив’язаний Knowledge Session Coordinator. Кожна мутація відстежується за стабільним ідентифікатором і виконується як compare-and-swap відносно точного поточного дайджесту журналу.
+
+## Команди
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: перевірити, що qxctl, координатор і прив’язані рушії узгоджуються щодо версії протоколу та області дії.
+- `begin`: відкрити новий контекст узгодження зі стабільним ідентифікатором операції.
+- `status`: перевірити поточний журнал без мутації.
+- `checkpoint`: довговічно просунути журнал за допомогою compare-and-swap.
+- `close`: завершити контекст узгодження.
+- `recover --discover`: відновлення через виявлення, коли звичайний статус не може перевірити локальний стан.
+
+## Правила відновлення
+
+<Warning>
+  Двослотове відновлення — це пряме виправлення на основі доказів. Воно ніколи не є дозволом відкинути несумісний журнал чи невідоме критичне розширення. Якщо відновлення не вдається, ескалюйте, а не застосовуйте силу.
+</Warning>
+
+Використовуйте відновлення через виявлення лише тоді, коли звичайний статус не може перевірити локальний стан. Зберігайте блокувальники; переплановуйте лише після зміни перевірених доказів.
+
+## Пов’язані поверхні
+
+<CardGroup cols={2}>
+  <Card title="Координатор сесій" icon="gears" href="/uk/engines/coordinator">
+    Рушій, що володіє журналами узгодження.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/uk/qxctl/session">
+    Автентифіковані сесії, що поєднуються з контекстами узгодження.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/uk/qxctl/engines">
+    Керування прив’язками, які використовує координатор.
+  </Card>
+</CardGroup>

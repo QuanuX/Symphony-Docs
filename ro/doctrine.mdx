@@ -1,0 +1,35 @@
+---
+title: "Doctrina platformei QuanuX Symphony"
+description: "Aflați principiile care guvernează Symphony: proprietatea utilizatorului asupra strategiei și infrastructurii, neutralitatea față de clasa apelantului, protecția căii critice și compatibilitatea bazată pe dovezi."
+sidebarTitle: "Doctrină"
+---
+
+Doctrina Symphony definește granițele dintre ceea ce controlează platforma și ceea ce controlați dumneavoastră. Aceste reguli guvernează fiecare decizie de proiectare din monorepo și fiecare interacțiune cu qxctl, motoarele de vectori și contractele de cunoaștere.
+
+## Proprietatea utilizatorului
+
+Dumneavoastră dețineți logica strategiei, scopul Nest, alegerea furnizorului, alegerea hardware-ului, topologia magistralelor și selecția adaptoarelor acceptate. Symphony oferă dovezi exacte de compatibilitate și operațiuni acceptate, dar nu transformă recomandările în lege a platformei. Platforma raportează potriviri, nepotriviri, fapte nerezolvate și consecințe. Nu clasifică furnizorii, nu prescrie o strategie și nu vă extinde pe tăcute mediul.
+
+## Protecția căii critice
+
+Calea critică (hot path) este protejată de rezidența administrativă și de presiunea accidentală asupra magistralelor partajate. qxctl și planul de cunoaștere reprezintă administrare pe calea rece sau înghețată. Acestea pot acționa explicit asupra unui Node care găzduiește și activitate live, dar nu trebuie să devină dependențe continue ale căii critice, observatori ascunși, interpretoare rezidente sau manageri de pachete nesolicitați rulând în fundal. Arhitectura dumneavoastră explicită rămâne suverană.
+
+## Separarea comenzilor de semantică
+
+qxctl deține gramatica și prezentarea comenzilor. Vectorii de domeniu dețin operațiunile și semnificațiile pe care le expun acele comenzi. O rută qxctl invocă o capabilitate definită de proprietar fără a-i absorbi semantica.
+
+## Nume și spații de nume
+
+Numele sunt înregistrate în cadrul domeniului care le deține. SNV și SCNV nu le dictează, iar NAMESPACES de la rădăcină rămâne mai larg decât SNV. Un nume înregistrat într-un TOPS sau TROG urmează acel domeniu. În cadrul mai multor clustere, un nume scurt de Node poate reapărea în clustere diferite, dar nu poate identifica ambiguu două Node-uri active din același cluster.
+
+## Neutralitatea față de clasa apelantului
+
+Clasificarea unui apelant ca om, IA, agent, serviciu sau sarcină de lucru nu acordă și nu retrage autoritate. Deciziile de autorizare acceptate folosesc proprietatea asupra gazdei țintă sau permisiunile acordate, operațiunea și resursa solicitate, starea așteptată și măsurile de protecție configurate de proprietar. Administratorul gazdei țintă este suveran asupra guvernanței configurabile. SSIAG poate verifica și proiecta autoritatea efectivă a gazdei, dar nu creează o autoritate de înregistrare superioară. Asigurarea sporită a identității și blocajele de guvernanță sunt măsuri de protecție neutre față de apelant și configurate de proprietar. Cerințele de integritate a protocolului rămân obligatorii. Symphony nu decide capacitatea juridică sau financiară externă în funcție de tipul apelantului.
+
+## Adevăr și dovezi
+
+Contractele curente descriu adevărul curent. Înregistrările imuabile SCLV și SODV păstrează ceea ce era cunoscut, modificat, autorizat sau finalizat la momentul istoric înregistrat. Atunci când contractele curente, dovezile de implementare și cea mai recentă înregistrare aplicabilă nu concordă, neconcordanța este semnalată ca deviere (drift) pentru revizuire. Istoricul nu este rescris pe tăcute pentru a semăna cu prezentul.
+
+## Doctrina Python
+
+Sursele, generatoarele, crearea de scheme, testele și utilitarele de acceptanță proprii Symphony nu necesită nicio implementare Python și nicio dependență de interpretor. C++ deține instrumentele de înlocuire pentru creare și testarea proceselor. Această politică a depozitului nu restricționează programele create de dumneavoastră sau Habitat-urile izolate selectate explicit.

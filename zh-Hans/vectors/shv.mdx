@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector：硬件能力知识"
+description: "SHV 通过多个可独立安装的 C++ 引擎，维护关于 CPU、GPU、NIC、主板、RAM 和 NVMe 的硬件能力知识。"
+sidebarTitle: "硬件向量"
+---
+
+Symphony Hardware Vector（SHV，Symphony 硬件向量）拥有硬件能力知识，帮助你理解物理设计如何赋能、约束、移植或扩展量化软件。它涵盖处理器、CPU 核心类型、GPU、NIC 与光纤接口、主板、缓存层级、内存、NVMe 以及完整的系统构建。默认的整理工作优先关注自 2018 年起的原始组件及有证据支持的变体。
+
+## 范围与覆盖
+
+SHV 可以涵盖与程序设计相关的任何有证据支持的物理能力。你可以通过 qxctl 控制覆盖配置。默认的日期依据是型号发布时间，而不是推断出的单个产品的制造日期。你可以扩展、缩小、替换或移除此过滤条件。
+
+## 已实现的引擎
+
+SHV 知识通过多个可独立安装的 C++ 引擎提供：
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    核心内核（0.4.0-dev）：覆盖配置、基于保留源的目录构建/重放、需求评估、确定性图投影以及基于源的图验证。
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    源标识、迁移计划、字节捕获绑定以及基于源重放的来源图。
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    声明一致性、可移植配方以及确切的本地源绑定。
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    硬件分区与组件映射操作。
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    受保护的调用方目录头、原始源重放以及持久快照恢复。
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    通用 C++ 图端口以及用于无损交换的内存可移植参考适配器。
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    可选的硬件图证据 DuckDB 关系型投影。
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    有边界的 PDF 提取，以及基于原始字节的文档断言重新验证。
+  </Card>
+</CardGroup>
+
+## 源修订与来源
+
+`shv-source-engine` 实现了稳定的源标识、显式迁移计划、纯转换验证、实际字节捕获绑定以及基于源重放的来源图。这些都是只读操作。核心整理工作优先关注原始组件标识和有证据支持的变体。受保护的源激活单独处理；纯源引擎不授予权限。
+
+## 图交换与存储
+
+`shv-graph-adapter` 提供一个通用 C++ 图端口，用于无损交换和结构化查询。持久存储通过默认的 DuckDB SQL 实现。当前未选定专用的图数据库。
+
+## PDF 证据边界
+
+`shv-pdf-adapter` 从显式 PDF 表格中提取合格的文档断言，并在通用图交换之后基于原始字节对其重新验证。通用 PDF 覆盖仍是单独界定范围的工作。
+
+## 剩余工作
+
+广泛的硬件图谱、自动化源获取、多源冲突聚合、更多厂商专用数据库驱动、自定义插件加载以及 Composer 集成仍是后续工作。广泛的组件映射和持久的厂商驱动也尚未完成。
+
+## SHV 与其他向量的关系
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/zh-Hans/vectors/snv">
+    记录包含 SHV 所描述硬件的 Node。
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/zh-Hans/vectors/scv">
+    引用由 SHV 详细刻画的提供商硬件产品。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh-Hans/vectors/sov">
+    在供给或调整 Node 时可能基于 SHV 证据执行操作。
+  </Card>
+</CardGroup>

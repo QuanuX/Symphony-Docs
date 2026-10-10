@@ -1,0 +1,37 @@
+---
+title: "Karstā ceļa izolācija QuanuX Symphony"
+description: "Uzziniet, kā Symphony aizsargā izpildes ceļus no administratīvas iejaukšanās: aukstā un sasalušā ceļa komponenti, kopņu disciplīna un Prima Parte stāvokļa liecinieka koncepcija."
+sidebarTitle: "Karstā ceļa izolācija"
+---
+
+Symphony nošķir administratīvo darbu no izpildes darba, lai tiešraides tirdzniecība, pētniecība un citi veiktspējas jutīgi ceļi paliktu brīvi no svārstībām (jitter), latentuma un slēptām atkarībām. qxctl un zināšanu plakne ir aukstā vai sasalušā ceļa administrēšana. Tās drīkst skaidri darboties ar Node, kurā tiek izvietots arī tiešraides darbs, taču tās nedrīkst kļūt par nepārtrauktām karstā ceļa atkarībām.
+
+## Aukstā un sasalušā ceļa disciplīna
+
+qxctl un vektoru dzinēji ir administratīvi aukstā vai sasalušā ceļa komponenti. Tie nedrīkst:
+
+- Izpildīties tieši karstajos vai siltajos izpildes ceļos
+- Koplietot slēdzenes ar tiešraides darba slodzēm
+- Radīt sinhronas atkarības, kas palielina svārstības vai latentumu
+- Kļūt par slēptiem vērotājiem, rezidentiem interpretatoriem vai nepieprasītiem fona pakotņu pārvaldniekiem
+- Uzturēt nepārtrauktu rezidenci izpildes Node
+
+Šis noteikums attiecas uz zināšanu sesiju koordinatoru, vektoru dzinējiem un visām qxctl administrētajām darbībām. Tie sagatavo pierādījumus, validē stāvokli un sagatavo plānus, taču nepiedalās tiešraides izpildes ceļā.
+
+## Kopņu disciplīna
+
+Lielapjoma pārsūtīšanai, vadībai, pētniecībai un izpildes izplūdes datiem nav jākoplieto viena kopne. Topoloģija var izmantot vairākas kopnes vai apiet kopni deklarētam ceļam, īpaši tur, kur koplietota datplūsma varētu radīt svārstības. NATS JetStream, ZeroMQ un citas struktūras ir adapteri un lietotāja izvēles. qxctl kopņu administrēšanas esamība nepadara kopnes šķērsošanu obligātu.
+
+Jūs izvēlaties kopņu topoloģiju, kas atbilst jūsu latentuma un caurlaidspējas prasībām. Symphony atbalsta konfigurāciju, neuzspiežot vienu koplietotu struktūru.
+
+## Prima Parte
+
+**Prima Parte** ir ratificēta 3. fāzes koncepcija, nevis pašreiz izpildāma programma. Tā ir neobligāts, īpaši viegls C++ Node lokāla stāvokļa liecinieks, ko qxctl skaidri izsauc pēc būtiskas darbības. Tam nav dēmona, klausītāja, taimera, vērotāja, aptaujas cikla vai rezidenta kopnes savienojuma.
+
+Tā ierobežotā noturīgā vārdnīca ietver trīs terminus:
+
+- `current` — pašreizējais novērotais stāvoklis
+- `previous` — stāvoklis pirms būtiskās darbības
+- `lastTransmitted` — stāvoklis, ko attālais Node nosūtīja pēc saistītās komandas izpildes (saņemšana nav apstiprināta)
+
+Prima Parte reģistrē tikai savu Node, nekad nekļūst par mazāku Maestro un beidz darbu pēc sava ierobežotā uzdevuma izpildes. Tas nav 1. fāzes Maestro receptors, un neviena izpildāmā programma vēl nav ieviesta.

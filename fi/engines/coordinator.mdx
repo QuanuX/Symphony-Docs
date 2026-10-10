@@ -1,0 +1,50 @@
+---
+title: "Tietoistuntokoordinaattori Symphonyn vektorimoottoreille"
+description: "Tietoistuntokoordinaattori (Knowledge Session Coordinator) tarjoaa rajatun yhteensopivuuden, työpuun täsmäytyksen, todennetut istunnot ja soveltamiskykyisen elinkaaren koordinoinnin C++26:lla."
+sidebarTitle: "Koordinaattori"
+---
+
+Tietoistuntokoordinaattori (Knowledge Session Coordinator, `modules/knowledge-session-coordinator`) on erikseen asennettava C++26-prosessi. Se sijaitsee qxctl:n ja vektorimoottorien välissä ja omistaa rajatun yhteensopivuuden, työpuun täsmäytyksen, todennetut ei-kanoniset istunnot, SSFV-ylläpidon, pelkästään raportoivan elinkaarisuunnittelun sekä erikseen valtuutetut soveltamiskykyiset lokit.
+
+## Vastuualueet
+
+- **Yhteensopivuustarkistukset** qxctl:n, koordinaattorin ja moottorien välillä
+- **Työpuun täsmäytys** pysyvällä, paikkapohjaisella tilalla
+- **Todennetut ei-kanoniset istunnot** SSIAG:n valtuuden alaisuudessa
+- **Pysyvät SSFV-ylläpitovirrat**
+- **Pelkästään raportoiva elinkaarisuunnittelu** deterministisellä näytöllä
+- **Soveltamiskykyiset lokit**, joissa on valmistellut yritykset, compare-and-swap, uudelleenhavainnointi, dynaaminen uudelleensuunnittelu ja palautus
+
+## Mitä koordinaattori ei tee
+
+<Warning>
+  Koordinaattori ei suorita vektorien semantiikkaa eikä isäntätoimintoja. Se koordinoi näyttöä ja lokeja; jokainen moottori omistaa edelleen oman toimialueensa, ja jokainen isäntätoiminto pysyy oman sopimuksensa valtuuttamana.
+</Warning>
+
+- Ei kanonisen tiedon soveltamista
+- Ei mielivaltaisten komentojen suorittamista
+- Ei piilotettuja tarkkailijoita tai pysyvää taustatyötä
+
+## qxctl-integraatio
+
+qxctl kutsuu tarkkoja, kuitein validoituja koordinaattoriasennuksia. `qxctl knowledge reconcile ...` ja `qxctl knowledge session ...` käyttävät yhtä tarkkaa sidottua koordinaattoria toimintoa kohden, ja muutokset edellyttävät vakaita toimintotunnisteita sekä tarkkoja nykyisiä lokitiivisteitä compare-and-swap-toimintoa varten.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fi/qxctl/reconcile">
+    Työpuun täsmäytyksen kielioppi.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fi/qxctl/session">
+    Todennettujen istuntojen ja SSFV-ylläpidon kielioppi.
+  </Card>
+
+  <Card title="Peruskirjasto" icon="cube" href="/fi/engines/knowledge-vector-foundation">
+    Jaettu C++-mekaniikka, jota koordinaattori hyödyntää.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fi/governance/ssiag">
+    Valtuuttaa koordinaattorin hallinnoimat istunnot.
+  </Card>
+</CardGroup>

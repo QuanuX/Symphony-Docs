@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Warnungsrichtlinie des Symphony Validators"
+description: "Administrieren Sie geschützte Warnungsrichtlinie, Baseline und Anzeigegrammatik über dem unabhängigen Symphony Validator mit qxctl, ohne rohe Detektornachweise zu verändern."
+sidebarTitle: "validate"
+---
+
+Die Grammatik `qxctl validate ...` administriert die geschützte Warnungsrichtlinie, die Baseline und die Anzeigegrammatik des Symphony Validators. Der unabhängig installierte C++-Validator erzeugt unveränderliche Rohnachweise; qxctl administriert eine aufruferneutrale, geschützte Darstellung, ohne die Erkennung zu verändern.
+
+## Was qxctl validate abdeckt
+
+- Neun geschützte Leaves für den Warnungs-Lifecycle
+- Die exakte belegbasierte Root-Summary-Route
+- Baseline-Verwaltung und Delta-Berichte
+- Anzeigegrammatik für Zeilenausgabe und strukturiertes JSON
+
+Jedes Leaf validiert den exakten Beleg und die strukturierten Digests des Validators, bevor die geschützte Warnungsrichtlinie angewendet wird.
+
+## Abgrenzung
+
+<Warning>
+  qxctl validate kann keine Dateien reparieren, nichts veröffentlichen und keine rohen Detektornachweise überschreiben. Die Disposition von Warnungen betrifft die Darstellung, nicht die Erkennung.
+</Warning>
+
+- Keine Unterdrückung von Warnungen außerhalb der geschützten Richtlinie
+- Keine Änderung der Validator-Ausgabe
+- Keine erfundene Abdeckung für eine nicht verfügbare Route
+
+## Häufige Anwendungsfälle
+
+- Eine Warnungs-Baseline festlegen oder zurücksetzen
+- Eine verwaltete historische Warnung genehmigen oder erneut öffnen
+- Die belegbasierte Root Summary ausgeben, die in der README des Repositorys erscheint
+
+Der Validator, auf dem diese Grammatik aufbaut, prüft Vertragsform, aktuellen Quellabschluss, Invarianten-Ownership, Feature-Administration, Releases und die maschinenverwaltete Root Summary.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/de/governance/validator">
+    Der unabhängige, schreibgeschützte C++-Prüfer, den qxctl administriert.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/de/skv/ssfv">
+    Erwartungen an die Feature-Administration, die in Nachweisen geprüft werden.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/de/skv/sodv">
+    Release-Einträge, die in Validator-Nachweisen erscheinen.
+  </Card>
+
+  <Card title="qxctl-Übersicht" icon="terminal" href="/de/qxctl/overview">
+    Vollständige Befehlsoberfläche.
+  </Card>
+</CardGroup>

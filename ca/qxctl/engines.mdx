@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: vinculació, diagnòstic i migració del registre"
+description: "Gestioneu el perfil de vinculació de motors protegit d'àmbit d'usuari de Symphony amb list, inspect, doctor, bind, unbind i migrate lligat a digest mitjançant qxctl."
+sidebarTitle: "engines"
+---
+
+La gramàtica `qxctl knowledge engines ...` gestiona el perfil de vinculació `default` protegit d'àmbit d'usuari per als motors vectorials de Symphony. Vincula contingut seleccionat per a una reconciliació posterior. No instal·la, invoca, activa, acobla, autentica, autoritza ni aplica cap motor.
+
+## Ordres
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Indiqueu `absent` per a la primera mutació del registre v2 o el digest exacte que informa `list` per a les mutacions posteriors. Cada mutació és un compare-and-swap contra aquest digest.
+
+## Migració de v1 a v2
+
+<Warning>
+  L'estat vàlid del registre v1 continua sent llegible. La migració a v2 és un compare-and-swap exacte independent i mai no és una operació de selecció de versió. No tracteu la migració com una via d'actualització per a la selecció de motors.
+</Warning>
+
+- `list` i `inspect` continuen funcionant amb l'evidència v1.
+- `migrate` produeix una generació v2 enllaçada sense descartar la veritat de v1.
+- Després de la migració, feu servir digests v2 per a les mutacions futures.
+
+## Què és una vinculació
+
+Una vinculació selecciona contingut exacte perquè el coordinador el reconciliï més endavant. Una vinculació:
+
+- No instal·la cap motor
+- No invoca ni activa cap motor
+- No acobla cap motor amb Maestro
+- No autentica cap invocador
+- No autoritza l'aplicació
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ca/qxctl/reconcile">
+    Reconcilieu el contingut vinculat amb un coordinador.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/ca/qxctl/lifecycle">
+    Plans de cicle de vida que utilitzen motors vinculats.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ca/governance/maestro">
+    Autoritat de presència que registra els acoblaments, no les vinculacions.
+  </Card>
+
+  <Card title="Visió general dels motors" icon="cube" href="/ca/engines/overview">
+    Motors vectorials instal·lables de manera independent.
+  </Card>
+</CardGroup>

@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: プロバイダーリソースの知識"
+description: "SCV は、個別にインストール可能な 8 つの C++ エンジンを通じて、AWS、Azure、GCP、DigitalOcean、Cloudflare、およびユーザー所有のハードウェアにわたるオフサイトのプロバイダーリソースに関するプライベートな知識を維持します。"
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector（SCV）は、オフサイトのハードウェアリソースと、クラスター、トレーニング、リサーチ、データ作業を形作るプロバイダーの実情に関するプライベートなセマンティック知識を所有します。プロバイダーをランク付けしたり、あなたが試みてよいことに制限を課したりすることなく、プロバイダーの提供内容、リージョン、インフラストラクチャドメイン、制約、観測された可用性をマッピングします。
+
+## プロバイダーのカバレッジ
+
+SCV は次のプロバイダーとリソースタイプをカバーします:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- ユーザー所有のハードウェア（オフサイトリソースとの比較が必要な場合）
+
+## インストールされるエンジン
+
+SCV の知識は、個別にインストール可能な 8 つの C++ エンジンを通じて提供されます。必要なものだけをインストールします:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    プロバイダーリソースの知識とグラフ構築のためのコア SCV エンジン。
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    範囲が限定されたキャプチャとコーパスセマンティクスのためのクラウドエビデンスエンジン。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare 固有のエビデンスエンジン。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS 固有のハードウェアおよびリソース知識エンジン。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure 固有のハードウェアおよびリソース知識エンジン。
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean 固有のリソース知識エンジン。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP 固有のハードウェアおよびリソース知識エンジン。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    保持された SQL インデックス作成のために DuckDB を使用する、オプションのリレーショナルグラフコネクター。
+  </Card>
+</CardGroup>
+
+## ポータブルなプロバイダーパッケージと構成
+
+SCV は qxctl を通じてポータブルなプロバイダーパッケージを公開します。要件、プロバイダーの権限、レシピの代替案、実行の決定は、あなたが引き続き管理します。qxctl は保持されたワークフローと保護されたグラフ選択をサポートしているため、プロバイダーに再クエリすることなく正確なエビデンスを再生できます。
+
+## オプションの DuckDB コネクター
+
+`scv-graph-duckdb-connector` は、不変のネイティブグラフの範囲限定のリレーショナルプロジェクションを追加します。DuckDB はユーザーが選択したデフォルトの SQL データベースです。将来的には、追加のアダプターを通じて専用のグラフエンジンを選択できるようになります。
+
+## プライバシーと主権
+
+インストールされた SCV ナレッジグラフは、あなたのプライベートなインストールに属します。ユーザーが提供するアカウント、残高、権限、契約上の制約は、明示的に有効化された観測サーフェスを通じてのみ使用されます。プライベートな事実が Symphony の公式なソースの真実に入ることはありません。
+
+## SCV と他のベクターとの関係
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/ja-jp/vectors/sov">
+    SCV のエビデンスに基づいて動作する運用コントロールプレーン。SOV はプロバイダーの意味を書き換えません。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ja-jp/vectors/snv">
+    SCV の情報に基づくプロビジョニングの結果として生じる、物理 Node とクラスターの ID を記録します。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ja-jp/vectors/shv">
+    SCV が参照するコンポーネントについて、詳細なハードウェア機能の知識を所有します。
+  </Card>
+</CardGroup>
+
+## バージョン管理されたインターフェースのインクリメント
+
+SCV のリリースは追加的で、正確にバージョン管理されています。以前のインストールは、その正確なスコープで引き続き呼び出し可能です。現在のインクリメントには、ネイティブ操作、コーパススナップショット、解釈プロファイル、ポータブルなプロバイダーパック、構成ワークフロー、義務の追跡、エビデンスバンドルが含まれます。各インクリメントは、以前のルート、デフォルト、記録を保持します。

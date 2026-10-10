@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector zur Kompositionsbewertung"
+description: "SAV löst Accord-Referenzen auf, bewertet Komposition auf drei Achsen, validiert Named Versions und plant Installation Blueprints, ohne die kanonische Wahrheit zu verändern."
+sidebarTitle: "SAV"
+---
+
+Der Symphony Accordare Vector (SAV) löst deklarierte Komponentenkomposition und Kompatibilität auf. Seine Engine ist ein schreibgeschützter C++26-Prozess auf dem Freezing-Pfad. SAV komponiert exakte typisierte Projektionen, übernimmt aber niemals die Quellwahrheit von den verantwortlichen Vektoren.
+
+## Operationen
+
+SAV unterstützt eine umfangreiche Menge an Bewertungsoperationen:
+
+- **Auflösung von Accord-Referenzen** in unveränderliche, abgeleitete CURRENT-Snapshots
+- **Dreiachsige Bewertung**, Vergleich und Erläuterung
+- **Kompositionsgraphen** und verwerfbare Projektionen
+- **Named Version**-Validierung und -Diff
+- **Extension Capsule**-Prüfungen
+- **Installation Blueprint**-Planung
+- **Kompatibilitätsverhandlung** zwischen deklarierten Komponenten
+
+## Was SAV nicht tut
+
+- SAV übernimmt keine semantische Ownership der Komponenten, die er komponiert.
+- SAV wählt kein Design für Sie aus; er bewertet, was Sie deklariert haben.
+- SAV verändert keine kanonischen Dateien. Seine Ausgabe besteht aus Nachweisen und Vorschlägen.
+- SAV ist nicht die STAV-Append-Autorität. Zur Behandlung von Absichten vor der Mutation siehe den Accordare-STAV-Produzenten.
+
+<Note>
+  SAV beschränkt sich auf Lesen, Abfragen, Validieren und Vorschlagen. Programmatisches kanonisches Apply bleibt in der gesamten SKV-Engine-Familie deaktiviert.
+</Note>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SKV-Übersicht" icon="book-open" href="/de/skv/overview">
+    Das übergreifende Framework und das Contract-Quad-Modell.
+  </Card>
+
+  <Card title="Accordare-Produzent" icon="pen-nib" href="/de/governance/accordare-producer">
+    Begrenzter Audit-Kreislauf für SAV Named Versions.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/de/skv/sev">
+    Evolutionsfälle, die eine SAV-Bewertung von Kompositionsänderungen auslösen.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Ratifizierte Accordare-Grammatik erscheint nach der Implementierung als `qxctl accord ...`.
+  </Card>
+</CardGroup>

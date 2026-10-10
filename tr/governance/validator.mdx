@@ -1,0 +1,52 @@
+---
+title: "Symphony Doğrulayıcı: Deterministik Salt Okunur Depo Kontrolleri"
+description: "Symphony Doğrulayıcı; sözleşmeler, kaynak kapanışı, değişmezler, özellikler, sürümler ve makine tarafından kontrol edilen kök özet için satır veya yapılandırılmış JSON kanıtı üretir."
+sidebarTitle: "Doğrulayıcı"
+---
+
+Symphony Doğrulayıcı (`tools/symphony-validator`), bağımsız, deterministik ve salt okunur bir C++26 depo denetleyicisidir. Deponun ve sözleşmelerinin mevcut durumu hakkında değiştirilemez kanıt üretir. Hiçbir şeyi onaramaz veya yayımlayamaz.
+
+## Doğrulayıcının kontrol ettikleri
+
+- Sözleşme biçimi: gerekli Contract Quad bağlantı noktaları ve yapısı
+- SKVI tarafından dizinlenen yüzeyler genelinde mevcut kaynak kapanışı
+- `knowledge/INVARIANTS.md` ve değişmez kayıt defterine göre değişmez sahipliği
+- SSFV tarafından raporlanan özellik yönetimi beklentileri
+- SODV tarafından raporlanan sürüm kayıtları
+- Depo README dosyasındaki makineye ait kök özet
+
+Kanıt, satır çıktısı veya yapılandırılmış JSON olarak üretilir. Her çıktı, aynı depo durumundan yeniden üretilebilir.
+
+## Doğrulayıcının yapmadıkları
+
+<Warning>
+  Doğrulayıcı dosyaları onaramaz, sözleşmeleri yeniden yazamaz veya depoyu yayımlayamaz. Hiçbir şey hakkında kanonik gerçeklik oluşturmaz; yalnızca onu raporlar.
+</Warning>
+
+- Depo üzerinde yan etki yok
+- Ağ erişimi yok
+- qxctl'in korumalı uyarı politikası dışında uyarı bastırma yok
+
+## qxctl entegrasyonu
+
+qxctl, korumalı uyarı politikasını uygulamadan önce doğrulayıcının kesin makbuzunu ve yapılandırılmış özetlerini doğrular. Korumalı uyarı yaşam döngüsüne ait dokuz qxctl yaprak komutu ile makbuz destekli kesin kök özet rotası, ham algılayıcı kanıtını değiştirmeden doğrulama yönetimini sunar.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/tr/qxctl/validate">
+    Korumalı uyarı politikası, temel çizgi ve görüntüleme dil bilgisi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/tr/skv/ssfv">
+    Doğrulayıcı tarafından kontrol edilen özellik yönetimi beklentileri.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    Doğrulayıcının incelediği sürüm kayıtları.
+  </Card>
+
+  <Card title="SKV genel bakış" icon="book-open" href="/tr/skv/overview">
+    Sözleşmeleri doğrulayıcı tarafından kontrol edilen kapsayıcı çerçeve.
+  </Card>
+</CardGroup>

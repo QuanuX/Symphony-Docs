@@ -1,0 +1,82 @@
+---
+title: "qxctl Vektör Komutları: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Bugün kullanılabilen vektöre özgü qxctl gramerini keşfedin: SKVI, SCLV, SACV, SODV, SSFV, SHV depolama ve katalog ile ayrılmış accord ve evolution yüzeyleri."
+sidebarTitle: "Vektör Komutları"
+---
+
+qxctl, uygulanmış her SKV engine'i ile SCV ve SHV yönetimi için vektöre özgü gramer sunar. Onaylanmış Accordare ve SEV grameri, komut uygulamaları ve kararlı kayıt defteri kanıtları mevcut olduğunda `qxctl accord ...` ve `qxctl evolution ...` komutlarını kullanacaktır.
+
+## SKV engine grameri
+
+- `qxctl skvi ...`: SKVI engine'ine karşı inspect, check, propose, project
+- `qxctl sclv ...`: SCLV engine'ine karşı inspect, check, propose, recover, project
+- `qxctl sacv ...`: SACV engine'ine karşı inspect, check, diff, propose, project
+- `qxctl sodv ...`: SODV engine'ine karşı inspect, check, verify, propose, recover, project
+- `qxctl ssfv ...`: SSFV engine'ine karşı inspect, check, diff, propose, graph
+
+Her gramer, sahibi olan engine'in sözleşmesiyle sınırlıdır. qxctl hiçbir zaman bir işlem icat etmez veya engine'i atlamaz.
+
+## Accordare eklemeleri
+
+qxctl üzerindeki Accordare eklemeleri şunları sağlar:
+
+- Kararlı durum
+- Uzlaştırma (yalnızca kesin adayları yeniden oynatır)
+- Denetleyici kurulumu ve kaldırılması (yalnızca doğrulanmış receipt-v2 çalıştırılabilir dosyasını çağırır)
+- Yalnızca durdurulmuş STAV yapılandırmasını SSIAG ve beklenen durum kurtarması altında değiştiren iki yetki yönetimi kimliği
+
+Durum, kalıcı niyeti ve ekleme birikimini ayırır. Uzlaştırma yalnızca kesin adayları yeniden oynatır. Yetki yaprakları hiçbir zaman çalışan bir yapılandırmayı açmaz.
+
+## SHV depolama
+
+Kalıcı SHV depolaması yalnızca şunlar aracılığıyla yönetilir:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+Saklanan beklenen niyet özetiyle yapılan `commit` aynı zamanda kurtarmadır. Ayrı bir kurtarma takma adı yoktur. Depo kapsamı girdide bildirilir; bağlayıcı kimliği bayraklarda ayarlanır. Yapısal depolama, anlamsal `shv graph validate` işlevini tekrarlamaz veya bir katalog başı seçmez.
+
+`shv graph store inventory` (sürüm 0.2), açıkça saklanan yazar kimlikleriyle revizyona bağlı mantıksal bir okuma ekler. Eski 0.1 seçimi desteklenmeye devam eder.
+
+## SHV katalog yayını
+
+Katalog yayını yalnızca şunlar aracılığıyla yönetilir:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Kurtarma, `--input` ile karşılıklı olarak dışlayıcı olan `apply --operation-id` komutudur. İzin destekli yerel katalog seçimi, kaynak etkinleştirmesinden ve genel grafik depolamasından ayrıdır.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    Engine'lerin uyguladığı vektör anlamları.
+  </Card>
+
+  <Card title="SHV vektörü" icon="microchip" href="/tr/vectors/shv">
+    Hardware Vector arka planı ve engine listesi.
+  </Card>
+
+  <Card title="SHV engine'leri" icon="microchip" href="/tr/engines/shv-engines">
+    Engine düzeyindeki ayrıntılar.
+  </Card>
+
+  <Card title="qxctl'e genel bakış" icon="terminal" href="/tr/qxctl/overview">
+    Eksiksiz qxctl komut yüzeyi.
+  </Card>
+</CardGroup>

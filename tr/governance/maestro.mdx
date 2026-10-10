@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony Vektör Motoru Varlık Yetkisi"
+description: "Maestro, kimliği doğrulanmış vektör motoru yanaşma ilişkilerini TOPS ve alıcı başına kaydeder ve motorları başlatmadan veya denetlemeden eksiksiz, salt okunur bir envanter türetir."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`), bağımsız olarak kurulabilen, donuk yol (freezing-path) bir C++26 varlık yetkisidir. Kimliği doğrulanmış kesin vektör motoru yanaşma (docking) ilişkilerini TOPS ve alıcı (receptor) başına kaydeder ve şu anda neyin yanaşmış olduğuna dair eksiksiz, salt okunur bir envanter türetir. Maestro bir denetleyici değil, bir tanıktır.
+
+## Maestro'nun kaydettikleri
+
+- Vektör motorları ve alıcılar arasındaki kimliği doğrulanmış kesin yanaşma ilişkileri
+- Her kurulumun varlık bilgisinin o kuruluma özel kalması için TOPS başına kapsamlandırma
+- `qxctl maestro inventory` aracılığıyla erişilebilen, türetilmiş, eksiksiz ve salt okunur bir envanter
+
+## Maestro'nun yapmadıkları
+
+<Warning>
+  Maestro motorları başlatmaz, zamanlamaz, denetlemez veya çağırmaz. Bağlama, uzlaştırma, kimliği doğrulanmış oturum koordinasyonu veya tek başına bir yaşam döngüsü planı; Maestro varlığını oluşturmaz, anlamsal gerçekliği onaylamaz, kanonik bilgiyi değiştirmez veya kurulu ana bilgisayarın eksiksizliğini kanıtlamaz.
+</Warning>
+
+- Maestro hiçbir süreç oluşturmaz.
+- Maestro hiçbir zaman kanonik bilgi değişikliklerini uygulamaz.
+- Maestro hiçbir zaman anlamların sahibi olan vektör motorunun yerini almaz.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/tr/qxctl/maestro">
+    `qxctl maestro inventory` türetilmiş envanteri sunar.
+  </Card>
+
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Kimliği doğrulanmış oturum ve çalışma ağacı uzlaştırma mekanizmalarının sahibidir.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/tr/governance/ssiag">
+    Maestro'nun kaydettiği yanaşma ilişkilerinin kimliğini doğrular.
+  </Card>
+
+  <Card title="Motorlara genel bakış" icon="cube" href="/tr/engines/overview">
+    Maestro'ya yanaşan, bağımsız olarak kurulabilen vektör motorları.
+  </Card>
+</CardGroup>

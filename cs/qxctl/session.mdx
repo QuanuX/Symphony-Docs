@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: autentizované relace Symphony"
+description: "Otevírejte, checkpointujte, uzavírejte a obnovujte autentizované relace koordinátoru Symphony a perzistentní proudy údržby SSFV s granty ověřenými SSIAG."
+sidebarTitle: "session"
+---
+
+Gramatika `qxctl knowledge session ...` otevírá nekanonické autentizované relace prostřednictvím jednoho přesně vázaného koordinátoru a jednoho koncového bodu SSIAG v rozsahu TOPS. Samostatná gramatika `session features ...` řídí perzistentní proud údržby SSFV.
+
+## Základní gramatika relací
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Každé volání si vyžádá nový přesný grant a ověřuje:
+
+- Identitu subjektu a cíle
+- Stav politiky a konfigurace
+- Expiraci
+- Neutralitu vůči třídě volajícího
+- Nepřenositelnost
+- Zakázání kanonického apply
+- Vazbu schopností
+
+Důkazy relace autorizují pouze pojmenovanou chráněnou nekanonickou operaci. Žurnály relací a rekonciliace udržujte oddělené; k jejich přiřazení používejte pouze kontextové odkazy.
+
+## Proud údržby SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Proud features je samostatný perzistentní kontext údržby SSFV. Mutace vyžadují:
+
+- Otevřenou autentizovanou základní relaci
+- Přesné vazby koordinátoru a SSFV
+- Stabilní identifikátory operací
+- Přesný compare-and-swap
+- Nové důkazy SSIAG
+
+<Note>
+  Zachovejte základní snímek a jeho původní identitu enginu napříč kompatibilními upgrady a rollbacky. Volitelné důkazy z Maestra musí představovat úplný autentizovaný inventář; pokud Maestro záměrně chybí, zaznamenejte explicitní důvod „not-configured“. `review_required` je důkaz pro kontrolu volajícím, nikoli ratifikace.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/cs/governance/ssiag">
+    Vydává nové granty, které každý požadavek relace ověřuje.
+  </Card>
+
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Engine stojící za žurnály relací a features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/cs/qxctl/reconcile">
+    Kontexty rekonciliace, které se párují s relacemi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cs/skv/ssfv">
+    Vektor funkcí, který proud features udržuje.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: työpuiden täsmäytys"
+description: "Täsmäytä työpuut sidottua Symphony-koordinaattoria vasten yhteensopivuustarkistuksilla, checkpoint- ja close-lokeilla sekä todisteisiin perustuvalla kahden paikan palautuksella."
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` -kielioppi ohjaa työpuiden täsmäytystä yhden tarkan, sidotun Knowledge Session Coordinatorin kautta. Jokaista muutosta seurataan vakaalla tunnisteella, ja se on compare-and-swap-operaatio tarkkaa nykyistä lokin digestiä vasten.
+
+## Komennot
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: varmista, että qxctl, koordinaattori ja sidotut moottorit ovat yhtä mieltä protokollaversiosta ja laajuudesta.
+- `begin`: avaa uusi täsmäytyskonteksti vakaalla operaatiotunnisteella.
+- `status`: tarkastele nykyistä lokia muuttamatta sitä.
+- `checkpoint`: vie lokia pysyvästi eteenpäin compare-and-swap-operaatiolla.
+- `close`: viimeistele täsmäytyskonteksti.
+- `recover --discover`: löytöpalautus, kun tavallinen tila ei pysty validoimaan paikallista tilaa.
+
+## Palautussäännöt
+
+<Warning>
+  Kahden paikan palautus on todisteisiin perustuvaa eteenpäin suuntautuvaa korjausta. Se ei koskaan ole lupa hylätä yhteensopimatonta lokia tai tuntematonta kriittistä laajennusta. Jos palautus epäonnistuu, eskaloi äläkä pakota.
+</Warning>
+
+Käytä löytöpalautusta vain, kun tavallinen tila ei pysty validoimaan paikallista tilaa. Säilytä estot; suunnittele uudelleen vasta, kun todennetut todisteet muuttuvat.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Moottori, joka omistaa täsmäytyslokit.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fi/qxctl/session">
+    Todennetut istunnot, jotka liitetään täsmäytyskonteksteihin.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/fi/qxctl/engines">
+    Hallitse koordinaattorin käyttämiä sidontoja.
+  </Card>
+</CardGroup>

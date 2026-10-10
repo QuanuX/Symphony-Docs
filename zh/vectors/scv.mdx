@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector：提供商资源知识"
+description: "SCV 通过八个可独立安装的 C++ 引擎，维护关于 AWS、Azure、GCP、DigitalOcean、Cloudflare 以及用户自有硬件等外部提供商资源的私有知识。"
+sidebarTitle: "云向量"
+---
+
+Symphony Cloud Vector（SCV，Symphony 云向量）拥有关于外部硬件资源以及影响你的集群、训练、研究和数据工作的提供商实际情况的私有语义知识。它映射提供商的产品、区域、基础设施域、约束条件以及观测到的可用性，而不会对提供商进行排名，也不会对你可以尝试的内容施加限制。
+
+## 提供商覆盖范围
+
+SCV 涵盖以下提供商和资源类型：
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- 用户自有硬件（在需要与外部资源进行比较时）
+
+## 已安装的引擎
+
+SCV 知识通过八个可独立安装的 C++ 引擎提供。你只需安装所需的引擎：
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    用于提供商资源知识和图构建的核心 SCV 引擎。
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    用于有界采集和语料语义的云证据引擎。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare 专用证据引擎。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS 专用硬件与资源知识引擎。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure 专用硬件与资源知识引擎。
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean 专用资源知识引擎。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP 专用硬件与资源知识引擎。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    可选的关系型图连接器，使用 DuckDB 进行保留式 SQL 索引。
+  </Card>
+</CardGroup>
+
+## 可移植的提供商包与组合
+
+SCV 通过 qxctl 提供可移植的提供商包。你可以保留对需求、提供商权限、配方替代方案和执行决策的控制权。qxctl 支持保留式工作流和受保护的图选择，因此你可以重放精确的证据，而无需重新查询提供商。
+
+## 可选的 DuckDB 连接器
+
+`scv-graph-duckdb-connector` 为不可变的原生图添加了有界的关系型投影。DuckDB 是用户选择的默认 SQL 数据库。将来你可以通过额外的适配器选择专用的图引擎。
+
+## 隐私与主权
+
+已安装的 SCV 知识图属于你的私有安装。用户提供的账户、余额、权限和合同约束仅通过明确启用的观测接口使用。私有事实不会进入官方的 Symphony 源事实。
+
+## SCV 与其他向量的关系
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/zh/vectors/sov">
+    基于 SCV 证据执行操作的运维控制平面。SOV 不会改写提供商的含义。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/zh/vectors/snv">
+    记录由 SCV 指导的资源调配所产生的物理 Node 和集群的标识。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/zh/vectors/shv">
+    拥有 SCV 所引用组件的详细硬件能力知识。
+  </Card>
+</CardGroup>
+
+## 版本化的接口增量
+
+SCV 的发布是增量式的，并采用精确版本。较早的安装仍可在其精确作用域内被调用。当前的增量包括原生操作、语料快照、解释配置、可移植的提供商包、组合工作流、义务跟踪以及证据包。每个增量都会保留先前的路由、默认值和记录。

@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV プロデューサー: 範囲が限定された SAV Named Version の監査"
+description: "Accordare STAV プロデューサーは、認証済みのローカルピアを持つフリージングパスの Go プロデューサーを通じて、SAV Named Version のインテント、結果、リカバリーを永続化します。"
+sidebarTitle: "Accordare プロデューサー"
+---
+
+Accordare STAV プロデューサー (`modules/accordare-stav-producer`) は、範囲が限定された SAV Named Version 監査回路のための、個別にインストール可能なフリージングパスの Go プロデューサーです。変更前のインテントと追記のリカバリーを永続化し、ローカルピアを認証し、閉じた語彙によって受け入れられた厳密に安全な候補のみを送信します。STAV の追記権限そのものではありません。
+
+## インテント、結果、リカバリーのパターン
+
+プロデューサーは、監査対象となるすべての変更に対して 3 ステップのパターンに従います:
+
+<Steps>
+  <Step title="変更前のインテント">
+    変更が観測可能になる前に、呼び出し元が表明したインテントを永続的に記録します。プロデューサーは、閉じた語彙の外にある候補を拒否します。
+  </Step>
+  <Step title="最終的な結果">
+    変更が完了または失敗した後、厳密な結果を取得し、監査が期待された状態ではなく実際の状態を反映するようにします。
+  </Step>
+  <Step title="範囲が限定されたリカバリー">
+    中断が発生した場合、プロデューサーは調整を捏造したりインテントを黙って破棄したりすることなく、追記ストリームの範囲が限定されたリカバリーを実行します。
+  </Step>
+</Steps>
+
+## 境界
+
+<Warning>
+  Accordare プロデューサーは STAV の追記権限ではありません。ローカルピアを認証して候補を送信し、追記権限がそれらを検証、封印、永続的に保存します。この分離を回避するルーティングは決して行わないでください。
+</Warning>
+
+- プロデューサーの語彙は閉じています。SAV Named Version の監査候補のみを受け入れます。
+- プロデューサーはフリージングパスです。ホットパスの依存になってはなりません。
+- プロデューサーはローカルピアを認証しますが、リモートの呼び出し元は認証しません。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/jp/governance/stav">
+    監査レコードを封印する追記権限。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/jp/governance/ssiag">
+    プロデューサーが監査する変更を認可します。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/jp/skv/sav">
+    この回路が監査する Named Version 合成のセマンティクス。
+  </Card>
+
+  <Card title="qxctl vector コマンド" icon="terminal" href="/jp/qxctl/vector-commands">
+    承認済みの Accordare の文法は、実装され次第 `qxctl accord ...` として提供されます。
+  </Card>
+</CardGroup>

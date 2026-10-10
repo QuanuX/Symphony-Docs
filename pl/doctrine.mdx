@@ -1,0 +1,35 @@
+---
+title: "Doktryna platformy QuanuX Symphony"
+description: "Poznaj zasady rządzące Symphony: własność strategii i infrastruktury po stronie użytkownika, neutralność wobec klasy wywołującego, ochronę ścieżki krytycznej i kompatybilność opartą na dowodach."
+sidebarTitle: "Doktryna"
+---
+
+Doktryna Symphony wyznacza granice między tym, co kontroluje platforma, a tym, co kontrolujesz Ty. Te zasady rządzą każdą decyzją projektową w monorepo oraz każdą interakcją z qxctl, silnikami wektorów i kontraktami wiedzy.
+
+## Własność użytkownika
+
+To Ty jesteś właścicielem logiki strategii, celu Nest, wyboru dostawcy, wyboru sprzętu, topologii magistrali i wyboru obsługiwanych adapterów. Symphony dostarcza dokładnych dowodów kompatybilności i obsługiwanych operacji, ale nie zamienia rekomendacji w prawo platformy. Platforma raportuje dopasowania, niezgodności, nierozstrzygnięte fakty i konsekwencje. Nie tworzy rankingów dostawców, nie narzuca strategii ani po cichu nie poszerza Twojego środowiska.
+
+## Ochrona ścieżki krytycznej
+
+Ścieżka krytyczna (hot path) jest chroniona przed rezydencją administracyjną i przypadkowym obciążeniem współdzielonej magistrali. qxctl i płaszczyzna wiedzy to administracja ścieżki zimnej lub zamrożonej. Mogą jawnie działać na Node, który hostuje również pracę na żywo, ale nie mogą stać się ciągłymi zależnościami ścieżki krytycznej, ukrytymi obserwatorami, rezydentnymi interpreterami ani niezamówionymi menedżerami pakietów działającymi w tle. Twoja jawna architektura pozostaje suwerenna.
+
+## Rozdzielenie poleceń i semantyki
+
+qxctl jest właścicielem gramatyki poleceń i prezentacji. Wektory domenowe są właścicielami operacji i znaczeń, które te polecenia udostępniają. Trasa qxctl wywołuje zdolność zdefiniowaną przez właściciela, nie przejmując jej semantyki.
+
+## Nazwy i przestrzenie nazw
+
+Nazwy są rejestrowane w zakresie ich właściciela. SNV i SCNV ich nie narzucają, a główny NAMESPACES pozostaje szerszy niż SNV. Nazwa zarejestrowana w obrębie TOPS lub TROG podlega temu zakresowi. W przypadku wielu klastrów krótka nazwa Node może powtarzać się w różnych klastrach, ale nie może niejednoznacznie identyfikować dwóch aktywnych Node w tym samym klastrze.
+
+## Neutralność wobec klasy wywołującego
+
+Klasyfikacja wywołującego jako człowieka, AI, agenta, usługi lub obciążenia nie nadaje ani nie odbiera uprawnień. Obsługiwane decyzje autoryzacyjne opierają się na własności hosta docelowego lub przyznanych uprawnieniach, żądanej operacji i zasobie, oczekiwanym stanie oraz zabezpieczeniach skonfigurowanych przez właściciela. Administrator hosta docelowego jest suwerenny w zakresie konfigurowalnego zarządzania. SSIAG może weryfikować i odwzorowywać efektywne uprawnienia hosta, ale nie tworzy nadrzędnego organu rejestracyjnego. Wzmocnione zapewnienie tożsamości i blokady zarządcze są neutralnymi wobec wywołującego zabezpieczeniami konfigurowanymi przez właściciela. Wymagania dotyczące integralności protokołu pozostają obowiązkowe. Symphony nie rozstrzyga o zewnętrznej zdolności prawnej ani finansowej na podstawie typu wywołującego.
+
+## Prawda i dowody
+
+Bieżące kontrakty opisują bieżącą prawdę. Niezmienne rekordy SCLV i SODV zachowują to, co było wiadome, zmienione, autoryzowane lub ukończone w zarejestrowanym momencie historii. Gdy bieżące kontrakty, dowody implementacji i najnowszy obowiązujący rekord są ze sobą niezgodne, niezgodność jest ujawniana jako dryf do przeglądu. Historia nie jest po cichu przepisywana, by przypominała teraźniejszość.
+
+## Doktryna dotycząca Pythona
+
+Własny kod źródłowy Symphony, generatory, tworzenie schematów, testy i narzędzia pomocnicze do testów akceptacyjnych nie wymagają implementacji w Pythonie ani zależności od interpretera. Zastępcze narzędzia do tworzenia i testowania procesów należą do C++. Ta polityka repozytorium nie ogranicza Twoich własnych programów ani jawnie wybranych, izolowanych Habitatów.

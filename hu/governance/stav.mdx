@@ -1,0 +1,54 @@
+---
+title: "STAV: TOPS-onkénti, csak hozzáfűzhető auditfőkönyv a Symphonyhoz"
+description: "A STAV Append Authority TOPS-onkénti, csak hozzáfűzhető auditfőkönyveket üzemeltet hitelesített IPC-vel, nyugta előtti fsync tartóssággal, korlátos olvasásokkal, ellenőrzéssel és helyreállítással."
+sidebarTitle: "STAV"
+---
+
+A Symphony TOPS Audit Vector (STAV) határozza meg a TOPS-onkénti, csak hozzáfűzhető auditfőkönyv protokollját. Futásidejű hatósága a `modules/stav-append-authority` modulban található, amely egy függetlenül telepíthető Go szolgáltatás. A TOPS-onkénti operatív főkönyvek az egyes TOPS-telepítések privát adatai; nem képezik az SKV tartalmát.
+
+## STAV Append Authority
+
+A `modules/stav-append-authority` a következőket biztosítja:
+
+- TOPS-onkénti, csak hozzáfűzhető auditfőkönyvek
+- Kölcsönösen hitelesített helyi IPC
+- Pontos producer- és olvasójogosultságok
+- Nyugta előtti fsync tartósság
+- Korlátos olvasások, ellenőrzés és helyreállítás
+- Regisztráció és natív felügyelet (launchd, systemd)
+
+<Warning>
+  A qxctl soha nem kap nyers hozzáfűzési jogosultságot. A pontos, modul által birtokolt adapteren keresztül koordinálja a regisztrációt, az ellenőrzést és a jogosultságokat, de a főkönyvbe való hozzáfűzés a hozzáfűzési hatóság folyamatán belül lezárva marad.
+</Warning>
+
+## STAV Protocol for Go
+
+A `libraries/stav-protocol-go` egy jogosultságmentes Go könyvtár, amely megvalósítja a kanonikus STAV v1 kodeket, a szigorú validálást, a kivonatokat, a keretezést, a megfelelőségi szabályokat és a zárt producer-szókészletet. Bármely producer vagy olvasó átveheti a protokollt anélkül, hogy jogosultságot örökölne.
+
+## Befejezett SODV-közzétételek
+
+Minden jelenleg SODV-n keresztül közzétett STAV-műtermék Go forrásmodul-verzió, nem bináris kiadás:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/hu/governance/ssiag">
+    Engedélyezi azokat a védett módosításokat, amelyeket aztán a STAV auditál.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/hu/governance/accordare-producer">
+    A módosítás előtti szándékot és a végső kimeneteleket a STAV-ba küldi.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/hu/qxctl/lifecycle">
+    Életciklus-adminisztráció, amely együttműködik a STAV-regisztrációval.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/hu/skv/sodv">
+    A STAV-komponensek hivatalos közzétételi rekordjait szabályozza.
+  </Card>
+</CardGroup>

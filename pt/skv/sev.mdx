@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector para alterações planeadas"
+description: "O SEV avalia alterações planeadas, novidades e transições de ciclo de vida com casos determinísticos, conjuntos prontos quanto a dependências, grafos descartáveis e recomendações de recuperação que não aplicam alterações."
+sidebarTitle: "SEV"
+---
+
+O Symphony Evolution Vector (SEV) é responsável pelos casos de alterações planeadas e de novidades encontradas em toda a plataforma. O seu engine é um processo C++26 só de leitura, num caminho de congelamento (freezing-path). O SEV não monitoriza um anfitrião nem aplica uma transição; produz evidência e recomendações de disposição.
+
+## Operações
+
+- **Avaliação de casos**: casos de evolução determinísticos para adições, alterações, renomeações, substituições, descontinuações, retiradas e remoções.
+- **Planeamento de impacto e disposição**: atribui cada caso aos respetivos responsáveis com autoridade.
+- **Recálculo do conjunto pronto quanto a dependências**: deriva a ordem segura das transições dependentes.
+- **Verificação de transições**: confirma que o estado observado após uma transição corresponde à forma esperada.
+- **Recomendações de recuperação**: descreve passos seguros para a frente ou para trás quando uma transição é interrompida.
+- **Avaliação SCSEV**: o primeiro perfil SEV governado aplica estas operações à evolução de superfícies de conhecimento apenas documentais.
+- **Verificações de novidade e monitorização**: detetam superfícies novas ou inesperadas para atenção dos revisores.
+- **Agregação de gatilhos** e **associação a sessões de ciclo de vida**: reduzem avaliações duplicadas e associam casos a uma sessão.
+- **Projeção de grafos**: grafos descartáveis para revisão.
+
+## Perfil SCSEV
+
+O SCSEV reutiliza a administração de funcionalidades do SSFV, a verdade estável dos comandos do qxctl e os descritores de operações dos engines. Não cria um engine ou registo duplicado. A primeira fatia do engine é apenas de relatório e de proposta; a ação externa durável continua a ser autorizada separadamente através do qxctl e do coordenador de sessões de conhecimento.
+
+<Note>
+  O SEV é apenas de leitura, consulta, validação e proposta. A aplicação canónica continua desativada em toda a família de engines SKV.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Visão geral do SKV" icon="book-open" href="/pt/skv/overview">
+    A framework abrangente e o modelo Contract Quad.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pt/skv/ssfv">
+    Administração de funcionalidades reutilizada pelo perfil SCSEV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/pt/skv/sav">
+    Avaliação de composição e compatibilidade para componentes alterados.
+  </Card>
+
+  <Card title="Comandos de vetores do qxctl" icon="terminal" href="/pt/qxctl/vector-commands">
+    A gramática ratificada de evolução chegará como `qxctl evolution ...` assim que for implementada.
+  </Card>
+</CardGroup>

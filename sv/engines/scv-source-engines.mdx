@@ -1,0 +1,74 @@
+---
+title: "SCV-motorer för källkunskap: leverantörsverklighet för Symphony"
+description: "Åtta oberoende paketerade motorer för SCV, hyperskalare, edge och leverantörer bevarar exakta källrevisioner och producerar reproducerbar graf- och frågeevidens."
+sidebarTitle: "SCV-motorer"
+---
+
+SCV-motorerna för källkunskap är åtta oberoende paketerade C++26-processer som innehar privat semantisk kunskap om externa leverantörers resurser, erbjudanden, regioner, begränsningar och hybridmöjligheter. De bevarar exakta källrevisioner och avgränsade insamlingar så att nedströmsverktyg kan reproducera resultat.
+
+## Motorer
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Övergripande SCV-källmotor för det delade molnvokabuläret.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Källmotor för Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-specifik edge-källmotor.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Källmotor för Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Källmotor för Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Källmotor för DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Källmotor för Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Valfri DuckDB-anslutning för lagrad relationell grafindexering.
+  </Card>
+</CardGroup>
+
+## Vad SCV-motorerna gör
+
+- Bevarar uttryckliga källrevisioner och avgränsade insamlingar
+- Behåller kvalificerade påståenden och inbyggd dokumentstruktur
+- Producerar reproducerbar graf- och frågeevidens
+- Matar portabla leverantörspaket och ändlig, anroparstyrd sammansättning
+
+## Vad de inte gör
+
+<Warning>
+  Leverantörsåtgärder och kompletta molnkataloger ligger utanför detta inkrement. SCV-motorerna beskriver vad som är känt; de agerar inte på leverantörer.
+</Warning>
+
+qxctl administrerar separat granskade lokala källändringar och sammanhängande grafval genom lagrade arbetsflöden och skyddat grafval. Dedikerad grafgenomgång och operativa adaptrar förblir separat arbete.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="SCV-vektor" icon="cloud" href="/sv/vectors/scv">
+    Cloud Vector-kontraktet som dessa motorer implementerar.
+  </Card>
+
+  <Card title="SOV-vektor" icon="terminal" href="/sv/vectors/sov">
+    Ops Vector som agerar på SCV-evidens via qxctl.
+  </Card>
+
+  <Card title="qxctl-vektorkommandon" icon="terminal" href="/sv/qxctl/vector-commands">
+    Grafval, källarbetsflöden och administration av DuckDB-anslutningen.
+  </Card>
+</CardGroup>

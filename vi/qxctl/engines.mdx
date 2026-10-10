@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: Bind, Doctor, Migrate registry"
+description: "Quản lý hồ sơ ràng buộc engine phạm vi người dùng được bảo vệ của Symphony bằng list, inspect, doctor, bind, unbind và migrate ràng buộc theo digest thông qua qxctl."
+sidebarTitle: "engines"
+---
+
+Cú pháp `qxctl knowledge engines ...` quản lý hồ sơ ràng buộc `default` phạm vi người dùng được bảo vệ cho các vector engine của Symphony. Nó ràng buộc nội dung đã chọn để đối soát sau này. Nó không cài đặt, gọi, kích hoạt, dock, xác thực, ủy quyền hay áp dụng (apply) một engine.
+
+## Lệnh
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Truyền `absent` cho lần thay đổi registry v2 đầu tiên, hoặc digest chính xác do `list` báo cáo cho các lần thay đổi sau. Mọi thay đổi đều là compare-and-swap so với digest đó.
+
+## Di chuyển từ v1 sang v2
+
+<Warning>
+  Trạng thái registry v1 hợp lệ vẫn có thể đọc được. Việc di chuyển sang v2 là một thao tác compare-and-swap chính xác riêng biệt và không bao giờ là thao tác chọn phiên bản. Đừng coi việc di chuyển là một lộ trình nâng cấp để chọn engine.
+</Warning>
+
+- `list` và `inspect` tiếp tục hoạt động trên bằng chứng v1.
+- `migrate` tạo ra một thế hệ v2 được liên kết mà không loại bỏ sự thật v1.
+- Sau khi di chuyển, hãy dùng digest v2 cho các thay đổi về sau.
+
+## Bind là gì
+
+Một bind chọn nội dung chính xác để coordinator đối soát sau này. Nó:
+
+- Không cài đặt engine
+- Không gọi hay kích hoạt engine
+- Không dock engine với Maestro
+- Không xác thực bên gọi
+- Không ủy quyền apply
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/vi/qxctl/reconcile">
+    Đối soát nội dung đã ràng buộc với một coordinator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/vi/qxctl/lifecycle">
+    Các kế hoạch vòng đời sử dụng engine đã ràng buộc.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/vi/governance/maestro">
+    Cơ quan hiện diện ghi nhận việc docking, không phải các ràng buộc.
+  </Card>
+
+  <Card title="Tổng quan về engine" icon="cube" href="/vi/engines/overview">
+    Các vector engine có thể cài đặt độc lập.
+  </Card>
+</CardGroup>

@@ -1,0 +1,37 @@
+---
+title: "Isolation du chemin critique dans QuanuX Symphony"
+description: "Découvrez comment Symphony protège les chemins d’exécution contre les interférences administratives : composants à chemin froid et glacial, discipline des bus et concept de témoin d’état Prima Parte."
+sidebarTitle: "Isolation du chemin critique"
+---
+
+Symphony sépare le travail administratif du travail d’exécution afin que la négociation en direct, la recherche et les autres chemins sensibles aux performances restent exempts de gigue, de latence et de dépendances cachées. qxctl et le plan de connaissances relèvent de l’administration à chemin froid ou glacial. Ils peuvent agir explicitement sur un Node qui héberge aussi du travail en direct, mais ne doivent jamais devenir des dépendances continues du chemin critique.
+
+## Discipline des chemins froid et glacial
+
+qxctl et les moteurs de vecteurs sont des composants administratifs à chemin froid ou glacial. Ils ne doivent pas :
+
+- S’exécuter en ligne avec les chemins d’exécution critiques ou tièdes
+- Partager des verrous avec les charges de travail en direct
+- Créer des dépendances synchrones qui ajoutent de la gigue ou de la latence
+- Devenir des observateurs cachés, des interpréteurs résidents ou des gestionnaires de paquets non sollicités en arrière-plan
+- Résider en permanence sur les Nodes d’exécution
+
+Cette règle s’applique au coordonnateur de sessions de connaissances, aux moteurs de vecteurs et à toutes les opérations administrées par qxctl. Ils produisent des preuves, valident l’état et préparent des plans, mais ne participent pas au chemin d’exécution en direct.
+
+## Discipline des bus
+
+Les transferts lourds, le contrôle, la recherche et les rejets d’exécution n’ont pas à partager un seul bus. Une topologie peut utiliser plusieurs bus ou contourner un bus pour un chemin déclaré, surtout lorsque le trafic partagé pourrait introduire de la gigue. NATS JetStream, ZeroMQ et les autres infrastructures sont des adaptateurs et des choix de l’utilisateur. L’existence de l’administration des bus par qxctl ne rend pas obligatoire le passage par un bus.
+
+Vous choisissez la topologie de bus qui correspond à vos exigences de latence et de débit. Symphony prend en charge la configuration sans imposer une infrastructure partagée unique.
+
+## Prima Parte
+
+**Prima Parte** est un concept ratifié de la phase 3, et non un exécutable actuel. Il s’agit d’un témoin d’état C++ facultatif et extrêmement léger, local au Node, invoqué explicitement par qxctl après une opération importante. Il n’a ni démon, ni écouteur, ni minuterie, ni observateur, ni boucle d’interrogation, ni connexion résidente à un bus.
+
+Son vocabulaire durable borné comprend trois termes :
+
+- `current` — l’état actuel observé
+- `previous` — l’état avant l’opération importante
+- `lastTransmitted` — l’état envoyé par le Node distant après l’exécution de la commande associée (réception non confirmée)
+
+Prima Parte n’enregistre que son propre Node, ne devient jamais un Maestro miniature et se termine une fois son travail borné accompli. Ce n’est pas un récepteur Maestro de la phase 1, et aucun exécutable n’est encore implémenté.

@@ -1,0 +1,65 @@
+---
+title: "Motors SHV: fonts i grafs del Symphony Hardware Vector"
+description: "Els motors SHV cataloguen CPU, GPU, NIC, memòria i emmagatzematge amb reproducció de fonts retingudes, avaluació de requisits, ingesta de PDF i grafs durables amb DuckDB."
+sidebarTitle: "Motors SHV"
+---
+
+Els motors del Symphony Hardware Vector (SHV) cataloguen processadors, topologia de CPU, memòries cau, GPU, NIC i interfícies de fibra, plaques base, RAM i NVMe. La curació predeterminada prioritza els components originals i les variants amb evidència. Cada motor és instal·lable de manera independent i de només lectura.
+
+## Motors
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Nucli de maquinari: cobertura definida per l'invocador, reproducció del catàleg a partir de fonts retingudes, avaluació de requisits i projecció de grafs.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Ingesta de fonts i gestió de revisions per a l'evidència de maquinari.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Avaluació de perfils de components i de sistemes.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Partició del maquinari catalogat per a una selecció reproduïble.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Publicació i selecció governades del catàleg local.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Superfície explícita de transport de grafs.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Emmagatzematge durable de grafs basat en DuckDB administrat mitjançant qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Interpretació de fonts PDF per a fitxes tècniques de maquinari.
+  </Card>
+</CardGroup>
+
+## Aspectes destacats de l'administració
+
+- **L'emmagatzematge durable** s'administra únicament mitjançant `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` amb el resum (digest) de la intenció esperada retinguda també serveix de recuperació; no hi ha cap àlies de recuperació separat.
+- **La publicació del catàleg** s'administra únicament mitjançant `shv catalogue publication inspect|plan|apply|status|schema|template`. La recuperació és `apply --operation-id`, mútuament excloent amb `--input`.
+- **L'inventari** (versió 0.2) afegeix `shv graph store inventory`: una lectura lògica vinculada a una revisió amb identitats explícites dels escriptors retinguts. La selecció heretada de la versió 0.1 continua sent compatible.
+
+<Note>
+  Les classes de maquinari són dades d'assignació i de perfil de l'invocador, no arbres d'ordres duplicats. `--version` selecciona el propietari principal exacte; `--source-version` i `--adapter-version` anomenen dependències seleccionades diferents. Les revisions d'esquemes i d'assignacions són identitats de dades, no àlies de les versions dels motors instal·lats.
+</Note>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Vector SHV" icon="microchip" href="/ca/vectors/shv">
+    Contracte del Hardware Vector que implementen aquests motors.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    Referència completa de la gramàtica `shv ...`.
+  </Card>
+</CardGroup>

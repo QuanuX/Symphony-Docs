@@ -1,0 +1,54 @@
+---
+title: "STAV: Symphony uchun har bir TOPS boʻyicha faqat qoʻshiladigan audit ledger’i"
+description: "STAV Append Authority autentifikatsiyalangan IPC, kvitansiyadan oldin fsync barqarorligi, chegaralangan oʻqishlar, tekshirish va tiklash bilan har bir TOPS uchun faqat qoʻshiladigan audit ledger’larini yuritadi."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) har bir TOPS uchun faqat qoʻshiladigan audit ledger protokolini belgilaydi. Uning runtime vakolati mustaqil oʻrnatiladigan Go xizmati boʻlgan `modules/stav-append-authority` da joylashgan. Har bir TOPS’ning operatsion ledger’lari oʻsha TOPS oʻrnatmasiga xususiy; ular SKV kontenti emas.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` quyidagilarni taqdim etadi:
+
+- Har bir TOPS uchun faqat qoʻshiladigan audit ledger’lari
+- Oʻzaro autentifikatsiyalangan mahalliy IPC
+- Aniq prodyuser va oʻquvchi ruxsatlari
+- Kvitansiyadan oldin fsync barqarorligi
+- Chegaralangan oʻqishlar, tekshirish va tiklash
+- Roʻyxatga olish va native nazorat (launchd, systemd)
+
+<Warning>
+  qxctl hech qachon xom qoʻshish vakolatini olmaydi. U roʻyxatga olish, tekshirish va ruxsatlarni modulga tegishli aniq adapter orqali muvofiqlashtiradi, lekin ledger’ga qoʻshish qoʻshish vakolati jarayoni ichida muhrlangan holda qoladi.
+</Warning>
+
+## Go uchun STAV protokoli
+
+`libraries/stav-protocol-go` — kanonik STAV v1 kodeki, qatʼiy validatsiya, digest’lar, freyming, muvofiqlik qoidalari va yopiq prodyuser lugʻatini amalga oshiradigan vakolatsiz Go kutubxonasi. Har qanday prodyuser yoki oʻquvchi vakolatni meros qilib olmasdan protokolni qabul qilishi mumkin.
+
+## Yakunlangan SODV nashrlari
+
+Hozirda SODV orqali nashr qilingan har bir STAV artefakti binar reliz emas, balki Go manba moduli versiyasidir:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/uz/governance/ssiag">
+    Keyinchalik STAV audit qiladigan himoyalangan oʻzgartirishlarni avtorizatsiya qiladi.
+  </Card>
+
+  <Card title="Accordare prodyuseri" icon="pen-nib" href="/uz/governance/accordare-producer">
+    Oʻzgartirishdan oldingi intent va yakuniy natijalarni STAV’ga yuboradi.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/uz/qxctl/lifecycle">
+    STAV roʻyxatga olish bilan birgalikda ishlaydigan hayot sikli boshqaruvi.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    STAV komponentlari uchun rasmiy nashr yozuvlarini boshqaradi.
+  </Card>
+</CardGroup>

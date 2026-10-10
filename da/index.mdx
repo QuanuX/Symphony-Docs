@@ -1,0 +1,32 @@
+---
+title: "QuanuX Symphony-dokumentation"
+description: "Start med Symphonys platformsdoktrin, arkitektur, knowledge vectors og den administrative qxctl-CLI."
+sidebarTitle: "Indeks"
+---
+
+Symphony er et modulært, agentic-first handelsoperativsystem. Denne dokumentation beskriver dets gældende kontrakter og grænser: hvordan infrastruktur modelleres, hvordan vectors ejer betydning, og hvordan qxctl administrerer understøttede operationer. Start med platformsdoktrinen, før du bruger nogen administrativ overflade.
+
+<CardGroup cols={2}>
+  <Card title="Kom godt i gang" icon="rocket" href="/da/quickstart">
+    Find den korteste læsevej gennem platformen, dens kontrakter og qxctl.
+  </Card>
+  <Card title="Platformsdoktrin" icon="book-open" href="/da/doctrine">
+    Forstå brugerejerskab, kalderautoritet, evidens og beskyttelse af hot path.
+  </Card>
+  <Card title="Arkitektur" icon="diagram-project" href="/da/concepts/architecture">
+    Se, hvordan Nodes, Habitats, Nests, vectors, engines og qxctl hænger sammen.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/da/qxctl/overview">
+    Udforsk Symphonys administrative kommando- og forespørgselsoverflade.
+  </Card>
+</CardGroup>
+
+## Udforsk dokumentationen
+
+- [Node, Habitat og Nest](/da/concepts/node-habitat-nest) definerer den fysiske ressource, dens præcise softwarekonditionering og den workload, der tjener brugerens formål.
+- [Vectors og faser](/da/concepts/vectors) skelner mellem varigt semantisk ejerskab og leverancekampagner.
+- [Symphony Knowledge Vector](/da/skv/overview) forklarer kanoniske kontrakter, ledsageoverflader og indekseret viden.
+- [Vector-engines](/da/engines/overview) beskriver de uafhængigt installerede engines, der kører uden for processen.
+- [Kalderautoritet](/da/concepts/caller-authority) og [isolering af hot path](/da/concepts/hot-path-isolation) fastlægger to væsentlige driftsgrænser.
+
+Disse sider beskriver de aktuelt dokumenterede overflader. Følg de linkede kontrakter og implementeringsevidensen for at se den præcise tilstand af en given komponent.

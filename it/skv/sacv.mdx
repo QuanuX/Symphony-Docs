@@ -1,0 +1,52 @@
+---
+title: "SACV: governance dei contratti API per QuanuX Symphony"
+description: "SACV governa i contratti API versionati tramite controlli delimitati OpenAPI 3.2.0, diff di compatibilità deterministici e proposte di registro dichiarate dal chiamante tra i vettori."
+sidebarTitle: "SACV"
+---
+
+Il Symphony API Contract Vector (SACV) governa i contratti API versionati in tutta la piattaforma. Il suo engine è un processo C++ installabile in modo indipendente che esegue una validazione JSON OpenAPI 3.2.0 delimitata, diff di compatibilità deterministici e inventari usa e getta. La semantica degli endpoint resta al vettore o modulo proprietario del dominio; SACV governa la forma e la compatibilità dei contratti.
+
+## Operazioni
+
+- **Inspect e check**: verificano che un documento JSON OpenAPI 3.2.0 sia conforme al profilo delimitato.
+- **Diff**: calcola diff di compatibilità deterministici tra versioni dei contratti.
+- **Propose**: accetta proposte di registro dichiarate dal chiamante per contratti nuovi o modificati.
+- **Project**: emette inventari usa e getta per revisori e strumenti a valle.
+
+## Cosa governa SACV
+
+SACV delimita:
+
+- La forma del contratto (OpenAPI 3.2.0 con il profilo SACV)
+- La classificazione della compatibilità tra versioni
+- L'appartenenza al registro dei contratti accettati
+
+Non:
+
+- Possiede la semantica degli endpoint (ogni vettore o modulo la mantiene)
+- Genera SDK, pubblica artefatti o emette token
+- Implica l'esistenza di una superficie di rete attiva (menzionare una futura API privata non la crea)
+
+<Note>
+  SACV è limitato a lettura, interrogazione, validazione e proposta. L'apply canonico programmatico è disabilitato in tutti gli engine SKV.
+</Note>
+
+## Superfici correlate
+
+<CardGroup cols={2}>
+  <Card title="Panoramica di SKV" icon="book-open" href="/it/skv/overview">
+    Il framework ombrello e il modello Contract Quad.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/it/skv/sodv">
+    Governa qualsiasi pubblicazione ufficiale di un contratto registrato in SACV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/it/skv/sav">
+    Valuta composizione e compatibilità tra i componenti dichiarati.
+  </Card>
+
+  <Card title="Comandi dei vettori di qxctl" icon="terminal" href="/it/qxctl/vector-commands">
+    Esegui `qxctl sacv ...` per inspect, check, diff e propose.
+  </Card>
+</CardGroup>

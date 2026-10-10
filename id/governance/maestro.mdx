@@ -1,0 +1,43 @@
+---
+title: "Maestro: Otoritas Kehadiran Engine Vektor Symphony"
+description: "Maestro mencatat hubungan docking engine vektor yang terautentikasi per TOPS dan reseptor, menurunkan inventaris baca-saja yang lengkap tanpa memulai atau mengawasi engine."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) adalah otoritas kehadiran C++26 freezing path yang dapat dipasang secara independen. Maestro mencatat hubungan docking engine vektor yang terautentikasi secara eksak per TOPS dan reseptor, serta menurunkan inventaris baca-saja yang lengkap tentang apa yang saat ini ter-dock. Maestro adalah saksi, bukan pengawas.
+
+## Apa yang dicatat Maestro
+
+- Hubungan docking yang terautentikasi secara eksak antara engine vektor dan reseptor
+- Pelingkupan per TOPS sehingga kehadiran setiap instalasi tetap privat bagi instalasi tersebut
+- Inventaris turunan yang lengkap dan baca-saja yang tersedia melalui `qxctl maestro inventory`
+
+## Apa yang tidak dilakukan Maestro
+
+<Warning>
+  Maestro tidak memulai, menjadwalkan, mengawasi, atau memanggil engine. Binding, rekonsiliasi, koordinasi sesi terautentikasi, atau rencana siklus hidup saja tidak menetapkan kehadiran Maestro, meratifikasi kebenaran semantik, memutasi pengetahuan kanonis, atau membuktikan kelengkapan host yang terpasang.
+</Warning>
+
+- Maestro tidak membuat proses.
+- Maestro tidak pernah menerapkan perubahan pengetahuan kanonis.
+- Maestro tidak pernah menggantikan engine vektor yang memiliki semantik.
+
+## Permukaan terkait
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/id/qxctl/maestro">
+    `qxctl maestro inventory` menyajikan inventaris turunan.
+  </Card>
+
+  <Card title="Koordinator sesi" icon="gears" href="/id/engines/coordinator">
+    Memiliki mekanika sesi terautentikasi dan rekonsiliasi worktree.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/id/governance/ssiag">
+    Mengautentikasi hubungan docking yang dicatat Maestro.
+  </Card>
+
+  <Card title="Ikhtisar engine" icon="cube" href="/id/engines/overview">
+    Engine vektor yang dapat dipasang secara independen dan melakukan docking dengan Maestro.
+  </Card>
+</CardGroup>

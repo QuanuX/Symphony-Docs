@@ -1,0 +1,33 @@
+---
+title: "Rychlý start: Prozkoumejte QuanuX Symphony"
+description: "Průvodce doktrínou Symphony, její architekturou, vektorovými kontrakty a správním povrchem qxctl."
+sidebarTitle: "Rychlý start"
+---
+
+Tento průvodce vám pomůže zorientovat se dříve, než začnete Symphony provozovat. Dokumentace odděluje doktrínu platformy, uživatelem vybranou infrastrukturu, sémantiku vlastněnou vektory a správní příkazy. Přesné kroky instalace a spuštění patří do aktuálního kontraktu příslušné komponenty.
+
+## 1. Přečtěte si provozní hranice
+
+Začněte [doktrínou platformy](/cs/doctrine). Ta stanovuje vlastnictví strategie a infrastruktury uživatelem, neutralitu vůči třídě volajícího, kompatibilitu založenou na důkazech a ochranu hot path.
+
+## 2. Seznamte se s fyzickým modelem
+
+Přečtěte si [Node, Habitat a Nest](/cs/concepts/node-habitat-nest):
+
+- **Node:** identifikovaný fyzický výpočetní prostředek.
+- **Habitat:** přesné vybavení operačním systémem a balíčky dodané do Node.
+- **Nest (hnízdo):** workload sloužící účelu uživatele, umístěný do vhodného Habitatu.
+
+Sběrnice a adaptéry clusteru jsou explicitní architektonické volby. Symphony nepředepisuje univerzálního poskytovatele ani strategii.
+
+## 3. Sledujte vlastnictví významu
+
+[Přehled architektury](/cs/concepts/architecture) ukazuje vztah mezi vektorovými kontrakty, enginy, qxctl a řízenými důkazy. [Vektory a fáze](/cs/concepts/vectors) vysvětluje, proč vektor zůstává sémantickým vlastníkem, i když práce na dodávce prochází fázemi. [Symphony Knowledge Vector](/cs/skv/overview) popisuje Contract Quad a jeho doprovodné povrchy.
+
+## 4. Najděte správní povrch
+
+[Přehled qxctl](/cs/qxctl/overview) představuje správní a dotazovací CLI napsané v Go. Pro konkrétní rodinu příkazů použijte stránky qxctl, například [knowledge](/cs/qxctl/knowledge), [lifecycle](/cs/qxctl/lifecycle), [engines](/cs/qxctl/engines) nebo [validaci](/cs/qxctl/validate). qxctl poskytuje gramatiku příkazů a prezentaci; vektorové kontrakty vlastní operace a jejich význam.
+
+## 5. Zkontrolujte příslušný kontrakt a důkazy
+
+Než začnete působit na Node nebo vyvoláte vektorový engine, zkontrolujte aktuální kontrakt vlastníka, cílový stav, autorizaci a dostupné důkazy ve formě potvrzení nebo validace. Tyto hranice vysvětlují stránky [Oprávnění volajícího](/cs/concepts/caller-authority) a [izolace hot path](/cs/concepts/hot-path-isolation). Vznikající povrch není implicitní provozní zárukou.

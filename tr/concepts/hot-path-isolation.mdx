@@ -1,0 +1,37 @@
+---
+title: "QuanuX Symphony'de Sıcak Yol Yalıtımı"
+description: "Symphony'nin yürütme yollarını yönetimsel müdahaleden nasıl koruduğunu öğrenin: soğuk ve donuk yol bileşenleri, veri yolu disiplini ve Prima Parte durum tanığı kavramı."
+sidebarTitle: "Sıcak Yol Yalıtımı"
+---
+
+Symphony, canlı alım satım, araştırma ve performansa duyarlı diğer yolların titreşim (jitter), gecikme ve gizli bağımlılıklardan arınmış kalması için yönetim işlerini yürütme işlerinden ayırır. qxctl ve bilgi düzlemi, soğuk veya donuk yol (freezing-path) yönetimidir. Canlı iş de barındıran bir Node üzerinde açıkça işlem yapabilirler, ancak sürekli sıcak yol bağımlılıklarına dönüşmemelidirler.
+
+## Soğuk ve donuk yol disiplini
+
+qxctl ve vektör motorları, yönetimsel soğuk veya donuk yol bileşenleridir. Şunları yapmamalıdırlar:
+
+- Sıcak veya ılık yürütme yollarıyla satır içi (inline) çalışmak
+- Canlı iş yükleriyle kilit paylaşmak
+- Titreşim veya gecikme ekleyen eşzamanlı bağımlılıklar oluşturmak
+- Gizli izleyicilere, yerleşik yorumlayıcılara veya istenmeden çalışan arka plan paket yöneticilerine dönüşmek
+- Yürütme Node'larında sürekli yerleşik kalmak
+
+Bu kural; bilgi oturumu koordinatörü, vektör motorları ve qxctl tarafından yönetilen tüm işlemler için geçerlidir. Bunlar kanıt üretir, durumu doğrular ve planlar hazırlar, ancak canlı yürütme yoluna katılmaz.
+
+## Veri yolu disiplini
+
+Yoğun aktarım, kontrol, araştırma ve yürütme çıktılarının tek bir veri yolunu paylaşması gerekmez. Bir topoloji, özellikle paylaşılan trafiğin titreşime yol açabileceği durumlarda, birden fazla veri yolu kullanabilir veya bildirilen bir yol için veri yolunu atlayabilir. NATS JetStream, ZeroMQ ve diğer dokular adaptörlerdir ve kullanıcı tercihleridir. qxctl veri yolu yönetiminin varlığı, veri yolundan geçmeyi zorunlu kılmaz.
+
+Gecikme ve verim gereksinimlerinize uyan veri yolu topolojisini siz seçersiniz. Symphony, tek bir paylaşılan doku dayatmadan yapılandırmayı destekler.
+
+## Prima Parte
+
+**Prima Parte**, mevcut bir yürütülebilir dosya değil, onaylanmış bir Aşama 3 kavramıdır. Önemli bir işlemden sonra qxctl tarafından açıkça çağrılan, isteğe bağlı, son derece hafif, C++ ile yazılmış, Node'a yerel bir durum tanığıdır. Hiçbir arka plan hizmeti (daemon), dinleyici, zamanlayıcı, izleyici, yoklama döngüsü veya yerleşik veri yolu bağlantısı yoktur.
+
+Sınırlı kalıcı sözcük dağarcığı üç terim içerir:
+
+- `current` — gözlemlenen mevcut durum
+- `previous` — önemli işlemden önceki durum
+- `lastTransmitted` — ilgili komut yürütüldükten sonra uzak Node tarafından gönderilen durum (alındığı onaylanmamıştır)
+
+Prima Parte yalnızca kendi Node'unu kaydeder, hiçbir zaman daha küçük bir Maestro'ya dönüşmez ve sınırlı işini bitirdikten sonra sonlanır. Bir Aşama 1 Maestro alıcısı değildir ve henüz hiçbir yürütülebilir dosyası uygulanmamıştır.

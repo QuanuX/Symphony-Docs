@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony platformas doktrīna"
+description: "Iepazīstiet Symphony pamatprincipus: lietotāja īpašumtiesības uz stratēģiju un infrastruktūru, izsaucēja klases neitralitāti, karstā ceļa aizsardzību un uz pierādījumiem balstītu saderību."
+sidebarTitle: "Doktrīna"
+---
+
+Symphony doktrīna nosaka robežas starp to, ko kontrolē platforma, un to, ko kontrolējat jūs. Šie noteikumi nosaka katru dizaina lēmumu monorepozitorijā un katru mijiedarbību ar qxctl, vektoru dzinējiem un zināšanu līgumiem.
+
+## Lietotāja īpašumtiesības
+
+Jums pieder jūsu stratēģijas loģika, Nest mērķis, piegādātāja izvēle, aparatūras izvēle, kopņu topoloģija un atbalstīto adapteru izvēle. Symphony nodrošina precīzus saderības pierādījumus un atbalstītas darbības, taču nepārvērš ieteikumus par platformas likumu. Platforma ziņo par atbilstībām, neatbilstībām, neatrisinātiem faktiem un sekām. Tā nerangē piegādātājus, nenosaka stratēģiju un klusi nepaplašina jūsu vidi.
+
+## Karstā ceļa aizsardzība
+
+Karstais ceļš ir aizsargāts pret administratīvu rezidenci un nejaušu koplietotas kopnes noslodzi. qxctl un zināšanu plakne ir aukstā vai sasalušā ceļa administrēšana. Tās drīkst skaidri darboties ar Node, kurā tiek izvietots arī tiešraides darbs, taču tās nedrīkst kļūt par nepārtrauktām karstā ceļa atkarībām, slēptiem vērotājiem, rezidentiem interpretatoriem vai nepieprasītiem fona pakotņu pārvaldniekiem. Jūsu skaidri noteiktā arhitektūra paliek suverēna.
+
+## Komandu un semantikas nošķiršana
+
+qxctl pieder komandu gramatika un attēlošana. Domēnu vektoriem pieder darbības un nozīmes, ko šīs komandas atklāj. qxctl maršruts izsauc īpašnieka definētu spēju, nepārņemot tās semantiku.
+
+## Nosaukumi un nosaukumtelpas
+
+Nosaukumi tiek reģistrēti to īpašnieka tvērumā. SNV un SCNV tos nenosaka, un saknes NAMESPACES paliek plašāka par SNV. Nosaukums, kas reģistrēts TOPS vai TROG ietvaros, ievēro šo tvērumu. Vairāku klasteru gadījumā Node īsais nosaukums var atkārtoties dažādos klasteros, taču tas nedrīkst neviennozīmīgi identificēt divus aktīvus Node vienā klasterī.
+
+## Izsaucēja klases neitralitāte
+
+Izsaucēja klasifikācija kā cilvēks, AI, aģents, pakalpojums vai darba slodze nepiešķir un neatņem pilnvaras. Atbalstītie autorizācijas lēmumi izmanto mērķa resursdatora īpašumtiesības vai piešķirtās atļaujas, pieprasīto darbību un resursu, sagaidāmo stāvokli un īpašnieka konfigurētus drošības pasākumus. Mērķa resursdatora administrators ir suverēns pār konfigurējamo pārvaldību. SSIAG var pārbaudīt un projicēt faktiskās resursdatora pilnvaras, taču tas neizveido augstāku reģistrācijas iestādi. Pastiprināta identitātes garantija un pārvaldības bloķētāji ir izsaucējneitrāli, īpašnieka konfigurēti drošības pasākumi. Protokola integritātes prasības paliek obligātas. Symphony nenosaka ārējo juridisko vai finansiālo rīcībspēju pēc izsaucēja veida.
+
+## Patiesība un pierādījumi
+
+Pašreizējie līgumi apraksta pašreizējo patiesību. Nemainīgi SCLV un SODV ieraksti saglabā to, kas bija zināms, mainīts, autorizēts vai pabeigts to reģistrētajā vēstures brīdī. Ja pašreizējie līgumi, ieviešanas pierādījumi un jaunākais piemērojamais ieraksts nesakrīt, neatbilstība tiek parādīta kā novirze (drift) pārskatīšanai. Vēsture netiek klusi pārrakstīta, lai līdzinātos tagadnei.
+
+## Python doktrīna
+
+Pirmās puses Symphony pirmkodam, ģeneratoriem, shēmu veidošanai, testiem un pieņemšanas palīgrīkiem nav nepieciešama Python implementācija vai interpretatora atkarība. Aizstājošos veidošanas un procesu testēšanas rīkus nodrošina C++. Šī repozitorija politika neierobežo jūsu pašu rakstītās programmas vai skaidri izvēlētus izolētus Habitat.

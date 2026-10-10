@@ -1,0 +1,47 @@
+---
+title: "Symphony vektorok és szállítási fázisok"
+description: "Ismerje meg a Symphony tartós szemantikai tulajdonlási tartományai (vektorok) és az időrendi szállítási fázisok közötti különbséget, valamint a Contract Quadot és a vektorok jelenlegi állapotát."
+sidebarTitle: "Vektorok és fázisok"
+---
+
+A Symphony az architektúráját két gondolat köré szervezi: a **vektorok** tartós szemantikai tulajdonlási tartományok, a **fázisok** pedig időrendi szállítási kampányok. Ha egy komponenst először egy adott fázisban kutattak, attól az a fázis nem válik a tartós tulajdonosává. A vektorok stabilan tartják a jelentést, miközben a megvalósítás fejlődik.
+
+## Mi a vektor?
+
+A vektor egy tartós, körülhatárolt szemantikai tulajdonlási tartomány, amelynek kanonikus szerződése birtokolja az adott tartomány jelentését és engedélyezett műveleteit. Minden vektor kap egy **Contract Quadot**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` és `SPEC.md`, valamint azokat a célzott kísérőfelületeket, amelyekre ténylegesen szüksége van. A vektor deklarálja kanonikus felületeit és delegálási gráfját, az SKVI minden jelenlegi felületet pontosan egyszer képez le, az elavult kísérőfelületeket pedig szabályozott fejlődés útján váltják fel, ahelyett hogy ellentmondásos kontextusként megmaradnának.
+
+## A vektorok állapota
+
+| Vektor | Állapot | Oldal |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Megvalósítva: 1. fázisú alap indexelt felületekkel | [/skv/overview](/hu/skv/overview) |
+| **SKVI** — Forrásindexelés | Megvalósítva: vizsgáló/ellenőrző/javaslattevő motor | [/skv/skvi](/hu/skv/skvi) |
+| **SCLV** — Változási főkönyv | Megvalósítva: csak hozzáfűzhető főkönyv-ellenőrzések | [/skv/sclv](/hu/skv/sclv) |
+| **SACV** — API-szerződések irányítása | Megvalósítva: OpenAPI 3.2.0 ellenőrzések | [/skv/sacv](/hu/skv/sacv) |
+| **SODV** — Hivatalos dokumentáció/kiadások irányítása | Megvalósítva: helyi kiadási főkönyv-ellenőrzések | [/skv/sodv](/hu/skv/sodv) |
+| **SSFV** — Funkcióidentitás/-adminisztráció | Megvalósítva: strukturális funkcióellenőrzések | [/skv/ssfv](/hu/skv/ssfv) |
+| **SAV** — Accordare kompozíció | Megvalósítva: freezing path értékelés | [/skv/sav](/hu/skv/sav) |
+| **SEV** — Fejlődés | Megvalósítva: hatás- és rendelkezéstervezés | [/skv/sev](/hu/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Megvalósítva: cgo-mentes Go alap | [/governance/ssiag](/hu/governance/ssiag) |
+| **STAV** — TOPS auditprotokoll | Megvalósítva: TOPS-onkénti, csak hozzáfűzhető főkönyv | [/governance/stav](/hu/governance/stav) |
+| **SOV** — Ops Vector | Kialakulóban: kiépítés, Habitat, Nest szállítás | [/vectors/sov](/hu/vectors/sov) |
+| **SCV** — Cloud Vector | Megvalósítva: nyolc C++ forrástudás-motor | [/vectors/scv](/hu/vectors/scv) |
+| **SNV** — Node Vector | Kialakulóban: SNIV, SNRV, SCIV, SCNV kompozíció | [/vectors/snv](/hu/vectors/snv) |
+| **SQV** — Quantitative Vector | Kialakulóban: SOOV FIX architektúra-alvektor | [/vectors/sqv](/hu/vectors/sqv) |
+| **SHV** — Hardware Vector | Megvalósítva: C++ forrás-, katalógus- és profilmotorok | [/vectors/shv](/hu/vectors/shv) |
+| **SIV** — Intelligence Vector | Kialakulóban: SMCV opcionális Markdown; SAIV fenntartva | [/vectors/siv](/hu/vectors/siv) |
+
+## Contract Quad és kísérőfelületek
+
+Minden vektor megkapja a következőket:
+
+1. **INTENT.md** — cél és hatókör
+2. **MANIFEST.md** — identitás, deklarált felületek, delegálási gráf
+3. **SKILL.md** — biztonságos használat és működési útmutatás
+4. **SPEC.md** — normatív viselkedés és határok
+
+Az olyan kísérőfelületek, mint a `SLANG.md`, a `NAMESPACES.md`, a nyilvántartások, sémák és profilok, a négytagú struktúrán kívül eső, szabályozott műtermékek maradnak. Továbbítják vagy specializálják a tulajdonos igazságát, de saját jogosultságukat nem bővíthetik.
+
+## Bizonyítékalapú integráció
+
+Egy elhalasztott motornak nincs kitalált nyugtája. Egy javasolt API-nak nincs kitalált nyilvántartási bejegyzése. Egy közzé nem tett szerződésnek nincs SODV-teljesítési igénye. Ez bizonyítékalapú integráció, nem pedig formális duplikáció.

@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: munkafa-egyeztetés"
+description: "Munkafák egyeztetése egy megkötött Symphony-koordinátorral kompatibilitás-ellenőrzésekkel, ellenőrzőponti és lezárási naplókkal, valamint bizonyítékalapú kétslotos helyreállítással."
+sidebarTitle: "reconcile"
+---
+
+A `qxctl knowledge reconcile ...` nyelvtan egyetlen pontos, megkötött Knowledge Session Coordinatoron keresztül vezérli a munkafák egyeztetését. Minden módosítás stabil azonosítóval követett, és compare-and-swap művelet a pontos aktuális naplódigesttel szemben.
+
+## Parancsok
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: ellenőrzi, hogy a qxctl, a koordinátor és a megkötött motorok egyetértenek-e a protokollverzióban és a hatókörben.
+- `begin`: új egyeztetési kontextus megnyitása stabil műveletazonosítóval.
+- `status`: az aktuális napló vizsgálata módosítás nélkül.
+- `checkpoint`: a napló tartós továbbléptetése compare-and-swap segítségével.
+- `close`: az egyeztetési kontextus lezárása.
+- `recover --discover`: felderítéses helyreállítás, ha a szokásos állapotlekérdezés nem tudja validálni a helyi állapotot.
+
+## Helyreállítási szabályok
+
+<Warning>
+  A kétslotos helyreállítás bizonyítékalapú előremenő javítás. Soha nem ad engedélyt egy inkompatibilis napló vagy egy ismeretlen kritikus kiterjesztés elvetésére. Ha a helyreállítás sikertelen, eszkaláljon ahelyett, hogy kikényszerítené.
+</Warning>
+
+Felderítéses helyreállítást csak akkor használjon, ha a szokásos állapotlekérdezés nem tudja validálni a helyi állapotot. Őrizze meg a blokkolókat; csak ellenőrzött bizonyítékváltozások után tervezzen újra.
+
+## Kapcsolódó felületek
+
+<CardGroup cols={2}>
+  <Card title="Munkamenet-koordinátor" icon="gears" href="/hu/engines/coordinator">
+    Az egyeztetési naplókat birtokló motor.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/hu/qxctl/session">
+    Az egyeztetési kontextusokkal párosuló hitelesített munkamenetek.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/hu/qxctl/engines">
+    A koordinátor által felhasznált kötések kezelése.
+  </Card>
+</CardGroup>

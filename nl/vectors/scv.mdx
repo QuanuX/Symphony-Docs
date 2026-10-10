@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: kennis over providerresources"
+description: "SCV onderhoudt private kennis over externe providerresources bij AWS, Azure, GCP, DigitalOcean, Cloudflare en eigen hardware via acht onafhankelijk installeerbare C++-engines."
+sidebarTitle: "Cloud Vector"
+---
+
+De Symphony Cloud Vector (SCV) is eigenaar van private semantische kennis over externe hardwareresources en de providerrealiteit die uw clusters, training, onderzoek en datawerk vormgeeft. De vector brengt provideraanbod, regio's, infrastructuurdomeinen, beperkingen en waargenomen beschikbaarheid in kaart zonder providers te rangschikken of grenzen op te leggen aan wat u mag proberen.
+
+## Providerdekking
+
+SCV omvat de volgende providers en resourcetypen:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Eigen hardware (waar vergelijking met externe resources nodig is)
+
+## Geïnstalleerde engines
+
+SCV-kennis wordt geleverd via acht onafhankelijk installeerbare C++-engines. U installeert alleen de engines die u nodig hebt:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Kern-SCV-engine voor kennis over providerresources en het opbouwen van grafen.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Cloud-bewijsengine voor begrensde vastlegging en corpussemantiek.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-specifieke bewijsengine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-specifieke kennisengine voor hardware en resources.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-specifieke kennisengine voor hardware en resources.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-specifieke kennisengine voor resources.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-specifieke kennisengine voor hardware en resources.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Optionele relationele grafconnector die DuckDB gebruikt voor bewaarde SQL-indexering.
+  </Card>
+</CardGroup>
+
+## Draagbare providerpakketten en compositie
+
+SCV biedt draagbare providerpakketten via qxctl. U behoudt de controle over vereisten, providerpermissies, receptalternatieven en uitvoeringsbeslissingen. qxctl ondersteunt bewaarde workflows en beschermde grafselectie, zodat u exact bewijs opnieuw kunt afspelen zonder providers opnieuw te bevragen.
+
+## Optionele DuckDB-connector
+
+De `scv-graph-duckdb-connector` voegt een begrensde relationele projectie van onveranderlijke native grafen toe. DuckDB is de door de gebruiker gekozen standaard-SQL-database. In de toekomst kunt u via extra adapters speciale graf-engines selecteren.
+
+## Privacy en soevereiniteit
+
+Een geïnstalleerde SCV-kennisgraaf behoort tot uw private installatie. Door de gebruiker aangeleverde accounts, saldi, permissies en contractuele beperkingen worden alleen gebruikt via expliciet ingeschakelde observatieoppervlakken. Private feiten komen niet terecht in de officiële bronwaarheid van Symphony.
+
+## Hoe SCV zich verhoudt tot andere vectoren
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/nl/vectors/sov">
+    Het operationele control plane dat handelt op basis van SCV-bewijs. SOV herschrijft de betekenis van providers niet.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/nl/vectors/snv">
+    Legt de identiteiten vast van fysieke Nodes en clusters die voortkomen uit door SCV geïnformeerde provisioning.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/nl/vectors/shv">
+    Is eigenaar van gedetailleerde kennis over hardwaremogelijkheden voor componenten waarnaar SCV verwijst.
+  </Card>
+</CardGroup>
+
+## Geversioneerde interface-incrementen
+
+SCV-releases zijn additief en exact geversioneerd. Eerdere installaties blijven aanroepbaar binnen hun exacte scopes. Huidige incrementen omvatten native bewerkingen, corpussnapshots, interpretatieprofielen, draagbare providerpakketten, compositieworkflows, het bijhouden van verplichtingen en bewijsbundels. Elk increment behoudt eerdere routes, standaardwaarden en records.

@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: avstämning av arbetsträd"
+description: "Stäm av arbetsträd mot en bunden Symphony-koordinator med kompatibilitetskontroller, checkpoint- och stängningsjournaler samt evidensbaserad återställning med två platser."
+sidebarTitle: "reconcile"
+---
+
+Grammatiken `qxctl knowledge reconcile ...` driver avstämning av arbetsträd via en exakt bunden Knowledge Session Coordinator. Varje mutation spåras med stabila identifierare och är en compare-and-swap mot den exakta aktuella journaldigesten.
+
+## Kommandon
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifierar att qxctl, koordinatorn och de bundna motorerna är överens om protokollversion och scope.
+- `begin`: öppnar en ny avstämningskontext med en stabil operationsidentifierare.
+- `status`: inspekterar den aktuella journalen utan mutation.
+- `checkpoint`: flyttar fram journalen beständigt med compare-and-swap.
+- `close`: slutför avstämningskontexten.
+- `recover --discover`: återställning via upptäckt när vanlig status inte kan validera lokalt tillstånd.
+
+## Regler för återställning
+
+<Warning>
+  Återställning med två platser är evidensbaserad framåtreparation. Den är aldrig ett tillstånd att kasta bort en inkompatibel journal eller ett okänt kritiskt tillägg. Om återställningen misslyckas ska du eskalera i stället för att tvinga fram den.
+</Warning>
+
+Använd återställning via upptäckt endast när vanlig status inte kan validera lokalt tillstånd. Bevara blockeringar; planera om endast efter att verifierad evidens har ändrats.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Sessionskoordinator" icon="gears" href="/sv/engines/coordinator">
+    Motorn som äger avstämningsjournalerna.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/sv/qxctl/session">
+    Autentiserade sessioner som paras ihop med avstämningskontexter.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/sv/qxctl/engines">
+    Hantera de bindningar som koordinatorn konsumerar.
+  </Card>
+</CardGroup>

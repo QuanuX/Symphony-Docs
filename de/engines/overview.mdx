@@ -1,0 +1,57 @@
+---
+title: "Symphony-Vektor-Engines: Überblick über die unabhängige Installation"
+description: "Jede Symphony-Vektor-Engine wird unabhängig installiert, läuft prozessextern in C++ und bleibt autoritätsfrei. Lernen Sie hier die Engine-Familien SKV, SCV und SHV kennen."
+sidebarTitle: "Engines-Überblick"
+---
+
+Jeder aktive Symphony-Vektor auf Anwendungsebene kann eine unabhängig installierbare, prozessexterne C++-Engine haben. Gemeinsame, autoritätsfreie C++-Mechanik liegt unter `libraries/`; ein separater C++-Coordinator ist für die Mechanik authentifizierter Sitzungen und des Worktree-Abgleichs zuständig. Engines prüfen, validieren, projizieren und schlagen innerhalb vektoreigener Verträge vor. Sie erlangen keine Autorität allein dadurch, dass sie Inhalte erzeugen.
+
+## Implementierte Engines
+
+<CardGroup cols={2}>
+  <Card title="Knowledge-Vector-Grundlage" icon="cube" href="/de/engines/knowledge-vector-foundation">
+    C++-Prozess-Framing, JSON, SHA-256, Snapshots, Quittungen und Manifest-Erkennung.
+  </Card>
+
+  <Card title="Session Coordinator" icon="gears" href="/de/engines/coordinator">
+    Authentifizierte Sitzungen, Worktree-Abgleich und Koordination der Lebenszyklusanwendung.
+  </Card>
+
+  <Card title="SCV-Quell-Engines" icon="cloud" href="/de/engines/scv-source-engines">
+    Acht C++26-Engines für Quellwissen zu SCV, Hyperscalern, Edge und Anbietern.
+  </Card>
+
+  <Card title="SHV-Engines" icon="microchip" href="/de/engines/shv-engines">
+    Engines für Hardwarequellen, Katalog, Profile, Partitionierung, Veröffentlichung und Adapter.
+  </Card>
+</CardGroup>
+
+## SKV-Engine-Familie
+
+Die SKV-Oberflächen haben jeweils eine eigene Engine:
+
+- Die Engines für SKVI, SCLV, SACV, SODV und SSFV implementieren jeweils inspect, check, propose, project (und gegebenenfalls recovery).
+- Die Engines für SAV und SEV sind C++26-Prozesse auf dem Freezing Path für Kompositionsbewertung und Weiterentwicklungsfälle.
+
+<Note>
+  Jede aktuelle SKV-Engine dient ausschließlich zum Lesen, Abfragen, Validieren und Vorschlagen. Programmatisches kanonisches Anwenden bleibt deaktiviert, bis für jede Engine die Verträge für SSIAG-Berechtigungsprüfung, Transaktion mit erwartetem Zustand, qxctl-Schutzmaßnahme, STAV-Ereignis, Wiederherstellung und Negativtests vollständig sind.
+</Note>
+
+## Gemeinsame Garantien
+
+- Unabhängige Installation und Deinstallation pro Modul
+- Kein ungezieltes Durchsuchen des Repositorys; die Manifest-Erkennung ist explizit
+- Keine geteilte Autorität; jede Mutationsroute ist durch SSIAG plus STAV abgesichert
+- Keine Residenz im Hot Path; Engines fügen Live-Workloads niemals Latenz hinzu
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="qxctl-Überblick" icon="terminal" href="/de/qxctl/overview">
+    Administrative CLI, die exakte, per Quittung validierte Engines aufruft.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/de/governance/maestro">
+    Erfasst Docking-Beziehungen zwischen Engines und Rezeptoren.
+  </Card>
+</CardGroup>

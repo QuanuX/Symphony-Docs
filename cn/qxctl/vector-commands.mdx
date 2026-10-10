@@ -1,0 +1,82 @@
+---
+title: "qxctl 向量命令：skvi、sclv、sacv、sodv、ssfv、shv"
+description: "了解当前可用的向量专用 qxctl 语法：SKVI、SCLV、SACV、SODV、SSFV、SHV 存储与目录，以及预留的 accord 和 evolution 界面。"
+sidebarTitle: "向量命令"
+---
+
+qxctl 为每个已实现的 SKV 引擎以及 SCV 和 SHV 管理提供向量专用语法。已批准的 Accordare 和 SEV 语法将在其命令实现和稳定的注册表证据就绪后，分别使用 `qxctl accord ...` 和 `qxctl evolution ...`。
+
+## SKV 引擎语法
+
+- `qxctl skvi ...`：针对 SKVI 引擎执行 inspect、check、propose、project
+- `qxctl sclv ...`：针对 SCLV 引擎执行 inspect、check、propose、recover、project
+- `qxctl sacv ...`：针对 SACV 引擎执行 inspect、check、diff、propose、project
+- `qxctl sodv ...`：针对 SODV 引擎执行 inspect、check、verify、propose、recover、project
+- `qxctl ssfv ...`：针对 SSFV 引擎执行 inspect、check、diff、propose、graph
+
+每种语法都受其所属引擎契约的约束。qxctl 从不臆造操作，也从不绕过引擎。
+
+## Accordare 新增功能
+
+qxctl 上的 Accordare 新增功能提供：
+
+- 稳定的状态
+- 协调（仅重放确切的候选项）
+- 监管器的安装与卸载（仅调用经过验证的 receipt-v2 可执行文件）
+- 两个授权管理身份，仅在 SSIAG 和预期状态恢复下变更已停止的 STAV 配置
+
+状态会区分持久化意图和追加积压。协调仅重放确切的候选项。授权类叶命令从不打开正在运行的配置。
+
+## SHV 存储
+
+持久化 SHV 存储只能通过以下命令管理：
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+使用保留的预期意图摘要执行 `commit` 同时也是恢复操作，没有单独的恢复别名。存储作用域在输入中声明；连接器身份在标志中设置。结构化存储不会重复语义层面的 `shv graph validate`，也不会选择目录头。
+
+`shv graph store inventory`（0.2 版本）新增了一种绑定修订版本的逻辑读取，并带有显式保留的写入者身份。遗留的 0.1 选择方式仍受支持。
+
+## SHV 目录发布
+
+目录发布只能通过以下命令管理：
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+恢复操作为 `apply --operation-id`，与 `--input` 互斥。基于权限的本地目录选择不同于源激活和通用图存储。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="SKV 概览" icon="book-open" href="/cn/skv/overview">
+    引擎所实现的向量语义。
+  </Card>
+
+  <Card title="SHV 向量" icon="microchip" href="/cn/vectors/shv">
+    硬件向量（Hardware Vector）背景与引擎列表。
+  </Card>
+
+  <Card title="SHV 引擎" icon="microchip" href="/cn/engines/shv-engines">
+    引擎级详细信息。
+  </Card>
+
+  <Card title="qxctl 概览" icon="terminal" href="/cn/qxctl/overview">
+    完整的 qxctl 命令界面。
+  </Card>
+</CardGroup>
