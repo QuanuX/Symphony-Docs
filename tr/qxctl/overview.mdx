@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphony Ajan Odaklı Yönetim Komut Satırı"
+description: "qxctl, Symphony'nin Go ile yazılmış yönetim CLI'ıdır. 373 çalıştırılabilir komutunu, engine bağlama kayıt defterini ve vektör engine'leri için makbuzla doğrulanan çağırma modelini öğrenin."
+sidebarTitle: "qxctl'e Genel Bakış"
+---
+
+`qxctl`, Symphony'nin Go tabanlı, öncelikle ajan odaklı yönetim ve sorgu CLI'ıdır. Komutları konuşur; arkalarındaki işlemlerin ve anlamların sahibi alan vektörleridir. Depoya işlenmiş kayıt defteri, her çalıştırılabilir komut yaprağını kararlı bir makine kimliğine ve incelenmiş özellik yönetimi kanıtlarına bağlar.
+
+## qxctl neleri kapsar
+
+qxctl şunlar için yönetim sağlar:
+
+- Depo ve sözleşme incelemesi
+- Doğrulayıcı, uyarı, değişmez (invariant), özellik, yaşam döngüsü, oturum, uzlaştırma, bağlama ve Maestro yönetimi
+- SSIAG kimliği, STAV denetimi ve Accordare üretici yönetimi
+- Uygulanmış vektör engine grameri (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv` ile SCV ve SHV yüzeyleri)
+
+Mevcut kayıt defteri **373** çalıştırılabilir komut içerir.
+
+## Güvenli çağırma modeli
+
+qxctl, makbuzla doğrulanmış kesin kurulumları; sınırlı alt süreçler, katı zaman sınırları, yanıt kimliği ve özet kontrolleri, beklenen durum işlemleri ve kalıcı kurtarma kullanarak çağırır. Makbuzların yerine hiçbir zaman bağdaştırıcı yollarını veya ham sürümleri kabul etmez.
+
+## Engine bağlama kayıt defteri v2
+
+Engine bağlama kayıt defteri v2, yerleşik sekiz engine rolünü ve sınırlı gelecekteki rol kimliklerini destekler. Eski v1 durumu çift okunur; v2'ye geçiş, qxctl üzerinden açık ve özete bağlı bir compare-and-swap gerektirir ve hiçbir zaman bir sürüm seçme işlemi değildir.
+
+## Kayıt defteri komutları
+
+Beklenen kayıt defterini `tools/qxctl` içinden üretin ve doğrulayın:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Kurulu bir istemci, çalıştırılabilir dosyaya bağlı kanıt üretebilir:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Beklenen kanıtta istemci sürümü, çalıştırılabilir özeti ve makbuz özeti null değerdedir. Gözlemlenen kanıt ise kesin istemci sürümünü ve çalıştırılabilir özetini, mevcut olduğunda da makbuz özetini bağlar. Her iki biçim de `symphony.qxctl.command-registry.v1` kullanır.
+
+<Note>
+  qxctl, komut gramerinin ve sunumun sahibidir. Vektör anlamlarının veya kanonik bilgi gerçeğinin sahibi değildir. Çağıran sınıfından bağımsız olarak, yeni bir `qxcmd` kimliğini yalnızca incelenmiş kaynak değişiklikleri onaylar.
+</Note>
+
+## Komut grupları
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/tr/qxctl/knowledge">
+    Vektörler arası yaşam döngüsü ve kalıcı SSFV oturumu yönetimi.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/tr/qxctl/lifecycle">
+    Profil, sahiplik, gözlem, rapor, önyükleme, uygulama ve kurtarma.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/tr/qxctl/engines">
+    Engine bağlama kayıt defteri ve geçiş.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/tr/qxctl/reconcile">
+    Koordinatör çalışma ağacı uzlaştırması.
+  </Card>
+
+  <Card title="session" icon="key" href="/tr/qxctl/session">
+    Kimliği doğrulanmış oturumlar ve SSFV bakım akışları.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/tr/qxctl/maestro">
+    Türetilmiş reseptör envanteri ve yerleştirme kanıtları.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/tr/qxctl/validate">
+    Korumalı uyarı politikası ve doğrulayıcı yönetimi.
+  </Card>
+
+  <Card title="vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` ve gelecekteki accord/evolution grameri.
+  </Card>
+</CardGroup>

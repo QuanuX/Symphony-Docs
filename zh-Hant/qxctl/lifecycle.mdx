@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle：設定檔、開機與套用"
+description: "透過 qxctl 以嚴格的比較並交換防護機制，管理受保護的生命週期設定檔、擁有權、觀察、開機與相容套用的轉換。"
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` 語法用於管理受保護的設定檔、擁有權、觀察、開機日誌，以及相容套用（apply-compatible）的轉換。每次變更都是比較並交換（compare-and-swap），而每次套用都綁定於確切的證據。
+
+## 設定檔
+
+為某個 TOPS 設定受保護的生命週期設定檔：
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+首次建立設定檔時請提供 `absent`，否則請提供先前讀取所回報的確切摘要。
+
+## 擁有權
+
+- `ownership status`：檢查一個已設定的共用根目錄
+- `ownership reconcile`：重新整理其證據
+- `ownership adopt`：僅在審查過每一項保守的舊版聲明之後才採用
+- `ownership release`：僅針對一份刻意設為可回收的確切舊版收據進行釋放
+
+<Warning>
+  切勿手動刪除或改寫根目錄本機登錄檔或其 `symphony-root-ownership/1` 收據版面相容性柵欄。較舊的生命週期用戶端必須遇到該柵欄，並在其既有的未知套件阻擋條件上停止。
+</Warning>
+
+## 觀察、報告、開機
+
+- `observe`：輸出可拋棄的固定版面收據證據
+- `report`：產生全新的可拋棄計畫
+- `boot`：具有穩定操作 ID 與確切日誌狀態的持久性僅報告推進
+- `status`：v1 檢查
+- `recover --discover`：當一般狀態無法驗證本機狀態時，復原唯一的 v1 鏈
+
+## 相容套用的設定檔
+
+對於 `apply-compatible` 設定檔，只有在提供確切的開機來源摘要、套用日誌比較並交換、已套用狀態比較並交換、穩定的操作 ID，以及明確的暫存根目錄時，才能呼叫 `apply`：
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+使用 `apply-status` 觀察嘗試狀況，或使用有界的 `apply-recover` 進行持久性復原。切勿手動選擇動作或編輯受保護的狀態。
+
+<Note>
+  僅更新時間戳記的觀察重新整理，必須在不推進穩定語意識別的情況下變更文件證據。
+</Note>
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    負責生命週期計畫與套用協調的引擎。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/zh-Hant/qxctl/engines">
+    管理生命週期計畫所參照的引擎綁定。
+  </Card>
+</CardGroup>

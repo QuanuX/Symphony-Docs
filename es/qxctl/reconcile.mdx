@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: reconciliación de árboles de trabajo"
+description: "Reconcilia árboles de trabajo contra un coordinador de Symphony vinculado con comprobaciones de compatibilidad, diarios de checkpoint y cierre, y recuperación de dos ranuras basada en evidencia."
+sidebarTitle: "reconcile"
+---
+
+La gramática `qxctl knowledge reconcile ...` impulsa la reconciliación de árboles de trabajo a través de un único coordinador de sesiones de conocimiento (Knowledge Session Coordinator) vinculado de forma exacta. Cada mutación se rastrea con un identificador estable y es una operación compare-and-swap contra el digest exacto del diario actual.
+
+## Comandos
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: verifica que qxctl, el coordinador y los motores vinculados coincidan en la versión del protocolo y el ámbito.
+- `begin`: abre un nuevo contexto de reconciliación con un identificador de operación estable.
+- `status`: inspecciona el diario actual sin mutarlo.
+- `checkpoint`: avanza el diario de forma duradera con compare-and-swap.
+- `close`: finaliza el contexto de reconciliación.
+- `recover --discover`: recuperación por descubrimiento cuando el estado ordinario no puede validar el estado local.
+
+## Reglas de recuperación
+
+<Warning>
+  La recuperación de dos ranuras es una reparación hacia delante basada en evidencia. Nunca es un permiso para descartar un diario incompatible ni una extensión crítica desconocida. Si la recuperación falla, escala el problema en lugar de forzarlo.
+</Warning>
+
+Usa la recuperación por descubrimiento solo cuando el estado ordinario no pueda validar el estado local. Conserva los bloqueos; vuelve a planificar solo después de que cambie la evidencia verificada.
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Coordinador de sesiones" icon="gears" href="/es/engines/coordinator">
+    El motor propietario de los diarios de reconciliación.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/es/qxctl/session">
+    Sesiones autenticadas que se emparejan con contextos de reconciliación.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/es/qxctl/engines">
+    Gestiona las vinculaciones que consume el coordinador.
+  </Card>
+</CardGroup>

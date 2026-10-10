@@ -1,0 +1,51 @@
+---
+title: "SKVI：Symphony 知識向量索引引擎"
+description: "SKVI 以確定性方式將每個標準 SKV 介面索引一次、檢查 manifest 所宣告的涵蓋範圍，並輸出與摘要綁定的可拋棄投影，且不觸及真相。"
+sidebarTitle: "SKVI"
+---
+
+Symphony 知識向量索引（Symphony Knowledge Vector Index，SKVI）是在每個 SKV 介面上對應目前標準真相的引擎。它是一個可獨立安裝的 C++ 程序，以確定性且唯讀的方式運作，無法決定成員資格或寫入標準檔案。
+
+## SKVI 做什麼
+
+SKVI 執行三項有界操作：
+
+- **Inspect 與 check**：驗證每個 manifest 所宣告的必要介面都恰好被索引一次，並具有穩定的擁有者、真相角色、關係、使用者與投影資格。
+- **Propose**：接受由呼叫者宣告、針對索引變更的不可變提議，但不套用它們。
+- **Project**：為下游使用者輸出目前索引的可拋棄、與摘要綁定的投影。
+
+## SKVI 不做的事
+
+SKVI 絕不會決定某項功能是否值得納入，或 manifest 的成員資格。擁有權仍歸屬於各向量的 Contract Quad。SKVI 也不會：
+
+- 寫入或改寫標準 Markdown
+- 將任何內容發布到公開投影
+- 僅因其產生了證據就授予權限
+
+## 何時使用
+
+在你提議原始碼變更之前，使用 SKVI 確認儲存庫已完整涵蓋，或查看某個特定介面所具有的擁有者與真相角色。其投影會提供給提議審查者、代理情境與驗證器基準使用。
+
+<Note>
+  SKVI 是僅支援讀取、查詢、驗證與提議的引擎之一。在每個引擎的 SSIAG、預期狀態交易、qxctl 防護機制、STAV 事件、復原與負面測試合約完成之前，所有已批准的向量引擎都將持續停用標準套用。
+</Note>
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SKV 概覽" icon="book-open" href="/zh-Hant/skv/overview">
+    治理 SKVI 的總體框架。
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/zh-Hant/skv/sclv">
+    記錄已完成之重大原始碼變更的僅附加變更帳本。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    執行 `qxctl skvi ...` 以呼叫 inspect、check 與 propose。
+  </Card>
+
+  <Card title="驗證器" icon="clipboard-check" href="/zh-Hant/governance/validator">
+    補充 SKVI 涵蓋範圍的獨立唯讀檢查。
+  </Card>
+</CardGroup>

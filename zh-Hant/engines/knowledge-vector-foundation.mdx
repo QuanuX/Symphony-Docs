@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector 引擎 C++ 基礎：共用機制"
+description: "Knowledge Vector 引擎 C++ 基礎提供不具權限的程序框架、有界限的 JSON、SHA-256、快照、回執，以及明確的資訊清單探索。"
+sidebarTitle: "基礎程式庫"
+---
+
+`libraries/knowledge-vector-engine-cpp` 提供每個 Symphony vector 引擎都會重複使用的共用、不具權限的 C++ 機制。它提供確定性的建構區塊，讓每個引擎都能保持有界限、可重現，且不受周遭副作用影響。
+
+## 基礎提供的功能
+
+- **程序框架**：每個引擎都使用的不具權限本機程序協定
+- **有界限的 JSON**：具明確大小與深度限制的嚴格剖析與輸出
+- **SHA-256**：為證據與回執提供內容定址
+- **不跟隨讀取**：絕不會意外穿越符號連結的檔案系統讀取
+- **確定性快照**：受檢查狀態的可重複快照
+- **時間驗證**：依據 Symphony 時間語意合約（Temporal Semantics Contract）的標準 UTC 處理
+- **擁有者資訊清單探索**：精確探索合約資訊清單
+- **版本化封裝**：可獨立安裝、由回執擁有的套件
+- **回執與由回執擁有的解除安裝**：僅由安裝該成品的回執驅動解除安裝
+
+## 資訊清單探索界線
+
+<Warning>
+  資訊清單探索從固定的啟動集合開始，且只會遍歷明確的從屬宣告。它絕不會對儲存庫進行周遭爬梳，也不會從目錄名稱推斷所有權。
+</Warning>
+
+每個使用此基礎的 vector 引擎都會繼承這項規則。
+
+## 基礎不做的事
+
+- 它不具備權限。使用它的引擎仍必須透過 SSIAG 授權變更操作。
+- 它不會透過網路發布或擷取任何內容。
+- 它不會自行變更標準檔案。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    建構於此基礎之上、用於工作階段與協調的 C++26 協調器。
+  </Card>
+
+  <Card title="引擎概觀" icon="cube" href="/zh-Hant/engines/overview">
+    重複使用此基礎的引擎。
+  </Card>
+
+  <Card title="SKV 概觀" icon="book-open" href="/zh-Hant/skv/overview">
+    引擎所實作的 vector 合約。
+  </Card>
+
+  <Card title="qxctl 概觀" icon="terminal" href="/zh-Hant/qxctl/overview">
+    呼叫經回執驗證之確切引擎的管理 CLI。
+  </Card>
+</CardGroup>

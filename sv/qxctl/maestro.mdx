@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: läs Symphonys närvaroinventering av receptorer"
+description: "Inspektera Symphonys närvaroauktoritet Maestro via qxctl för att se autentiserade dockningsrelationer för vektormotorer och härledd receptorinventering."
+sidebarTitle: "maestro"
+---
+
+Grammatiken `qxctl maestro ...` visar Maestros närvaroevidens. Maestro är närvaroauktoriteten; qxctl läser och inspekterar bara det som Maestro registrerar. Ingen av dem skapar dockningsrelationer på egen hand.
+
+## Inventering
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` visar Maestros fullständiga, härledda, skrivskyddade inventering av autentiserade dockningsrelationer för vektormotorer per TOPS och receptor.
+
+## Relaterade administrativa vägar
+
+Ytterligare qxctl-löv exponerar Maestro-relaterad administration:
+
+- Status och inspektion av dockningsevidens
+- Återställningsvägar som avgränsas av Maestros egna kontrakt
+- Grundläggande livscykelregistrering och inbyggd övervakning av Maestro självt
+
+Varje mutationsväg går genom den exakta modulägda adaptern. qxctl renderar aldrig Maestro-deskriptorer från intern tolkning och anropar aldrig implicit den senaste versionen.
+
+<Warning>
+  Maestro startar, schemalägger, övervakar eller anropar inte motorer. `qxctl maestro inventory` är skrivskyddat. Bindning, avstämning, sessionskoordinering eller en livscykelplan etablerar inte på egen hand närvaro i Maestro.
+</Warning>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/sv/governance/maestro">
+    Kontrakt och gränser för närvaroauktoriteten.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/sv/qxctl/engines">
+    Bindningsregister för motorer (bindningar är inte dockning).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/sv/qxctl/session">
+    Autentiserade sessioner som används för att registrera närvaro.
+  </Card>
+
+  <Card title="Översikt över motorer" icon="cube" href="/sv/engines/overview">
+    Oberoende installerbara vektormotorer som dockar med Maestro.
+  </Card>
+</CardGroup>

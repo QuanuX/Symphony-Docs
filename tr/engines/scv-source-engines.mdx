@@ -1,0 +1,74 @@
+---
+title: "SCV Kaynak Bilgisi Motorları: Symphony için Sağlayıcı Gerçekliği"
+description: "Bağımsız olarak paketlenmiş sekiz SCV, hiper ölçekleyici, uç ve sağlayıcı motoru, kesin kaynak revizyonlarını korur ve yeniden üretilebilir grafik ve sorgu kanıtı üretir."
+sidebarTitle: "SCV Motorları"
+---
+
+SCV kaynak bilgisi motorları; tesis dışı sağlayıcı kaynakları, teklifleri, bölgeleri, kısıtlamaları ve hibrit olanaklar hakkında özel anlamsal bilgi tutan, bağımsız olarak paketlenmiş sekiz C++26 sürecidir. Aşağı akıştaki araçların sonuçları yeniden üretebilmesi için kesin kaynak revizyonlarını ve sınırlı yakalamaları korurlar.
+
+## Motorlar
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Paylaşılan bulut sözcük dağarcığı için kapsayıcı SCV kaynak motoru.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector kaynak motoru.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare'e özgü uç kaynak motoru.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services kaynak motoru.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure kaynak motoru.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean kaynak motoru.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform kaynak motoru.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Saklanan ilişkisel grafik dizinlemesi için isteğe bağlı DuckDB bağlayıcısı.
+  </Card>
+</CardGroup>
+
+## SCV motorlarının yaptıkları
+
+- Açık kaynak revizyonlarını ve sınırlı yakalamaları korur
+- Nitelikli iddiaları ve yerel belge yapısını saklar
+- Yeniden üretilebilir grafik ve sorgu kanıtı üretir
+- Taşınabilir sağlayıcı paketlerini ve çağıranın yönlendirdiği sonlu bileşimi besler
+
+## Yapmadıkları
+
+<Warning>
+  Sağlayıcı işlemleri ve eksiksiz bulut katalogları bu artışın kapsamı dışında kalır. SCV motorları bilineni tanımlar; sağlayıcılar üzerinde işlem yapmaz.
+</Warning>
+
+qxctl; denetlenen yerel kaynak değişikliklerini ve tutarlı grafik seçimini, saklanan iş akışları ve korumalı grafik seçimi aracılığıyla ayrıca yönetir. Özel grafik geçişi ve operasyonel adaptörler ayrı çalışmalar olarak kalır.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SCV vektörü" icon="cloud" href="/tr/vectors/scv">
+    Bu motorların uyguladığı Cloud Vector sözleşmesi.
+  </Card>
+
+  <Card title="SOV vektörü" icon="terminal" href="/tr/vectors/sov">
+    SCV kanıtları üzerinde qxctl aracılığıyla işlem yapan Ops Vector.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    Grafik seçimi, kaynak iş akışları ve DuckDB bağlayıcı yönetimi.
+  </Card>
+</CardGroup>

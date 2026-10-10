@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl 운영 제어"
+description: "SOV는 프로비저닝, Habitat 구성, Nest 전달, 버스 어댑터, 선택적 원격 Node 관리를 위한 qxctl 관리 운영 도메인을 정의합니다."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector(SOV)는 승인된 qxctl 명령이 인프라에 작용하는 운영 제어 평면입니다. 프로비저닝, Habitat 구성, Nest 전달, 버스 어댑터 설정, 선택적 원격 Node 관리에 대한 계약을 소유합니다. SOV는 제공자 의미나 하드웨어 사실을 만들어 내지 않으며, 사용자가 이미 선택한 지원되는 옵션을 실행합니다.
+
+## SOV가 다루는 범위
+
+SOV는 신흥 Phase 2 도메인입니다. 범위는 다음과 같습니다.
+
+- **프로비저닝**: 제공자 및 소유 하드웨어 리소스 할당 워크플로
+- **Habitat 구성**: Node에 전달되는 정확한 OS 및 패키지 구성
+- **Nest 전달**: Node에서의 워크로드 배치 및 업데이트
+- **버스 어댑터 구축**: 선택한 버스(NATS JetStream, ZeroMQ 등)를 통한 Node 연결
+- **원격 Node 작업**: 로컬 셸 외부에 있는 Node의 선택적 관리
+
+<Note>
+  제공자 프로토콜, Terraform 실행, Habitat 빌더, Nest 배포 명령, 원격 작업 수신기는 아직 설계되지 않았습니다. 현재 SOV 엔진이나 제공자 변경은 구현되어 있지 않습니다.
+</Note>
+
+## SOV와 다른 벡터의 관계
+
+SOV는 지식 소스가 아니라 제어 평면입니다. 다른 벡터가 소유한 증거를 바탕으로 작동합니다.
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/ko/vectors/scv">
+    제공자 및 외부 리소스 지식을 제공합니다. SOV는 SCV 증거를 읽고 어떤 작업이 호환되는지 판단합니다.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/ko/vectors/snv">
+    SOV 작업이 완료된 후 결과로 생성된 Node 식별자, 클러스터 구성원 자격, 이름을 기록합니다.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ko/vectors/shv">
+    향후 프로비저닝 선택을 제약하는 상세한 하드웨어 기능 증거를 제공할 수 있습니다.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/ko/skv/overview">
+    SOV 계약, 변경 결과, 인덱싱, 수명 주기 통합을 관리합니다.
+  </Card>
+</CardGroup>
+
+## 명령 인터페이스로서의 qxctl
+
+SOV 작업은 373개의 실행 가능한 명령을 갖춘 Go 기반 관리 CLI인 `qxctl`을 통해 제공됩니다. qxctl은 SOV 작업을 구현하고 표시하지만 그 도메인 의미를 소유하지는 않습니다. 의미는 벡터가 소유하고, 실행 인터페이스는 도구가 소유합니다.
+
+## 사용자 권한 경계
+
+제공자, 리전, 하드웨어, 버스, 소프트웨어, 배포 토폴로지, Node별 관리 방식은 사용자가 선택합니다. SOV는 지원되는 옵션을 제공하고 실행합니다. 제공자의 순위를 매기거나, 토폴로지를 추천하거나, 제안을 의무 정책으로 바꾸지 않습니다.
+
+## 현재 상태
+
+SOV는 정규 아키텍처 계약입니다. 엔진, Terraform 래퍼, Habitat 빌더, 버스 어댑터, 원격 명령 수신기 중 어느 것도 구현되었다고 주장하지 않습니다. 향후 SOV 구성 요소는 공통 SKV 수명 주기 아래에서 독립적으로 설치 가능하고, 정확한 버전으로 선택 가능하며, 롤백 가능한 상태로 유지됩니다.

@@ -1,0 +1,48 @@
+---
+title: "SCLV: 소스 변경을 위한 Symphony Change Ledger Vector"
+description: "SCLV는 제공자 중립적인 제안, 비변경 복구, 기록용 일회용 프로젝션과 함께 완료된 소스 변경의 추가 전용 원장을 유지합니다."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector(SCLV)는 시간에 따라 SKV 문서에 이루어진 변경을 기록합니다. 그 엔진은 독립적으로 설치 가능한 C++ 프로세스로, 결정적인 추가 전용 원장 검사를 수행하고 일회용 프로젝션을 생성합니다. 원장은 중요한 소스 변경이 완료된 후에만 작성됩니다.
+
+## 작업
+
+- **Inspect 및 check**: 원장의 형태, 연속성, 증거를 검증합니다.
+- **Propose (v3)**: 새로운 기록에 대한 호출자 선언, 제공자 중립적인 제안을 받습니다.
+- **Recover**: 중단되었거나 모호한 상태에 대해 비변경 복구를 수행합니다.
+- **Project**: 요청 시 원장 상태의 일회용 인벤토리를 출력합니다.
+
+## 승인 및 폐기
+
+승인된 모든 SCLV 기록은 작성 시점의 현재 인덱싱된 증거를 바인딩합니다. 이후 문서가 정당하게 폐기되더라도, 삭제된 현재 문서를 SKVI에 다시 강제로 넣지 않고 변경 불가능한 과거 출처가 보존됩니다. 과거는 과거로, 현재의 진실은 현재로 남습니다.
+
+## SCLV가 하지 않는 일
+
+- SCLV는 소스 변경을 생성하거나 승인하지 않습니다.
+- SCLV는 기존 기록을 다시 작성하지 않으며, 추가 전용입니다.
+- SCLV는 아무것도 게시하지 않습니다. 공개 프로젝션은 SODV에 속합니다.
+
+<Note>
+  현재의 모든 SKV 엔진은 읽기, 쿼리, 검증, 제안만 수행합니다. 정규 apply는 각 엔진의 완전한 권한 및 감사 계약이 완료될 때까지 비활성화되어 있습니다.
+</Note>
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/ko/skv/skvi">
+    SCLV 기록이 바인딩하는 현재 정규 진실을 인덱싱합니다.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    원장 정보의 공식 공개 프로젝션을 관리합니다.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ko/skv/sev">
+    SCLV가 기록하기 전에 진화 사례가 변경을 평가합니다.
+  </Card>
+
+  <Card title="qxctl 벡터 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    `qxctl sclv ...`를 실행하여 inspect, check, propose, recover를 수행합니다.
+  </Card>
+</CardGroup>

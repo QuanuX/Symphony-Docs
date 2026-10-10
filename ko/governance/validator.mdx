@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: 결정적 읽기 전용 저장소 검사"
+description: "Symphony Validator는 계약, 소스 폐쇄성, 불변 조건, 기능, 릴리스, 기계 검사 루트 요약에 대해 라인 형식 또는 구조화된 JSON 증거를 생성합니다."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator(`tools/symphony-validator`)는 독립적이고 결정적인 읽기 전용 C++26 저장소 검사기입니다. 저장소와 그 계약의 현재 상태에 대한 변경 불가능한 증거를 생성합니다. 어떤 것도 복구하거나 게시할 수 없습니다.
+
+## Validator가 검사하는 것
+
+- 계약 형태: 필수 Contract Quad 앵커와 구조
+- SKVI가 인덱싱한 표면 전반의 현재 소스 폐쇄성
+- `knowledge/INVARIANTS.md`와 불변 조건 레지스트리에 따른 불변 조건 소유권
+- SSFV가 보고하는 기능 관리 기대 사항
+- SODV가 보고하는 릴리스 기록
+- 저장소 README의 기계 소유 루트 요약
+
+증거는 라인 출력 또는 구조화된 JSON으로 내보내집니다. 모든 출력은 동일한 저장소 상태에서 재현할 수 있습니다.
+
+## Validator가 하지 않는 일
+
+<Warning>
+  Validator는 파일을 복구하거나, 계약을 다시 쓰거나, 저장소를 게시할 수 없습니다. 어떤 정식 진실도 만들어 내지 않으며, 단지 보고할 뿐입니다.
+</Warning>
+
+- 저장소에 대한 부작용 없음
+- 네트워크 접근 없음
+- qxctl의 보호된 경고 정책 외부에서의 경고 억제 없음
+
+## qxctl 통합
+
+qxctl은 보호된 경고 정책을 적용하기 전에 Validator의 정확한 영수증과 구조화된 다이제스트를 검증합니다. 아홉 개의 보호된 경고 수명 주기 qxctl 리프 명령과 정확한 영수증 기반 루트 요약 경로가 원시 탐지기 증거를 변경하지 않고 검증 관리 기능을 노출합니다.
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/ko/qxctl/validate">
+    보호된 경고 정책, 기준선, 표시 문법.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ko/skv/ssfv">
+    Validator가 검사하는 기능 관리 기대 사항.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    Validator가 검사하는 릴리스 기록.
+  </Card>
+
+  <Card title="SKV 개요" icon="book-open" href="/ko/skv/overview">
+    Validator가 계약을 검사하는 상위 프레임워크.
+  </Card>
+</CardGroup>

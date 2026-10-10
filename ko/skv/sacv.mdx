@@ -1,0 +1,52 @@
+---
+title: "SACV: QuanuX Symphony를 위한 API 계약 거버넌스"
+description: "SACV는 범위가 제한된 OpenAPI 3.2.0 검사, 결정적 호환성 비교, 벡터 전반의 호출자 선언 레지스트리 제안을 통해 버전이 지정된 API 계약을 관리합니다."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector(SACV)는 플랫폼 전반에서 버전이 지정된 API 계약을 관리합니다. 그 엔진은 독립적으로 설치 가능한 C++ 프로세스로, 범위가 제한된 OpenAPI 3.2.0 JSON 검증, 결정적 호환성 비교, 일회용 인벤토리를 수행합니다. 엔드포인트 의미는 도메인을 소유하는 벡터나 모듈에 남아 있으며, SACV는 계약 형태와 호환성을 관리합니다.
+
+## 작업
+
+- **Inspect 및 check**: OpenAPI 3.2.0 JSON 문서가 범위가 제한된 프로필을 준수하는지 검증합니다.
+- **Diff**: 계약 버전 간의 결정적 호환성 비교를 계산합니다.
+- **Propose**: 새로운 계약이나 변경된 계약에 대한 호출자 선언 레지스트리 제안을 받습니다.
+- **Project**: 검토자와 하위 도구를 위한 일회용 인벤토리를 출력합니다.
+
+## SACV가 관리하는 범위
+
+SACV는 다음을 제한합니다.
+
+- 계약 형태(SACV 프로필이 적용된 OpenAPI 3.2.0)
+- 버전 간 호환성 분류
+- 승인된 계약의 레지스트리 구성원 자격
+
+다음은 하지 않습니다.
+
+- 엔드포인트 의미 소유(각 벡터나 모듈이 유지)
+- SDK 생성, 아티팩트 게시 또는 토큰 발급
+- 실제 네트워크 인터페이스가 존재함을 암시(향후 비공개 API를 언급해도 그것이 생성되지는 않음)
+
+<Note>
+  SACV는 읽기, 쿼리, 검증, 제안만 수행합니다. 프로그래밍 방식의 정규 apply는 SKV 엔진 전반에서 비활성화되어 있습니다.
+</Note>
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SKV 개요" icon="book-open" href="/ko/skv/overview">
+    상위 프레임워크와 Contract Quad 모델입니다.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    SACV에 등록된 계약의 모든 공식 게시를 관리합니다.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ko/skv/sav">
+    선언된 구성 요소 전반의 구성 및 호환성을 평가합니다.
+  </Card>
+
+  <Card title="qxctl 벡터 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    `qxctl sacv ...`를 실행하여 inspect, check, diff, propose를 수행합니다.
+  </Card>
+</CardGroup>

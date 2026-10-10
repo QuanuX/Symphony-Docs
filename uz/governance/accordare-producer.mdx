@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV prodyuseri: chegaralangan SAV Named Version auditi"
+description: "Accordare STAV prodyuseri autentifikatsiyalangan mahalliy peer’larga ega freezing-path Go prodyuseri orqali SAV Named Version intent’i, natijasi va tiklanishini barqaror saqlaydi."
+sidebarTitle: "Accordare prodyuseri"
+---
+
+Accordare STAV prodyuseri (`modules/accordare-stav-producer`) — chegaralangan SAV Named Version audit sxemasi uchun mustaqil oʻrnatiladigan, freezing-path Go prodyuseri. U oʻzgartirishdan oldingi intent’ni va qoʻshish tiklanishini barqaror saqlaydi, oʻzining mahalliy peer’larini autentifikatsiya qiladi va faqat yopiq lugʻati qabul qilgan aniq xavfsiz nomzodni yuboradi. U STAV qoʻshish vakolatining oʻzi emas.
+
+## Intent, natija, tiklash namunasi
+
+Prodyuser har bir audit qilinadigan oʻzgartirish uchun uch bosqichli namunaga amal qiladi:
+
+<Steps>
+  <Step title="Oʻzgartirishdan oldingi intent">
+    Har qanday oʻzgarish koʻrinadigan boʻlishidan oldin chaqiruvchining bildirilgan intent’ini barqaror qayd eting. Prodyuser yopiq lugʻatdan tashqaridagi nomzodlarni rad etadi.
+  </Step>
+  <Step title="Yakuniy natija">
+    Oʻzgartirish yakunlangach yoki muvaffaqiyatsiz tugagach, aniq natijani qayd eting, shunda audit umid qilingan holatni emas, balki voqelikni aks ettiradi.
+  </Step>
+  <Step title="Chegaralangan tiklash">
+    Uzilish yuz berganda prodyuser muvofiqlashtirishni oʻylab topmasdan yoki intent’ni jimgina tashlab yubormasdan qoʻshish oqimini chegaralangan tarzda tiklaydi.
+  </Step>
+</Steps>
+
+## Chegaralar
+
+<Warning>
+  Accordare prodyuseri STAV qoʻshish vakolati emas. U mahalliy peer’larni autentifikatsiya qiladi va nomzodlarni yuboradi; qoʻshish vakolati ularni validatsiya qiladi, muhrlaydi va barqaror saqlaydi. Hech qachon bu ajratishni chetlab oʻtmang.
+</Warning>
+
+- Prodyuserning lugʻati yopiq. U faqat SAV Named Version audit nomzodlarini qabul qiladi.
+- Prodyuser freezing-path’da ishlaydi. U hot-path bogʻliqligiga aylanmasligi kerak.
+- Prodyuser mahalliy peer’larni autentifikatsiya qiladi; u masofaviy chaqiruvchilarni autentifikatsiya qilmaydi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/uz/governance/stav">
+    Audit yozuvlarini muhrlaydigan qoʻshish vakolati.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/uz/governance/ssiag">
+    Prodyuser audit qiladigan oʻzgartirishni avtorizatsiya qiladi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/uz/skv/sav">
+    Ushbu sxema audit qiladigan Named Version kompozitsiya semantikasi.
+  </Card>
+
+  <Card title="qxctl vector buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Ratifikatsiya qilingan Accordare grammatikasi amalga oshirilgach `qxctl accord ...` sifatida keladi.
+  </Card>
+</CardGroup>

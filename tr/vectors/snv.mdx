@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node Kimliği ve Küme Kayıtları"
+description: "SNV; Node kimliğini, kaynaklarını, küme üyeliklerini ve kullanıcı tarafından atanan adları dikte etmeden kaydeder ve ilişkilendirir. SNIV, SNRV, SCIV ve SCNV alt vektörlerinden oluşur."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector (SNV), Symphony ile kullandığınız fiziksel Node'ların kimliklerini, kaynaklarını, küme üyeliklerini ve adlarını kaydeder ve ilişkilendirir. Her biri ayrı bir anlamsal sınıra sahip dört alt vektörden oluşur. SNV sizin adınıza hiçbir şeyi seçmez, vermez, dikte etmez veya otomatik olarak yeniden adlandırmaz.
+
+## Alt vektör bileşimi
+
+SNV dört kalıcı anlamsal alandan oluşur:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node Kimliği**: fiziksel Node kimliği ve onun kesin sağlayıcı kaynağı, seçilen teklif ve altyapı alanı ilişkileri.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node Kaynakları**: bir Node için yerel ve açıkça nitelendirilmiş uzak kaynak gerçeği.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Küme Kimliği**: küme kimliği, veri yolu (bus) bağlantısı ve kümedeki Node ilişkileri.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Birleştirilmiş Adlandırma**: sizin veya sağlayıcılarınız tarafından zaten atanmış adların SNV sınırları içinde çözümlenmesi.
+  </Card>
+</CardGroup>
+
+## Kayıt sınırı
+
+SNV olguları ve bunların soy geçmişini kaydeder. Sizin için ad ayırmaz, kaynak tahsis etmez veya küme oluşturmaz. Adları kullanıcı atar; Symphony bunları kaydeder. Sağlayıcı kaynaklarını kullanıcı seçer; Symphony bunları ilişkilendirir. Küme topolojisini kullanıcı tasarlar; Symphony bunu belgeler.
+
+## SNV'nin diğer vektörlerle ilişkisi
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/tr/vectors/scv">
+    Hangi Node'ların var olabileceğine ışık tutan sağlayıcı ve tesis dışı kaynak bilgisini sağlar.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/tr/vectors/sov">
+    Altyapıyı qxctl aracılığıyla kurar ve değiştirir; SNV'nin kaydettiği Node'ları üretir.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/tr/vectors/shv">
+    Bir Node içindeki fiziksel bileşenler için ayrıntılı donanım yeteneği kanıtı sağlayabilir.
+  </Card>
+</CardGroup>
+
+## Mevcut durum
+
+SNV, gelişmekte olan kanonik bir mimari sözleşmedir. Şu anda hiçbir SNV engine'i, grafiği, kayıt defteri şeması, kimlik kodlayıcısı, keşif hizmeti, adlandırma hizmeti veya qxctl komutu uygulanmamıştır. Kayıt şemaları ve engine'ler ertelenmiş durumdadır.
+
+## Gelecekteki kurulabilirlik
+
+Gelecekteki her SNV engine'i bağımsız olarak kurulabilir olmalı ve projeksiyonlarını kesin sahip kanıtından yeniden oluşturabilmelidir. Hiçbir engine yalnızca kayıtları saklayarak veya çözümleyerek bir kimlik ya da adlandırma otoritesi hâline gelmez.

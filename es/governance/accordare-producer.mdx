@@ -1,0 +1,53 @@
+---
+title: "Productor STAV de Accordare: auditoría acotada de Named Versions de SAV"
+description: "El productor STAV de Accordare mantiene duraderos la intención, el resultado y la recuperación de las Named Versions de SAV mediante un productor en Go de freezing path con pares locales autenticados."
+sidebarTitle: "Productor de Accordare"
+---
+
+El productor STAV de Accordare (`modules/accordare-stav-producer`) es un productor en Go de freezing path, instalable de forma independiente, para el circuito acotado de auditoría de Named Versions de SAV. Mantiene duraderas la intención previa a la mutación y la recuperación de anexiones, autentica a sus pares locales y envía únicamente el candidato seguro exacto admitido por su vocabulario cerrado. No es en sí mismo la autoridad de anexión de STAV.
+
+## El patrón de intención, resultado y recuperación
+
+El productor sigue un patrón de tres pasos para cada mutación auditada:
+
+<Steps>
+  <Step title="Intención previa a la mutación">
+    Registra de forma duradera la intención declarada del llamante antes de que cualquier cambio sea observable. El productor rechaza los candidatos que quedan fuera de su vocabulario cerrado.
+  </Step>
+  <Step title="Resultado final">
+    Después de que la mutación se complete o falle, captura el resultado exacto para que la auditoría refleje la realidad y no un estado deseado.
+  </Step>
+  <Step title="Recuperación acotada">
+    Ante una interrupción, el productor realiza una recuperación acotada del flujo de anexiones sin inventar una reconciliación ni descartar la intención en silencio.
+  </Step>
+</Steps>
+
+## Límites
+
+<Warning>
+  El productor de Accordare no es la autoridad de anexión de STAV. Autentica a los pares locales y envía candidatos; la autoridad de anexión los valida, los sella y los almacena de forma duradera. Nunca eludas esta separación.
+</Warning>
+
+- El vocabulario del productor es cerrado. Solo acepta candidatos de auditoría de Named Versions de SAV.
+- El productor es de freezing path. No debe convertirse en una dependencia del hot path.
+- El productor autentica a los pares locales; no autentica a llamantes remotos.
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/es/governance/stav">
+    La autoridad de anexión que sella los registros de auditoría.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/es/governance/ssiag">
+    Autoriza la mutación que audita el productor.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/es/skv/sav">
+    La semántica de composición de Named Versions que audita este circuito.
+  </Card>
+
+  <Card title="Comandos de vectores de qxctl" icon="terminal" href="/es/qxctl/vector-commands">
+    La gramática ratificada de Accordare llegará como `qxctl accord ...` una vez implementada.
+  </Card>
+</CardGroup>

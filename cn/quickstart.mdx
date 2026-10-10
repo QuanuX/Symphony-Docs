@@ -1,0 +1,33 @@
+---
+title: "快速入门：探索 QuanuX Symphony"
+description: "带你依次了解 Symphony 的准则、架构、vector 契约和 qxctl 管理界面的引导路线。"
+sidebarTitle: "快速入门"
+---
+
+在操作 Symphony 之前，请使用本指南熟悉整体情况。本文档将平台准则、用户选择的基础设施、vector 拥有的语义以及管理命令区分开来。确切的安装和执行步骤以相关组件的当前契约为准。
+
+## 1. 阅读运行边界
+
+从 [平台准则](/cn/doctrine) 开始。它确立了用户对策略和基础设施的所有权、调用方类别中立、基于证据的兼容性以及热路径保护。
+
+## 2. 了解物理模型
+
+阅读 [Node、Habitat 和 Nest](/cn/concepts/node-habitat-nest)：
+
+- **Node：** 已标识的物理计算机资源。
+- **Habitat：** 交付给 Node 的确切操作系统和软件包调配。
+- **Nest：** 放置在合适 Habitat 中的用户用途工作负载。
+
+集群的总线和适配器是显式的架构选择。Symphony 不会规定通用的提供商或策略。
+
+## 3. 追溯含义的所有权
+
+[架构概览](/cn/concepts/architecture) 展示了 vector 契约、引擎、qxctl 和受治理证据之间的关系。[Vector 与阶段](/cn/concepts/vectors) 解释了为什么即使交付工作在各阶段间推进，vector 仍然是语义所有者。[Symphony Knowledge Vector](/cn/skv/overview) 介绍了 Contract Quad 及其配套表面。
+
+## 4. 找到管理界面
+
+[qxctl 概览](/cn/qxctl/overview) 介绍了基于 Go 的管理和查询 CLI。如需了解特定命令系列，请参阅 qxctl 相关页面，例如 [knowledge](/cn/qxctl/knowledge)、[lifecycle](/cn/qxctl/lifecycle)、[engines](/cn/qxctl/engines) 或 [validation](/cn/qxctl/validate)。qxctl 提供命令语法和呈现；vector 契约拥有这些操作及其含义。
+
+## 5. 检查相关契约和证据
+
+在对 Node 执行操作或调用 vector 引擎之前，请检查当前的所有者契约、目标状态、授权以及可用的回执或验证证据。[调用方权限](/cn/concepts/caller-authority) 和 [热路径隔离](/cn/concepts/hot-path-isolation) 解释了这些边界。新兴的界面并不意味着隐含的运行保证。

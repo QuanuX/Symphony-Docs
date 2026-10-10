@@ -1,0 +1,33 @@
+---
+title: "Tezkor boshlash: QuanuX Symphony bilan tanishing"
+description: "Symphony doktrinasi, arxitekturasi, vector shartnomalari va qxctl maʼmuriy yuzasi boʻylab yoʻl-yoʻriqli marshrut."
+sidebarTitle: "Tezkor boshlash"
+---
+
+Symphony bilan ishlashdan oldin yoʻnalishni aniqlab olish uchun ushbu qoʻllanmadan foydalaning. Hujjatlar platforma doktrinasi, foydalanuvchi tanlagan infratuzilma, vektorlarga tegishli semantika va maʼmuriy buyruqlarni bir-biridan ajratadi. Aniq oʻrnatish va ishga tushirish qadamlari tegishli komponentning joriy shartnomasida keltiriladi.
+
+## 1. Operatsion chegaralarni oʻqing
+
+[Platforma doktrinasi](/uz/doctrine)dan boshlang. U strategiya va infratuzilmaga foydalanuvchi egaligini, chaqiruvchi sinfiga betaraflikni, dalillarga asoslangan moslikni va hot path himoyasini belgilaydi.
+
+## 2. Jismoniy modelni oʻrganing
+
+[Node, Habitat va Nest](/uz/concepts/node-habitat-nest) sahifasini oʻqing:
+
+- **Node:** identifikatsiya qilingan jismoniy kompyuter resursi.
+- **Habitat:** Node’ga yetkazib beriladigan aniq operatsion tizim va paketlar sozlanishi.
+- **Nest:** mos Habitat’ga joylashtirilgan foydalanuvchi maqsadidagi ish yuklamasi.
+
+Klasterning bus’lari va adapterlari aniq arxitektura tanlovlaridir. Symphony universal provayder yoki strategiyani buyurmaydi.
+
+## 3. Maʼno egaligini kuzating
+
+[Arxitektura umumiy koʻrinishi](/uz/concepts/architecture) vector shartnomalari, engine’lar, qxctl va boshqariladigan dalillar oʻrtasidagi munosabatni koʻrsatadi. [Vektorlar va bosqichlar](/uz/concepts/vectors) yetkazib berish ishi bosqichlar boʻylab oʻtsa ham, nima uchun vektor semantik egasi boʻlib qolishini tushuntiradi. [Symphony Knowledge Vector](/uz/skv/overview) Contract Quad va uning yordamchi yuzalarini tavsiflaydi.
+
+## 4. Maʼmuriy yuzani toping
+
+[qxctl umumiy koʻrinishi](/uz/qxctl/overview) Go’da yozilgan maʼmuriy va soʻrov CLI’sini tanishtiradi. Muayyan buyruqlar oilasi uchun qxctl sahifalaridan foydalaning, masalan [knowledge](/uz/qxctl/knowledge), [lifecycle](/uz/qxctl/lifecycle), [engines](/uz/qxctl/engines) yoki [validation](/uz/qxctl/validate). qxctl buyruq grammatikasi va taqdimotini taqdim etadi; operatsiyalar va ularning maʼnosi esa vector shartnomalariga tegishli.
+
+## 5. Tegishli shartnoma va dalillarni tekshiring
+
+Node ustida harakat qilishdan yoki vector engine’ni chaqirishdan oldin joriy egalik shartnomasini, maqsadli holatni, avtorizatsiyani va mavjud kvitansiya yoki validatsiya dalillarini tekshiring. [Chaqiruvchi vakolati](/uz/concepts/caller-authority) va [hot-path izolyatsiyasi](/uz/concepts/hot-path-isolation) ushbu chegaralarni tushuntiradi. Rivojlanayotgan yuza yashirin operatsion kafolat hisoblanmaydi.

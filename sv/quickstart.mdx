@@ -1,0 +1,33 @@
+---
+title: "Snabbstart: Utforska QuanuX Symphony"
+description: "En guidad väg genom Symphonys doktrin, arkitektur, vektorkontrakt och den administrativa ytan i qxctl."
+sidebarTitle: "Snabbstart"
+---
+
+Använd den här guiden för att orientera dig innan du driftar Symphony. Dokumentationen skiljer mellan plattformsdoktrin, användarvald infrastruktur, vektorägd semantik och administrativa kommandon. Exakta installations- och körsteg hör till den relevanta komponentens aktuella kontrakt.
+
+## 1. Läs driftgränserna
+
+Börja med [plattformsdoktrinen](/sv/doctrine). Den fastställer användarens ägande av strategi och infrastruktur, neutralitet gentemot anroparklass, evidensbaserad kompatibilitet och skydd av den heta vägen.
+
+## 2. Lär dig den fysiska modellen
+
+Läs [Node, Habitat och Nest](/sv/concepts/node-habitat-nest):
+
+- **Node:** den identifierade fysiska datorresursen.
+- **Habitat:** den exakta konditioneringen av operativsystem och paket som levereras till en Node.
+- **Nest:** arbetslasten för användarens syfte som placeras i ett lämpligt Habitat.
+
+Ett klusters bussar och adaptrar är uttryckliga arkitekturval. Symphony föreskriver ingen universell leverantör eller strategi.
+
+## 3. Spåra ägandet av betydelse
+
+[Arkitekturöversikten](/sv/concepts/architecture) visar relationen mellan vektorkontrakt, motorer, qxctl och styrd evidens. [Vektorer och faser](/sv/concepts/vectors) förklarar varför en vektor förblir semantisk ägare även när leveransarbetet går vidare genom faser. [Symphony Knowledge Vector](/sv/skv/overview) beskriver Contract Quad och dess kompletterande ytor.
+
+## 4. Hitta den administrativa ytan
+
+[qxctl-översikten](/sv/qxctl/overview) introducerar det administrativa CLI-verktyget och frågeverktyget skrivet i Go. Använd qxctl-sidorna för en specifik kommandofamilj, till exempel [kunskap](/sv/qxctl/knowledge), [livscykel](/sv/qxctl/lifecycle), [motorer](/sv/qxctl/engines) eller [validering](/sv/qxctl/validate). qxctl tillhandahåller kommandogrammatik och presentation; vektorkontrakt äger åtgärderna och deras betydelse.
+
+## 5. Kontrollera relevant kontrakt och evidens
+
+Innan du agerar på en Node eller anropar en vektormotor, kontrollera det aktuella ägarkontraktet, måltillståndet, auktoriseringen och tillgängliga kvitton eller valideringsevidens. [Anroparbefogenhet](/sv/concepts/caller-authority) och [isolering av den heta vägen](/sv/concepts/hot-path-isolation) förklarar dessa gränser. En framväxande yta är ingen underförstådd driftgaranti.

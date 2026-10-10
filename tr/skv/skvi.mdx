@@ -1,0 +1,51 @@
+---
+title: "SKVI: Symphony Knowledge Vector Index Engine'i"
+description: "SKVI, her kanonik SKV yüzeyini deterministik olarak bir kez dizinler, manifestte bildirilen kapsamı kontrol eder ve gerçeğe dokunmadan atılabilir, özete bağlı projeksiyonlar üretir."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI), her SKV yüzeyindeki mevcut kanonik gerçeği eşleyen engine'dir. Deterministik ve salt okunur çalışan, bağımsız olarak kurulabilen bir C++ sürecidir; üyeliğe karar veremez veya kanonik dosyalar yazamaz.
+
+## SKVI ne yapar
+
+SKVI üç sınırlı işlem gerçekleştirir:
+
+- **İnceleme ve kontrol**: Manifestte bildirilen her gerekli yüzeyin; kararlı bir sahip, gerçek rolü, ilişkiler, tüketiciler ve projeksiyon uygunluğuyla tam olarak bir kez dizinlendiğini doğrular.
+- **Önerme**: Dizin değişiklikleri için çağıran tarafından bildirilen değiştirilemez önerileri, onları uygulamadan kabul eder.
+- **Projeksiyon**: Sonraki tüketiciler için mevcut dizinin atılabilir, özete bağlı projeksiyonlarını üretir.
+
+## SKVI neler yapmaz
+
+SKVI hiçbir zaman özellik değerine veya manifest üyeliğine karar vermez. Sahiplik her vektörün Contract Quad'ında kalır. SKVI ayrıca şunları yapmaz:
+
+- Kanonik Markdown yazmak veya yeniden yazmak
+- Genel bir projeksiyona herhangi bir şey yayımlamak
+- Yalnızca kanıt ürettiği için yetki vermek
+
+## Ne zaman kullanılır
+
+Bir kaynak değişikliği önermeden önce bir deponun tamamen kapsandığını doğrulamak veya belirli bir yüzeyin hangi sahibe ve gerçek rolüne sahip olduğunu görmek için SKVI'yi kullanın. Projeksiyonları öneri inceleyicilerini, ajan bağlamını ve doğrulayıcı temel çizgilerini besler.
+
+<Note>
+  SKVI, okuma, sorgulama, doğrulama ve önerme engine'lerinden biridir. Kanonik uygulama, her engine'in SSIAG, beklenen durum işlemi, qxctl güvencesi, STAV olayı, kurtarma ve negatif test sözleşmeleri tamamlanana kadar onaylanmış vektör engine'lerinin tamamında devre dışı kalmaya devam eder.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SKV'ye genel bakış" icon="book-open" href="/tr/skv/overview">
+    SKVI'yi yöneten çatı çerçeve.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/tr/skv/sclv">
+    Tamamlanmış önemli kaynak değişikliklerini kaydeden yalnızca eklemeli değişiklik defteri.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    İnceleme, kontrol ve önerme işlemlerini çağırmak için `qxctl skvi ...` komutunu çalıştırın.
+  </Card>
+
+  <Card title="Doğrulayıcı" icon="clipboard-check" href="/tr/governance/validator">
+    SKVI kapsamını tamamlayan bağımsız, salt okunur kontroller.
+  </Card>
+</CardGroup>

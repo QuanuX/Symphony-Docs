@@ -1,0 +1,48 @@
+---
+title: "SSIAG：Symphony 的安全身份与访问治理"
+description: "SSIAG 是 Symphony 与调用方无关的授权基础，提供按 TOPS 的注册、受保护的策略生命周期、安全的审计元数据以及原生监管钩子。"
+sidebarTitle: "SSIAG"
+---
+
+Symphony 安全身份与访问治理（SSIAG）是一个可独立安装、不依赖 cgo 的 Go 基础组件，用于在 Symphony 主机上实现与调用方无关的授权。它投影有效的主机权限，为受保护的变更把关，并在任何变更变得可见之前与 STAV 审计集成。
+
+## SSIAG 提供的功能
+
+- 与目标主机所有权、已授予的权限、所请求的操作、预期状态以及所有者配置的防护措施相关联的、精确且与调用方无关的授权
+- 按 TOPS 的注册和本地端点信任
+- 受保护的策略生命周期和提供方安装生命周期
+- 在活动绑定与先前绑定之间使用比较并交换（compare-and-swap）的绑定生命周期
+- 为 STAV 准备的安全审计元数据
+- 原生的 launchd 和 systemd 监管
+
+## 有意禁用的功能
+
+<Warning>
+  凭据的实际运营使用、规范知识应用以及密钥交付仍处于禁用状态。在其所需的经由 STAV 的审计路由完成之前，普通的基础变更将以失败关闭（fail closed）方式处理。
+</Warning>
+
+SSIAG 不判定调用方类别。人类、AI、代理、服务和工作负载调用方都被同等对待；权限来源于目标主机和所请求的操作，而不是参与者标签。
+
+## macOS 钥匙串提供方
+
+`modules/ssiag-provider-macos-keychain` 是一个 Swift 元数据适配器，具有有界的双向验证握手，以及签名包和会话就绪状态观测。它向 SSIAG 暴露提供方元数据，但不授予钥匙串的实际运营访问权限，该访问目前被有意禁用。
+
+## 相关表面
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/zh-Hans/governance/stav">
+    SSIAG 变更所依赖的按 TOPS 划分的仅追加审计账本。
+  </Card>
+
+  <Card title="Accordare 生产者" icon="pen-nib" href="/zh-Hans/governance/accordare-producer">
+    与 SSIAG 组合使用的有界 SAV Named Version 审计链路。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/zh-Hans/qxctl/lifecycle">
+    向 SSIAG 查询授权的生命周期管理。
+  </Card>
+
+  <Card title="调用方权限" icon="user-shield" href="/zh-Hans/concepts/caller-authority">
+    SSIAG 所实现的准则。
+  </Card>
+</CardGroup>

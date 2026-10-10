@@ -1,0 +1,47 @@
+---
+title: "SEV: 계획된 변경을 위한 Symphony Evolution Vector"
+description: "SEV는 결정적 사례, 의존성 준비 집합, 일회용 그래프, 적용하지 않는 복구 조언으로 계획된 변경, 새로움, 수명 주기 전환을 평가합니다."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector(SEV)는 플랫폼 전반의 계획된 변경 사례와 새롭게 발견된 사례를 소유합니다. 그 엔진은 동결 경로(freezing-path)의 읽기 전용 C++26 프로세스입니다. SEV는 호스트를 감시하거나 전환을 적용하지 않으며, 증거와 처리 조언을 생성합니다.
+
+## 작업
+
+- **사례 평가**: 추가, 변경, 이름 변경, 대체, 지원 중단, 폐기, 제거에 대한 결정적 진화 사례.
+- **영향 및 처리 계획**: 각 사례를 권한 있는 소유자에게 할당합니다.
+- **의존성 준비 집합 재계산**: 종속 전환의 안전한 순서를 도출합니다.
+- **전환 검증**: 전환 후 관찰된 상태가 예상 형태와 일치하는지 확인합니다.
+- **복구 조언**: 전환이 중단되었을 때 안전한 전진 또는 역방향 단계를 설명합니다.
+- **SCSEV 평가**: 최초의 관리되는 SEV 프로필로, 이 작업들을 문서 전용 지식 문서의 진화에 적용합니다.
+- **새로움 및 감시 검사**: 검토자가 주목해야 할 새롭거나 예상치 못한 문서를 탐지합니다.
+- **트리거 병합** 및 **수명 주기 세션 바인딩**: 중복 평가를 줄이고 사례를 세션에 바인딩합니다.
+- **그래프 프로젝션**: 검토용 일회용 그래프.
+
+## SCSEV 프로필
+
+SCSEV는 SSFV 기능 관리, 안정적인 qxctl 명령 진실, 엔진 작업 디스크립터를 재사용합니다. 중복된 엔진이나 레지스트리를 생성하지 않습니다. 첫 번째 엔진 슬라이스는 보고 전용 및 제안 전용이며, 영구적인 외부 작업은 qxctl과 지식 세션 코디네이터를 통해 별도로 승인됩니다.
+
+<Note>
+  SEV는 읽기, 쿼리, 검증, 제안만 수행합니다. 정규 apply는 SKV 엔진 계열 전반에서 여전히 비활성화되어 있습니다.
+</Note>
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SKV 개요" icon="book-open" href="/ko/skv/overview">
+    상위 프레임워크와 Contract Quad 모델입니다.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ko/skv/ssfv">
+    SCSEV 프로필이 재사용하는 기능 관리입니다.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ko/skv/sav">
+    변경된 구성 요소에 대한 구성 및 호환성 평가입니다.
+  </Card>
+
+  <Card title="qxctl 벡터 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    승인된 evolution 문법은 구현되면 `qxctl evolution ...`으로 제공됩니다.
+  </Card>
+</CardGroup>

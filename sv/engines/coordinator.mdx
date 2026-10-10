@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator för Symphonys vektormotorer"
+description: "Knowledge Session Coordinator tillhandahåller avgränsad kompatibilitet, avstämning av arbetsträd, autentiserade sessioner och livscykelkoordinering med tillämpningsförmåga i C++26."
+sidebarTitle: "Koordinator"
+---
+
+Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) är en oberoende installerbar C++26-process. Den sitter mellan qxctl och vektormotorerna och äger avgränsad kompatibilitet, avstämning av arbetsträd, autentiserade icke-kanoniska sessioner, SSFV-underhåll, livscykelplanering som endast rapporterar samt separat auktoriserade journaler med tillämpningsförmåga.
+
+## Ansvarsområden
+
+- **Kompatibilitetskontroller** mellan qxctl, koordinatorn och motorer
+- **Avstämning av arbetsträd** med beständigt platsbaserat tillstånd
+- **Autentiserade icke-kanoniska sessioner** under SSIAG-befogenhet
+- **Beständiga SSFV-underhållsströmmar**
+- **Livscykelplanering som endast rapporterar** med deterministisk evidens
+- **Journaler med tillämpningsförmåga** med förberedda försök, compare-and-swap, omobservation, dynamisk omplanering och återställning
+
+## Vad koordinatorn inte gör
+
+<Warning>
+  Koordinatorn utför inte vektorsemantik eller värdåtgärder. Den koordinerar evidens och journaler; varje motor äger fortfarande sin domän, och varje värdåtgärd förblir auktoriserad av sitt eget kontrakt.
+</Warning>
+
+- Ingen kanonisk tillämpning av kunskap
+- Ingen godtycklig kommandokörning
+- Inga dolda bevakare eller residenta bakgrundsarbeten
+
+## qxctl-integration
+
+qxctl anropar exakta, kvittovaliderade koordinatorinstallationer. `qxctl knowledge reconcile ...` och `qxctl knowledge session ...` använder exakt en bunden koordinator per åtgärd, och mutationer kräver stabila åtgärdsidentifierare samt exakta aktuella journalsammandrag för compare-and-swap.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/sv/qxctl/reconcile">
+    Grammatik för avstämning av arbetsträd.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/sv/qxctl/session">
+    Grammatik för autentiserade sessioner och SSFV-underhåll.
+  </Card>
+
+  <Card title="Grundbibliotek" icon="cube" href="/sv/engines/knowledge-vector-foundation">
+    Delad C++-mekanik som koordinatorn återanvänder.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/sv/governance/ssiag">
+    Auktoriserar de sessioner som koordinatorn hanterar.
+  </Card>
+</CardGroup>

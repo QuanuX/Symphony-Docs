@@ -1,0 +1,50 @@
+---
+title: "Symphony Vector 引擎的知識工作階段協調器"
+description: "知識工作階段協調器以 C++26 提供有界限的相容性、工作樹協調、經驗證的工作階段，以及具套用能力的生命週期協調。"
+sidebarTitle: "協調器"
+---
+
+知識工作階段協調器（`modules/knowledge-session-coordinator`）是一個可獨立安裝的 C++26 程序。它位於 qxctl 與 vector 引擎之間，負責有界限的相容性、工作樹協調、經驗證的非標準工作階段、SSFV 維護、僅報告的生命週期規劃，以及另行授權的具套用能力日誌。
+
+## 職責
+
+- qxctl、協調器與引擎之間的**相容性檢查**
+- 以持久的槽位狀態進行**工作樹協調**
+- 在 SSIAG 權限下的**經驗證非標準工作階段**
+- **持續性的 SSFV 維護**串流
+- 具確定性證據的**僅報告生命週期規劃**
+- **具套用能力的日誌**，包含預先準備的嘗試、比較並交換（compare-and-swap）、重新觀測、動態重新規劃與復原
+
+## 協調器不做的事
+
+<Warning>
+  協調器不會執行 vector 語意或主機動作。它負責協調證據與日誌；每個引擎仍擁有自己的領域，而每個主機動作仍由其自身的合約授權。
+</Warning>
+
+- 不進行標準知識套用
+- 不執行任意指令
+- 沒有隱藏的監看程式或常駐的背景工作
+
+## qxctl 整合
+
+qxctl 會呼叫經回執驗證的確切協調器安裝。`qxctl knowledge reconcile ...` 與 `qxctl knowledge session ...` 在每次操作中都使用一個確切繫結的協調器，而變更操作需要穩定的操作識別碼，以及用於比較並交換的確切現行日誌摘要。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/zh-Hant/qxctl/reconcile">
+    工作樹協調文法。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/zh-Hant/qxctl/session">
+    經驗證的工作階段與 SSFV 維護文法。
+  </Card>
+
+  <Card title="基礎程式庫" icon="cube" href="/zh-Hant/engines/knowledge-vector-foundation">
+    協調器重複使用的共用 C++ 機制。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hant/governance/ssiag">
+    授權協調器所管理的工作階段。
+  </Card>
+</CardGroup>

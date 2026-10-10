@@ -1,0 +1,51 @@
+---
+title: "SKVI: Symphony Knowledge Vector Index engine'i"
+description: "SKVI har bir kanonik SKV sahifasini deterministik tarzda bir marta indekslaydi, manifestda e'lon qilingan qamrovni tekshiradi va haqiqatga tegmasdan digest'ga bog'langan bir martalik proyeksiyalarni chiqaradi."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) — barcha SKV sahifalari bo'ylab joriy kanonik haqiqatni xaritalovchi engine. U mustaqil o'rnatiladigan C++ jarayoni bo'lib, deterministik va faqat o'qish rejimida ishlaydi, a'zolik haqida qaror qabul qila olmaydi va kanonik fayllarni yoza olmaydi.
+
+## SKVI nima qiladi
+
+SKVI uchta cheklangan amalni bajaradi:
+
+- **Inspect va check**: manifestda e'lon qilingan har bir majburiy sahifa barqaror egasi, haqiqat roli, munosabatlari, iste'molchilari va proyeksiyaga yaroqliligi bilan aynan bir marta indekslanganini tekshirish.
+- **Propose**: indeks o'zgarishlari uchun chaqiruvchi e'lon qilgan o'zgarmas takliflarni ularni qo'llamasdan qabul qilish.
+- **Project**: quyi oqim iste'molchilari uchun joriy indeksning digest'ga bog'langan bir martalik proyeksiyalarini chiqarish.
+
+## SKVI nimalarni qilmaydi
+
+SKVI hech qachon funksiyaning ahamiyatliligi yoki manifestga a'zolik haqida qaror qabul qilmaydi. Egalik har bir vektorning Contract Quad'ida qoladi. SKVI shuningdek:
+
+- Kanonik Markdown'ni yozmaydi yoki qayta yozmaydi
+- Ommaviy proyeksiyaga hech narsa nashr etmaydi
+- Faqat dalil yaratgani uchun vakolat bermaydi
+
+## Qachon foydalanish kerak
+
+Manba o'zgarishini taklif qilishdan oldin repozitoriy to'liq qamrab olinganini tasdiqlash yoki muayyan sahifa qaysi egaga va haqiqat roliga ega ekanini ko'rish uchun SKVI'dan foydalaning. Uning proyeksiyalari takliflarni ko'rib chiquvchilar, agent konteksti va validator boshlang'ich holatlari uchun manba bo'ladi.
+
+<Note>
+  SKVI — o'qish, so'rov, tasdiqlash va taklif qilish engine'laridan biri. Kanonik qo'llash har bir engine'ning SSIAG, kutilgan holat tranzaksiyasi, qxctl himoyasi, STAV hodisasi, tiklash va salbiy test shartnomalari yakunlanmaguncha tasdiqlangan vektor engine'lari bo'ylab o'chirilgan holda qoladi.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    SKVI'ni boshqaradigan umumiy freymvork.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/uz/skv/sclv">
+    Yakunlangan muhim manba o'zgarishlarini qayd etadigan faqat qo'shiladigan o'zgarishlar daftari.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Inspect, check va propose amallarini chaqirish uchun `qxctl skvi ...` ni ishga tushiring.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/uz/governance/validator">
+    SKVI qamrovini to'ldiruvchi mustaqil, faqat o'qiydigan tekshiruvlar.
+  </Card>
+</CardGroup>

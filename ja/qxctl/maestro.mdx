@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Symphony のレセプタープレゼンスインベントリの読み取り"
+description: "qxctl を通じて Symphony の Maestro プレゼンスオーソリティを検査し、認証済みのベクトルエンジンのドッキング関係と導出されたレセプターインベントリを確認します。"
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` グラマーは Maestro のプレゼンスエビデンスを表示します。Maestro はプレゼンスオーソリティであり、qxctl は Maestro が記録した内容を読み取り、検査するだけです。どちらも単独でドッキング関係を作成することはありません。
+
+## インベントリ
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` は、TOPS とレセプターごとの認証済みベクトルエンジンのドッキング関係について、Maestro の完全で導出された読み取り専用のインベントリを表示します。
+
+## 関連する管理ルート
+
+追加の qxctl リーフが Maestro 関連の管理機能を公開しています。
+
+- ドッキングエビデンスの status と検査
+- Maestro 自身のコントラクトに制約されたリカバリールート
+- Maestro 自体の基盤ライフサイクル登録とネイティブ監視
+
+すべての変更ルートは、モジュールが所有する正確なアダプターを経由します。qxctl は内部解析から Maestro の記述子をレンダリングしたり、暗黙の最新バージョンを呼び出したりすることはありません。
+
+<Warning>
+  Maestro はエンジンの起動、スケジュール、監視、呼び出しを行いません。`qxctl maestro inventory` は読み取り専用です。バインディング、reconciliation、セッション調整、またはライフサイクルプランだけでは Maestro のプレゼンスは確立されません。
+</Warning>
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/ja/governance/maestro">
+    プレゼンスオーソリティのコントラクトと境界。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ja/qxctl/engines">
+    エンジンバインディングレジストリ（バインディングはドッキングではありません）。
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ja/qxctl/session">
+    プレゼンスの記録に使用される認証済みセッション。
+  </Card>
+
+  <Card title="エンジンの概要" icon="cube" href="/ja/engines/overview">
+    Maestro にドッキングする、個別にインストール可能なベクトルエンジン。
+  </Card>
+</CardGroup>

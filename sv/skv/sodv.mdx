@@ -1,0 +1,48 @@
+---
+title: "SODV: styrning av officiell dokumentation och releaser"
+description: "SODV styr officiell QuanuX-publicering med kontroller av en releaseliggare som endast kan utökas, verifiering av anroparens observationer och releaseinventeringar för engångsbruk."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) styr hur kunskap inom SKV-ramverket blir officiell offentlig dokumentation och officiella releaseposter. Dess motor är en oberoende installerbar C++-process som utför lokala kontroller av en releaseliggare som endast kan utökas och producerar releaseinventeringar för engångsbruk. SODV publicerar ingenting själv.
+
+## Operationer
+
+- **Inspect och check**: validerar releaseliggarens form och kontinuitet.
+- **Verify**: kontrollerar anroparens observationer av publicerat tillstånd.
+- **Propose**: tar emot leverantörsneutrala releaseförslag.
+- **Recover**: utför icke-muterande återställning.
+- **Project**: avger releaseinventeringar för engångsbruk.
+
+## Vad SODV inte gör
+
+- SODV har ingen nätverksåtkomst.
+- SODV publicerar ingenting till GitHub, Mintlify, paketregister eller någon annan yta.
+- SODV skapar inga taggar och kan inte förklara en release som slutförd.
+- SODV rangordnar inte leverantörer och föredrar ingen publiceringsväg.
+
+Publicering sker via separata auktoriserade verktyg som konsulterar SODV-evidens.
+
+## Slutförda SODV-publiceringar
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` vid taggen `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` vid taggen `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` vid taggen `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Vektorkommandon i qxctl" icon="terminal" href="/sv/qxctl/vector-commands">
+    Kör `qxctl sodv ...` för att köra inspect, verify, propose och project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Varje SKV-motor är endast till för läsning, frågor, validering och förslag. Kanonisk apply är inaktiverad tills varje motors kontrakt för SSIAG, transaktioner med förväntat tillstånd, qxctl-skydd, STAV-händelser, återställning och negativa tester är kompletta.
+</Note>

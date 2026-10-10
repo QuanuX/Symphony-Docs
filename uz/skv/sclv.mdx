@@ -1,0 +1,48 @@
+---
+title: "SCLV: manba o'zgarishlari uchun Symphony Change Ledger Vector"
+description: "SCLV yakunlangan manba o'zgarishlarining faqat qo'shiladigan daftarini provayderga bog'liq bo'lmagan takliflar, o'zgartirmaydigan tiklash va bir martalik proyeksiyalar bilan yuritadi."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) vaqt o'tishi bilan SKV sahifalariga kiritilgan o'zgarishlarni qayd etadi. Uning engine'i mustaqil o'rnatiladigan C++ jarayoni bo'lib, deterministik, faqat qo'shiladigan daftar tekshiruvlarini bajaradi va bir martalik proyeksiyalarni ishlab chiqaradi. Daftarga yozuv faqat muhim manba o'zgarishi yakunlangandan keyingina kiritiladi.
+
+## Amallar
+
+- **Inspect va check**: daftar shakli, uzluksizligi va dalillarini tekshirish.
+- **Propose (v3)**: yangi yozuvlar uchun chaqiruvchi e'lon qilgan, provayderga bog'liq bo'lmagan takliflarni qabul qilish.
+- **Recover**: uzilib qolgan yoki noaniq holatni o'zgartirmasdan tiklash.
+- **Project**: so'rov bo'yicha daftar holatining bir martalik inventarlarini chiqarish.
+
+## Qabul qilish va iste'foga chiqarish
+
+Qabul qilingan har bir SCLV yozuvi yozilgan paytdagi joriy indekslangan dalillarni bog'laydi. Keyinchalik sahifaning qonuniy ravishda iste'foga chiqarilishi o'chirilgan joriy matnni SKVI'ga qaytarishga majburlamasdan o'zgarmas tarixiy kelib chiqishni saqlaydi. Tarix tarixligicha, joriy haqiqat esa joriyligicha qoladi.
+
+## SCLV nimalarni qilmaydi
+
+- SCLV manba o'zgarishlarini yaratmaydi yoki tasdiqlamaydi.
+- SCLV mavjud yozuvlarni qayta yozmaydi; u faqat qo'shiladigan daftar.
+- SCLV hech narsani nashr etmaydi. Ommaviy proyeksiya SODV'ga tegishli.
+
+<Note>
+  Har bir joriy SKV engine'i faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun mo'ljallangan. Kanonik qo'llash har bir engine'ning to'liq vakolat va audit shartnomalari yakunlanmaguncha o'chirilgan.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/uz/skv/skvi">
+    SCLV yozuvlari bog'lanadigan joriy kanonik haqiqatni indekslaydi.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    Daftar ma'lumotlarining rasmiy ommaviy proyeksiyasini boshqaradi.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/uz/skv/sev">
+    Evolyutsiya holatlari o'zgarishlarni SCLV qayd etishidan oldin baholaydi.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Inspect, check, propose va recover uchun `qxctl sclv ...` ni ishga tushiring.
+  </Card>
+</CardGroup>

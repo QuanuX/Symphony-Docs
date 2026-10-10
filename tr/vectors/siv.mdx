@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: Gelecekteki Ajan İş Birliği"
+description: "SIV; gelecekteki ajan iş birliğinin, genişletilmiş bağlamın, yapılandırılmış uzun vadeli mantığın ve yönetişim altındaki Symphony etkileşiminin sahibidir. SMCV ilk isteğe bağlı bileşenidir; SAIV ayrılmıştır."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV); ajan iş birliği, genişletilmiş yerel bağlam, yapılandırılmış uzun vadeli mantık, ajanlar arası iletişim ve Symphony yüzeyinde insan yönlendirmeli işlem için gelecekte Symphony tarafından yazılacak anlamların sahibidir. Kanonik sözleşmeleri olan ancak henüz çalıştırılabilir bir uygulaması bulunmayan, gelişmekte olan bir alandır.
+
+## Kapsam ve amaç
+
+SIV'nin şunları desteklemesi beklenmektedir:
+
+- Symphony iş akışlarına yerel ve uzak ajan katılımı
+- Oturumlar ve vektörler arasında paylaşılan genişletilmiş bağlam
+- Yinelenen veya çok adımlı işlemler için yapılandırılmış uzun vadeli mantık
+- Ajanlar arası iletişim protokolleri
+- Symphony komut yüzeyiyle yönetişim altındaki etkileşim
+
+SIV, çağıran türüne göre yetki vermez. İnsan, yapay zekâ, ajan ve hizmet çağıranlarına aynı şekilde davranılır. Yetki; hedef ana bilgisayar sahipliğinden, verilen izinden, istenen işlemden, beklenen durumdan ve sahip tarafından yapılandırılan güvencelerden türetilir.
+
+## Adlandırılmış alt vektörler
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    İsteğe bağlı Markdown dönüştürme bileşeni. Etkinleştirilmiş bir IPC bağlantısının üzerinde, qxctl ile yapılandırılabilen bir çevirmen olarak planlanmıştır. Henüz hiçbir SMCV komutu veya çevirmeni uygulanmamıştır.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Daha sonraki bir Symphony zekâ entegrasyonu alt vektörü için ayrılmıştır. Bu ayırma herhangi bir uygulama, ad alanı davranışı veya anlamsal işlem sağlamaz.
+  </Card>
+</CardGroup>
+
+## Kapsam dışı
+
+SIV açıkça şunları yapmaz:
+
+- Vektörlerin sahip olduğu anlamların yerini almak (alan işlemleri, bir ajan onları çağırdığında bile ilgili vektörlerinin sahipliğinde kalır)
+- Kanonik gerçek hâline gelmek veya SKV sözleşmelerini geçersiz kılmak
+- Alım satımın sıcak yoluna (hot path) girmek
+- Eski yapay zekâ çalışma belgesini kesin hâle getirmek
+
+## Mevcut durum
+
+SIV yalnızca kanonik bir mimari sözleşmedir. Şu anda hiçbir SIV düzeneği, ajan postası, uzun vadeli durum engine'i, model bağlantısı, yerel/uzak ajan protokolü, SAIV bileşeni, SMCV çevirmeni veya qxctl denetimi uygulanmamıştır.
+
+## Dil sınırı
+
+SIV bileşenleri için bir Rust gereksinimi belirlenmemiştir. Bileşen dili, nihai performans, taşınabilirlik, güvenlik ve entegrasyon sözleşmesine göre belirlenecektir. Herhangi bir çalışma belgesinden devralınmaz.
+
+## SIV'nin diğer vektörlerle ilişkisi
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/tr/skv/overview">
+    SIV sözleşmelerini, evrimini ve resmî yayın ilişkilerini yönetir.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/tr/vectors/sov">
+    Vektörlerin sahip olduğu anlamları koruyarak ajanlar tarafından çağrılan işlemleri qxctl aracılığıyla sunabilir.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/tr/skv/sav">
+    Ajanlar tarafından bir araya getirilen her türlü işlem için kompozisyonu ve uyumluluğu değerlendirir.
+  </Card>
+</CardGroup>

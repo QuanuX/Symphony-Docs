@@ -1,0 +1,37 @@
+---
+title: "QuanuX Symphony’da hot-path izolyatsiyasi"
+description: "Symphony ijro yoʻllarini maʼmuriy aralashuvdan qanday himoya qilishini oʻrganing: cold va freezing-path komponentlari, bus intizomi va Prima Parte holat guvohi konsepsiyasi."
+sidebarTitle: "Hot-path izolyatsiyasi"
+---
+
+Symphony maʼmuriy ishni ijro ishidan ajratadi, shunda jonli savdo, tadqiqot va unumdorlikka sezgir boshqa yoʻllar jitter, kechikish va yashirin bogʻliqliklardan xoli boʻlib qoladi. qxctl va bilim tekisligi cold yoki freezing-path boshqaruvidir. Ular jonli ishni ham joylashtirgan Node ustida aniq harakat qilishi mumkin, lekin doimiy hot-path bogʻliqliklariga aylanmasligi kerak.
+
+## Cold va freezing-path intizomi
+
+qxctl va vector engine’lari maʼmuriy cold yoki freezing-path komponentlaridir. Ular quyidagilarni qilmasligi kerak:
+
+- Hot yoki warm ijro yoʻllari bilan bir qatorda ishlash
+- Jonli ish yuklamalari bilan qulflarni boʻlishish
+- Jitter yoki kechikish qoʻshadigan sinxron bogʻliqliklar yaratish
+- Yashirin kuzatuvchilar, rezident interpretatorlar yoki soʻralmagan fon paket menejerlariga aylanish
+- Ijro Node’larida doimiy rezidentlikni saqlash
+
+Bu qoida bilim sessiyasi koordinatoriga, vector engine’lariga va qxctl boshqaradigan barcha operatsiyalarga taalluqli. Ular dalillar ishlab chiqaradi, holatni validatsiya qiladi va rejalar tayyorlaydi, lekin jonli ijro yoʻlida ishtirok etmaydi.
+
+## Bus intizomi
+
+Ogʻir uzatish, boshqaruv, tadqiqot va ijro chiqindilari bitta bus’ni boʻlishishi shart emas. Topologiya bir nechta bus’dan foydalanishi yoki eʼlon qilingan yoʻl uchun bus’ni chetlab oʻtishi mumkin, ayniqsa umumiy trafik jitter keltirib chiqarishi mumkin boʻlgan joylarda. NATS JetStream, ZeroMQ va boshqa tarmoqlar adapterlar va foydalanuvchi tanlovlaridir. qxctl bus boshqaruvining mavjudligi bus orqali oʻtishni majburiy qilmaydi.
+
+Kechikish va oʻtkazuvchanlik talablaringizga mos bus topologiyasini siz tanlaysiz. Symphony yagona umumiy tarmoqni majburlamasdan konfiguratsiyani qoʻllab-quvvatlaydi.
+
+## Prima Parte
+
+**Prima Parte** — joriy bajariladigan fayl emas, balki ratifikatsiya qilingan 3-bosqich konsepsiyasi. Bu muhim operatsiyadan keyin qxctl tomonidan aniq chaqiriladigan, ixtiyoriy, juda yengil C++ Node-mahalliy holat guvohidir. Unda daemon, tinglovchi, taymer, kuzatuvchi, soʻrov sikli yoki rezident bus ulanishi yoʻq.
+
+Uning chegaralangan barqaror lugʻati uchta atamani oʻz ichiga oladi:
+
+- `current` — hozirgi kuzatilgan holat
+- `previous` — muhim operatsiyadan oldingi holat
+- `lastTransmitted` — tegishli buyruq bajarilgandan keyin masofaviy Node yuborgan holat (qabul qilingani tasdiqlanmagan)
+
+Prima Parte faqat oʻz Node’ini qayd etadi, hech qachon kichikroq Maestro’ga aylanmaydi va chegaralangan ishini tugatgach chiqib ketadi. U 1-bosqich Maestro retseptori emas va hali hech qanday bajariladigan fayl amalga oshirilmagan.

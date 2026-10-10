@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: 認証済み Symphony セッション"
+description: "SSIAG で検証されたグラントを使用して、認証済みの Symphony コーディネーターセッションと永続的な SSFV メンテナンスストリームを開始、チェックポイント、クローズ、回復します。"
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` グラマーは、バインドされた 1 つの正確なコーディネーターと、TOPS スコープの 1 つの SSIAG エンドポイントを通じて、非正規の認証済みセッションを開きます。別の `session features ...` グラマーが永続的な SSFV メンテナンスストリームを扱います。
+
+## 基本セッショングラマー
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+すべての呼び出しは新しい正確なグラントを要求し、次の項目を検証します。
+
+- サブジェクトとターゲットの ID
+- ポリシーと構成の状態
+- 有効期限
+- 呼び出し元クラスの中立性
+- 譲渡不可性
+- 正規 apply の無効化
+- ケイパビリティのバインディング
+
+セッションエビデンスが認可するのは、指定された保護された非正規操作のみです。セッションジャーナルと reconciliation ジャーナルは分離して保持し、両者の関連付けにはコンテキスト参照のみを使用してください。
+
+## SSFV メンテナンスストリーム
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+features ストリームは、独立した永続的な SSFV メンテナンスコンテキストです。変更には次のものが必要です。
+
+- 開いている認証済みの基本セッション
+- 正確なコーディネーターと SSFV のバインディング
+- 安定した操作識別子
+- 厳密な compare-and-swap
+- 新しい SSIAG エビデンス
+
+<Note>
+  互換性のあるアップグレードやロールバックを行っても、ベースラインスナップショットとその元のエンジン ID は保持してください。オプションの Maestro エビデンスは、完全な認証済みインベントリである必要があります。Maestro を意図的に使用しない場合は、明示的な未構成の理由を記録してください。`review_required` は呼び出し元によるレビューのためのエビデンスであり、承認ではありません。
+</Note>
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ja/governance/ssiag">
+    各セッションリクエストが検証する新しいグラントを発行します。
+  </Card>
+
+  <Card title="セッションコーディネーター" icon="gears" href="/ja/engines/coordinator">
+    セッションと features のジャーナルを支えるエンジン。
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ja/qxctl/reconcile">
+    セッションと対になる reconciliation コンテキスト。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ja/skv/ssfv">
+    features ストリームが維持する機能ベクトル。
+  </Card>
+</CardGroup>

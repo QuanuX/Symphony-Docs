@@ -1,0 +1,47 @@
+---
+title: "Symphony Vector 與交付階段"
+description: "了解 Symphony 持久的語意所有權領域（vector）與依時間順序的交付階段有何不同，以及 Contract Quad 與目前各 vector 的狀態。"
+sidebarTitle: "Vector 與階段"
+---
+
+Symphony 的架構圍繞兩個概念組織：**vector** 是持久的語意所有權領域，而**階段（phase）**則是依時間順序進行的交付活動。某個元件最初在某個階段中研究，並不代表該階段就是它的永久擁有者。Vector 讓意義在實作演進的同時保持穩定。
+
+## 什麼是 vector？
+
+Vector 是一個持久且有界限的語意所有權領域，其標準合約擁有該領域的意義與允許的操作。每個 vector 都會獲得一組 **Contract Quad**：`INTENT.md`、`MANIFEST.md`、`SKILL.md` 與 `SPEC.md`，以及它實際需要的特定附屬介面。Vector 宣告其標準介面與委派圖，SKVI 會將每個現行介面精確對應一次，而過時的附屬介面則透過受治理的演進予以取代，而不會作為相互矛盾的脈絡殘留下來。
+
+## Vector 狀態
+
+| Vector | 狀態 | 頁面 |
+| --- | --- | --- |
+| **SKV**：Symphony Knowledge Vector | 已實作：具索引介面的 Phase 1 基礎 | [/skv/overview](/zh-Hant/skv/overview) |
+| **SKVI**：來源索引 | 已實作：inspect/check/propose 引擎 | [/skv/skvi](/zh-Hant/skv/skvi) |
+| **SCLV**：變更帳本 | 已實作：僅附加帳本檢查 | [/skv/sclv](/zh-Hant/skv/sclv) |
+| **SACV**：API 合約治理 | 已實作：OpenAPI 3.2.0 檢查 | [/skv/sacv](/zh-Hant/skv/sacv) |
+| **SODV**：官方文件／發布治理 | 已實作：本機發布帳本檢查 | [/skv/sodv](/zh-Hant/skv/sodv) |
+| **SSFV**：功能身分／管理 | 已實作：結構性功能檢查 | [/skv/ssfv](/zh-Hant/skv/ssfv) |
+| **SAV**：Accordare 組合 | 已實作：凍結路徑評估 | [/skv/sav](/zh-Hant/skv/sav) |
+| **SEV**：演進 | 已實作：影響／處置規劃 | [/skv/sev](/zh-Hant/skv/sev) |
+| **SSIAG**：安全身分與存取治理 | 已實作：不使用 cgo 的 Go 基礎 | [/governance/ssiag](/zh-Hant/governance/ssiag) |
+| **STAV**：TOPS 稽核協定 | 已實作：每個 TOPS 各自的僅附加帳本 | [/governance/stav](/zh-Hant/governance/stav) |
+| **SOV**：Ops Vector | 新興：佈建、Habitat、Nest 交付 | [/vectors/sov](/zh-Hant/vectors/sov) |
+| **SCV**：Cloud Vector | 已實作：八個 C++ 來源知識引擎 | [/vectors/scv](/zh-Hant/vectors/scv) |
+| **SNV**：Node Vector | 新興：SNIV、SNRV、SCIV、SCNV 組合 | [/vectors/snv](/zh-Hant/vectors/snv) |
+| **SQV**：Quantitative Vector | 新興：SOOV FIX 架構子 vector | [/vectors/sqv](/zh-Hant/vectors/sqv) |
+| **SHV**：Hardware Vector | 已實作：C++ 來源、目錄、設定檔引擎 | [/vectors/shv](/zh-Hant/vectors/shv) |
+| **SIV**：Intelligence Vector | 新興：SMCV 選用 Markdown；SAIV 保留 | [/vectors/siv](/zh-Hant/vectors/siv) |
+
+## Contract Quad 與附屬介面
+
+每個 vector 都會獲得：
+
+1. **INTENT.md**：用途與範圍
+2. **MANIFEST.md**：身分、已宣告的介面、委派圖
+3. **SKILL.md**：安全使用與操作指引
+4. **SPEC.md**：規範性行為與界線
+
+`SLANG.md`、`NAMESPACES.md`、登錄檔、結構描述與設定檔等附屬介面，仍是四成員結構之外的受治理成品。它們會路由或特化擁有者的真相，但無法擴大自身的權限。
+
+## 以證據為基礎的整合
+
+延後的引擎沒有捏造的回執。提議中的 API 沒有虛構的登錄項目。未發布的合約沒有 SODV 完成聲明。這是以證據為基礎的整合，而非形式上的重複。

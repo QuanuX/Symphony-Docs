@@ -1,0 +1,48 @@
+---
+title: "SCLV: ソース変更のための Symphony Change Ledger Vector"
+description: "SCLV は、プロバイダー中立の提案、非破壊のリカバリー、記録用の使い捨てプロジェクションを備えた、完了したソース変更の追記専用台帳を維持します。"
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector（SCLV）は、SKV サーフェスに対して時間の経過とともに加えられた変更を記録します。そのエンジンは個別にインストール可能な C++ プロセスで、決定的な追記専用台帳のチェックを実行し、使い捨てのプロジェクションを生成します。台帳は、重要なソース変更が完了した後にのみ書き込まれます。
+
+## 操作
+
+- **inspect と check**: 台帳の形状、連続性、エビデンスを検証します。
+- **propose（v3）**: 新しいレコードについて、呼び出し元が宣言したプロバイダー中立の提案を受け付けます。
+- **recover**: 中断された状態や曖昧な状態から、変更を加えないリカバリーを実行します。
+- **project**: 要求に応じて台帳の状態の使い捨てインベントリを出力します。
+
+## 受け入れと廃止
+
+受け入れられたすべての SCLV レコードは、書き込まれた時点の現在のインデックス済みエビデンスにバインドされます。後にサーフェスが正当に廃止された場合でも、削除された現在の文章を SKVI に戻すことなく、不変の履歴上の出所は保持されます。履歴は履歴のまま、現在の真実は現在のままです。
+
+## SCLV が行わないこと
+
+- SCLV はソース変更を作成したり承認したりしません。
+- SCLV は既存のレコードを書き換えません。追記専用です。
+- SCLV は何も公開しません。公開プロジェクションは SODV の担当です。
+
+<Note>
+  現在のすべての SKV エンジンは、読み取り、クエリ、検証、提案のみを行います。正規の apply は、各エンジンの完全なオーソリティと監査のコントラクトが完成するまで無効になっています。
+</Note>
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/ja/skv/skvi">
+    SCLV レコードがバインドする現在の正規の真実をインデックス化します。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ja/skv/sodv">
+    台帳情報の公式な公開プロジェクションを管理します。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ja/skv/sev">
+    エボリューションケースは、SCLV が記録する前に変更を評価します。
+  </Card>
+
+  <Card title="qxctl ベクトルコマンド" icon="terminal" href="/ja/qxctl/vector-commands">
+    `qxctl sclv ...` を実行して inspect、check、propose、recover を行います。
+  </Card>
+</CardGroup>

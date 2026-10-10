@@ -1,0 +1,32 @@
+---
+title: "Dokumentation för QuanuX Symphony"
+description: "Börja med Symphonys plattformsdoktrin, arkitektur, kunskapsvektorer och det administrativa CLI-verktyget qxctl."
+sidebarTitle: "Index"
+---
+
+Symphony är ett modulärt, agentiskt-först operativsystem för handel. Denna dokumentation beskriver dess aktuella kontrakt och gränser: hur infrastruktur modelleras, hur vektorer äger betydelse och hur qxctl administrerar åtgärder som stöds. Börja med plattformsdoktrinen innan du använder någon administrativ yta.
+
+<CardGroup cols={2}>
+  <Card title="Snabbstart" icon="rocket" href="/sv/quickstart">
+    Hitta den kortaste läsvägen genom plattformen, dess kontrakt och qxctl.
+  </Card>
+  <Card title="Plattformsdoktrin" icon="book-open" href="/sv/doctrine">
+    Förstå användarens ägande, anroparbefogenhet, evidens och skydd av den heta vägen.
+  </Card>
+  <Card title="Arkitektur" icon="diagram-project" href="/sv/concepts/architecture">
+    Se hur Nodes, Habitats, Nests, vektorer, motorer och qxctl hänger ihop.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/sv/qxctl/overview">
+    Utforska Symphonys administrativa kommandoyta och frågekommandon.
+  </Card>
+</CardGroup>
+
+## Utforska dokumentationen
+
+- [Node, Habitat och Nest](/sv/concepts/node-habitat-nest) definierar den fysiska resursen, dess exakta programvarukonditionering och arbetslasten för användarens syfte.
+- [Vektorer och faser](/sv/concepts/vectors) skiljer bestående semantiskt ägande från leveranskampanjer.
+- [Symphony Knowledge Vector](/sv/skv/overview) förklarar kanoniska kontrakt, kompletterande ytor och indexerad kunskap.
+- [Vektormotorer](/sv/engines/overview) beskriver de oberoende installerade motorerna som körs utanför processen.
+- [Anroparbefogenhet](/sv/concepts/caller-authority) och [isolering av den heta vägen](/sv/concepts/hot-path-isolation) anger två väsentliga driftgränser.
+
+Dessa sidor beskriver aktuella dokumenterade ytor. Följ de länkade kontrakten och implementationsevidensen för det exakta tillståndet hos en viss komponent.

@@ -1,0 +1,54 @@
+---
+title: "STAV：Symphony 依 TOPS 劃分的僅附加稽核帳本"
+description: "STAV 附加權威執行依 TOPS 劃分的僅附加稽核帳本，具備經驗證的 IPC、先 fsync 再發回執的持久性、有界限的讀取、驗證與復原。"
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS 稽核 Vector（Symphony TOPS Audit Vector，STAV）定義了依 TOPS 劃分的僅附加稽核帳本協定。其執行階段權威位於 `modules/stav-append-authority`，這是一個可獨立安裝的 Go 服務。依 TOPS 劃分的營運帳本為各個 TOPS 安裝所私有；它們不屬於 SKV 內容。
+
+## STAV 附加權威
+
+`modules/stav-append-authority` 提供：
+
+- 依 TOPS 劃分的僅附加稽核帳本
+- 相互驗證的本機 IPC
+- 確切的產生器與讀取器授權
+- 先 fsync 再發回執的持久性
+- 有界限的讀取、驗證與復原
+- 註冊與原生監督（launchd、systemd）
+
+<Warning>
+  qxctl 絕不會取得原始的附加權限。它透過確切、由模組擁有的轉接器來協調註冊、驗證與授權，但帳本附加操作始終封存在附加權威程序內部。
+</Warning>
+
+## Go 版 STAV 協定
+
+`libraries/stav-protocol-go` 是一個不具權限的 Go 程式庫，實作標準的 STAV v1 編解碼器、嚴格驗證、摘要、框架、一致性規則，以及封閉的產生器詞彙。任何產生器或讀取器都可以採用此協定，而不會因此繼承權限。
+
+## 已完成的 SODV 發布
+
+目前透過 SODV 發布的每個 STAV 成品都是 Go 原始碼模組版本，而非二進位版本：
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hant/governance/ssiag">
+    授權受保護的變更，再由 STAV 進行稽核。
+  </Card>
+
+  <Card title="Accordare 產生器" icon="pen-nib" href="/zh-Hant/governance/accordare-producer">
+    將變更前意圖與最終結果送入 STAV。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/zh-Hant/qxctl/lifecycle">
+    與 STAV 註冊組合運作的生命週期管理。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh-Hant/skv/sodv">
+    治理 STAV 元件的官方發布記錄。
+  </Card>
+</CardGroup>

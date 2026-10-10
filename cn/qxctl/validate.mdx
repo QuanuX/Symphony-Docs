@@ -1,0 +1,54 @@
+---
+title: "qxctl validate：Symphony 验证器警告策略"
+description: "通过 qxctl 管理独立 Symphony 验证器之上的受保护警告策略、基线和显示语法，而不改变原始检测器证据。"
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` 语法用于管理 Symphony 验证器的受保护警告策略、基线和显示语法。独立安装的 C++ 验证器生成不可变的原始证据；qxctl 在不改变检测结果的前提下，管理与调用方无关的受保护呈现方式。
+
+## qxctl validate 涵盖的内容
+
+- 九个受保护的警告生命周期叶命令
+- 确切的、由回执支撑的根摘要路径
+- 基线管理与增量报告
+- 用于行输出和结构化 JSON 的显示语法
+
+每个叶命令都会先验证验证器的确切回执和结构化摘要，然后才应用受保护的警告策略。
+
+## 边界
+
+<Warning>
+  qxctl validate 无法修复文件、发布任何内容或覆盖原始检测器证据。警告处置只影响呈现方式，不影响检测。
+</Warning>
+
+- 不在受保护策略之外抑制警告
+- 不修改验证器输出
+- 不为不可用的路径伪造覆盖率
+
+## 常见用途
+
+- 建立或重置警告基线
+- 批准或重新打开受治理的历史警告
+- 输出显示在仓库 README 中的、由回执支撑的根摘要
+
+支撑此语法的验证器会检查契约结构、当前源闭包、不变量所有权、功能管理、发布以及由机器拥有的根摘要。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="验证器" icon="clipboard-check" href="/cn/governance/validator">
+    由 qxctl 管理的独立只读 C++ 检查器。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cn/skv/ssfv">
+    在证据中检查的功能管理预期。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cn/skv/sodv">
+    出现在验证器证据中的发布记录。
+  </Card>
+
+  <Card title="qxctl 概览" icon="terminal" href="/cn/qxctl/overview">
+    完整的命令界面。
+  </Card>
+</CardGroup>

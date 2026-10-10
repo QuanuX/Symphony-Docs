@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: Bağlama, Teşhis ve Kayıt Defteri Geçişi"
+description: "Symphony'nin korumalı kullanıcı kapsamlı engine bağlama profilini qxctl üzerinden list, inspect, doctor, bind, unbind ve özete bağlı migrate komutlarıyla yönetin."
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` grameri, Symphony'nin vektör engine'leri için korumalı, kullanıcı kapsamlı `default` bağlama profilini yönetir. Seçilen içeriği daha sonraki uzlaştırma için bağlar. Bir engine'i kurmaz, çağırmaz, etkinleştirmez, yerleştirmez (dock), kimlik doğrulamaz, yetkilendirmez veya uygulamaz.
+
+## Komutlar
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+İlk v2 kayıt defteri değişikliği için `absent` değerini, sonraki değişiklikler için ise `list` tarafından bildirilen tam özeti (digest) verin. Her değişiklik, bu özete karşı bir compare-and-swap işlemidir.
+
+## v1'den v2'ye geçiş
+
+<Warning>
+  Geçerli v1 kayıt defteri durumu okunabilir kalır. v2'ye geçiş ayrı ve kesin bir compare-and-swap işlemidir ve hiçbir zaman bir sürüm seçme işlemi değildir. Geçişi engine seçimi için bir yükseltme yolu olarak görmeyin.
+</Warning>
+
+- `list` ve `inspect`, v1 kanıtları üzerinde çalışmaya devam eder.
+- `migrate`, v1 gerçeğini atmadan bağlantılı bir v2 nesli üretir.
+- Geçişten sonra, gelecekteki değişiklikler için v2 özetlerini kullanın.
+
+## Bağlama nedir
+
+Bağlama (bind), koordinatör tarafından daha sonra yapılacak uzlaştırma için kesin içeriği seçer. Bağlama:
+
+- Bir engine kurmaz
+- Bir engine'i çağırmaz veya etkinleştirmez
+- Bir engine'i Maestro'ya yerleştirmez (dock etmez)
+- Bir çağıranın kimliğini doğrulamaz
+- Uygulamayı (apply) yetkilendirmez
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/tr/qxctl/reconcile">
+    Bağlanmış içeriği bir koordinatörle uzlaştırın.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/tr/qxctl/lifecycle">
+    Bağlanmış engine'leri kullanan yaşam döngüsü planları.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/tr/governance/maestro">
+    Bağlamaları değil, yerleştirmeyi (docking) kaydeden varlık otoritesi.
+  </Card>
+
+  <Card title="Engine'lere genel bakış" icon="cube" href="/tr/engines/overview">
+    Bağımsız olarak kurulabilen vektör engine'leri.
+  </Card>
+</CardGroup>

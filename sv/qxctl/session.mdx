@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: autentiserade Symphony-sessioner"
+description: "Öppna, checkpointa, stäng och återställ autentiserade sessioner i Symphony-koordinatorn samt beständiga SSFV-underhållsströmmar med SSIAG-verifierade behörigheter."
+sidebarTitle: "session"
+---
+
+Grammatiken `qxctl knowledge session ...` öppnar icke-kanoniska autentiserade sessioner via en exakt bunden koordinator och en TOPS-avgränsad SSIAG-slutpunkt. En separat grammatik, `session features ...`, driver den beständiga SSFV-underhållsströmmen.
+
+## Grundläggande sessionsgrammatik
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Varje anrop begär en ny, exakt behörighet och validerar:
+
+- Subjekt- och målidentitet
+- Policy- och konfigurationstillstånd
+- Utgångstid
+- Neutralitet gentemot anroparklass
+- Icke-överlåtbarhet
+- Inaktiverad kanonisk apply
+- Kapabilitetsbindning
+
+Sessionsevidens auktoriserar endast den namngivna skyddade icke-kanoniska operationen. Håll sessions- och avstämningsjournaler åtskilda; använd endast kontextreferenser för att associera dem.
+
+## SSFV-underhållsström
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Funktionsströmmen är en separat beständig SSFV-underhållskontext. Mutationer kräver:
+
+- En öppen autentiserad grundsession
+- Exakta bindningar för koordinator och SSFV
+- Stabila operationsidentifierare
+- Exakt compare-and-swap
+- Färsk SSIAG-evidens
+
+<Note>
+  Bevara baslinjeögonblicksbilden och dess ursprungliga motoridentitet över kompatibla uppgraderingar eller återställningar till tidigare version. Valfri Maestro-evidens måste vara en fullständig autentiserad inventering; när Maestro avsiktligt saknas ska du registrera det explicita skälet till att det inte är konfigurerat. `review_required` är evidens för anroparens granskning, inte en ratificering.
+</Note>
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/sv/governance/ssiag">
+    Utfärdar de färska behörigheter som varje sessionsbegäran validerar.
+  </Card>
+
+  <Card title="Sessionskoordinator" icon="gears" href="/sv/engines/coordinator">
+    Motorn bakom sessions- och funktionsjournalerna.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/sv/qxctl/reconcile">
+    Avstämningskontexter som paras ihop med sessioner.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/sv/skv/ssfv">
+    Funktionsvektorn som funktionsströmmen underhåller.
+  </Card>
+</CardGroup>

@@ -1,0 +1,55 @@
+---
+title: "Symphony 运维向量：qxctl 运维控制"
+description: "SOV 定义由 qxctl 管理的运维领域，涵盖资源配置、Habitat 调整、Nest 交付、总线适配器以及可选的远程 Node 管理。"
+sidebarTitle: "运维向量"
+---
+
+Symphony 运维向量（Symphony Ops Vector，SOV）是运维控制平面，经授权的 qxctl 命令通过它作用于你的基础设施。它拥有资源配置、Habitat（运行环境）调整、Nest（工作负载）交付、总线适配器设置以及可选的远程 Node 管理的契约。SOV 不会臆造提供商含义或硬件事实；它执行你已选定的受支持选项。
+
+## SOV 涵盖的内容
+
+SOV 是一个新兴的第 2 阶段领域。其范围包括：
+
+- **资源配置**：提供商资源和自有硬件资源的分配工作流
+- **Habitat 调整**：向 Node 交付确切的操作系统和软件包调整
+- **Nest 交付**：在 Node 上放置和更新工作负载
+- **总线适配器建立**：通过你选择的总线（NATS JetStream、ZeroMQ 或其他）连接 Node
+- **远程 Node 操作**：对本地 shell 之外的 Node 进行可选管理
+
+<Note>
+  提供商协议、Terraform 执行、Habitat 构建器、Nest 部署命令以及远程操作接收器仍有待设计。目前尚未实现任何 SOV 引擎或提供商变更。
+</Note>
+
+## SOV 与其他向量的关系
+
+SOV 是控制平面，而非知识来源。它基于其他向量所拥有的证据执行操作：
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/cn/vectors/scv">
+    提供提供商和外部资源知识。SOV 读取 SCV 证据来判断哪些操作是兼容的。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/cn/vectors/snv">
+    在 SOV 操作完成后，记录由此产生的 Node 身份、集群成员关系和名称。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/cn/vectors/shv">
+    之后可能提供详细的硬件能力证据，以约束资源配置选择。
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/cn/skv/overview">
+    治理 SOV 的契约、变更后果、索引以及生命周期集成。
+  </Card>
+</CardGroup>
+
+## 以 qxctl 作为命令界面
+
+SOV 操作通过 `qxctl` 提供，这是一个基于 Go 的管理 CLI，拥有 373 个可执行命令。qxctl 实现并呈现 SOV 操作，但并不拥有其领域含义。向量拥有语义；工具拥有执行界面。
+
+## 用户权限边界
+
+你负责选择提供商、区域、硬件、总线、软件、部署拓扑以及每个 Node 的管理安排。SOV 提供并执行受支持的选项。它不会对提供商进行排名、推荐拓扑，也不会将建议转化为强制性策略。
+
+## 当前状态
+
+SOV 是一份规范架构契约。目前不声称已实现任何引擎、Terraform 封装器、Habitat 构建器、总线适配器或远程命令接收器。未来的 SOV 组件将保持可独立安装、可按确切版本选择，并可在通用 SKV 生命周期下回滚。

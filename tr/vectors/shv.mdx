@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: Donanım Yeteneği Bilgisi"
+description: "SHV; CPU'lar, GPU'lar, NIC'ler, anakartlar, RAM ve NVMe için donanım yeteneği bilgisini bağımsız olarak kurulabilen birden çok C++ engine'i aracılığıyla tutar."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV), fiziksel tasarımın nicel yazılımı nasıl mümkün kılabileceğini, kısıtlayabileceğini, taşıyabileceğini veya genişletebileceğini anlamanıza yardımcı olan donanım yeteneği bilgisinin sahibidir. İşlemcileri, CPU çekirdek türlerini, GPU'ları, NIC'leri ve fiber arayüzleri, anakartları, önbellek hiyerarşilerini, belleği, NVMe'yi ve eksiksiz sistem yapılandırmalarını kapsar. Varsayılan derleme, 2018'den itibaren orijinal bileşenlere ve kanıtlanmış varyantlara öncelik verir.
+
+## Kapsam ve içerik
+
+SHV, program tasarımıyla ilgili kanıtlanmış herhangi bir fiziksel yeteneği kapsayabilir. Kapsam profilini qxctl aracılığıyla siz denetlersiniz. Varsayılan tarih esası, çıkarımsanan bireysel üretim tarihi değil, modelin piyasaya sürülme tarihidir. Bu filtreyi genişletebilir, daraltabilir, değiştirebilir veya kaldırabilirsiniz.
+
+## Uygulanmış engine'ler
+
+SHV bilgisi, bağımsız olarak kurulabilen birden çok C++ engine'i aracılığıyla sunulur:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Çekirdek (0.4.0-dev): kapsam profilleri, saklanan kaynaktan katalog oluşturma/yeniden oynatma, gereksinim değerlendirmesi, deterministik grafik projeksiyonu ve kaynak destekli grafik doğrulaması.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Kaynak kimliği, yer değiştirme planları, bayt yakalama bağlaması ve kaynaktan yeniden oynatılan köken grafikleri.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Bildirim uygunluğu, taşınabilir tarifler ve kesin yerel kaynak bağlaması.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Donanım bölümleme ve bileşen eşleme işlemleri.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Korumalı çağıran katalog başları, orijinal kaynak yeniden oynatması ve kalıcı anlık görüntü kurtarması.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Kayıpsız değişim için genel C++ grafik portu ve bellek içi taşınabilir referans bağdaştırıcısı.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Donanım grafik kanıtının isteğe bağlı DuckDB ilişkisel projeksiyonu.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Sınırlı PDF çıkarımı ve belgesel iddiaların orijinal baytlardan yeniden doğrulanması.
+  </Card>
+</CardGroup>
+
+## Kaynak revizyonu ve köken
+
+`shv-source-engine`; kararlı kaynak kimliğini, açık yer değiştirme planlarını, saf geçiş doğrulamasını, gerçek bayt yakalama bağlamasını ve kaynaktan yeniden oynatılan köken grafiklerini uygular. Bunlar salt okunur işlemlerdir. Çekirdek derleme, orijinal bileşen kimliğine ve kanıtlanmış varyantlara öncelik verir. Korumalı kaynak etkinleştirmesi ayrıca ele alınır; saf kaynak engine'i yetki vermez.
+
+## Grafik değişimi ve depolama
+
+`shv-graph-adapter`, kayıpsız değişim ve yapısal sorgular için genel bir C++ grafik portu sağlar. Kalıcı depolama, varsayılan DuckDB SQL aracılığıyla uygulanır. Şu anda özel bir grafik veritabanı seçilmemiştir.
+
+## PDF kanıt sınırı
+
+`shv-pdf-adapter`, açık PDF tablolarından nitelikli belgesel iddiaları çıkarır ve genel grafik değişiminden sonra bunları orijinal baytlardan yeniden doğrular. Genel PDF kapsamı ayrı ve kapsamı belirlenmiş bir çalışma olarak kalır.
+
+## Kalan çalışmalar
+
+Geniş bir donanım atlası, otomatik kaynak edinimi, çok kaynaklı çakışma birleştirme, ek satıcıya özgü veritabanı sürücüleri, özel eklenti yükleme ve Composer entegrasyonu sonraki çalışmalar olarak kalmaktadır. Geniş bileşen eşlemeleri ve kalıcı satıcı sürücüleri de açık konulardır.
+
+## SHV'nin diğer vektörlerle ilişkisi
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/tr/vectors/snv">
+    SHV'nin tanımladığı donanımı içeren Node'ları kaydeder.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/tr/vectors/scv">
+    SHV'nin ayrıntılı olarak nitelendirdiği sağlayıcı donanım tekliflerine başvurur.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/tr/vectors/sov">
+    Node'ları hazırlarken veya koşullandırırken SHV kanıtına göre hareket edebilir.
+  </Card>
+</CardGroup>

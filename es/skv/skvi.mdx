@@ -1,0 +1,51 @@
+---
+title: "SKVI: el motor Symphony Knowledge Vector Index"
+description: "SKVI indexa de forma determinista cada superficie canónica de SKV una sola vez, comprueba la cobertura declarada en el manifiesto y emite proyecciones desechables ligadas a digest sin tocar la verdad."
+sidebarTitle: "SKVI"
+---
+
+El Symphony Knowledge Vector Index (SKVI) es el motor que mapea la verdad canónica actual en todas las superficies de SKV. Es un proceso en C++ instalable de forma independiente que opera de forma determinista y de solo lectura, y que no puede decidir la pertenencia ni escribir archivos canónicos.
+
+## Qué hace SKVI
+
+SKVI realiza tres operaciones acotadas:
+
+- **Inspeccionar y comprobar**: verifica que cada superficie obligatoria declarada en el manifiesto esté indexada exactamente una vez, con un propietario estable, un rol de verdad, relaciones, consumidores y elegibilidad de proyección.
+- **Proponer**: acepta propuestas inmutables declaradas por quien llama para cambios en el índice sin aplicarlas.
+- **Proyectar**: emite proyecciones desechables ligadas a digest del índice actual para los consumidores posteriores.
+
+## Qué no hace SKVI
+
+SKVI nunca decide si algo merece ser una funcionalidad ni la pertenencia al manifiesto. La propiedad sigue correspondiendo al Contract Quad de cada vector. SKVI tampoco:
+
+- Escribe ni reescribe Markdown canónico
+- Publica nada en una proyección pública
+- Concede autoridad simplemente por haber generado evidencia
+
+## Cuándo usarlo
+
+Usa SKVI para confirmar que un repositorio está totalmente cubierto antes de proponer un cambio en el código fuente, o para ver qué propietario y qué rol de verdad tiene una superficie concreta. Sus proyecciones alimentan a los revisores de propuestas, el contexto de los agentes y las líneas base del validador.
+
+<Note>
+  SKVI es uno de los motores de lectura, consulta, validación y propuesta. La aplicación canónica sigue desactivada en los motores vectoriales ratificados hasta que se completen los contratos de SSIAG, transacción de estado esperado, salvaguarda de qxctl, evento de STAV, recuperación y pruebas negativas de cada motor.
+</Note>
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Descripción general de SKV" icon="book-open" href="/es/skv/overview">
+    El marco general que gobierna SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/es/skv/sclv">
+    El libro mayor de cambios de solo anexado que registra los cambios materiales completados en el código fuente.
+  </Card>
+
+  <Card title="Comandos de vectores de qxctl" icon="terminal" href="/es/qxctl/vector-commands">
+    Ejecuta `qxctl skvi ...` para invocar inspect, check y propose.
+  </Card>
+
+  <Card title="Validador" icon="clipboard-check" href="/es/governance/validator">
+    Comprobaciones independientes de solo lectura que complementan la cobertura de SKVI.
+  </Card>
+</CardGroup>

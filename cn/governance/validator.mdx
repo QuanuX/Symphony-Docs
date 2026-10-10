@@ -1,0 +1,52 @@
+---
+title: "Symphony 验证器：确定性的只读仓库检查"
+description: "Symphony 验证器为契约、源闭包、不变量、功能、发布以及机器校验的根摘要生成行格式或结构化 JSON 证据。"
+sidebarTitle: "验证器"
+---
+
+Symphony 验证器（`tools/symphony-validator`）是一个独立的、确定性的、只读的 C++26 仓库检查器。它生成关于仓库及其契约当前状态的不可变证据。它无法修复或发布任何内容。
+
+## 验证器检查什么
+
+- 契约结构：必需的 Contract Quad 锚点和结构
+- 跨 SKVI 索引表面的当前源闭包
+- 依据 `knowledge/INVARIANTS.md` 和不变量注册表的不变量所有权
+- SSFV 报告的功能管理预期
+- SODV 报告的发布记录
+- 仓库 README 中由机器维护的根摘要
+
+证据以行输出或结构化 JSON 的形式输出。每次输出都可以从相同的仓库状态复现。
+
+## 验证器不做什么
+
+<Warning>
+  验证器无法修复文件、改写契约或发布仓库。它不创造任何规范事实；它只负责报告。
+</Warning>
+
+- 对仓库没有副作用
+- 不访问网络
+- 除 qxctl 受保护的警告策略外，不抑制任何警告
+
+## qxctl 集成
+
+qxctl 在应用受保护的警告策略之前，会验证验证器的确切回执和结构化摘要。九个受保护的警告生命周期 qxctl 叶命令，加上确切的、基于回执的根摘要路由，在不改动原始检测器证据的情况下提供验证管理功能。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/cn/qxctl/validate">
+    受保护的警告策略、基线和显示语法。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cn/skv/ssfv">
+    由验证器检查的功能管理预期。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cn/skv/sodv">
+    验证器所检查的发布记录。
+  </Card>
+
+  <Card title="SKV 概览" icon="book-open" href="/cn/skv/overview">
+    验证器所检查契约所属的总体框架。
+  </Card>
+</CardGroup>

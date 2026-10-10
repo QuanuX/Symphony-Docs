@@ -1,0 +1,33 @@
+---
+title: "Symphony arxitekturasi"
+description: "Foydalanuvchi tanlagan infratuzilma, vector shartnomalari, engine’lar, qxctl va boshqariladigan dalillar oʻrtasidagi chegaralarni tushuning."
+sidebarTitle: "Arxitektura"
+---
+
+Symphony foydalanuvchi tanlagan infratuzilma va ish yuklamalarini platforma bilimlari va boshqaruvidan ajratadi. Platforma strategiyangizga egalik qilishni daʼvo qilmasdan yoki tavsiyani majburiyat sifatida qabul qilmasdan moslikni tekshirishi, validatsiya qilishi va hisobot berishi mumkin.
+
+## Jismoniy va ish yuklamasi qatlami
+
+[Node](/uz/concepts/node-habitat-nest) — identifikatsiya qilingan jismoniy kompyuter. **Habitat** — uning aniq operatsion tizimi va paketlar sozlanishi, **Nest** esa foydalanuvchi tanlagan maqsadga xizmat qiluvchi ish yuklamasi. Klasterlar Node’larni bir yoki bir nechta bus orqali bogʻlaydi. Bus tarmoqlari, adapterlar, provayderlar va apparat tanlovlari universal standartlar emas, balki aniq tanlovlardir.
+
+[Hot path](/uz/concepts/hot-path-isolation) maʼmuriy rezidentlikdan alohida turadi. qxctl va bilim tekisligi ishi Node’ni aniq boshqarishi mumkin, lekin ular jonli ijroning yashirin doimiy bogʻliqliklariga aylanmaydi.
+
+## Semantik egalik
+
+[Vektorlar](/uz/concepts/vectors) maʼno va ruxsat etilgan operatsiyalarning chegaralangan, doimiy egalaridir. Har bir ega Contract Quad’ni eʼlon qiladi: `INTENT.md`, `MANIFEST.md`, `SKILL.md` va `SPEC.md`. [Symphony Knowledge Vector (SKV)](/uz/skv/overview) kanonik yuzalarni indekslaydi va ularning egasiga marshrutni saqlaydi. Yordamchi sxemalar, reyestrlar va ledger’lar Quad’ning qoʻshimcha aʼzolariga aylanmasdan boshqarilib qoladi.
+
+Yetkazib berish bosqichlari ish qachon bajarilishini tavsiflaydi. Ular semantik egalikni bir vektordan boshqasiga oʻtkazmaydi.
+
+## Engine’lar va buyruqlar yuzasi
+
+[Vector engine’lari](/uz/engines/overview) — oʻz egalik shartnomalari doirasida tekshiradigan, nazorat qiladigan, proyeksiya qiladigan va taklif beradigan, mustaqil oʻrnatiladigan, jarayondan tashqarida ishlaydigan komponentlar. Ular shunchaki taklif ishlab chiqargani uchun vakolatga ega boʻlmaydi.
+
+[qxctl](/uz/qxctl/overview) maʼmuriy buyruq grammatikasi va taqdimotiga egalik qiladi. U chegaralangan, kvitansiya bilan tasdiqlangan imkoniyatlarni chaqiradi, operatsiyani belgilagan vektor esa uning semantikasini saqlab qoladi. Avtorizatsiya va audit dalillari oʻzgartirish marshrutlarini boshqaradi; [chaqiruvchi tasnifi](/uz/concepts/caller-authority)ning oʻzi hech qanday vakolat bermaydi.
+
+## Haqiqat va evolyutsiya
+
+Joriy shartnomalar joriy haqiqatni bayon qiladi. Oʻzgarishlar va nashr ledger’lari muayyan vaqt nuqtasida qayd etilgan dalillarni saqlaydi. Shartnomalar, amalga oshirish dalillari va qayd etilgan tarix oʻrtasidagi kelishmovchilik jimgina qayta yozilmaydi, balki drift sifatida koʻrsatiladi. [SAV](/uz/skv/sav) kompozitsiya mosligini baholaydi; [SEV](/uz/skv/sev) boshqariladigan evolyutsiyani rejalashtiradi.
+
+<Note>
+  Ushbu umumiy koʻrinish chegaralar xaritasidir. Biror imkoniyatni muayyan oʻrnatmada mavjud deb hisoblashdan oldin har bir havola qilingan vektorning joriy shartnomasi va amalga oshirish dalillariga murojaat qiling.
+</Note>

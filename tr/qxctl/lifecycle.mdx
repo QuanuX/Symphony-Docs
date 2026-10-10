@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: Profil, Önyükleme ve Uygulama"
+description: "Korumalı yaşam döngüsü profillerini, sahipliği, gözlemleri, önyüklemeleri ve uygulama uyumlu geçişleri qxctl üzerinden katı compare-and-swap güvenceleriyle yönetin."
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` grameri; korumalı profilleri, sahipliği, gözlemleri, önyükleme günlüklerini ve uygulama uyumlu geçişleri yönetir. Her değişiklik bir compare-and-swap işlemidir ve her uygulama kesin kanıta bağlıdır.
+
+## Profil
+
+Bir TOPS için korumalı yaşam döngüsü profilini ayarlayın:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+İlk kez oluşturulan bir profil için `absent` değerini veya daha önceki bir okumanın bildirdiği tam özeti (digest) verin.
+
+## Sahiplik
+
+- `ownership status`: yapılandırılmış tek bir paylaşılan kökü inceler
+- `ownership reconcile`: kanıtlarını yeniler
+- `ownership adopt`: yalnızca her muhafazakâr eski (legacy) talep incelendikten sonra sahiplenir
+- `ownership release`: yalnızca bilinçli olarak geri alınabilir hâle getirilmiş tek bir kesin eski makbuz için serbest bırakır
+
+<Warning>
+  Kök-yerel kayıt defterini veya onun `symphony-root-ownership/1` makbuz düzeni uyumluluk çitini asla elle silmeyin ya da yeniden yazmayın. Eski yaşam döngüsü istemcileri bu çitle karşılaşmalı ve mevcut bilinmeyen paket engelleyicilerinde durmalıdır.
+</Warning>
+
+## Gözlem, rapor, önyükleme
+
+- `observe`: atılabilir, sabit düzenli makbuz kanıtı üretir
+- `report`: yeni ve atılabilir bir plan üretir
+- `boot`: kararlı bir işlem kimliği ve kesin günlük durumuyla kalıcı, yalnızca rapor amaçlı ilerleme
+- `status`: v1 incelemesi
+- `recover --discover`: olağan durum sorgusu yerel durumu doğrulayamadığında benzersiz bir v1 zincirini kurtarır
+
+## Uygulama uyumlu profiller
+
+`apply-compatible` bir profil için `apply` komutunu yalnızca kesin önyükleme kaynağı özeti, uygulama günlüğü compare-and-swap'ı, uygulanmış durum compare-and-swap'ı, kararlı işlem kimliği ve açıkça belirtilmiş hazırlanmış (staged) köklerle çağırın:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Deneme gözlemi için `apply-status`, kalıcı kurtarma için ise sınırlı `apply-recover` komutunu kullanın. Hiçbir zaman elle bir eylem seçmeyin veya korumalı durumu düzenlemeyin.
+
+<Note>
+  Yalnızca zaman damgasını güncelleyen bir gözlem yenilemesi, kararlı anlamsal kimlikleri ilerletmeden belge kanıtını değiştirmelidir.
+</Note>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Yaşam döngüsü planı ve uygulama koordinasyonunun arkasındaki engine.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/tr/qxctl/engines">
+    Yaşam döngüsü planlarının başvurduğu engine bağlamalarını yönetin.
+  </Card>
+</CardGroup>

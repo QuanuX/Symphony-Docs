@@ -1,0 +1,83 @@
+---
+title: "qxctl：Symphony のエージェント型管理コマンドライン"
+description: "qxctl は Symphony の Go 製管理 CLI です。373 個の実行可能コマンド、エンジンバインディングレジストリ、ベクトルエンジン向けのレシート検証済み呼び出しモデルについて説明します。"
+sidebarTitle: "qxctl の概要"
+---
+
+`qxctl` は、Go ベースでエージェントファーストの Symphony 管理・クエリ CLI です。qxctl はコマンドを扱い、その背後にある操作と意味はドメインベクトルが所有します。チェックイン済みのレジストリは、すべての実行可能コマンドリーフを安定したマシン ID とレビュー済みの機能管理エビデンスにバインドします。
+
+## qxctl の対象範囲
+
+qxctl は次の管理機能を実装しています。
+
+- リポジトリとコントラクトの検査
+- バリデーター、警告、不変条件、機能、ライフサイクル、セッション、調整、バインディング、Maestro の管理
+- SSIAG の ID、STAV の監査、Accordare プロデューサーの管理
+- 実装済みのベクトルエンジングラマー（`skvi`、`sclv`、`sacv`、`sodv`、`ssfv`、および SCV と SHV のサーフェス）
+
+現在のレジストリには **373** 個の実行可能コマンドが含まれています。
+
+## 安全な呼び出しモデル
+
+qxctl は、範囲の限定されたサブプロセス、厳格な期限、レスポンスの ID とダイジェストのチェック、期待状態トランザクション、永続的な復旧を用いて、レシート検証済みの正確なインストールを呼び出します。レシートの代わりにアダプターパスや生のバージョンを受け付けることはありません。
+
+## エンジンバインディングレジストリ v2
+
+エンジンバインディングレジストリ v2 は、確立済みの 8 つのエンジンロールと、範囲の限定された将来のロール ID をサポートします。レガシーの v1 状態はデュアルリードされます。v2 への移行には qxctl を通じた明示的なダイジェスト束縛の compare-and-swap が必要であり、バージョン選択操作ではありません。
+
+## レジストリコマンド
+
+`tools/qxctl` から期待されるレジストリを生成して検証します。
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+インストール済みのクライアントは、実行ファイルに束縛されたエビデンスを出力できます。
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+期待エビデンスでは、クライアントバージョン、実行ファイルダイジェスト、レシートダイジェストが null になります。観測エビデンスは、正確なクライアントバージョンと実行ファイルダイジェスト、および利用可能な場合はレシートダイジェストをバインドします。どちらの形式も `symphony.qxctl.command-registry.v1` を使用します。
+
+<Note>
+  qxctl はコマンドグラマーと表示を所有します。ベクトルのセマンティクスや正規の知識の真実は所有しません。呼び出し元のクラスにかかわらず、新しい `qxcmd` ID を承認できるのはレビュー済みのソース変更のみです。
+</Note>
+
+## コマンドグループ
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/jp/qxctl/knowledge">
+    ベクトル横断のライフサイクルと永続的な SSFV セッションの管理。
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/jp/qxctl/lifecycle">
+    プロファイル、所有権、observe、report、boot、apply、および復旧。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/jp/qxctl/engines">
+    エンジンバインディングレジストリと移行。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/jp/qxctl/reconcile">
+    コーディネーターによるワークツリー調整。
+  </Card>
+
+  <Card title="session" icon="key" href="/jp/qxctl/session">
+    認証済みセッションと SSFV メンテナンスストリーム。
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/jp/qxctl/maestro">
+    導出されたレセプターインベントリとドッキングエビデンス。
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/jp/qxctl/validate">
+    保護された警告ポリシーとバリデーターの管理。
+  </Card>
+
+  <Card title="ベクトルコマンド" icon="terminal" href="/jp/qxctl/vector-commands">
+    `skvi`、`sclv`、`sacv`、`sodv`、`ssfv`、`shv`、および将来の accord／evolution グラマー。
+  </Card>
+</CardGroup>

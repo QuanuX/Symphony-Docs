@@ -1,0 +1,33 @@
+---
+title: "Symphony 架构"
+description: "了解用户选择的基础设施、vector 契约、引擎、qxctl 与受治理证据之间的边界。"
+sidebarTitle: "架构"
+---
+
+Symphony 将用户选择的基础设施和工作负载与平台知识和管理分离开来。平台可以检查、验证和报告兼容性，而不会声称拥有你的策略，也不会把建议当作强制要求。
+
+## 物理与工作负载层
+
+[Node](/cn/concepts/node-habitat-nest) 是已标识的物理计算机。**Habitat** 是其确切的操作系统和软件包调配，而 **Nest** 是服务于用户所选用途的工作负载。集群通过一条或多条总线连接各个 Node。总线结构、适配器、提供商和硬件选择都是显式的，而非通用默认值。
+
+[热路径](/cn/concepts/hot-path-isolation) 与管理性常驻保持分离。qxctl 和知识平面的工作可以显式地管理某个 Node，但不会成为实时执行中隐藏的持续依赖。
+
+## 语义所有权
+
+[Vector](/cn/concepts/vectors) 是含义和允许操作的有界、持久的所有者。每个所有者都会发布一个 Contract Quad：`INTENT.md`、`MANIFEST.md`、`SKILL.md` 和 `SPEC.md`。[Symphony Knowledge Vector（SKV）](/cn/skv/overview) 对规范表面进行索引，并保留指向其所有者的路由。配套的 schema、注册表和账本仍受治理，但不会成为 Quad 的额外成员。
+
+交付阶段描述的是工作何时完成。它们不会将语义所有权从一个 vector 转移到另一个 vector。
+
+## 引擎与命令界面
+
+[Vector 引擎](/cn/engines/overview) 是可独立安装、在进程外运行的组件，在其所有者契约范围内进行检查、校验、投影和提议。它们不会仅仅因为生成了提议就获得权限。
+
+[qxctl](/cn/qxctl/overview) 负责管理命令的语法和呈现。它调用有界的、经回执验证的能力，而定义某项操作的 vector 保留其语义。授权和审计证据管控变更路由；仅凭 [调用方类别](/cn/concepts/caller-authority) 不会授予任何权限。
+
+## 事实与演进
+
+当前契约陈述当前事实。变更账本和发布账本保存了在特定时间点记录的证据。契约、实现证据和已记录历史之间的分歧会作为漂移呈现，而不会被悄悄改写。[SAV](/cn/skv/sav) 评估组合兼容性；[SEV](/cn/skv/sev) 规划受治理的演进。
+
+<Note>
+  本概览是一张边界地图。在将某项能力视为在特定安装中可用之前，请查阅每个链接 vector 的当前契约和实现证据。
+</Note>

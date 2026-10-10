@@ -1,0 +1,53 @@
+---
+title: "C++-grund för Knowledge Vector Engine: delad mekanik"
+description: "C++-grunden för Knowledge Vector Engine tillhandahåller befogenhetsfri processinramning, avgränsad JSON, SHA-256, ögonblicksbilder, kvitton och uttrycklig manifestupptäckt."
+sidebarTitle: "Grundbibliotek"
+---
+
+`libraries/knowledge-vector-engine-cpp` tillhandahåller den delade, befogenhetsfria C++-mekanik som varje Symphony-vektormotor återanvänder. Den ger deterministiska byggstenar så att varje motor kan förbli avgränsad, reproducerbar och fri från omgivande sidoeffekter.
+
+## Vad grunden tillhandahåller
+
+- **Processinramning**: befogenhetsfritt lokalt processprotokoll som används av varje motor
+- **Avgränsad JSON**: strikt tolkning och utskrift med uttryckliga storleks- och djupgränser
+- **SHA-256**: innehållsadressering för evidens och kvitton
+- **No-follow-läsningar**: filsystemsläsningar som aldrig oväntat följer symboliska länkar
+- **Deterministiska ögonblicksbilder**: repeterbara ögonblicksbilder av inspekterat tillstånd
+- **Temporal validering**: kanonisk UTC-hantering enligt Symphony Temporal Semantics Contract
+- **Upptäckt av ägarmanifest**: exakt upptäckt av kontraktsmanifest
+- **Versionerad paketering**: oberoende installerbara, kvittoägda paket
+- **Kvitton och kvittoägd avinstallation**: avinstallation som enbart styrs av det kvitto som installerade artefakten
+
+## Gräns för manifestupptäckt
+
+<Warning>
+  Manifestupptäckt börjar från en fast bootstrap-uppsättning och följer endast uttryckliga underordnade deklarationer. Den genomsöker aldrig repositoriet på måfå och härleder aldrig ägande från katalognamn.
+</Warning>
+
+Varje vektormotor som använder grunden ärver denna regel.
+
+## Vad grunden inte gör
+
+- Den bär ingen befogenhet. Motorer som använder den måste fortfarande auktorisera mutationer via SSIAG.
+- Den publicerar eller hämtar ingenting över nätverket.
+- Den muterar inte kanoniska filer på egen hand.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Sessionskoordinator" icon="gears" href="/sv/engines/coordinator">
+    C++26-koordinator byggd på grunden för sessioner och avstämning.
+  </Card>
+
+  <Card title="Översikt över motorer" icon="cube" href="/sv/engines/overview">
+    Motorerna som återanvänder grunden.
+  </Card>
+
+  <Card title="SKV-översikt" icon="book-open" href="/sv/skv/overview">
+    Vektorkontrakt som motorerna implementerar.
+  </Card>
+
+  <Card title="qxctl-översikt" icon="terminal" href="/sv/qxctl/overview">
+    Administrativt CLI som anropar exakta, kvittovaliderade motorer.
+  </Card>
+</CardGroup>

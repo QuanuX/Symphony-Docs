@@ -1,0 +1,53 @@
+---
+title: "SSFV：Symphony 語意功能向量與登錄檔"
+description: "SSFV 擁有所有已實作 Symphony 模組與 qxctl 介面的標準功能身分、語意、階層、生命週期與管理保證。"
+sidebarTitle: "SSFV"
+---
+
+Symphony 語意功能向量（Symphony Semantic Feature Vector，SSFV）擁有標準的應用程式功能身分、語意、階層、生命週期、區別、分散式紀錄路由、涵蓋清單與圖形投影合約。其引擎是一個可獨立安裝的 C++ 程序，負責執行結構性且考量新鮮度的功能檢查。
+
+## 操作
+
+- **Inspect 與 check**：結構性且考量新鮮度的功能評估。
+- **Diff**：功能狀態之間以內容定址的差異比對。
+- **Propose**：由呼叫者宣告、針對功能納入或變更的提議。
+- **Graph**：供審查使用的確定性可拋棄功能圖。
+
+## 已註冊的涵蓋範圍
+
+目前已註冊的目錄明確為部分涵蓋：
+
+- **110** 個已註冊功能
+- **35** 個已註冊擁有者範圍
+- **76** 個已批准的巢狀功能
+- **295** 個經審查的功能管理介面（**285** 個必要、**13** 個有證據支持的豁免、**9** 個禁止、**0** 個未審查）
+
+已註冊的擁有者範圍涵蓋所有已實作的模組，從 `qxctl` 與驗證器，到 SKV 引擎與 SSIAG 提供者，再到 SCV 與 SHV 引擎家族。
+
+## SSFV 不做的事
+
+<Warning>
+  SSFV 不會決定某項功能是否值得納入、不會發明身分，也不會宣稱儲存庫或主機已完整。`review_required` 是供呼叫者審查的證據，而非批准或套用權限。
+</Warning>
+
+功能審查、納入與生命週期變更，仍由各功能所屬的合約負責。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SKV 概覽" icon="book-open" href="/zh-Hant/skv/overview">
+    治理 SSFV 的總體框架。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/zh-Hant/skv/sev">
+    將演進案例套用於功能的新增、變更與退役。
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/zh-Hant/qxctl/session">
+    透過 qxctl 管理持久性 SSFV 維護工作階段。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    執行 `qxctl ssfv ...` 進行 inspect、check、diff、propose 與 graph。
+  </Card>
+</CardGroup>

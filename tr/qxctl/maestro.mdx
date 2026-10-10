@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Symphony Reseptör Varlık Envanterini Okuyun"
+description: "Kimliği doğrulanmış vektör engine yerleştirme ilişkilerini ve türetilmiş reseptör envanterini görmek için Symphony'nin Maestro varlık otoritesini qxctl üzerinden inceleyin."
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` grameri, Maestro varlık kanıtlarını görünür kılar. Maestro varlık otoritesidir; qxctl yalnızca Maestro'nun kaydettiklerini okur ve inceler. Hiçbiri kendi başına yerleştirme (docking) ilişkisi oluşturmaz.
+
+## Envanter
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory`, Maestro'nun TOPS ve reseptör başına kimliği doğrulanmış vektör engine yerleştirme ilişkilerine ait eksiksiz, türetilmiş ve salt okunur envanterini sunar.
+
+## İlgili yönetim yolları
+
+Ek qxctl yaprakları Maestro ile ilgili yönetimi sunar:
+
+- Yerleştirme kanıtlarının durumu ve incelenmesi
+- Maestro'nun kendi sözleşmeleriyle sınırlanan kurtarma yolları
+- Maestro'nun kendisi için temel yaşam döngüsü kaydı ve yerel denetim
+
+Her değişiklik yolu, modülün sahip olduğu kesin bağdaştırıcıdan (adapter) geçer. qxctl, Maestro tanımlayıcılarını hiçbir zaman dahili ayrıştırmadan üretmez veya örtük olarak en yeni sürümü çağırmaz.
+
+<Warning>
+  Maestro engine'leri başlatmaz, zamanlamaz, denetlemez veya çağırmaz. `qxctl maestro inventory` salt okunurdur. Bağlama, uzlaştırma, oturum koordinasyonu veya tek başına bir yaşam döngüsü planı Maestro varlığı oluşturmaz.
+</Warning>
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/tr/governance/maestro">
+    Varlık otoritesi sözleşmesi ve sınırları.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/tr/qxctl/engines">
+    Engine bağlama kayıt defteri (bağlamalar yerleştirme değildir).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/tr/qxctl/session">
+    Varlığı kaydetmek için kullanılan kimliği doğrulanmış oturumlar.
+  </Card>
+
+  <Card title="Engine'lere genel bakış" icon="cube" href="/tr/engines/overview">
+    Maestro'ya yerleşen, bağımsız olarak kurulabilen vektör engine'leri.
+  </Card>
+</CardGroup>

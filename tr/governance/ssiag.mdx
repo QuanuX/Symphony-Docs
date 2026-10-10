@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Symphony için Secure Identity and Access Governance"
+description: "SSIAG; TOPS başına kayıt, korumalı politika yaşam döngüsü, güvenli denetim meta verileri ve yerel denetim kancalarıyla Symphony'nin çağırandan bağımsız yetkilendirme temelidir."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG), bir Symphony ana bilgisayarında çağırandan bağımsız yetkilendirme için bağımsız olarak kurulabilen, cgo içermeyen Go temelidir. Etkin ana bilgisayar yetkisini yansıtır, korumalı değişiklikleri denetler ve herhangi bir değişiklik görünür hâle gelmeden önce STAV denetimiyle entegre olur.
+
+## SSIAG'ın sağladıkları
+
+- Hedef ana bilgisayar sahipliğine, verilen izne, istenen işleme, beklenen duruma ve sahip tarafından yapılandırılan güvenlik önlemlerine bağlı kesin, çağırandan bağımsız yetkilendirme
+- TOPS başına kayıt ve yerel uç nokta güveni
+- Korumalı politika yaşam döngüsü ve sağlayıcı kurulum yaşam döngüsü
+- Etkin ve önceki bağlamalar arasında karşılaştır ve değiştir (compare-and-swap) içeren bağlama yaşam döngüsü
+- STAV için hazırlanmış güvenli denetim meta verileri
+- Yerel launchd ve systemd denetimi
+
+## Kasıtlı olarak devre dışı bırakılanlar
+
+<Warning>
+  Operasyonel kimlik bilgisi kullanımı, kanonik bilgi uygulaması ve gizli bilgi teslimi devre dışı kalır. Olağan temel değişiklikler, STAV üzerinden gereken denetim rotası tamamlanana kadar kapalı şekilde başarısız olur (fail closed).
+</Warning>
+
+SSIAG çağıran sınıfına karar vermez. İnsan, yapay zekâ, ajan, hizmet ve iş yükü çağıranları aynı şekilde ele alınır; yetki, aktör etiketinden değil, hedef ana bilgisayardan ve istenen işlemden gelir.
+
+## macOS Keychain sağlayıcısı
+
+`modules/ssiag-provider-macos-keychain`, sınırlı ve karşılıklı olarak doğrulanmış bir el sıkışma ile imzalı paket ve oturum hazırlığı gözlemi içeren bir Swift meta veri adaptörüdür. Bugün kasıtlı olarak devre dışı bırakılmış olan operasyonel Keychain erişimini vermeden sağlayıcı meta verilerini SSIAG'a sunar.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/tr/governance/stav">
+    SSIAG değişikliklerinin dayandığı, TOPS başına yalnızca eklemeli denetim defteri.
+  </Card>
+
+  <Card title="Accordare üreticisi" icon="pen-nib" href="/tr/governance/accordare-producer">
+    SSIAG ile birlikte çalışan sınırlı SAV Named Version denetim devresi.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/tr/qxctl/lifecycle">
+    Yetkilendirme için SSIAG'a başvuran yaşam döngüsü yönetimi.
+  </Card>
+
+  <Card title="Çağıran yetkisi" icon="user-shield" href="/tr/concepts/caller-authority">
+    SSIAG'ın uyguladığı doktrin.
+  </Card>
+</CardGroup>

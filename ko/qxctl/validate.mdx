@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony 검증기 경고 정책"
+description: "원시 탐지기 증거를 변경하지 않고 qxctl을 통해 독립적인 Symphony Validator의 보호된 경고 정책, 기준선, 표시 문법을 관리합니다."
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` 문법은 Symphony Validator의 보호된 경고 정책, 기준선, 표시 문법을 관리합니다. 독립적으로 설치된 C++ 검증기는 변경 불가능한 원시 증거를 생성하고, qxctl은 탐지를 변경하지 않고 호출자 중립적인 보호된 표현을 관리합니다.
+
+## qxctl validate가 다루는 범위
+
+- 9개의 보호된 경고 수명 주기 리프
+- 정확한 영수증 기반 루트 요약 경로
+- 기준선 관리 및 변경분 보고
+- 줄 단위 출력과 구조화된 JSON을 위한 표시 문법
+
+모든 리프는 보호된 경고 정책을 적용하기 전에 검증기의 정확한 영수증과 구조화된 다이제스트를 검증합니다.
+
+## 경계
+
+<Warning>
+  qxctl validate는 파일을 복구하거나, 무엇이든 게시하거나, 원시 탐지기 증거를 무시할 수 없습니다. 경고 처리 방식은 탐지가 아닌 표현에 영향을 줍니다.
+</Warning>
+
+- 보호된 정책 외부에서의 경고 억제 없음
+- 검증기 출력 수정 없음
+- 사용할 수 없는 경로에 대한 가짜 커버리지 없음
+
+## 일반적인 용도
+
+- 경고 기준선 설정 또는 재설정
+- 관리되는 과거 경고 승인 또는 재개
+- 저장소 README에 표시되는 영수증 기반 루트 요약 출력
+
+이 문법을 뒷받침하는 검증기는 계약 형태, 현재 소스 폐쇄성, 불변식 소유권, 기능 관리, 릴리스, 머신 소유 루트 요약을 검사합니다.
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="검증기" icon="clipboard-check" href="/ko/governance/validator">
+    qxctl이 관리하는 독립적인 읽기 전용 C++ 검사기입니다.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ko/skv/ssfv">
+    증거에서 검사되는 기능 관리 기대 사항입니다.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    검증기 증거에 나타나는 릴리스 기록입니다.
+  </Card>
+
+  <Card title="qxctl 개요" icon="terminal" href="/ko/qxctl/overview">
+    전체 명령 목록입니다.
+  </Card>
+</CardGroup>

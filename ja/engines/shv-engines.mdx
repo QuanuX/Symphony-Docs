@@ -1,0 +1,65 @@
+---
+title: "SHV エンジン: Symphony Hardware Vector のソースとグラフ"
+description: "SHV エンジンは、CPU、GPU、NIC、メモリ、ストレージをカタログ化し、保持されたソースの再生、要件評価、PDF の取り込み、DuckDB による永続的なグラフを提供します。"
+sidebarTitle: "SHV エンジン"
+---
+
+Symphony Hardware Vector（SHV）エンジンは、プロセッサー、CPU トポロジー、キャッシュ、GPU、NIC とファイバーインターフェース、マザーボード、RAM、NVMe をカタログ化します。デフォルトのキュレーションでは、オリジナルのコンポーネントとエビデンスのあるバリアントが優先されます。すべてのエンジンは個別にインストール可能で、読み取り専用です。
+
+## エンジン
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    ハードウェアカーネル: 呼び出し元が定義するカバレッジ、保持されたソースによるカタログの再生、要件評価、グラフのプロジェクション。
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    ハードウェアのエビデンスのためのソース取り込みとリビジョン処理。
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    コンポーネントとシステムのプロファイル評価。
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    再現可能な選択のための、カタログ化されたハードウェアのパーティショニング。
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    管理されたローカルカタログの公開と選択。
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    明示的なグラフ転送サーフェス。
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    qxctl を通じて管理される、DuckDB をバックエンドとする永続的なグラフストレージ。
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    ハードウェアのデータシートのための PDF ソースの解釈。
+  </Card>
+</CardGroup>
+
+## 管理のポイント
+
+- **永続ストレージ**は、`shv graph store inspect|prepare|commit|status|query|export|schema|template` を通じてのみ管理されます。保持された期待インテントダイジェストを指定した `commit` はリカバリーも兼ねており、別個のリカバリー用エイリアスはありません。
+- **カタログの公開**は、`shv catalogue publication inspect|plan|apply|status|schema|template` を通じてのみ管理されます。リカバリーは `apply --operation-id` で行い、`--input` とは同時に指定できません。
+- **インベントリ**（リリース 0.2）では `shv graph store inventory` が追加されました。これは、保持されたライターのアイデンティティを明示した、リビジョンに紐づく論理的な読み取りです。従来の 0.1 の選択も引き続きサポートされます。
+
+<Note>
+  ハードウェアクラスは呼び出し元のマッピングとプロファイルのデータであり、重複したコマンドツリーではありません。`--version` は正確なプライマリーオーナーを選択し、`--source-version` と `--adapter-version` は選択された別個の依存関係を指定します。スキーマとマッピングのリビジョンはデータのアイデンティティであり、インストールされたエンジンバージョンのエイリアスではありません。
+</Note>
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SHV ベクター" icon="microchip" href="/ja/vectors/shv">
+    これらのエンジンが実装する Hardware Vector のコントラクト。
+  </Card>
+
+  <Card title="qxctl ベクターコマンド" icon="terminal" href="/ja/qxctl/vector-commands">
+    `shv ...` の文法の完全なリファレンス。
+  </Card>
+</CardGroup>

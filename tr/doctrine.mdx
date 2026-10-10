@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony Platform Doktrini"
+description: "Symphony'nin yönetici ilkelerini öğrenin: strateji ve altyapının kullanıcıya ait olması, çağıran sınıfı tarafsızlığı, sıcak yol koruması ve kanıta dayalı uyumluluk."
+sidebarTitle: "Doktrin"
+---
+
+Symphony doktrini, platformun neyi kontrol ettiği ile sizin neyi kontrol ettiğiniz arasındaki sınırları tanımlar. Bu kurallar monorepodaki her tasarım kararını ve qxctl, vektör motorları ve bilgi sözleşmeleriyle yapılan her etkileşimi yönetir.
+
+## Kullanıcı sahipliği
+
+Strateji mantığınız, Nest amacınız, sağlayıcı seçiminiz, donanım seçiminiz, veri yolu (bus) topolojiniz ve desteklenen adaptör seçiminiz size aittir. Symphony kesin uyumluluk kanıtı ve desteklenen işlemler sağlar, ancak önerileri platform yasasına dönüştürmez. Platform eşleşmeleri, uyumsuzlukları, çözümlenmemiş olguları ve sonuçları raporlar. Sağlayıcıları sıralamaz, bir strateji dayatmaz veya ortamınızı sessizce genişletmez.
+
+## Sıcak yol koruması
+
+Sıcak yol (hot path), yönetimsel yerleşiklikten ve kazara oluşan paylaşılan veri yolu baskısından korunur. qxctl ve bilgi düzlemi, soğuk veya donuk yol (freezing-path) yönetimidir. Canlı iş de barındıran bir Node üzerinde açıkça işlem yapabilirler, ancak sürekli sıcak yol bağımlılıklarına, gizli izleyicilere, yerleşik yorumlayıcılara veya istenmeden çalışan arka plan paket yöneticilerine dönüşmemelidirler. Açıkça belirlediğiniz mimari egemen kalır.
+
+## Komut ve anlam ayrımı
+
+qxctl, komut dil bilgisinin ve sunumun sahibidir. Alan vektörleri, bu komutların sunduğu işlemlerin ve anlamların sahibidir. Bir qxctl rotası, sahibin tanımladığı bir yeteneği, onun anlamını özümsemeden çağırır.
+
+## Adlar ve ad alanları
+
+Adlar, sahip oldukları kapsam altında kaydedilir. SNV ve SCNV bunları dayatmaz ve kök NAMESPACES, SNV'den daha geniş kalır. Bir TOPS veya TROG içinde kaydedilen bir ad o kapsamı izler. Birden çok küme içinde bir Node kısa adı farklı kümelerde tekrar edebilir, ancak aynı kümedeki iki etkin Node'u belirsiz biçimde tanımlayamaz.
+
+## Çağıran sınıfı tarafsızlığı
+
+Bir çağıranın insan, yapay zekâ, ajan, hizmet veya iş yükü olarak sınıflandırılması yetki vermez veya yetkiyi kaldırmaz. Desteklenen yetkilendirme kararları; hedef ana bilgisayar sahipliğini veya verilen izinleri, istenen işlemi ve kaynağı, beklenen durumu ve sahip tarafından yapılandırılan güvenlik önlemlerini kullanır. Hedef ana bilgisayarın yöneticisi, yapılandırılabilir yönetişim üzerinde egemendir. SSIAG etkin ana bilgisayar yetkisini doğrulayabilir ve yansıtabilir, ancak üstün bir kayıt yetkisi oluşturmaz. Gelişmiş kimlik güvencesi ve yönetişim kilitleri, çağırandan bağımsız ve sahip tarafından yapılandırılan güvenlik önlemleridir. Protokol bütünlüğü gereksinimleri zorunlu kalır. Symphony, harici yasal veya finansal ehliyete çağıran türüne göre karar vermez.
+
+## Gerçeklik ve kanıt
+
+Mevcut sözleşmeler mevcut gerçekliği tanımlar. Değiştirilemez SCLV ve SODV kayıtları, tarihteki kaydedildikleri noktada neyin bilindiğini, değiştirildiğini, yetkilendirildiğini veya tamamlandığını korur. Mevcut sözleşmeler, uygulama kanıtları ve en son geçerli kayıt birbiriyle çeliştiğinde, bu çelişki inceleme için sapma (drift) olarak ortaya çıkarılır. Geçmiş, günümüze benzesin diye sessizce yeniden yazılmaz.
+
+## Python doktrini
+
+Birinci taraf Symphony kaynak kodu, üreteçler, şema yazımı, testler ve kabul yardımcıları hiçbir Python uygulaması veya yorumlayıcı bağımlılığı gerektirmez. Yerine geçen yazım ve süreç testi araçlarının sahibi C++'tır. Bu depo politikası, kullanıcı tarafından yazılmış programlarınızı veya açıkça seçilmiş yalıtılmış Habitat'ları kısıtlamaz.

@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: SKV 프레임워크 개요"
+description: "SKV는 Symphony의 선언적 플랫폼 지식을 위한 상위 프레임워크입니다. 하나의 거버넌스 모델 아래에 있는 Contract Quad, 동반 문서, 모든 하위 벡터를 살펴보세요."
+sidebarTitle: "SKV 개요"
+---
+
+Symphony Knowledge Vector(SKV)는 Symphony의 선언적 플랫폼 지식을 위한 정규 프레임워크입니다. 아키텍처의 진실, 모듈 경계, 계약, 원칙, 호환성 지식을 사람, 검증기, qxctl, CI, 에이전트 도구가 일관되게 사용할 수 있는 구조로 보존합니다. SKV는 런타임이 아니라 모든 벡터가 경유하는 공유 지식 계층입니다.
+
+## Contract Quad
+
+SKV의 모든 의미 소유자는 Contract Quad를 게시합니다.
+
+- **INTENT.md**: 목적, 범위, 비범위
+- **MANIFEST.md**: 정규 문서 및 위임
+- **SKILL.md**: 호출자를 위한 안전한 사용 절차
+- **SPEC.md**: 규범적 동작
+
+스키마, 레지스트리, 프로필, 원장 및 기타 아티팩트는 네 구성 요소로 이루어진 Quad 외부에 있으며 동일한 소유자가 관리합니다.
+
+## 동반 문서
+
+SKV가 소유하는 두 개의 동반 문서가 모든 벡터에 걸쳐 안내 역할을 합니다.
+
+- `knowledge/SLANG.md`는 각 플랫폼 용어를 그 의미를 소유하는 정확한 계약에 매핑합니다.
+- `knowledge/NAMESPACES.md`는 문법, 할당, 수명 주기 또는 개별 식별자를 규정하지 않고 식별자 계열의 소유권을 기록합니다.
+
+두 동반 문서 모두 Quad의 다섯 번째 구성원, 새로운 벡터 또는 런타임 서비스가 아닙니다.
+
+## 해석 규칙
+
+현재 계약은 현재의 진실을 설명합니다. 추가 전용인 SCLV 및 SODV 기록은 기록된 시점에 알려졌거나, 승인되었거나, 완료된 내용을 보존합니다. 계약 상태, 구현 증거, 적용 가능한 최신 기록이 서로 일치하지 않으면 그 불일치는 검토 대상인 드리프트입니다. 도구는 조정을 임의로 만들어 내서는 안 됩니다.
+
+## 하위 벡터
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/ko/skv/skvi">
+    각 현재 정규 문서를 정확히 한 번씩 인덱싱합니다.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/ko/skv/sclv">
+    완료된 중요 소스 변경에 대한 추가 전용 변경 원장입니다.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/ko/skv/sacv">
+    범위가 제한된 OpenAPI 3.2.0 거버넌스 및 호환성 비교입니다.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    공식 QuanuX 게시 및 릴리스 기록을 관리합니다.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ko/skv/ssfv">
+    기능 식별자, 최신성, 관리 보증입니다.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ko/skv/sav">
+    Accordare 구성 및 3축 호환성 평가입니다.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ko/skv/sev">
+    진화 사례, 처리 계획, 새로움 검사입니다.
+  </Card>
+
+  <Card title="거버넌스" icon="shield-halved" href="/ko/governance/ssiag">
+    승인된 변경을 위한 SSIAG 식별자 및 STAV 감사 거버넌스입니다.
+  </Card>
+</CardGroup>
+
+<Note>
+  현재의 모든 SKV 엔진은 읽기, 쿼리, 검증, 제안만 수행합니다. 프로그래밍 방식의 정규 apply는 각 엔진의 SSIAG 권한, 예상 상태 트랜잭션, qxctl 보호 장치, STAV 이벤트, 복구, 부정 테스트 계약이 완료될 때까지 비활성화되어 있습니다.
+</Note>

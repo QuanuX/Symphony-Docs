@@ -1,0 +1,65 @@
+---
+title: "SHV 엔진: Symphony Hardware Vector 소스와 그래프"
+description: "SHV 엔진은 보존된 소스 재생, 요구 사항 평가, PDF 수집, DuckDB 내구성 그래프를 통해 CPU, GPU, NIC, 메모리, 스토리지를 카탈로그화합니다."
+sidebarTitle: "SHV 엔진"
+---
+
+Symphony Hardware Vector(SHV) 엔진은 프로세서, CPU 토폴로지, 캐시, GPU, NIC 및 광섬유 인터페이스, 메인보드, RAM, NVMe를 카탈로그화합니다. 기본 큐레이션은 원래 구성 요소와 증거가 있는 변형을 우선시합니다. 모든 엔진은 독립적으로 설치할 수 있으며 읽기 전용입니다.
+
+## 엔진
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    하드웨어 커널: 호출자가 정의한 커버리지, 보존된 소스 카탈로그 재생, 요구 사항 평가, 그래프 프로젝션.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    하드웨어 증거를 위한 소스 수집 및 리비전 처리.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    구성 요소 및 시스템 프로필 평가.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    재현 가능한 선택을 위한 카탈로그화된 하드웨어 파티셔닝.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    거버넌스가 적용되는 로컬 카탈로그 게시 및 선택.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    명시적인 그래프 전송 표면.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    qxctl을 통해 관리되는 DuckDB 기반 내구성 그래프 스토리지.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    하드웨어 데이터시트를 위한 PDF 소스 해석.
+  </Card>
+</CardGroup>
+
+## 관리 주요 사항
+
+- **내구성 스토리지**는 `shv graph store inspect|prepare|commit|status|query|export|schema|template`을 통해서만 관리됩니다. 보존된 예상 의도 다이제스트와 함께 실행하는 `commit`은 복구 역할도 하며, 별도의 복구 별칭은 없습니다.
+- **카탈로그 게시**는 `shv catalogue publication inspect|plan|apply|status|schema|template`을 통해서만 관리됩니다. 복구는 `apply --operation-id`이며, `--input`과 함께 사용할 수 없습니다.
+- **인벤토리**(릴리스 0.2)는 `shv graph store inventory`를 추가합니다. 이는 명시적으로 보존된 작성자 식별자를 사용하는, 리비전에 바인딩된 논리적 읽기입니다. 레거시 0.1 선택도 계속 지원됩니다.
+
+<Note>
+  하드웨어 클래스는 중복된 명령 트리가 아니라 호출자 매핑 및 프로필 데이터입니다. `--version`은 정확한 기본 소유자를 선택하며, `--source-version`과 `--adapter-version`은 선택된 별개의 의존성을 지정합니다. 스키마 및 매핑 리비전은 데이터 식별자이며, 설치된 엔진 버전의 별칭이 아닙니다.
+</Note>
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="SHV vector" icon="microchip" href="/ko/vectors/shv">
+    이 엔진들이 구현하는 Hardware Vector 계약.
+  </Card>
+
+  <Card title="qxctl vector 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    전체 `shv ...` 문법 참조.
+  </Card>
+</CardGroup>

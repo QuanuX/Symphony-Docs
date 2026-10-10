@@ -1,0 +1,57 @@
+---
+title: "Symphony Node 向量：Node 身分與叢集紀錄"
+description: "SNV 記錄並關聯 Node 身分、資源、叢集成員資格與使用者指派的名稱，但不加以規定。由 SNIV、SNRV、SCIV 與 SCNV 子向量組成。"
+sidebarTitle: "Node 向量"
+---
+
+Symphony Node 向量（Symphony Node Vector，SNV）記錄並關聯你與 Symphony 搭配使用之實體 Node 的身分、資源、叢集成員資格與名稱。它由四個子向量組成，每個子向量各自擁有不同的語意邊界。SNV 不會代替你選擇、核發、規定或自動重新命名任何事物。
+
+## 子向量組成
+
+SNV 由四個持久的語意領域構成：
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node 身分**：實體 Node 身分，及其與確切的供應商資源、所選產品與基礎架構網域的關聯。
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node 資源**：Node 的本機資源真相，以及經明確限定的遠端資源真相。
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **叢集身分**：叢集身分、匯流排連線，以及 Node 與叢集之間的關係。
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **整合命名**：在 SNV 範圍內，解析已由你或你的供應商指派的名稱。
+  </Card>
+</CardGroup>
+
+## 記錄邊界
+
+SNV 記錄事實及其來源脈絡。它不會為你保留名稱、配置資源或建立叢集。名稱由使用者指派；Symphony 負責記錄。供應商資源由使用者選擇；Symphony 負責建立關聯。叢集拓撲由使用者設計；Symphony 負責記載。
+
+## SNV 與其他向量的關係
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/zh-Hant/vectors/scv">
+    提供供應商與異地資源知識，說明可以存在哪些 Node。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh-Hant/vectors/sov">
+    透過 qxctl 建立並變更基礎架構，產生 SNV 所記錄的 Node。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/zh-Hant/vectors/shv">
+    可能為 Node 內的實體元件提供詳細的硬體能力證據。
+  </Card>
+</CardGroup>
+
+## 目前狀態
+
+SNV 是一份新興的標準架構合約。目前尚未實作任何 SNV 引擎、圖形、登錄檔結構描述、身分編碼器、探索服務、命名服務或 qxctl 命令。紀錄結構描述與引擎仍延後處理。
+
+## 未來的可安裝性
+
+任何未來的 SNV 引擎都必須能獨立安裝，並能從確切的擁有者證據重建其投影。沒有任何引擎會僅因為儲存或解析紀錄，就成為身分或命名權威。

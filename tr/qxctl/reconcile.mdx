@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Çalışma Ağacı Uzlaştırması"
+description: "Çalışma ağaçlarını bağlanmış bir Symphony koordinatörüne karşı uyumluluk kontrolleri, kontrol noktası ve kapanış günlükleri ve kanıta dayalı iki yuvalı kurtarma ile uzlaştırın."
+sidebarTitle: "reconcile"
+---
+
+`qxctl knowledge reconcile ...` grameri, çalışma ağacı uzlaştırmasını tek bir kesin bağlanmış Knowledge Session Coordinator aracılığıyla yürütür. Her değişiklik kararlı tanımlayıcılarla izlenir ve mevcut günlüğün kesin özetine karşı compare-and-swap ile yapılır.
+
+## Komutlar
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: qxctl, koordinatör ve bağlanmış engine'lerin protokol sürümü ve kapsam üzerinde uzlaştığını doğrular.
+- `begin`: kararlı bir işlem tanımlayıcısıyla yeni bir uzlaştırma bağlamı açar.
+- `status`: mevcut günlüğü değiştirmeden inceler.
+- `checkpoint`: günlüğü compare-and-swap ile kalıcı olarak ilerletir.
+- `close`: uzlaştırma bağlamını sonlandırır.
+- `recover --discover`: olağan durum sorgusu yerel durumu doğrulayamadığında keşif yoluyla kurtarma.
+
+## Kurtarma kuralları
+
+<Warning>
+  İki yuvalı kurtarma, kanıta dayalı ileriye dönük onarımdır. Hiçbir zaman uyumsuz bir günlüğü veya bilinmeyen kritik bir uzantıyı atma izni değildir. Kurtarma başarısız olursa zorlamak yerine konuyu üst seviyeye taşıyın.
+</Warning>
+
+Keşif yoluyla kurtarmayı yalnızca olağan durum sorgusu yerel durumu doğrulayamadığında kullanın. Engelleyicileri koruyun; yalnızca doğrulanmış kanıt değiştikten sonra yeniden planlayın.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="Oturum koordinatörü" icon="gears" href="/tr/engines/coordinator">
+    Uzlaştırma günlüklerinin sahibi olan engine.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/tr/qxctl/session">
+    Uzlaştırma bağlamlarıyla eşleşen kimliği doğrulanmış oturumlar.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/tr/qxctl/engines">
+    Koordinatörün kullandığı bağlamaları yönetin.
+  </Card>
+</CardGroup>

@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony Validator の警告ポリシー"
+description: "qxctl を通じて、生の検出器エビデンスを変更することなく、独立した Symphony Validator に対する保護された警告ポリシー、ベースライン、表示文法を管理します。"
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` 文法は、Symphony Validator の保護された警告ポリシー、ベースライン、表示文法を管理します。個別にインストールされる C++ バリデーターは不変の生エビデンスを生成し、qxctl は検出を変更することなく、呼び出し元に中立な保護された表示を管理します。
+
+## qxctl validate がカバーする範囲
+
+- 9 つの保護された警告ライフサイクルリーフ
+- 正確なレシートに裏付けられたルートサマリールート
+- ベースライン管理と差分レポート
+- 行出力と構造化 JSON の表示文法
+
+すべてのリーフは、保護された警告ポリシーを適用する前に、バリデーターの正確なレシートと構造化ダイジェストを検証します。
+
+## 境界
+
+<Warning>
+  qxctl validate はファイルの修復、何かの公開、生の検出器エビデンスの上書きを行うことはできません。警告の処分は表示に影響し、検出には影響しません。
+</Warning>
+
+- 保護されたポリシーの外での警告抑制はしない
+- バリデーター出力の変更はしない
+- 利用できないルートに対するカバレッジの捏造はしない
+
+## 一般的な用途
+
+- 警告ベースラインの確立またはリセット
+- 管理対象の過去の警告の承認または再オープン
+- リポジトリの README に表示される、レシートに裏付けられたルートサマリーの出力
+
+この文法を支えるバリデーターは、コントラクトの形状、現在のソースクロージャ、不変条件の所有権、機能管理、リリース、マシン所有のルートサマリーをチェックします。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/ja-jp/governance/validator">
+    qxctl が管理する、独立した読み取り専用の C++ チェッカー。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ja-jp/skv/ssfv">
+    エビデンスでチェックされる機能管理の期待値。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ja-jp/skv/sodv">
+    バリデーターのエビデンスに現れるリリース記録。
+  </Card>
+
+  <Card title="qxctl の概要" icon="terminal" href="/ja-jp/qxctl/overview">
+    コマンドサーフェスの全体。
+  </Card>
+</CardGroup>

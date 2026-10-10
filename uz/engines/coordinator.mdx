@@ -1,0 +1,50 @@
+---
+title: "Symphony vector engine’lari uchun Knowledge Session Coordinator"
+description: "Knowledge Session Coordinator C++26 tilida chegaralangan moslik, worktree muvofiqlashtirish, autentifikatsiyalangan sessiyalar va qoʻllash imkoniyatiga ega hayot sikli koordinatsiyasini taqdim etadi."
+sidebarTitle: "Koordinator"
+---
+
+Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) — mustaqil oʻrnatiladigan C++26 jarayoni. U qxctl va vector engine’lari oʻrtasida joylashadi hamda chegaralangan moslik, worktree muvofiqlashtirish, autentifikatsiyalangan nokanonik sessiyalar, SSFV texnik xizmati, faqat hisobot beruvchi hayot sikli rejalashtirish va alohida avtorizatsiya qilingan, qoʻllash imkoniyatiga ega jurnallarga egalik qiladi.
+
+## Vazifalar
+
+- qxctl, koordinator va engine’lar oʻrtasidagi **moslik tekshiruvlari**
+- Barqaror slotlarga asoslangan holat bilan **worktree muvofiqlashtirish**
+- SSIAG vakolati ostidagi **autentifikatsiyalangan nokanonik sessiyalar**
+- **Doimiy SSFV texnik xizmati** oqimlari
+- Deterministik dalillar bilan **faqat hisobot beruvchi hayot sikli rejalashtirish**
+- Tayyorlangan urinishlar, compare-and-swap, qayta kuzatish, dinamik qayta rejalashtirish va tiklash bilan **qoʻllash imkoniyatiga ega jurnallar**
+
+## Koordinator nima qilmaydi
+
+<Warning>
+  Koordinator vektor semantikasini yoki xost amallarini bajarmaydi. U dalillar va jurnallarni muvofiqlashtiradi; har bir engine baribir oʻz domeniga egalik qiladi va har bir xost amali oʻz shartnomasi bilan avtorizatsiya qilinadi.
+</Warning>
+
+- Kanonik bilimlarni qoʻllash yoʻq
+- Ixtiyoriy buyruqlarni bajarish yoʻq
+- Yashirin kuzatuvchilar yoki rezident fon ishlari yoʻq
+
+## qxctl integratsiyasi
+
+qxctl aniq, kvitansiya bilan tasdiqlangan koordinator oʻrnatmalarini chaqiradi. `qxctl knowledge reconcile ...` va `qxctl knowledge session ...` har bir operatsiya uchun aniq bitta bogʻlangan koordinatordan foydalanadi, oʻzgartirishlar esa compare-and-swap uchun barqaror operatsiya identifikatorlari va jurnalning aniq joriy digest’larini talab qiladi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/uz/qxctl/reconcile">
+    Worktree muvofiqlashtirish grammatikasi.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/uz/qxctl/session">
+    Autentifikatsiyalangan sessiya va SSFV texnik xizmati grammatikasi.
+  </Card>
+
+  <Card title="Asos kutubxonasi" icon="cube" href="/uz/engines/knowledge-vector-foundation">
+    Koordinator qayta foydalanadigan umumiy C++ mexanizmlari.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/uz/governance/ssiag">
+    Koordinator boshqaradigan sessiyalarni avtorizatsiya qiladi.
+  </Card>
+</CardGroup>

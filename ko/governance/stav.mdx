@@ -1,0 +1,54 @@
+---
+title: "STAV: Symphony를 위한 TOPS별 추가 전용 감사 원장"
+description: "STAV Append Authority는 인증된 IPC, 영수증 전 fsync 내구성, 경계가 정해진 읽기, 검증, 복구를 갖춘 TOPS별 추가 전용 감사 원장을 운영합니다."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector(STAV)는 TOPS별 추가 전용 감사 원장 프로토콜을 정의합니다. 런타임 권한은 독립적으로 설치할 수 있는 Go 서비스인 `modules/stav-append-authority`에 있습니다. TOPS별 운영 원장은 각 TOPS 설치에 비공개이며, SKV 콘텐츠가 아닙니다.
+
+## STAV Append Authority
+
+`modules/stav-append-authority`는 다음을 제공합니다.
+
+- TOPS별 추가 전용 감사 원장
+- 상호 인증된 로컬 IPC
+- 정확한 프로듀서 및 리더 권한 부여
+- 영수증 발급 전 fsync를 수행하는 내구성
+- 경계가 정해진 읽기, 검증, 복구
+- 등록 및 네이티브 감독(launchd, systemd)
+
+<Warning>
+  qxctl은 원시 추가 권한을 절대 받지 않습니다. 정확한 모듈 소유 어댑터를 통해 등록, 검증, 권한 부여를 조정하지만, 원장 추가는 추가 권한 기관 프로세스 내부에 봉인된 상태로 유지됩니다.
+</Warning>
+
+## Go용 STAV 프로토콜
+
+`libraries/stav-protocol-go`는 정식 STAV v1 코덱, 엄격한 검증, 다이제스트, 프레이밍, 적합성 규칙, 닫힌 프로듀서 어휘를 구현하는 권한 없는 Go 라이브러리입니다. 모든 프로듀서나 리더는 권한을 상속하지 않고 이 프로토콜을 채택할 수 있습니다.
+
+## 완료된 SODV 게시
+
+현재 SODV를 통해 게시된 모든 STAV 아티팩트는 바이너리 릴리스가 아니라 Go 소스 모듈 버전입니다.
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ko/governance/ssiag">
+    STAV가 이후 감사하는 보호된 변경을 승인합니다.
+  </Card>
+
+  <Card title="Accordare 프로듀서" icon="pen-nib" href="/ko/governance/accordare-producer">
+    변경 전 의도와 최종 결과를 STAV로 내보냅니다.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/ko/qxctl/lifecycle">
+    STAV 등록과 함께 구성되는 수명 주기 관리.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ko/skv/sodv">
+    STAV 구성 요소의 공식 게시 기록을 관리합니다.
+  </Card>
+</CardGroup>

@@ -1,0 +1,74 @@
+---
+title: "SCV 來源知識引擎：Symphony 的供應商實況"
+description: "八個獨立封裝的 SCV、超大規模雲端、邊緣與供應商引擎，保留確切的來源修訂版本，並產生可重現的圖形與查詢證據。"
+sidebarTitle: "SCV 引擎"
+---
+
+SCV 來源知識引擎是八個獨立封裝的 C++26 程序，保存關於場外供應商資源、服務項目、區域、限制與混合可能性的私有語意知識。它們保留確切的來源修訂版本與有界限的擷取內容，讓下游工具能夠重現結果。
+
+## 引擎
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    共用雲端詞彙的總括 SCV 來源引擎。
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector 來源引擎。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare 專用的邊緣來源引擎。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services 來源引擎。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure 來源引擎。
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean 來源引擎。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform 來源引擎。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    用於保留式關聯圖形索引的選用 DuckDB 連接器。
+  </Card>
+</CardGroup>
+
+## SCV 引擎的功能
+
+- 保留明確的來源修訂版本與有界限的擷取內容
+- 保留有限定條件的聲明與原生文件結構
+- 產生可重現的圖形與查詢證據
+- 為可攜式供應商套件與有限、由呼叫者主導的組合提供資料
+
+## 它們不做的事
+
+<Warning>
+  供應商操作與完整的雲端目錄不在此次增量範圍內。SCV 引擎描述已知的內容；它們不會對供應商執行任何操作。
+</Warning>
+
+qxctl 另外透過保留式工作流程與受保護的圖形選擇，管理經稽核的本機來源變更與一致的圖形選擇。專用的圖形遍歷與營運轉接器仍屬另外的工作。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SCV vector" icon="cloud" href="/zh-Hant/vectors/scv">
+    這些引擎所實作的 Cloud Vector 合約。
+  </Card>
+
+  <Card title="SOV vector" icon="terminal" href="/zh-Hant/vectors/sov">
+    透過 qxctl 依據 SCV 證據執行操作的 Ops Vector。
+  </Card>
+
+  <Card title="qxctl vector 指令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    圖形選擇、來源工作流程與 DuckDB 連接器管理。
+  </Card>
+</CardGroup>

@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: 하드웨어 기능 지식"
+description: "SHV는 독립적으로 설치 가능한 여러 C++ 엔진을 통해 CPU, GPU, NIC, 메인보드, RAM, NVMe에 대한 하드웨어 기능 지식을 유지합니다."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector(SHV)는 물리적 설계가 정량적 소프트웨어를 어떻게 가능하게 하고, 제약하고, 이식하고, 확장할 수 있는지 이해하는 데 도움이 되는 하드웨어 기능 지식을 소유합니다. 프로세서, CPU 코어 유형, GPU, NIC 및 광섬유 인터페이스, 메인보드, 캐시 계층, 메모리, NVMe, 완성된 시스템 구성을 다룹니다. 기본 큐레이션은 2018년 이후의 원본 구성 요소와 증거가 있는 변형을 우선합니다.
+
+## 범위와 커버리지
+
+SHV는 프로그램 설계와 관련된 증거가 있는 모든 물리적 기능을 다룰 수 있습니다. 커버리지 프로필은 qxctl을 통해 사용자가 제어합니다. 기본 날짜 기준은 추정된 개별 제조일이 아니라 모델 출시일입니다. 이 필터는 확장, 축소, 교체 또는 제거할 수 있습니다.
+
+## 구현된 엔진
+
+SHV 지식은 독립적으로 설치 가능한 여러 C++ 엔진을 통해 제공됩니다.
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    핵심 커널(0.4.0-dev): 커버리지 프로필, 보존된 소스 카탈로그 빌드/재생, 요구 사항 평가, 결정적 그래프 프로젝션, 소스 기반 그래프 검증.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    소스 식별자, 재배치 계획, 바이트 캡처 바인딩, 소스 재생 출처 그래프.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    선언 적합성, 이식 가능한 레시피, 정확한 로컬 소스 바인딩.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    하드웨어 파티션 및 구성 요소 매핑 작업.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    보호된 호출자 카탈로그 헤드, 원본 소스 재생, 영구 스냅샷 복구.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    무손실 교환을 위한 범용 C++ 그래프 포트 및 인메모리 이식 가능한 참조 어댑터.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    하드웨어 그래프 증거의 선택적 DuckDB 관계형 프로젝션.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    범위가 제한된 PDF 추출과 원본 바이트로부터의 문서 주장 재검증.
+  </Card>
+</CardGroup>
+
+## 소스 리비전과 출처
+
+`shv-source-engine`은 안정적인 소스 식별자, 명시적인 재배치 계획, 순수 전환 검증, 실제 바이트 캡처 바인딩, 소스 재생 출처 그래프를 구현합니다. 이 작업들은 읽기 전용입니다. 핵심 큐레이션은 원본 구성 요소 식별자와 증거가 있는 변형을 우선합니다. 보호된 소스 활성화는 별도로 처리되며, 순수 소스 엔진은 권한을 부여하지 않습니다.
+
+## 그래프 교환과 저장
+
+`shv-graph-adapter`는 무손실 교환과 구조적 쿼리를 위한 범용 C++ 그래프 포트를 제공합니다. 영구 저장은 기본값인 DuckDB SQL을 통해 구현됩니다. 현재 선택된 전용 그래프 데이터베이스는 없습니다.
+
+## PDF 증거 경계
+
+`shv-pdf-adapter`는 명시적인 PDF 표에서 검증된 문서 주장을 추출하고, 범용 그래프 교환 후 원본 바이트로부터 이를 재검증합니다. 일반적인 PDF 커버리지는 별도로 범위가 지정된 작업으로 남아 있습니다.
+
+## 남은 작업
+
+광범위한 하드웨어 아틀라스, 자동화된 소스 수집, 다중 소스 충돌 집계, 추가 벤더별 데이터베이스 드라이버, 사용자 정의 플러그인 로딩, Composer 통합은 이후 작업으로 남아 있습니다. 광범위한 구성 요소 매핑과 영구 벤더 드라이버도 아직 미해결 상태입니다.
+
+## SHV와 다른 벡터의 관계
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/ko/vectors/snv">
+    SHV가 설명하는 하드웨어를 포함하는 Node를 기록합니다.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/ko/vectors/scv">
+    SHV가 상세히 특성화하는 제공자 하드웨어 상품을 참조합니다.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ko/vectors/sov">
+    Node를 프로비저닝하거나 구성할 때 SHV 증거를 바탕으로 작동할 수 있습니다.
+  </Card>
+</CardGroup>

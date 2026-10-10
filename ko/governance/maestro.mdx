@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphony Vector 엔진 존재 권한 기관"
+description: "Maestro는 엔진을 시작하거나 감독하지 않고, TOPS 및 수용체별로 인증된 vector 엔진 도킹 관계를 기록하여 완전한 읽기 전용 인벤토리를 도출합니다."
+sidebarTitle: "Maestro"
+---
+
+Maestro(`modules/maestro`)는 독립적으로 설치할 수 있는 프리징 패스 C++26 존재 권한 기관입니다. TOPS 및 수용체별로 정확하게 인증된 vector 엔진 도킹 관계를 기록하고, 현재 도킹된 항목의 완전한 읽기 전용 인벤토리를 도출합니다. Maestro는 감독자가 아니라 증인입니다.
+
+## Maestro가 기록하는 것
+
+- vector 엔진과 수용체 간의 정확하게 인증된 도킹 관계
+- 각 설치의 존재 정보가 해당 설치에만 비공개로 유지되도록 하는 TOPS별 범위 지정
+- `qxctl maestro inventory`를 통해 제공되는, 도출된 완전한 읽기 전용 인벤토리
+
+## Maestro가 하지 않는 일
+
+<Warning>
+  Maestro는 엔진을 시작, 예약, 감독 또는 호출하지 않습니다. 바인딩, 조정, 인증된 세션 조정 또는 수명 주기 계획만으로는 Maestro 존재가 성립하지 않으며, 의미적 진실을 비준하거나, 정식 지식을 변경하거나, 설치된 호스트의 완전성을 증명하지 않습니다.
+</Warning>
+
+- Maestro는 프로세스를 생성하지 않습니다.
+- Maestro는 정식 지식 변경을 적용하지 않습니다.
+- Maestro는 의미를 소유한 vector 엔진을 대체하지 않습니다.
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/ko/qxctl/maestro">
+    `qxctl maestro inventory`가 도출된 인벤토리를 보여 줍니다.
+  </Card>
+
+  <Card title="세션 코디네이터" icon="gears" href="/ko/engines/coordinator">
+    인증된 세션과 워크트리 조정 메커니즘을 소유합니다.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ko/governance/ssiag">
+    Maestro가 기록하는 도킹 관계를 인증합니다.
+  </Card>
+
+  <Card title="엔진 개요" icon="cube" href="/ko/engines/overview">
+    Maestro와 도킹하는, 독립적으로 설치할 수 있는 vector 엔진.
+  </Card>
+</CardGroup>

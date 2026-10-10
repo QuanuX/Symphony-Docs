@@ -1,0 +1,47 @@
+---
+title: "Symphony vektorlari va yetkazib berish bosqichlari"
+description: "Symphony’ning doimiy semantik egalik domenlari (vektorlar) va xronologik yetkazib berish bosqichlari oʻrtasidagi farqni, shuningdek Contract Quad va vektorlarning joriy holatini tushuning."
+sidebarTitle: "Vektorlar va bosqichlar"
+---
+
+Symphony oʻz arxitekturasini ikki gʻoya atrofida tashkil etadi: **vektorlar** — doimiy semantik egalik domenlari, **bosqichlar** esa xronologik yetkazib berish kampaniyalari. Biror komponent dastlab qaysidir bosqichda tadqiq qilingani bu bosqichni uning doimiy egasiga aylantirmaydi. Amalga oshirish rivojlanib borar ekan, vektorlar maʼnoni barqaror saqlaydi.
+
+## Vektor nima?
+
+Vektor — kanonik shartnomasi ushbu domenning maʼnosi va ruxsat etilgan operatsiyalariga egalik qiladigan doimiy, chegaralangan semantik egalik domeni. Har bir vektor **Contract Quad**ni oladi: `INTENT.md`, `MANIFEST.md`, `SKILL.md` va `SPEC.md`, shuningdek unga haqiqatan kerak boʻlgan maqsadli yordamchi yuzalar. Vektor oʻzining kanonik yuzalari va delegatsiya grafini eʼlon qiladi, SKVI har bir joriy yuzani aniq bir marta xaritalaydi, eskirgan yordamchi yuzalar esa zid kontekst sifatida qolib ketmasdan, boshqariladigan evolyutsiya orqali almashtiriladi.
+
+## Vektorlar holati
+
+| Vektor | Holat | Sahifa |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Amalga oshirilgan: indekslangan yuzalarga ega 1-bosqich asosi | [/skv/overview](/uz/skv/overview) |
+| **SKVI** — Manba indekslash | Amalga oshirilgan: inspect/check/propose engine | [/skv/skvi](/uz/skv/skvi) |
+| **SCLV** — Oʻzgarishlar ledger’i | Amalga oshirilgan: faqat qoʻshiladigan ledger tekshiruvlari | [/skv/sclv](/uz/skv/sclv) |
+| **SACV** — API shartnomalari boshqaruvi | Amalga oshirilgan: OpenAPI 3.2.0 tekshiruvlari | [/skv/sacv](/uz/skv/sacv) |
+| **SODV** — Rasmiy hujjatlar/reliz boshqaruvi | Amalga oshirilgan: mahalliy reliz-ledger tekshiruvlari | [/skv/sodv](/uz/skv/sodv) |
+| **SSFV** — Funksiya identifikatsiyasi/boshqaruvi | Amalga oshirilgan: strukturaviy funksiya tekshiruvlari | [/skv/ssfv](/uz/skv/ssfv) |
+| **SAV** — Accordare kompozitsiyasi | Amalga oshirilgan: freezing-path baholash | [/skv/sav](/uz/skv/sav) |
+| **SEV** — Evolyutsiya | Amalga oshirilgan: taʼsir/qaror rejalashtirish | [/skv/sev](/uz/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance (xavfsiz identifikatsiya va kirish boshqaruvi) | Amalga oshirilgan: cgo’siz Go asosi | [/governance/ssiag](/uz/governance/ssiag) |
+| **STAV** — TOPS audit protokoli | Amalga oshirilgan: har bir TOPS uchun faqat qoʻshiladigan ledger | [/governance/stav](/uz/governance/stav) |
+| **SOV** — Ops Vector | Rivojlanmoqda: provisioning, Habitat, Nest yetkazib berish | [/vectors/sov](/uz/vectors/sov) |
+| **SCV** — Cloud Vector | Amalga oshirilgan: sakkizta C++ manba-bilim engine’i | [/vectors/scv](/uz/vectors/scv) |
+| **SNV** — Node Vector | Rivojlanmoqda: SNIV, SNRV, SCIV, SCNV kompozitsiyasi | [/vectors/snv](/uz/vectors/snv) |
+| **SQV** — Quantitative Vector | Rivojlanmoqda: SOOV FIX arxitektura subvektori | [/vectors/sqv](/uz/vectors/sqv) |
+| **SHV** — Hardware Vector | Amalga oshirilgan: C++ manba, katalog, profil engine’lari | [/vectors/shv](/uz/vectors/shv) |
+| **SIV** — Intelligence Vector | Rivojlanmoqda: SMCV ixtiyoriy Markdown; SAIV zaxiralangan | [/vectors/siv](/uz/vectors/siv) |
+
+## Contract Quad va yordamchi yuzalar
+
+Har bir vektor quyidagilarni oladi:
+
+1. **INTENT.md** — maqsad va doira
+2. **MANIFEST.md** — identifikatsiya, eʼlon qilingan yuzalar, delegatsiya grafi
+3. **SKILL.md** — xavfsiz foydalanish va operatsion koʻrsatmalar
+4. **SPEC.md** — normativ xatti-harakat va chegaralar
+
+`SLANG.md`, `NAMESPACES.md`, reyestrlar, sxemalar va profillar kabi yordamchi yuzalar toʻrt aʼzoli tuzilmadan tashqaridagi boshqariladigan artefaktlar boʻlib qoladi. Ular ega haqiqatini yoʻnaltiradi yoki ixtisoslashtiradi, lekin oʻz vakolatini kengaytira olmaydi.
+
+## Dalillarga asoslangan integratsiya
+
+Kechiktirilgan engine’ning soxta kvitansiyasi boʻlmaydi. Taklif qilingan API’ning oʻylab topilgan reyestr yozuvi boʻlmaydi. Nashr qilinmagan shartnomaning SODV yakunlanganlik daʼvosi boʻlmaydi. Bu rasmiyatchilik uchun takrorlash emas, balki dalillarga asoslangan integratsiyadir.

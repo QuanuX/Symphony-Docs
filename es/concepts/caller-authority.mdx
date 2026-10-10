@@ -1,0 +1,28 @@
+---
+title: "Neutralidad respecto a la clase de llamante y autoridad del host en Symphony"
+description: "Symphony no clasifica a los llamantes por tipo. La autoridad se deriva de la propiedad del host de destino, el permiso explícito, el estado esperado y las salvaguardas configuradas por el propietario."
+sidebarTitle: "Autoridad del llamante"
+---
+
+Symphony no clasifica a un llamante como humano, IA, agente, servicio, carga de trabajo, organización ni ningún otro tipo de actor al decidir la autoridad. Tu clasificación como persona o como sistema automatizado no otorga ni retira, por sí sola, ninguna capacidad. Esta neutralidad respecto a la clase de llamante es un límite arquitectónico fundamental que mantiene la autorización basada en hechos y no en etiquetas.
+
+## Qué rige la autoridad
+
+Las decisiones de autorización admitidas utilizan las siguientes entradas:
+
+- **Propiedad del host de destino o permisos concedidos**: el administrador del host de destino es soberano sobre la gobernanza configurable.
+- **Operación y recurso solicitados**: la acción concreta y el objeto sobre el que actúa.
+- **Estado esperado**: el resultado deseado declarado y el estado actual observado.
+- **Salvaguardas configuradas por el propietario**: valores predeterminados conservadores que el administrador puede ajustar o eliminar.
+
+## SSIAG y la autoridad del host
+
+SSIAG puede verificar y proyectar la autoridad efectiva del host, pero no crea una autoridad de registro superior ni veta de forma permanente al administrador del host de destino. La garantía de identidad reforzada y los bloqueos de gobernanza son salvaguardas neutrales respecto al llamante y configuradas por el propietario. Los requisitos de integridad del protocolo siguen siendo obligatorios dentro de las herramientas admitidas.
+
+## Lo que Symphony no decide
+
+Symphony no decide si un actor puede poseer bienes, abrir una cuenta, firmar un contrato, asumir responsabilidades o actuar en nombre de otra entidad. Esos hechos corresponden al propietario, proveedor o contraparte pertinentes y a la legislación aplicable. La plataforma se mantiene dentro de su función acotada: produce evidencia de compatibilidad y admite operaciones, pero no se extiende a la determinación de la capacidad legal o financiera externa.
+
+## Implicación práctica
+
+Cuando invocas qxctl o un motor de vector, se aplican las mismas comprobaciones tanto si ejecutas el comando manualmente como mediante un script o a través de una herramienta agéntica. La ruta de autoridad es: propiedad del host de destino, permiso explícito, estado esperado y salvaguardas. Ningún tipo de llamante recibe una omisión automática ni una restricción automática.

@@ -1,0 +1,37 @@
+---
+title: "Isolering av den heta vägen i QuanuX Symphony"
+description: "Lär dig hur Symphony skyddar körvägar från administrativ störning: komponenter på den kalla och frysande vägen, bussdisciplin och konceptet Prima Parte som tillståndsvittne."
+sidebarTitle: "Isolering av heta vägen"
+---
+
+Symphony skiljer administrativt arbete från körarbete så att live-handel, forskning och andra prestandakänsliga vägar förblir fria från jitter, latens och dolda beroenden. qxctl och kunskapsplanet är administration på den kalla eller frysande vägen. De får uttryckligen agera på en Node som även kör live-arbete, men de får inte bli kontinuerliga beroenden för den heta vägen.
+
+## Disciplin för den kalla och frysande vägen
+
+qxctl och vektormotorer är administrativa komponenter på den kalla eller frysande vägen. De får inte:
+
+- Köras inline med heta eller varma körvägar
+- Dela lås med live-arbetslaster
+- Skapa synkrona beroenden som tillför jitter eller latens
+- Bli dolda bevakare, residenta tolkar eller oombedda pakethanterare i bakgrunden
+- Upprätthålla kontinuerlig residens på kör-Nodes
+
+Denna regel gäller kunskapssessionens koordinator, vektormotorer och alla åtgärder som administreras av qxctl. De producerar evidens, validerar tillstånd och förbereder planer, men deltar inte i live-körvägen.
+
+## Bussdisciplin
+
+Tung överföring, styrning, forskning och körningsavfall behöver inte dela en buss. En topologi kan använda flera bussar eller kringgå en buss för en deklarerad väg, särskilt där delad trafik kan introducera jitter. NATS JetStream, ZeroMQ och andra bussväv är adaptrar och användarval. Att qxctl har bussadministration gör inte busstraversering obligatorisk.
+
+Du väljer den busstopologi som motsvarar dina krav på latens och genomströmning. Symphony stöder konfigurationen utan att påtvinga en enda delad bussväv.
+
+## Prima Parte
+
+**Prima Parte** är ett ratificerat koncept i Fas 3, inte ett aktuellt körbart program. Det är ett valfritt, extremt lättviktigt Node-lokalt tillståndsvittne i C++ som uttryckligen anropas av qxctl efter en väsentlig åtgärd. Det har ingen daemon, lyssnare, timer, bevakare, pollningsloop eller resident bussanslutning.
+
+Dess avgränsade beständiga vokabulär omfattar tre termer:
+
+- `current` — det nuvarande observerade tillståndet
+- `previous` — tillståndet före den väsentliga åtgärden
+- `lastTransmitted` — tillståndet som skickades av den fjärranslutna Node efter att det tillhörande kommandot körts (inte bekräftat mottaget)
+
+Prima Parte registrerar endast sin egen Node, blir aldrig en mindre Maestro och avslutas efter sitt avgränsade arbete. Det är inte en Maestro-receptor i Fas 1, och inget körbart program är implementerat ännu.

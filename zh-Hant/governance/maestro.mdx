@@ -1,0 +1,43 @@
+---
+title: "Maestro：Symphony Vector 引擎存在權威"
+description: "Maestro 依 TOPS 與接收器記錄經驗證的 vector 引擎對接關係，並推導出完整的唯讀清單，而不會啟動或監督引擎。"
+sidebarTitle: "Maestro"
+---
+
+Maestro（`modules/maestro`）是一個可獨立安裝、屬於凍結路徑的 C++26 存在權威。它依 TOPS 與接收器記錄確切且經驗證的 vector 引擎對接關係，並推導出目前已對接項目的完整唯讀清單。Maestro 是見證者，而非監督者。
+
+## Maestro 記錄的內容
+
+- vector 引擎與接收器之間確切且經驗證的對接關係
+- 依 TOPS 劃分範圍，讓每個安裝的存在資訊僅限於該安裝
+- 透過 `qxctl maestro inventory` 提供的推導、完整且唯讀的清單
+
+## Maestro 不做的事
+
+<Warning>
+  Maestro 不會啟動、排程、監督或呼叫引擎。單憑繫結、協調、經驗證的工作階段協調或生命週期計畫，並不會建立 Maestro 存在記錄、批准語意真相、變更標準知識，或證明已安裝主機的完整性。
+</Warning>
+
+- Maestro 不會建立任何程序。
+- Maestro 絕不會套用標準知識變更。
+- Maestro 絕不會取代擁有語意的 vector 引擎。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/zh-Hant/qxctl/maestro">
+    `qxctl maestro inventory` 會呈現推導出的清單。
+  </Card>
+
+  <Card title="工作階段協調器" icon="gears" href="/zh-Hant/engines/coordinator">
+    負責經驗證的工作階段與工作樹協調機制。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hant/governance/ssiag">
+    驗證 Maestro 所記錄的對接關係。
+  </Card>
+
+  <Card title="引擎概觀" icon="cube" href="/zh-Hant/engines/overview">
+    與 Maestro 對接、可獨立安裝的 vector 引擎。
+  </Card>
+</CardGroup>

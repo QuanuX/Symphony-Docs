@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Symphony Validator ogohlantirish siyosati"
+description: "Mustaqil Symphony Validator ustidagi himoyalangan ogohlantirish siyosati, boshlang'ich holat va ko'rsatish grammatikasini xom detektor dalillarini o'zgartirmasdan qxctl orqali boshqaring."
+sidebarTitle: "validate"
+---
+
+`qxctl validate ...` grammatikasi Symphony Validator'ning himoyalangan ogohlantirish siyosati, boshlang'ich holati (baseline) va ko'rsatish grammatikasini boshqaradi. Mustaqil o'rnatilgan C++ validatori o'zgarmas xom dalillarni ishlab chiqaradi; qxctl esa aniqlashni o'zgartirmasdan chaqiruvchiga neytral himoyalangan taqdimotni boshqaradi.
+
+## qxctl validate nimalarni qamrab oladi
+
+- To'qqizta himoyalangan ogohlantirish hayot sikli buyrug'i
+- Aniq kvitansiyaga asoslangan ildiz xulosasi yo'nalishi
+- Boshlang'ich holatni boshqarish va farqlar bo'yicha hisobot
+- Qatorli chiqish va tuzilmali JSON uchun ko'rsatish grammatikasi
+
+Har bir buyruq himoyalangan ogohlantirish siyosatini qo'llashdan oldin validatorning aniq kvitansiyasi va tuzilmali digest'larini tasdiqlaydi.
+
+## Chegara
+
+<Warning>
+  qxctl validate fayllarni ta'mirlay olmaydi, hech narsani nashr eta olmaydi va xom detektor dalillarini bekor qila olmaydi. Ogohlantirishga oid qaror aniqlashga emas, taqdimotga ta'sir qiladi.
+</Warning>
+
+- Himoyalangan siyosatdan tashqarida ogohlantirishlarni bostirish yo'q
+- Validator chiqishini o'zgartirish yo'q
+- Mavjud bo'lmagan yo'nalish uchun soxta qamrov yo'q
+
+## Keng tarqalgan foydalanish holatlari
+
+- Ogohlantirishlar uchun boshlang'ich holatni o'rnatish yoki qayta tiklash
+- Boshqariladigan tarixiy ogohlantirishni tasdiqlash yoki qayta ochish
+- Repozitoriy README faylida ko'rinadigan kvitansiyaga asoslangan ildiz xulosasini chiqarish
+
+Ushbu grammatika asosidagi validator shartnoma shakli, joriy manba yopiqligi, invariant egaligi, funksiyalarni boshqarish, relizlar va mashinaga tegishli ildiz xulosasini tekshiradi.
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/uz/governance/validator">
+    qxctl boshqaradigan mustaqil, faqat o'qiydigan C++ tekshiruvchisi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uz/skv/ssfv">
+    Dalillarda tekshiriladigan funksiyalarni boshqarish talablari.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    Validator dalillarida paydo bo'ladigan reliz yozuvlari.
+  </Card>
+
+  <Card title="qxctl haqida umumiy ma'lumot" icon="terminal" href="/uz/qxctl/overview">
+    To'liq buyruqlar to'plami.
+  </Card>
+</CardGroup>

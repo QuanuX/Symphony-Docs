@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: kunskap om leverantörsresurser"
+description: "SCV upprätthåller privat kunskap om externa leverantörsresurser hos AWS, Azure, GCP, DigitalOcean, Cloudflare och användarägd hårdvara via åtta oberoende installerbara C++-motorer."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) äger privat semantisk kunskap om externa hårdvaruresurser och de leverantörsrealiteter som formar dina kluster, din träning, din forskning och ditt dataarbete. Den kartlägger leverantörers erbjudanden, regioner, infrastrukturdomäner, begränsningar och observerad tillgänglighet utan att rangordna leverantörer eller sätta gränser för vad du får försöka göra.
+
+## Leverantörstäckning
+
+SCV täcker följande leverantörer och resurstyper:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Användarägd hårdvara (där jämförelse med externa resurser krävs)
+
+## Installerade motorer
+
+SCV-kunskap levereras via åtta oberoende installerbara C++-motorer. Du installerar bara de som du behöver:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    SCV:s kärnmotor för kunskap om leverantörsresurser och grafkonstruktion.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Molnevidensmotor för avgränsad insamling och korpussemantik.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-specifik evidensmotor.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-specifik kunskapsmotor för hårdvara och resurser.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-specifik kunskapsmotor för hårdvara och resurser.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-specifik kunskapsmotor för resurser.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-specifik kunskapsmotor för hårdvara och resurser.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Valfri relationell grafanslutning som använder DuckDB för bevarad SQL-indexering.
+  </Card>
+</CardGroup>
+
+## Portabla leverantörspaket och komposition
+
+SCV exponerar portabla leverantörspaket via qxctl. Du behåller kontrollen över krav, leverantörsbehörigheter, receptalternativ och körningsbeslut. qxctl stöder bevarade arbetsflöden och skyddat grafval, så att du kan spela upp exakt evidens igen utan att fråga leverantörerna på nytt.
+
+## Valfri DuckDB-anslutning
+
+`scv-graph-duckdb-connector` lägger till en avgränsad relationell projektion av oföränderliga inbyggda grafer. DuckDB är den användarvalda standarddatabasen för SQL. Du kan i framtiden välja dedikerade grafmotorer via ytterligare adaptrar.
+
+## Integritet och suveränitet
+
+En installerad SCV-kunskapsgraf tillhör din privata installation. Användartillhandahållna konton, saldon, behörigheter och avtalsmässiga begränsningar används endast via uttryckligen aktiverade observationsytor. Privata fakta kommer inte in i Symphonys officiella källsanning.
+
+## Hur SCV förhåller sig till andra vektorer
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/sv/vectors/sov">
+    Det operativa kontrollplanet som agerar utifrån SCV-evidens. SOV skriver inte om leverantörernas betydelse.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/sv/vectors/snv">
+    Registrerar identiteterna för fysiska Nodes och kluster som blir resultatet av SCV-informerad provisionering.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/sv/vectors/shv">
+    Äger detaljerad kunskap om hårdvarukapacitet för komponenter som SCV refererar till.
+  </Card>
+</CardGroup>
+
+## Versionerade gränssnittssteg
+
+SCV-releaser är additiva och exakt versionerade. Tidigare installationer förblir anropbara inom sina exakta scope. Aktuella steg omfattar inbyggda operationer, korpusögonblicksbilder, tolkningsprofiler, portabla leverantörspaket, kompositionsarbetsflöden, spårning av åtaganden och evidenspaket. Varje steg bevarar tidigare vägar, standardvärden och poster.

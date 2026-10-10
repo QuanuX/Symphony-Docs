@@ -1,0 +1,50 @@
+---
+title: "SAV：構成評価のための Symphony Accordare Vector"
+description: "SAV は、正規の真実を変更することなく、Accord 参照の解決、3 軸での構成評価、Named Version の検証、Installation Blueprint の計画を行います。"
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector（SAV）は、宣言されたコンポーネントの構成と互換性を解決します。そのエンジンは、フリージングパスの読み取り専用 C++26 プロセスです。SAV は正確な型付きプロジェクションを構成しますが、オーナーベクトルからソースの真実を取り込むことはありません。
+
+## 操作
+
+SAV は豊富な評価操作をサポートしています。
+
+- 不変の導出された CURRENT スナップショットへの **Accord 参照の解決**
+- **3 軸評価**、比較、および説明
+- **構成グラフ**と使い捨てのプロジェクション
+- **Named Version** の検証と差分
+- **Extension Capsule** のチェック
+- **Installation Blueprint** の計画
+- 宣言されたコンポーネント間の**互換性ネゴシエーション**
+
+## SAV が行わないこと
+
+- SAV は、構成するコンポーネントのセマンティックな所有権を引き受けません。
+- SAV があなたの代わりに設計を選ぶことはありません。あなたが宣言した内容を評価します。
+- SAV は正規ファイルを変更しません。その出力はエビデンスと提案です。
+- SAV は STAV の追記権限ではありません。変更前のインテント処理については、Accordare STAV プロデューサーを参照してください。
+
+<Note>
+  SAV は読み取り、クエリ、検証、提案のみを行います。プログラムによる正規 apply は SKV エンジンファミリー全体で引き続き無効化されています。
+</Note>
+
+## 関連サーフェス
+
+<CardGroup cols={2}>
+  <Card title="SKV の概要" icon="book-open" href="/jp/skv/overview">
+    包括的なフレームワークと Contract Quad モデル。
+  </Card>
+
+  <Card title="Accordare プロデューサー" icon="pen-nib" href="/jp/governance/accordare-producer">
+    範囲の限定された SAV Named Version の監査回路。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/jp/skv/sev">
+    構成変更に対する SAV の評価をトリガーするエボリューションケース。
+  </Card>
+
+  <Card title="qxctl ベクトルコマンド" icon="terminal" href="/jp/qxctl/vector-commands">
+    承認済みの Accordare グラマーは、実装され次第 `qxctl accord ...` として提供されます。
+  </Card>
+</CardGroup>

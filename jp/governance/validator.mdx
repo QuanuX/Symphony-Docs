@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: 決定論的な読み取り専用のリポジトリチェック"
+description: "Symphony Validator は、コントラクト、ソースの閉包、不変条件、機能、リリース、機械的にチェックされるルートサマリーについて、行形式または構造化 JSON のエビデンスを生成します。"
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) は、独立した、決定論的で読み取り専用の C++26 リポジトリチェッカーです。リポジトリとそのコントラクトの現在の状態について、不変のエビデンスを生成します。何かを修復したり公開したりすることはできません。
+
+## Validator がチェックするもの
+
+- コントラクトの形状: 必須の Contract Quad のアンカーと構造
+- SKVI でインデックス化されたサーフェス全体にわたる、現在のソースの閉包
+- `knowledge/INVARIANTS.md` と不変条件レジストリに基づく不変条件の所有
+- SSFV が報告する機能管理の期待値
+- SODV が報告するリリースレコード
+- リポジトリの README にある、機械が所有するルートサマリー
+
+エビデンスは行形式の出力または構造化 JSON として出力されます。すべての出力は、同じリポジトリの状態から再現可能です。
+
+## Validator が行わないこと
+
+<Warning>
+  Validator はファイルの修復、コントラクトの書き換え、リポジトリの公開を行うことはできません。正規の真実を作り出すことは一切なく、報告するだけです。
+</Warning>
+
+- リポジトリへの副作用はない
+- ネットワークアクセスはない
+- qxctl の保護された警告ポリシー以外での警告の抑制はない
+
+## qxctl との統合
+
+qxctl は、保護された警告ポリシーを適用する前に、Validator の厳密なレシートと構造化ダイジェストを検証します。保護された警告ライフサイクル用の 9 つの qxctl リーフと、レシートに裏付けられた厳密なルートサマリーのルートにより、生の検出エビデンスを変更することなく検証の管理を提供します。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/jp/qxctl/validate">
+    保護された警告ポリシー、ベースライン、表示の文法。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/jp/skv/ssfv">
+    Validator がチェックする機能管理の期待値。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/jp/skv/sodv">
+    Validator が検査するリリースレコード。
+  </Card>
+
+  <Card title="SKV の概要" icon="book-open" href="/jp/skv/overview">
+    Validator がチェックするコントラクトを持つ、包括的なフレームワーク。
+  </Card>
+</CardGroup>

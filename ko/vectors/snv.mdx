@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: Node 식별자와 클러스터 기록"
+description: "SNV는 Node 식별자, 리소스, 클러스터 구성원 자격, 사용자가 지정한 이름을 규정하지 않고 기록하고 연관시킵니다. SNIV, SNRV, SCIV, SCNV 하위 벡터로 구성됩니다."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector(SNV)는 Symphony와 함께 사용하는 물리적 Node의 식별자, 리소스, 클러스터 구성원 자격, 이름을 기록하고 연관시킵니다. 각각 고유한 의미 경계를 소유하는 네 개의 하위 벡터로 구성됩니다. SNV는 사용자를 대신해 무엇도 선택, 발급, 규정하거나 자동으로 이름을 변경하지 않습니다.
+
+## 하위 벡터 구성
+
+SNV는 네 개의 지속적인 의미 도메인으로 구성됩니다.
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Node Identity**: 물리적 Node 식별자와 그에 대한 정확한 제공자 리소스, 선택된 상품, 인프라 도메인 연관 관계.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Node Resources**: Node에 대한 로컬 및 명시적으로 검증된 원격 리소스 진실.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Cluster Identity**: 클러스터 식별자, 버스 연결성, 클러스터 내 Node 관계.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Consolidated Naming**: 사용자나 제공자가 이미 지정한 이름에 대한 SNV 범위 내 해석.
+  </Card>
+</CardGroup>
+
+## 기록 경계
+
+SNV는 사실과 그 계보를 기록합니다. 이름을 예약하거나, 리소스를 할당하거나, 클러스터를 생성하지 않습니다. 이름은 사용자가 지정하고 Symphony는 이를 기록합니다. 제공자 리소스는 사용자가 선택하고 Symphony는 이를 연관시킵니다. 클러스터 토폴로지는 사용자가 설계하고 Symphony는 이를 문서화합니다.
+
+## SNV와 다른 벡터의 관계
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/ko/vectors/scv">
+    어떤 Node가 존재할 수 있는지 알려 주는 제공자 및 외부 리소스 지식을 제공합니다.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ko/vectors/sov">
+    qxctl을 통해 인프라를 구축하고 변경하여 SNV가 기록하는 Node를 생성합니다.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/ko/vectors/shv">
+    Node 내부의 물리적 구성 요소에 대한 상세한 하드웨어 기능 증거를 제공할 수 있습니다.
+  </Card>
+</CardGroup>
+
+## 현재 상태
+
+SNV는 신흥 정규 아키텍처 계약입니다. 현재 SNV 엔진, 그래프, 레지스트리 스키마, 식별자 인코더, 탐색 서비스, 이름 지정 서비스, qxctl 명령은 구현되어 있지 않습니다. 기록 스키마와 엔진은 보류된 상태입니다.
+
+## 향후 설치 가능성
+
+향후의 모든 SNV 엔진은 독립적으로 설치 가능해야 하며 정확한 소유자 증거로부터 프로젝션을 재구성할 수 있어야 합니다. 어떤 엔진도 기록을 저장하거나 해석한다는 이유만으로 식별자 또는 이름 지정 권한 기관이 되지 않습니다.

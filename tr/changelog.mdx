@@ -1,0 +1,25 @@
+---
+title: "Değişiklik Günlüğü"
+description: "QuanuX Symphony'ye eklenen yeni özellikler, güncellemeler ve düzeltmeler."
+rss: true
+---
+
+<Update label="2 Ekim 2026" description="25 Eylül haftası" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Yeni özellikler
+
+- **Symphony Node Vector motorları.** Bağımsız olarak kurulabilen beş C++26 motoru artık Node kimliğini (SNIV), kaynakları (SNRV), küme ilişkilerini (SCIV), adları (SCNV) ve SNV bileşimi ile saklamayı kapsıyor. Sağlanan kanıtları, seçilen görünümleri ve saklanan geçmişi qxctl üzerinden yönetebilirsiniz. Canlı gözlem ve SOV hazırlama (provisioning) henüz dahil değildir. Bkz. [Node Vector](/tr/vectors/snv).
+- **İsteğe bağlı SNV yerel gözlemcisi.** qxctl, seçilen CPU ve bellek gözlemlerini açık belirsizlik bilgisiyle raporlayan ayrı bir yerel gözlemciyi çağırabilir. Bu gözlemci hiçbir zaman kimlik, üyelik veya ad atamaz.
+- **SQV araştırma verisi temelleri.** Yeni C++26 kütüphaneleri; orijinal baytlar ve kaynak kökeniyle yakalamayı (SQAV), meta veriyi (SQMV), akışı (SQFV), soy bilgisiyle kesin tamsayı dönüşümünü (SQTV), yerel saklamayı (SQPV) ve kontrol noktaları ile kesin sürdürme destekli teslimatı (SQDV) kapsıyor. Bkz. [Quantitative Vector](/tr/vectors/sqv).
+- **qxctl üzerinden SQV yönetimi.** Bağımsız olarak kurulabilen yedi yönetim motoru; istek ve yapılandırma doğrulamasını, meta veri projeksiyonlarını ve salt okunur saklanan durum incelemesini sunar. Bkz. [Vektör komutları](/tr/qxctl/vector-commands).
+- **Databento ve aracı kurum adaptörleri.** SQV artık Databento DBNv3 MBO yakalamayı destekliyor, DBNv1 ve DBNv3 örneklerini koruyor ve kapsam kanıtıyla sınırlı geçmiş veri isteklerini planlıyor. Canlı olmayan kaynak ve aracı kurum okuma adaptörleri de kullanılabilir. Kimliği doğrulanmış sağlayıcı yürütmesi ve canlı veri toplama gelecekteki çalışmalar arasında yer alıyor.
+
+## Güncellemeler
+
+- **SSIAG kimlik bilgisi kabulü.** SSIAG; tek seferlik kimlik bilgisi kullanım korumaları, kimliği doğrulanmış gönderim kabulü, kurtarma özellikli kalıcı bir kimlik bilgisi istek günlüğü ve macOS'ta yerel eş doğrulaması ekliyor. Operasyonel kimlik bilgisi kullanımı devre dışı kalmaya devam ediyor. Bkz. [SSIAG](/tr/governance/ssiag).
+- **qxctl komut kapsamı.** qxctl artık 383'ten 399'a yükselen sayıda kararlı komut kimliğine sahip. Motor bağlamaları, beş SNV motoru dahil olmak üzere 13 yerleşik rolü destekliyor. Bkz. [qxctl genel bakış](/tr/qxctl/overview).
+- **SQFV toplu arayüzü.** SQFV toplu işlem kütüphanesi artık C ABI yerine bir C++26 API kullanıyor. Önceki arayüzü çağıran tüm entegrasyonları güncelleyin.
+- **SKVI kapasitesi.** [SKVI](/tr/skv/skvi), yeni SQV araştırma verisi sahipleri dahil olmak üzere daha fazla yüzeyi dizinliyor.
+- **Motor kurulum rehberliği.** Kurulum rehberi artık her motoru tek tek kurduğunuzu, güncellediğinizi ve kaldırdığınızı netleştiriyor. Bkz. [Motorlara genel bakış](/tr/engines/overview).
+
+</Update>

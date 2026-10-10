@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: SKV freymvorki haqida umumiy ma'lumot"
+description: "SKV — Symphony'ning deklarativ platforma bilimlari uchun umumiy freymvork. Contract Quad'lar, hamroh sahifalar va yagona boshqaruv modeli ostidagi barcha quyi vektorlarni o'rganing."
+sidebarTitle: "SKV haqida umumiy ma'lumot"
+---
+
+Symphony Knowledge Vector (SKV) — Symphony'ning deklarativ platforma bilimlari uchun kanonik freymvork. U arxitekturaviy haqiqat, modul chegaralari, shartnomalar, doktrina va moslik bilimlarini odamlar, validatorlar, qxctl, CI va agentli vositalar bir xilda foydalanadigan tuzilmada saqlaydi. SKV ishlash muhiti (runtime) emas; u har bir vektor orqali o'tadigan umumiy bilim qatlamidir.
+
+## Contract Quad
+
+SKV'dagi har bir semantik egasi Contract Quad'ni e'lon qiladi:
+
+- **INTENT.md**: maqsad, qamrov va qamrovdan tashqaridagi narsalar
+- **MANIFEST.md**: kanonik sahifalar va vakolat berish
+- **SKILL.md**: chaqiruvchilar uchun xavfsiz foydalanish tartibi
+- **SPEC.md**: normativ xatti-harakat
+
+Sxemalar, reyestrlar, profillar, daftarlar (ledger) va boshqa artefaktlar to'rt a'zoli Quad'dan tashqarida qoladi va o'sha egasi tomonidan boshqarilaveradi.
+
+## Hamroh sahifalar
+
+SKV'ga tegishli ikkita hamroh barcha vektorlar bo'ylab yo'naltiradi:
+
+- `knowledge/SLANG.md` har bir platforma atamasini uning semantikasiga egalik qiluvchi aniq shartnomaga moslaydi.
+- `knowledge/NAMESPACES.md` grammatika, ajratish, hayot sikli yoki alohida identifikatorlarni belgilamagan holda identifikator oilalarining egaligini qayd etadi.
+
+Ularning hech biri Quad'ning beshinchi a'zosi, yangi vektor yoki ishlash muhiti xizmati emas.
+
+## Talqin qoidasi
+
+Joriy shartnomalar joriy haqiqatni tasvirlaydi. Faqat qo'shiladigan (append-only) SCLV va SODV yozuvlari qayd etilgan vaqtda nima ma'lum bo'lgani, avtorizatsiya qilingani yoki yakunlanganini saqlaydi. Shartnoma holati, implementatsiya dalillari va eng so'nggi tegishli yozuv bir-biriga mos kelmasa, bu nomuvofiqlik ko'rib chiqilishi kerak bo'lgan og'ish (drift) hisoblanadi. Vositalar jimgina muvofiqlashtirish o'ylab topmasligi kerak.
+
+## Quyi vektorlar
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/uz/skv/skvi">
+    Har bir joriy kanonik sahifani aynan bir marta indekslaydi.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/uz/skv/sclv">
+    Yakunlangan muhim manba o'zgarishlari uchun faqat qo'shiladigan o'zgarishlar daftari.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/uz/skv/sacv">
+    Cheklangan OpenAPI 3.2.0 boshqaruvi va moslik farqlari.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    QuanuX'ning rasmiy nashrlari va reliz yozuvlarini boshqaradi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uz/skv/ssfv">
+    Funksiya identifikatori, dolzarbligi va boshqaruv kafolati.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/uz/skv/sav">
+    Accordare kompozitsiyasi va uch o'qli moslikni baholash.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/uz/skv/sev">
+    Evolyutsiya holatlari, qarorlarni rejalashtirish va yangilik tekshiruvlari.
+  </Card>
+
+  <Card title="Boshqaruv" icon="shield-halved" href="/uz/governance/ssiag">
+    Avtorizatsiya qilingan o'zgarishlar uchun SSIAG identifikatsiyasi va STAV audit boshqaruvi.
+  </Card>
+</CardGroup>
+
+<Note>
+  Har bir joriy SKV engine'i faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun mo'ljallangan. Dasturiy kanonik qo'llash har bir engine'ning SSIAG ruxsati, kutilgan holat tranzaksiyasi, qxctl himoyasi, STAV hodisasi, tiklash va salbiy test shartnomalari yakunlanmaguncha o'chirilgan.
+</Note>

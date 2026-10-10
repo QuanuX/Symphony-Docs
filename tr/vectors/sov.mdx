@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: qxctl Operasyon Denetimi"
+description: "SOV; hazırlama, Habitat koşullandırma, Nest teslimi, veri yolu bağdaştırıcıları ve isteğe bağlı uzak Node yönetimi için qxctl tarafından yönetilen operasyon alanını tanımlar."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV), yetkilendirilmiş qxctl komutlarının altyapınız üzerinde işlem yaptığı operasyonel kontrol düzlemidir. Hazırlama (provisioning), Habitat koşullandırma, Nest teslimi, veri yolu bağdaştırıcısı kurulumu ve isteğe bağlı uzak Node yönetimi için sözleşmenin sahibidir. SOV sağlayıcı anlamı veya donanım olguları icat etmez; sizin önceden seçtiğiniz desteklenen seçenekleri yürütür.
+
+## SOV neleri kapsar
+
+SOV, gelişmekte olan bir 2. Aşama alanıdır. Kapsamı şunları içerir:
+
+- **Hazırlama**: sağlayıcı ve sahip olunan donanım kaynağı tahsis iş akışları
+- **Habitat koşullandırma**: bir Node'a teslim edilen kesin işletim sistemi ve paket koşullandırması
+- **Nest teslimi**: bir Node üzerinde iş yükü yerleştirme ve güncelleme
+- **Veri yolu bağdaştırıcısı kurulumu**: Node'ları seçtiğiniz veri yolu (NATS JetStream, ZeroMQ veya diğerleri) üzerinden bağlama
+- **Uzak Node işlemleri**: yerel kabuğunuzun dışındaki Node'ların isteğe bağlı yönetimi
+
+<Note>
+  Sağlayıcı protokolleri, Terraform yürütmesi, Habitat oluşturucuları, Nest dağıtım komutları ve uzak işlem alıcıları henüz tasarlanmamıştır. Şu anda hiçbir SOV engine'i veya sağlayıcı değişikliği uygulanmamıştır.
+</Note>
+
+## SOV'nin diğer vektörlerle ilişkisi
+
+SOV bilgi kaynağı değil, kontrol düzlemidir. Diğer vektörlerin sahip olduğu kanıtlara göre hareket eder:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/tr/vectors/scv">
+    Sağlayıcı ve tesis dışı kaynak bilgisini sağlar. SOV, hangi işlemlerin uyumlu olduğuna karar vermek için SCV kanıtını okur.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/tr/vectors/snv">
+    SOV işlemleri tamamlandıktan sonra ortaya çıkan Node kimliklerini, küme üyeliklerini ve adları kaydeder.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/tr/vectors/shv">
+    Hazırlama seçeneklerini kısıtlamak için ileride ayrıntılı donanım yeteneği kanıtı sağlayabilir.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/tr/skv/overview">
+    SOV sözleşmelerini, değişiklik sonuçlarını, dizinlemeyi ve yaşam döngüsü entegrasyonunu yönetir.
+  </Card>
+</CardGroup>
+
+## Komut yüzeyi olarak qxctl
+
+SOV işlemleri, 373 çalıştırılabilir komuta sahip Go tabanlı yönetim CLI'ı `qxctl` aracılığıyla sunulur. qxctl, SOV işlemlerini uygular ve sunar, ancak bunların alan anlamının sahibi değildir. Anlamların sahibi vektördür; yürütme yüzeyinin sahibi ise araçtır.
+
+## Kullanıcı yetkisi sınırı
+
+Sağlayıcıları, bölgeleri, donanımı, veri yollarını, yazılımı, dağıtım topolojisini ve Node başına yönetim düzenlemelerini siz seçersiniz. SOV desteklenen seçenekleri sunar ve yürütür. Sağlayıcıları sıralamaz, topoloji önermez veya önerileri zorunlu politikaya dönüştürmez.
+
+## Mevcut durum
+
+SOV kanonik bir mimari sözleşmedir. Hiçbir engine'in, Terraform sarmalayıcısının, Habitat oluşturucusunun, veri yolu bağdaştırıcısının veya uzak komut alıcısının uygulandığı iddia edilmemektedir. Gelecekteki SOV bileşenleri, ortak SKV yaşam döngüsü altında bağımsız olarak kurulabilir, kesin sürümle seçilebilir ve geri alınabilir olmaya devam edecektir.

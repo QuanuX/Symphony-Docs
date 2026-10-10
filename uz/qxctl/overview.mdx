@@ -1,0 +1,83 @@
+---
+title: "qxctl: Symphony agentli boshqaruv buyruqlar qatori"
+description: "qxctl — Symphony'ning Go tilidagi boshqaruv CLI'si. Uning 373 ta bajariladigan buyrug'i, engine bog'lash reyestri va vektor engine'lari uchun kvitansiya bilan tasdiqlangan chaqiruv modeli haqida bilib oling."
+sidebarTitle: "qxctl haqida umumiy ma'lumot"
+---
+
+`qxctl` — Symphony'ning Go asosidagi, birinchi navbatda agentlar uchun mo'ljallangan boshqaruv va so'rov CLI'si. U buyruqlar bilan ishlaydi; ularning ortidagi amallar va ma'nolar esa domen vektorlariga tegishli. Uning repozitoriyga kiritilgan reyestri har bir bajariladigan buyruqni barqaror mashina identifikatori va ko'rib chiqilgan funksiyalarni boshqarish dalillariga bog'laydi.
+
+## qxctl nimalarni qamrab oladi
+
+qxctl quyidagilar uchun boshqaruvni amalga oshiradi:
+
+- Repozitoriy va shartnomalarni tekshirish
+- Validator, ogohlantirish, invariant, funksiya, hayot sikli, sessiya, muvofiqlashtirish, bog'lash va Maestro boshqaruvi
+- SSIAG identifikatsiyasi, STAV auditi va Accordare ishlab chiqaruvchisi boshqaruvi
+- Amalga oshirilgan vektor engine grammatikasi (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, shuningdek SCV va SHV sahifalari)
+
+Joriy reyestrda **373** ta bajariladigan buyruq mavjud.
+
+## Xavfsiz chaqiruv modeli
+
+qxctl kvitansiya bilan tasdiqlangan aniq o'rnatmalarni cheklangan quyi jarayonlar, qat'iy muddatlar, javob identifikatori va digest tekshiruvlari, kutilgan holat tranzaksiyalari va bardoshli tiklash yordamida chaqiradi. U hech qachon kvitansiyalar o'rniga adapter yo'llari yoki xom versiyalarni qabul qilmaydi.
+
+## Engine bog'lash reyestri v2
+
+Engine bog'lash reyestri v2 sakkizta belgilangan engine rolini va cheklangan kelajakdagi rol identifikatorlarini qo'llab-quvvatlaydi. Eski v1 holati ikki tomonlama o'qiladi; v2 ga ko'chirish qxctl orqali aniq digest'ga bog'langan compare-and-swap amalini talab qiladi va hech qachon versiya tanlash amali emas.
+
+## Reyestr buyruqlari
+
+Kutilgan reyestrni `tools/qxctl` dan yarating va tekshiring:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+O'rnatilgan mijoz bajariladigan faylga bog'langan dalillarni chiqarishi mumkin:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Kutilgan dalillarda mijoz versiyasi, bajariladigan fayl digest'i va kvitansiya digest'i null bo'ladi. Kuzatilgan dalillar aniq mijoz versiyasi va bajariladigan fayl digest'ini, mavjud bo'lsa, kvitansiya digest'ini ham bog'laydi. Ikkala shakl ham `symphony.qxctl.command-registry.v1` dan foydalanadi.
+
+<Note>
+  qxctl buyruq grammatikasi va taqdimotiga egalik qiladi. U vektor semantikasi yoki kanonik bilim haqiqatiga egalik qilmaydi. Chaqiruvchi sinfidan qat'i nazar, faqat ko'rib chiqilgan manba o'zgarishlari yangi `qxcmd` identifikatorini tasdiqlaydi.
+</Note>
+
+## Buyruqlar guruhlari
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/uz/qxctl/knowledge">
+    Vektorlararo hayot sikli va doimiy SSFV sessiyalarini boshqarish.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/uz/qxctl/lifecycle">
+    Profil, egalik, kuzatish, hisobot, yuklash, qo'llash va tiklash.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/uz/qxctl/engines">
+    Engine bog'lash reyestri va ko'chirish.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/uz/qxctl/reconcile">
+    Koordinator ishchi daraxtini muvofiqlashtirish.
+  </Card>
+
+  <Card title="session" icon="key" href="/uz/qxctl/session">
+    Autentifikatsiyalangan sessiyalar va SSFV texnik xizmat oqimlari.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/uz/qxctl/maestro">
+    Hosila retseptor inventari va ulanish dalillari.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/uz/qxctl/validate">
+    Himoyalangan ogohlantirish siyosati va validator boshqaruvi.
+  </Card>
+
+  <Card title="vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` va kelajakdagi accord/evolution grammatikasi.
+  </Card>
+</CardGroup>

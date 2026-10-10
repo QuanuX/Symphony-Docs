@@ -1,0 +1,33 @@
+---
+title: "Symphony Mimarisi"
+description: "Kullanıcı tarafından seçilen altyapı, vektör sözleşmeleri, motorlar, qxctl ve yönetilen kanıtlar arasındaki sınırları anlayın."
+sidebarTitle: "Mimari"
+---
+
+Symphony, kullanıcı tarafından seçilen altyapıyı ve iş yüklerini platform bilgisinden ve yönetiminden ayırır. Platform, stratejinizin sahipliğini üstlenmeden veya bir öneriyi zorunluluk olarak görmeden uyumluluğu inceleyebilir, doğrulayabilir ve raporlayabilir.
+
+## Fiziksel ve iş yükü katmanı
+
+Bir [Node](/tr/concepts/node-habitat-nest), tanımlanmış bir fiziksel bilgisayardır. Bir **Habitat**, onun kesin işletim sistemi ve paket hazırlığıdır; bir **Nest** ise kullanıcı tarafından seçilen bir amaca hizmet eden iş yüküdür. Kümeler, Node'ları bir veya daha fazla veri yolu (bus) aracılığıyla birbirine bağlar. Veri yolu dokuları, adaptörler, sağlayıcılar ve donanım seçimleri evrensel varsayılanlar değil, açık tercihlerdir.
+
+[Sıcak yol](/tr/concepts/hot-path-isolation), yönetimsel yerleşiklikten ayrı tutulur. qxctl ve bilgi düzlemi çalışmaları bir Node'u açıkça yönetebilir, ancak canlı yürütmenin gizli sürekli bağımlılıklarına dönüşmez.
+
+## Anlamsal sahiplik
+
+[Vektörler](/tr/concepts/vectors), anlamın ve izin verilen işlemlerin sınırlı, kalıcı sahipleridir. Her sahip bir Contract Quad yayımlar: `INTENT.md`, `MANIFEST.md`, `SKILL.md` ve `SPEC.md`. [Symphony Knowledge Vector (SKV)](/tr/skv/overview), kanonik yüzeyleri dizinler ve bunların sahibine giden yolu korur. Eşlik eden şemalar, kayıt defterleri ve defterler, Quad'ın ek üyeleri olmadan yönetilmeye devam eder.
+
+Teslimat aşamaları, işin ne zaman yapıldığını açıklar. Anlamsal sahipliği bir vektörden diğerine aktarmazlar.
+
+## Motorlar ve komut yüzeyi
+
+[Vektör motorları](/tr/engines/overview), sahiplerinin sözleşmeleri dahilinde inceleme, kontrol, projeksiyon ve öneri yapan, bağımsız olarak kurulabilen ve süreç dışında çalışan bileşenlerdir. Yalnızca bir öneri üretmiş olmaları onlara yetki kazandırmaz.
+
+[qxctl](/tr/qxctl/overview), yönetim komut dil bilgisinin ve sunumunun sahibidir. Sınırlı ve makbuzla doğrulanmış yetenekleri çağırırken, bir işlemi tanımlayan vektör o işlemin anlamını korur. Yetkilendirme ve denetim kanıtları değişiklik rotalarını yönetir; [çağıran sınıflandırması](/tr/concepts/caller-authority) tek başına hiçbir yetki vermez.
+
+## Gerçeklik ve evrim
+
+Mevcut sözleşmeler mevcut gerçekliği ifade eder. Değişiklik ve yayın defterleri, belirli bir zaman noktasında kaydedilen kanıtları korur. Sözleşmeler, uygulama kanıtları ve kaydedilmiş geçmiş arasındaki çelişkiler sessizce yeniden yazılmak yerine sapma (drift) olarak ortaya çıkarılır. [SAV](/tr/skv/sav) bileşim uyumluluğunu değerlendirir; [SEV](/tr/skv/sev) yönetilen evrimi planlar.
+
+<Note>
+  Bu genel bakış bir sınırlar haritasıdır. Bir yeteneği belirli bir kurulumda kullanılabilir kabul etmeden önce, bağlantı verilen her vektörün mevcut sözleşmesine ve uygulama kanıtlarına başvurun.
+</Note>

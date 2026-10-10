@@ -1,0 +1,52 @@
+---
+title: "SACV: QuanuX Symphony uchun API shartnomalarini boshqarish"
+description: "SACV versiyalangan API shartnomalarini cheklangan OpenAPI 3.2.0 tekshiruvlari, deterministik moslik farqlari va vektorlar bo'ylab chaqiruvchi e'lon qilgan reyestr takliflari orqali boshqaradi."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) platforma bo'ylab versiyalangan API shartnomalarini boshqaradi. Uning engine'i mustaqil o'rnatiladigan C++ jarayoni bo'lib, cheklangan OpenAPI 3.2.0 JSON tekshiruvi, deterministik moslik farqlari va bir martalik inventarlarni bajaradi. Endpoint semantikasi domenga egalik qiluvchi vektor yoki modulda qoladi; SACV esa shartnoma shakli va mosligini boshqaradi.
+
+## Amallar
+
+- **Inspect va check**: OpenAPI 3.2.0 JSON hujjati cheklangan profilga mos kelishini tekshirish.
+- **Diff**: shartnoma versiyalari o'rtasida deterministik moslik farqlarini hisoblash.
+- **Propose**: yangi yoki o'zgartirilgan shartnomalar uchun chaqiruvchi e'lon qilgan reyestr takliflarini qabul qilish.
+- **Project**: ko'rib chiquvchilar va quyi oqim vositalari uchun bir martalik inventarlarni chiqarish.
+
+## SACV nimalarni boshqaradi
+
+SACV quyidagilarni cheklaydi:
+
+- Shartnoma shakli (SACV profili bilan OpenAPI 3.2.0)
+- Versiyalar o'rtasidagi moslik tasnifi
+- Qabul qilingan shartnomalarning reyestrga a'zoligi
+
+U quyidagilarni qilmaydi:
+
+- Endpoint semantikasiga egalik qilish (har bir vektor yoki modul ularni o'zida saqlaydi)
+- SDK yaratish, artefaktlarni nashr etish yoki tokenlar berish
+- Jonli tarmoq interfeysi mavjudligini nazarda tutish (kelajakdagi xususiy API haqida eslatish uni yaratmaydi)
+
+<Note>
+  SACV faqat o'qish, so'rov, tasdiqlash va taklif qilish uchun. Dasturiy kanonik qo'llash SKV engine'lari bo'ylab o'chirilgan.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    Umumiy freymvork va Contract Quad modeli.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    SACV'da ro'yxatdan o'tgan shartnomaning har qanday rasmiy nashrini boshqaradi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/uz/skv/sav">
+    E'lon qilingan komponentlar bo'ylab kompozitsiya va moslikni baholaydi.
+  </Card>
+
+  <Card title="qxctl vektor buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Inspect, check, diff va propose uchun `qxctl sacv ...` ni ishga tushiring.
+  </Card>
+</CardGroup>

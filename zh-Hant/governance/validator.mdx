@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator：確定性的唯讀儲存庫檢查"
+description: "Symphony Validator 針對合約、來源封閉性、不變條件、功能、發布版本，以及經機器檢查的根摘要，產生逐行或結構化 JSON 證據。"
+sidebarTitle: "Validator"
+---
+
+Symphony Validator（`tools/symphony-validator`）是一個獨立、確定性、唯讀的 C++26 儲存庫檢查工具。它會針對儲存庫及其合約的現行狀態產生不可變的證據。它無法修復或發布任何內容。
+
+## Validator 檢查的項目
+
+- 合約形態：必要的 Contract Quad 錨點與結構
+- 跨 SKVI 已索引介面的現行來源封閉性
+- 依據 `knowledge/INVARIANTS.md` 與不變條件登錄檔的不變條件所有權
+- SSFV 所回報的功能管理預期
+- SODV 所回報的發布記錄
+- 儲存庫 README 中由機器擁有的根摘要
+
+證據會以逐行輸出或結構化 JSON 的形式產生。每一次輸出都能從相同的儲存庫狀態重現。
+
+## Validator 不做的事
+
+<Warning>
+  Validator 無法修復檔案、改寫合約或發布儲存庫。它不會建立任何標準真相；它只會回報真相。
+</Warning>
+
+- 不會對儲存庫產生任何副作用
+- 不存取網路
+- 除了 qxctl 受保護的警告政策之外，不會抑制任何警告
+
+## qxctl 整合
+
+qxctl 在套用受保護的警告政策之前，會先驗證 validator 的確切回執與結構化摘要。九個受保護的警告生命週期 qxctl 葉節點指令，加上確切且以回執為依據的根摘要路由，在不改動原始偵測器證據的情況下提供驗證管理功能。
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/zh-Hant/qxctl/validate">
+    受保護的警告政策、基準線與顯示文法。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh-Hant/skv/ssfv">
+    由 validator 檢查的功能管理預期。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh-Hant/skv/sodv">
+    validator 所檢查的發布記錄。
+  </Card>
+
+  <Card title="SKV 概觀" icon="book-open" href="/zh-Hant/skv/overview">
+    validator 所檢查之合約所屬的總括架構。
+  </Card>
+</CardGroup>

@@ -1,0 +1,32 @@
+---
+title: "QuanuX Symphony 文档"
+description: "从 Symphony 的平台准则、架构、知识 vector 和 qxctl 管理 CLI 开始。"
+sidebarTitle: "索引"
+---
+
+Symphony 是一个模块化、代理优先的交易操作系统。本文档描述其当前的契约和边界：基础设施如何建模、vector 如何拥有含义，以及 qxctl 如何管理受支持的操作。在使用任何管理界面之前，请先阅读平台准则。
+
+<CardGroup cols={2}>
+  <Card title="快速入门" icon="rocket" href="/cn/quickstart">
+    找到了解平台、其契约以及 qxctl 的最短阅读路径。
+  </Card>
+  <Card title="平台准则" icon="book-open" href="/cn/doctrine">
+    了解用户所有权、调用方权限、证据和热路径保护。
+  </Card>
+  <Card title="架构" icon="diagram-project" href="/cn/concepts/architecture">
+    了解 Node、Habitat、Nest、vector、引擎和 qxctl 如何协同工作。
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/cn/qxctl/overview">
+    探索 Symphony 的管理和查询命令界面。
+  </Card>
+</CardGroup>
+
+## 浏览文档
+
+- [Node、Habitat 和 Nest](/cn/concepts/node-habitat-nest) 定义了物理资源、其精确的软件调配以及用户用途的工作负载。
+- [Vector 与阶段](/cn/concepts/vectors) 区分了持久的语义所有权与交付活动。
+- [Symphony Knowledge Vector](/cn/skv/overview) 解释了规范契约、配套表面和已索引的知识。
+- [Vector 引擎](/cn/engines/overview) 描述了独立安装、在进程外运行的引擎。
+- [调用方权限](/cn/concepts/caller-authority) 和 [热路径隔离](/cn/concepts/hot-path-isolation) 阐述了两个基本的运行边界。
+
+这些页面描述的是当前已记录的界面。如需了解特定组件的确切状态，请查阅链接的契约和实现证据。

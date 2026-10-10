@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: レジストリのバインド、診断、移行"
+description: "qxctl を使用して、Symphony の保護されたユーザースコープのエンジンバインディングプロファイルを list、inspect、doctor、bind、unbind、およびダイジェストに束縛された migrate で管理します。"
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` 文法は、Symphony のベクターエンジン向けの保護されたユーザースコープ `default` バインディングプロファイルを管理します。選択したコンテンツを後の調整（reconciliation）のためにバインドします。エンジンのインストール、呼び出し、有効化、ドッキング、認証、認可、または適用は行いません。
+
+## コマンド
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+最初の v2 レジストリ変更では `absent` を指定し、以降の変更では `list` が報告する正確なダイジェストを指定します。すべての変更は、そのダイジェストに対する compare-and-swap として実行されます。
+
+## v1 から v2 への移行
+
+<Warning>
+  有効な v1 レジストリ状態は引き続き読み取り可能です。v2 への移行は独立した厳密な compare-and-swap であり、バージョン選択操作になることは決してありません。移行をエンジン選択のアップグレード手段として扱わないでください。
+</Warning>
+
+- `list` と `inspect` は v1 のエビデンスに対しても引き続き動作します。
+- `migrate` は v1 の真実を破棄することなく、リンクされた v2 世代を生成します。
+- 移行後は、以降の変更に v2 ダイジェストを使用します。
+
+## バインドとは
+
+バインドは、コーディネーターによる後の調整のために正確なコンテンツを選択します。バインドは次のことを行いません:
+
+- エンジンをインストールしない
+- エンジンを呼び出したり有効化したりしない
+- エンジンを Maestro にドッキングしない
+- 呼び出し元を認証しない
+- apply を認可しない
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ja-jp/qxctl/reconcile">
+    バインドされたコンテンツをコーディネーターと調整します。
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/ja-jp/qxctl/lifecycle">
+    バインドされたエンジンを使用するライフサイクルプラン。
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ja-jp/governance/maestro">
+    バインディングではなくドッキングを記録するプレゼンス権限。
+  </Card>
+
+  <Card title="エンジンの概要" icon="cube" href="/ja-jp/engines/overview">
+    個別にインストール可能なベクターエンジン。
+  </Card>
+</CardGroup>

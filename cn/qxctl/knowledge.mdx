@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge：跨向量生命周期管理"
+description: "qxctl knowledge 命令组负责跨向量生命周期、会话转换、不变量查询以及持久化 SSFV 维护管理。"
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` 命令组负责跨向量生命周期和持久化 SSFV 会话管理。它是基于协调器（coordinator）的操作以及针对验证器的不变量查询的入口。
+
+## 会话转换
+
+使用 `qxctl knowledge session transition` 向现有会话发送主机生命周期事件信号：
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+安全重试会复用相同的事件 ID。仅当确实需要从损坏的本地会话证据中进行发现式恢复时，才添加 `--recover`；它不会恢复拒绝、不兼容的关键状态或歧义。
+
+<Warning>
+  Symphony 不会通过此命令安装登录钩子、监视器或启动单元。仅当显式的主机生命周期集成提供稳定的事件标识时才使用它。
+</Warning>
+
+## 不变量查询
+
+以下四个叶命令绑定 `ssfv:symphony:qxctl.invariant-assurance`：
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` 还会额外绑定 `ssfv:symphony:symphony-validator.invariant-ownership-assurance`。
+
+直接查询类叶命令会输出 `symphony.knowledge.invariant-query-result.v1`，其中 `semantic_validity=not_asserted`。`check` 会返回验证器完整而确切的结果，并保留退出码 26。
+
+## 子命令组
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/cn/qxctl/lifecycle">
+    配置文件、所有权、观察、报告、启动、应用和恢复。
+  </Card>
+
+  <Card title="engines" icon="cube" href="/cn/qxctl/engines">
+    引擎绑定注册表的 list、inspect、doctor、bind、unbind、migrate。
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/cn/qxctl/reconcile">
+    协调器工作树协调语法。
+  </Card>
+
+  <Card title="session" icon="key" href="/cn/qxctl/session">
+    经过认证的会话和 SSFV 维护流。
+  </Card>
+</CardGroup>

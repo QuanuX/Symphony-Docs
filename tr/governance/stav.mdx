@@ -1,0 +1,54 @@
+---
+title: "STAV: Symphony için TOPS Başına Yalnızca Eklemeli Denetim Defteri"
+description: "STAV Append Authority; kimliği doğrulanmış IPC, makbuzdan önce fsync kalıcılığı, sınırlı okumalar, doğrulama ve kurtarma ile TOPS başına yalnızca eklemeli denetim defterleri çalıştırır."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV), TOPS başına yalnızca eklemeli (append-only) denetim defteri protokolünü tanımlar. Çalışma zamanı yetkisi, bağımsız olarak kurulabilen bir Go hizmeti olan `modules/stav-append-authority` içinde bulunur. TOPS başına operasyonel defterler her TOPS kurulumuna özeldir; SKV içeriği değildir.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` şunları sağlar:
+
+- TOPS başına yalnızca eklemeli denetim defterleri
+- Karşılıklı kimlik doğrulamalı yerel IPC
+- Kesin üretici ve okuyucu yetkileri
+- Makbuzdan önce fsync kalıcılığı
+- Sınırlı okumalar, doğrulama ve kurtarma
+- Kayıt ve yerel denetim (launchd, systemd)
+
+<Warning>
+  qxctl hiçbir zaman ham ekleme yetkisi almaz. Kaydı, doğrulamayı ve yetkileri modüle ait kesin adaptör aracılığıyla koordine eder, ancak deftere ekleme işlemi ekleme yetkisi sürecinin içinde mühürlü kalır.
+</Warning>
+
+## Go için STAV Protokolü
+
+`libraries/stav-protocol-go`; kanonik STAV v1 kodlayıcısını, katı doğrulamayı, özetleri, çerçevelemeyi, uygunluk kurallarını ve kapalı üretici sözcük dağarcığını uygulayan, yetki taşımayan bir Go kütüphanesidir. Herhangi bir üretici veya okuyucu, yetki devralmadan protokolü benimseyebilir.
+
+## Tamamlanmış SODV yayınları
+
+Şu anda SODV aracılığıyla yayımlanan her STAV yapıtı bir ikili sürüm değil, bir Go kaynak modülü sürümüdür:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/tr/governance/ssiag">
+    STAV'ın daha sonra denetlediği korumalı değişiklikleri yetkilendirir.
+  </Card>
+
+  <Card title="Accordare üreticisi" icon="pen-nib" href="/tr/governance/accordare-producer">
+    Değişiklik öncesi niyeti ve nihai sonuçları STAV'a iletir.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/tr/qxctl/lifecycle">
+    STAV kaydıyla birlikte çalışan yaşam döngüsü yönetimi.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/tr/skv/sodv">
+    STAV bileşenleri için resmî yayın kayıtlarını yönetir.
+  </Card>
+</CardGroup>

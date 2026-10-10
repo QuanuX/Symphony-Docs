@@ -1,0 +1,47 @@
+---
+title: "Symphony-vektorer och leveransfaser"
+description: "Förstå skillnaden mellan Symphonys bestående domäner för semantiskt ägande (vektorer) och kronologiska leveransfaser, samt Contract Quad och aktuell vektorstatus."
+sidebarTitle: "Vektorer och faser"
+---
+
+Symphony organiserar sin arkitektur kring två idéer: **vektorer** är bestående domäner för semantiskt ägande, och **faser** är kronologiska leveranskampanjer. En komponent som först utforskades i en fas gör inte den fasen till dess permanenta ägare. Vektorer håller betydelsen stabil medan implementationen utvecklas.
+
+## Vad är en vektor?
+
+En vektor är en bestående, avgränsad domän för semantiskt ägande vars kanoniska kontrakt äger domänens betydelse och tillåtna åtgärder. Varje vektor får en **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` och `SPEC.md`, plus de fokuserade kompletterande ytor den faktiskt behöver. Vektorn deklarerar sina kanoniska ytor och sin delegeringsgraf, SKVI mappar varje aktuell yta exakt en gång, och föråldrade kompletterande ytor ersätts genom styrd utveckling i stället för att ligga kvar som motsägelsefull kontext.
+
+## Vektorstatus
+
+| Vektor | Status | Sida |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementerad: grund från Fas 1 med indexerade ytor | [/skv/overview](/sv/skv/overview) |
+| **SKVI** — Källindexering | Implementerad: motor för inspektion/kontroll/förslag | [/skv/skvi](/sv/skv/skvi) |
+| **SCLV** — Ändringsliggare | Implementerad: kontroller av endast tilläggsbar liggare | [/skv/sclv](/sv/skv/sclv) |
+| **SACV** — Styrning av API-kontrakt | Implementerad: OpenAPI 3.2.0-kontroller | [/skv/sacv](/sv/skv/sacv) |
+| **SODV** — Styrning av officiell dokumentation/release | Implementerad: kontroller av lokal releaseliggare | [/skv/sodv](/sv/skv/sodv) |
+| **SSFV** — Funktionsidentitet/administration | Implementerad: strukturella funktionskontroller | [/skv/ssfv](/sv/skv/ssfv) |
+| **SAV** — Accordare-sammansättning | Implementerad: utvärdering på den frysande vägen | [/skv/sav](/sv/skv/sav) |
+| **SEV** — Utveckling | Implementerad: planering av påverkan/disposition | [/skv/sev](/sv/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Implementerad: cgo-fri grund i Go | [/governance/ssiag](/sv/governance/ssiag) |
+| **STAV** — TOPS-granskningsprotokoll | Implementerad: endast tilläggsbar liggare per TOPS | [/governance/stav](/sv/governance/stav) |
+| **SOV** — Ops Vector | Framväxande: provisionering, leverans av Habitat och Nest | [/vectors/sov](/sv/vectors/sov) |
+| **SCV** — Cloud Vector | Implementerad: åtta C++-motorer för källkunskap | [/vectors/scv](/sv/vectors/scv) |
+| **SNV** — Node Vector | Framväxande: sammansättning av SNIV, SNRV, SCIV, SCNV | [/vectors/snv](/sv/vectors/snv) |
+| **SQV** — Quantitative Vector | Framväxande: SOOV-subvektor för FIX-arkitektur | [/vectors/sqv](/sv/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementerad: C++-motorer för källa, katalog och profil | [/vectors/shv](/sv/vectors/shv) |
+| **SIV** — Intelligence Vector | Framväxande: SMCV valfri Markdown; SAIV reserverad | [/vectors/siv](/sv/vectors/siv) |
+
+## Contract Quad och kompletterande ytor
+
+Varje vektor får:
+
+1. **INTENT.md** — syfte och omfattning
+2. **MANIFEST.md** — identitet, deklarerade ytor, delegeringsgraf
+3. **SKILL.md** — säker användning och driftvägledning
+4. **SPEC.md** — normativt beteende och gränser
+
+Kompletterande ytor som `SLANG.md`, `NAMESPACES.md`, register, scheman och profiler förblir styrda artefakter utanför strukturen med fyra medlemmar. De dirigerar eller specialiserar ägarens sanning men kan inte utöka sin egen befogenhet.
+
+## Evidensbaserad integration
+
+En uppskjuten motor har inget fabricerat kvitto. Ett föreslaget API har ingen påhittad registerpost. Ett opublicerat kontrakt har inget SODV-anspråk på slutförande. Detta är evidensbaserad integration, inte ceremoniell duplicering.

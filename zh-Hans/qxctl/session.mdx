@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session：已认证的 Symphony 会话"
+description: "开启、检查点、关闭和恢复已认证的 Symphony 协调器会话，以及使用经 SSIAG 验证的授权的持久化 SSFV 维护流。"
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` 语法通过一个确切的已绑定协调器和一个 TOPS 作用域的 SSIAG 端点，开启非规范的已认证会话。另有独立的 `session features ...` 语法用于驱动持久化的 SSFV 维护流。
+
+## 基础会话语法
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+每次调用都会请求一个全新的确切授权（grant），并验证：
+
+- 主体与目标身份
+- 策略与配置状态
+- 过期时间
+- 调用方类别中立性
+- 不可转让性
+- 规范 apply 已禁用
+- 能力绑定
+
+会话证据仅授权所指定的、受保护的非规范操作。请将会话日志与协调日志分开保存；仅使用上下文引用将它们关联起来。
+
+## SSFV 维护流
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+features 流是一个独立的持久化 SSFV 维护上下文。变更需要：
+
+- 一个已开启的已认证基础会话
+- 确切的协调器与 SSFV 绑定
+- 稳定的操作标识符
+- 确切的比较并交换
+- 全新的 SSIAG 证据
+
+<Note>
+  在兼容的升级或回滚过程中，请保留基线快照及其原始引擎标识。可选的 Maestro 证据必须是完整的已认证清单；当有意不使用 Maestro 时，请记录明确的未配置原因。`review_required` 是供调用方审查的证据，而非批准。
+</Note>
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/zh-Hans/governance/ssiag">
+    签发每个会话请求所验证的全新授权。
+  </Card>
+
+  <Card title="会话协调器" icon="gears" href="/zh-Hans/engines/coordinator">
+    支撑会话与 features 日志的引擎。
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/zh-Hans/qxctl/reconcile">
+    与会话配对的协调上下文。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh-Hans/skv/ssfv">
+    features 流所维护的功能向量。
+  </Card>
+</CardGroup>

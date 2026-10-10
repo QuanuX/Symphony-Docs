@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony platforma doktrinasi"
+description: "Symphony’ning boshqaruvchi tamoyillarini oʻrganing: strategiya va infratuzilmaga foydalanuvchi egaligi, chaqiruvchi sinfiga betaraflik, hot-path himoyasi va dalillarga asoslangan moslik."
+sidebarTitle: "Doktrina"
+---
+
+Symphony doktrinasi platforma nazorat qiladigan narsalar bilan siz nazorat qiladigan narsalar oʻrtasidagi chegaralarni belgilaydi. Bu qoidalar monorepodagi har bir dizayn qarorini hamda qxctl, vector engine’lari va bilim shartnomalari bilan har bir oʻzaro taʼsirni boshqaradi.
+
+## Foydalanuvchi egaligi
+
+Strategiya mantigʻingiz, Nest maqsadi, provayder tanlovi, apparat tanlovi, bus topologiyasi va qoʻllab-quvvatlanadigan adapter tanlovi sizga tegishli. Symphony aniq moslik dalillari va qoʻllab-quvvatlanadigan operatsiyalarni taqdim etadi, lekin tavsiyalarni platforma qonuniga aylantirmaydi. Platforma mosliklar, nomuvofiqliklar, hal qilinmagan faktlar va oqibatlar haqida hisobot beradi. U provayderlarni reytinglamaydi, strategiya buyurmaydi va muhitingizni jimgina kengaytirmaydi.
+
+## Hot-path himoyasi
+
+Hot path maʼmuriy rezidentlikdan va tasodifiy umumiy bus bosimidan himoyalangan. qxctl va bilim tekisligi cold yoki freezing-path boshqaruvidir. Ular jonli ishni ham joylashtirgan Node ustida aniq harakat qilishi mumkin, lekin doimiy hot-path bogʻliqliklari, yashirin kuzatuvchilar, rezident interpretatorlar yoki soʻralmagan fon paket menejerlariga aylanmasligi kerak. Sizning aniq arxitekturangiz suveren boʻlib qoladi.
+
+## Buyruq va semantikani ajratish
+
+qxctl buyruq grammatikasi va taqdimotiga egalik qiladi. Domen vektorlari esa ushbu buyruqlar ochib beradigan operatsiyalar va maʼnolarga egalik qiladi. qxctl marshruti egasi belgilagan imkoniyatni uning semantikasini oʻziga singdirmasdan chaqiradi.
+
+## Nomlar va nom fazolari
+
+Nomlar ularga egalik qiluvchi doira ostida qayd etiladi. SNV va SCNV ularni belgilamaydi, root NAMESPACES esa SNV’dan kengroq boʻlib qoladi. TOPS yoki TROG ichida roʻyxatdan oʻtgan nom shu doiraga boʻysunadi. Bir nechta klasterlar ichida Node’ning qisqa nomi turli klasterlarda takrorlanishi mumkin, lekin bitta klasterdagi ikkita faol Node’ni noaniq tarzda identifikatsiya qila olmaydi.
+
+## Chaqiruvchi sinfiga betaraflik
+
+Chaqiruvchining inson, AI, agent, xizmat yoki ish yuklamasi sifatida tasniflanishi vakolat bermaydi ham, olib ham qoʻymaydi. Qoʻllab-quvvatlanadigan avtorizatsiya qarorlari maqsadli xost egaligi yoki berilgan ruxsatlar, soʻralgan operatsiya va resurs, kutilgan holat hamda egasi sozlagan himoya choralaridan foydalanadi. Maqsadli xost administratori sozlanadigan boshqaruv ustidan suverendir. SSIAG samarali xost vakolatini tekshirishi va proyeksiya qilishi mumkin, lekin u ustun roʻyxatga olish vakolatini yaratmaydi. Kuchaytirilgan identifikatsiya kafolati va boshqaruv blokirovkalari chaqiruvchiga betaraf, egasi sozlagan himoya choralaridir. Protokol yaxlitligi talablari majburiy boʻlib qoladi. Symphony tashqi huquqiy yoki moliyaviy layoqatni chaqiruvchi turiga qarab hal qilmaydi.
+
+## Haqiqat va dalillar
+
+Joriy shartnomalar joriy haqiqatni tavsiflaydi. Oʻzgarmas SCLV va SODV yozuvlari tarixdagi qayd etilgan nuqtada nima maʼlum boʻlgani, oʻzgartirilgani, avtorizatsiya qilingani yoki yakunlanganini saqlaydi. Joriy shartnomalar, amalga oshirish dalillari va eng soʻnggi tegishli yozuv bir-biriga zid kelganda, bu ziddiyat koʻrib chiqish uchun drift sifatida koʻrsatiladi. Tarix hozirgi holatga oʻxshatish uchun jimgina qayta yozilmaydi.
+
+## Python doktrinasi
+
+Birinchi tomon Symphony manba kodi, generatorlar, sxema mualliflik vositalari, testlar va qabul yordamchilari Python implementatsiyasi yoki interpretator bogʻliqligini talab qilmaydi. Oʻrnini bosuvchi mualliflik va jarayon-test vositalari C++’ga tegishli. Ushbu repozitoriy siyosati siz yozgan dasturlarni yoki aniq tanlangan izolyatsiyalangan Habitat’larni cheklamaydi.

@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: 교차 벡터 수명 주기 관리"
+description: "qxctl knowledge 명령 그룹은 교차 벡터 수명 주기, 세션 전환, 불변식 쿼리 및 영구 SSFV 유지 관리 작업을 담당합니다."
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` 그룹은 교차 벡터 수명 주기와 영구 SSFV 세션 관리를 담당합니다. 코디네이터 기반 작업과 검증기에 대한 불변식 쿼리의 진입점입니다.
+
+## 세션 전환
+
+`qxctl knowledge session transition`을 사용해 기존 세션에 호스트 수명 주기 이벤트를 알립니다.
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+안전한 재시도에는 동일한 이벤트 ID를 재사용합니다. 손상된 로컬 세션 증거로부터의 탐색 복구를 의도한 경우에만 `--recover`를 추가하세요. 이 옵션은 거부, 호환되지 않는 중요 상태 또는 모호성을 복구하지 않습니다.
+
+<Warning>
+  Symphony는 이 명령을 통해 로그인 훅, 감시자 또는 부팅 유닛을 설치하지 않습니다. 명시적인 호스트 수명 주기 통합이 안정적인 이벤트 식별자를 제공하는 경우에만 사용하세요.
+</Warning>
+
+## 불변식 쿼리
+
+네 개의 리프 명령이 `ssfv:symphony:qxctl.invariant-assurance`를 바인딩합니다.
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check`는 추가로 `ssfv:symphony:symphony-validator.invariant-ownership-assurance`를 바인딩합니다.
+
+직접 쿼리 리프는 `semantic_validity=not_asserted`와 함께 `symphony.knowledge.invariant-query-result.v1`을 출력합니다. `check`는 정확하고 완전한 검증기 결과를 반환하며 종료 코드 26을 보존합니다.
+
+## 하위 명령 그룹
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/ko/qxctl/lifecycle">
+    프로필, 소유권, observe, report, boot, apply 및 복구.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/ko/qxctl/engines">
+    엔진 바인딩 레지스트리 list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/ko/qxctl/reconcile">
+    코디네이터 워크트리 조정 문법.
+  </Card>
+
+  <Card title="session" icon="key" href="/ko/qxctl/session">
+    인증된 세션과 SSFV 유지 관리 스트림.
+  </Card>
+</CardGroup>

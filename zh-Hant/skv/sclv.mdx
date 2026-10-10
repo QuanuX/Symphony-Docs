@@ -1,0 +1,48 @@
+---
+title: "SCLV：記錄原始碼變更的 Symphony 變更帳本向量"
+description: "SCLV 維護一份記錄已完成原始碼變更的僅附加帳本，提供與供應商無關的提議、不變更狀態的復原，以及供紀錄使用的可拋棄投影。"
+sidebarTitle: "SCLV"
+---
+
+Symphony 變更帳本向量（Symphony Change Ledger Vector，SCLV）記錄 SKV 介面隨時間發生的變更。其引擎是一個可獨立安裝的 C++ 程序，負責執行確定性的僅附加帳本檢查，並產生可拋棄的投影。只有在重大原始碼變更完成後，才會寫入帳本。
+
+## 操作
+
+- **Inspect 與 check**：驗證帳本結構、連續性與證據。
+- **Propose（v3）**：接受由呼叫者宣告、與供應商無關的新紀錄提議。
+- **Recover**：對中斷或模稜兩可的狀態執行不變更狀態的復原。
+- **Project**：依請求輸出帳本狀態的可拋棄清單。
+
+## 納入與退役
+
+每一筆被納入的 SCLV 紀錄，都會綁定寫入當下的目前索引證據。日後某個介面合法退役時，會保留不可變的歷史來源，而不會強制將已刪除的目前文件內容放回 SKVI。歷史仍是歷史；目前真相仍是目前真相。
+
+## SCLV 不做的事
+
+- SCLV 不會建立或核准原始碼變更。
+- SCLV 不會改寫既有紀錄；它是僅附加的。
+- SCLV 不會發布任何內容。公開投影屬於 SODV 的職責。
+
+<Note>
+  目前每個 SKV 引擎都僅支援讀取、查詢、驗證與提議。在每個引擎完整的權限與稽核合約完成之前，標準套用一律停用。
+</Note>
+
+## 相關介面
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/zh-Hant/skv/skvi">
+    索引 SCLV 紀錄所綁定的目前標準真相。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh-Hant/skv/sodv">
+    治理帳本資訊的官方公開投影。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/zh-Hant/skv/sev">
+    在 SCLV 記錄變更之前，由演進案例評估變更。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh-Hant/qxctl/vector-commands">
+    執行 `qxctl sclv ...` 進行 inspect、check、propose 與 recover。
+  </Card>
+</CardGroup>

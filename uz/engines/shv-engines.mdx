@@ -1,0 +1,65 @@
+---
+title: "SHV engine’lari: Symphony Hardware Vector manbasi va grafi"
+description: "SHV engine’lari CPU, GPU, NIC, xotira va saqlash qurilmalarini saqlangan manbani qayta ijro etish, talablarni baholash, PDF qabul qilish va DuckDB barqaror graflari bilan kataloglashtiradi."
+sidebarTitle: "SHV engine’lari"
+---
+
+Symphony Hardware Vector (SHV) engine’lari protsessorlar, CPU topologiyasi, keshlar, GPU’lar, NIC’lar va optik tolali interfeyslar, ona platalar, RAM va NVMe’ni kataloglashtiradi. Standart saralash asl komponentlar va dalillangan variantlarga ustuvorlik beradi. Har bir engine mustaqil oʻrnatiladi va faqat oʻqish rejimida ishlaydi.
+
+## Engine’lar
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Apparat yadrosi: chaqiruvchi belgilagan qamrov, saqlangan manbadan katalogni qayta ijro etish, talablarni baholash va graf proyeksiyasi.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Apparat dalillari uchun manbani qabul qilish va reviziyalar bilan ishlash.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Komponent va tizim profillarini baholash.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Qayta tiklanadigan tanlov uchun kataloglashtirilgan apparatni boʻlimlash.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Boshqariladigan mahalliy katalog nashri va tanlovi.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Aniq graf transport yuzasi.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    qxctl orqali boshqariladigan, DuckDB asosidagi barqaror graf saqlash.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Apparat maʼlumotnomalari (datasheet) uchun PDF manbalarini talqin qilish.
+  </Card>
+</CardGroup>
+
+## Boshqaruvning asosiy jihatlari
+
+- **Barqaror saqlash** faqat `shv graph store inspect|prepare|commit|status|query|export|schema|template` orqali boshqariladi. Saqlangan kutilgan intent digest’i bilan `commit` bajarish ayni paytda tiklash hamdir; alohida tiklash taxallusi yoʻq.
+- **Katalog nashri** faqat `shv catalogue publication inspect|plan|apply|status|schema|template` orqali boshqariladi. Tiklash — `apply --operation-id`, u `--input` bilan oʻzaro istisno qiluvchi.
+- **Inventar** (0.2-reliz) `shv graph store inventory` buyrugʻini qoʻshadi: aniq saqlangan yozuvchi identifikatorlariga ega, reviziyaga bogʻlangan mantiqiy oʻqish. Eski 0.1 tanlovi qoʻllab-quvvatlanishda davom etadi.
+
+<Note>
+  Apparat sinflari takroriy buyruq daraxtlari emas, balki chaqiruvchi xaritalash va profil maʼlumotlaridir. `--version` aniq asosiy egani tanlaydi; `--source-version` va `--adapter-version` alohida tanlangan bogʻliqliklarni nomlaydi. Sxema va xaritalash reviziyalari oʻrnatilgan engine versiyalarining taxalluslari emas, balki maʼlumot identifikatorlaridir.
+</Note>
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="SHV vektori" icon="microchip" href="/uz/vectors/shv">
+    Ushbu engine’lar amalga oshiradigan Hardware Vector shartnomasi.
+  </Card>
+
+  <Card title="qxctl vector buyruqlari" icon="terminal" href="/uz/qxctl/vector-commands">
+    Toʻliq `shv ...` grammatikasi boʻyicha maʼlumotnoma.
+  </Card>
+</CardGroup>

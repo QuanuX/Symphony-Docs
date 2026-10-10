@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector とレジストリ"
+description: "SSFV は、実装済みのすべての Symphony モジュールと qxctl サーフェスにわたって、正規の機能 ID、セマンティクス、階層、ライフサイクル、管理の保証を所有します。"
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector（SSFV）は、正規のアプリケーション機能の ID、セマンティクス、階層、ライフサイクル、区別、分散レコードのルーティング、カバレッジインベントリ、グラフプロジェクションのコントラクトを所有します。そのエンジンは個別にインストール可能な C++ プロセスで、構造的かつ鮮度を考慮した機能チェックを実行します。
+
+## 操作
+
+- **inspect と check**: 構造的かつ鮮度を考慮した機能評価。
+- **diff**: 機能の状態間のコンテンツアドレス型の差分。
+- **propose**: 機能の受け入れや変更について、呼び出し元が宣言した提案。
+- **graph**: レビュー用の決定的で使い捨ての機能グラフ。
+
+## 登録済みのカバレッジ
+
+現在の登録済みカタログは、明示的に部分的なものです。
+
+- **110** の登録済み機能
+- **35** の登録済みオーナースコープ
+- **76** の承認済みネスト機能
+- **295** のレビュー済み機能管理サーフェス（必須 **285**、エビデンスに基づく免除 **13**、禁止 **9**、未レビュー **0**）
+
+登録済みのオーナースコープは、`qxctl` やバリデーターから、SKV エンジンや SSIAG プロバイダー、さらに SCV と SHV のエンジンファミリーに至るまで、実装済みのすべてのモジュールにわたります。
+
+## SSFV が行わないこと
+
+<Warning>
+  SSFV は、機能としての妥当性を決定したり、ID を作り出したり、リポジトリやホストの完全性を主張したりしません。`review_required` は呼び出し元によるレビューのためのエビデンスであり、承認や apply のオーソリティではありません。
+</Warning>
+
+機能のレビュー、受け入れ、ライフサイクルの変更は、各機能を所有するコントラクトに委ねられます。
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="SKV の概要" icon="book-open" href="/ja/skv/overview">
+    SSFV を管理する包括的なフレームワーク。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ja/skv/sev">
+    機能の追加、変更、廃止にエボリューションケースを適用します。
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/ja/qxctl/session">
+    qxctl を介して永続的な SSFV メンテナンスセッションを管理します。
+  </Card>
+
+  <Card title="qxctl ベクトルコマンド" icon="terminal" href="/ja/qxctl/vector-commands">
+    `qxctl ssfv ...` を実行して inspect、check、diff、propose、graph を行います。
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle：配置文件、启动与应用"
+description: "通过 qxctl 管理受保护的生命周期配置文件、所有权、观察、启动以及兼容应用的转换，并提供严格的比较并交换保护。"
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` 语法用于管理受保护的配置文件、所有权、观察、启动日志以及兼容应用（apply-compatible）的转换。每次变更都是比较并交换（compare-and-swap），每次应用都绑定到确切的证据。
+
+## 配置文件
+
+为某个 TOPS 设置受保护的生命周期配置文件：
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+首次设置配置文件时传入 `absent`，否则传入先前读取所报告的确切摘要。
+
+## 所有权
+
+- `ownership status`：检查一个已配置的共享根
+- `ownership reconcile`：刷新其证据
+- `ownership adopt`：仅在审查每一项保守的遗留声明之后才接管
+- `ownership release`：仅针对某一个被有意设为可回收的确切遗留回执进行释放
+
+<Warning>
+  切勿手动删除或改写根本地注册表或其 `symphony-root-ownership/1` 回执布局兼容性围栏。较旧的生命周期客户端必须遇到该围栏，并在其现有的未知软件包阻断处停止。
+</Warning>
+
+## 观察、报告、启动
+
+- `observe`：输出一次性的固定布局回执证据
+- `report`：生成一个全新的一次性计划
+- `boot`：具有稳定操作 ID 和确切日志状态的持久化、仅报告式推进
+- `status`：v1 检查
+- `recover --discover`：当常规 status 无法验证本地状态时，恢复唯一的 v1 链
+
+## 兼容应用的配置文件
+
+对于 `apply-compatible` 配置文件，仅在提供确切的启动源摘要、应用日志比较并交换、已应用状态比较并交换、稳定的操作 ID 以及显式的暂存根时，才调用 `apply`：
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+使用 `apply-status` 观察尝试情况，或使用有界的 `apply-recover` 进行持久化恢复。切勿手动选择操作或编辑受保护的状态。
+
+<Note>
+  仅涉及时间戳的观察刷新必须更改文档证据，但不得推进稳定的语义标识。
+</Note>
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="会话协调器" icon="gears" href="/cn/engines/coordinator">
+    支撑生命周期计划与应用协调的引擎。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/cn/qxctl/engines">
+    管理生命周期计划所引用的引擎绑定。
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: プロファイル、ブート、apply"
+description: "厳格な compare-and-swap の安全策を備えた qxctl を通じて、保護されたライフサイクルプロファイル、所有権、観測、ブート、apply 互換の遷移を管理します。"
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` グラマーは、保護されたプロファイル、所有権、観測、ブートジャーナル、および apply 互換の遷移を管理します。すべての変更は compare-and-swap であり、すべての apply は正確なエビデンスにバインドされます。
+
+## プロファイル
+
+TOPS の保護されたライフサイクルプロファイルを設定します。
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+初回のプロファイルには `absent` を、それ以外は以前の読み取りで報告された正確なダイジェストを指定します。
+
+## 所有権
+
+- `ownership status`: 構成済みの 1 つの共有ルートを検査します
+- `ownership reconcile`: そのエビデンスを更新します
+- `ownership adopt`: 保守的なレガシークレームをすべて確認した後にのみ adopt します
+- `ownership release`: 意図的に再取得可能にした 1 つの正確なレガシーレシートに対してのみ release します
+
+<Warning>
+  ルートローカルのレジストリや、その `symphony-root-ownership/1` レシートレイアウト互換性フェンスを手動で削除または書き換えないでください。古いライフサイクルクライアントはそのフェンスに遭遇し、既存の未知パッケージブロッカーで停止する必要があります。
+</Warning>
+
+## observe、report、boot
+
+- `observe`: 使い捨ての固定レイアウトのレシートエビデンスを出力します
+- `report`: 新しい使い捨てのプランを生成します
+- `boot`: 安定した操作 ID と正確なジャーナル状態を伴う、永続的な report 専用の進行
+- `status`: v1 の検査
+- `recover --discover`: 通常の status でローカル状態を検証できない場合に、一意の v1 チェーンを回復します
+
+## apply 互換プロファイル
+
+`apply-compatible` プロファイルの場合、`apply` は正確なブートソースダイジェスト、apply ジャーナルの compare-and-swap、適用済み状態の compare-and-swap、安定した操作 ID、および明示的なステージングルートを指定した場合にのみ呼び出します。
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+試行の観測には `apply-status` を、永続的なリカバリーには範囲が限定された `apply-recover` を使用します。アクションを手動で選択したり、保護された状態を編集したりしないでください。
+
+<Note>
+  タイムスタンプのみの観測更新は、安定したセマンティック ID を進めることなく、ドキュメントのエビデンスを変更する必要があります。
+</Note>
+
+## 関連するサーフェス
+
+<CardGroup cols={2}>
+  <Card title="セッションコーディネーター" icon="gears" href="/ja/engines/coordinator">
+    ライフサイクルプランと apply の調整を支えるエンジン。
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ja/qxctl/engines">
+    ライフサイクルプランが参照するエンジンバインディングを管理します。
+  </Card>
+</CardGroup>

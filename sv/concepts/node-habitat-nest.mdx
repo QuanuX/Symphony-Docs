@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat och Nest i Symphony"
+description: "Lär dig hur Symphony modellerar fysisk infrastruktur: Node som den fysiska datorn, Habitat som exakt OS-konditionering och Nest som arbetslast för användarens syfte."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definierar tre fysiska koncept som skiljer hårdvaruidentitet, programvarukonditionering och användarens arbetslast åt. Dessa koncept håller infrastrukturfrågor åtskilda så att du kan resonera om var och en oberoende.
+
+## Node
+
+En **Node** är den fysiska måldatorresursen med specifikt identifierade resurser. Att koppla från, återansluta, starta om eller enbart flasha om programvara skapar ingen ny fysisk Node. Det gör däremot förstörelse, fysiskt utbyte eller en väsentlig lokal hårdvaruändring. En Node-inkarnation är separat evidens som skapas när den Node ansluts till en buss som deltagare i ett handelssystem, ett forskningskluster eller ett annat system byggt med Symphony.
+
+## Habitat
+
+Ett **Habitat** är den exakta konditioneringen av operativsystem och paket som levereras till en Node för det arbete du väljer. Standard är endast den programvaruyta som krävs: inga orelaterade paket, dolda körmiljöer, containrar, Kubernetes eller implicit virtualisering. Ett brett allmänt Habitat förblir ett giltigt uttryckligt användarval.
+
+## Nest
+
+Ett **Nest** tjänar ett syfte som du väljer. Live-körning av strategier förväntas vara vanligt, och en strategi kan innehålla många modulära kodavsnitt, men Symphony definierar inte Nest-syftet och likställer det inte med en enskild källfil, process, algoritm, mäklar-API eller datagränssnitt. Strategilogik förblir din domän.
+
+## Jämförelse
+
+| Koncept | Vad det är | Vad som ändrar det |
+| --- | --- | --- |
+| **Node** | Fysisk dator med specifika resurser | Fysisk förstörelse, utbyte eller väsentlig hårdvaruändring |
+| **Habitat** | Exakt OS- och paketkonditionering på en Node | Uttryckligt användarval eller konditionering administrerad av qxctl |
+| **Nest** | Arbetslast för användarens syfte som levereras in i ett Habitat | Användarens driftsättning av strategi eller annat valt arbete |
+
+## Kluster och busstopologi
+
+Flera Nodes bildar ett kluster endast när de är anslutna till varandra via en eller flera bussar. Flera bussväv kan samexistera i ett kluster, och en Node-i-kluster-relation kan identifiera den relevanta bussen utan att ändra den fysiska Nodens identitet.
+
+Bussadaptrar som NATS JetStream och ZeroMQ väljs av användaren och är inte doktrin. Tung överföring, styrning, forskning och körningsavfall behöver inte dela en buss. En topologi kan använda flera bussar eller kringgå en buss för en deklarerad väg.
+
+## TOPS- och TROG-scope
+
+**TOPS** är det dominerande scopet för Trade Operating System. En **TROG** är ett medvetet underordnat, icke-globalt scope för handelsgrupper. Trots den historiska formuleringen är en TROG inte nödvändigtvis virtuell. Dess utmärkande egenskap är att dess scope och regler inte är universella.

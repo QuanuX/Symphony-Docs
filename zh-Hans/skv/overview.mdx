@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector：SKV 框架概览"
+description: "SKV 是 Symphony 声明式平台知识的总体框架。了解 Contract Quad、配套界面，以及统一治理模型下的每个子向量。"
+sidebarTitle: "SKV 概览"
+---
+
+Symphony Knowledge Vector（SKV，Symphony 知识向量）是 Symphony 声明式平台知识的规范框架。它以一种结构保存架构事实、模块边界、契约、准则以及兼容性知识，使人类、验证器、qxctl、CI 和智能体工具能够一致地使用这些知识。SKV 不是运行时；它是每个向量都要经过的共享知识层。
+
+## Contract Quad
+
+SKV 中的每个语义所有者都会发布一个 Contract Quad（契约四件套）：
+
+- **INTENT.md**：目的、范围与非范围
+- **MANIFEST.md**：规范界面与委派
+- **SKILL.md**：供调用方使用的安全使用流程
+- **SPEC.md**：规范性行为
+
+Schema、注册表、配置、账本以及其他制品位于这四件套之外，但仍由同一所有者治理。
+
+## 配套界面
+
+两个由 SKV 拥有的配套文件贯穿每个向量：
+
+- `knowledge/SLANG.md` 将每个平台术语映射到拥有其语义的确切契约。
+- `knowledge/NAMESPACES.md` 记录标识族的所有权，但不规定语法、分配、生命周期或单个标识。
+
+这两个配套文件都不是 Quad 的第五个成员，也不是新的向量或运行时服务。
+
+## 解释规则
+
+当前契约描述当前事实。仅追加的 SCLV 和 SODV 记录保存了在其记录时间点已知、已授权或已完成的内容。当契约状态、实现证据和最新适用记录之间不一致时，这种不一致即为需要审查的漂移。工具不得私自虚构一种协调结果。
+
+## 子向量
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/zh-Hans/skv/skvi">
+    对每个当前规范界面精确地索引一次。
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/zh-Hans/skv/sclv">
+    记录已完成的实质性源代码变更的仅追加变更账本。
+  </Card>
+
+  <Card title="SACV" icon="code" href="/zh-Hans/skv/sacv">
+    有边界的 OpenAPI 3.2.0 治理与兼容性差异比较。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh-Hans/skv/sodv">
+    治理 QuanuX 官方发布与版本发布记录。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh-Hans/skv/ssfv">
+    功能标识、新鲜度与管理保证。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/zh-Hans/skv/sav">
+    Accordare 组合与三轴兼容性评估。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/zh-Hans/skv/sev">
+    演进案例、处置规划与新颖性检查。
+  </Card>
+
+  <Card title="治理" icon="shield-halved" href="/zh-Hans/governance/ssiag">
+    面向授权变更的 SSIAG 身份与 STAV 审计治理。
+  </Card>
+</CardGroup>
+
+<Note>
+  当前每个 SKV 引擎都仅支持读取、查询、验证和提议。在每个引擎的 SSIAG 权限、预期状态事务、qxctl 保护措施、STAV 事件、恢复以及负面测试契约全部完成之前，程序化的规范 apply 处于禁用状态。
+</Note>

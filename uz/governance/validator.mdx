@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministik, faqat oʻqiladigan repozitoriy tekshiruvlari"
+description: "Symphony Validator shartnomalar, manba yopiqligi, invariantlar, funksiyalar, relizlar va mashina tekshiradigan root xulosasi uchun qator yoki tuzilmaviy JSON dalillarini ishlab chiqaradi."
+sidebarTitle: "Validator"
+---
+
+Symphony Validator (`tools/symphony-validator`) — mustaqil, deterministik, faqat oʻqish rejimida ishlaydigan C++26 repozitoriy tekshiruvchisi. U repozitoriy va uning shartnomalarining joriy holati haqida oʻzgarmas dalillar ishlab chiqaradi. U hech narsani taʼmirlay yoki nashr qila olmaydi.
+
+## Validator nimalarni tekshiradi
+
+- Shartnoma shakli: Contract Quad’ning talab qilinadigan langarlari va tuzilmasi
+- SKVI indekslagan yuzalar boʻylab joriy manba yopiqligi
+- `knowledge/INVARIANTS.md` va invariantlar reyestriga muvofiq invariant egaligi
+- SSFV hisobot bergan funksiya boshqaruvi kutilmalari
+- SODV hisobot bergan reliz yozuvlari
+- Repozitoriy README faylidagi mashinaga tegishli root xulosasi
+
+Dalillar qator chiqishi yoki tuzilmaviy JSON sifatida chiqariladi. Har bir chiqish bir xil repozitoriy holatidan qayta tiklanadi.
+
+## Validator nima qilmaydi
+
+<Warning>
+  Validator fayllarni taʼmirlay olmaydi, shartnomalarni qayta yoza olmaydi yoki repozitoriyni nashr qila olmaydi. U hech narsa haqida kanonik haqiqat yaratmaydi; u faqat hisobot beradi.
+</Warning>
+
+- Repozitoriyga nojoʻya taʼsirlar yoʻq
+- Tarmoqqa kirish yoʻq
+- qxctl’ning himoyalangan ogohlantirish siyosatidan tashqarida ogohlantirishlarni bostirish yoʻq
+
+## qxctl integratsiyasi
+
+qxctl himoyalangan ogohlantirish siyosatini qoʻllashdan oldin validatorning aniq kvitansiyasi va tuzilmaviy digest’larini tekshiradi. Toʻqqizta himoyalangan ogohlantirish hayot sikli qxctl buyruqlari hamda aniq, kvitansiyaga asoslangan root xulosasi marshruti xom detektor dalillarini oʻzgartirmasdan validatsiya boshqaruvini taqdim etadi.
+
+## Tegishli yuzalar
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/uz/qxctl/validate">
+    Himoyalangan ogohlantirish siyosati, bazaviy holat va koʻrsatish grammatikasi.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/uz/skv/ssfv">
+    Validator tekshiradigan funksiya boshqaruvi kutilmalari.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/uz/skv/sodv">
+    Validator tekshiradigan reliz yozuvlari.
+  </Card>
+
+  <Card title="SKV umumiy koʻrinishi" icon="book-open" href="/uz/skv/overview">
+    Validator shartnomalarini tekshiradigan umumiy freymvork.
+  </Card>
+</CardGroup>

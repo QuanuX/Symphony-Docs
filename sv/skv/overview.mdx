@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: översikt över SKV-ramverket"
+description: "SKV är paraplyramverket för Symphonys deklarativa plattformskunskap. Utforska Contract Quads, kompletterande ytor och varje undervektor under en gemensam styrningsmodell."
+sidebarTitle: "Översikt över SKV"
+---
+
+Symphony Knowledge Vector (SKV) är det kanoniska ramverket för Symphonys deklarativa plattformskunskap. Det bevarar arkitektonisk sanning, modulgränser, kontrakt, doktrin och kompatibilitetskunskap i en struktur som människor, validatorer, qxctl, CI och agentiska verktyg konsumerar på ett konsekvent sätt. SKV är ingen körmiljö; det är det delade kunskapslagret som varje vektor går igenom.
+
+## Contract Quad
+
+Varje semantisk ägare i SKV publicerar en Contract Quad:
+
+- **INTENT.md**: syfte, omfattning och vad som ligger utanför omfattningen
+- **MANIFEST.md**: kanoniska ytor och delegering
+- **SKILL.md**: säker användningsprocedur för anropare
+- **SPEC.md**: normativt beteende
+
+Scheman, register, profiler, liggare och andra artefakter ligger utanför den fyrdelade Quad och styrs fortfarande av samma ägare.
+
+## Kompletterande ytor
+
+Två SKV-ägda kompletterande ytor gäller över varje vektor:
+
+- `knowledge/SLANG.md` mappar varje plattformsterm till det exakta kontrakt som äger dess semantik.
+- `knowledge/NAMESPACES.md` registrerar ägarskap för identitetsfamiljer utan att diktera grammatik, allokering, livscykel eller enskilda identiteter.
+
+Ingen av dem är en femte Quad-medlem, en ny vektor eller en körtidstjänst.
+
+## Tolkningsregel
+
+Aktuella kontrakt beskriver aktuell sanning. SCLV- och SODV-poster som endast kan utökas bevarar det som var känt, auktoriserat eller slutfört vid sin registrerade tidpunkt. När kontraktstillstånd, implementationsevidens och den senaste tillämpliga posten inte stämmer överens är avvikelsen drift som ska granskas. Verktyg får inte i tysthet hitta på en avstämning.
+
+## Undervektorer
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/sv/skv/skvi">
+    Indexerar varje aktuell kanonisk yta exakt en gång.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/sv/skv/sclv">
+    Ändringsliggare som endast kan utökas, för slutförda väsentliga källändringar.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/sv/skv/sacv">
+    Avgränsad OpenAPI 3.2.0-styrning och kompatibilitetsdiffar.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/sv/skv/sodv">
+    Styr officiell QuanuX-publicering och releaseposter.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/sv/skv/ssfv">
+    Funktionsidentitet, aktualitet och säkerställande av administration.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/sv/skv/sav">
+    Accordare-komposition och kompatibilitetsutvärdering längs tre axlar.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/sv/skv/sev">
+    Evolutionsärenden, dispositionsplanering och nyhetskontroller.
+  </Card>
+
+  <Card title="Styrning" icon="shield-halved" href="/sv/governance/ssiag">
+    SSIAG-identitet och STAV-granskningsstyrning för auktoriserade mutationer.
+  </Card>
+</CardGroup>
+
+<Note>
+  Varje aktuell SKV-motor är endast till för läsning, frågor, validering och förslag. Programmatisk kanonisk apply är inaktiverad tills varje motors kontrakt för SSIAG-behörighet, transaktioner med förväntat tillstånd, qxctl-skydd, STAV-händelser, återställning och negativa tester är kompletta.
+</Note>

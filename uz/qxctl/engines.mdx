@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: reyestrni bog'lash, tekshirish va ko'chirish"
+description: "Symphony'ning himoyalangan foydalanuvchi doirasidagi engine bog'lash profilini qxctl orqali list, inspect, doctor, bind, unbind va digest'ga bog'langan migrate yordamida boshqaring."
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` grammatikasi Symphony vektor engine'lari uchun himoyalangan foydalanuvchi doirasidagi `default` bog'lash profilini boshqaradi. U tanlangan kontentni keyingi muvofiqlashtirish (reconciliation) uchun bog'laydi. U engine'ni o'rnatmaydi, chaqirmaydi, faollashtirmaydi, ulamaydi (dock), autentifikatsiya qilmaydi, avtorizatsiya qilmaydi yoki qo'llamaydi.
+
+## Buyruqlar
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Birinchi v2 reyestr o'zgarishi uchun `absent` qiymatini, keyingi o'zgarishlar uchun esa `list` xabar bergan aniq digest'ni bering. Har bir o'zgarish shu digest'ga nisbatan compare-and-swap amalidir.
+
+## v1 dan v2 ga ko'chirish
+
+<Warning>
+  Yaroqli v1 reyestr holati o'qiladigan bo'lib qoladi. v2 ga ko'chirish alohida aniq compare-and-swap amali bo'lib, hech qachon versiya tanlash amali emas. Ko'chirishni engine tanlash uchun yangilash yo'li sifatida qabul qilmang.
+</Warning>
+
+- `list` va `inspect` v1 dalillari ustida ishlashda davom etadi.
+- `migrate` v1 haqiqatini yo'qotmasdan bog'langan v2 avlodini yaratadi.
+- Ko'chirishdan keyin kelgusi o'zgarishlar uchun v2 digest'laridan foydalaning.
+
+## Bog'lash (bind) nima
+
+Bog'lash koordinator tomonidan keyinroq muvofiqlashtirish uchun aniq kontentni tanlaydi. U:
+
+- Engine'ni o'rnatmaydi
+- Engine'ni chaqirmaydi yoki faollashtirmaydi
+- Engine'ni Maestro bilan ulamaydi (dock qilmaydi)
+- Chaqiruvchini autentifikatsiya qilmaydi
+- Qo'llashni (apply) avtorizatsiya qilmaydi
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/uz/qxctl/reconcile">
+    Bog'langan kontentni koordinator bilan muvofiqlashtiring.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/uz/qxctl/lifecycle">
+    Bog'langan engine'lardan foydalanadigan hayot sikli rejalari.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/uz/governance/maestro">
+    Bog'lashlarni emas, ulanishlarni (docking) qayd etuvchi mavjudlik vakolati.
+  </Card>
+
+  <Card title="Engine'lar haqida umumiy ma'lumot" icon="cube" href="/uz/engines/overview">
+    Mustaqil o'rnatiladigan vektor engine'lari.
+  </Card>
+</CardGroup>

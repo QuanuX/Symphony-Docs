@@ -1,0 +1,33 @@
+---
+title: "Arquitectura de Symphony"
+description: "Comprende los límites entre la infraestructura seleccionada por el usuario, los contratos de vectores, los motores, qxctl y la evidencia gobernada."
+sidebarTitle: "Arquitectura"
+---
+
+Symphony separa la infraestructura y las cargas de trabajo seleccionadas por el usuario del conocimiento y la administración de la plataforma. La plataforma puede inspeccionar, validar e informar sobre la compatibilidad sin reclamar la propiedad de tu estrategia ni tratar una recomendación como un mandato.
+
+## Capa física y de cargas de trabajo
+
+Un [Node](/es/concepts/node-habitat-nest) es un ordenador físico identificado. Un **Habitat** es su acondicionamiento exacto de sistema operativo y paquetes, y un **Nest** es una carga de trabajo que sirve a un propósito seleccionado por el usuario. Los clústeres conectan Nodes mediante uno o varios buses. Las estructuras de bus, los adaptadores, los proveedores y las elecciones de hardware son explícitos en lugar de valores predeterminados universales.
+
+El [hot path](/es/concepts/hot-path-isolation) se mantiene separado de la residencia administrativa. El trabajo de qxctl y del plano de conocimiento puede administrar explícitamente un Node, pero no se convierte en una dependencia continua y oculta de la ejecución en vivo.
+
+## Propiedad semántica
+
+Los [vectores](/es/concepts/vectors) son propietarios acotados y duraderos del significado y de las operaciones permitidas. Cada propietario publica un Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` y `SPEC.md`. El [Symphony Knowledge Vector (SKV)](/es/skv/overview) indexa las superficies canónicas y conserva una ruta hacia su propietario. Los esquemas, registros y libros mayores complementarios siguen gobernados sin convertirse en miembros adicionales del Quad.
+
+Las fases de entrega describen cuándo se realiza el trabajo. No transfieren la propiedad semántica de un vector a otro.
+
+## Motores y superficie de comandos
+
+Los [motores de vectores](/es/engines/overview) son componentes instalables de forma independiente y fuera de proceso que inspeccionan, comprueban, proyectan y proponen dentro de los contratos de su propietario. No obtienen autoridad por el mero hecho de producir una propuesta.
+
+[qxctl](/es/qxctl/overview) es propietario de la gramática y la presentación de los comandos administrativos. Invoca capacidades acotadas y validadas mediante recibos, mientras que el vector que define una operación conserva su semántica. La evidencia de autorización y de auditoría rige las rutas de mutación; la [clasificación del llamante](/es/concepts/caller-authority) por sí sola no otorga ninguna autoridad.
+
+## Verdad y evolución
+
+Los contratos actuales establecen la verdad actual. Los libros mayores de cambios y de publicación conservan la evidencia registrada en un momento concreto. Las discrepancias entre contratos, evidencia de implementación e historial registrado se exponen como deriva en lugar de reescribirse en silencio. [SAV](/es/skv/sav) evalúa la compatibilidad de la composición; [SEV](/es/skv/sev) planifica la evolución gobernada.
+
+<Note>
+  Esta descripción general es un mapa de límites. Consulta el contrato actual y la evidencia de implementación de cada vector enlazado antes de considerar que una capacidad está disponible en una instalación concreta.
+</Note>

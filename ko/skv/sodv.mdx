@@ -1,0 +1,48 @@
+---
+title: "SODV: 공식 문서 및 릴리스 거버넌스"
+description: "SODV는 추가 전용 릴리스 원장 검사, 호출자가 제공한 관찰 검증, 일회용 릴리스 인벤토리로 공식 QuanuX 게시를 관리합니다."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector(SODV)는 SKV 프레임워크 내부의 지식이 공식 공개 문서와 릴리스 기록이 되는 방식을 관리합니다. 그 엔진은 독립적으로 설치 가능한 C++ 프로세스로, 로컬 추가 전용 릴리스 원장 검사를 수행하고 일회용 릴리스 인벤토리를 생성합니다. SODV 자체는 아무것도 게시하지 않습니다.
+
+## 작업
+
+- **Inspect 및 check**: 릴리스 원장의 형태와 연속성을 검증합니다.
+- **Verify**: 게시된 상태에 대해 호출자가 제공한 관찰을 확인합니다.
+- **Propose**: 제공자 중립적인 릴리스 제안을 받습니다.
+- **Recover**: 비변경 복구를 수행합니다.
+- **Project**: 일회용 릴리스 인벤토리를 출력합니다.
+
+## SODV가 하지 않는 일
+
+- SODV는 네트워크에 접근하지 않습니다.
+- SODV는 GitHub, Mintlify, 패키지 레지스트리 또는 기타 어떤 곳에도 게시하지 않습니다.
+- SODV는 태그를 생성하지 않으며 릴리스 완료를 선언할 수 없습니다.
+- SODV는 제공자의 순위를 매기거나 특정 게시 경로를 선호하지 않습니다.
+
+게시는 SODV 증거를 참조하는 별도의 승인된 도구를 통해 이루어집니다.
+
+## 완료된 SODV 게시
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    태그 `libraries/stav-protocol-go/v0.2.0`의 `github.com/QuanuX/Symphony/libraries/stav-protocol-go`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    태그 `modules/stav-append-authority/v0.1.0`의 `github.com/QuanuX/Symphony/modules/stav-append-authority`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    태그 `modules/stav-append-authority/v0.2.0`의 `github.com/QuanuX/Symphony/modules/stav-append-authority`.
+  </Card>
+
+  <Card title="qxctl 벡터 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    `qxctl sodv ...`를 실행하여 inspect, verify, propose, project를 수행합니다.
+  </Card>
+</CardGroup>
+
+<Note>
+  모든 SKV 엔진은 읽기, 쿼리, 검증, 제안만 수행합니다. 정규 apply는 각 엔진의 SSIAG, 예상 상태 트랜잭션, qxctl 보호 장치, STAV 이벤트, 복구, 부정 테스트 계약이 완료될 때까지 비활성화되어 있습니다.
+</Note>

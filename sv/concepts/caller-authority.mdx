@@ -1,0 +1,28 @@
+---
+title: "Neutralitet gentemot anroparklass och värdbefogenhet i Symphony"
+description: "Symphony klassificerar inte anropare efter typ. Befogenhet härleds från ägande av målvärden, uttrycklig behörighet, förväntat tillstånd och ägarkonfigurerade skyddsåtgärder."
+sidebarTitle: "Anroparbefogenhet"
+---
+
+Symphony klassificerar inte en anropare som människa, AI, agent, tjänst, arbetslast, organisation eller någon annan aktörstyp när befogenhet avgörs. Att du klassificeras som en person eller ett automatiserat system ger eller tar inte i sig bort någon förmåga. Denna neutralitet gentemot anroparklass är en central arkitektonisk gräns som håller auktoriseringen förankrad i fakta snarare än etiketter.
+
+## Vad som styr befogenhet
+
+Auktoriseringsbeslut som stöds använder följande indata:
+
+- **Ägande av målvärden eller beviljade behörigheter**: Målvärdens administratör är suverän över konfigurerbar styrning.
+- **Begärd åtgärd och resurs**: Den specifika handlingen och det objekt den agerar på.
+- **Förväntat tillstånd**: Det deklarerade önskade utfallet och det observerade aktuella tillståndet.
+- **Ägarkonfigurerade skyddsåtgärder**: Konservativa standardinställningar som administratören kan justera eller ta bort.
+
+## SSIAG och värdbefogenhet
+
+SSIAG kan verifiera och projicera effektiv värdbefogenhet, men skapar ingen överordnad registreringsmyndighet och lägger inte permanent in veto mot målvärdens administratör. Förstärkt identitetssäkring och styrningsspärrar är anroparneutrala, ägarkonfigurerade skyddsåtgärder. Krav på protokollintegritet förblir obligatoriska inom verktyg som stöds.
+
+## Vad Symphony inte avgör
+
+Symphony avgör inte om en aktör får äga egendom, öppna ett konto, ingå ett avtal, åta sig ansvar eller agera för en annan enhet. Dessa fakta tillhör den relevanta ägaren, leverantören, motparten och tillämplig lag. Plattformen håller sig inom sin avgränsade roll: den producerar kompatibilitetsevidens och stöder åtgärder, men sträcker sig inte till att fastställa extern rättslig eller finansiell kapacitet.
+
+## Praktisk innebörd
+
+När du anropar qxctl eller en vektormotor gäller samma kontroller oavsett om du kör kommandot manuellt, via ett skript eller via ett agentiskt verktyg. Befogenhetsvägen är: ägande av målvärden, uttrycklig behörighet, förväntat tillstånd, skyddsåtgärder. Ingen anropartyp får automatiskt undantag eller automatisk begränsning.

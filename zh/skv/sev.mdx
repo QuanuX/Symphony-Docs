@@ -1,0 +1,47 @@
+---
+title: "SEV：用于计划变更的 Symphony Evolution Vector"
+description: "SEV 通过确定性案例、依赖就绪集、一次性图以及不执行应用的恢复建议，评估计划变更、新颖性与生命周期转换。"
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector（SEV，Symphony 演进向量）负责整个平台范围内的计划变更案例与遇到的新颖性案例。其引擎是一个冻结路径、只读的 C++26 进程。SEV 既不监视宿主，也不应用转换；它生成证据与处置建议。
+
+## 操作
+
+- **案例评估**：针对新增、变更、重命名、取代、弃用、退役和移除的确定性演进案例。
+- **影响与处置规划**：将每个案例分配给其权威所有者。
+- **依赖就绪集重新计算**：推导依赖转换的安全顺序。
+- **转换验证**：确认转换后观测到的状态与其预期形态一致。
+- **恢复建议**：在转换中断时，描述安全的向前或回退步骤。
+- **SCSEV 评估**：首个受治理的 SEV 配置将上述操作应用于仅涉及文档的知识文件演进。
+- **新颖性与监视检查**：检测新的或意外的文件，以提请审查者注意。
+- **触发合并**与**生命周期会话绑定**：减少重复评估，并将案例绑定到会话。
+- **图投影**：用于审查的一次性图。
+
+## SCSEV 配置
+
+SCSEV 复用 SSFV 功能管理、稳定的 qxctl 命令事实以及引擎操作描述符。它不会创建重复的引擎或注册表。首个引擎切片仅支持报告和提议；持久化的外部操作仍需通过 qxctl 和知识会话协调器单独授权。
+
+<Note>
+  SEV 仅支持读取、查询、验证和提议。在整个 SKV 引擎家族中，规范 apply 仍处于禁用状态。
+</Note>
+
+## 相关内容
+
+<CardGroup cols={2}>
+  <Card title="SKV 概览" icon="book-open" href="/zh/skv/overview">
+    总体框架与 Contract Quad 模型。
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/zh/skv/ssfv">
+    被 SCSEV 配置复用的功能管理。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/zh/skv/sav">
+    针对变更组件的组合与兼容性评估。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh/qxctl/vector-commands">
+    已批准的演进语法实现后将以 `qxctl evolution ...` 形式提供。
+  </Card>
+</CardGroup>

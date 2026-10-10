@@ -1,0 +1,35 @@
+---
+title: "Plattformsdoktrin för QuanuX Symphony"
+description: "Lär dig Symphonys styrande principer: användarens ägande av strategi och infrastruktur, neutralitet gentemot anroparklass, skydd av den heta vägen och evidensbaserad kompatibilitet."
+sidebarTitle: "Doktrin"
+---
+
+Symphony-doktrinen definierar gränserna mellan vad plattformen kontrollerar och vad du kontrollerar. Dessa regler styr varje designbeslut i monorepot och varje interaktion med qxctl, vektormotorer och kunskapskontrakt.
+
+## Användarens ägande
+
+Du äger din strategilogik, ditt Nest-syfte, ditt val av leverantör, ditt val av hårdvara, din busstopologi och ditt val av adaptrar som stöds. Symphony tillhandahåller exakt kompatibilitetsevidens och åtgärder som stöds, men gör inte rekommendationer till plattformslag. Plattformen rapporterar matchningar, avvikelser, olösta fakta och konsekvenser. Den rangordnar inte leverantörer, föreskriver inte någon strategi och utvidgar inte i tysthet din miljö.
+
+## Skydd av den heta vägen
+
+Den heta vägen (hot path) skyddas mot administrativ residens och oavsiktligt tryck på delade bussar. qxctl och kunskapsplanet är administration på den kalla eller frysande vägen. De får uttryckligen agera på en Node som även kör live-arbete, men de får inte bli kontinuerliga beroenden för den heta vägen, dolda bevakare, residenta tolkar eller oombedda pakethanterare i bakgrunden. Din uttryckliga arkitektur förblir suverän.
+
+## Separation av kommandon och semantik
+
+qxctl äger kommandogrammatik och presentation. Domänvektorer äger de åtgärder och betydelser som dessa kommandon exponerar. En qxctl-rutt anropar en ägardefinierad förmåga utan att ta över dess semantik.
+
+## Namn och namnrymder
+
+Namn registreras under sitt ägande scope. SNV och SCNV dikterar dem inte, och rot-NAMESPACES förblir bredare än SNV. Ett namn som registrerats inom en TOPS eller TROG följer det scopet. Inom flera kluster kan ett kortnamn för en Node återkomma i olika kluster, men det får inte tvetydigt identifiera två aktiva Nodes i samma kluster.
+
+## Neutralitet gentemot anroparklass
+
+Att en anropare klassificeras som människa, AI, agent, tjänst eller arbetslast varken ger eller tar bort befogenhet. Auktoriseringsbeslut som stöds använder ägande av målvärden eller beviljade behörigheter, den begärda åtgärden och resursen, förväntat tillstånd och ägarkonfigurerade skyddsåtgärder. Målvärdens administratör är suverän över konfigurerbar styrning. SSIAG kan verifiera och projicera effektiv värdbefogenhet, men skapar ingen överordnad registreringsmyndighet. Förstärkt identitetssäkring och styrningsspärrar är anroparneutrala, ägarkonfigurerade skyddsåtgärder. Krav på protokollintegritet förblir obligatoriska. Symphony avgör inte extern rättslig eller finansiell kapacitet utifrån anropartyp.
+
+## Sanning och evidens
+
+Aktuella kontrakt beskriver aktuell sanning. Oföränderliga SCLV- och SODV-poster bevarar vad som var känt, ändrat, auktoriserat eller slutfört vid sin registrerade tidpunkt i historiken. När aktuella kontrakt, implementationsevidens och den senaste tillämpliga posten inte överensstämmer lyfts avvikelsen fram som drift för granskning. Historiken skrivs inte i tysthet om för att likna nuet.
+
+## Python-doktrin
+
+Förstapartskällkod för Symphony, generatorer, schemaförfattande, tester och acceptanshjälpmedel kräver ingen Python-implementation eller något tolkberoende. C++ äger ersättningsverktygen för författande och processtester. Denna repositoriepolicy begränsar inte dina egenförfattade program eller uttryckligen valda isolerade Habitats.

@@ -1,0 +1,53 @@
+---
+title: "Base C++ de los motores de Knowledge Vector: mecánicas compartidas"
+description: "La base C++ de los motores de Knowledge Vector proporciona encapsulado de procesos sin autoridad, JSON acotado, SHA-256, instantáneas, recibos y descubrimiento explícito de manifiestos."
+sidebarTitle: "Biblioteca base"
+---
+
+`libraries/knowledge-vector-engine-cpp` proporciona las mecánicas C++ compartidas y sin autoridad que reutiliza cada motor de vectores de Symphony. Ofrece bloques de construcción deterministas para que cada motor pueda mantenerse acotado, reproducible y libre de efectos secundarios ambientales.
+
+## Lo que proporciona la base
+
+- **Encapsulado de procesos**: protocolo de procesos local y sin autoridad que utiliza cada motor
+- **JSON acotado**: análisis y emisión estrictos con límites explícitos de tamaño y profundidad
+- **SHA-256**: direccionamiento por contenido para evidencia y recibos
+- **Lecturas sin seguimiento**: lecturas del sistema de archivos que nunca recorren enlaces simbólicos de forma inesperada
+- **Instantáneas deterministas**: instantáneas repetibles del estado inspeccionado
+- **Validación temporal**: gestión canónica de UTC según el Symphony Temporal Semantics Contract
+- **Descubrimiento de manifiestos de propietarios**: descubrimiento exacto de los manifiestos de contratos
+- **Empaquetado versionado**: paquetes instalables de forma independiente y propiedad de sus recibos
+- **Recibos y desinstalación basada en recibos**: desinstalación guiada únicamente por el recibo que instaló el artefacto
+
+## Límite del descubrimiento de manifiestos
+
+<Warning>
+  El descubrimiento de manifiestos comienza a partir de un conjunto de arranque fijo y recorre únicamente declaraciones subordinadas explícitas. Nunca realiza un rastreo ambiental del repositorio ni infiere la propiedad a partir de los nombres de los directorios.
+</Warning>
+
+Todo motor de vectores que consume la base hereda esta regla.
+
+## Lo que la base no hace
+
+- No porta autoridad. Los motores que la utilizan deben seguir autorizando las mutaciones mediante SSIAG.
+- No publica ni obtiene nada a través de la red.
+- No modifica archivos canónicos por sí misma.
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Coordinador de sesiones" icon="gears" href="/es/engines/coordinator">
+    Coordinador C++26 construido sobre la base para sesiones y reconciliación.
+  </Card>
+
+  <Card title="Descripción general de los motores" icon="cube" href="/es/engines/overview">
+    Los motores que reutilizan la base.
+  </Card>
+
+  <Card title="Descripción general de SKV" icon="book-open" href="/es/skv/overview">
+    Contratos de vectores que implementan los motores.
+  </Card>
+
+  <Card title="Descripción general de qxctl" icon="terminal" href="/es/qxctl/overview">
+    CLI administrativa que invoca motores exactos validados mediante recibos.
+  </Card>
+</CardGroup>

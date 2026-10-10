@@ -1,0 +1,82 @@
+---
+title: "qxctl vektor buyruqlari: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Bugungi kunda mavjud bo'lgan vektorga xos qxctl grammatikasini o'rganing: SKVI, SCLV, SACV, SODV, SSFV, SHV saqlash va katalogi, shuningdek zaxiralangan accord va evolution sahifalari."
+sidebarTitle: "Vektor buyruqlari"
+---
+
+qxctl amalga oshirilgan har bir SKV engine'i hamda SCV va SHV boshqaruvi uchun vektorga xos grammatikani taqdim etadi. Tasdiqlangan Accordare va SEV grammatikasi ularning buyruq implementatsiyalari va barqaror reyestr dalillari paydo bo'lgach, `qxctl accord ...` va `qxctl evolution ...` dan foydalanadi.
+
+## SKV engine grammatikasi
+
+- `qxctl skvi ...`: SKVI engine'iga nisbatan inspect, check, propose, project
+- `qxctl sclv ...`: SCLV engine'iga nisbatan inspect, check, propose, recover, project
+- `qxctl sacv ...`: SACV engine'iga nisbatan inspect, check, diff, propose, project
+- `qxctl sodv ...`: SODV engine'iga nisbatan inspect, check, verify, propose, recover, project
+- `qxctl ssfv ...`: SSFV engine'iga nisbatan inspect, check, diff, propose, graph
+
+Har bir grammatika egalik qiluvchi engine shartnomasi bilan cheklangan. qxctl hech qachon amal o'ylab topmaydi yoki engine'ni chetlab o'tmaydi.
+
+## Accordare qo'shimchalari
+
+qxctl'dagi Accordare qo'shimchalari quyidagilarni taqdim etadi:
+
+- Barqaror status
+- Muvofiqlashtirish (faqat aniq nomzodlarni qayta ijro etadi)
+- Supervisor o'rnatish va olib tashlash (faqat tasdiqlangan receipt-v2 bajariladigan faylini chaqiradi)
+- SSIAG va kutilgan holatni tiklash ostida faqat to'xtatilgan STAV konfiguratsiyasini o'zgartiradigan ikkita ruxsatnoma boshqaruvi identifikatori
+
+Status bardoshli niyat va qo'shish navbatini (append backlog) ajratadi. Muvofiqlashtirish faqat aniq nomzodlarni qayta ijro etadi. Ruxsatnoma buyruqlari hech qachon ishlayotgan konfiguratsiyani ochmaydi.
+
+## SHV saqlash
+
+Bardoshli SHV saqlash faqat quyidagilar orqali boshqariladi:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+Saqlab qolingan kutilgan niyat digest'i bilan `commit` bajarish ayni paytda tiklash hamdir. Alohida tiklash taxallusi yo'q. Saqlash doirasi kiritishda e'lon qilinadi; konnektor identifikatori bayroqlarda o'rnatiladi. Tuzilmaviy saqlash semantik `shv graph validate` ni takrorlamaydi va katalog boshini tanlamaydi.
+
+`shv graph store inventory` (0.2-reliz) aniq saqlab qolingan yozuvchi identifikatorlari bilan reviziyaga bog'langan mantiqiy o'qishni qo'shadi. Eski 0.1 tanlovi qo'llab-quvvatlanishda davom etadi.
+
+## SHV katalogini nashr etish
+
+Katalogni nashr etish faqat quyidagilar orqali boshqariladi:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Tiklash — `apply --operation-id` bo'lib, u `--input` bilan o'zaro istisno qiluvchi. Ruxsatnomaga asoslangan mahalliy katalog tanlovi manbani faollashtirish va umumiy graf saqlashdan farq qiladi.
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="SKV haqida umumiy ma'lumot" icon="book-open" href="/uz/skv/overview">
+    Engine'lar amalga oshiradigan vektor semantikasi.
+  </Card>
+
+  <Card title="SHV vektori" icon="microchip" href="/uz/vectors/shv">
+    Hardware Vector haqida ma'lumot va engine'lar ro'yxati.
+  </Card>
+
+  <Card title="SHV engine'lari" icon="microchip" href="/uz/engines/shv-engines">
+    Engine darajasidagi tafsilotlar.
+  </Card>
+
+  <Card title="qxctl haqida umumiy ma'lumot" icon="terminal" href="/uz/qxctl/overview">
+    To'liq qxctl buyruqlar to'plami.
+  </Card>
+</CardGroup>

@@ -1,0 +1,47 @@
+---
+title: "Symphony Vector 与交付阶段"
+description: "了解 Symphony 持久的语义所有权领域（vector）与按时间顺序推进的交付阶段之间的区别，以及 Contract Quad 和当前 vector 状态。"
+sidebarTitle: "Vector 与阶段"
+---
+
+Symphony 围绕两个理念组织其架构：**vector** 是持久的语义所有权领域，**阶段**是按时间顺序推进的交付活动。某个组件最初在某一阶段中进行研究，并不意味着该阶段成为它的永久所有者。在实现不断演进的同时，vector 保持含义稳定。
+
+## 什么是 vector？
+
+vector 是一个持久的、有界的语义所有权领域，其规范契约拥有该领域的含义和允许的操作。每个 vector 都有一个 **Contract Quad**：`INTENT.md`、`MANIFEST.md`、`SKILL.md` 和 `SPEC.md`，外加它实际需要的专门配套表面。vector 声明其规范表面和委托图，SKVI 将每个当前表面精确映射一次，过时的配套表面则通过受治理的演进被取代，而不会作为相互矛盾的上下文残留下来。
+
+## Vector 状态
+
+| Vector | 状态 | 页面 |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | 已实现：带有已索引表面的第 1 阶段基础 | [/skv/overview](/zh/skv/overview) |
+| **SKVI** — 源索引 | 已实现：inspect/check/propose 引擎 | [/skv/skvi](/zh/skv/skvi) |
+| **SCLV** — 变更账本 | 已实现：仅追加账本检查 | [/skv/sclv](/zh/skv/sclv) |
+| **SACV** — API 契约治理 | 已实现：OpenAPI 3.2.0 检查 | [/skv/sacv](/zh/skv/sacv) |
+| **SODV** — 官方文档/发布治理 | 已实现：本地发布账本检查 | [/skv/sodv](/zh/skv/sodv) |
+| **SSFV** — 功能标识/管理 | 已实现：结构化功能检查 | [/skv/ssfv](/zh/skv/ssfv) |
+| **SAV** — Accordare 组合 | 已实现：冻结路径评估 | [/skv/sav](/zh/skv/sav) |
+| **SEV** — 演进 | 已实现：影响/处置规划 | [/skv/sev](/zh/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | 已实现：无 cgo 的 Go 基础 | [/governance/ssiag](/zh/governance/ssiag) |
+| **STAV** — TOPS 审计协议 | 已实现：每个 TOPS 独立的仅追加账本 | [/governance/stav](/zh/governance/stav) |
+| **SOV** — Ops Vector | 新兴：预配、Habitat、Nest 交付 | [/vectors/sov](/zh/vectors/sov) |
+| **SCV** — Cloud Vector | 已实现：八个 C++ 源知识引擎 | [/vectors/scv](/zh/vectors/scv) |
+| **SNV** — Node Vector | 新兴：SNIV、SNRV、SCIV、SCNV 组合 | [/vectors/snv](/zh/vectors/snv) |
+| **SQV** — Quantitative Vector | 新兴：SOOV FIX 架构子 vector | [/vectors/sqv](/zh/vectors/sqv) |
+| **SHV** — Hardware Vector | 已实现：C++ 源、目录、配置文件引擎 | [/vectors/shv](/zh/vectors/shv) |
+| **SIV** — Intelligence Vector | 新兴：SMCV 可选 Markdown；SAIV 保留 | [/vectors/siv](/zh/vectors/siv) |
+
+## Contract Quad 与配套表面
+
+每个 vector 都包含：
+
+1. **INTENT.md** — 用途和范围
+2. **MANIFEST.md** — 标识、已声明的表面、委托图
+3. **SKILL.md** — 安全使用和运行指南
+4. **SPEC.md** — 规范性行为和边界
+
+`SLANG.md`、`NAMESPACES.md`、注册表、schema 和配置文件等配套表面仍是四成员结构之外的受治理工件。它们路由或细化所有者的事实，但不能扩展自身的权限。
+
+## 基于证据的集成
+
+延期的引擎没有伪造的回执。提议中的 API 没有虚构的注册表条目。未发布的契约没有 SODV 完成声明。这是基于证据的集成，而不是形式上的重复。

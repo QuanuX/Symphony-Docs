@@ -1,0 +1,65 @@
+---
+title: "SHV 引擎：Symphony Hardware Vector 源与图"
+description: "SHV 引擎对 CPU、GPU、NIC、内存和存储进行编目，支持保留源重放、需求评估、PDF 摄取以及基于 DuckDB 的持久图。"
+sidebarTitle: "SHV 引擎"
+---
+
+Symphony Hardware Vector（SHV）引擎对处理器、CPU 拓扑、缓存、GPU、NIC 和光纤接口、主板、RAM 以及 NVMe 进行编目。默认的整理策略优先考虑原始组件和有证据支持的变体。每个引擎都可独立安装，并且是只读的。
+
+## 引擎
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    硬件内核：调用方定义的覆盖范围、保留源目录重放、需求评估和图投影。
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    硬件证据的源摄取和修订处理。
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    组件和系统配置文件评估。
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    对已编目的硬件进行分区，以实现可复现的选择。
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    受治理的本地目录发布与选择。
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    显式的图传输界面。
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    通过 qxctl 管理的、基于 DuckDB 的持久图存储。
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    硬件数据手册的 PDF 源解析。
+  </Card>
+</CardGroup>
+
+## 管理要点
+
+- **持久存储**仅通过 `shv graph store inspect|prepare|commit|status|query|export|schema|template` 进行管理。使用保留的预期意图摘要执行 `commit` 同时也是恢复操作；没有单独的恢复别名。
+- **目录发布**仅通过 `shv catalogue publication inspect|plan|apply|status|schema|template` 进行管理。恢复操作为 `apply --operation-id`，与 `--input` 互斥。
+- **清单盘点**（0.2 版本）新增了 `shv graph store inventory`：一种绑定修订版本的逻辑读取，带有显式的保留写入者身份。旧版 0.1 选择仍受支持。
+
+<Note>
+  硬件类别是调用方映射和配置文件数据，而不是重复的命令树。`--version` 选择确切的主要所有者；`--source-version` 和 `--adapter-version` 指定不同的所选依赖。Schema 和映射修订版本是数据标识，而不是已安装引擎版本的别名。
+</Note>
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="SHV vector" icon="microchip" href="/cn/vectors/shv">
+    这些引擎所实现的 Hardware Vector 契约。
+  </Card>
+
+  <Card title="qxctl vector 命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    完整的 `shv ...` 语法参考。
+  </Card>
+</CardGroup>

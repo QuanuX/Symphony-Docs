@@ -1,0 +1,33 @@
+---
+title: "Symphony 架構"
+description: "了解使用者選擇的基礎架構、vector 合約、引擎、qxctl 與受治理證據之間的界線。"
+sidebarTitle: "架構"
+---
+
+Symphony 將使用者選擇的基礎架構與工作負載，與平台知識及管理工作分開。平台可以檢查、驗證並回報相容性，而不會宣稱擁有你的策略，也不會把建議視為強制命令。
+
+## 實體與工作負載層
+
+[Node](/zh-Hant/concepts/node-habitat-nest) 是已識別的實體電腦。**Habitat** 是其精確的作業系統與套件配置，而 **Nest** 則是服務於使用者所選用途的工作負載。叢集透過一條或多條匯流排連接各個 Node。匯流排架構、轉接器、供應商與硬體選擇皆為明確指定，而非通用的預設值。
+
+[熱路徑](/zh-Hant/concepts/hot-path-isolation) 與管理常駐程序保持分離。qxctl 與知識平面的工作可以明確地管理 Node，但不會成為即時執行中隱藏的持續性相依項。
+
+## 語意所有權
+
+[Vector](/zh-Hant/concepts/vectors) 是有界限且持久的意義與允許操作的擁有者。每個擁有者都會發布一組 Contract Quad：`INTENT.md`、`MANIFEST.md`、`SKILL.md` 與 `SPEC.md`。[Symphony Knowledge Vector（SKV）](/zh-Hant/skv/overview) 會為標準介面建立索引，並保留通往其擁有者的路徑。附屬的結構描述、登錄檔與帳本仍受治理，但不會成為 Quad 的額外成員。
+
+交付階段描述的是工作完成的時間點。它們不會將語意所有權從一個 vector 轉移到另一個 vector。
+
+## 引擎與指令介面
+
+[Vector 引擎](/zh-Hant/engines/overview) 是可獨立安裝、在程序外執行的元件，會在其擁有者合約的範圍內進行檢查、核對、投影與提案。它們不會僅因產生提案就取得權限。
+
+[qxctl](/zh-Hant/qxctl/overview) 擁有管理指令的文法與呈現方式。它會呼叫有界限且經回執驗證的能力，而定義該操作的 vector 則保有其語意。授權與稽核證據約束變更路由；僅憑 [呼叫者分類](/zh-Hant/concepts/caller-authority) 不會授予任何權限。
+
+## 真相與演進
+
+現行合約陳述現行的真相。變更帳本與發布帳本保存了特定時間點所記錄的證據。合約、實作證據與已記錄歷史之間的不一致，會以漂移的形式呈現，而不會被悄悄改寫。[SAV](/zh-Hant/skv/sav) 評估組合相容性；[SEV](/zh-Hant/skv/sev) 規劃受治理的演進。
+
+<Note>
+  本概觀是一張界線地圖。在將某項能力視為特定安裝中可用之前，請先參閱每個連結 vector 的現行合約與實作證據。
+</Note>

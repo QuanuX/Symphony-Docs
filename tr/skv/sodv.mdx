@@ -1,0 +1,48 @@
+---
+title: "SODV: Resmî Belgelendirme ve Sürüm Yönetişimi"
+description: "SODV, resmî QuanuX yayınlarını yalnızca eklemeli sürüm defteri kontrolleri, çağıran tarafından sağlanan gözlem doğrulaması ve atılabilir sürüm envanterleriyle yönetir."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV), SKV çerçevesindeki bilginin nasıl resmî genel belgelere ve sürüm kayıtlarına dönüştüğünü yönetir. Engine'i, yerel yalnızca eklemeli sürüm defteri kontrolleri yapan ve atılabilir sürüm envanterleri üreten, bağımsız olarak kurulabilen bir C++ sürecidir. SODV kendisi hiçbir şey yayımlamaz.
+
+## İşlemler
+
+- **İnceleme ve kontrol**: Sürüm defteri biçimini ve sürekliliğini doğrular.
+- **Doğrulama**: Yayımlanmış duruma ilişkin çağıran tarafından sağlanan gözlemleri kontrol eder.
+- **Önerme**: Sağlayıcıdan bağımsız sürüm önerilerini kabul eder.
+- **Kurtarma**: Değiştirmeyen kurtarma gerçekleştirir.
+- **Projeksiyon**: Atılabilir sürüm envanterleri üretir.
+
+## SODV neler yapmaz
+
+- SODV'nin ağ erişimi yoktur.
+- SODV; GitHub, Mintlify, paket kayıt defterleri veya başka herhangi bir yüzeye hiçbir şey yayımlamaz.
+- SODV etiket oluşturmaz ve bir sürümün tamamlandığını ilan edemez.
+- SODV sağlayıcıları sıralamaz veya bir yayın yolunu kayırmaz.
+
+Yayın, SODV kanıtına başvuran ayrı ve yetkilendirilmiş araçlar aracılığıyla gerçekleşir.
+
+## Tamamlanmış SODV yayınları
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `libraries/stav-protocol-go/v0.2.0` etiketindeki `github.com/QuanuX/Symphony/libraries/stav-protocol-go`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `modules/stav-append-authority/v0.1.0` etiketindeki `github.com/QuanuX/Symphony/modules/stav-append-authority`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `modules/stav-append-authority/v0.2.0` etiketindeki `github.com/QuanuX/Symphony/modules/stav-append-authority`.
+  </Card>
+
+  <Card title="qxctl vektör komutları" icon="terminal" href="/tr/qxctl/vector-commands">
+    İnceleme, doğrulama, önerme ve projeksiyon için `qxctl sodv ...` komutunu çalıştırın.
+  </Card>
+</CardGroup>
+
+<Note>
+  Her SKV engine'i yalnızca okuma, sorgulama, doğrulama ve önerme yapar. Kanonik uygulama, her engine'in SSIAG, beklenen durum işlemi, qxctl güvencesi, STAV olayı, kurtarma ve negatif test sözleşmeleri tamamlanana kadar devre dışıdır.
+</Note>

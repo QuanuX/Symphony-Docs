@@ -1,0 +1,32 @@
+---
+title: "QuanuX Symphony 문서"
+description: "Symphony의 플랫폼 원칙, 아키텍처, 지식 vector, qxctl 관리 CLI부터 시작하세요."
+sidebarTitle: "색인"
+---
+
+Symphony는 모듈식, 에이전트 우선 거래 운영 체제입니다. 이 문서는 Symphony의 현재 계약과 경계를 설명합니다. 인프라가 어떻게 모델링되는지, vector가 어떻게 의미를 소유하는지, qxctl이 지원되는 작업을 어떻게 관리하는지를 다룹니다. 관리 표면을 사용하기 전에 먼저 플랫폼 원칙을 읽어 보세요.
+
+<CardGroup cols={2}>
+  <Card title="빠른 시작" icon="rocket" href="/ko/quickstart">
+    플랫폼, 계약, qxctl을 이해하기 위한 가장 짧은 읽기 경로를 찾아보세요.
+  </Card>
+  <Card title="플랫폼 원칙" icon="book-open" href="/ko/doctrine">
+    사용자 소유권, 호출자 권한, 증거, 핫 패스 보호를 이해하세요.
+  </Card>
+  <Card title="아키텍처" icon="diagram-project" href="/ko/concepts/architecture">
+    Node, Habitat, Nest, vector, 엔진, qxctl이 어떻게 맞물리는지 확인하세요.
+  </Card>
+  <Card title="qxctl CLI" icon="terminal" href="/ko/qxctl/overview">
+    Symphony의 관리 및 조회 명령 표면을 살펴보세요.
+  </Card>
+</CardGroup>
+
+## 문서 살펴보기
+
+- [Node, Habitat, Nest](/ko/concepts/node-habitat-nest)는 물리적 리소스, 정확한 소프트웨어 구성, 사용자 목적의 워크로드를 정의합니다.
+- [Vector와 단계](/ko/concepts/vectors)는 지속적인 의미 소유권과 전달 캠페인을 구분합니다.
+- [Symphony Knowledge Vector](/ko/skv/overview)는 정식 계약, 보조 표면, 인덱싱된 지식을 설명합니다.
+- [Vector 엔진](/ko/engines/overview)은 독립적으로 설치되는 프로세스 외부 엔진을 설명합니다.
+- [호출자 권한](/ko/concepts/caller-authority)과 [핫 패스 격리](/ko/concepts/hot-path-isolation)는 두 가지 핵심 운영 경계를 명시합니다.
+
+이 페이지들은 현재 문서화된 표면을 설명합니다. 특정 구성 요소의 정확한 상태는 링크된 계약과 구현 증거를 따르세요.

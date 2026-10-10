@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Symphony retseptor mavjudligi inventarini o'qish"
+description: "Autentifikatsiyalangan vektor engine ulanish munosabatlari va hosila retseptor inventarini ko'rish uchun Symphony'ning Maestro mavjudlik vakolatini qxctl orqali tekshiring."
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` grammatikasi Maestro mavjudlik dalillarini ko'rsatadi. Maestro — mavjudlik vakolati; qxctl esa faqat Maestro qayd etgan narsalarni o'qiydi va tekshiradi. Ularning hech biri o'z-o'zidan ulanish (docking) munosabatlarini yaratmaydi.
+
+## Inventar
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` har bir TOPS va retseptor bo'yicha autentifikatsiyalangan vektor engine ulanish munosabatlarining Maestro tomonidan yuritiladigan to'liq, hosila va faqat o'qiladigan inventarini taqdim etadi.
+
+## Bog'liq boshqaruv yo'nalishlari
+
+Qo'shimcha qxctl buyruqlari Maestro bilan bog'liq boshqaruvni taqdim etadi:
+
+- Ulanish dalillarining holati va tekshiruvi
+- Maestro'ning o'z shartnomalari bilan cheklangan tiklash yo'nalishlari
+- Maestro'ning o'zi uchun asosiy hayot sikliga ro'yxatdan o'tkazish va mahalliy nazorat
+
+Har bir o'zgartirish yo'nalishi modulga tegishli aniq adapter orqali o'tadi. qxctl hech qachon Maestro deskriptorlarini ichki tahlil asosida chiqarmaydi va yashirin eng yangi versiyani chaqirmaydi.
+
+<Warning>
+  Maestro engine'larni ishga tushirmaydi, rejalashtirmaydi, nazorat qilmaydi yoki chaqirmaydi. `qxctl maestro inventory` faqat o'qish uchun. Bog'lash, muvofiqlashtirish, sessiyani koordinatsiya qilish yoki hayot sikli rejasining o'zi Maestro mavjudligini o'rnatmaydi.
+</Warning>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/uz/governance/maestro">
+    Mavjudlik vakolati shartnomasi va chegaralari.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/uz/qxctl/engines">
+    Engine bog'lash reyestri (bog'lashlar ulanish emas).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/uz/qxctl/session">
+    Mavjudlikni qayd etish uchun ishlatiladigan autentifikatsiyalangan sessiyalar.
+  </Card>
+
+  <Card title="Engine'lar haqida umumiy ma'lumot" icon="cube" href="/uz/engines/overview">
+    Maestro bilan ulanadigan, mustaqil o'rnatiladigan vektor engine'lari.
+  </Card>
+</CardGroup>

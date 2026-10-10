@@ -1,0 +1,74 @@
+---
+title: "SCV 소스 지식 엔진: Symphony를 위한 공급자 현실"
+description: "독립적으로 패키징된 여덟 개의 SCV, 하이퍼스케일러, 엣지, 공급자 엔진은 정확한 소스 리비전을 보존하고 재현 가능한 그래프 및 조회 증거를 생성합니다."
+sidebarTitle: "SCV 엔진"
+---
+
+SCV 소스 지식 엔진은 독립적으로 패키징된 여덟 개의 C++26 프로세스로, 외부 공급자의 리소스, 서비스, 리전, 제약 조건, 하이브리드 가능성에 대한 비공개 의미 지식을 보유합니다. 다운스트림 도구가 결과를 재현할 수 있도록 정확한 소스 리비전과 경계가 정해진 캡처를 보존합니다.
+
+## 엔진
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    공유 클라우드 어휘를 위한 상위 SCV 소스 엔진.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector 소스 엔진.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare 전용 엣지 소스 엔진.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services 소스 엔진.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure 소스 엔진.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean 소스 엔진.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform 소스 엔진.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    보존된 관계형 그래프 인덱싱을 위한 선택적 DuckDB 커넥터.
+  </Card>
+</CardGroup>
+
+## SCV 엔진이 하는 일
+
+- 명시적인 소스 리비전과 경계가 정해진 캡처 보존
+- 한정된 주장과 네이티브 문서 구조 유지
+- 재현 가능한 그래프 및 조회 증거 생성
+- 이식 가능한 공급자 패키지와 호출자가 지정하는 유한한 구성에 데이터 제공
+
+## 하지 않는 일
+
+<Warning>
+  공급자 작업과 완전한 클라우드 카탈로그는 이번 증분의 범위에 포함되지 않습니다. SCV 엔진은 알려진 내용을 설명할 뿐, 공급자에 대해 작업을 수행하지 않습니다.
+</Warning>
+
+qxctl은 보존된 워크플로와 보호된 그래프 선택을 통해 감사되는 로컬 소스 변경과 일관된 그래프 선택을 별도로 관리합니다. 전용 그래프 탐색과 운영 어댑터는 별도의 작업으로 남아 있습니다.
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="SCV vector" icon="cloud" href="/ko/vectors/scv">
+    이 엔진들이 구현하는 Cloud Vector 계약.
+  </Card>
+
+  <Card title="SOV vector" icon="terminal" href="/ko/vectors/sov">
+    qxctl을 통해 SCV 증거에 따라 작업을 수행하는 Ops Vector.
+  </Card>
+
+  <Card title="qxctl vector 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    그래프 선택, 소스 워크플로, DuckDB 커넥터 관리.
+  </Card>
+</CardGroup>

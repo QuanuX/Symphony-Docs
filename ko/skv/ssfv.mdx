@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector 및 레지스트리"
+description: "SSFV는 구현된 모든 Symphony 모듈과 qxctl 기능 전반에 걸쳐 정규 기능 식별자, 의미, 계층, 수명 주기, 관리 보증을 소유합니다."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector(SSFV)는 정규 애플리케이션 기능 식별자, 의미, 계층, 수명 주기, 구별, 분산 기록 라우팅, 커버리지 인벤토리, 그래프 프로젝션 계약을 소유합니다. 그 엔진은 독립적으로 설치 가능한 C++ 프로세스로, 구조적이고 최신성을 고려한 기능 검사를 수행합니다.
+
+## 작업
+
+- **Inspect 및 check**: 구조적이고 최신성을 고려한 기능 평가.
+- **Diff**: 기능 상태 간의 콘텐츠 주소 기반 비교.
+- **Propose**: 기능 승인 또는 변경에 대한 호출자 선언 제안.
+- **Graph**: 검토를 위한 결정적인 일회용 기능 그래프.
+
+## 등록된 커버리지
+
+현재 등록된 카탈로그는 명시적으로 부분적입니다.
+
+- 등록된 기능 **110**개
+- 등록된 소유자 범위 **35**개
+- 승인된 중첩 기능 **76**개
+- 검토된 기능 관리 항목 **295**개(필수 **285**개, 증거 기반 예외 **13**개, 금지 **9**개, 미검토 **0**개)
+
+등록된 소유자 범위는 `qxctl`과 검증기부터 SKV 엔진과 SSIAG 제공자, SCV 및 SHV 엔진 계열에 이르기까지 구현된 모든 모듈에 걸쳐 있습니다.
+
+## SSFV가 하지 않는 일
+
+<Warning>
+  SSFV는 기능으로서의 가치를 결정하거나, 식별자를 만들어 내거나, 저장소 또는 호스트의 완전성을 주장하지 않습니다. `review_required`는 호출자 검토를 위한 증거이지 승인이나 apply 권한이 아닙니다.
+</Warning>
+
+기능 검토, 승인, 수명 주기 변경은 각 기능을 소유하는 계약에 남아 있습니다.
+
+## 관련 항목
+
+<CardGroup cols={2}>
+  <Card title="SKV 개요" icon="book-open" href="/ko/skv/overview">
+    SSFV를 관리하는 상위 프레임워크입니다.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ko/skv/sev">
+    기능 추가, 변경, 폐기에 진화 사례를 적용합니다.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/ko/qxctl/session">
+    qxctl을 통해 영구 SSFV 유지 관리 세션을 관리합니다.
+  </Card>
+
+  <Card title="qxctl 벡터 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    `qxctl ssfv ...`를 실행하여 inspect, check, diff, propose, graph를 수행합니다.
+  </Card>
+</CardGroup>

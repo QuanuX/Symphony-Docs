@@ -1,0 +1,74 @@
+---
+title: "SCV 源知识引擎：Symphony 的提供商现实"
+description: "八个独立打包的 SCV、超大规模云、边缘和提供商引擎保留确切的源修订版本，并生成可复现的图和查询证据。"
+sidebarTitle: "SCV 引擎"
+---
+
+SCV 源知识引擎是八个独立打包的 C++26 进程，保存有关异地提供商资源、产品、区域、约束和混合部署可能性的私有语义知识。它们保留确切的源修订版本和有界采集，以便下游工具能够复现结果。
+
+## 引擎
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    用于共享云词汇的总括性 SCV 源引擎。
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vector 源引擎。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare 专用边缘源引擎。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Services 源引擎。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azure 源引擎。
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOcean 源引擎。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platform 源引擎。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    用于保留关系图索引的可选 DuckDB 连接器。
+  </Card>
+</CardGroup>
+
+## SCV 引擎做什么
+
+- 保留显式的源修订版本和有界采集
+- 保留限定的声明和原生文档结构
+- 生成可复现的图和查询证据
+- 为可移植的提供商软件包和有限的、由调用方指导的组合提供输入
+
+## 它们不做什么
+
+<Warning>
+  提供商操作和完整的云目录不在本次增量范围之内。SCV 引擎描述已知的内容；它们不会对提供商执行操作。
+</Warning>
+
+qxctl 通过保留的工作流和受保护的图选择，单独管理经过审计的本地源变更和一致的图选择。专门的图遍历和运维适配器仍是单独的工作。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="SCV vector" icon="cloud" href="/cn/vectors/scv">
+    这些引擎所实现的 Cloud Vector 契约。
+  </Card>
+
+  <Card title="SOV vector" icon="terminal" href="/cn/vectors/sov">
+    通过 qxctl 基于 SCV 证据执行操作的 Ops Vector。
+  </Card>
+
+  <Card title="qxctl vector 命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    图选择、源工作流和 DuckDB 连接器管理。
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV 프로듀서: 경계가 정해진 SAV Named Version 감사"
+description: "Accordare STAV 프로듀서는 인증된 로컬 피어를 사용하는 프리징 패스 Go 프로듀서를 통해 SAV Named Version의 의도, 결과, 복구를 내구성 있게 유지합니다."
+sidebarTitle: "Accordare 프로듀서"
+---
+
+Accordare STAV 프로듀서(`modules/accordare-stav-producer`)는 경계가 정해진 SAV Named Version 감사 회로를 위한, 독립적으로 설치할 수 있는 프리징 패스 Go 프로듀서입니다. 변경 전 의도와 추가 복구를 내구성 있게 유지하고, 로컬 피어를 인증하며, 닫힌 어휘가 허용하는 정확하고 안전한 후보만 제출합니다. 프로듀서 자체는 STAV 추가 권한 기관이 아닙니다.
+
+## 의도, 결과, 복구 패턴
+
+프로듀서는 감사 대상이 되는 모든 변경에 대해 3단계 패턴을 따릅니다.
+
+<Steps>
+  <Step title="변경 전 의도">
+    변경 사항이 관찰 가능해지기 전에 호출자가 밝힌 의도를 내구성 있게 기록합니다. 프로듀서는 닫힌 어휘를 벗어나는 후보를 거부합니다.
+  </Step>
+  <Step title="최종 결과">
+    변경이 완료되거나 실패한 후, 감사가 기대한 상태가 아닌 실제 상황을 반영하도록 정확한 결과를 캡처합니다.
+  </Step>
+  <Step title="경계가 정해진 복구">
+    중단이 발생하면, 프로듀서는 조정 결과를 꾸며내거나 의도를 조용히 폐기하지 않고 추가 스트림에 대한 경계가 정해진 복구를 수행합니다.
+  </Step>
+</Steps>
+
+## 경계
+
+<Warning>
+  Accordare 프로듀서는 STAV 추가 권한 기관이 아닙니다. 프로듀서는 로컬 피어를 인증하고 후보를 제출하며, 추가 권한 기관이 이를 검증, 봉인하고 내구성 있게 저장합니다. 이 분리를 절대 우회하지 마세요.
+</Warning>
+
+- 프로듀서의 어휘는 닫혀 있습니다. SAV Named Version 감사 후보만 허용합니다.
+- 프로듀서는 프리징 패스 구성 요소입니다. 핫 패스 의존성이 되어서는 안 됩니다.
+- 프로듀서는 로컬 피어를 인증하며, 원격 호출자는 인증하지 않습니다.
+
+## 관련 표면
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/ko/governance/stav">
+    감사 기록을 봉인하는 추가 권한 기관.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ko/governance/ssiag">
+    프로듀서가 감사하는 변경을 승인합니다.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ko/skv/sav">
+    이 회로가 감사하는 Named Version 구성 의미.
+  </Card>
+
+  <Card title="qxctl vector 명령" icon="terminal" href="/ko/qxctl/vector-commands">
+    비준된 Accordare 문법은 구현되면 `qxctl accord ...`로 제공됩니다.
+  </Card>
+</CardGroup>

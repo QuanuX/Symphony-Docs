@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV 生产者：有界的 SAV Named Version 审计"
+description: "Accordare STAV 生产者通过一个带有经过身份验证的本地对等方的冻结路径 Go 生产者，持久保存 SAV Named Version 的意图、结果和恢复信息。"
+sidebarTitle: "Accordare 生产者"
+---
+
+Accordare STAV 生产者（`modules/accordare-stav-producer`）是一个可独立安装的冻结路径 Go 生产者，用于有界的 SAV Named Version 审计回路。它持久保存变更前的意图和追加恢复信息，对其本地对等方进行身份验证，并且只提交其封闭词汇所接纳的确切安全候选项。它本身并不是 STAV 追加权威。
+
+## 意图、结果、恢复模式
+
+对于每一次经过审计的变更，生产者都遵循一个三步模式：
+
+<Steps>
+  <Step title="变更前意图">
+    在任何更改变得可观察之前，持久记录调用方声明的意图。生产者会拒绝其封闭词汇之外的候选项。
+  </Step>
+  <Step title="最终结果">
+    在变更完成或失败后，捕获确切的结果，使审计反映的是现实，而不是期望中的状态。
+  </Step>
+  <Step title="有界恢复">
+    在发生中断时，生产者对追加流执行有界恢复，既不会虚构协调结果，也不会悄悄丢弃意图。
+  </Step>
+</Steps>
+
+## 边界
+
+<Warning>
+  Accordare 生产者不是 STAV 追加权威。它对本地对等方进行身份验证并提交候选项；追加权威负责验证、封存并持久存储这些候选项。切勿绕过这种分离。
+</Warning>
+
+- 生产者的词汇是封闭的。它只接受 SAV Named Version 审计候选项。
+- 生产者位于冻结路径。它绝不能成为热路径依赖。
+- 生产者对本地对等方进行身份验证；它不对远程调用方进行身份验证。
+
+## 相关界面
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/cn/governance/stav">
+    封存审计记录的追加权威。
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/cn/governance/ssiag">
+    为生产者所审计的变更提供授权。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cn/skv/sav">
+    此回路所审计的 Named Version 组合语义。
+  </Card>
+
+  <Card title="qxctl vector 命令" icon="terminal" href="/cn/qxctl/vector-commands">
+    已获批准的 Accordare 语法在实现后将以 `qxctl accord ...` 的形式提供。
+  </Card>
+</CardGroup>

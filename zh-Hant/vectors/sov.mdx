@@ -1,0 +1,55 @@
+---
+title: "Symphony 營運向量：qxctl 營運控制"
+description: "SOV 定義由 qxctl 管理的營運領域，涵蓋佈建、Habitat 環境調整、Nest 交付、匯流排配接器，以及選用的遠端 Node 管理。"
+sidebarTitle: "營運向量"
+---
+
+Symphony 營運向量（Symphony Ops Vector，SOV）是營運控制平面，經授權的 qxctl 命令透過它作用於你的基礎架構。它擁有佈建、Habitat 環境調整、Nest 交付、匯流排配接器設定，以及選用的遠端 Node 管理的合約。SOV 不會發明供應商意義或硬體事實；它執行你已選擇的受支援選項。
+
+## SOV 涵蓋的範圍
+
+SOV 是一個新興的第 2 階段領域。其範圍包括：
+
+- **佈建**：供應商與自有硬體的資源配置工作流程
+- **Habitat 環境調整**：交付至 Node 的確切作業系統與套件調整
+- **Nest 交付**：在 Node 上放置與更新工作負載
+- **匯流排配接器建立**：透過你選擇的匯流排（NATS JetStream、ZeroMQ 或其他）連接 Node
+- **遠端 Node 操作**：選用的本機 shell 以外 Node 的管理
+
+<Note>
+  供應商協定、Terraform 執行、Habitat 建置器、Nest 部署命令與遠端操作接收器仍有待設計。目前尚未實作任何 SOV 引擎或供應商變更。
+</Note>
+
+## SOV 與其他向量的關係
+
+SOV 是控制平面，而非知識來源。它依據其他向量所擁有的證據採取行動：
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/zh-Hant/vectors/scv">
+    提供供應商與異地資源知識。SOV 讀取 SCV 證據以判斷哪些操作相容。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/zh-Hant/vectors/snv">
+    在 SOV 操作完成後，記錄所產生的 Node 身分、叢集成員資格與名稱。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/zh-Hant/vectors/shv">
+    日後可能提供詳細的硬體能力證據，以約束佈建選項。
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/zh-Hant/skv/overview">
+    治理 SOV 的合約、變更後果、索引與生命週期整合。
+  </Card>
+</CardGroup>
+
+## qxctl 作為命令介面
+
+SOV 操作透過 `qxctl` 提供，這是以 Go 撰寫、具有 373 個可執行命令的管理 CLI。qxctl 實作並呈現 SOV 操作，但不擁有其領域意義。向量擁有語意；工具擁有執行介面。
+
+## 使用者權限邊界
+
+由你選擇供應商、區域、硬體、匯流排、軟體、部署拓撲，以及各 Node 的管理安排。SOV 提供並執行受支援的選項。它不會為供應商排名、推薦拓撲，也不會將建議轉換為強制政策。
+
+## 目前狀態
+
+SOV 是一份標準架構合約。目前並未宣稱已實作任何引擎、Terraform 包裝器、Habitat 建置器、匯流排配接器或遠端命令接收器。未來的 SOV 元件將在共同的 SKV 生命週期下，維持可獨立安裝、可選擇確切版本且可回復。

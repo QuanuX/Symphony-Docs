@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: 향후 에이전트 협업"
+description: "SIV는 향후 에이전트 협업, 확장된 컨텍스트, 구조화된 장기 로직, 관리되는 Symphony 상호 작용을 소유합니다. SMCV는 첫 번째 선택적 구성 요소이며 SAIV는 예약되어 있습니다."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector(SIV)는 에이전트 협업, 확장된 로컬 컨텍스트, 구조화된 장기 로직, 에이전트 간 통신, Symphony 인터페이스에서의 사람 주도 작업에 대해 향후 Symphony가 작성할 의미를 소유합니다. 정규 계약은 있지만 아직 실행 가능한 구현은 없는 신흥 도메인입니다.
+
+## 범위와 목적
+
+SIV는 다음을 지원할 것으로 예상됩니다.
+
+- Symphony 워크플로에 대한 로컬 및 원격 에이전트 참여
+- 세션과 벡터 전반에서 공유되는 확장된 컨텍스트
+- 반복적이거나 다단계인 작업을 위한 구조화된 장기 로직
+- 에이전트 간 통신 프로토콜
+- Symphony 명령 인터페이스와의 관리되는 상호 작용
+
+SIV는 호출자 유형에 따라 권한을 부여하지 않습니다. 사람, AI, 에이전트, 서비스 호출자는 동일하게 취급됩니다. 권한은 대상 호스트 소유권, 부여된 권한, 요청된 작업, 예상 상태, 소유자가 구성한 보호 장치에서 비롯됩니다.
+
+## 명명된 하위 벡터
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    선택적 Markdown 변환 구성 요소입니다. 활성화된 IPC 연결 위에서 qxctl로 구성 가능한 변환기로 계획되어 있습니다. 아직 SMCV 명령이나 변환기는 구현되지 않았습니다.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    이후의 Symphony 인텔리전스 통합 하위 벡터를 위해 예약되어 있습니다. 이 예약은 구현, 네임스페이스 동작 또는 의미 작업을 제공하지 않습니다.
+  </Card>
+</CardGroup>
+
+## 비범위
+
+SIV는 명시적으로 다음을 하지 않습니다.
+
+- 벡터가 소유한 의미 대체(에이전트가 호출하더라도 도메인 작업은 해당 벡터가 계속 소유)
+- 정규 진실이 되거나 SKV 계약을 무시
+- 트레이딩 핫 패스에 진입
+- 이전의 인공지능 작업 문서를 결정적인 것으로 만들기
+
+## 현재 상태
+
+SIV는 정규 아키텍처 계약일 뿐입니다. 현재 SIV 하네스, 에이전트 메일, 장기 상태 엔진, 모델 연결, 로컬/원격 에이전트 프로토콜, SAIV 구성 요소, SMCV 변환기, qxctl 제어는 구현되어 있지 않습니다.
+
+## 언어 경계
+
+SIV 구성 요소에 대한 Rust 요구 사항은 정해져 있지 않습니다. 구성 요소 언어는 향후의 성능, 이식성, 안전성, 통합 계약을 따릅니다. 어떤 작업 문서로부터도 상속되지 않습니다.
+
+## SIV와 다른 벡터의 관계
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/ko/skv/overview">
+    SIV 계약, 진화, 공식 게시 관계를 관리합니다.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/ko/vectors/sov">
+    벡터가 소유한 의미를 유지하면서 qxctl을 통해 에이전트가 호출하는 작업을 제공할 수 있습니다.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/ko/skv/sav">
+    에이전트가 조립한 모든 작업의 구성과 호환성을 평가합니다.
+  </Card>
+</CardGroup>

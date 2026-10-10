@@ -1,0 +1,48 @@
+---
+title: "SCLV：记录源代码变更的 Symphony Change Ledger Vector"
+description: "SCLV 维护一个记录已完成源代码变更的仅追加账本，支持与提供方无关的提议、非修改性恢复以及用于记录的一次性投影。"
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector（SCLV，Symphony 变更账本向量）记录 SKV 文件随时间发生的变更。其引擎是一个可独立安装的 C++ 进程，执行确定性的仅追加账本检查，并生成一次性投影。只有在实质性的源代码变更完成后，才会写入账本。
+
+## 操作
+
+- **Inspect 与 check**：验证账本的形态、连续性与证据。
+- **Propose（v3）**：接受调用方声明的、与提供方无关的新记录提议。
+- **Recover**：对中断或存在歧义的状态执行非修改性恢复。
+- **Project**：按需输出账本状态的一次性清单。
+
+## 准入与退役
+
+每条被准入的 SCLV 记录都会绑定其写入时的当前索引证据。之后对某个文件进行合法退役时，会保留不可变的历史来源，而不会强制将已删除的当前文本重新放回 SKVI。历史仍是历史；当前事实仍是当前事实。
+
+## SCLV 不做的事情
+
+- SCLV 不会创建或批准源代码变更。
+- SCLV 不会改写现有记录；它是仅追加的。
+- SCLV 不会发布任何内容。公开投影由 SODV 负责。
+
+<Note>
+  当前所有 SKV 引擎都仅支持读取、查询、验证和提议。在每个引擎完整的权限与审计契约完成之前，规范 apply 处于禁用状态。
+</Note>
+
+## 相关内容
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/zh/skv/skvi">
+    为 SCLV 记录所绑定的当前规范事实建立索引。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/zh/skv/sodv">
+    治理账本信息的官方公开投影。
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/zh/skv/sev">
+    演进案例会在 SCLV 记录变更之前对其进行评估。
+  </Card>
+
+  <Card title="qxctl 向量命令" icon="terminal" href="/zh/qxctl/vector-commands">
+    运行 `qxctl sclv ...` 以执行 inspect、check、propose 和 recover。
+  </Card>
+</CardGroup>

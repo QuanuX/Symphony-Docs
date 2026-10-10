@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector och register"
+description: "SSFV äger kanonisk funktionsidentitet, semantik, hierarki, livscykel och säkerställande av administration för varje implementerad Symphony-modul och qxctl-yta."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) äger kontrakten för kanonisk identitet för applikationsfunktioner, semantik, hierarki, livscykel, distinktioner, distribuerad postroutning, täckningsinventering och grafprojektion. Dess motor är en oberoende installerbar C++-process som utför strukturella och aktualitetsmedvetna funktionskontroller.
+
+## Operationer
+
+- **Inspect och check**: strukturell och aktualitetsmedveten funktionsutvärdering.
+- **Diff**: innehållsadresserade diffar mellan funktionstillstånd.
+- **Propose**: anroparens deklarerade förslag om upptagning eller ändring av funktioner.
+- **Graph**: deterministiska funktionsgrafer för engångsbruk vid granskning.
+
+## Registrerad täckning
+
+Den nuvarande registrerade katalogen är uttryckligen partiell:
+
+- **110** registrerade funktioner
+- **35** registrerade ägarscope
+- **76** ratificerade nästlade funktioner
+- **295** granskade ytor för funktionsadministration (**285** obligatoriska, **13** evidensstödda undantag, **9** förbud, **0** ogranskade)
+
+Registrerade ägarscope omfattar varje implementerad modul, från `qxctl` och validatorn via SKV-motorer och SSIAG-leverantörer till motorfamiljerna SCV och SHV.
+
+## Vad SSFV inte gör
+
+<Warning>
+  SSFV beslutar inte om något förtjänar att vara en funktion, hittar inte på identiteter och gör inte anspråk på att ett repositorium eller en värd är komplett. `review_required` är evidens för anroparens granskning, inte ratificering eller auktoritet att tillämpa.
+</Warning>
+
+Granskning, upptagning och livscykeländringar av funktioner ligger kvar hos varje funktions ägande kontrakt.
+
+## Relaterade ytor
+
+<CardGroup cols={2}>
+  <Card title="Översikt över SKV" icon="book-open" href="/sv/skv/overview">
+    Paraplyramverket som styr SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/sv/skv/sev">
+    Tillämpar evolutionsärenden på tillägg, ändringar och avvecklingar av funktioner.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/sv/qxctl/session">
+    Hantera beständiga SSFV-underhållssessioner via qxctl.
+  </Card>
+
+  <Card title="Vektorkommandon i qxctl" icon="terminal" href="/sv/qxctl/vector-commands">
+    Kör `qxctl ssfv ...` för inspect, check, diff, propose och graph.
+  </Card>
+</CardGroup>

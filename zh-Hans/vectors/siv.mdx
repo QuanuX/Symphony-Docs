@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector：未来的智能体协作"
+description: "SIV 拥有未来的智能体协作、扩展上下文、结构化长期逻辑以及受治理的 Symphony 交互。SMCV 是其首个可选组件；SAIV 为预留项。"
+sidebarTitle: "智能向量"
+---
+
+Symphony Intelligence Vector（SIV，Symphony 智能向量）拥有未来由 Symphony 编写的语义，涵盖智能体协作、扩展的本地上下文、结构化长期逻辑、智能体间通信，以及在 Symphony 界面上由人类主导的操作。这是一个新兴领域，已有规范契约，但尚无可执行实现。
+
+## 范围与目的
+
+SIV 预计将支持：
+
+- 本地和远程智能体参与 Symphony 工作流
+- 跨会话和向量共享的扩展上下文
+- 用于重复性或多步骤操作的结构化长期逻辑
+- 智能体间通信协议
+- 与 Symphony 命令界面的受治理交互
+
+SIV 不会根据调用方类型授予权限。人类、AI、智能体和服务调用方一视同仁。权限来源于目标主机所有权、已授予的许可、所请求的操作、预期状态以及所有者配置的保护措施。
+
+## 命名子向量
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    可选的 Markdown 转换组件。计划作为可通过 qxctl 配置的转换器，运行在已启用的 IPC 连接之上。目前尚未实现任何 SMCV 命令或转换器。
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    预留给后续的 Symphony 智能集成子向量。该预留不提供任何实现、命名空间行为或语义操作。
+  </Card>
+</CardGroup>
+
+## 非范围
+
+SIV 明确不会：
+
+- 取代由向量拥有的语义（即使由智能体调用，领域操作仍归各自的向量所有）
+- 成为规范事实或覆盖 SKV 契约
+- 进入交易热路径
+- 让较早的人工智能工作文件成为定论
+
+## 当前状态
+
+SIV 目前仅是一份规范架构契约。目前尚未实现任何 SIV 框架、智能体邮件、长期状态引擎、模型连接、本地/远程智能体协议、SAIV 组件、SMCV 转换器或 qxctl 控制。
+
+## 语言边界
+
+SIV 组件未设立任何 Rust 要求。组件所用语言将遵循最终的性能、可移植性、安全性和集成契约，而不是继承自任何工作文件。
+
+## SIV 与其他向量的关系
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/zh-Hans/skv/overview">
+    治理 SIV 的契约、演进以及官方发布关系。
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/zh-Hans/vectors/sov">
+    可通过 qxctl 提供由智能体调用的操作，同时保留由向量拥有的语义。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/zh-Hans/skv/sav">
+    评估任何由智能体组装的操作的组合与兼容性。
+  </Card>
+</CardGroup>

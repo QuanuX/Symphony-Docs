@@ -1,0 +1,50 @@
+---
+title: "Symphony Vektör Motorları için Bilgi Oturumu Koordinatörü"
+description: "Bilgi Oturumu Koordinatörü; sınırlı uyumluluk, çalışma ağacı uzlaştırması, kimliği doğrulanmış oturumlar ve uygulama yetenekli yaşam döngüsü koordinasyonunu C++26 ile sağlar."
+sidebarTitle: "Koordinatör"
+---
+
+Bilgi Oturumu Koordinatörü (`modules/knowledge-session-coordinator`), bağımsız olarak kurulabilen bir C++26 sürecidir. qxctl ile vektör motorları arasında yer alır ve sınırlı uyumluluğun, çalışma ağacı (worktree) uzlaştırmasının, kimliği doğrulanmış kanonik olmayan oturumların, SSFV bakımının, yalnızca rapor üreten yaşam döngüsü planlamasının ve ayrıca yetkilendirilmiş uygulama yetenekli günlüklerin sahibidir.
+
+## Sorumluluklar
+
+- qxctl, koordinatör ve motorlar arasında **uyumluluk kontrolleri**
+- Kalıcı, yuva (slot) tabanlı durumla **çalışma ağacı uzlaştırması**
+- SSIAG yetkisi altında **kimliği doğrulanmış kanonik olmayan oturumlar**
+- **Kalıcı SSFV bakım** akışları
+- Deterministik kanıtlarla **yalnızca rapor üreten yaşam döngüsü planlaması**
+- Hazırlanmış denemeler, karşılaştır ve değiştir (compare-and-swap), yeniden gözlem, dinamik yeniden planlama ve kurtarma içeren **uygulama yetenekli günlükler**
+
+## Koordinatörün yapmadıkları
+
+<Warning>
+  Koordinatör, vektör anlamlarını veya ana bilgisayar eylemlerini yürütmez. Kanıtları ve günlükleri koordine eder; her motor yine kendi alanının sahibidir ve her ana bilgisayar eylemi kendi sözleşmesiyle yetkilendirilmiş olarak kalır.
+</Warning>
+
+- Kanonik bilgi uygulaması yok
+- Keyfî komut yürütme yok
+- Gizli izleyiciler veya yerleşik arka plan işleri yok
+
+## qxctl entegrasyonu
+
+qxctl, makbuzla doğrulanmış kesin koordinatör kurulumlarını çağırır. `qxctl knowledge reconcile ...` ve `qxctl knowledge session ...`, işlem başına tam olarak bağlanmış tek bir koordinatör kullanır; değişiklikler ise karşılaştır ve değiştir için kararlı işlem tanımlayıcıları ile kesin mevcut günlük özetleri gerektirir.
+
+## İlgili yüzeyler
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/tr/qxctl/reconcile">
+    Çalışma ağacı uzlaştırma dil bilgisi.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/tr/qxctl/session">
+    Kimliği doğrulanmış oturum ve SSFV bakım dil bilgisi.
+  </Card>
+
+  <Card title="Temel kütüphane" icon="cube" href="/tr/engines/knowledge-vector-foundation">
+    Koordinatörün yeniden kullandığı paylaşılan C++ mekanizmaları.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/tr/governance/ssiag">
+    Koordinatörün yönettiği oturumları yetkilendirir.
+  </Card>
+</CardGroup>

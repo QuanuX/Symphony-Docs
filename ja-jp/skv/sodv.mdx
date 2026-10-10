@@ -1,0 +1,48 @@
+---
+title: "SODV: 公式ドキュメントとリリースのガバナンス"
+description: "SODV は、追記専用のリリース台帳チェック、呼び出し元が提供する観測の検証、使い捨てのリリースインベントリによって、QuanuX の公式な公開を管理します。"
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector（SODV）は、SKV フレームワーク内の知識が公式の公開ドキュメントやリリース記録になる方法を管理します。そのエンジンは個別にインストール可能な C++ プロセスであり、ローカルで追記専用のリリース台帳チェックを実行し、使い捨てのリリースインベントリを生成します。SODV 自体は何も公開しません。
+
+## 操作
+
+- **inspect と check**: リリース台帳の形状と連続性を検証します。
+- **verify**: 公開済み状態について、呼び出し元が提供する観測をチェックします。
+- **propose**: プロバイダー中立のリリース提案を受け付けます。
+- **recover**: 変更を伴わないリカバリーを実行します。
+- **project**: 使い捨てのリリースインベントリを出力します。
+
+## SODV が行わないこと
+
+- SODV はネットワークにアクセスしません。
+- SODV は GitHub、Mintlify、パッケージレジストリ、その他のいかなるサーフェスにも何も公開しません。
+- SODV はタグを作成せず、リリースの完了を宣言することもできません。
+- SODV はプロバイダーをランク付けしたり、特定の公開経路を優先したりしません。
+
+公開は、SODV のエビデンスを参照する、別途認可されたツールを通じて行われます。
+
+## 完了した SODV の公開
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    タグ `libraries/stav-protocol-go/v0.2.0` の `github.com/QuanuX/Symphony/libraries/stav-protocol-go`。
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    タグ `modules/stav-append-authority/v0.1.0` の `github.com/QuanuX/Symphony/modules/stav-append-authority`。
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    タグ `modules/stav-append-authority/v0.2.0` の `github.com/QuanuX/Symphony/modules/stav-append-authority`。
+  </Card>
+
+  <Card title="qxctl ベクターコマンド" icon="terminal" href="/ja-jp/qxctl/vector-commands">
+    `qxctl sodv ...` を実行して inspect、verify、propose、project を行います。
+  </Card>
+</CardGroup>
+
+<Note>
+  すべての SKV エンジンは、読み取り、クエリ、検証、提案のみを行います。正規 apply は、各エンジンの SSIAG、期待状態トランザクション、qxctl の保護機構、STAV イベント、リカバリー、ネガティブテストの各コントラクトが完成するまで無効化されています。
+</Note>

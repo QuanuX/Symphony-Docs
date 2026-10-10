@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, yuklash va qo'llash"
+description: "Himoyalangan hayot sikli profillari, egalik, kuzatishlar, yuklashlar va qo'llashga mos o'tishlarni qxctl orqali qat'iy compare-and-swap himoyalari bilan boshqaring."
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` grammatikasi himoyalangan profillar, egalik, kuzatishlar, yuklash jurnallari va qo'llashga mos o'tishlarni boshqaradi. Har bir o'zgarish compare-and-swap amali bo'lib, har bir qo'llash aniq dalillarga bog'langan.
+
+## Profil
+
+TOPS uchun himoyalangan hayot sikli profilini o'rnating:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Birinchi marta yaratilayotgan profil uchun `absent` ni yoki avvalgi o'qishda xabar berilgan aniq digest'ni bering.
+
+## Egalik
+
+- `ownership status`: sozlangan bitta umumiy ildizni tekshirish
+- `ownership reconcile`: uning dalillarini yangilash
+- `ownership adopt`: faqat har bir konservativ eski da'voni ko'rib chiqqandan keyin o'zlashtirish
+- `ownership release`: faqat ataylab qayta egallanadigan qilingan bitta aniq eski kvitansiya uchun bo'shatish
+
+<Warning>
+  Ildizga xos reyestrni yoki uning `symphony-root-ownership/1` kvitansiya-tuzilma moslik to'sig'ini hech qachon qo'lda o'chirmang yoki qayta yozmang. Eski hayot sikli mijozlari shu to'siqqa duch kelishi va mavjud noma'lum-paket blokerida to'xtashi kerak.
+</Warning>
+
+## Kuzatish, hisobot, yuklash
+
+- `observe`: bir martalik, qat'iy tuzilmali kvitansiya dalillarini chiqarish
+- `report`: yangi bir martalik reja tuzish
+- `boot`: barqaror amal ID'si va aniq jurnal holati bilan bardoshli, faqat hisobotli rivojlanish
+- `status`: v1 tekshiruvi
+- `recover --discover`: oddiy status mahalliy holatni tasdiqlay olmaganda yagona v1 zanjirini tiklash
+
+## Qo'llashga mos profillar
+
+`apply-compatible` profil uchun `apply` ni faqat aniq yuklash manbasi digest'i, qo'llash jurnali compare-and-swap'i, qo'llangan holat compare-and-swap'i, barqaror amal ID'si va aniq ko'rsatilgan tayyorlangan (staged) ildizlar bilan chaqiring:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Urinishni kuzatish uchun `apply-status` dan yoki bardoshli tiklash uchun cheklangan `apply-recover` dan foydalaning. Hech qachon amalni qo'lda tanlamang yoki himoyalangan holatni tahrirlamang.
+
+<Note>
+  Faqat vaqt belgisini yangilovchi kuzatish hujjat dalillarini o'zgartirishi, ammo barqaror semantik identifikatorlarni oldinga surmasligi kerak.
+</Note>
+
+## Bog'liq sahifalar
+
+<CardGroup cols={2}>
+  <Card title="Sessiya koordinatori" icon="gears" href="/uz/engines/coordinator">
+    Hayot sikli rejasi va qo'llashni muvofiqlashtiruvchi engine.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/uz/qxctl/engines">
+    Hayot sikli rejalarida havola qilingan engine bog'lashlarini boshqaring.
+  </Card>
+</CardGroup>

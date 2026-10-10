@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat y Nest en Symphony"
+description: "Descubre cómo Symphony modela la infraestructura física: el Node como ordenador físico, el Habitat como acondicionamiento exacto del sistema operativo y el Nest como carga de trabajo con el propósito del usuario."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony define tres conceptos físicos que separan la identidad del hardware, el acondicionamiento del software y la carga de trabajo del usuario. Estos conceptos mantienen diferenciadas las cuestiones de infraestructura para que puedas razonar sobre cada una de forma independiente.
+
+## Node
+
+Un **Node** (nodo) es el recurso informático físico de destino con recursos identificados específicamente. Desconectar, volver a conectar, reiniciar o volver a flashear únicamente el software no crea un nuevo Node físico. La destrucción, la sustitución física o un cambio material del hardware local sí lo hacen. Una encarnación de Node es una evidencia independiente que se crea cuando ese Node se conecta a un bus como participante en un sistema de trading, un clúster de investigación u otro sistema construido con Symphony.
+
+## Habitat
+
+Un **Habitat** es el acondicionamiento exacto del sistema operativo y los paquetes que se entrega a un Node para el trabajo que selecciones. Por defecto, incluye únicamente la superficie de software necesaria: sin paquetes no relacionados, runtimes ocultos, contenedores, Kubernetes ni virtualización implícita. Un Habitat amplio de propósito general sigue siendo una elección explícita válida del usuario.
+
+## Nest
+
+Un **Nest** sirve a un propósito que eliges tú. Se espera que la ejecución de estrategias en vivo sea habitual, y una estrategia puede contener muchas secciones de código modulares, pero Symphony no define el propósito del Nest ni lo equipara a un único archivo fuente, proceso, algoritmo, API de bróker o interfaz de datos. La lógica de la estrategia sigue siendo tu dominio.
+
+## Comparación
+
+| Concepto | Qué es | Qué lo cambia |
+| --- | --- | --- |
+| **Node** | Ordenador físico con recursos específicos | Destrucción física, sustitución o cambio material del hardware |
+| **Habitat** | Acondicionamiento exacto del sistema operativo y los paquetes en un Node | Selección explícita del usuario o acondicionamiento administrado por qxctl |
+| **Nest** | Carga de trabajo con el propósito del usuario entregada en un Habitat | Despliegue por parte del usuario de una estrategia u otro trabajo seleccionado |
+
+## Topología de clúster y de bus
+
+Varios Nodes forman un clúster solo cuando están conectados entre sí mediante uno o varios buses. Pueden coexistir varias estructuras de bus dentro de un mismo clúster, y una relación de Node en clúster puede identificar el bus pertinente sin cambiar la identidad del Node físico.
+
+Los adaptadores de bus como NATS JetStream y ZeroMQ son elegidos por el usuario, no forman parte de la doctrina. La transferencia pesada, el control, la investigación y los residuos de ejecución no tienen por qué compartir un único bus. Una topología puede usar varios buses o prescindir de un bus para una ruta declarada.
+
+## Ámbito de TOPS y TROG
+
+**TOPS** es el ámbito dominante del Trade Operating System. Un **TROG** es un ámbito de grupo de trading deliberadamente subordinado y no global. A pesar de la terminología histórica, un TROG no es necesariamente virtual. Su propiedad distintiva es que su ámbito y sus reglas no son universales.

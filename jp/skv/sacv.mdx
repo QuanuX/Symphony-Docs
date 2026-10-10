@@ -1,0 +1,52 @@
+---
+title: "SACV：QuanuX Symphony の API コントラクトガバナンス"
+description: "SACV は、範囲の限定された OpenAPI 3.2.0 チェック、決定論的な互換性差分、呼び出し元が宣言するレジストリ提案を通じて、ベクトル全体のバージョン管理された API コントラクトを管理します。"
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector（SACV）は、プラットフォーム全体でバージョン管理された API コントラクトを管理します。そのエンジンは個別にインストール可能な C++ プロセスであり、範囲の限定された OpenAPI 3.2.0 JSON の検証、決定論的な互換性差分、使い捨てのインベントリを実行します。エンドポイントのセマンティクスはドメインを所有するベクトルまたはモジュールに残り、SACV はコントラクトの形状と互換性を管理します。
+
+## 操作
+
+- **inspect と check**：OpenAPI 3.2.0 JSON ドキュメントが範囲の限定されたプロファイルに準拠していることを検証します。
+- **diff**：コントラクトのバージョン間で決定論的な互換性差分を計算します。
+- **propose**：新規または変更されたコントラクトについて、呼び出し元が宣言したレジストリ提案を受け付けます。
+- **project**：レビュアーや下流のツール向けに使い捨てのインベントリを出力します。
+
+## SACV が管理するもの
+
+SACV は次の範囲を規定します。
+
+- コントラクトの形状（SACV プロファイルを伴う OpenAPI 3.2.0）
+- バージョン間の互換性の分類
+- 受理されたコントラクトのレジストリメンバーシップ
+
+次のことは行いません。
+
+- エンドポイントのセマンティクスの所有（各ベクトルまたはモジュールが保持します）
+- SDK の生成、成果物の公開、トークンの発行
+- ライブのネットワークサーフェスが存在することの示唆（将来のプライベート API について言及しても、それが作成されるわけではありません）
+
+<Note>
+  SACV は読み取り、クエリ、検証、提案のみを行います。プログラムによる正規 apply は SKV エンジン全体で無効化されています。
+</Note>
+
+## 関連サーフェス
+
+<CardGroup cols={2}>
+  <Card title="SKV の概要" icon="book-open" href="/jp/skv/overview">
+    包括的なフレームワークと Contract Quad モデル。
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/jp/skv/sodv">
+    SACV に登録されたコントラクトの公式な公開を管理します。
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/jp/skv/sav">
+    宣言されたコンポーネント全体の構成と互換性を評価します。
+  </Card>
+
+  <Card title="qxctl ベクトルコマンド" icon="terminal" href="/jp/qxctl/vector-commands">
+    `qxctl sacv ...` を実行して inspect、check、diff、propose を行います。
+  </Card>
+</CardGroup>

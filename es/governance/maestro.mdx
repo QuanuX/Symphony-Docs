@@ -1,0 +1,43 @@
+---
+title: "Maestro: autoridad de presencia de motores de vectores de Symphony"
+description: "Maestro registra las relaciones de acoplamiento autenticadas de los motores de vectores por TOPS y receptor, y deriva un inventario completo de solo lectura sin iniciar ni supervisar motores."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) es una autoridad de presencia C++26 de freezing path, instalable de forma independiente. Registra las relaciones de acoplamiento autenticadas exactas de los motores de vectores por TOPS y receptor, y deriva un inventario completo de solo lectura de lo que está acoplado actualmente. Maestro es un testigo, no un supervisor.
+
+## Lo que registra Maestro
+
+- Relaciones de acoplamiento autenticadas exactas entre motores de vectores y receptores
+- Ámbito por TOPS, de modo que la presencia de cada instalación se mantiene privada para esa instalación
+- Un inventario derivado, completo y de solo lectura, disponible mediante `qxctl maestro inventory`
+
+## Lo que Maestro no hace
+
+<Warning>
+  Maestro no inicia, programa, supervisa ni invoca motores. Un enlace, una reconciliación, la coordinación de sesiones autenticadas o un plan de ciclo de vida por sí solos no establecen la presencia en Maestro, no ratifican la verdad semántica, no modifican el conocimiento canónico ni demuestran que el host instalado esté completo.
+</Warning>
+
+- Maestro no crea procesos.
+- Maestro nunca aplica cambios al conocimiento canónico.
+- Maestro nunca sustituye al motor de vector que es propietario de la semántica.
+
+## Superficies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/es/qxctl/maestro">
+    `qxctl maestro inventory` presenta el inventario derivado.
+  </Card>
+
+  <Card title="Coordinador de sesiones" icon="gears" href="/es/engines/coordinator">
+    Es propietario de las mecánicas de sesiones autenticadas y de reconciliación de worktrees.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/es/governance/ssiag">
+    Autentica las relaciones de acoplamiento que registra Maestro.
+  </Card>
+
+  <Card title="Descripción general de los motores" icon="cube" href="/es/engines/overview">
+    Motores de vectores instalables de forma independiente que se acoplan con Maestro.
+  </Card>
+</CardGroup>

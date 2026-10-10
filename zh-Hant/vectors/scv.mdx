@@ -1,0 +1,88 @@
+---
+title: "Symphony 雲端向量：供應商資源知識"
+description: "SCV 透過八個可獨立安裝的 C++ 引擎，維護有關 AWS、Azure、GCP、DigitalOcean、Cloudflare 與使用者自有硬體等異地供應商資源的私有知識。"
+sidebarTitle: "雲端向量"
+---
+
+Symphony 雲端向量（Symphony Cloud Vector，SCV）擁有關於異地硬體資源，以及影響你的叢集、訓練、研究與資料工作之供應商實際情況的私有語意知識。它會對應供應商的產品、區域、基礎架構網域、限制條件與觀察到的可用性，但不會為供應商排名，也不會限制你可以嘗試的事情。
+
+## 供應商涵蓋範圍
+
+SCV 涵蓋以下供應商與資源類型：
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- 使用者自有硬體（在需要與異地資源比較時）
+
+## 已安裝的引擎
+
+SCV 知識透過八個可獨立安裝的 C++ 引擎提供。你只需安裝所需的引擎：
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    用於供應商資源知識與圖形建構的核心 SCV 引擎。
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    用於有界擷取與語料庫語意的雲端證據引擎。
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare 專用的證據引擎。
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS 專用的硬體與資源知識引擎。
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure 專用的硬體與資源知識引擎。
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean 專用的資源知識引擎。
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP 專用的硬體與資源知識引擎。
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    選用的關聯式圖形連接器，使用 DuckDB 進行保留的 SQL 索引。
+  </Card>
+</CardGroup>
+
+## 可攜式供應商套件與組合
+
+SCV 透過 qxctl 提供可攜式供應商套件。你仍可掌控需求、供應商權限、配方替代方案與執行決策。qxctl 支援保留的工作流程與受保護的圖形選擇，因此你可以重播確切的證據，而無須重新查詢供應商。
+
+## 選用的 DuckDB 連接器
+
+`scv-graph-duckdb-connector` 為不可變的原生圖形新增有界的關聯式投影。DuckDB 是使用者選擇的預設 SQL 資料庫。未來你可以透過額外的配接器選擇專用的圖形引擎。
+
+## 隱私與主權
+
+已安裝的 SCV 知識圖屬於你的私有安裝。使用者提供的帳戶、餘額、權限與合約限制，只會透過明確啟用的觀察介面使用。私有事實不會進入 Symphony 官方的來源真相。
+
+## SCV 與其他向量的關係
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/zh-Hant/vectors/sov">
+    依據 SCV 證據採取行動的營運控制平面。SOV 不會改寫供應商的意義。
+  </Card>
+
+  <Card title="SNV" icon="server" href="/zh-Hant/vectors/snv">
+    記錄由參考 SCV 資訊的佈建所產生之實體 Node 與叢集的身分。
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/zh-Hant/vectors/shv">
+    擁有 SCV 所參照元件的詳細硬體能力知識。
+  </Card>
+</CardGroup>
+
+## 具版本的介面增量
+
+SCV 版本發布採累加式且具確切版本。較早的安裝仍可在其確切範圍內呼叫。目前的增量包括原生操作、語料庫快照、解讀設定檔、可攜式供應商套件、組合工作流程、義務追蹤與證據組合包。每個增量都會保留先前的路由、預設值與紀錄。
