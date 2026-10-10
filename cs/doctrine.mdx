@@ -1,0 +1,35 @@
+---
+title: "Doktrína platformy QuanuX Symphony"
+description: "Seznamte se s řídicími principy Symphony: vlastnictví strategie a infrastruktury uživatelem, neutralita vůči třídě volajícího, ochrana hot path a kompatibilita založená na důkazech."
+sidebarTitle: "Doktrína"
+---
+
+Doktrína Symphony vymezuje hranice mezi tím, co řídí platforma, a tím, co řídíte vy. Tato pravidla řídí každé návrhové rozhodnutí v monorepu a každou interakci s qxctl, vektorovými enginy a znalostními kontrakty.
+
+## Vlastnictví uživatelem
+
+Vlastníte logiku své strategie, účel svého Nestu, volbu poskytovatele, volbu hardwaru, topologii sběrnic a výběr podporovaných adaptérů. Symphony poskytuje přesné důkazy o kompatibilitě a podporované operace, ale z doporučení nedělá zákon platformy. Platforma hlásí shody, neshody, nevyřešená fakta a důsledky. Neřadí poskytovatele, nepředepisuje strategii ani potichu nerozšiřuje vaše prostředí.
+
+## Ochrana hot path
+
+Hot path je chráněna před rezidencí správních komponent a před nechtěným zatížením sdílené sběrnice. qxctl a znalostní rovina představují správu na studené (cold) nebo mrazivé (freezing) cestě. Mohou explicitně působit na Node, který zároveň hostuje živou práci, ale nesmějí se stát trvalými závislostmi hot path, skrytými pozorovateli, rezidentními interprety ani nevyžádanými správci balíčků běžícími na pozadí. Vaše explicitní architektura zůstává svrchovaná.
+
+## Oddělení příkazů a sémantiky
+
+qxctl vlastní gramatiku příkazů a jejich prezentaci. Doménové vektory vlastní operace a významy, které tyto příkazy zpřístupňují. Cesta qxctl vyvolává schopnost definovanou vlastníkem, aniž by přebírala její sémantiku.
+
+## Názvy a jmenné prostory
+
+Názvy se zaznamenávají v rámci rozsahu, který je vlastní. SNV a SCNV je nediktují a kořenový NAMESPACES zůstává širší než SNV. Název registrovaný v rámci TOPS nebo TROG se řídí tímto rozsahem. V rámci více clusterů se krátký název Node může opakovat v různých clusterech, ale nesmí nejednoznačně identifikovat dva aktivní Nody ve stejném clusteru.
+
+## Neutralita vůči třídě volajícího
+
+Klasifikace volajícího jako člověka, AI, agenta, služby nebo workloadu oprávnění neuděluje ani neodebírá. Podporovaná autorizační rozhodnutí vycházejí z vlastnictví cílového hostitele nebo udělených oprávnění, požadované operace a prostředku, očekávaného stavu a ochranných opatření nakonfigurovaných vlastníkem. Administrátor cílového hostitele je svrchovaný nad konfigurovatelnou správou. SSIAG může ověřovat a promítat efektivní oprávnění hostitele, ale nevytváří nadřazenou registrační autoritu. Rozšířené ověření identity a správní blokace jsou ochranná opatření neutrální vůči volajícímu a konfigurovaná vlastníkem. Požadavky na integritu protokolu zůstávají povinné. Symphony nerozhoduje o externí právní ani finanční způsobilosti podle typu volajícího.
+
+## Pravda a důkazy
+
+Aktuální kontrakty popisují aktuální pravdu. Neměnné záznamy SCLV a SODV uchovávají, co bylo známo, změněno, autorizováno nebo dokončeno v zaznamenaném okamžiku historie. Pokud se aktuální kontrakty, důkazy o implementaci a nejnovější relevantní záznam rozcházejí, rozpor se zobrazí jako drift k posouzení. Historie se nikdy potichu nepřepisuje, aby se podobala přítomnosti.
+
+## Doktrína ohledně Pythonu
+
+Vlastní zdrojový kód Symphony, generátory, tvorba schémat, testy a pomocné nástroje pro akceptaci nevyžadují žádnou implementaci v Pythonu ani závislost na jeho interpretu. Náhradní nástroje pro tvorbu a testování procesů vlastní C++. Tato zásada repozitáře neomezuje vaše vlastní programy ani explicitně vybrané izolované Habitaty.

@@ -1,0 +1,65 @@
+---
+title: "Engine SHV: nguồn và đồ thị của Symphony Hardware Vector"
+description: "Các engine SHV lập danh mục CPU, GPU, NIC, bộ nhớ và lưu trữ với khả năng phát lại nguồn được lưu giữ, đánh giá yêu cầu, nạp PDF và đồ thị DuckDB bền vững."
+sidebarTitle: "Engine SHV"
+---
+
+Các engine Symphony Hardware Vector (SHV) lập danh mục bộ xử lý, cấu trúc CPU, bộ nhớ đệm, GPU, NIC và giao diện cáp quang, bo mạch chủ, RAM và NVMe. Việc tuyển chọn mặc định ưu tiên các linh kiện gốc và các biến thể có bằng chứng. Mọi engine đều có thể cài đặt độc lập và chỉ đọc.
+
+## Các engine
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Lõi phần cứng: phạm vi bao phủ do bên gọi xác định, phát lại danh mục từ nguồn được lưu giữ, đánh giá yêu cầu và chiếu đồ thị.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Nạp nguồn và xử lý bản sửa đổi cho bằng chứng phần cứng.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Đánh giá hồ sơ linh kiện và hệ thống.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Phân vùng phần cứng đã lập danh mục để lựa chọn có thể tái tạo.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Xuất bản và lựa chọn danh mục cục bộ có quản trị.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Surface truyền tải đồ thị tường minh.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Lưu trữ đồ thị bền vững dựa trên DuckDB, được quản trị thông qua qxctl.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Diễn giải nguồn PDF cho các bảng thông số phần cứng.
+  </Card>
+</CardGroup>
+
+## Điểm nổi bật về quản trị
+
+- **Lưu trữ bền vững** chỉ được quản trị thông qua `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` với digest ý định mong đợi được lưu giữ cũng chính là thao tác khôi phục; không có bí danh khôi phục riêng.
+- **Xuất bản danh mục** chỉ được quản trị thông qua `shv catalogue publication inspect|plan|apply|status|schema|template`. Việc khôi phục là `apply --operation-id`, loại trừ lẫn nhau với `--input`.
+- **Kiểm kê** (bản phát hành 0.2) bổ sung `shv graph store inventory`: một thao tác đọc logic gắn với bản sửa đổi, với các định danh trình ghi được lưu giữ tường minh. Cơ chế chọn 0.1 cũ vẫn được hỗ trợ.
+
+<Note>
+  Các lớp phần cứng là dữ liệu ánh xạ và hồ sơ của bên gọi, không phải các cây lệnh trùng lặp. `--version` chọn chính xác chủ sở hữu chính; `--source-version` và `--adapter-version` chỉ định các phụ thuộc được chọn riêng biệt. Các bản sửa đổi schema và ánh xạ là định danh dữ liệu, không phải bí danh cho các phiên bản engine đã cài đặt.
+</Note>
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="Vector SHV" icon="microchip" href="/vi/vectors/shv">
+    Contract Hardware Vector mà các engine này triển khai.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Tài liệu tham khảo đầy đủ về ngữ pháp `shv ...`.
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session : sessions Symphony authentifiées"
+description: "Ouvrez, enregistrez des points de contrôle, fermez et récupérez des sessions authentifiées du coordonnateur Symphony ainsi que des flux de maintenance SSFV persistants avec des autorisations vérifiées par SSIAG."
+sidebarTitle: "session"
+---
+
+La grammaire `qxctl knowledge session ...` ouvre des sessions authentifiées non canoniques par l'entremise d'un seul coordonnateur lié exact et d'un seul point de terminaison SSIAG de portée TOPS. Une grammaire distincte, `session features ...`, pilote le flux de maintenance SSFV persistant.
+
+## Grammaire de session de base
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Chaque appel demande une nouvelle autorisation exacte et valide :
+
+- L'identité du sujet et de la cible
+- L'état de la politique et de la configuration
+- L'expiration
+- La neutralité quant à la classe de l'appelant
+- La non-transférabilité
+- La désactivation de l'application canonique
+- La liaison des capacités
+
+Les preuves de session n'autorisent que l'opération non canonique protégée nommée. Gardez les journaux de session et de réconciliation séparés; utilisez des références de contexte uniquement pour les associer.
+
+## Flux de maintenance SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Le flux features est un contexte de maintenance SSFV persistant distinct. Les mutations exigent :
+
+- Une session de base authentifiée ouverte
+- Des liaisons exactes au coordonnateur et à SSFV
+- Des identifiants d'opération stables
+- Une opération compare-and-swap exacte
+- Des preuves SSIAG récentes
+
+<Note>
+  Conservez l'instantané de référence et l'identité de son moteur d'origine lors des mises à niveau ou des retours en arrière compatibles. Les preuves Maestro facultatives doivent constituer un inventaire authentifié complet; lorsque Maestro est intentionnellement absent, consignez la raison explicite de non-configuration. `review_required` est une preuve destinée à l'examen par l'appelant, et non une ratification.
+</Note>
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/fr-CA/governance/ssiag">
+    Émet les nouvelles autorisations que valide chaque demande de session.
+  </Card>
+
+  <Card title="Coordonnateur de session" icon="gears" href="/fr-CA/engines/coordinator">
+    Le moteur qui soutient les journaux de session et de features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fr-CA/qxctl/reconcile">
+    Contextes de réconciliation associés aux sessions.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fr-CA/skv/ssfv">
+    Le vecteur de fonctionnalités que maintient le flux features.
+  </Card>
+</CardGroup>

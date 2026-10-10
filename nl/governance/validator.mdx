@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministische alleen-lezen controles van de repository"
+description: "De Symphony Validator produceert regel- of gestructureerd JSON-bewijs voor contracten, bronafsluiting, invarianten, functies, releases en de machinaal gecontroleerde rootsamenvatting."
+sidebarTitle: "Validator"
+---
+
+De Symphony Validator (`tools/symphony-validator`) is een onafhankelijke, deterministische, alleen-lezen C++26-repositorychecker. Hij produceert onveranderlijk bewijs over de huidige status van de repository en de contracten ervan. Hij kan niets repareren of publiceren.
+
+## Wat de validator controleert
+
+- Contractvorm: vereiste ankers en structuur van de Contract Quad
+- Huidige bronafsluiting over door SKVI geïndexeerde oppervlakken
+- Eigendom van invarianten volgens `knowledge/INVARIANTS.md` en het invariantenregister
+- Verwachtingen voor functiebeheer zoals gerapporteerd door SSFV
+- Releaserecords zoals gerapporteerd door SODV
+- De machinaal beheerde rootsamenvatting in de README van de repository
+
+Bewijs wordt uitgegeven als regeluitvoer of gestructureerde JSON. Elke uitvoer is reproduceerbaar vanuit dezelfde repositorystatus.
+
+## Wat de validator niet doet
+
+<Warning>
+  De validator kan geen bestanden repareren, contracten herschrijven of de repository publiceren. Hij creëert geen enkele canonieke waarheid; hij rapporteert die alleen.
+</Warning>
+
+- Geen neveneffecten op de repository
+- Geen netwerktoegang
+- Geen onderdrukking van waarschuwingen buiten het beschermde waarschuwingsbeleid van qxctl
+
+## Integratie met qxctl
+
+qxctl valideert het exacte ontvangstbewijs en de gestructureerde digests van de validator voordat het beschermde waarschuwingsbeleid wordt toegepast. Negen beschermde qxctl-leaves voor de waarschuwingslifecycle plus de exacte, door een ontvangstbewijs ondersteunde route voor de rootsamenvatting stellen validatiebeheer beschikbaar zonder het ruwe detectorbewijs te wijzigen.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/nl/qxctl/validate">
+    Grammatica voor beschermd waarschuwingsbeleid, baseline en weergave.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/nl/skv/ssfv">
+    Verwachtingen voor functiebeheer die door de validator worden gecontroleerd.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/nl/skv/sodv">
+    Releaserecords die de validator inspecteert.
+  </Card>
+
+  <Card title="SKV-overzicht" icon="book-open" href="/nl/skv/overview">
+    Het overkoepelende framework waarvan de validator de contracten controleert.
+  </Card>
+</CardGroup>

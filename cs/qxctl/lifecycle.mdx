@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profil, boot a apply"
+description: "Spravujte chráněné profily životního cyklu, vlastnictví, pozorování, booty a přechody kompatibilní s apply přes qxctl s přísnými pojistkami compare-and-swap."
+sidebarTitle: "lifecycle"
+---
+
+Gramatika `qxctl knowledge lifecycle ...` spravuje chráněné profily, vlastnictví, pozorování, žurnály bootu a přechody kompatibilní s apply. Každá mutace je compare-and-swap a každé apply je vázáno na přesné důkazy.
+
+## Profil
+
+Nastavte chráněný profil životního cyklu pro TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Pro první profil zadejte `absent`, jinak přesný digest hlášený dřívějším čtením.
+
+## Vlastnictví
+
+- `ownership status`: prozkoumá jeden nakonfigurovaný sdílený kořen
+- `ownership reconcile`: obnoví jeho důkazy
+- `ownership adopt`: převezme vlastnictví až po kontrole každého konzervativního starého nároku
+- `ownership release`: uvolní pouze pro jednu přesnou starou stvrzenku, která byla záměrně učiněna znovu nárokovatelnou
+
+<Warning>
+  Nikdy ručně nemažte ani nepřepisujte registr lokální pro kořen ani jeho bariéru kompatibility rozložení stvrzenek `symphony-root-ownership/1`. Starší klienti životního cyklu musí na tuto bariéru narazit a zastavit se na svém stávajícím blokátoru neznámého balíčku.
+</Warning>
+
+## Pozorování, report, boot
+
+- `observe`: emituje jednorázové důkazy stvrzenek s pevným rozložením
+- `report`: vytvoří nový jednorázový plán
+- `boot`: trvalý postup pouze s reportem se stabilním ID operace a přesným stavem žurnálu
+- `status`: inspekce v1
+- `recover --discover`: obnoví jedinečný řetězec v1, když běžný status nedokáže ověřit místní stav
+
+## Profily kompatibilní s apply
+
+U profilu `apply-compatible` volejte `apply` pouze s přesným digestem zdroje bootu, compare-and-swap žurnálu apply, compare-and-swap aplikovaného stavu, stabilním ID operace a explicitními připravenými kořeny:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Pro sledování pokusu použijte `apply-status`, pro trvalou obnovu ohraničený `apply-recover`. Nikdy nevolte akci ručně ani neupravujte chráněný stav.
+
+<Note>
+  Obnovení pozorování, které mění pouze časové razítko, musí změnit důkazy dokumentu, aniž by posunulo stabilní sémantické identity.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Engine stojící za koordinací plánů a apply životního cyklu.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/cs/qxctl/engines">
+    Správa vazeb enginů, na které odkazují plány životního cyklu.
+  </Card>
+</CardGroup>

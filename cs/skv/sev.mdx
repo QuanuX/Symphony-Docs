@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector pro plánované změny"
+description: "SEV vyhodnocuje plánované změny, novost a přechody životního cyklu pomocí deterministických případů, množin připravených závislostí, jednorázových grafů a neaplikujících doporučení k obnově."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) vlastní případy plánovaných změn a zjištěné novosti napříč platformou. Jeho engine je proces v C++26 pouze pro čtení na zmrazovací cestě (freezing-path). SEV nesleduje hostitele ani neaplikuje přechody; vytváří důkazy a doporučení k dispozici.
+
+## Operace
+
+- **Vyhodnocení případů**: deterministické případy evoluce pro přidání, změny, přejmenování, nahrazení, zastarání, vyřazení a odstranění.
+- **Plánování dopadu a dispozice**: přiřadí každý případ jeho autoritativním vlastníkům.
+- **Přepočet množiny připravených závislostí**: odvodí bezpečné pořadí závislých přechodů.
+- **Ověření přechodu**: potvrdí, že pozorovaný stav po přechodu odpovídá očekávanému tvaru.
+- **Doporučení k obnově**: popíše bezpečné kroky vpřed nebo zpět, když je přechod přerušen.
+- **Posouzení SCSEV**: první spravovaný profil SEV uplatňuje tyto operace na evoluci znalostních ploch, která se týká pouze dokumentace.
+- **Kontroly novosti a sledování**: detekují nové nebo neočekávané plochy, které vyžadují pozornost recenzenta.
+- **Slučování spouštěčů** a **vazba na relaci životního cyklu**: omezují duplicitní vyhodnocení a vážou případy na relaci.
+- **Projekce grafů**: jednorázové grafy ke kontrole.
+
+## Profil SCSEV
+
+SCSEV znovu využívá správu funkcí SSFV, stabilní pravdu o příkazech qxctl a deskriptory operací enginů. Nevytváří duplicitní engine ani registr. První část enginu slouží pouze k reportování a navrhování; trvalá externí akce zůstává samostatně autorizována prostřednictvím qxctl a koordinátoru znalostních relací.
+
+<Note>
+  SEV slouží pouze ke čtení, dotazování, validaci a navrhování. Kanonické apply zůstává napříč rodinou enginů SKV zakázáno.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující framework a model Contract Quad.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cs/skv/ssfv">
+    Správa funkcí znovu využívaná profilem SCSEV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cs/skv/sav">
+    Vyhodnocení kompozice a kompatibility pro změněné komponenty.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Ratifikovaná gramatika evoluce přibude jako `qxctl evolution ...`, jakmile bude implementována.
+  </Card>
+</CardGroup>

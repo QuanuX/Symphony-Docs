@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: vektorien välinen elinkaaren hallinta"
+description: "qxctl knowledge -komentoryhmä vastaa vektorien välisestä elinkaaresta, istunnon siirtymistä, invarianttikyselyistä ja pysyvän SSFV-ylläpidon hallinnasta."
+sidebarTitle: "knowledge"
+---
+
+`qxctl knowledge ...` -ryhmä vastaa vektorien välisestä elinkaaresta ja pysyvien SSFV-istuntojen hallinnasta. Se on lähtökohta koordinaattorin tukemille operaatioille ja validaattoriin kohdistuville invarianttikyselyille.
+
+## Istunnon siirtymä
+
+Käytä komentoa `qxctl knowledge session transition` ilmoittaaksesi isännän elinkaaritapahtumasta olemassa olevalle istunnolle:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Turvalliset uudelleenyritykset käyttävät samaa tapahtumatunnistetta. Lisää `--recover` vain, kun tarkoituksena on löytöpalautus vahingoittuneista paikallisista istuntotodisteista; se ei palauta epäämistä, yhteensopimatonta kriittistä tilaa eikä monitulkintaisuutta.
+
+<Warning>
+  Symphony ei asenna tämän komennon kautta kirjautumiskoukkua, valvojaa eikä käynnistysyksikköä. Käytä sitä vain, kun eksplisiittinen isännän elinkaari-integraatio tarjoaa vakaan tapahtumaidentiteetin.
+</Warning>
+
+## Invarianttikyselyt
+
+Neljä lehtikomentoa sitoo `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` sitoo lisäksi `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Suorat kyselylehdet tuottavat `symphony.knowledge.invariant-query-result.v1` -tuloksen, jossa `semantic_validity=not_asserted`. `check` palauttaa validaattorin tarkan ja täydellisen tuloksen ja säilyttää paluukoodin 26.
+
+## Alikomentoryhmät
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/fi/qxctl/lifecycle">
+    Profiili, omistajuus, havainnointi, raportointi, käynnistys, soveltaminen ja palautus.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/fi/qxctl/engines">
+    Moottorien sidontarekisterin list, inspect, doctor, bind, unbind ja migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/fi/qxctl/reconcile">
+    Koordinaattorin työpuiden täsmäytyksen kielioppi.
+  </Card>
+
+  <Card title="session" icon="key" href="/fi/qxctl/session">
+    Todennetut istunnot ja SSFV-ylläpitovirrat.
+  </Card>
+</CardGroup>

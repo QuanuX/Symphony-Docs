@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: sidonta, diagnostiikka ja rekisterin migraatio"
+description: "Hallitse Symphonyn suojattua käyttäjätason moottorien sidontaprofiilia qxctl:n komennoilla list, inspect, doctor, bind, unbind sekä digestiin sidotulla migrate-komennolla."
+sidebarTitle: "engines"
+---
+
+`qxctl knowledge engines ...` -kielioppi hallitsee Symphonyn vektorimoottorien suojattua käyttäjätason `default`-sidontaprofiilia. Se sitoo valitun sisällön myöhempää täsmäytystä varten. Se ei asenna, kutsu, aktivoi, telakoi, todenna, valtuuta tai sovella moottoria.
+
+## Komennot
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Anna `absent` ensimmäiselle v2-rekisterin muutokselle tai `list`-komennon raportoima tarkka digest myöhemmille muutoksille. Jokainen muutos on compare-and-swap-operaatio kyseistä digestiä vasten.
+
+## Migraatio v1:stä v2:een
+
+<Warning>
+  Kelvollinen v1-rekisterin tila pysyy luettavana. Migraatio v2:een on erillinen tarkka compare-and-swap-operaatio, eikä se koskaan ole versionvalintaoperaatio. Älä käsittele migraatiota moottorin valinnan päivityspolkuna.
+</Warning>
+
+- `list` ja `inspect` toimivat edelleen v1-todisteilla.
+- `migrate` tuottaa linkitetyn v2-sukupolven hylkäämättä v1-totuutta.
+- Käytä migraation jälkeen v2-digestejä tuleviin muutoksiin.
+
+## Mitä sidonta on
+
+Sidonta valitsee tarkan sisällön koordinaattorin myöhempää täsmäytystä varten. Se:
+
+- Ei asenna moottoria
+- Ei kutsu eikä aktivoi moottoria
+- Ei telakoi moottoria Maestroon
+- Ei todenna kutsujaa
+- Ei valtuuta soveltamista
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fi/qxctl/reconcile">
+    Täsmäytä sidottu sisältö koordinaattorin kanssa.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/fi/qxctl/lifecycle">
+    Elinkaarisuunnitelmat, jotka käyttävät sidottuja moottoreita.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/fi/governance/maestro">
+    Läsnäoloauktoriteetti, joka kirjaa telakoinnit, ei sidontoja.
+  </Card>
+
+  <Card title="Moottorien yleiskatsaus" icon="cube" href="/fi/engines/overview">
+    Itsenäisesti asennettavat vektorimoottorit.
+  </Card>
+</CardGroup>

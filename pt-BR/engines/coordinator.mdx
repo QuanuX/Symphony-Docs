@@ -1,0 +1,50 @@
+---
+title: "Coordenador de sessões de conhecimento para as engines de vetor do Symphony"
+description: "O Knowledge Session Coordinator oferece compatibilidade delimitada, reconciliação de worktrees, sessões autenticadas e coordenação de ciclo de vida com capacidade de aplicação em C++26."
+sidebarTitle: "Coordenador"
+---
+
+O Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) é um processo C++26 instalável de forma independente. Ele fica entre o qxctl e as engines de vetor e é responsável pela compatibilidade delimitada, pela reconciliação de worktrees, pelas sessões não canônicas autenticadas, pela manutenção do SSFV, pelo planejamento de ciclo de vida apenas com relatórios e pelos journals com capacidade de aplicação autorizados separadamente.
+
+## Responsabilidades
+
+- **Verificações de compatibilidade** entre o qxctl, o coordenador e as engines
+- **Reconciliação de worktrees** com estado durável baseado em slots
+- **Sessões não canônicas autenticadas** sob a autoridade do SSIAG
+- **Fluxos persistentes de manutenção do SSFV**
+- **Planejamento de ciclo de vida apenas com relatórios**, com evidências determinísticas
+- **Journals com capacidade de aplicação**, com tentativas preparadas, compare-and-swap, nova observação, replanejamento dinâmico e recuperação
+
+## O que o coordenador não faz
+
+<Warning>
+  O coordenador não executa semântica de vetores nem ações no host. Ele coordena evidências e journals; cada engine continua dona do seu domínio, e cada ação no host continua autorizada pelo seu próprio contrato.
+</Warning>
+
+- Nenhuma aplicação de conhecimento canônico
+- Nenhuma execução arbitrária de comandos
+- Nenhum observador oculto nem trabalho residente em segundo plano
+
+## Integração com o qxctl
+
+O qxctl invoca instalações exatas do coordenador validadas por recibo. `qxctl knowledge reconcile ...` e `qxctl knowledge session ...` usam exatamente um coordenador vinculado por operação, e as mutações exigem identificadores de operação estáveis, além dos digests exatos do journal atual para o compare-and-swap.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/pt-BR/qxctl/reconcile">
+    Gramática de reconciliação de worktrees.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pt-BR/qxctl/session">
+    Gramática de sessões autenticadas e de manutenção do SSFV.
+  </Card>
+
+  <Card title="Biblioteca de fundação" icon="cube" href="/pt-BR/engines/knowledge-vector-foundation">
+    Mecânicas compartilhadas em C++ que o coordenador reutiliza.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/pt-BR/governance/ssiag">
+    Autoriza as sessões que o coordenador gerencia.
+  </Card>
+</CardGroup>

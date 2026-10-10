@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector pro změny zdrojů"
+description: "SCLV vede účetní knihu dokončených změn zdrojů (pouze připisování) s návrhy nezávislými na poskytovateli, nemutující obnovou a jednorázovými projekcemi záznamů."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) zaznamenává změny provedené v plochách SKV v průběhu času. Jeho engine je nezávisle instalovatelný proces v C++, který provádí deterministické kontroly účetní knihy (pouze připisování) a vytváří jednorázové projekce. Do účetní knihy se zapisuje až po dokončení podstatné změny zdrojů.
+
+## Operace
+
+- **Inspect a check**: ověří tvar, kontinuitu a důkazy účetní knihy.
+- **Propose (v3)**: přijímá návrhy nových záznamů deklarované volajícím a nezávislé na poskytovateli.
+- **Recover**: provádí nemutující obnovu přerušeného nebo nejednoznačného stavu.
+- **Project**: na požádání emituje jednorázové inventáře stavu účetní knihy.
+
+## Přijetí a vyřazení
+
+Každý přijatý záznam SCLV váže aktuální indexované důkazy v okamžiku svého zápisu. Pozdější legitimní vyřazení plochy zachovává neměnný historický původ, aniž by nutilo vracet smazaný aktuální text zpět do SKVI. Historie zůstává historií; aktuální pravda zůstává aktuální.
+
+## Co SCLV nedělá
+
+- SCLV nevytváří ani neschvaluje změny zdrojů.
+- SCLV nepřepisuje existující záznamy; pouze připisuje.
+- SCLV nic nepublikuje. Veřejná projekce patří SODV.
+
+<Note>
+  Každý aktuální engine SKV slouží pouze ke čtení, dotazování, validaci a navrhování. Kanonické apply je zakázáno, dokud nebudou dokončeny úplné kontrakty autority a auditu každého enginu.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/cs/skv/skvi">
+    Indexuje aktuální kanonickou pravdu, na kterou se záznamy SCLV vážou.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Spravuje oficiální veřejnou projekci informací z účetní knihy.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/cs/skv/sev">
+    Případy evoluce posuzují změny dříve, než je SCLV zaznamená.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Spusťte `qxctl sclv ...` pro inspect, check, propose a recover.
+  </Card>
+</CardGroup>

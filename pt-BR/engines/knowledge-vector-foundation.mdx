@@ -1,0 +1,53 @@
+---
+title: "Fundação C++ das engines do Knowledge Vector: mecânicas compartilhadas"
+description: "A fundação C++ das engines do Knowledge Vector fornece enquadramento de processos sem autoridade, JSON delimitado, SHA-256, snapshots, recibos e descoberta explícita de manifestos."
+sidebarTitle: "Biblioteca de fundação"
+---
+
+`libraries/knowledge-vector-engine-cpp` fornece as mecânicas compartilhadas em C++, sem autoridade, que todas as engines de vetor do Symphony reutilizam. Ela oferece blocos de construção determinísticos para que cada engine possa permanecer delimitada, reproduzível e livre de efeitos colaterais do ambiente.
+
+## O que a fundação oferece
+
+- **Enquadramento de processos**: protocolo de processos local e sem autoridade usado por todas as engines
+- **JSON delimitado**: análise e emissão estritas com limites explícitos de tamanho e profundidade
+- **SHA-256**: endereçamento por conteúdo para evidências e recibos
+- **Leituras sem seguir links**: leituras do sistema de arquivos que nunca percorrem links simbólicos inesperadamente
+- **Snapshots determinísticos**: snapshots repetíveis do estado inspecionado
+- **Validação temporal**: tratamento canônico de UTC conforme o Symphony Temporal Semantics Contract
+- **Descoberta de manifestos do proprietário**: descoberta exata dos manifestos de contrato
+- **Empacotamento versionado**: pacotes instaláveis de forma independente e de propriedade de recibos
+- **Recibos e desinstalação de propriedade do recibo**: desinstalação conduzida apenas pelo recibo que instalou o artefato
+
+## Limite da descoberta de manifestos
+
+<Warning>
+  A descoberta de manifestos começa a partir de um conjunto fixo de bootstrap e percorre apenas declarações subordinadas explícitas. Ela nunca faz uma varredura ambiente do repositório nem infere a propriedade a partir de nomes de diretórios.
+</Warning>
+
+Toda engine de vetor que consome a fundação herda essa regra.
+
+## O que a fundação não faz
+
+- Ela não carrega autoridade. As engines que a utilizam ainda precisam autorizar mutações por meio do SSIAG.
+- Ela não publica nem busca nada pela rede.
+- Ela não altera arquivos canônicos por conta própria.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Coordenador de sessões" icon="gears" href="/pt-BR/engines/coordinator">
+    Coordenador C++26 construído sobre a fundação para sessões e reconciliação.
+  </Card>
+
+  <Card title="Visão geral das engines" icon="cube" href="/pt-BR/engines/overview">
+    As engines que reutilizam a fundação.
+  </Card>
+
+  <Card title="Visão geral do SKV" icon="book-open" href="/pt-BR/skv/overview">
+    Contratos de vetor que as engines implementam.
+  </Card>
+
+  <Card title="Visão geral do qxctl" icon="terminal" href="/pt-BR/qxctl/overview">
+    CLI administrativa que invoca engines exatas validadas por recibo.
+  </Card>
+</CardGroup>

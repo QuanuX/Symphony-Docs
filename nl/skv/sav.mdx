@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector voor compositie-evaluatie"
+description: "SAV lost Accord-verwijzingen op, evalueert compositie langs drie assen, valideert Named Versions en plant Installation Blueprints zonder de canonieke waarheid te wijzigen."
+sidebarTitle: "SAV"
+---
+
+De Symphony Accordare Vector (SAV) lost gedeclareerde componentcompositie en compatibiliteit op. De engine is een alleen-lezen C++26-proces op het freezing-pad. SAV stelt exacte, getypeerde projecties samen, maar neemt nooit de bronwaarheid over van de eigenaarvectoren.
+
+## Bewerkingen
+
+SAV ondersteunt een uitgebreide set evaluatiebewerkingen:
+
+- **Oplossen van Accord-verwijzingen** naar onveranderlijke, afgeleide CURRENT-snapshots
+- **Evaluatie langs drie assen**, vergelijking en uitleg
+- **Compositiegrafen** en wegwerpbare projecties
+- Validatie en diff van **Named Versions**
+- Controles van **Extension Capsules**
+- Planning van **Installation Blueprints**
+- **Compatibiliteitsonderhandeling** tussen gedeclareerde componenten
+
+## Wat SAV niet doet
+
+- SAV neemt geen semantisch eigendom van de componenten die het samenstelt.
+- SAV kiest geen ontwerp voor u; het evalueert wat u hebt gedeclareerd.
+- SAV wijzigt geen canonieke bestanden. De uitvoer bestaat uit bewijs en voorstellen.
+- SAV is niet de STAV-append-autoriteit. Zie de Accordare STAV-producer voor de afhandeling van intenties vóór mutatie.
+
+<Note>
+  SAV is uitsluitend bedoeld voor lezen, query's, valideren en voorstellen. Programmatische canonieke apply blijft uitgeschakeld in de hele SKV-enginefamilie.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Overzicht van SKV" icon="book-open" href="/nl/skv/overview">
+    Het overkoepelende framework en het Contract Quad-model.
+  </Card>
+
+  <Card title="Accordare-producer" icon="pen-nib" href="/nl/governance/accordare-producer">
+    Begrensd auditcircuit voor SAV Named Versions.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/nl/skv/sev">
+    Evolutiecases die een SAV-evaluatie van compositiewijzigingen activeren.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Bekrachtigde Accordare-grammatica komt beschikbaar als `qxctl accord ...` zodra die is geïmplementeerd.
+  </Card>
+</CardGroup>

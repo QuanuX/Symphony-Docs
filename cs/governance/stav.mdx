@@ -1,0 +1,54 @@
+---
+title: "STAV: auditní ledger pouze pro připojování pro každý TOPS v Symphony"
+description: "STAV Append Authority provozuje auditní ledgery pouze pro připojování pro každý TOPS s autentizovanou IPC, trvalostí fsync před potvrzením, ohraničeným čtením, ověřováním a obnovou."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) definuje protokol auditního ledgeru pouze pro připojování (append-only) pro každý TOPS. Jeho běhová autorita sídlí v `modules/stav-append-authority`, samostatně instalovatelné službě v Go. Provozní ledgery jednotlivých TOPS jsou soukromé pro každou instalaci TOPS; nejsou obsahem SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` poskytuje:
+
+- Auditní ledgery pouze pro připojování pro každý TOPS
+- Vzájemně autentizovanou lokální IPC
+- Přesná oprávnění pro producenty a čtenáře
+- Trvalost fsync před vydáním potvrzení
+- Ohraničené čtení, ověřování a obnovu
+- Registraci a nativní dohled (launchd, systemd)
+
+<Warning>
+  qxctl nikdy nezískává přímé oprávnění k připojování. Koordinuje registraci, ověřování a udělování oprávnění prostřednictvím přesného adaptéru vlastněného modulem, ale připojování do ledgeru zůstává zapečetěno uvnitř procesu autority pro připojování.
+</Warning>
+
+## Protokol STAV pro Go
+
+`libraries/stav-protocol-go` je knihovna v Go bez oprávnění, která implementuje kanonický kodek STAV v1, striktní validaci, digesty, rámování, pravidla shody a uzavřený slovník producentů. Kterýkoli producent nebo čtenář může protokol přijmout, aniž by zdědil oprávnění.
+
+## Dokončené publikace SODV
+
+Každý artefakt STAV, který je aktuálně publikován prostřednictvím SODV, je verzí zdrojového modulu v Go, nikoli binárním vydáním:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/cs/governance/ssiag">
+    Autorizuje chráněné změny, které STAV následně audituje.
+  </Card>
+
+  <Card title="Producent Accordare" icon="pen-nib" href="/cs/governance/accordare-producer">
+    Odesílá do STAV záměry před změnou a konečné výsledky.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/cs/qxctl/lifecycle">
+    Správa životního cyklu, která spolupracuje s registrací STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Řídí oficiální záznamy o publikaci komponent STAV.
+  </Card>
+</CardGroup>

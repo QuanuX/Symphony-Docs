@@ -1,0 +1,48 @@
+---
+title: "SCLV : Symphony Change Ledger Vector pour les modifications de source"
+description: "SCLV tient un registre en ajout seul des modifications de source achevées, avec des propositions neutres vis-à-vis des fournisseurs, une récupération sans mutation et des projections jetables."
+sidebarTitle: "SCLV"
+---
+
+Le Symphony Change Ledger Vector (SCLV) consigne au fil du temps les modifications apportées aux surfaces SKV. Son moteur est un processus C++ installable indépendamment qui effectue des vérifications déterministes du registre en ajout seul et produit des projections jetables. Le registre n’est écrit qu’une fois une modification de source substantielle achevée.
+
+## Opérations
+
+- **Inspect et check** : valider la forme, la continuité et les preuves du registre.
+- **Propose (v3)** : accepter des propositions de nouveaux enregistrements, déclarées par l’appelant et neutres vis-à-vis des fournisseurs.
+- **Recover** : effectuer une récupération sans mutation d’un état interrompu ou ambigu.
+- **Project** : émettre à la demande des inventaires jetables de l’état du registre.
+
+## Admission et retrait
+
+Chaque enregistrement SCLV admis lie les preuves indexées actuelles au moment de son écriture. Le retrait légitime ultérieur d’une surface préserve la provenance historique immuable sans réintroduire de force dans SKVI la prose actuelle supprimée. L’histoire reste l’histoire ; la vérité actuelle reste actuelle.
+
+## Ce que SCLV ne fait pas
+
+- SCLV ne crée ni n’approuve de modifications de source.
+- SCLV ne réécrit pas les enregistrements existants ; il fonctionne en ajout seul.
+- SCLV ne publie rien. La projection publique relève de SODV.
+
+<Note>
+  Chaque moteur SKV actuel se limite à la lecture, la requête, la validation et la proposition. L’application canonique est désactivée tant que les contrats complets d’autorité et d’audit de chaque moteur ne sont pas achevés.
+</Note>
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/fr/skv/skvi">
+    Indexe la vérité canonique actuelle à laquelle se lient les enregistrements SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fr/skv/sodv">
+    Gouverne la projection publique officielle des informations du registre.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fr/skv/sev">
+    Les cas d’évolution évaluent les modifications avant que SCLV ne les consigne.
+  </Card>
+
+  <Card title="Commandes vectorielles qxctl" icon="terminal" href="/fr/qxctl/vector-commands">
+    Exécutez `qxctl sclv ...` pour inspect, check, propose et recover.
+  </Card>
+</CardGroup>

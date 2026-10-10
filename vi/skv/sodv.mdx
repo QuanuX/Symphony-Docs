@@ -1,0 +1,48 @@
+---
+title: "SODV: Quản trị tài liệu chính thức và phát hành"
+description: "SODV quản trị việc xuất bản chính thức của QuanuX bằng kiểm tra sổ cái phát hành chỉ-thêm, xác minh quan sát do bên gọi cung cấp và kiểm kê phát hành dùng một lần."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) quản trị cách tri thức bên trong khung SKV trở thành tài liệu công khai chính thức và bản ghi phát hành. Engine của nó là một tiến trình C++ có thể cài đặt độc lập, thực hiện kiểm tra sổ cái phát hành chỉ-thêm cục bộ và tạo ra các bản kiểm kê phát hành dùng một lần. Bản thân SODV không xuất bản bất cứ thứ gì.
+
+## Thao tác
+
+- **Inspect và check**: xác thực hình dạng và tính liên tục của sổ cái phát hành.
+- **Verify**: kiểm tra các quan sát do bên gọi cung cấp về trạng thái đã xuất bản.
+- **Propose**: tiếp nhận các đề xuất phát hành trung lập nhà cung cấp.
+- **Recover**: thực hiện khôi phục không thay đổi.
+- **Project**: xuất các bản kiểm kê phát hành dùng một lần.
+
+## Những gì SODV không làm
+
+- SODV không có quyền truy cập mạng.
+- SODV không xuất bản gì lên GitHub, Mintlify, registry gói hay bất kỳ bề mặt nào khác.
+- SODV không tạo tag và không thể tuyên bố một bản phát hành đã hoàn tất.
+- SODV không xếp hạng nhà cung cấp hay ưu tiên một lộ trình xuất bản nào.
+
+Việc xuất bản diễn ra thông qua công cụ được ủy quyền riêng, có tham khảo bằng chứng của SODV.
+
+## Các bản xuất bản SODV đã hoàn tất
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` tại tag `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` tại tag `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` tại tag `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chạy `qxctl sodv ...` để inspect, verify, propose và project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Mọi SKV engine chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc bị vô hiệu hóa cho đến khi các hợp đồng SSIAG, giao dịch theo trạng thái mong đợi, biện pháp bảo vệ qxctl, sự kiện STAV, khôi phục và kiểm thử phủ định của từng engine được hoàn thiện.
+</Note>

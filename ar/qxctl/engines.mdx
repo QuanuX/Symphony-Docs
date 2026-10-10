@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: الربط والتشخيص وترحيل السجل"
+description: "إدارة ملف تعريف ربط المحركات المحمي على نطاق المستخدم في Symphony باستخدام list وinspect وdoctor وbind وunbind وmigrate المقيد بالملخص (digest) عبر qxctl."
+sidebarTitle: "engines"
+---
+
+تدير قواعد الأوامر `qxctl knowledge engines ...` ملف تعريف الربط المحمي `default` على نطاق المستخدم لمحركات المتجهات في Symphony. فهي تربط محتوى محددًا لتسويته لاحقًا، لكنها لا تثبّت المحرك ولا تستدعيه ولا تفعّله ولا ترسيه (dock) ولا تصادق عليه ولا تخوّله ولا تطبّقه.
+
+## الأوامر
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+مرّر القيمة `absent` لأول تعديل على سجل v2، أو الملخص الدقيق الذي يُبلغ عنه `list` للتعديلات اللاحقة. كل تعديل هو عملية مقارنة ومبادلة (compare-and-swap) مقابل ذلك الملخص.
+
+## الترحيل من v1 إلى v2
+
+<Warning>
+  تظل حالة سجل v1 الصالحة قابلة للقراءة. الترحيل إلى v2 عملية مقارنة ومبادلة دقيقة منفصلة، وليس أبدًا عملية لاختيار الإصدار. لا تتعامل مع الترحيل كمسار ترقية لاختيار المحرك.
+</Warning>
+
+- يستمر `list` و`inspect` في العمل على أدلة v1.
+- ينتج `migrate` جيلًا مرتبطًا من v2 دون التخلي عن حقيقة v1.
+- بعد الترحيل، استخدم ملخصات v2 للتعديلات المستقبلية.
+
+## ما هو الربط
+
+يختار الربط محتوى دقيقًا لتسويته لاحقًا بواسطة المنسّق. وهو:
+
+- لا يثبّت محركًا
+- لا يستدعي محركًا ولا يفعّله
+- لا يرسي محركًا مع Maestro
+- لا يصادق على المستدعي
+- لا يخوّل التطبيق (apply)
+
+## واجهات ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/ar/qxctl/reconcile">
+    تسوية المحتوى المربوط مع منسّق.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/ar/qxctl/lifecycle">
+    خطط دورة الحياة التي تستخدم المحركات المربوطة.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ar/governance/maestro">
+    سلطة الحضور التي تسجّل الإرساء، لا الروابط.
+  </Card>
+
+  <Card title="نظرة عامة على المحركات" icon="cube" href="/ar/engines/overview">
+    محركات متجهات قابلة للتثبيت بشكل مستقل.
+  </Card>
+</CardGroup>

@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector : connaissance des ressources des fournisseurs"
+description: "SCV maintient une connaissance privée des ressources des fournisseurs externes, sur AWS, Azure, GCP, DigitalOcean, Cloudflare et le matériel détenu par l’utilisateur, grâce à huit moteurs C++ installables indépendamment."
+sidebarTitle: "Cloud Vector"
+---
+
+Le Symphony Cloud Vector (SCV) détient la connaissance sémantique privée des ressources matérielles externes et des réalités des fournisseurs qui façonnent vos clusters, vos entraînements, vos recherches et vos travaux sur les données. Il cartographie les offres des fournisseurs, les régions, les domaines d’infrastructure, les contraintes et la disponibilité observée, sans classer les fournisseurs ni imposer de limites à ce que vous pouvez entreprendre.
+
+## Fournisseurs couverts
+
+SCV couvre les fournisseurs et types de ressources suivants :
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Matériel détenu par l’utilisateur (lorsqu’une comparaison avec des ressources externes est nécessaire)
+
+## Moteurs installés
+
+La connaissance SCV est fournie par huit moteurs C++ installables indépendamment. Vous n’installez que ceux dont vous avez besoin :
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Moteur SCV principal pour la connaissance des ressources des fournisseurs et la construction de graphes.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Moteur de preuves cloud pour la capture bornée et la sémantique des corpus.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Moteur de preuves propre à Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Moteur de connaissance du matériel et des ressources propre à AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Moteur de connaissance du matériel et des ressources propre à Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Moteur de connaissance des ressources propre à DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Moteur de connaissance du matériel et des ressources propre à GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Connecteur de graphe relationnel facultatif utilisant DuckDB pour l’indexation SQL conservée.
+  </Card>
+</CardGroup>
+
+## Paquets de fournisseurs portables et composition
+
+SCV expose des paquets de fournisseurs portables via qxctl. Vous gardez le contrôle des exigences, des permissions des fournisseurs, des recettes alternatives et des décisions d’exécution. qxctl prend en charge les workflows conservés et la sélection protégée de graphes, ce qui vous permet de rejouer des preuves exactes sans interroger à nouveau les fournisseurs.
+
+## Connecteur DuckDB facultatif
+
+Le `scv-graph-duckdb-connector` ajoute une projection relationnelle bornée de graphes natifs immuables. DuckDB est la base de données SQL par défaut choisie par l’utilisateur. Vous pourrez à l’avenir sélectionner des moteurs de graphes dédiés via des adaptateurs supplémentaires.
+
+## Confidentialité et souveraineté
+
+Un graphe de connaissances SCV installé appartient à votre installation privée. Les comptes, soldes, permissions et contraintes contractuelles fournis par l’utilisateur ne sont utilisés que via des surfaces d’observation explicitement activées. Les faits privés n’entrent pas dans la vérité source officielle de Symphony.
+
+## Relations de SCV avec les autres vecteurs
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/fr/vectors/sov">
+    Le plan de contrôle opérationnel qui agit sur les preuves SCV. SOV ne réécrit pas la signification propre aux fournisseurs.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/fr/vectors/snv">
+    Consigne les identités des Nodes physiques et des clusters issus d’un provisionnement éclairé par SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/fr/vectors/shv">
+    Détient la connaissance détaillée des capacités matérielles des composants référencés par SCV.
+  </Card>
+</CardGroup>
+
+## Incréments d’interface versionnés
+
+Les versions de SCV sont additives et versionnées de manière exacte. Les installations antérieures restent invocables dans leurs périmètres exacts. Les incréments actuels comprennent les opérations natives, les instantanés de corpus, les profils d’interprétation, les paquets de fournisseurs portables, les workflows de composition, le suivi des obligations et les lots de preuves. Chaque incrément préserve les routes, valeurs par défaut et enregistrements antérieurs.

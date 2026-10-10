@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: Viden om hardwarekapabiliteter"
+description: "SHV vedligeholder viden om hardwarekapabiliteter for CPU'er, GPU'er, NIC'er, bundkort, RAM og NVMe gennem flere uafhængigt installerbare C++-motorer."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) ejer viden om hardwarekapabiliteter, der hjælper dig med at forstå, hvordan fysisk design kan muliggøre, begrænse, portere eller udvide kvantitativ software. Den dækker processorer, CPU-kernetyper, GPU'er, NIC'er og fibergrænseflader, bundkort, cachehierarkier, hukommelse, NVMe og komplette systembyg. Standardkurateringen prioriterer originale komponenter og dokumenterede varianter fra 2018 og frem.
+
+## Scope og dækning
+
+SHV kan dække enhver dokumenteret fysisk kapabilitet, der er relevant for programdesign. Du styrer dækningsprofilen via qxctl. Standarddatogrundlaget er modellens introduktion, ikke en udledt individuel fremstillingsdato. Du kan udvide, indsnævre, erstatte eller fjerne dette filter.
+
+## Implementerede motorer
+
+SHV-viden leveres gennem flere uafhængigt installerbare C++-motorer:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Kernemotor (0.4.0-dev): dækningsprofiler, build/replay af katalog fra bevarede kilder, kravevaluering, deterministisk grafprojektion og kildebaseret grafvalidering.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Kildeidentitet, flytningsplaner, binding af byteindsamling og kildegenafspillede provenansgrafer.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Deklarationsoverensstemmelse, portable opskrifter og nøjagtig lokal kildebinding.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operationer for hardwarepartitionering og komponentkortlægning.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Beskyttede katalog-heads for kaldere, genafspilning af originale kilder og varig gendannelse af snapshots.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Generisk C++-grafport og portabel referenceadapter i hukommelsen til tabsfri udveksling.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Valgfri relationel DuckDB-projektion af hardwaregrafevidens.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Afgrænset PDF-udtræk og genvalidering af dokumentariske påstande ud fra de originale bytes.
+  </Card>
+</CardGroup>
+
+## Kilderevision og proveniens
+
+`shv-source-engine` implementerer stabil kildeidentitet, eksplicitte flytningsplaner, ren overgangsvalidering, binding af indsamling af faktiske bytes og kildegenafspillede provenansgrafer. Disse er skrivebeskyttede operationer. Kernekurateringen prioriterer original komponentidentitet og dokumenterede varianter. Beskyttet kildeaktivering håndteres separat; den rene kildemotor tildeler ikke autoritet.
+
+## Grafudveksling og lagring
+
+`shv-graph-adapter` leverer en generisk C++-grafport til tabsfri udveksling og strukturelle forespørgsler. Varig lagring er implementeret via DuckDB SQL som standard. Der er i øjeblikket ikke valgt nogen dedikeret grafdatabase.
+
+## Grænse for PDF-evidens
+
+`shv-pdf-adapter` udtrækker kvalificerede dokumentariske påstande fra eksplicitte PDF-tabeller og genvaliderer dem ud fra de originale bytes efter generisk grafudveksling. Generel PDF-dækning forbliver et separat afgrænset arbejde.
+
+## Resterende arbejde
+
+Et bredt hardwareatlas, automatiseret kildeindsamling, aggregering af konflikter mellem flere kilder, yderligere leverandørspecifikke databasedrivere, indlæsning af brugerdefinerede plugins og Composer-integration er fortsat fremtidigt arbejde. Brede komponentkortlægninger og varige leverandørdrivere er også åbne.
+
+## Hvordan SHV forholder sig til andre vektorer
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/da/vectors/snv">
+    Registrerer de Nodes, der indeholder den hardware, SHV beskriver.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/da/vectors/scv">
+    Refererer til udbydernes hardwaretilbud, som SHV karakteriserer i detaljer.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/da/vectors/sov">
+    Kan handle på baggrund af SHV-evidens ved provisionering eller klargøring af Nodes.
+  </Card>
+</CardGroup>

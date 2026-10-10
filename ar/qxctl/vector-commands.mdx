@@ -1,0 +1,82 @@
+---
+title: "أوامر المتجهات في qxctl: skvi وsclv وsacv وsodv وssfv وshv"
+description: "استكشف قواعد أوامر qxctl الخاصة بالمتجهات والمتاحة اليوم: SKVI وSCLV وSACV وSODV وSSFV، وتخزين SHV والكتالوج، إضافةً إلى واجهات accord وevolution المحجوزة."
+sidebarTitle: "أوامر المتجهات"
+---
+
+يكشف qxctl عن قواعد أوامر خاصة بالمتجهات لكل محرك SKV منفّذ، ولإدارة SCV وSHV. وستستخدم قواعد أوامر Accordare وSEV المُقرّة `qxctl accord ...` و`qxctl evolution ...` بمجرد توفر تنفيذات أوامرها وأدلة سجل مستقرة.
+
+## قواعد أوامر محركات SKV
+
+- `qxctl skvi ...`: الفحص والتحقق والاقتراح والإسقاط مقابل محرك SKVI
+- `qxctl sclv ...`: الفحص والتحقق والاقتراح والاسترداد والإسقاط مقابل محرك SCLV
+- `qxctl sacv ...`: الفحص والتحقق والمقارنة والاقتراح والإسقاط مقابل محرك SACV
+- `qxctl sodv ...`: الفحص والتحقق والتوثيق والاقتراح والاسترداد والإسقاط مقابل محرك SODV
+- `qxctl ssfv ...`: الفحص والتحقق والمقارنة والاقتراح والرسم البياني مقابل محرك SSFV
+
+كل مجموعة قواعد أوامر مقيدة بعقد المحرك المالك. لا يخترع qxctl أبدًا عملية ولا يتجاوز المحرك.
+
+## إضافات Accordare
+
+توفر إضافات Accordare في qxctl ما يلي:
+
+- حالة مستقرة
+- التسوية (تعيد تشغيل المرشحين الدقيقين فقط)
+- تثبيت المشرف وإلغاء تثبيته (يستدعي فقط الملف التنفيذي الموثّق بإيصال v2)
+- هويتين لإدارة المنح لا تعدّلان إلا تكوين STAV المتوقف تحت SSIAG واسترداد الحالة المتوقعة
+
+تفصل الحالة بين النية الدائمة وتراكم الإلحاق. تعيد التسوية تشغيل المرشحين الدقيقين فقط. ولا تفتح أوامر المنح الفرعية أبدًا تكوينًا قيد التشغيل.
+
+## تخزين SHV
+
+لا يُدار تخزين SHV الدائم إلا عبر:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+يُعدّ `commit` مع ملخص النية المتوقعة المحتفَظ به استردادًا أيضًا. لا يوجد اسم مستعار منفصل للاسترداد. يُعلَن نطاق المخزن في المدخلات؛ وتُضبط هوية الموصّل في الخيارات. لا يكرر التخزين الهيكلي `shv graph validate` الدلالي ولا يختار رأس كتالوج.
+
+يضيف `shv graph store inventory` (الإصدار 0.2) قراءة منطقية مرتبطة بالمراجعة مع هويات كتّاب محتفَظ بها صريحة. ويظل الاختيار القديم في 0.1 مدعومًا.
+
+## نشر كتالوج SHV
+
+لا يُدار نشر الكتالوج إلا عبر:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+الاسترداد هو `apply --operation-id`، وهو متنافٍ مع `--input`. يختلف اختيار الكتالوج المحلي المدعوم بالأذونات عن تفعيل المصدر وعن التخزين العام للرسوم البيانية.
+
+## واجهات ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="نظرة عامة على SKV" icon="book-open" href="/ar/skv/overview">
+    دلالات المتجهات التي تنفذها المحركات.
+  </Card>
+
+  <Card title="متجه SHV" icon="microchip" href="/ar/vectors/shv">
+    خلفية متجه العتاد وقائمة المحركات.
+  </Card>
+
+  <Card title="محركات SHV" icon="microchip" href="/ar/engines/shv-engines">
+    تفاصيل على مستوى المحرك.
+  </Card>
+
+  <Card title="نظرة عامة على qxctl" icon="terminal" href="/ar/qxctl/overview">
+    واجهة أوامر qxctl الكاملة.
+  </Card>
+</CardGroup>

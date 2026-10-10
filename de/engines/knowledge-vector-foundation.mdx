@@ -1,0 +1,53 @@
+---
+title: "C++-Grundlage der Knowledge Vector Engine: gemeinsame Mechanik"
+description: "Die C++-Grundlage der Knowledge Vector Engine liefert autoritätsfreies Prozess-Framing, abgegrenztes JSON, SHA-256, Snapshots, Quittungen und explizite Manifest-Erkennung."
+sidebarTitle: "Foundation-Bibliothek"
+---
+
+`libraries/knowledge-vector-engine-cpp` liefert die gemeinsame, autoritätsfreie C++-Mechanik, die jede Symphony-Vektor-Engine wiederverwendet. Sie stellt deterministische Bausteine bereit, damit jede Engine abgegrenzt, reproduzierbar und frei von umgebungsbedingten Seiteneffekten bleiben kann.
+
+## Was die Grundlage bereitstellt
+
+- **Prozess-Framing**: autoritätsfreies lokales Prozessprotokoll, das jede Engine verwendet
+- **Abgegrenztes JSON**: striktes Parsen und Ausgeben mit expliziten Größen- und Tiefenlimits
+- **SHA-256**: Inhaltsadressierung für Nachweise und Quittungen
+- **No-Follow-Lesevorgänge**: Dateisystemzugriffe, die niemals unerwartet symbolischen Links folgen
+- **Deterministische Snapshots**: wiederholbare Snapshots des untersuchten Zustands
+- **Zeitliche Validierung**: kanonische UTC-Behandlung gemäß dem Symphony Temporal Semantics Contract
+- **Erkennung von Eigentümer-Manifesten**: exakte Erkennung von Vertragsmanifesten
+- **Versionierte Paketierung**: unabhängig installierbare, quittungseigene Pakete
+- **Quittungen und quittungsgesteuerte Deinstallation**: Deinstallation ausschließlich anhand der Quittung, mit der das Artefakt installiert wurde
+
+## Grenze der Manifest-Erkennung
+
+<Warning>
+  Die Manifest-Erkennung beginnt bei einer festen Bootstrap-Menge und durchläuft nur explizite untergeordnete Deklarationen. Sie durchsucht niemals ungezielt das Repository und leitet Eigentum nie aus Verzeichnisnamen ab.
+</Warning>
+
+Jede Vektor-Engine, die die Grundlage verwendet, übernimmt diese Regel.
+
+## Was die Grundlage nicht tut
+
+- Sie trägt keine Autorität. Engines, die sie verwenden, müssen Mutationen weiterhin über SSIAG autorisieren.
+- Sie veröffentlicht oder lädt nichts über das Netzwerk.
+- Sie verändert kanonische Dateien nicht eigenständig.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="Session Coordinator" icon="gears" href="/de/engines/coordinator">
+    C++26-Coordinator auf Basis der Grundlage für Sitzungen und Abgleich.
+  </Card>
+
+  <Card title="Engines-Überblick" icon="cube" href="/de/engines/overview">
+    Die Engines, die die Grundlage wiederverwenden.
+  </Card>
+
+  <Card title="SKV-Überblick" icon="book-open" href="/de/skv/overview">
+    Vektorverträge, die die Engines implementieren.
+  </Card>
+
+  <Card title="qxctl-Überblick" icon="terminal" href="/de/qxctl/overview">
+    Administrative CLI, die exakte, per Quittung validierte Engines aufruft.
+  </Card>
+</CardGroup>

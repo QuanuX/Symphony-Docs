@@ -1,0 +1,48 @@
+---
+title: "SODV: správa oficiální dokumentace a vydání"
+description: "SODV spravuje oficiální publikace QuanuX pomocí kontrol účetní knihy vydání (pouze připisování), ověřování pozorování dodaných volajícím a jednorázových inventářů vydání."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) spravuje, jak se znalosti uvnitř frameworku SKV stávají oficiální veřejnou dokumentací a záznamy vydání. Jeho engine je nezávisle instalovatelný proces v C++, který provádí lokální kontroly účetní knihy vydání (pouze připisování) a vytváří jednorázové inventáře vydání. SODV sám nic nepublikuje.
+
+## Operace
+
+- **Inspect a check**: ověří tvar a kontinuitu účetní knihy vydání.
+- **Verify**: kontroluje pozorování publikovaného stavu dodaná volajícím.
+- **Propose**: přijímá návrhy vydání nezávislé na poskytovateli.
+- **Recover**: provádí nemutující obnovu.
+- **Project**: emituje jednorázové inventáře vydání.
+
+## Co SODV nedělá
+
+- SODV nemá přístup k síti.
+- SODV nic nepublikuje na GitHub, Mintlify, do registrů balíčků ani na žádnou jinou plochu.
+- SODV nevytváří tagy a nemůže prohlásit vydání za dokončené.
+- SODV neřadí poskytovatele ani neupřednostňuje žádnou cestu publikace.
+
+Publikace probíhá prostřednictvím samostatných autorizovaných nástrojů, které vycházejí z důkazů SODV.
+
+## Dokončené publikace SODV
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` s tagem `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` s tagem `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` s tagem `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Spusťte `qxctl sodv ...` pro inspect, verify, propose a project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Každý engine SKV slouží pouze ke čtení, dotazování, validaci a navrhování. Kanonické apply je zakázáno, dokud nebudou dokončeny kontrakty každého enginu pro SSIAG, transakce s očekávaným stavem, pojistky qxctl, události STAV, obnovu a negativní testy.
+</Note>

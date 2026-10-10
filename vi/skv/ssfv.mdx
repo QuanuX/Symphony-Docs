@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector và registry"
+description: "SSFV sở hữu định danh, ngữ nghĩa, phân cấp, vòng đời và bảo đảm quản trị tính năng chuẩn tắc trên mọi module Symphony đã triển khai và mọi bề mặt qxctl."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) sở hữu các hợp đồng chuẩn tắc về định danh, ngữ nghĩa, phân cấp, vòng đời, sự phân biệt của tính năng ứng dụng, định tuyến bản ghi phân tán, kiểm kê độ bao phủ và chiếu đồ thị. Engine của nó là một tiến trình C++ có thể cài đặt độc lập, thực hiện kiểm tra tính năng về cấu trúc và có nhận biết độ mới.
+
+## Thao tác
+
+- **Inspect và check**: đánh giá tính năng về cấu trúc và có nhận biết độ mới.
+- **Diff**: so sánh định địa chỉ theo nội dung giữa các trạng thái tính năng.
+- **Propose**: đề xuất do bên gọi khai báo để tiếp nhận hoặc thay đổi tính năng.
+- **Graph**: đồ thị tính năng dùng một lần, tất định, để xem xét.
+
+## Độ bao phủ đã đăng ký
+
+Danh mục đã đăng ký hiện tại được nêu rõ là chưa đầy đủ:
+
+- **110** tính năng đã đăng ký
+- **35** phạm vi chủ sở hữu đã đăng ký
+- **76** tính năng lồng nhau đã phê chuẩn
+- **295** bề mặt quản trị tính năng đã xem xét (**285** bắt buộc, **13** miễn trừ có bằng chứng, **9** điều cấm, **0** chưa xem xét)
+
+Các phạm vi chủ sở hữu đã đăng ký trải rộng trên mọi module đã triển khai, từ `qxctl` và validator qua các SKV engine và nhà cung cấp SSIAG cho đến các họ engine SCV và SHV.
+
+## Những gì SSFV không làm
+
+<Warning>
+  SSFV không quyết định một thứ có xứng đáng là tính năng hay không, không tự tạo định danh, và không tuyên bố tính đầy đủ của kho mã hay máy chủ. `review_required` là bằng chứng để bên gọi xem xét, không phải sự phê chuẩn hay thẩm quyền apply.
+</Warning>
+
+Việc xem xét, tiếp nhận và thay đổi vòng đời tính năng thuộc về hợp đồng sở hữu của từng tính năng.
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung bao trùm quản trị SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/vi/skv/sev">
+    Áp dụng các trường hợp tiến hóa cho việc bổ sung, thay đổi và loại bỏ tính năng.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/vi/qxctl/session">
+    Quản lý các phiên bảo trì SSFV lâu dài qua qxctl.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chạy `qxctl ssfv ...` để inspect, check, diff, propose và graph.
+  </Card>
+</CardGroup>

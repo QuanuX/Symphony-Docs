@@ -1,0 +1,53 @@
+---
+title: "Základ C++ pro Knowledge Vector Engine: sdílené mechanismy"
+description: "Základ C++ pro Knowledge Vector Engine poskytuje rámování procesů bez oprávnění, ohraničený JSON, SHA-256, snímky, potvrzení a explicitní vyhledávání manifestů."
+sidebarTitle: "Základní knihovna"
+---
+
+`libraries/knowledge-vector-engine-cpp` poskytuje sdílené mechanismy v C++ bez oprávnění, které znovu využívá každý vektorový engine Symphony. Nabízí deterministické stavební bloky, díky nimž může každý engine zůstat ohraničený, reprodukovatelný a bez vedlejších účinků z okolního prostředí.
+
+## Co základ poskytuje
+
+- **Rámování procesů**: lokální procesní protokol bez oprávnění, který používá každý engine
+- **Ohraničený JSON**: striktní parsování a generování s explicitními limity velikosti a hloubky
+- **SHA-256**: adresování obsahu pro důkazy a potvrzení
+- **Čtení bez následování odkazů**: čtení ze souborového systému, které nikdy neočekávaně neprochází symbolickými odkazy
+- **Deterministické snímky**: opakovatelné snímky kontrolovaného stavu
+- **Časová validace**: kanonické zpracování UTC podle Symphony Temporal Semantics Contract
+- **Vyhledávání manifestů vlastníků**: přesné vyhledávání manifestů kontraktů
+- **Verzované balení**: samostatně instalovatelné balíčky vlastněné potvrzením
+- **Potvrzení a odinstalace vlastněná potvrzením**: odinstalace řízená výhradně potvrzením, které artefakt nainstalovalo
+
+## Hranice vyhledávání manifestů
+
+<Warning>
+  Vyhledávání manifestů začíná z pevné výchozí sady a prochází pouze explicitní podřízené deklarace. Nikdy neprovádí plošné procházení repozitáře ani neodvozuje vlastnictví z názvů adresářů.
+</Warning>
+
+Toto pravidlo dědí každý vektorový engine, který základ využívá.
+
+## Co základ nedělá
+
+- Nenese žádné oprávnění. Enginy, které jej používají, musí změny stále autorizovat prostřednictvím SSIAG.
+- Nic nepublikuje ani nestahuje po síti.
+- Sám od sebe nemění kanonické soubory.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Koordinátor v C++26 postavený na základu pro relace a rekonciliaci.
+  </Card>
+
+  <Card title="Přehled enginů" icon="cube" href="/cs/engines/overview">
+    Enginy, které základ znovu využívají.
+  </Card>
+
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Vektorové kontrakty, které enginy implementují.
+  </Card>
+
+  <Card title="Přehled qxctl" icon="terminal" href="/cs/qxctl/overview">
+    Správní CLI, které vyvolává přesné enginy validované potvrzením.
+  </Card>
+</CardGroup>

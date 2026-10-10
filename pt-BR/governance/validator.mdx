@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: verificações determinísticas e somente leitura do repositório"
+description: "O Symphony Validator produz evidências em linhas ou em JSON estruturado para contratos, fechamento de fontes, invariantes, recursos, releases e o resumo raiz verificado por máquina."
+sidebarTitle: "Validador"
+---
+
+O Symphony Validator (`tools/symphony-validator`) é um verificador de repositório C++26 independente, determinístico e somente leitura. Ele produz evidências imutáveis sobre o estado atual do repositório e de seus contratos. Ele não pode reparar nem publicar nada.
+
+## O que o validador verifica
+
+- Forma dos contratos: âncoras e estrutura obrigatórias do Contract Quad
+- Fechamento atual das fontes nas superfícies indexadas pelo SKVI
+- Propriedade de invariantes conforme `knowledge/INVARIANTS.md` e o registro de invariantes
+- Expectativas de administração de recursos relatadas pelo SSFV
+- Registros de releases relatados pelo SODV
+- O resumo raiz de propriedade da máquina no README do repositório
+
+As evidências são emitidas como saída em linhas ou JSON estruturado. Cada emissão é reproduzível a partir do mesmo estado do repositório.
+
+## O que o validador não faz
+
+<Warning>
+  O validador não pode reparar arquivos, reescrever contratos nem publicar o repositório. Ele não cria verdade canônica sobre nada; apenas a relata.
+</Warning>
+
+- Nenhum efeito colateral no repositório
+- Nenhum acesso à rede
+- Nenhuma supressão de avisos fora da política protegida de avisos do qxctl
+
+## Integração com o qxctl
+
+O qxctl valida o recibo exato e os digests estruturados do validador antes de aplicar a política protegida de avisos. Nove folhas protegidas do qxctl para o ciclo de vida de avisos, além da rota exata do resumo raiz respaldada por recibo, expõem a administração da validação sem alterar as evidências brutas do detector.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/pt-BR/qxctl/validate">
+    Gramática da política protegida de avisos, da linha de base e da exibição.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pt-BR/skv/ssfv">
+    Expectativas de administração de recursos verificadas pelo validador.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt-BR/skv/sodv">
+    Registros de releases que o validador inspeciona.
+  </Card>
+
+  <Card title="Visão geral do SKV" icon="book-open" href="/pt-BR/skv/overview">
+    O framework guarda-chuva cujos contratos o validador verifica.
+  </Card>
+</CardGroup>

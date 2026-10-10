@@ -1,0 +1,53 @@
+---
+title: "C++-fundamentet for Knowledge Vector Engine: fælles mekanik"
+description: "C++-fundamentet for Knowledge Vector Engine leverer autoritetsfri procesindramning, afgrænset JSON, SHA-256, snapshots, kvitteringer og eksplicit manifest-opdagelse."
+sidebarTitle: "Fundamentbibliotek"
+---
+
+`libraries/knowledge-vector-engine-cpp` leverer den fælles, autoritetsfri C++-mekanik, som alle Symphony-vector-engines genbruger. Det leverer deterministiske byggesten, så hver engine kan forblive afgrænset, reproducerbar og fri for utilsigtede bivirkninger fra omgivelserne.
+
+## Hvad fundamentet leverer
+
+- **Procesindramning**: autoritetsfri lokal procesprotokol, som alle engines bruger
+- **Afgrænset JSON**: streng parsing og udskrivning med eksplicitte størrelses- og dybdegrænser
+- **SHA-256**: indholdsadressering for evidens og kvitteringer
+- **No-follow-læsninger**: filsystemlæsninger, der aldrig uventet følger symbolske links
+- **Deterministiske snapshots**: gentagelige snapshots af inspiceret tilstand
+- **Tidsmæssig validering**: kanonisk UTC-håndtering i henhold til Symphony Temporal Semantics Contract
+- **Opdagelse af ejermanifester**: præcis opdagelse af kontraktmanifester
+- **Versioneret pakning**: uafhængigt installerbare, kvitteringsejede pakker
+- **Kvitteringer og kvitteringsejet afinstallation**: afinstallation styres udelukkende af den kvittering, der installerede artefaktet
+
+## Grænse for manifest-opdagelse
+
+<Warning>
+  Manifest-opdagelse begynder fra et fast bootstrap-sæt og gennemløber kun eksplicitte underordnede erklæringer. Den gennemsøger aldrig repositoriet på egen hånd og udleder aldrig ejerskab ud fra mappenavne.
+</Warning>
+
+Alle vector-engines, der bruger fundamentet, arver denne regel.
+
+## Hvad fundamentet ikke gør
+
+- Det bærer ikke autoritet. Engines, der bruger det, skal stadig autorisere mutationer gennem SSIAG.
+- Det publicerer eller henter ikke noget over netværket.
+- Det ændrer ikke kanoniske filer på egen hånd.
+
+## Relaterede overflader
+
+<CardGroup cols={2}>
+  <Card title="Sessionskoordinator" icon="gears" href="/da/engines/coordinator">
+    C++26-koordinator bygget på fundamentet til sessioner og afstemning.
+  </Card>
+
+  <Card title="Oversigt over engines" icon="cube" href="/da/engines/overview">
+    De engines, der genbruger fundamentet.
+  </Card>
+
+  <Card title="SKV-oversigt" icon="book-open" href="/da/skv/overview">
+    Vector-kontrakter, som engines implementerer.
+  </Card>
+
+  <Card title="qxctl-oversigt" icon="terminal" href="/da/qxctl/overview">
+    Administrativ CLI, der kalder præcise, kvitteringsvaliderede engines.
+  </Card>
+</CardGroup>

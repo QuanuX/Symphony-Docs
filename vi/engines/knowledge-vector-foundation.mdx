@@ -1,0 +1,53 @@
+---
+title: "Nền tảng C++ của Knowledge Vector Engine: các cơ chế dùng chung"
+description: "Nền tảng C++ của Knowledge Vector Engine cung cấp khung tiến trình không mang quyền hạn, JSON có giới hạn, SHA-256, snapshot, biên nhận và khám phá manifest tường minh."
+sidebarTitle: "Thư viện nền tảng"
+---
+
+`libraries/knowledge-vector-engine-cpp` cung cấp các cơ chế C++ dùng chung, không mang quyền hạn, mà mọi vector engine của Symphony đều tái sử dụng. Nó cung cấp các khối xây dựng xác định để mỗi engine có thể giữ được tính giới hạn, khả năng tái tạo và không có tác dụng phụ ngầm.
+
+## Những gì nền tảng cung cấp
+
+- **Khung tiến trình**: giao thức tiến trình cục bộ không mang quyền hạn được mọi engine sử dụng
+- **JSON có giới hạn**: phân tích và xuất nghiêm ngặt với giới hạn kích thước và độ sâu tường minh
+- **SHA-256**: định địa chỉ theo nội dung cho bằng chứng và biên nhận
+- **Đọc không theo liên kết**: các thao tác đọc hệ thống tệp không bao giờ đi theo liên kết tượng trưng một cách bất ngờ
+- **Snapshot xác định**: các snapshot có thể lặp lại của trạng thái được kiểm tra
+- **Xác thực thời gian**: xử lý UTC chuẩn theo Symphony Temporal Semantics Contract
+- **Khám phá manifest của chủ sở hữu**: khám phá chính xác các manifest của contract
+- **Đóng gói có phiên bản**: các gói có thể cài đặt độc lập, thuộc sở hữu của biên nhận
+- **Biên nhận và gỡ cài đặt thuộc sở hữu của biên nhận**: việc gỡ cài đặt chỉ được điều khiển bởi biên nhận đã cài đặt tạo phẩm đó
+
+## Ranh giới khám phá manifest
+
+<Warning>
+  Việc khám phá manifest bắt đầu từ một tập khởi tạo cố định và chỉ đi qua các khai báo cấp dưới tường minh. Nó không bao giờ quét kho mã một cách ngầm định hay suy ra quyền sở hữu từ tên thư mục.
+</Warning>
+
+Mọi vector engine sử dụng nền tảng này đều kế thừa quy tắc này.
+
+## Những gì nền tảng không làm
+
+- Nó không mang quyền hạn. Các engine sử dụng nó vẫn phải ủy quyền các thao tác thay đổi thông qua SSIAG.
+- Nó không xuất bản hay tải bất cứ thứ gì qua mạng.
+- Nó không tự thay đổi các tệp chuẩn tắc.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="Bộ điều phối phiên" icon="gears" href="/vi/engines/coordinator">
+    Bộ điều phối C++26 được xây dựng trên nền tảng này cho các phiên và việc đối soát.
+  </Card>
+
+  <Card title="Tổng quan engine" icon="cube" href="/vi/engines/overview">
+    Các engine tái sử dụng nền tảng này.
+  </Card>
+
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Các vector contract mà các engine triển khai.
+  </Card>
+
+  <Card title="Tổng quan qxctl" icon="terminal" href="/vi/qxctl/overview">
+    CLI quản trị gọi các engine chính xác đã được xác thực bằng biên nhận.
+  </Card>
+</CardGroup>

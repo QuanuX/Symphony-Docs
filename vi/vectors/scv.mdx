@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Tri thức tài nguyên nhà cung cấp"
+description: "SCV duy trì tri thức riêng tư về tài nguyên nhà cung cấp bên ngoài trên AWS, Azure, GCP, DigitalOcean, Cloudflare và phần cứng do người dùng sở hữu thông qua tám engine C++ có thể cài đặt độc lập."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) sở hữu tri thức ngữ nghĩa riêng tư về tài nguyên phần cứng bên ngoài (offsite) và những thực tế của nhà cung cấp định hình các cụm máy, việc huấn luyện, nghiên cứu và công việc dữ liệu của bạn. Nó ánh xạ các dịch vụ, khu vực, miền hạ tầng, ràng buộc và tình trạng sẵn có quan sát được của nhà cung cấp mà không xếp hạng nhà cung cấp hay áp đặt giới hạn lên những gì bạn có thể thử.
+
+## Phạm vi nhà cung cấp
+
+SCV bao phủ các nhà cung cấp và loại tài nguyên sau:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Phần cứng do người dùng sở hữu (khi cần so sánh với tài nguyên bên ngoài)
+
+## Các engine đã cài đặt
+
+Tri thức SCV được cung cấp thông qua tám engine C++ có thể cài đặt độc lập. Bạn chỉ cài đặt những engine mình cần:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Engine SCV lõi cho tri thức tài nguyên nhà cung cấp và xây dựng đồ thị.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Engine bằng chứng đám mây cho việc thu thập có giới hạn và ngữ nghĩa kho dữ liệu (corpus).
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Engine bằng chứng dành riêng cho Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Engine tri thức phần cứng và tài nguyên dành riêng cho AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Engine tri thức phần cứng và tài nguyên dành riêng cho Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Engine tri thức tài nguyên dành riêng cho DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Engine tri thức phần cứng và tài nguyên dành riêng cho GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Connector đồ thị quan hệ tùy chọn dùng DuckDB để lập chỉ mục SQL được lưu giữ.
+  </Card>
+</CardGroup>
+
+## Gói nhà cung cấp di động và thành phần
+
+SCV cung cấp các gói nhà cung cấp di động thông qua qxctl. Bạn giữ quyền kiểm soát các yêu cầu, quyền của nhà cung cấp, các phương án công thức (recipe) và quyết định thực thi. qxctl hỗ trợ quy trình làm việc được lưu giữ và lựa chọn đồ thị được bảo vệ, nhờ đó bạn có thể phát lại bằng chứng chính xác mà không cần truy vấn lại nhà cung cấp.
+
+## Connector DuckDB tùy chọn
+
+`scv-graph-duckdb-connector` bổ sung một phép chiếu quan hệ có giới hạn của các đồ thị gốc bất biến. DuckDB là cơ sở dữ liệu SQL mặc định do người dùng chọn. Trong tương lai, bạn có thể chọn các engine đồ thị chuyên dụng thông qua các adapter bổ sung.
+
+## Quyền riêng tư và chủ quyền
+
+Một đồ thị tri thức SCV đã cài đặt thuộc về bản cài đặt riêng tư của bạn. Tài khoản, số dư, quyền và ràng buộc hợp đồng do người dùng cung cấp chỉ được sử dụng thông qua các bề mặt quan sát được bật tường minh. Các dữ kiện riêng tư không đi vào sự thật nguồn chính thức của Symphony.
+
+## Quan hệ giữa SCV và các vector khác
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/vi/vectors/sov">
+    Mặt phẳng điều khiển vận hành hành động dựa trên bằng chứng SCV. SOV không viết lại ý nghĩa của nhà cung cấp.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/vi/vectors/snv">
+    Ghi nhận định danh của các Node vật lý và cụm máy được tạo ra từ việc cấp phát dựa trên SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/vi/vectors/shv">
+    Sở hữu tri thức chi tiết về năng lực phần cứng cho các thành phần mà SCV tham chiếu.
+  </Card>
+</CardGroup>
+
+## Các bước tăng giao diện có phiên bản
+
+Các bản phát hành SCV mang tính bổ sung và có phiên bản chính xác. Các bản cài đặt trước đó vẫn có thể được gọi ở đúng phạm vi của chúng. Các bước tăng hiện tại bao gồm thao tác gốc, snapshot kho dữ liệu, hồ sơ diễn giải, gói nhà cung cấp di động, quy trình kết hợp, theo dõi nghĩa vụ và gói bằng chứng. Mỗi bước tăng giữ nguyên các lộ trình, giá trị mặc định và bản ghi trước đó.

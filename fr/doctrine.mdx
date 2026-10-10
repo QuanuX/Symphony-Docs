@@ -1,0 +1,35 @@
+---
+title: "Doctrine de la plateforme QuanuX Symphony"
+description: "Découvrez les principes directeurs de Symphony : propriété de la stratégie et de l'infrastructure par l'utilisateur, neutralité vis-à-vis de la classe d'appelant, protection du chemin critique et compatibilité fondée sur les preuves."
+sidebarTitle: "Doctrine"
+---
+
+La doctrine Symphony définit les frontières entre ce que la plateforme contrôle et ce que vous contrôlez. Ces règles régissent chaque décision de conception dans le monorepo et chaque interaction avec qxctl, les moteurs de vecteurs et les contrats de connaissance.
+
+## Propriété de l'utilisateur
+
+Vous êtes propriétaire de votre logique de stratégie, de la finalité de votre Nest, du choix du fournisseur, du choix du matériel, de la topologie de bus et de la sélection des adaptateurs pris en charge. Symphony fournit des preuves de compatibilité exactes et des opérations prises en charge, mais ne transforme pas des recommandations en loi de la plateforme. La plateforme signale les correspondances, les non-correspondances, les faits non résolus et les conséquences. Elle ne classe pas les fournisseurs, ne prescrit pas de stratégie et n'élargit pas discrètement votre environnement.
+
+## Protection du chemin critique
+
+Le chemin critique (hot path) est protégé contre la résidence administrative et la pression accidentelle d'un bus partagé. qxctl et le plan de connaissance relèvent de l'administration en chemin froid ou glacial. Ils peuvent agir explicitement sur un Node qui héberge aussi du travail en direct, mais ils ne doivent pas devenir des dépendances continues du chemin critique, des observateurs cachés, des interpréteurs résidents ni des gestionnaires de paquets en arrière-plan non sollicités. Votre architecture explicite reste souveraine.
+
+## Séparation entre commandes et sémantique
+
+qxctl est propriétaire de la grammaire des commandes et de leur présentation. Les vecteurs de domaine sont propriétaires des opérations et des significations que ces commandes exposent. Une route qxctl invoque une capacité définie par son propriétaire sans en absorber la sémantique.
+
+## Noms et espaces de noms
+
+Les noms sont enregistrés sous leur portée propriétaire. SNV et SCNV ne les dictent pas, et le NAMESPACES racine reste plus large que SNV. Un nom enregistré au sein d'un TOPS ou d'un TROG suit cette portée. Au sein de plusieurs clusters, un nom court de Node peut se répéter dans différents clusters, mais ne peut pas identifier de manière ambiguë deux Nodes actifs dans le même cluster.
+
+## Neutralité vis-à-vis de la classe d'appelant
+
+La classification d'un appelant comme humain, IA, agent, service ou charge de travail n'accorde ni ne retire d'autorité. Les décisions d'autorisation prises en charge reposent sur la propriété de l'hôte cible ou les permissions accordées, l'opération et la ressource demandées, l'état attendu et les garde-fous configurés par le propriétaire. L'administrateur de l'hôte cible est souverain sur la gouvernance configurable. SSIAG peut vérifier et projeter l'autorité effective de l'hôte, mais ne crée pas d'autorité d'enregistrement supérieure. L'assurance d'identité renforcée et les verrouillages de gouvernance sont des garde-fous neutres vis-à-vis de l'appelant et configurés par le propriétaire. Les exigences d'intégrité du protocole restent obligatoires. Symphony ne détermine pas la capacité juridique ou financière externe en fonction du type d'appelant.
+
+## Vérité et preuves
+
+Les contrats actuels décrivent la vérité actuelle. Les enregistrements immuables SCLV et SODV préservent ce qui était connu, modifié, autorisé ou achevé au moment de leur enregistrement. Lorsque les contrats actuels, les preuves d'implémentation et le dernier enregistrement applicable divergent, la divergence est signalée comme une dérive à examiner. L'historique n'est pas réécrit en silence pour ressembler au présent.
+
+## Doctrine Python
+
+Le code source Symphony de première partie, les générateurs, la rédaction de schémas, les tests et les utilitaires d'acceptation ne nécessitent aucune implémentation Python ni aucune dépendance à un interpréteur Python. C++ est propriétaire de l'outillage de remplacement pour la rédaction et les tests de processus. Cette politique du dépôt ne restreint pas vos programmes écrits par vous-même ni les Habitats isolés que vous sélectionnez explicitement.

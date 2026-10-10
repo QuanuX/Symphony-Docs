@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector cho các thay đổi mã nguồn"
+description: "SCLV duy trì một sổ cái chỉ-thêm về các thay đổi mã nguồn đã hoàn tất, với đề xuất trung lập nhà cung cấp, khôi phục không thay đổi và các phép chiếu dùng một lần."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) ghi nhận các thay đổi được thực hiện trên các bề mặt SKV theo thời gian. Engine của nó là một tiến trình C++ có thể cài đặt độc lập, thực hiện kiểm tra sổ cái chỉ-thêm tất định và tạo ra các phép chiếu dùng một lần. Sổ cái chỉ được ghi sau khi một thay đổi mã nguồn quan trọng đã hoàn tất.
+
+## Thao tác
+
+- **Inspect và check**: xác thực hình dạng, tính liên tục và bằng chứng của sổ cái.
+- **Propose (v3)**: tiếp nhận các đề xuất do bên gọi khai báo, trung lập nhà cung cấp, cho các bản ghi mới.
+- **Recover**: thực hiện khôi phục không thay đổi đối với trạng thái bị gián đoạn hoặc mơ hồ.
+- **Project**: xuất kiểm kê dùng một lần về trạng thái sổ cái khi được yêu cầu.
+
+## Tiếp nhận và loại bỏ
+
+Mỗi bản ghi SCLV được tiếp nhận đều ràng buộc với bằng chứng đã lập chỉ mục hiện tại tại thời điểm được ghi. Việc loại bỏ hợp lệ một bề mặt về sau vẫn giữ nguyên nguồn gốc lịch sử bất biến mà không buộc nội dung hiện tại đã bị xóa phải quay lại SKVI. Lịch sử vẫn là lịch sử; sự thật hiện tại vẫn là hiện tại.
+
+## Những gì SCLV không làm
+
+- SCLV không tạo ra hay phê duyệt các thay đổi mã nguồn.
+- SCLV không ghi lại các bản ghi hiện có; nó chỉ-thêm.
+- SCLV không xuất bản bất cứ thứ gì. Phép chiếu công khai thuộc về SODV.
+
+<Note>
+  Mọi SKV engine hiện tại chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc bị vô hiệu hóa cho đến khi các hợp đồng thẩm quyền và kiểm toán đầy đủ của từng engine được hoàn thiện.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/vi/skv/skvi">
+    Lập chỉ mục sự thật chuẩn tắc hiện tại mà các bản ghi SCLV ràng buộc tới.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Quản trị phép chiếu công khai chính thức của thông tin sổ cái.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/vi/skv/sev">
+    Các trường hợp tiến hóa đánh giá thay đổi trước khi SCLV ghi nhận chúng.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chạy `qxctl sclv ...` để inspect, check, propose và recover.
+  </Card>
+</CardGroup>

@@ -1,0 +1,52 @@
+---
+title: "SACV: Quản trị hợp đồng API cho QuanuX Symphony"
+description: "SACV quản trị các hợp đồng API có phiên bản thông qua kiểm tra OpenAPI 3.2.0 có giới hạn, so sánh tương thích tất định và đề xuất registry do bên gọi khai báo trên các vector."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) quản trị các hợp đồng API có phiên bản trên toàn nền tảng. Engine của nó là một tiến trình C++ có thể cài đặt độc lập, thực hiện xác thực JSON OpenAPI 3.2.0 có giới hạn, so sánh tương thích tất định và kiểm kê dùng một lần. Ngữ nghĩa endpoint vẫn thuộc về vector hoặc module sở hữu miền; SACV quản trị hình dạng hợp đồng và tính tương thích.
+
+## Thao tác
+
+- **Inspect và check**: xác thực rằng một tài liệu JSON OpenAPI 3.2.0 tuân thủ hồ sơ có giới hạn.
+- **Diff**: tính toán so sánh tương thích tất định giữa các phiên bản hợp đồng.
+- **Propose**: tiếp nhận đề xuất registry do bên gọi khai báo cho hợp đồng mới hoặc đã thay đổi.
+- **Project**: xuất kiểm kê dùng một lần cho người xem xét và các công cụ hạ nguồn.
+
+## Những gì SACV quản trị
+
+SACV giới hạn:
+
+- Hình dạng hợp đồng (OpenAPI 3.2.0 với hồ sơ SACV)
+- Phân loại tương thích giữa các phiên bản
+- Tư cách thành viên registry cho các hợp đồng được chấp nhận
+
+Nó không:
+
+- Sở hữu ngữ nghĩa endpoint (mỗi vector hoặc module tự giữ phần đó)
+- Tạo SDK, xuất bản tạo phẩm hay cấp token
+- Ngụ ý rằng có một bề mặt mạng đang hoạt động (việc nhắc đến một API riêng tư trong tương lai không tạo ra nó)
+
+<Note>
+  SACV chỉ đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc theo chương trình bị vô hiệu hóa trên tất cả SKV engine.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung bao trùm và mô hình Contract Quad.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Quản trị mọi lần xuất bản chính thức của một hợp đồng đã đăng ký với SACV.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/vi/skv/sav">
+    Đánh giá thành phần và tính tương thích giữa các thành phần đã khai báo.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chạy `qxctl sacv ...` để inspect, check, diff và propose.
+  </Card>
+</CardGroup>

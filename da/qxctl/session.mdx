@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: Autentificerede Symphony-sessioner"
+description: "Åbn, checkpoint, luk og gendan autentificerede Symphony-koordinatorsessioner samt vedvarende SSFV-vedligeholdelsesstrømme med SSIAG-verificerede tildelinger."
+sidebarTitle: "session"
+---
+
+Grammatikken `qxctl knowledge session ...` åbner ikke-kanoniske autentificerede sessioner gennem én nøjagtig bundet koordinator og ét TOPS-afgrænset SSIAG-endpoint. En separat grammatik, `session features ...`, driver den vedvarende SSFV-vedligeholdelsesstrøm.
+
+## Grundlæggende sessionsgrammatik
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Hvert kald anmoder om en frisk, nøjagtig tildeling og validerer:
+
+- Subjekt- og målidentitet
+- Politik- og konfigurationstilstand
+- Udløb
+- Neutralitet over for kalderklasse
+- Ikke-overførbarhed
+- Deaktivering af kanonisk apply
+- Kapabilitetsbinding
+
+Sessionsevidens autoriserer kun den navngivne beskyttede ikke-kanoniske operation. Hold sessions- og afstemningsjournaler adskilt; brug kun kontekstreferencer til at knytte dem sammen.
+
+## SSFV-vedligeholdelsesstrøm
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Features-strømmen er en separat, vedvarende SSFV-vedligeholdelseskontekst. Ændringer kræver:
+
+- En åben autentificeret grundsession
+- Nøjagtige koordinator- og SSFV-bindinger
+- Stabile operationsidentifikatorer
+- Nøjagtig compare-and-swap
+- Frisk SSIAG-evidens
+
+<Note>
+  Bevar baseline-snapshottet og dets oprindelige motoridentitet på tværs af kompatible opgraderinger eller rollbacks. Valgfri Maestro-evidens skal være et komplet autentificeret inventar; når Maestro bevidst er fraværende, skal den eksplicitte årsag til manglende konfiguration registreres. `review_required` er evidens til gennemgang af kalderen, ikke ratificering.
+</Note>
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/da/governance/ssiag">
+    Udsteder de friske tildelinger, som hver sessionsanmodning validerer.
+  </Card>
+
+  <Card title="Sessionskoordinator" icon="gears" href="/da/engines/coordinator">
+    Motoren bag sessions- og features-journaler.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/da/qxctl/reconcile">
+    Afstemningskontekster, der parres med sessioner.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/da/skv/ssfv">
+    Den funktionsvektor, som features-strømmen vedligeholder.
+  </Card>
+</CardGroup>

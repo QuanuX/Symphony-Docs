@@ -1,0 +1,37 @@
+---
+title: "Cô lập hot path trong QuanuX Symphony"
+description: "Tìm hiểu cách Symphony bảo vệ các đường thực thi khỏi sự can thiệp của hoạt động quản trị: các thành phần cold path và freezing path, kỷ luật bus, và khái niệm nhân chứng trạng thái Prima Parte."
+sidebarTitle: "Cô lập hot path"
+---
+
+Symphony tách biệt công việc quản trị khỏi công việc thực thi để giao dịch trực tiếp, nghiên cứu và các đường thực thi nhạy cảm về hiệu năng khác không bị ảnh hưởng bởi jitter, độ trễ và các phụ thuộc ẩn. qxctl và knowledge plane là phần quản trị thuộc cold path hoặc freezing path. Chúng có thể chủ động tác động lên một Node đồng thời đang chạy công việc trực tiếp, nhưng không được trở thành phụ thuộc liên tục của hot path.
+
+## Kỷ luật cold path và freezing path
+
+qxctl và các vector engine là những thành phần quản trị thuộc cold path hoặc freezing path. Chúng không được:
+
+- Thực thi nội tuyến cùng các đường thực thi hot hoặc warm
+- Dùng chung khóa với các workload trực tiếp
+- Tạo ra các phụ thuộc đồng bộ làm tăng jitter hoặc độ trễ
+- Trở thành bộ theo dõi ẩn, trình thông dịch thường trú, hay trình quản lý gói chạy nền tự ý
+- Duy trì sự thường trú liên tục trên các Node thực thi
+
+Quy tắc này áp dụng cho bộ điều phối phiên tri thức, các vector engine và mọi thao tác do qxctl quản trị. Chúng tạo ra bằng chứng, xác thực trạng thái và chuẩn bị kế hoạch, nhưng không tham gia vào đường thực thi trực tiếp.
+
+## Kỷ luật bus
+
+Lưu lượng truyền tải nặng, điều khiển, nghiên cứu và dữ liệu thải từ thực thi không nhất thiết phải dùng chung một bus. Một cấu trúc có thể sử dụng nhiều bus hoặc bỏ qua bus cho một đường đã khai báo, đặc biệt ở những nơi lưu lượng dùng chung có thể gây ra jitter. NATS JetStream, ZeroMQ và các fabric khác là adapter và là lựa chọn của người dùng. Việc qxctl có chức năng quản trị bus không khiến việc đi qua bus trở thành bắt buộc.
+
+Bạn chọn cấu trúc bus phù hợp với yêu cầu về độ trễ và thông lượng của mình. Symphony hỗ trợ cấu hình đó mà không áp đặt một fabric dùng chung duy nhất.
+
+## Prima Parte
+
+**Prima Parte** là một khái niệm Giai đoạn 3 đã được phê chuẩn, không phải một tệp thực thi hiện có. Đây là một nhân chứng trạng thái cục bộ trên Node, viết bằng C++, tùy chọn và cực kỳ nhẹ, được qxctl gọi một cách tường minh sau một thao tác quan trọng. Nó không có daemon, listener, timer, watcher, vòng lặp polling hay kết nối bus thường trú.
+
+Bộ từ vựng bền vững có giới hạn của nó gồm ba thuật ngữ:
+
+- `current` — trạng thái hiện tại quan sát được
+- `previous` — trạng thái trước thao tác quan trọng
+- `lastTransmitted` — trạng thái được Node từ xa gửi đi sau khi lệnh liên quan được thực thi (chưa xác nhận đã nhận)
+
+Prima Parte chỉ ghi nhận Node của chính nó, không bao giờ trở thành một Maestro thu nhỏ, và thoát sau khi hoàn tất công việc có giới hạn của mình. Nó không phải là một bộ tiếp nhận Maestro của Giai đoạn 1, và hiện chưa có tệp thực thi nào được triển khai.

@@ -1,0 +1,48 @@
+---
+title: "SODV: governança de documentação oficial e releases"
+description: "O SODV governa as publicações oficiais do QuanuX com verificações de um ledger de releases append-only, verificação de observações fornecidas pelo chamador e inventários de releases descartáveis."
+sidebarTitle: "SODV"
+---
+
+O Symphony Official Documentation Vector (SODV) governa como o conhecimento dentro do framework SKV se torna documentação pública oficial e registros de release. Sua engine é um processo C++ instalável de forma independente que realiza verificações locais de um ledger de releases append-only e produz inventários de releases descartáveis. O próprio SODV não publica nada.
+
+## Operações
+
+- **Inspecionar e verificar**: valida o formato e a continuidade do ledger de releases.
+- **Verificar observações**: confere observações do estado publicado fornecidas pelo chamador.
+- **Propor**: aceita propostas de release neutras quanto ao provedor.
+- **Recuperar**: realiza recuperação sem mutação.
+- **Projetar**: emite inventários de releases descartáveis.
+
+## O que o SODV não faz
+
+- O SODV não tem acesso à rede.
+- O SODV não publica nada no GitHub, no Mintlify, em registros de pacotes ou em qualquer outra superfície.
+- O SODV não cria tags e não pode declarar uma release como concluída.
+- O SODV não classifica provedores nem favorece um caminho de publicação.
+
+A publicação acontece por meio de ferramentas autorizadas separadas que consultam as evidências do SODV.
+
+## Publicações SODV concluídas
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` na tag `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` na tag `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` na tag `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Comandos de vetores do qxctl" icon="terminal" href="/pt-BR/qxctl/vector-commands">
+    Execute `qxctl sodv ...` para inspecionar, verificar, propor e projetar.
+  </Card>
+</CardGroup>
+
+<Note>
+  Todas as engines SKV fazem somente leitura, consulta, validação e proposta. O apply canônico está desativado até que os contratos de SSIAG, transação de estado esperado, salvaguarda do qxctl, evento STAV, recuperação e testes negativos de cada engine estejam completos.
+</Note>

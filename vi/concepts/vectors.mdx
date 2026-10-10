@@ -1,0 +1,47 @@
+---
+title: "Vector và các giai đoạn triển khai trong Symphony"
+description: "Hiểu sự khác biệt giữa các miền sở hữu ngữ nghĩa lâu dài (vector) và các giai đoạn triển khai theo thời gian của Symphony, cùng với Contract Quad và trạng thái hiện tại của các vector."
+sidebarTitle: "Vector và giai đoạn"
+---
+
+Symphony tổ chức kiến trúc của mình xoay quanh hai ý tưởng: **vector** là các miền sở hữu ngữ nghĩa lâu dài, và **giai đoạn** (phase) là các đợt triển khai theo trình tự thời gian. Một thành phần được nghiên cứu lần đầu trong một giai đoạn không khiến giai đoạn đó trở thành chủ sở hữu vĩnh viễn của nó. Vector giữ cho ý nghĩa ổn định trong khi phần triển khai tiến hóa.
+
+## Vector là gì?
+
+Một vector là một miền sở hữu ngữ nghĩa có giới hạn và lâu dài, với contract chuẩn sở hữu ý nghĩa và các thao tác được phép của miền đó. Mỗi vector nhận một **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` và `SPEC.md`, cùng các surface đi kèm chuyên biệt mà nó thực sự cần. Vector khai báo các surface chuẩn và đồ thị ủy thác của mình, SKVI ánh xạ mỗi surface hiện hành đúng một lần, và các surface đi kèm lỗi thời được thay thế thông qua quá trình tiến hóa có quản trị thay vì tồn đọng như ngữ cảnh mâu thuẫn.
+
+## Trạng thái vector
+
+| Vector | Trạng thái | Trang |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Đã triển khai: nền tảng Giai đoạn 1 với các surface được lập chỉ mục | [/vi/skv/overview](/vi/skv/overview) |
+| **SKVI** — Lập chỉ mục nguồn | Đã triển khai: engine inspect/check/propose | [/vi/skv/skvi](/vi/skv/skvi) |
+| **SCLV** — Ledger thay đổi | Đã triển khai: kiểm tra ledger chỉ ghi thêm | [/vi/skv/sclv](/vi/skv/sclv) |
+| **SACV** — Quản trị API contract | Đã triển khai: kiểm tra OpenAPI 3.2.0 | [/vi/skv/sacv](/vi/skv/sacv) |
+| **SODV** — Quản trị tài liệu chính thức/phát hành | Đã triển khai: kiểm tra ledger phát hành cục bộ | [/vi/skv/sodv](/vi/skv/sodv) |
+| **SSFV** — Danh tính/quản trị tính năng | Đã triển khai: kiểm tra cấu trúc tính năng | [/vi/skv/ssfv](/vi/skv/ssfv) |
+| **SAV** — Kết hợp Accordare | Đã triển khai: đánh giá freezing path | [/vi/skv/sav](/vi/skv/sav) |
+| **SEV** — Tiến hóa | Đã triển khai: lập kế hoạch tác động/xử lý | [/vi/skv/sev](/vi/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Đã triển khai: nền tảng Go không dùng cgo | [/vi/governance/ssiag](/vi/governance/ssiag) |
+| **STAV** — Giao thức kiểm toán TOPS | Đã triển khai: ledger chỉ ghi thêm theo từng TOPS | [/vi/governance/stav](/vi/governance/stav) |
+| **SOV** — Ops Vector | Đang hình thành: cung cấp, triển khai Habitat, Nest | [/vi/vectors/sov](/vi/vectors/sov) |
+| **SCV** — Cloud Vector | Đã triển khai: tám engine tri thức nguồn C++ | [/vi/vectors/scv](/vi/vectors/scv) |
+| **SNV** — Node Vector | Đang hình thành: kết hợp SNIV, SNRV, SCIV, SCNV | [/vi/vectors/snv](/vi/vectors/snv) |
+| **SQV** — Quantitative Vector | Đang hình thành: subvector kiến trúc FIX SOOV | [/vi/vectors/sqv](/vi/vectors/sqv) |
+| **SHV** — Hardware Vector | Đã triển khai: engine nguồn, danh mục, hồ sơ C++ | [/vi/vectors/shv](/vi/vectors/shv) |
+| **SIV** — Intelligence Vector | Đang hình thành: SMCV Markdown tùy chọn; SAIV được dành riêng | [/vi/vectors/siv](/vi/vectors/siv) |
+
+## Contract Quad và các surface đi kèm
+
+Mỗi vector nhận:
+
+1. **INTENT.md** — mục đích và phạm vi
+2. **MANIFEST.md** — danh tính, các surface được khai báo, đồ thị ủy thác
+3. **SKILL.md** — hướng dẫn sử dụng an toàn và vận hành
+4. **SPEC.md** — hành vi chuẩn tắc và ranh giới
+
+Các surface đi kèm như `SLANG.md`, `NAMESPACES.md`, registry, schema và profile vẫn là các tạo phẩm được quản trị nằm ngoài cấu trúc bốn thành viên. Chúng định tuyến hoặc chuyên biệt hóa sự thật của chủ sở hữu nhưng không thể tự mở rộng quyền hạn của mình.
+
+## Tích hợp dựa trên bằng chứng
+
+Một engine bị hoãn không có biên nhận bịa đặt. Một API được đề xuất không có mục registry được tạo ra tùy tiện. Một contract chưa công bố không có tuyên bố hoàn tất SODV. Đây là tích hợp dựa trên bằng chứng, không phải sự trùng lặp mang tính hình thức.

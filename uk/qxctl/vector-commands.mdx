@@ -1,0 +1,82 @@
+---
+title: "Векторні команди qxctl: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Ознайомтеся з доступною сьогодні векторно-специфічною граматикою qxctl: SKVI, SCLV, SACV, SODV, SSFV, сховище та каталог SHV, а також зарезервовані поверхні accord і evolution."
+sidebarTitle: "Векторні команди"
+---
+
+qxctl надає векторно-специфічну граматику для кожного реалізованого рушія SKV, а також для адміністрування SCV і SHV. Ратифікована граматика Accordare і SEV використовуватиме `qxctl accord ...` та `qxctl evolution ...`, щойно з’являться реалізації їхніх команд і стабільні докази в реєстрі.
+
+## Граматика рушіїв SKV
+
+- `qxctl skvi ...`: inspect, check, propose, project для рушія SKVI
+- `qxctl sclv ...`: inspect, check, propose, recover, project для рушія SCLV
+- `qxctl sacv ...`: inspect, check, diff, propose, project для рушія SACV
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project для рушія SODV
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph для рушія SSFV
+
+Кожна граматика обмежена контрактом рушія-власника. qxctl ніколи не вигадує операцій і не обходить рушій.
+
+## Доповнення Accordare
+
+Доповнення Accordare у qxctl забезпечують:
+
+- Стабільний статус
+- Узгодження (повторно відтворює лише точних кандидатів)
+- Встановлення та видалення супервізора (викликає лише перевірений виконуваний файл із квитанцією v2)
+- Дві ідентичності адміністрування дозволів, які змінюють лише зупинену конфігурацію STAV під контролем SSIAG і з відновленням очікуваного стану
+
+Статус розділяє довговічний намір і черговість дописування. Узгодження повторно відтворює лише точних кандидатів. Листові команди дозволів ніколи не відкривають запущену конфігурацію.
+
+## Сховище SHV
+
+Довговічне сховище SHV адмініструється лише через:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` зі збереженим очікуваним дайджестом наміру також є відновленням. Окремого псевдоніма для відновлення немає. Область дії сховища оголошується у вхідних даних; ідентичність конектора задається у прапорцях. Структурне сховище не дублює семантичну `shv graph validate` і не вибирає голову каталогу.
+
+`shv graph store inventory` (випуск 0.2) додає прив’язане до ревізії логічне читання з явно збереженими ідентичностями записувачів. Застарілий вибір 0.1 і надалі підтримується.
+
+## Публікація каталогу SHV
+
+Публікація каталогу адмініструється лише через:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Відновлення — це `apply --operation-id`, що взаємовиключне з `--input`. Локальний вибір каталогу на основі дозволів відрізняється від активації джерела та загального сховища графів.
+
+## Пов’язані поверхні
+
+<CardGroup cols={2}>
+  <Card title="Огляд SKV" icon="book-open" href="/uk/skv/overview">
+    Семантика векторів, яку реалізують рушії.
+  </Card>
+
+  <Card title="Вектор SHV" icon="microchip" href="/uk/vectors/shv">
+    Загальні відомості про Hardware Vector і перелік рушіїв.
+  </Card>
+
+  <Card title="Рушії SHV" icon="microchip" href="/uk/engines/shv-engines">
+    Подробиці на рівні рушіїв.
+  </Card>
+
+  <Card title="Огляд qxctl" icon="terminal" href="/uk/qxctl/overview">
+    Повна поверхня команд qxctl.
+  </Card>
+</CardGroup>

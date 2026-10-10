@@ -1,0 +1,54 @@
+---
+title: "STAV: append-only auditledger per TOPS voor Symphony"
+description: "STAV Append Authority beheert append-only auditledgers per TOPS met geauthenticeerde IPC, duurzaamheid via fsync vóór ontvangstbewijs, begrensde leesbewerkingen, verificatie en herstel."
+sidebarTitle: "STAV"
+---
+
+De Symphony TOPS Audit Vector (STAV) definieert het protocol voor de append-only auditledger per TOPS. De runtime-autoriteit bevindt zich in `modules/stav-append-authority`, een onafhankelijk installeerbare Go-service. Operationele ledgers per TOPS zijn privé voor elke TOPS-installatie; ze zijn geen SKV-inhoud.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` biedt:
+
+- Append-only auditledgers per TOPS
+- Wederzijds geauthenticeerde lokale IPC
+- Exacte rechten voor producers en lezers
+- Duurzaamheid via fsync vóór ontvangstbewijs
+- Begrensde leesbewerkingen, verificatie en herstel
+- Inschrijving en native supervisie (launchd, systemd)
+
+<Warning>
+  qxctl krijgt nooit ruwe append-autoriteit. Het coördineert inschrijving, verificatie en rechten via de exacte adapter in eigendom van de module, maar de append aan de ledger blijft verzegeld binnen het proces van de append-autoriteit.
+</Warning>
+
+## STAV-protocol voor Go
+
+`libraries/stav-protocol-go` is een autoriteitsvrije Go-bibliotheek die de canonieke STAV v1-codec, strikte validatie, digests, framing, conformiteitsregels en het gesloten producervocabulaire implementeert. Elke producer of lezer kan het protocol overnemen zonder autoriteit te erven.
+
+## Voltooide SODV-publicaties
+
+Elk STAV-artefact dat momenteel via SODV is gepubliceerd, is een versie van een Go-bronmodule, geen binaire release:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/nl/governance/ssiag">
+    Autoriseert beschermde mutaties die STAV vervolgens auditeert.
+  </Card>
+
+  <Card title="Accordare-producer" icon="pen-nib" href="/nl/governance/accordare-producer">
+    Stuurt intentie vóór mutatie en definitieve uitkomsten naar STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/nl/qxctl/lifecycle">
+    Lifecyclebeheer dat samenwerkt met STAV-inschrijving.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/nl/skv/sodv">
+    Beheert officiële publicatierecords voor STAV-componenten.
+  </Card>
+</CardGroup>

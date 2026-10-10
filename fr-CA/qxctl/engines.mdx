@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines : lier, diagnostiquer, migrer le registre"
+description: "Gérez le profil de liaison des moteurs protégé de portée utilisateur de Symphony avec list, inspect, doctor, bind, unbind et migrate lié à un condensé au moyen de qxctl."
+sidebarTitle: "engines"
+---
+
+La grammaire `qxctl knowledge engines ...` gère le profil de liaison `default` protégé de portée utilisateur pour les moteurs vectoriels de Symphony. Elle lie un contenu sélectionné en vue d'une réconciliation ultérieure. Elle n'installe, n'invoque, n'active, n'amarre, n'authentifie, n'autorise ni n'applique aucun moteur.
+
+## Commandes
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Fournissez `absent` pour la première mutation du registre v2, ou le condensé exact signalé par `list` pour les mutations ultérieures. Chaque mutation est une opération compare-and-swap par rapport à ce condensé.
+
+## Migration de v1 à v2
+
+<Warning>
+  Un état de registre v1 valide demeure lisible. La migration vers v2 est une opération compare-and-swap exacte distincte et n'est jamais une opération de sélection de version. Ne considérez pas la migration comme une voie de mise à niveau pour la sélection des moteurs.
+</Warning>
+
+- `list` et `inspect` continuent de fonctionner sur les preuves v1.
+- `migrate` produit une génération v2 liée sans écarter la vérité v1.
+- Après la migration, utilisez les condensés v2 pour les mutations futures.
+
+## Ce qu'est une liaison
+
+Une liaison sélectionne un contenu exact en vue d'une réconciliation ultérieure par le coordonnateur. Elle :
+
+- N'installe pas de moteur
+- N'invoque ni n'active de moteur
+- N'amarre pas de moteur à Maestro
+- N'authentifie pas d'appelant
+- N'autorise pas l'application (apply)
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fr-CA/qxctl/reconcile">
+    Réconciliez le contenu lié avec un coordonnateur.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/fr-CA/qxctl/lifecycle">
+    Plans de cycle de vie qui utilisent des moteurs liés.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/fr-CA/governance/maestro">
+    Autorité de présence qui consigne les amarrages, et non les liaisons.
+  </Card>
+
+  <Card title="Aperçu des moteurs" icon="cube" href="/fr-CA/engines/overview">
+    Moteurs vectoriels installables de façon indépendante.
+  </Card>
+</CardGroup>

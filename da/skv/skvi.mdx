@@ -1,0 +1,51 @@
+---
+title: "SKVI: Symphony Knowledge Vector Index-motoren"
+description: "SKVI indekserer deterministisk hver kanonisk SKV-flade én gang, kontrollerer manifestdeklareret dækning og udsender digest-bundne engangsprojektioner uden at røre sandheden."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) er motoren, der kortlægger den aktuelle kanoniske sandhed på tværs af alle SKV-flader. Den er en uafhængigt installerbar C++-proces, der fungerer deterministisk og skrivebeskyttet og ikke kan afgøre medlemskab eller skrive kanoniske filer.
+
+## Hvad SKVI gør
+
+SKVI udfører tre afgrænsede operationer:
+
+- **Inspect og check**: verificer, at hver manifestdeklareret påkrævet flade er indekseret nøjagtigt én gang med en stabil ejer, sandhedsrolle, relationer, forbrugere og projektionsberettigelse.
+- **Propose**: accepter kalderdeklarerede uforanderlige forslag til indeksændringer uden at anvende dem.
+- **Project**: udsend digest-bundne engangsprojektioner af det aktuelle indeks til efterfølgende forbrugere.
+
+## Hvad SKVI ikke gør
+
+SKVI afgør aldrig, om noget fortjener at være en funktion, eller manifestmedlemskab. Ejerskab forbliver hos hver vektors Contract Quad. SKVI gør heller ikke følgende:
+
+- Skriver eller omskriver kanonisk Markdown
+- Publicerer noget til en offentlig projektion
+- Tildeler autoritet blot fordi den har genereret evidens
+
+## Hvornår den skal bruges
+
+Brug SKVI til at bekræfte, at et repository er fuldt dækket, før du foreslår en kildeændring, eller til at se, hvilken ejer og sandhedsrolle en bestemt flade har. Dens projektioner fodrer forslagsreviewere, agentkontekst og validator-baselines.
+
+<Note>
+  SKVI er en af motorerne til læsning, forespørgsel, validering og forslag. Kanonisk apply forbliver deaktiveret på tværs af de ratificerede vektormotorer, indtil hver motors kontrakter for SSIAG, transaktion med forventet tilstand, qxctl-sikring, STAV-hændelse, gendannelse og negative tests er fuldførte.
+</Note>
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Oversigt over SKV" icon="book-open" href="/da/skv/overview">
+    Det overordnede rammeværk, der styrer SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/da/skv/sclv">
+    Append-only ændringsledgeren, der registrerer fuldførte væsentlige kildeændringer.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/da/qxctl/vector-commands">
+    Kør `qxctl skvi ...` for at kalde inspect, check og propose.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/da/governance/validator">
+    Uafhængige skrivebeskyttede kontroller, der supplerer SKVI-dækningen.
+  </Card>
+</CardGroup>

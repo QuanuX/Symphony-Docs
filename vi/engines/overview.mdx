@@ -1,0 +1,57 @@
+---
+title: "Vector engine của Symphony: tổng quan về cài đặt độc lập"
+description: "Mọi vector engine của Symphony đều được cài đặt độc lập, chạy ngoài tiến trình bằng C++ và không mang quyền hạn. Tìm hiểu các họ engine SKV, SCV và SHV tại đây."
+sidebarTitle: "Tổng quan engine"
+---
+
+Mỗi vector cấp ứng dụng đang hoạt động của Symphony có thể có một engine C++ chạy ngoài tiến trình, có thể cài đặt độc lập. Các cơ chế C++ dùng chung, không mang quyền hạn nằm trong `libraries/`; một bộ điều phối C++ riêng biệt sở hữu các cơ chế phiên có xác thực và đối soát worktree. Các engine kiểm tra, xác thực, chiếu và đề xuất trong phạm vi các contract do vector sở hữu. Chúng không có được quyền hạn chỉ vì tạo ra nội dung.
+
+## Các engine đã triển khai
+
+<CardGroup cols={2}>
+  <Card title="Nền tảng Knowledge Vector" icon="cube" href="/vi/engines/knowledge-vector-foundation">
+    Khung tiến trình C++, JSON, SHA-256, snapshot, biên nhận và khám phá manifest.
+  </Card>
+
+  <Card title="Bộ điều phối phiên" icon="gears" href="/vi/engines/coordinator">
+    Phiên có xác thực, đối soát worktree và điều phối áp dụng vòng đời.
+  </Card>
+
+  <Card title="Engine nguồn SCV" icon="cloud" href="/vi/engines/scv-source-engines">
+    Tám engine tri thức nguồn C++26 cho SCV, hyperscaler, edge và nhà cung cấp.
+  </Card>
+
+  <Card title="Engine SHV" icon="microchip" href="/vi/engines/shv-engines">
+    Các engine nguồn, danh mục, hồ sơ, phân vùng, xuất bản và adapter phần cứng.
+  </Card>
+</CardGroup>
+
+## Họ engine SKV
+
+Mỗi surface SKV đều có engine riêng:
+
+- Các engine SKVI, SCLV, SACV, SODV và SSFV đều triển khai inspect, check, propose, project (và recovery khi áp dụng).
+- Các engine SAV và SEV là các tiến trình C++26 thuộc freezing path, dùng cho việc đánh giá kết hợp và các trường hợp tiến hóa.
+
+<Note>
+  Mọi engine SKV hiện tại chỉ đọc, truy vấn, xác thực và đề xuất. Việc áp dụng chuẩn tắc bằng chương trình vẫn bị vô hiệu hóa cho đến khi các contract về xác minh quyền SSIAG, giao dịch trạng thái mong đợi, biện pháp bảo vệ qxctl, sự kiện STAV, khôi phục và kiểm thử phủ định của từng engine được hoàn tất.
+</Note>
+
+## Các bảo đảm chung
+
+- Cài đặt và gỡ cài đặt độc lập theo từng mô-đun
+- Không quét kho mã ngầm định; việc khám phá manifest là tường minh
+- Không có quyền hạn dùng chung; mọi route thay đổi đều được kiểm soát bởi SSIAG cùng STAV
+- Không thường trú trên hot path; các engine không bao giờ gây thêm độ trễ cho workload trực tiếp
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan qxctl" icon="terminal" href="/vi/qxctl/overview">
+    CLI quản trị gọi các engine chính xác đã được xác thực bằng biên nhận.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/vi/governance/maestro">
+    Ghi nhận các quan hệ kết nối giữa engine và bộ tiếp nhận.
+  </Card>
+</CardGroup>

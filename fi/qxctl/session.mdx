@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: todennetut Symphony-istunnot"
+description: "Avaa, tallenna tarkistuspisteitä, sulje ja palauta todennettuja Symphony-koordinaattori-istuntoja sekä pysyviä SSFV-ylläpitovirtoja SSIAG:n todentamilla myönnöillä."
+sidebarTitle: "session"
+---
+
+`qxctl knowledge session ...` -kielioppi avaa ei-kanonisia todennettuja istuntoja yhden tarkan, sidotun koordinaattorin ja yhden TOPS-rajatun SSIAG-päätepisteen kautta. Erillinen `session features ...` -kielioppi ohjaa pysyvää SSFV-ylläpitovirtaa.
+
+## Perusistunnon kielioppi
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Jokainen kutsu pyytää tuoreen tarkan myönnön ja validoi:
+
+- Subjektin ja kohteen identiteetin
+- Käytännön ja konfiguraation tilan
+- Voimassaolon päättymisen
+- Kutsujaluokkaneutraaliuden
+- Siirtokelvottomuuden
+- Kanonisen soveltamisen estämisen
+- Kyvykkyyssidonnan
+
+Istuntotodisteet valtuuttavat vain nimetyn suojatun ei-kanonisen operaation. Pidä istunto- ja täsmäytyslokit erillään; käytä kontekstiviittauksia ainoastaan niiden yhdistämiseen.
+
+## SSFV-ylläpitovirta
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+Features-virta on erillinen pysyvä SSFV-ylläpitokonteksti. Muutokset edellyttävät:
+
+- Avointa todennettua perusistuntoa
+- Tarkkoja koordinaattori- ja SSFV-sidontoja
+- Vakaita operaatiotunnisteita
+- Tarkkaa compare-and-swap-operaatiota
+- Tuoreita SSIAG-todisteita
+
+<Note>
+  Säilytä perustason tilannevedos ja sen alkuperäinen moottori-identiteetti yhteensopivien päivitysten ja palautusten yli. Valinnaisten Maestro-todisteiden on oltava täydellinen todennettu inventaario; kun Maestro tarkoituksella puuttuu, kirjaa eksplisiittinen ei-määritetty-syy. `review_required` on todiste kutsujan tarkastettavaksi, ei ratifiointi.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/fi/governance/ssiag">
+    Myöntää tuoreet myönnöt, jotka kukin istuntopyyntö validoi.
+  </Card>
+
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Moottori istunto- ja features-lokien taustalla.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fi/qxctl/reconcile">
+    Täsmäytyskontekstit, jotka liitetään istuntoihin.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fi/skv/ssfv">
+    Ominaisuusvektori, jota features-virta ylläpitää.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Fondation C++ des moteurs Knowledge Vector : mécanismes partagés"
+description: "La fondation C++ des moteurs Knowledge Vector fournit un encadrement de processus sans autorité, du JSON borné, SHA-256, des instantanés, des reçus et une découverte explicite des manifestes."
+sidebarTitle: "Bibliothèque de fondation"
+---
+
+`libraries/knowledge-vector-engine-cpp` fournit les mécanismes C++ partagés et sans autorité que réutilise chaque moteur de vecteur Symphony. Elle offre des blocs de construction déterministes afin que chaque moteur demeure borné, reproductible et exempt d’effets secondaires ambiants.
+
+## Ce que fournit la fondation
+
+- **Encadrement des processus** : protocole de processus local sans autorité utilisé par chaque moteur
+- **JSON borné** : analyse et émission strictes avec des limites explicites de taille et de profondeur
+- **SHA-256** : adressage par contenu pour les preuves et les reçus
+- **Lectures sans suivi des liens** : lectures du système de fichiers qui ne traversent jamais de liens symboliques de façon inattendue
+- **Instantanés déterministes** : instantanés reproductibles de l’état inspecté
+- **Validation temporelle** : traitement canonique de l’UTC conformément au Symphony Temporal Semantics Contract
+- **Découverte des manifestes des propriétaires** : découverte exacte des manifestes de contrats
+- **Empaquetage versionné** : paquets installables indépendamment et détenus par des reçus
+- **Reçus et désinstallation détenue par reçu** : désinstallation pilotée uniquement par le reçu qui a installé l’artefact
+
+## Frontière de la découverte des manifestes
+
+<Warning>
+  La découverte des manifestes part d’un ensemble d’amorçage fixe et ne parcourt que les déclarations subordonnées explicites. Elle n’effectue jamais d’exploration ambiante du dépôt et ne déduit jamais la propriété à partir des noms de répertoires.
+</Warning>
+
+Chaque moteur de vecteur qui utilise la fondation hérite de cette règle.
+
+## Ce que la fondation ne fait pas
+
+- Elle ne porte aucune autorité. Les moteurs qui l’utilisent doivent quand même autoriser les mutations au moyen de SSIAG.
+- Elle ne publie ni ne récupère rien sur le réseau.
+- Elle ne modifie pas les fichiers canoniques de son propre chef.
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="Coordonnateur de sessions" icon="gears" href="/fr-CA/engines/coordinator">
+    Coordonnateur C++26 bâti sur la fondation pour les sessions et le rapprochement.
+  </Card>
+
+  <Card title="Aperçu des moteurs" icon="cube" href="/fr-CA/engines/overview">
+    Les moteurs qui réutilisent la fondation.
+  </Card>
+
+  <Card title="Aperçu de SKV" icon="book-open" href="/fr-CA/skv/overview">
+    Contrats de vecteurs que mettent en œuvre les moteurs.
+  </Card>
+
+  <Card title="Aperçu de qxctl" icon="terminal" href="/fr-CA/qxctl/overview">
+    Interface en ligne de commande administrative qui invoque des moteurs exacts validés par reçu.
+  </Card>
+</CardGroup>

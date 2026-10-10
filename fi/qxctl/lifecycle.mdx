@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: profiili, käynnistys ja soveltaminen"
+description: "Hallitse suojattuja elinkaariprofiileja, omistajuutta, havaintoja, käynnistyksiä ja soveltamisyhteensopivia siirtymiä qxctl:llä tiukkojen compare-and-swap-suojausten avulla."
+sidebarTitle: "lifecycle"
+---
+
+`qxctl knowledge lifecycle ...` -kielioppi hallinnoi suojattuja profiileja, omistajuutta, havaintoja, käynnistyslokeja ja soveltamisyhteensopivia siirtymiä. Jokainen muutos on compare-and-swap-operaatio, ja jokainen soveltaminen on sidottu tarkkoihin todisteisiin.
+
+## Profiili
+
+Aseta suojattu elinkaariprofiili TOPS:lle:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Anna `absent` ensimmäistä kertaa luotavalle profiilille tai aiemman lukuoperaation raportoima tarkka digest.
+
+## Omistajuus
+
+- `ownership status`: tarkastele yhtä määritettyä jaettua juurta
+- `ownership reconcile`: päivitä sen todisteet
+- `ownership adopt`: ota omistukseen vasta, kun olet käynyt läpi jokaisen konservatiivisen vanhan vaatimuksen
+- `ownership release`: vapauta vain yhdelle tarkalle vanhalle kuitille, joka on tarkoituksella tehty uudelleen vaadittavaksi
+
+<Warning>
+  Älä koskaan poista tai kirjoita uudelleen käsin juurikohtaista rekisteriä tai sen `symphony-root-ownership/1` -kuittiasettelun yhteensopivuusaitaa. Vanhempien elinkaariasiakkaiden on kohdattava tämä aita ja pysähdyttävä olemassa olevaan tuntemattoman paketin estoonsa.
+</Warning>
+
+## Havainnointi, raportointi, käynnistys
+
+- `observe`: tuota kertakäyttöisiä kiinteän asettelun kuittitodisteita
+- `report`: tuota tuore kertakäyttöinen suunnitelma
+- `boot`: pysyvä, vain raportoiva eteneminen vakaalla operaatiotunnisteella ja tarkalla lokitilalla
+- `status`: v1-tarkastelu
+- `recover --discover`: palauta yksilöllinen v1-ketju, kun tavallinen tila ei pysty validoimaan paikallista tilaa
+
+## Soveltamisyhteensopivat profiilit
+
+`apply-compatible`-profiilille kutsu `apply` vain tarkalla käynnistyslähteen digestillä, soveltamislokin compare-and-swap-arvolla, sovelletun tilan compare-and-swap-arvolla, vakaalla operaatiotunnisteella ja eksplisiittisillä valmistelluilla juurilla:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Käytä `apply-status`-komentoa yrityksen tarkkailuun tai rajattua `apply-recover`-komentoa pysyvään palautukseen. Älä koskaan valitse toimintoa käsin tai muokkaa suojattua tilaa.
+
+<Note>
+  Pelkän aikaleiman havaintopäivityksen on muutettava asiakirjatodisteita ilman, että vakaat semanttiset identiteetit etenevät.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Moottori elinkaarisuunnitelmien ja soveltamisen koordinoinnin takana.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/fi/qxctl/engines">
+    Hallitse elinkaarisuunnitelmien viittaamia moottorisidontoja.
+  </Card>
+</CardGroup>

@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: přehled frameworku SKV"
+description: "SKV je zastřešující framework pro deklarativní znalosti platformy Symphony. Prozkoumejte Contract Quad, doprovodné plochy a všechny podvektory v rámci jednoho modelu správy."
+sidebarTitle: "Přehled SKV"
+---
+
+Symphony Knowledge Vector (SKV) je kanonický framework pro deklarativní znalosti platformy Symphony. Uchovává architektonickou pravdu, hranice modulů, kontrakty, doktrínu a znalosti o kompatibilitě ve struktuře, kterou lidé, validátory, qxctl, CI i agentní nástroje konzumují konzistentně. SKV není runtime; je to sdílená znalostní vrstva, přes kterou prochází každý vektor.
+
+## Contract Quad
+
+Každý sémantický vlastník v SKV publikuje Contract Quad:
+
+- **INTENT.md**: účel, rozsah a co do rozsahu nepatří
+- **MANIFEST.md**: kanonické plochy a delegace
+- **SKILL.md**: bezpečný postup použití pro volající
+- **SPEC.md**: normativní chování
+
+Schémata, registry, profily, účetní knihy a další artefakty zůstávají mimo čtyřčlenný Quad a spravuje je tentýž vlastník.
+
+## Doprovodné plochy
+
+Dvě doprovodné plochy vlastněné SKV procházejí napříč všemi vektory:
+
+- `knowledge/SLANG.md` mapuje každý pojem platformy na přesný kontrakt, který vlastní jeho sémantiku.
+- `knowledge/NAMESPACES.md` zaznamenává vlastnictví rodin identit, aniž by určoval gramatiku, alokaci, životní cyklus nebo jednotlivé identity.
+
+Žádná z nich není pátým členem Quadu, novým vektorem ani runtime službou.
+
+## Pravidlo interpretace
+
+Aktuální kontrakty popisují aktuální pravdu. Záznamy SCLV a SODV, do nichž se pouze připisuje, uchovávají to, co bylo známo, autorizováno nebo dokončeno v zaznamenaném okamžiku. Pokud se stav kontraktu, důkazy implementace a nejnovější použitelný záznam neshodují, jde o drift k posouzení. Nástroje si nesmí potichu vymyslet rekonciliaci.
+
+## Podvektory
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/cs/skv/skvi">
+    Indexuje každou aktuální kanonickou plochu právě jednou.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/cs/skv/sclv">
+    Účetní kniha změn (pouze připisování) pro dokončené podstatné změny zdrojů.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/cs/skv/sacv">
+    Ohraničená správa OpenAPI 3.2.0 a rozdíly kompatibility.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Spravuje oficiální publikace QuanuX a záznamy vydání.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cs/skv/ssfv">
+    Identita funkcí, aktuálnost a zajištění správy.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cs/skv/sav">
+    Kompozice Accordare a vyhodnocení kompatibility ve třech osách.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/cs/skv/sev">
+    Případy evoluce, plánování dispozic a kontroly novosti.
+  </Card>
+
+  <Card title="Správa" icon="shield-halved" href="/cs/governance/ssiag">
+    Správa identit SSIAG a auditu STAV pro autorizované mutace.
+  </Card>
+</CardGroup>
+
+<Note>
+  Každý aktuální engine SKV slouží pouze ke čtení, dotazování, validaci a navrhování. Programové kanonické apply je zakázáno, dokud nebudou dokončeny kontrakty každého enginu pro oprávnění SSIAG, transakce s očekávaným stavem, pojistky qxctl, události STAV, obnovu a negativní testy.
+</Note>

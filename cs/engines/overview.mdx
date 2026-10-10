@@ -1,0 +1,57 @@
+---
+title: "Vektorové enginy Symphony: přehled samostatné instalace"
+description: "Každý vektorový engine Symphony se instaluje samostatně, běží v C++ mimo proces a zůstává bez oprávnění. Seznamte se s rodinami enginů SKV, SCV a SHV."
+sidebarTitle: "Přehled enginů"
+---
+
+Každý aktivní aplikační vektor Symphony může mít samostatně instalovatelný engine v C++ běžící mimo proces. Sdílené mechanismy v C++ bez oprávnění se nacházejí v `libraries/`; samostatný koordinátor v C++ vlastní mechanismy autentizovaných relací a rekonciliace pracovních stromů. Enginy kontrolují, validují, promítají a navrhují v rámci kontraktů vlastněných vektory. Pouhým generováním obsahu nezískávají žádné oprávnění.
+
+## Implementované enginy
+
+<CardGroup cols={2}>
+  <Card title="Základ Knowledge Vector" icon="cube" href="/cs/engines/knowledge-vector-foundation">
+    Rámování procesů v C++, JSON, SHA-256, snímky, potvrzení a vyhledávání manifestů.
+  </Card>
+
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Autentizované relace, rekonciliace pracovních stromů a koordinace aplikace životního cyklu.
+  </Card>
+
+  <Card title="Zdrojové enginy SCV" icon="cloud" href="/cs/engines/scv-source-engines">
+    Osm enginů znalostí zdrojů v C++26 pro SCV, hyperscalery, edge a poskytovatele.
+  </Card>
+
+  <Card title="Enginy SHV" icon="microchip" href="/cs/engines/shv-engines">
+    Enginy pro hardwarové zdroje, katalog, profily, oddíly, publikaci a adaptéry.
+  </Card>
+</CardGroup>
+
+## Rodina enginů SKV
+
+Každý z povrchů SKV má vlastní engine:
+
+- Enginy SKVI, SCLV, SACV, SODV a SSFV implementují inspect, check, propose, project (a tam, kde je to relevantní, i recovery).
+- Enginy SAV a SEV jsou procesy v C++26 na mrazivé cestě pro vyhodnocování kompozice a případy vývoje.
+
+<Note>
+  Každý aktuální engine SKV slouží pouze ke čtení, dotazování, validaci a navrhování. Programová kanonická aplikace zůstává vypnutá, dokud nebudou pro každý engine dokončeny kontrakty ověřování oprávnění SSIAG, transakce s očekávaným stavem, ochranného opatření qxctl, události STAV, obnovy a negativních testů.
+</Note>
+
+## Společné záruky
+
+- Samostatná instalace a odinstalace každého modulu
+- Žádné plošné procházení repozitáře; vyhledávání manifestů je explicitní
+- Žádné sdílené oprávnění; každá cesta provádějící změny je chráněna SSIAG a STAV
+- Žádná rezidence na hot path; enginy nikdy nevnášejí latenci do živých workloadů
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="Přehled qxctl" icon="terminal" href="/cs/qxctl/overview">
+    Správní CLI, které vyvolává přesné enginy validované potvrzením.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/cs/governance/maestro">
+    Zaznamenává vztahy ukotvení (docking) mezi enginy a receptory.
+  </Card>
+</CardGroup>

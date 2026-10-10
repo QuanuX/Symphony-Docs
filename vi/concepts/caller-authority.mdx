@@ -1,0 +1,28 @@
+---
+title: "Tính trung lập đối với loại bên gọi và quyền hạn máy chủ trong Symphony"
+description: "Symphony không phân loại bên gọi theo kiểu. Quyền hạn bắt nguồn từ quyền sở hữu máy chủ đích, quyền được cấp tường minh, trạng thái mong đợi và các biện pháp bảo vệ do chủ sở hữu cấu hình."
+sidebarTitle: "Quyền hạn bên gọi"
+---
+
+Symphony không phân loại một bên gọi là con người, AI, agent, dịch vụ, workload, tổ chức hay bất kỳ loại tác nhân nào khác khi quyết định quyền hạn. Việc bạn được phân loại là một con người hay một hệ thống tự động tự nó không cấp hoặc tước bỏ bất kỳ năng lực nào. Tính trung lập đối với loại bên gọi này là một ranh giới kiến trúc cốt lõi, giúp việc ủy quyền dựa trên dữ kiện thay vì nhãn.
+
+## Điều gì chi phối quyền hạn
+
+Các quyết định ủy quyền được hỗ trợ sử dụng các đầu vào sau:
+
+- **Quyền sở hữu máy chủ đích hoặc các quyền đã được cấp**: Quản trị viên của máy chủ đích có quyền tối cao đối với phần quản trị có thể cấu hình.
+- **Thao tác và tài nguyên được yêu cầu**: Hành động cụ thể và đối tượng mà nó tác động.
+- **Trạng thái mong đợi**: Kết quả mong muốn được khai báo và trạng thái hiện tại quan sát được.
+- **Các biện pháp bảo vệ do chủ sở hữu cấu hình**: Các giá trị mặc định thận trọng mà quản trị viên có thể điều chỉnh hoặc gỡ bỏ.
+
+## SSIAG và quyền hạn máy chủ
+
+SSIAG có thể xác minh và phản ánh quyền hạn hiệu lực trên máy chủ, nhưng không tạo ra một cơ quan đăng ký cấp cao hơn hay phủ quyết vĩnh viễn quản trị viên của máy chủ đích. Các cơ chế đảm bảo danh tính nâng cao và khóa liên động quản trị là những biện pháp bảo vệ trung lập với bên gọi, do chủ sở hữu cấu hình. Các yêu cầu về toàn vẹn giao thức vẫn là bắt buộc trong công cụ được hỗ trợ.
+
+## Những gì Symphony không quyết định
+
+Symphony không quyết định liệu một tác nhân có thể sở hữu tài sản, mở tài khoản, ký hợp đồng, chịu trách nhiệm pháp lý hay hành động thay mặt một thực thể khác hay không. Những dữ kiện đó thuộc về chủ sở hữu, nhà cung cấp, đối tác liên quan và pháp luật hiện hành. Nền tảng giữ trong vai trò có giới hạn của mình: nó tạo ra bằng chứng tương thích và hỗ trợ các thao tác, nhưng không mở rộng sang việc xác định năng lực pháp lý hay tài chính bên ngoài.
+
+## Ý nghĩa thực tế
+
+Khi bạn gọi qxctl hoặc một vector engine, các bước kiểm tra như nhau sẽ được áp dụng bất kể bạn chạy lệnh thủ công, thông qua script hay qua một công cụ agent. Đường dẫn quyền hạn là: quyền sở hữu máy chủ đích, quyền được cấp tường minh, trạng thái mong đợi, các biện pháp bảo vệ. Không có loại bên gọi nào được tự động bỏ qua kiểm tra hay bị tự động hạn chế.

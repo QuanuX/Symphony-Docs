@@ -1,0 +1,83 @@
+---
+title: "qxctl: de agentische beheeropdrachtregel van Symphony"
+description: "qxctl is de Go-beheer-CLI van Symphony. Lees over de 373 uitvoerbare commando's, het engine-bindingsregister en het via ontvangstbewijzen gevalideerde aanroepmodel voor vector-engines."
+sidebarTitle: "Overzicht van qxctl"
+---
+
+`qxctl` is de op Go gebaseerde, agentic-first beheer- en query-CLI van Symphony. Het spreekt commando's; domeinvectoren zijn eigenaar van de bewerkingen en betekenissen erachter. Het ingecheckte register bindt elke uitvoerbare commando-leaf aan een stabiele machine-identiteit en beoordeeld bewijs voor featurebeheer.
+
+## Wat qxctl omvat
+
+qxctl implementeert beheer voor:
+
+- Inspectie van repository's en contracten
+- Beheer van validator, waarschuwingen, invarianten, features, levenscyclus, sessies, reconciliatie, bindingen en Maestro
+- Beheer van SSIAG-identiteit, STAV-audit en Accordare-producers
+- Geïmplementeerde vector-enginegrammatica (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, plus SCV- en SHV-onderdelen)
+
+Het huidige register bevat **373** uitvoerbare commando's.
+
+## Veilig aanroepmodel
+
+qxctl roept exacte, via ontvangstbewijzen gevalideerde installaties aan met begrensde subprocessen, harde deadlines, controles van responsidentiteit en digest, transacties op verwachte status en duurzaam herstel. Het accepteert nooit adapterpaden of ruwe versies in plaats van ontvangstbewijzen.
+
+## Engine-bindingsregister v2
+
+Het engine-bindingsregister v2 ondersteunt de acht gevestigde enginerollen en begrensde toekomstige rolidentiteiten. Legacy-v1-status wordt dubbel gelezen; migratie naar v2 vereist een expliciete, digest-gebonden compare-and-swap via qxctl en is nooit een versieselectie.
+
+## Registercommando's
+
+Genereer en verifieer het verwachte register vanuit `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Een geïnstalleerde client kan aan het uitvoerbare bestand gebonden bewijs uitgeven:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Verwacht bewijs heeft een null-waarde voor clientversie, digest van het uitvoerbare bestand en digest van het ontvangstbewijs. Waargenomen bewijs bindt de exacte clientversie en digest van het uitvoerbare bestand, plus een ontvangstbewijsdigest wanneer die beschikbaar is. Beide vormen gebruiken `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl is eigenaar van de commandogrammatica en de presentatie. Het is geen eigenaar van vectorsemantiek of canonieke kenniswaarheid. Alleen beoordeelde bronwijzigingen bekrachtigen een nieuwe `qxcmd`-identiteit, ongeacht de klasse van de aanroeper.
+</Note>
+
+## Commandogroepen
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/nl/qxctl/knowledge">
+    Vectoroverstijgend levenscyclusbeheer en beheer van persistente SSFV-sessies.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/nl/qxctl/lifecycle">
+    Profiel, eigendom, observeren, rapporteren, booten, toepassen en herstel.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/nl/qxctl/engines">
+    Engine-bindingsregister en migratie.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/nl/qxctl/reconcile">
+    Worktree-reconciliatie via de coördinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/nl/qxctl/session">
+    Geauthenticeerde sessies en SSFV-onderhoudsstromen.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/nl/qxctl/maestro">
+    Afgeleide receptorinventaris en dockingbewijs.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/nl/qxctl/validate">
+    Beschermd waarschuwingsbeleid en validatorbeheer.
+  </Card>
+
+  <Card title="vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` en toekomstige accord-/evolution-grammatica.
+  </Card>
+</CardGroup>

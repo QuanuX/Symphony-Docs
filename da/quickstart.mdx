@@ -1,0 +1,33 @@
+---
+title: "Kom godt i gang: Udforsk QuanuX Symphony"
+description: "En guidet rute gennem Symphonys doktrin, arkitektur, vector-kontrakter og den administrative qxctl-overflade."
+sidebarTitle: "Kom godt i gang"
+---
+
+Brug denne guide til at orientere dig, før du betjener Symphony. Dokumentationen adskiller platformsdoktrin, brugervalgt infrastruktur, vector-ejet semantik og administrative kommandoer. De præcise installations- og udførelsestrin hører til den relevante komponents gældende kontrakt.
+
+## 1. Læs driftsgrænserne
+
+Start med [platformsdoktrinen](/da/doctrine). Den fastlægger brugerejerskab af strategi og infrastruktur, neutralitet over for kalderklasse, evidensbaseret kompatibilitet og beskyttelse af hot path.
+
+## 2. Lær den fysiske model
+
+Læs [Node, Habitat og Nest](/da/concepts/node-habitat-nest):
+
+- **Node:** den identificerede fysiske computerressource.
+- **Habitat:** den præcise konditionering af operativsystem og pakker, der leveres til en Node.
+- **Nest:** den workload med brugerdefineret formål, der placeres i en passende Habitat.
+
+En klynges busser og adaptere er eksplicitte arkitekturvalg. Symphony foreskriver ikke en universel udbyder eller strategi.
+
+## 3. Følg ejerskabet af betydning
+
+[Arkitekturoversigten](/da/concepts/architecture) viser forholdet mellem vector-kontrakter, engines, qxctl og styret evidens. [Vectors og faser](/da/concepts/vectors) forklarer, hvorfor en vector forbliver den semantiske ejer, selv når leverancearbejdet bevæger sig gennem faser. [Symphony Knowledge Vector](/da/skv/overview) beskriver Contract Quad og dens ledsageoverflader.
+
+## 4. Find den administrative overflade
+
+[qxctl-oversigten](/da/qxctl/overview) introducerer Go-CLI'en til administration og forespørgsler. Brug qxctl-siderne til en bestemt kommandofamilie, såsom [knowledge](/da/qxctl/knowledge), [lifecycle](/da/qxctl/lifecycle), [engines](/da/qxctl/engines) eller [validering](/da/qxctl/validate). qxctl leverer kommandogrammatik og præsentation; vector-kontrakter ejer operationerne og deres betydning.
+
+## 5. Kontrollér den relevante kontrakt og evidens
+
+Før du handler på en Node eller kalder en vector-engine, skal du kontrollere den gældende ejerkontrakt, måltilstanden, autorisationen og tilgængelig kvitterings- eller valideringsevidens. [Kalderautoritet](/da/concepts/caller-authority) og [isolering af hot path](/da/concepts/hot-path-isolation) forklarer disse grænser. En spirende overflade er ikke en implicit driftsgaranti.

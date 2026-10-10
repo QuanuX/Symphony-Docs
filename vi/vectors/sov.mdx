@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: Điều khiển vận hành qxctl"
+description: "SOV định nghĩa miền vận hành do qxctl quản trị cho việc cấp phát, điều chỉnh Habitat, triển khai Nest, adapter bus và quản trị Node từ xa tùy chọn."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) là mặt phẳng điều khiển vận hành mà qua đó các lệnh qxctl được ủy quyền tác động lên hạ tầng của bạn. Nó sở hữu hợp đồng cho việc cấp phát, điều chỉnh Habitat (môi trường), triển khai Nest (khối công việc), thiết lập adapter bus và quản trị Node từ xa tùy chọn. SOV không tự tạo ý nghĩa của nhà cung cấp hay dữ kiện phần cứng; nó thực thi các lựa chọn được hỗ trợ mà bạn đã chọn.
+
+## Phạm vi của SOV
+
+SOV là một miền mới nổi của Giai đoạn 2. Phạm vi của nó bao gồm:
+
+- **Cấp phát**: quy trình cấp phát tài nguyên của nhà cung cấp và phần cứng tự sở hữu
+- **Điều chỉnh Habitat**: điều chỉnh chính xác hệ điều hành và gói được đưa tới một Node
+- **Triển khai Nest**: đặt và cập nhật khối công việc trên một Node
+- **Thiết lập adapter bus**: kết nối các Node qua bus bạn chọn (NATS JetStream, ZeroMQ hoặc các bus khác)
+- **Thao tác Node từ xa**: quản trị tùy chọn các Node nằm ngoài shell cục bộ của bạn
+
+<Note>
+  Giao thức nhà cung cấp, thực thi Terraform, trình dựng Habitat, lệnh triển khai Nest và bộ nhận thao tác từ xa vẫn đang chờ thiết kế. Hiện chưa có SOV engine hay thao tác thay đổi nhà cung cấp nào được triển khai.
+</Note>
+
+## Quan hệ giữa SOV và các vector khác
+
+SOV là mặt phẳng điều khiển, không phải nguồn tri thức. Nó hành động dựa trên bằng chứng do các vector khác sở hữu:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/vi/vectors/scv">
+    Cung cấp tri thức về nhà cung cấp và tài nguyên bên ngoài. SOV đọc bằng chứng SCV để quyết định những thao tác nào tương thích.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/vi/vectors/snv">
+    Ghi nhận định danh Node, tư cách thành viên cụm và tên phát sinh sau khi các thao tác SOV hoàn tất.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/vi/vectors/shv">
+    Sau này có thể cung cấp bằng chứng chi tiết về năng lực phần cứng để ràng buộc các lựa chọn cấp phát.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/vi/skv/overview">
+    Quản trị các hợp đồng, hệ quả thay đổi, lập chỉ mục và tích hợp vòng đời của SOV.
+  </Card>
+</CardGroup>
+
+## qxctl là bề mặt lệnh
+
+Các thao tác SOV được cung cấp thông qua `qxctl`, CLI quản trị viết bằng Go với 373 lệnh có thể thực thi. qxctl triển khai và trình bày các thao tác SOV, nhưng không sở hữu ý nghĩa miền của chúng. Vector sở hữu ngữ nghĩa; công cụ sở hữu bề mặt thực thi.
+
+## Ranh giới thẩm quyền của người dùng
+
+Bạn chọn nhà cung cấp, khu vực, phần cứng, bus, phần mềm, cấu trúc triển khai và cách sắp xếp quản trị cho từng Node. SOV cung cấp và thực thi các lựa chọn được hỗ trợ. Nó không xếp hạng nhà cung cấp, không khuyến nghị cấu trúc liên kết và không biến gợi ý thành chính sách bắt buộc.
+
+## Trạng thái hiện tại
+
+SOV là một hợp đồng kiến trúc chuẩn tắc. Không có engine, trình bao Terraform, trình dựng Habitat, adapter bus hay bộ nhận lệnh từ xa nào được tuyên bố là đã triển khai. Các thành phần SOV trong tương lai sẽ vẫn có thể cài đặt độc lập, chọn được theo phiên bản chính xác và rollback được theo vòng đời SKV chung.

@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Wissen über Provider-Ressourcen"
+description: "SCV pflegt privates Wissen über externe Provider-Ressourcen bei AWS, Azure, GCP, DigitalOcean, Cloudflare und eigener Hardware über acht unabhängig installierbare C++-Engines."
+sidebarTitle: "Cloud Vector"
+---
+
+Der Symphony Cloud Vector (SCV) verantwortet privates semantisches Wissen über externe Hardware-Ressourcen und die Provider-Realitäten, die Ihre Cluster, Ihr Training, Ihre Forschung und Ihre Datenarbeit prägen. Er bildet Provider-Angebote, Regionen, Infrastrukturdomänen, Einschränkungen und beobachtete Verfügbarkeit ab, ohne Provider zu bewerten oder Ihnen Grenzen für Ihre Vorhaben aufzuerlegen.
+
+## Provider-Abdeckung
+
+SCV deckt die folgenden Provider und Ressourcentypen ab:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Eigene Hardware (wenn ein Vergleich mit externen Ressourcen erforderlich ist)
+
+## Installierte Engines
+
+SCV-Wissen wird über acht unabhängig installierbare C++-Engines bereitgestellt. Sie installieren nur diejenigen, die Sie benötigen:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Zentrale SCV-Engine für Wissen über Provider-Ressourcen und den Aufbau von Graphen.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Cloud-Evidenz-Engine für begrenzte Erfassung und Korpus-Semantik.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-spezifische Evidenz-Engine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-spezifische Wissens-Engine für Hardware und Ressourcen.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-spezifische Wissens-Engine für Hardware und Ressourcen.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-spezifische Wissens-Engine für Ressourcen.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-spezifische Wissens-Engine für Hardware und Ressourcen.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Optionaler relationaler Graph-Connector, der DuckDB für eine dauerhafte SQL-Indexierung nutzt.
+  </Card>
+</CardGroup>
+
+## Portable Provider-Pakete und Komposition
+
+SCV stellt portable Provider-Pakete über qxctl bereit. Sie behalten die Kontrolle über Anforderungen, Provider-Berechtigungen, Rezeptalternativen und Ausführungsentscheidungen. qxctl unterstützt aufbewahrte Workflows und eine geschützte Graphauswahl, sodass Sie exakte Nachweise erneut abspielen können, ohne Provider erneut abzufragen.
+
+## Optionaler DuckDB-Connector
+
+Der `scv-graph-duckdb-connector` ergänzt eine begrenzte relationale Projektion unveränderlicher nativer Graphen. DuckDB ist die vom Benutzer gewählte Standard-SQL-Datenbank. Künftig können Sie über zusätzliche Adapter dedizierte Graph-Engines auswählen.
+
+## Datenschutz und Souveränität
+
+Ein installierter SCV-Wissensgraph gehört zu Ihrer privaten Installation. Vom Benutzer bereitgestellte Konten, Guthaben, Berechtigungen und vertragliche Einschränkungen werden nur über explizit aktivierte Beobachtungsoberflächen verwendet. Private Fakten gelangen nicht in die offizielle Symphony-Quellwahrheit.
+
+## Wie SCV mit anderen Vektoren zusammenhängt
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/de/vectors/sov">
+    Die operative Steuerungsebene, die auf Grundlage von SCV-Nachweisen handelt. SOV schreibt die Bedeutung von Providern nicht um.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/de/vectors/snv">
+    Erfasst die Identitäten physischer Nodes und Cluster, die aus einer von SCV informierten Bereitstellung hervorgehen.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/de/vectors/shv">
+    Verantwortet detailliertes Wissen über Hardwarefähigkeiten für Komponenten, auf die SCV verweist.
+  </Card>
+</CardGroup>
+
+## Versionierte Schnittstelleninkremente
+
+SCV-Releases sind additiv und exakt versioniert. Frühere Installationen bleiben in ihren exakten Geltungsbereichen aufrufbar. Aktuelle Inkremente umfassen native Operationen, Korpus-Snapshots, Interpretationsprofile, portable Provider-Pakete, Kompositions-Workflows, Verpflichtungsverfolgung und Nachweisbündel. Jedes Inkrement bewahrt frühere Routen, Standardwerte und Einträge.

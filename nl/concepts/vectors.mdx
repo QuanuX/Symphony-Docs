@@ -1,0 +1,47 @@
+---
+title: "Vectoren en leveringsfasen in Symphony"
+description: "Begrijp de blijvende semantische eigendomsdomeinen van Symphony (vectoren) tegenover chronologische leveringsfasen, plus de Contract Quad en de huidige status van vectoren."
+sidebarTitle: "Vectoren en fasen"
+---
+
+Symphony organiseert de architectuur rond twee ideeën: **vectoren** zijn blijvende semantische eigendomsdomeinen, en **fasen** zijn chronologische leveringscampagnes. Een component die voor het eerst in een bepaalde fase is onderzocht, maakt die fase niet tot zijn permanente eigenaar. Vectoren houden betekenis stabiel terwijl de implementatie evolueert.
+
+## Wat is een vector?
+
+Een vector is een blijvend, begrensd semantisch eigendomsdomein waarvan het canonieke contract eigenaar is van de betekenis en de toegestane bewerkingen van dat domein. Elke vector krijgt een **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` en `SPEC.md`, plus de gerichte begeleidende oppervlakken die hij daadwerkelijk nodig heeft. De vector declareert zijn canonieke oppervlakken en delegatiegraaf, SKVI brengt elk huidig oppervlak precies één keer in kaart, en verouderde begeleidende oppervlakken worden vervangen via beheerde evolutie in plaats van te blijven hangen als tegenstrijdige context.
+
+## Status van vectoren
+
+| Vector | Status | Pagina |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Geïmplementeerd: fundament van Fase 1 met geïndexeerde oppervlakken | [/nl/skv/overview](/nl/skv/overview) |
+| **SKVI** — Bronindexering | Geïmplementeerd: engine voor inspect/check/propose | [/nl/skv/skvi](/nl/skv/skvi) |
+| **SCLV** — Wijzigingsledger | Geïmplementeerd: controles op append-only ledger | [/nl/skv/sclv](/nl/skv/sclv) |
+| **SACV** — Governance van API-contracten | Geïmplementeerd: OpenAPI 3.2.0-controles | [/nl/skv/sacv](/nl/skv/sacv) |
+| **SODV** — Governance van officiële documentatie/releases | Geïmplementeerd: lokale controles op de releaseledger | [/nl/skv/sodv](/nl/skv/sodv) |
+| **SSFV** — Identiteit/beheer van functies | Geïmplementeerd: structurele functiecontroles | [/nl/skv/ssfv](/nl/skv/ssfv) |
+| **SAV** — Accordare-samenstelling | Geïmplementeerd: evaluatie op het freezing path | [/nl/skv/sav](/nl/skv/sav) |
+| **SEV** — Evolutie | Geïmplementeerd: planning van impact/afhandeling | [/nl/skv/sev](/nl/skv/sev) |
+| **SSIAG** — Secure Identity and Access Governance | Geïmplementeerd: cgo-vrij Go-fundament | [/nl/governance/ssiag](/nl/governance/ssiag) |
+| **STAV** — TOPS-auditprotocol | Geïmplementeerd: append-only ledger per TOPS | [/nl/governance/stav](/nl/governance/stav) |
+| **SOV** — Ops Vector | Opkomend: provisioning, levering van Habitat en Nest | [/nl/vectors/sov](/nl/vectors/sov) |
+| **SCV** — Cloud Vector | Geïmplementeerd: acht C++-engines voor bronkennis | [/nl/vectors/scv](/nl/vectors/scv) |
+| **SNV** — Node Vector | Opkomend: samenstelling van SNIV, SNRV, SCIV, SCNV | [/nl/vectors/snv](/nl/vectors/snv) |
+| **SQV** — Quantitative Vector | Opkomend: SOOV-subvector voor FIX-architectuur | [/nl/vectors/sqv](/nl/vectors/sqv) |
+| **SHV** — Hardware Vector | Geïmplementeerd: C++-engines voor bronnen, catalogus en profielen | [/nl/vectors/shv](/nl/vectors/shv) |
+| **SIV** — Intelligence Vector | Opkomend: SMCV optionele Markdown; SAIV gereserveerd | [/nl/vectors/siv](/nl/vectors/siv) |
+
+## Contract Quad en begeleidende oppervlakken
+
+Elke vector krijgt:
+
+1. **INTENT.md** — doel en scope
+2. **MANIFEST.md** — identiteit, gedeclareerde oppervlakken, delegatiegraaf
+3. **SKILL.md** — veilig gebruik en operationele richtlijnen
+4. **SPEC.md** — normatief gedrag en grenzen
+
+Begeleidende oppervlakken zoals `SLANG.md`, `NAMESPACES.md`, registers, schema's en profielen blijven beheerde artefacten buiten de structuur van vier leden. Ze routeren of specialiseren de waarheid van de eigenaar, maar kunnen hun eigen autoriteit niet uitbreiden.
+
+## Op bewijs gebaseerde integratie
+
+Een uitgestelde engine heeft geen verzonnen ontvangstbewijs. Een voorgestelde API heeft geen verzonnen registervermelding. Een ongepubliceerd contract heeft geen SODV-voltooiingsclaim. Dit is op bewijs gebaseerde integratie, geen ceremoniële duplicatie.

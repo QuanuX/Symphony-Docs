@@ -1,0 +1,37 @@
+---
+title: "Isolamento do hot path no QuanuX Symphony"
+description: "Saiba como o Symphony protege os caminhos de execução contra interferência administrativa: componentes de caminho frio e congelado, disciplina de barramento e o conceito de testemunha de estado Prima Parte."
+sidebarTitle: "Isolamento do hot path"
+---
+
+O Symphony separa o trabalho administrativo do trabalho de execução para que o trading ao vivo, a pesquisa e outros caminhos sensíveis a desempenho permaneçam livres de jitter, latência e dependências ocultas. O qxctl e o plano de conhecimento são administração de caminho frio ou congelado. Eles podem agir explicitamente sobre um Node que também hospeda trabalho ao vivo, mas não devem se tornar dependências contínuas do hot path.
+
+## Disciplina de caminho frio e congelado
+
+O qxctl e as engines de vetor são componentes administrativos de caminho frio ou congelado. Eles não devem:
+
+- Executar em linha com caminhos de execução quentes ou mornos
+- Compartilhar locks com workloads ao vivo
+- Criar dependências síncronas que adicionem jitter ou latência
+- Tornar-se observadores ocultos, interpretadores residentes ou gerenciadores de pacotes em segundo plano não solicitados
+- Manter residência contínua em Nodes de execução
+
+Essa regra se aplica ao coordenador de sessões de conhecimento, às engines de vetor e a todas as operações administradas pelo qxctl. Eles produzem evidências, validam estado e preparam planos, mas não participam do caminho de execução ao vivo.
+
+## Disciplina de barramento
+
+Transferências pesadas, controle, pesquisa e resíduos de execução não precisam compartilhar um único barramento. Uma topologia pode usar vários barramentos ou contornar um barramento em um caminho declarado, especialmente onde o tráfego compartilhado poderia introduzir jitter. NATS JetStream, ZeroMQ e outras malhas são adaptadores e escolhas do usuário. A existência da administração de barramentos no qxctl não torna obrigatória a passagem por um barramento.
+
+Você escolhe a topologia de barramentos que atende aos seus requisitos de latência e throughput. O Symphony oferece suporte à configuração sem impor uma única malha compartilhada.
+
+## Prima Parte
+
+**Prima Parte** é um conceito ratificado da Fase 3, e não um executável atual. Trata-se de uma testemunha de estado local do Node, opcional e extremamente leve, escrita em C++ e invocada explicitamente pelo qxctl após uma operação relevante. Ela não tem daemon, listener, timer, observador, loop de polling nem conexão residente com barramento.
+
+Seu vocabulário durável e delimitado inclui três termos:
+
+- `current` — o estado observado atual
+- `previous` — o estado anterior à operação relevante
+- `lastTransmitted` — o estado enviado pelo Node remoto após a execução do comando associado (sem confirmação de recebimento)
+
+A Prima Parte registra apenas o seu próprio Node, nunca se torna um Maestro menor e encerra após concluir o seu trabalho delimitado. Ela não é um receptor do Maestro da Fase 1, e nenhum executável foi implementado ainda.

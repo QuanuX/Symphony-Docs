@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: znalosti o prostředcích poskytovatelů"
+description: "SCV udržuje privátní znalosti o externích prostředcích poskytovatelů AWS, Azure, GCP, DigitalOcean, Cloudflare a o hardwaru ve vlastnictví uživatele prostřednictvím osmi nezávisle instalovatelných enginů v C++."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) vlastní privátní sémantické znalosti o externích hardwarových prostředcích a o realitách poskytovatelů, které formují vaše clustery, trénink, výzkum a práci s daty. Mapuje nabídky poskytovatelů, regiony, infrastrukturní domény, omezení a pozorovanou dostupnost, aniž by poskytovatele řadil nebo omezoval, o co se smíte pokusit.
+
+## Pokrytí poskytovatelů
+
+SCV pokrývá následující poskytovatele a typy prostředků:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Hardware ve vlastnictví uživatele (tam, kde je vyžadováno srovnání s externími prostředky)
+
+## Instalované enginy
+
+Znalosti SCV jsou dodávány prostřednictvím osmi nezávisle instalovatelných enginů v C++. Instalujete pouze ty, které potřebujete:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Základní engine SCV pro znalosti o prostředcích poskytovatelů a konstrukci grafů.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Engine cloudových důkazů pro ohraničené zachytávání a sémantiku korpusu.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Engine důkazů specifický pro Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    Engine znalostí o hardwaru a prostředcích specifický pro AWS.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Engine znalostí o hardwaru a prostředcích specifický pro Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    Engine znalostí o prostředcích specifický pro DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    Engine znalostí o hardwaru a prostředcích specifický pro GCP.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Volitelný relační konektor grafů využívající DuckDB pro uchovávané indexování v SQL.
+  </Card>
+</CardGroup>
+
+## Přenositelné balíčky poskytovatelů a kompozice
+
+SCV zpřístupňuje přenositelné balíčky poskytovatelů prostřednictvím qxctl. Kontrolu nad požadavky, oprávněními poskytovatelů, alternativními recepty a rozhodnutími o provedení si ponecháváte vy. qxctl podporuje uchovávané pracovní postupy a chráněný výběr grafů, takže můžete přehrát přesné důkazy bez opětovného dotazování poskytovatelů.
+
+## Volitelný konektor DuckDB
+
+`scv-graph-duckdb-connector` přidává ohraničenou relační projekci neměnných nativních grafů. DuckDB je uživatelem zvolená výchozí databáze SQL. V budoucnu můžete prostřednictvím dalších adaptérů zvolit specializované grafové enginy.
+
+## Soukromí a suverenita
+
+Nainstalovaný znalostní graf SCV patří vaší privátní instalaci. Účty, zůstatky, oprávnění a smluvní omezení dodané uživatelem se používají pouze prostřednictvím explicitně povolených pozorovacích ploch. Privátní fakta nevstupují do oficiální zdrojové pravdy Symphony.
+
+## Jak SCV souvisí s ostatními vektory
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/cs/vectors/sov">
+    Provozní řídicí rovina, která jedná na základě důkazů SCV. SOV nepřepisuje význam poskytovatelů.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/cs/vectors/snv">
+    Zaznamenává identity fyzických Nodes a clusterů vzniklých při zřizování na základě informací ze SCV.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/cs/vectors/shv">
+    Vlastní podrobné znalosti o hardwarových schopnostech komponent, na které SCV odkazuje.
+  </Card>
+</CardGroup>
+
+## Verzované přírůstky rozhraní
+
+Vydání SCV jsou aditivní a přesně verzovaná. Dřívější instalace zůstávají vyvolatelné ve svých přesných rozsazích. Aktuální přírůstky zahrnují nativní operace, snímky korpusu, interpretační profily, přenositelné balíčky poskytovatelů, pracovní postupy kompozice, sledování závazků a balíčky důkazů. Každý přírůstek zachovává předchozí cesty, výchozí hodnoty a záznamy.

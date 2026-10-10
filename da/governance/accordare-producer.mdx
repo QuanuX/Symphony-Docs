@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV-producer: afgrænset revision af SAV Named Versions"
+description: "Accordare STAV-produceren holder intention, udfald og gendannelse for SAV Named Versions holdbare gennem en Go-producer på freezing path med autentificerede lokale peers."
+sidebarTitle: "Accordare-producer"
+---
+
+Accordare STAV-produceren (`modules/accordare-stav-producer`) er en uafhængigt installerbar Go-producer på freezing path til det afgrænsede revisionskredsløb for SAV Named Versions. Den holder intention før mutation og gendannelse af tilføjelser holdbare, autentificerer sine lokale peers og indsender kun den præcise, sikre kandidat, som dens lukkede ordforråd tillader. Den er ikke selv STAV's tilføjelsesmyndighed.
+
+## Mønstret intention, udfald, gendannelse
+
+Produceren følger et mønster i tre trin for hver revideret mutation:
+
+<Steps>
+  <Step title="Intention før mutation">
+    Registrér kalderens erklærede intention holdbart, før nogen ændring bliver observerbar. Produceren afviser kandidater uden for sit lukkede ordforråd.
+  </Step>
+  <Step title="Endeligt udfald">
+    Når mutationen er fuldført eller mislykket, indfanges det præcise udfald, så revisionen afspejler virkeligheden og ikke en ønsket tilstand.
+  </Step>
+  <Step title="Afgrænset gendannelse">
+    Ved afbrydelse udfører produceren en afgrænset gendannelse af tilføjelsesstrømmen uden at opfinde en afstemning eller i det stille kassere intentionen.
+  </Step>
+</Steps>
+
+## Grænser
+
+<Warning>
+  Accordare-produceren er ikke STAV's tilføjelsesmyndighed. Den autentificerer lokale peers og indsender kandidater; tilføjelsesmyndigheden validerer, forsegler og lagrer dem holdbart. Gå aldrig uden om denne adskillelse.
+</Warning>
+
+- Producerens ordforråd er lukket. Den accepterer kun revisionskandidater for SAV Named Versions.
+- Produceren kører på freezing path. Den må ikke blive en hot path-afhængighed.
+- Produceren autentificerer lokale peers; den autentificerer ikke fjerne kaldere.
+
+## Relaterede overflader
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/da/governance/stav">
+    Tilføjelsesmyndigheden, der forsegler revisionsposter.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/da/governance/ssiag">
+    Autoriserer den mutation, som produceren reviderer.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/da/skv/sav">
+    Sammensætningssemantikken for Named Versions, som dette kredsløb reviderer.
+  </Card>
+
+  <Card title="qxctl-vector-kommandoer" icon="terminal" href="/da/qxctl/vector-commands">
+    Den ratificerede Accordare-grammatik kommer som `qxctl accord ...`, når den er implementeret.
+  </Card>
+</CardGroup>

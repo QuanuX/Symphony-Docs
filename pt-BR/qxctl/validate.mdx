@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: política de avisos do Symphony Validator"
+description: "Administre a política de avisos protegida, a linha de base e a gramática de exibição sobre o Symphony Validator independente por meio do qxctl, sem alterar as evidências brutas do detector."
+sidebarTitle: "validate"
+---
+
+A gramática `qxctl validate ...` administra a política de avisos protegida, a linha de base e a gramática de exibição do Symphony Validator. O validador em C++, instalado de forma independente, produz evidências brutas imutáveis; o qxctl administra uma apresentação protegida e neutra quanto ao chamador, sem alterar a detecção.
+
+## O que o qxctl validate abrange
+
+- Nove folhas protegidas do ciclo de vida de avisos
+- A rota exata de resumo da raiz apoiada por recibo
+- Gerenciamento da linha de base e relatório de deltas
+- Gramática de exibição para saída em linhas e JSON estruturado
+
+Cada folha valida o recibo exato e os digests estruturados do validador antes de aplicar a política de avisos protegida.
+
+## Limites
+
+<Warning>
+  O qxctl validate não pode reparar arquivos, publicar nada nem sobrepor as evidências brutas do detector. A disposição dos avisos afeta a apresentação, não a detecção.
+</Warning>
+
+- Nenhuma supressão de avisos fora da política protegida
+- Nenhuma modificação da saída do validador
+- Nenhuma cobertura fabricada para uma rota indisponível
+
+## Usos comuns
+
+- Estabelecer ou redefinir uma linha de base de avisos
+- Aprovar ou reabrir um aviso histórico governado
+- Emitir o resumo da raiz apoiado por recibo que aparece no README do repositório
+
+O validador por trás desta gramática verifica o formato dos contratos, o fechamento do código atual, a propriedade de invariantes, a administração de features, as releases e o resumo da raiz mantido pela máquina.
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Validador" icon="clipboard-check" href="/pt-BR/governance/validator">
+    O verificador independente e somente leitura em C++ que o qxctl administra.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pt-BR/skv/ssfv">
+    Expectativas de administração de features verificadas nas evidências.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt-BR/skv/sodv">
+    Registros de release que aparecem nas evidências do validador.
+  </Card>
+
+  <Card title="Visão geral do qxctl" icon="terminal" href="/pt-BR/qxctl/overview">
+    Superfície completa de comandos.
+  </Card>
+</CardGroup>

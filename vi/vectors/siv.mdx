@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: Cộng tác agent trong tương lai"
+description: "SIV sở hữu cộng tác agentic trong tương lai, ngữ cảnh mở rộng, logic dài hạn có cấu trúc và tương tác Symphony được quản trị. SMCV là thành phần tùy chọn đầu tiên; SAIV được dành sẵn."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV) sở hữu ngữ nghĩa do Symphony soạn thảo trong tương lai cho cộng tác agentic, ngữ cảnh cục bộ mở rộng, logic dài hạn có cấu trúc, giao tiếp giữa các agent và vận hành do con người chỉ đạo tại bề mặt Symphony. Đây là một miền mới nổi đã có hợp đồng chuẩn tắc nhưng chưa có phần triển khai thực thi.
+
+## Phạm vi và mục đích
+
+SIV dự kiến hỗ trợ:
+
+- Sự tham gia của agent cục bộ và từ xa vào các quy trình làm việc Symphony
+- Ngữ cảnh mở rộng được chia sẻ giữa các phiên và vector
+- Logic dài hạn có cấu trúc cho các thao tác lặp lại hoặc nhiều bước
+- Giao thức giao tiếp giữa các agent
+- Tương tác được quản trị với bề mặt lệnh của Symphony
+
+SIV không cấp thẩm quyền dựa trên loại bên gọi. Bên gọi là con người, AI, agent hay dịch vụ đều được đối xử như nhau. Thẩm quyền bắt nguồn từ quyền sở hữu máy chủ đích, quyền được cấp, thao tác được yêu cầu, trạng thái mong đợi và các biện pháp bảo vệ do chủ sở hữu cấu hình.
+
+## Các vector con được đặt tên
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Thành phần chuyển đổi Markdown tùy chọn. Được lên kế hoạch như một bộ chuyển đổi có thể cấu hình qua qxctl, nằm trên một kết nối IPC đã bật. Chưa có lệnh hay bộ chuyển đổi SMCV nào được triển khai.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Được dành sẵn cho một vector con tích hợp trí tuệ Symphony sau này. Việc dành sẵn này không cung cấp phần triển khai, hành vi namespace hay thao tác ngữ nghĩa nào.
+  </Card>
+</CardGroup>
+
+## Ngoài phạm vi
+
+SIV rõ ràng không:
+
+- Thay thế ngữ nghĩa do vector sở hữu (các thao tác miền vẫn thuộc về vector tương ứng ngay cả khi một agent gọi chúng)
+- Trở thành sự thật chuẩn tắc hoặc ghi đè các hợp đồng SKV
+- Đi vào đường nóng (hot path) giao dịch
+- Biến tài liệu nghiên cứu cũ về trí tuệ nhân tạo thành kết luận cuối cùng
+
+## Trạng thái hiện tại
+
+SIV hiện chỉ là một hợp đồng kiến trúc chuẩn tắc. Hiện chưa có harness SIV, thư agent, engine trạng thái dài hạn, kết nối mô hình, giao thức agent cục bộ/từ xa, thành phần SAIV, bộ chuyển đổi SMCV hay điều khiển qxctl nào được triển khai.
+
+## Ranh giới ngôn ngữ
+
+Không có yêu cầu nào về Rust được thiết lập cho các thành phần SIV. Ngôn ngữ của thành phần sẽ tuân theo hợp đồng về hiệu năng, tính di động, an toàn và tích hợp sau này. Nó không được kế thừa từ bất kỳ tài liệu nghiên cứu nào.
+
+## Quan hệ giữa SIV và các vector khác
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/vi/skv/overview">
+    Quản trị các hợp đồng, sự tiến hóa và quan hệ xuất bản chính thức của SIV.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/vi/vectors/sov">
+    Có thể cung cấp các thao tác do agent gọi thông qua qxctl trong khi vẫn giữ ngữ nghĩa do vector sở hữu.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/vi/skv/sav">
+    Đánh giá thành phần và tính tương thích cho mọi thao tác do agent lắp ghép.
+  </Card>
+</CardGroup>

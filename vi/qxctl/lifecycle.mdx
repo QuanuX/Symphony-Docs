@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge lifecycle: Profile, Boot và Apply"
+description: "Quản lý hồ sơ vòng đời được bảo vệ, quyền sở hữu, quan sát, boot và các chuyển đổi tương thích apply thông qua qxctl với các biện pháp bảo vệ compare-and-swap nghiêm ngặt."
+sidebarTitle: "lifecycle"
+---
+
+Cú pháp `qxctl knowledge lifecycle ...` quản trị các hồ sơ được bảo vệ, quyền sở hữu, quan sát, nhật ký boot và các chuyển đổi tương thích apply. Mọi thay đổi đều là compare-and-swap và mọi lần apply đều được ràng buộc với bằng chứng chính xác.
+
+## Hồ sơ
+
+Đặt hồ sơ vòng đời được bảo vệ cho một TOPS:
+
+```bash Profile compare-and-swap
+qxctl knowledge lifecycle profile set \
+  --tops-id UUID \
+  --input FILE \
+  --expected-profile-digest absent|DIGEST
+```
+
+Truyền `absent` cho hồ sơ lần đầu, hoặc digest chính xác được báo cáo bởi một lần đọc trước đó.
+
+## Quyền sở hữu
+
+- `ownership status`: kiểm tra một thư mục gốc dùng chung đã cấu hình
+- `ownership reconcile`: làm mới bằng chứng của nó
+- `ownership adopt`: chỉ tiếp nhận sau khi đã xem xét mọi yêu cầu kế thừa (legacy) thận trọng
+- `ownership release`: chỉ giải phóng cho một biên nhận kế thừa chính xác đã được chủ ý đặt ở trạng thái có thể thu hồi
+
+<Warning>
+  Không bao giờ xóa hoặc ghi lại thủ công registry cục bộ tại gốc hay hàng rào tương thích bố cục biên nhận `symphony-root-ownership/1` của nó. Các client vòng đời cũ phải gặp hàng rào đó và dừng lại tại trình chặn gói không xác định hiện có của chúng.
+</Warning>
+
+## Observe, report, boot
+
+- `observe`: xuất bằng chứng biên nhận có bố cục cố định, dùng một lần
+- `report`: tạo một kế hoạch mới, dùng một lần
+- `boot`: tiến trình bền vững chỉ báo cáo, với operation ID ổn định và trạng thái nhật ký chính xác
+- `status`: kiểm tra v1
+- `recover --discover`: khôi phục một chuỗi v1 duy nhất khi status thông thường không thể xác thực trạng thái cục bộ
+
+## Hồ sơ tương thích apply
+
+Đối với hồ sơ `apply-compatible`, chỉ gọi `apply` với đúng digest nguồn boot, compare-and-swap nhật ký apply, compare-and-swap trạng thái đã áp dụng, operation ID ổn định và các thư mục gốc staged tường minh:
+
+```bash Apply
+qxctl knowledge lifecycle apply \
+  --tops-id UUID \
+  --operation-id OPID \
+  --boot-source-digest DIGEST \
+  --expected-apply-journal-digest DIGEST \
+  --expected-applied-state-digest DIGEST \
+  --staged-root PATH
+```
+
+Dùng `apply-status` để quan sát lần thử, hoặc `apply-recover` có giới hạn để khôi phục bền vững. Không bao giờ chọn hành động thủ công hoặc chỉnh sửa trạng thái được bảo vệ.
+
+<Note>
+  Một lần làm mới quan sát chỉ thay đổi dấu thời gian phải thay đổi bằng chứng tài liệu mà không làm tăng các định danh ngữ nghĩa ổn định.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/vi/engines/coordinator">
+    Engine đứng sau việc điều phối kế hoạch vòng đời và apply.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/vi/qxctl/engines">
+    Quản lý các ràng buộc engine được kế hoạch vòng đời tham chiếu.
+  </Card>
+</CardGroup>

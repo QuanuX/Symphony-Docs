@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Producer: begrensde audit van SAV Named Versions"
+description: "De Accordare STAV-producer houdt intentie, uitkomst en herstel van SAV Named Versions duurzaam via een Go-producer op het freezing path met geauthenticeerde lokale peers."
+sidebarTitle: "Accordare-producer"
+---
+
+De Accordare STAV-producer (`modules/accordare-stav-producer`) is een onafhankelijk installeerbare Go-producer op het freezing path voor het begrensde auditcircuit van SAV Named Versions. Hij houdt de intentie vóór mutatie en het herstel van appends duurzaam, authenticeert zijn lokale peers en dient alleen de exacte veilige kandidaat in die door zijn gesloten vocabulaire wordt toegelaten. Hij is zelf niet de STAV-append-autoriteit.
+
+## Het patroon van intentie, uitkomst en herstel
+
+De producer volgt voor elke geauditeerde mutatie een patroon in drie stappen:
+
+<Steps>
+  <Step title="Intentie vóór mutatie">
+    Leg de opgegeven intentie van de aanroeper duurzaam vast voordat een wijziging waarneembaar wordt. De producer weigert kandidaten buiten zijn gesloten vocabulaire.
+  </Step>
+  <Step title="Definitieve uitkomst">
+    Leg, nadat de mutatie is voltooid of mislukt, de exacte uitkomst vast, zodat de audit de werkelijkheid weerspiegelt en niet een gehoopte status.
+  </Step>
+  <Step title="Begrensd herstel">
+    Bij een onderbreking voert de producer begrensd herstel van de appendstroom uit zonder een reconciliatie te verzinnen of intentie stilzwijgend te verwerpen.
+  </Step>
+</Steps>
+
+## Grenzen
+
+<Warning>
+  De Accordare-producer is niet de STAV-append-autoriteit. Hij authenticeert lokale peers en dient kandidaten in; de append-autoriteit valideert, verzegelt en slaat ze duurzaam op. Omzeil deze scheiding nooit.
+</Warning>
+
+- Het vocabulaire van de producer is gesloten. Hij accepteert alleen auditkandidaten voor SAV Named Versions.
+- De producer draait op het freezing path. Hij mag geen hot-path-afhankelijkheid worden.
+- De producer authenticeert lokale peers; hij authenticeert geen externe aanroepers.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/nl/governance/stav">
+    De append-autoriteit die auditrecords verzegelt.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/nl/governance/ssiag">
+    Autoriseert de mutatie die de producer auditeert.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/nl/skv/sav">
+    De samenstellingssemantiek van Named Versions die dit circuit auditeert.
+  </Card>
+
+  <Card title="qxctl-vectoropdrachten" icon="terminal" href="/nl/qxctl/vector-commands">
+    De geratificeerde Accordare-grammatica komt beschikbaar als `qxctl accord ...` zodra deze is geïmplementeerd.
+  </Card>
+</CardGroup>

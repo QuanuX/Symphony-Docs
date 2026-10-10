@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: Viden om udbyderressourcer"
+description: "SCV vedligeholder privat viden om eksterne udbyderressourcer på tværs af AWS, Azure, GCP, DigitalOcean, Cloudflare og brugerejet hardware gennem otte uafhængigt installerbare C++-motorer."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) ejer privat semantisk viden om eksterne hardwareressourcer og de udbyderforhold, der former dine klynger, din træning, din forskning og dit dataarbejde. Den kortlægger udbydertilbud, regioner, infrastrukturdomæner, begrænsninger og observeret tilgængelighed uden at rangere udbydere eller sætte grænser for, hvad du må forsøge.
+
+## Udbyderdækning
+
+SCV dækker følgende udbydere og ressourcetyper:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Brugerejet hardware (hvor sammenligning med eksterne ressourcer er nødvendig)
+
+## Installerede motorer
+
+SCV-viden leveres gennem otte uafhængigt installerbare C++-motorer. Du installerer kun dem, du har brug for:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    Kernemotor i SCV til viden om udbyderressourcer og grafkonstruktion.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Evidensmotor for cloud til afgrænset indsamling og korpussemantik.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-specifik evidensmotor.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-specifik vidensmotor for hardware og ressourcer.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-specifik vidensmotor for hardware og ressourcer.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-specifik vidensmotor for ressourcer.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-specifik vidensmotor for hardware og ressourcer.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Valgfri relationel graf-connector, der bruger DuckDB til bevaret SQL-indeksering.
+  </Card>
+</CardGroup>
+
+## Portable udbyderpakker og komposition
+
+SCV eksponerer portable udbyderpakker via qxctl. Du bevarer kontrollen over krav, udbydertilladelser, opskriftsalternativer og eksekveringsbeslutninger. qxctl understøtter bevarede workflows og beskyttet grafvalg, så du kan genafspille nøjagtig evidens uden at forespørge udbyderne igen.
+
+## Valgfri DuckDB-connector
+
+`scv-graph-duckdb-connector` tilføjer en afgrænset relationel projektion af uforanderlige native grafer. DuckDB er den brugervalgte standard-SQL-database. Du kan i fremtiden vælge dedikerede grafmotorer gennem yderligere adaptere.
+
+## Privatliv og suverænitet
+
+En installeret SCV-vidensgraf tilhører din private installation. Brugerleverede konti, saldi, tilladelser og kontraktlige begrænsninger bruges kun gennem eksplicit aktiverede observationsflader. Private fakta indgår ikke i Symphonys officielle kildesandhed.
+
+## Hvordan SCV forholder sig til andre vektorer
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/da/vectors/sov">
+    Det operationelle kontrolplan, der handler på baggrund af SCV-evidens. SOV omskriver ikke udbyderbetydning.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/da/vectors/snv">
+    Registrerer identiteterne for de fysiske Nodes og klynger, der opstår ved SCV-informeret provisionering.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/da/vectors/shv">
+    Ejer detaljeret viden om hardwarekapabiliteter for de komponenter, SCV refererer til.
+  </Card>
+</CardGroup>
+
+## Versionerede grænsefladeinkrementer
+
+SCV-udgivelser er additive og har nøjagtige versioner. Tidligere installationer kan fortsat kaldes inden for deres nøjagtige scopes. Aktuelle inkrementer omfatter native operationer, korpussnapshots, fortolkningsprofiler, portable udbyderpakker, kompositionsworkflows, sporing af forpligtelser og evidensbundter. Hvert inkrement bevarer tidligere ruter, standarder og poster.

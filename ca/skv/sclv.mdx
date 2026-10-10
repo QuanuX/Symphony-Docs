@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector per als canvis de codi font"
+description: "SCLV manté un llibre de registre de només addició dels canvis de codi font completats, amb propostes neutrals respecte al proveïdor, recuperació sense mutacions i projeccions d'un sol ús."
+sidebarTitle: "SCLV"
+---
+
+El Symphony Change Ledger Vector (SCLV) registra els canvis fets a les superfícies SKV al llarg del temps. El seu motor és un procés en C++ instal·lable de manera independent que fa comprovacions deterministes del llibre de registre de només addició i produeix projeccions d'un sol ús. El llibre només s'escriu un cop s'ha completat un canvi material de codi font.
+
+## Operacions
+
+- **Inspecció i comprovació**: valida la forma, la continuïtat i l'evidència del llibre de registre.
+- **Proposta (v3)**: accepta propostes declarades per l'invocador i neutrals respecte al proveïdor per a registres nous.
+- **Recuperació**: fa una recuperació sense mutacions d'estats interromputs o ambigus.
+- **Projecció**: emet inventaris d'un sol ús de l'estat del llibre de registre a petició.
+
+## Admissió i retirada
+
+Cada registre SCLV admès vincula l'evidència indexada actual en el moment en què s'escriu. Una retirada legítima posterior d'una superfície preserva la procedència històrica immutable sense obligar a tornar a introduir a SKVI la prosa actual suprimida. La història continua sent història; la veritat actual continua sent actual.
+
+## Què no fa SCLV
+
+- SCLV no crea ni aprova canvis de codi font.
+- SCLV no reescriu registres existents; és de només addició.
+- SCLV no publica res. La projecció pública correspon a SODV.
+
+<Note>
+  Tots els motors SKV actuals són només de lectura, consulta, validació i proposta. L'aplicació canònica està desactivada fins que no es completin els contractes complets d'autoritat i auditoria de cada motor.
+</Note>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/ca/skv/skvi">
+    Indexa la veritat canònica actual a la qual es vinculen els registres SCLV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ca/skv/sodv">
+    Governa la projecció pública oficial de la informació del llibre de registre.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ca/skv/sev">
+    Els casos d'evolució avaluen els canvis abans que SCLV els registri.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    Executeu `qxctl sclv ...` per inspeccionar, comprovar, proposar i recuperar.
+  </Card>
+</CardGroup>

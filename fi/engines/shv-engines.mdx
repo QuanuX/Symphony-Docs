@@ -1,0 +1,65 @@
+---
+title: "SHV-moottorit: Symphony Hardware Vectorin lähde ja graafi"
+description: "SHV-moottorit luetteloivat suorittimet, näytönohjaimet, verkkokortit, muistin ja tallennustilan säilytetyn lähteen toistolla, vaatimusten arvioinnilla, PDF-syötteiden käsittelyllä ja pysyvillä DuckDB-graafeilla."
+sidebarTitle: "SHV-moottorit"
+---
+
+Symphony Hardware Vector (SHV) -moottorit luetteloivat suorittimet, suoritintopologian, välimuistit, näytönohjaimet, verkkokortit ja kuituliitännät, emolevyt, RAM-muistin ja NVMe-tallennuksen. Oletuskuratointi asettaa etusijalle alkuperäiset komponentit ja näytöllä tuetut variantit. Jokainen moottori on erikseen asennettava ja vain luku -tyyppinen.
+
+## Moottorit
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="microchip">
+    Laitteistoydin: kutsujan määrittelemä kattavuus, säilytetyn lähteen luettelon toisto, vaatimusten arviointi ja graafiprojektio.
+  </Card>
+
+  <Card title="shv-source-engine" icon="scroll">
+    Laitteistonäytön lähteiden sisäänotto ja versioiden käsittely.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="user-gear">
+    Komponentti- ja järjestelmäprofiilien arviointi.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="grip">
+    Luetteloidun laitteiston osiointi toistettavaa valintaa varten.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="scroll">
+    Hallittu paikallisen luettelon julkaisu ja valinta.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="diagram-project">
+    Eksplisiittinen graafin siirtopinta.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="database">
+    Pysyvä DuckDB-pohjainen graafitallennus, jota hallinnoidaan qxctl:n kautta.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    PDF-lähteiden tulkinta laitteistojen datalehtiä varten.
+  </Card>
+</CardGroup>
+
+## Hallinnan kohokohdat
+
+- **Pysyvää tallennusta** hallinnoidaan ainoastaan komennolla `shv graph store inspect|prepare|commit|status|query|export|schema|template`. `commit` säilytetyn odotetun aikomustiivisteen kanssa toimii myös palautuksena; erillistä palautusaliasta ei ole.
+- **Luettelon julkaisua** hallinnoidaan ainoastaan komennolla `shv catalogue publication inspect|plan|apply|status|schema|template`. Palautus tehdään komennolla `apply --operation-id`, joka on toisensa poissulkeva valitsimen `--input` kanssa.
+- **Inventaario** (julkaisu 0.2) lisää komennon `shv graph store inventory`: versioon sidotun loogisen lukemisen eksplisiittisin säilytetyin kirjoittajaidentiteetein. Vanha 0.1-valinta on edelleen tuettu.
+
+<Note>
+  Laitteistoluokat ovat kutsujan kartoitus- ja profiilidataa, eivät päällekkäisiä komentopuita. `--version` valitsee tarkan ensisijaisen omistajan; `--source-version` ja `--adapter-version` nimeävät erilliset valitut riippuvuudet. Skeema- ja kartoitusversiot ovat datan identiteettejä, eivät asennettujen moottoriversioiden aliaksia.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SHV-vektori" icon="microchip" href="/fi/vectors/shv">
+    Hardware Vector -sopimus, jonka nämä moottorit toteuttavat.
+  </Card>
+
+  <Card title="qxctl:n vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Täydellinen `shv ...` -kielioppiviite.
+  </Card>
+</CardGroup>

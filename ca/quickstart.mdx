@@ -1,0 +1,33 @@
+---
+title: "Inici ràpid: exploreu QuanuX Symphony"
+description: "Un recorregut guiat per la doctrina de Symphony, la seva arquitectura, els contractes de vectors i la superfície administrativa de qxctl."
+sidebarTitle: "Inici ràpid"
+---
+
+Utilitzeu aquesta guia per orientar-vos abans d'operar Symphony. La documentació separa la doctrina de la plataforma, la infraestructura seleccionada per l'usuari, la semàntica de la qual són propietaris els vectors i les ordres administratives. Els passos exactes d'instal·lació i execució pertanyen al contracte actual del component corresponent.
+
+## 1. Llegiu els límits operatius
+
+Comenceu per la [doctrina de la plataforma](/ca/doctrine). Estableix la propietat de l'estratègia i la infraestructura per part de l'usuari, la neutralitat de classe de l'invocador, la compatibilitat basada en evidències i la protecció del camí crític.
+
+## 2. Apreneu el model físic
+
+Llegiu [Node, Habitat i Nest](/ca/concepts/node-habitat-nest):
+
+- **Node:** el recurs informàtic físic identificat.
+- **Habitat:** el condicionament exacte del sistema operatiu i dels paquets lliurat a un Node.
+- **Nest:** la càrrega de treball amb el propòsit de l'usuari (el «niu») col·locada en un Habitat adequat.
+
+Els busos i els adaptadors d'un clúster són eleccions arquitectòniques explícites. Symphony no prescriu cap proveïdor ni cap estratègia universal.
+
+## 3. Seguiu la propietat del significat
+
+La [visió general de l'arquitectura](/ca/concepts/architecture) mostra la relació entre els contractes de vectors, els motors, qxctl i l'evidència governada. [Vectors i fases](/ca/concepts/vectors) explica per què un vector continua sent el propietari semàntic fins i tot quan el treball de lliurament avança per fases. El [Symphony Knowledge Vector](/ca/skv/overview) descriu el Contract Quad i les seves superfícies complementàries.
+
+## 4. Trobeu la superfície administrativa
+
+La [visió general de qxctl](/ca/qxctl/overview) presenta la CLI administrativa i de consulta escrita en Go. Utilitzeu les pàgines de qxctl per a una família d'ordres concreta, com ara [knowledge](/ca/qxctl/knowledge), [lifecycle](/ca/qxctl/lifecycle), [engines](/ca/qxctl/engines) o [validació](/ca/qxctl/validate). qxctl proporciona la gramàtica de les ordres i la presentació; els contractes de vectors són propietaris de les operacions i del seu significat.
+
+## 5. Comproveu el contracte i l'evidència corresponents
+
+Abans d'actuar sobre un Node o d'invocar un motor de vector, comproveu el contracte actual del propietari, l'estat de destinació, l'autorització i l'evidència de rebut o de validació disponible. [Autoritat de l'invocador](/ca/concepts/caller-authority) i [aïllament del camí crític](/ca/concepts/hot-path-isolation) expliquen aquests límits. Una superfície emergent no és una garantia operativa implícita.

@@ -1,0 +1,52 @@
+---
+title: "SACV: Styring af API-kontrakter for QuanuX Symphony"
+description: "SACV styrer versionerede API-kontrakter gennem afgrænsede OpenAPI 3.2.0-kontroller, deterministiske kompatibilitetsdiffs og kalderdeklarerede registerforslag på tværs af vektorer."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) styrer versionerede API-kontrakter på tværs af platformen. Dens motor er en uafhængigt installerbar C++-proces, der udfører afgrænset OpenAPI 3.2.0 JSON-validering, deterministiske kompatibilitetsdiffs og engangsinventarer. Endpoint-semantik forbliver hos den domæneejende vektor eller det domæneejende modul; SACV styrer kontraktform og kompatibilitet.
+
+## Operationer
+
+- **Inspect og check**: valider, at et OpenAPI 3.2.0 JSON-dokument overholder den afgrænsede profil.
+- **Diff**: beregn deterministiske kompatibilitetsdiffs mellem kontraktversioner.
+- **Propose**: accepter kalderdeklarerede registerforslag for nye eller ændrede kontrakter.
+- **Project**: udsend engangsinventarer til reviewere og efterfølgende værktøjer.
+
+## Hvad SACV styrer
+
+SACV afgrænser:
+
+- Kontraktformen (OpenAPI 3.2.0 med SACV-profilen)
+- Kompatibilitetsklassificering mellem versioner
+- Registermedlemskab for accepterede kontrakter
+
+Den gør ikke følgende:
+
+- Ejer endpoint-semantik (hver vektor eller hvert modul beholder den)
+- Genererer SDK'er, publicerer artefakter eller udsteder tokens
+- Antyder, at der findes en live netværksflade (omtale af et fremtidigt privat API skaber ikke et)
+
+<Note>
+  SACV understøtter kun læsning, forespørgsel, validering og forslag. Programmatisk kanonisk apply er deaktiveret på tværs af SKV-motorerne.
+</Note>
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Oversigt over SKV" icon="book-open" href="/da/skv/overview">
+    Det overordnede rammeværk og Contract Quad-modellen.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/da/skv/sodv">
+    Styrer enhver officiel publicering af en SACV-registreret kontrakt.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/da/skv/sav">
+    Evaluerer komposition og kompatibilitet på tværs af deklarerede komponenter.
+  </Card>
+
+  <Card title="qxctl-vektorkommandoer" icon="terminal" href="/da/qxctl/vector-commands">
+    Kør `qxctl sacv ...` for at inspicere, kontrollere, diffe og foreslå.
+  </Card>
+</CardGroup>

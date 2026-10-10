@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: deterministické kontroly repozitáře pouze pro čtení"
+description: "Symphony Validator vytváří řádkové nebo strukturované důkazy v JSON pro kontrakty, uzávěr zdrojů, invarianty, funkce, vydání a strojově kontrolované kořenové shrnutí."
+sidebarTitle: "Validátor"
+---
+
+Symphony Validator (`tools/symphony-validator`) je nezávislý, deterministický nástroj v C++26 pro kontrolu repozitáře pouze pro čtení. Vytváří neměnné důkazy o aktuálním stavu repozitáře a jeho kontraktů. Nemůže nic opravovat ani publikovat.
+
+## Co validátor kontroluje
+
+- Tvar kontraktů: požadované kotvy a strukturu Contract Quad
+- Aktuální uzávěr zdrojů napříč povrchy indexovanými SKVI
+- Vlastnictví invariantů podle `knowledge/INVARIANTS.md` a registru invariantů
+- Očekávání správy funkcí hlášená SSFV
+- Záznamy o vydáních hlášené SODV
+- Strojově vlastněné kořenové shrnutí v README repozitáře
+
+Důkazy se vydávají jako řádkový výstup nebo strukturovaný JSON. Každý výstup je reprodukovatelný ze stejného stavu repozitáře.
+
+## Co validátor nedělá
+
+<Warning>
+  Validátor nemůže opravovat soubory, přepisovat kontrakty ani publikovat repozitář. Nevytváří žádnou kanonickou pravdu; pouze ji hlásí.
+</Warning>
+
+- Žádné vedlejší účinky na repozitář
+- Žádný přístup k síti
+- Žádné potlačování varování mimo chráněnou politiku varování qxctl
+
+## Integrace s qxctl
+
+qxctl před uplatněním chráněné politiky varování validuje přesné potvrzení validátoru a strukturované digesty. Devět chráněných listových příkazů qxctl pro životní cyklus varování a přesná cesta pro kořenové shrnutí podložená potvrzením zpřístupňují správu validace, aniž by měnily surové důkazy detektoru.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/cs/qxctl/validate">
+    Gramatika chráněné politiky varování, základní linie a zobrazení.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/cs/skv/ssfv">
+    Očekávání správy funkcí kontrolovaná validátorem.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/cs/skv/sodv">
+    Záznamy o vydáních, které validátor kontroluje.
+  </Card>
+
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující rámec, jehož kontrakty validátor kontroluje.
+  </Card>
+</CardGroup>

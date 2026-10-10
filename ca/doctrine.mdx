@@ -1,0 +1,35 @@
+---
+title: "Doctrina de la plataforma QuanuX Symphony"
+description: "Coneixeu els principis rectors de Symphony: la propietat de l'estratègia i la infraestructura per part de l'usuari, la neutralitat de classe de l'invocador, la protecció del camí crític i la compatibilitat basada en evidències."
+sidebarTitle: "Doctrina"
+---
+
+La doctrina de Symphony defineix els límits entre el que controla la plataforma i el que controleu vosaltres. Aquestes regles regeixen cada decisió de disseny del monorepositori i cada interacció amb qxctl, els motors de vectors i els contractes de coneixement.
+
+## Propietat de l'usuari
+
+Sou propietaris de la lògica de la vostra estratègia, el propòsit del Nest, l'elecció de proveïdor, l'elecció de maquinari, la topologia de bus i la selecció d'adaptadors compatibles. Symphony proporciona evidència exacta de compatibilitat i operacions compatibles, però no converteix les recomanacions en llei de la plataforma. La plataforma informa de coincidències, discrepàncies, fets no resolts i conseqüències. No classifica proveïdors, no prescriu cap estratègia ni amplia silenciosament el vostre entorn.
+
+## Protecció del camí crític
+
+El camí crític (hot path) està protegit de la residència administrativa i de la pressió accidental sobre un bus compartit. qxctl i el pla de coneixement són administració de camí fred o de congelació. Poden actuar explícitament sobre un Node que també allotgi treball en directe, però no han de convertir-se en dependències contínues del camí crític, observadors ocults, intèrprets residents ni gestors de paquets en segon pla no sol·licitats. La vostra arquitectura explícita continua sent sobirana.
+
+## Separació d'ordres i semàntica
+
+qxctl és propietari de la gramàtica de les ordres i de la seva presentació. Els vectors de domini són propietaris de les operacions i els significats que aquestes ordres exposen. Una ruta de qxctl invoca una capacitat definida pel propietari sense absorbir-ne la semàntica.
+
+## Noms i espais de noms
+
+Els noms es registren sota l'àmbit que n'és propietari. SNV i SCNV no els dicten, i l'arrel NAMESPACES continua sent més àmplia que SNV. Un nom registrat dins d'un TOPS o d'un TROG segueix aquest àmbit. Quan hi ha diversos clústers, el nom curt d'un Node es pot repetir en clústers diferents, però no pot identificar de manera ambigua dos Nodes actius del mateix clúster.
+
+## Neutralitat de classe de l'invocador
+
+La classificació d'un invocador com a humà, IA, agent, servei o càrrega de treball no atorga ni retira autoritat. Les decisions d'autorització compatibles utilitzen la propietat de l'amfitrió de destinació o els permisos atorgats, l'operació i el recurs sol·licitats, l'estat esperat i les salvaguardes configurades pel propietari. L'administrador de l'amfitrió de destinació és sobirà sobre la governança configurable. SSIAG pot verificar i projectar l'autoritat efectiva de l'amfitrió, però no crea cap autoritat de registre superior. La garantia d'identitat reforçada i els bloquejos de governança són salvaguardes neutrals respecte a l'invocador i configurades pel propietari. Els requisits d'integritat del protocol continuen sent obligatoris. Symphony no decideix la capacitat legal o financera externa segons el tipus d'invocador.
+
+## Veritat i evidència
+
+Els contractes actuals descriuen la veritat actual. Els registres immutables de SCLV i SODV conserven el que se sabia, es va canviar, es va autoritzar o es va completar en el moment de la història en què es van registrar. Quan els contractes actuals, l'evidència d'implementació i el darrer registre aplicable no coincideixen, la discrepància es mostra com a deriva perquè es revisi. La història no es reescriu silenciosament perquè s'assembli al present.
+
+## Doctrina de Python
+
+El codi font propi de Symphony, els generadors, l'autoria d'esquemes, les proves i les eines auxiliars d'acceptació no requereixen cap implementació de Python ni cap dependència d'un intèrpret. C++ és propietari de les eines de substitució per a l'autoria i les proves de processos. Aquesta política del repositori no restringeix els vostres programes ni els Habitats aïllats que seleccioneu explícitament.

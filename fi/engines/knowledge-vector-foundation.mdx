@@ -1,0 +1,53 @@
+---
+title: "Knowledge Vector Engine -moottorien C++-perusta: jaettu mekaniikka"
+description: "Knowledge Vector Engine -moottorien C++-perusta tarjoaa valtuudettoman prosessikehystyksen, rajatun JSONin, SHA-256:n, tilannevedokset, kuitit ja eksplisiittisen manifestien löytämisen."
+sidebarTitle: "Peruskirjasto"
+---
+
+`libraries/knowledge-vector-engine-cpp` tarjoaa jaetun, valtuudettoman C++-mekaniikan, jota jokainen Symphonyn vektorimoottori hyödyntää. Se tarjoaa deterministisiä rakennuspalikoita, jotta jokainen moottori pysyy rajattuna, toistettavana ja vapaana ympäristöstä peräisin olevista sivuvaikutuksista.
+
+## Mitä perusta tarjoaa
+
+- **Prosessikehystys**: valtuudeton paikallinen prosessiprotokolla, jota jokainen moottori käyttää
+- **Rajattu JSON**: tiukka jäsentäminen ja tuottaminen eksplisiittisin koko- ja syvyysrajoin
+- **SHA-256**: sisältöosoitteistus näytölle ja kuiteille
+- **No-follow-lukemiset**: tiedostojärjestelmälukemiset, jotka eivät koskaan odottamatta seuraa symbolisia linkkejä
+- **Deterministiset tilannevedokset**: toistettavat vedokset tarkastellusta tilasta
+- **Ajallinen validointi**: kanoninen UTC-käsittely Symphony Temporal Semantics Contract -sopimuksen mukaisesti
+- **Omistajamanifestien löytäminen**: sopimusmanifestien tarkka löytäminen
+- **Versioitu paketointi**: erikseen asennettavat, kuittien omistamat paketit
+- **Kuitit ja kuitin omistama asennuksen poisto**: asennuksen poistoa ohjaa ainoastaan kuitti, jolla artefakti asennettiin
+
+## Manifestien löytämisen raja
+
+<Warning>
+  Manifestien löytäminen alkaa kiinteästä käynnistysjoukosta ja kulkee vain eksplisiittisten alisteisten ilmoitusten kautta. Se ei koskaan läpikäy repositoriota ympäristöstä käsin eikä päättele omistajuutta hakemistonimistä.
+</Warning>
+
+Jokainen perustaa käyttävä vektorimoottori perii tämän säännön.
+
+## Mitä perusta ei tee
+
+- Se ei kanna valtuuksia. Sitä käyttävien moottorien on edelleen valtuutettava muutokset SSIAG:n kautta.
+- Se ei julkaise eikä nouda mitään verkon yli.
+- Se ei muuta kanonisia tiedostoja omin päin.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Perustan päälle rakennettu C++26-koordinaattori istuntoja ja täsmäytystä varten.
+  </Card>
+
+  <Card title="Moottorien yleiskatsaus" icon="cube" href="/fi/engines/overview">
+    Moottorit, jotka hyödyntävät perustaa.
+  </Card>
+
+  <Card title="SKV:n yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Vektorisopimukset, jotka moottorit toteuttavat.
+  </Card>
+
+  <Card title="qxctl:n yleiskatsaus" icon="terminal" href="/fi/qxctl/overview">
+    Hallinta-CLI, joka kutsuu tarkkoja, kuitein validoituja moottoreita.
+  </Card>
+</CardGroup>

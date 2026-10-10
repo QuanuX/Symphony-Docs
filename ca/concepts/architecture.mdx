@@ -1,0 +1,33 @@
+---
+title: "Arquitectura de Symphony"
+description: "Enteneu els límits entre la infraestructura seleccionada per l'usuari, els contractes de vectors, els motors, qxctl i l'evidència governada."
+sidebarTitle: "Arquitectura"
+---
+
+Symphony separa la infraestructura i les càrregues de treball seleccionades per l'usuari del coneixement i l'administració de la plataforma. La plataforma pot inspeccionar, validar i informar de la compatibilitat sense reclamar la propietat de la vostra estratègia ni tractar una recomanació com una obligació.
+
+## Capa física i de càrregues de treball
+
+Un [Node](/ca/concepts/node-habitat-nest) és un ordinador físic identificat. Un **Habitat** és el seu condicionament exacte del sistema operatiu i dels paquets, i un **Nest** és una càrrega de treball que serveix un propòsit seleccionat per l'usuari. Els clústers connecten Nodes a través d'un o més busos. Els teixits de bus, els adaptadors, els proveïdors i les eleccions de maquinari són explícits en lloc de valors predeterminats universals.
+
+El [camí crític](/ca/concepts/hot-path-isolation) es manté separat de la residència administrativa. qxctl i el treball del pla de coneixement poden administrar explícitament un Node, però no es converteixen en dependències contínues ocultes de l'execució en directe.
+
+## Propietat semàntica
+
+Els [vectors](/ca/concepts/vectors) són propietaris acotats i duradors del significat i de les operacions permeses. Cada propietari publica un Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` i `SPEC.md`. El [Symphony Knowledge Vector (SKV)](/ca/skv/overview) indexa les superfícies canòniques i conserva una ruta cap al seu propietari. Els esquemes, registres i llibres de registre complementaris continuen governats sense convertir-se en membres addicionals del Quad.
+
+Les fases de lliurament descriuen quan es fa el treball. No transfereixen la propietat semàntica d'un vector a un altre.
+
+## Motors i superfície d'ordres
+
+Els [motors de vectors](/ca/engines/overview) són components fora de procés, instal·lables de manera independent, que inspeccionen, comproven, projecten i proposen dins dels contractes del seu propietari. No obtenen autoritat pel simple fet de generar una proposta.
+
+[qxctl](/ca/qxctl/overview) és propietari de la gramàtica de les ordres administratives i de la seva presentació. Invoca capacitats acotades i validades per rebut, mentre que el vector que defineix una operació en conserva la semàntica. L'autorització i l'evidència d'auditoria regeixen les rutes de mutació; la [classificació de l'invocador](/ca/concepts/caller-authority) per si sola no atorga cap autoritat.
+
+## Veritat i evolució
+
+Els contractes actuals expressen la veritat actual. Els llibres de registre de canvis i de publicacions conserven l'evidència registrada en un moment determinat. Les discrepàncies entre els contractes, l'evidència d'implementació i la història registrada es mostren com a deriva en lloc de reescriure's silenciosament. [SAV](/ca/skv/sav) avalua la compatibilitat de composició; [SEV](/ca/skv/sev) planifica l'evolució governada.
+
+<Note>
+  Aquesta visió general és un mapa de límits. Consulteu el contracte actual i l'evidència d'implementació de cada vector enllaçat abans de considerar que una capacitat està disponible en una instal·lació concreta.
+</Note>

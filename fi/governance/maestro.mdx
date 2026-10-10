@@ -1,0 +1,43 @@
+---
+title: "Maestro: Symphonyn vektorimoottorien läsnäoloviranomainen"
+description: "Maestro kirjaa todennetut vektorimoottorien telakointisuhteet TOPS- ja reseptorikohtaisesti ja johtaa niistä täydellisen vain luku -inventaarion käynnistämättä tai valvomatta moottoreita."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) on erikseen asennettava jäätyvän polun C++26-läsnäoloviranomainen. Se kirjaa tarkat todennetut vektorimoottorien telakointisuhteet TOPS- ja reseptorikohtaisesti ja johtaa täydellisen vain luku -inventaarion siitä, mitä on parhaillaan telakoituna. Maestro on todistaja, ei valvoja.
+
+## Mitä Maestro kirjaa
+
+- Tarkat todennetut telakointisuhteet vektorimoottorien ja reseptorien välillä
+- TOPS-kohtaisen rajauksen, jotta kunkin asennuksen läsnäolotiedot pysyvät kyseisen asennuksen yksityisinä
+- Johdetun, täydellisen vain luku -inventaarion, joka on saatavilla komennolla `qxctl maestro inventory`
+
+## Mitä Maestro ei tee
+
+<Warning>
+  Maestro ei käynnistä, ajoita, valvo tai kutsu moottoreita. Sidonta, täsmäytys, todennettujen istuntojen koordinointi tai elinkaarisuunnitelma ei yksinään muodosta Maestro-läsnäoloa, ratifioi semanttista totuutta, muuta kanonista tietoa tai todista asennetun isännän täydellisyyttä.
+</Warning>
+
+- Maestro ei luo prosesseja.
+- Maestro ei koskaan sovella kanonisen tiedon muutoksia.
+- Maestro ei koskaan korvaa semantiikan omistavaa vektorimoottoria.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/fi/qxctl/maestro">
+    `qxctl maestro inventory` esittää johdetun inventaarion.
+  </Card>
+
+  <Card title="Istuntokoordinaattori" icon="gears" href="/fi/engines/coordinator">
+    Omistaa todennettujen istuntojen ja työpuun täsmäytyksen mekaniikan.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fi/governance/ssiag">
+    Todentaa telakointisuhteet, jotka Maestro kirjaa.
+  </Card>
+
+  <Card title="Moottorien yleiskatsaus" icon="cube" href="/fi/engines/overview">
+    Erikseen asennettavat vektorimoottorit, jotka telakoituvat Maestroon.
+  </Card>
+</CardGroup>

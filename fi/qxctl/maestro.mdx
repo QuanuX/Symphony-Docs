@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Symphonyn reseptorien läsnäoloinventaarion lukeminen"
+description: "Tarkastele Symphonyn Maestro-läsnäoloauktoriteettia qxctl:n kautta nähdäksesi todennetut vektorimoottorien telakointisuhteet ja johdetun reseptori-inventaarion."
+sidebarTitle: "maestro"
+---
+
+`qxctl maestro ...` -kielioppi tuo esiin Maestron läsnäolotodisteet. Maestro on läsnäoloauktoriteetti; qxctl ainoastaan lukee ja tarkastelee sitä, mitä Maestro kirjaa. Kumpikaan ei luo telakointisuhteita omin päin.
+
+## Inventaario
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` esittää Maestron täydellisen, johdetun, vain luku -inventaarion todennetuista vektorimoottorien telakointisuhteista TOPS- ja reseptorikohtaisesti.
+
+## Liittyvät hallintareitit
+
+Muut qxctl-lehtikomennot tarjoavat Maestroon liittyvää hallintaa:
+
+- Telakointitodisteiden tila ja tarkastelu
+- Maestron omien sopimusten rajaamat palautusreitit
+- Perustason elinkaarirekisteröinti ja natiivi valvonta Maestrolle itselleen
+
+Jokainen muutosreitti kulkee tarkan, moduulin omistaman adapterin kautta. qxctl ei koskaan muodosta Maestro-kuvaajia sisäisestä jäsennyksestä eikä kutsu implisiittisesti uusinta versiota.
+
+<Warning>
+  Maestro ei käynnistä, ajoita, valvo eikä kutsu moottoreita. `qxctl maestro inventory` on vain luku -komento. Sidonta, täsmäytys, istunnon koordinointi tai elinkaarisuunnitelma ei yksinään muodosta Maestro-läsnäoloa.
+</Warning>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/fi/governance/maestro">
+    Läsnäoloauktoriteetin sopimus ja rajat.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/fi/qxctl/engines">
+    Moottorien sidontarekisteri (sidonnat eivät ole telakointia).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fi/qxctl/session">
+    Todennetut istunnot, joita käytetään läsnäolon kirjaamiseen.
+  </Card>
+
+  <Card title="Moottorien yleiskatsaus" icon="cube" href="/fi/engines/overview">
+    Itsenäisesti asennettavat vektorimoottorit, jotka telakoituvat Maestroon.
+  </Card>
+</CardGroup>

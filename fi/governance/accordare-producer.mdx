@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV -tuottaja: rajattu SAV Named Version -auditointi"
+description: "Accordare STAV -tuottaja pitää SAV Named Version -aikomuksen, lopputuloksen ja palautuksen pysyvinä jäätyvän polun Go-tuottajan avulla, joka todentaa paikalliset vertaisensa."
+sidebarTitle: "Accordare-tuottaja"
+---
+
+Accordare STAV -tuottaja (`modules/accordare-stav-producer`) on erikseen asennettava jäätyvän polun Go-tuottaja rajatulle SAV Named Version -auditointipiirille. Se pitää muutosta edeltävän aikomuksen ja lisäyksen palautuksen pysyvinä, todentaa paikalliset vertaisensa ja lähettää vain sen tarkan turvallisen ehdokkaan, jonka sen suljettu sanasto hyväksyy. Se ei itse ole STAV-lisäysviranomainen.
+
+## Aikomus, lopputulos ja palautus -malli
+
+Tuottaja noudattaa kolmivaiheista mallia jokaisessa auditoidussa muutoksessa:
+
+<Steps>
+  <Step title="Muutosta edeltävä aikomus">
+    Kirjaa kutsujan ilmoittama aikomus pysyvästi ennen kuin mikään muutos tulee havaittavaksi. Tuottaja hylkää suljetun sanastonsa ulkopuoliset ehdokkaat.
+  </Step>
+  <Step title="Lopullinen lopputulos">
+    Kun muutos on valmistunut tai epäonnistunut, tallenna tarkka lopputulos, jotta auditointi heijastaa todellisuutta eikä toivottua tilaa.
+  </Step>
+  <Step title="Rajattu palautus">
+    Keskeytyksen sattuessa tuottaja suorittaa lisäysvirran rajatun palautuksen keksimättä täsmäytystä tai hylkäämättä aikomusta hiljaisesti.
+  </Step>
+</Steps>
+
+## Rajat
+
+<Warning>
+  Accordare-tuottaja ei ole STAV-lisäysviranomainen. Se todentaa paikalliset vertaiset ja lähettää ehdokkaita; lisäysviranomainen validoi, sinetöi ja tallentaa ne pysyvästi. Älä koskaan ohita tätä erottelua.
+</Warning>
+
+- Tuottajan sanasto on suljettu. Se hyväksyy vain SAV Named Version -auditointiehdokkaita.
+- Tuottaja toimii jäätyvällä polulla. Siitä ei saa tulla kuuman polun riippuvuutta.
+- Tuottaja todentaa paikalliset vertaiset; se ei todenna etäkutsujia.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/fi/governance/stav">
+    Lisäysviranomainen, joka sinetöi auditointitietueet.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fi/governance/ssiag">
+    Valtuuttaa muutoksen, jonka tuottaja auditoi.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fi/skv/sav">
+    Named Version -koostamisen semantiikka, jota tämä piiri auditoi.
+  </Card>
+
+  <Card title="qxctl:n vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Ratifioitu Accordare-kielioppi saapuu muodossa `qxctl accord ...`, kun se on toteutettu.
+  </Card>
+</CardGroup>

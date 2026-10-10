@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: sessões autenticadas do Symphony"
+description: "Abra, faça checkpoint, feche e recupere sessões autenticadas do coordenador do Symphony, além de fluxos persistentes de manutenção do SSFV com concessões verificadas pelo SSIAG."
+sidebarTitle: "session"
+---
+
+A gramática `qxctl knowledge session ...` abre sessões autenticadas não canônicas por meio de um único coordenador vinculado exato e de um único endpoint SSIAG com escopo de TOPS. Uma gramática separada, `session features ...`, conduz o fluxo persistente de manutenção do SSFV.
+
+## Gramática básica de sessão
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Cada chamada solicita uma nova concessão exata e valida:
+
+- Identidade do sujeito e do alvo
+- Estado de política e configuração
+- Expiração
+- Neutralidade quanto à classe do chamador
+- Intransferibilidade
+- Desativação do apply canônico
+- Vinculação de capacidades
+
+As evidências de sessão autorizam somente a operação protegida não canônica nomeada. Mantenha os journals de sessão e de reconciliação separados; use referências de contexto apenas para associá-los.
+
+## Fluxo de manutenção do SSFV
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+O fluxo de features é um contexto separado e persistente de manutenção do SSFV. As mutações exigem:
+
+- Uma sessão básica autenticada aberta
+- Vinculações exatas do coordenador e do SSFV
+- Identificadores de operação estáveis
+- Compare-and-swap exato
+- Evidências novas do SSIAG
+
+<Note>
+  Preserve o snapshot de referência e a identidade original da engine em atualizações ou rollbacks compatíveis. Evidências opcionais do Maestro devem ser um inventário autenticado completo; quando o Maestro estiver intencionalmente ausente, registre o motivo explícito de não configuração. `review_required` é uma evidência para revisão pelo chamador, não uma ratificação.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/pt-BR/governance/ssiag">
+    Emite as novas concessões que cada solicitação de sessão valida.
+  </Card>
+
+  <Card title="Coordenador de sessões" icon="gears" href="/pt-BR/engines/coordinator">
+    A engine que sustenta os journals de sessão e de features.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/pt-BR/qxctl/reconcile">
+    Contextos de reconciliação que se associam a sessões.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/pt-BR/skv/ssfv">
+    O vetor de features que o fluxo de features mantém.
+  </Card>
+</CardGroup>

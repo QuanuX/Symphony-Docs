@@ -1,0 +1,88 @@
+---
+title: "Symphony Cloud Vector: palveluntarjoajien resurssitieto"
+description: "SCV ylläpitää yksityistä tietoa ulkoisista palveluntarjoajien resursseista AWS:ssä, Azuressa, GCP:ssä, DigitalOceanissa, Cloudflaressa ja käyttäjän omistamassa laitteistossa kahdeksan itsenäisesti asennettavan C++-moottorin avulla."
+sidebarTitle: "Cloud Vector"
+---
+
+Symphony Cloud Vector (SCV) omistaa yksityisen semanttisen tiedon ulkoisista laitteistoresursseista ja palveluntarjoajien todellisuuksista, jotka muovaavat klustereitasi, koulutustasi, tutkimustasi ja datatyötäsi. Se kartoittaa palveluntarjoajien tarjoomat, alueet, infrastruktuuritoimialueet, rajoitteet ja havaitun saatavuuden asettamatta palveluntarjoajia paremmuusjärjestykseen tai rajoittamatta sitä, mitä voit yrittää.
+
+## Palveluntarjoajien kattavuus
+
+SCV kattaa seuraavat palveluntarjoajat ja resurssityypit:
+
+- AWS
+- Azure
+- Google Cloud Platform
+- DigitalOcean
+- Cloudflare
+- Käyttäjän omistama laitteisto (kun vertailu ulkoisiin resursseihin on tarpeen)
+
+## Asennetut moottorit
+
+SCV-tieto toimitetaan kahdeksan itsenäisesti asennettavan C++-moottorin kautta. Asennat vain tarvitsemasi:
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="database">
+    SCV:n ydinmoottori palveluntarjoajien resurssitiedolle ja graafin rakentamiselle.
+  </Card>
+
+  <Card title="scev-engine" icon="database">
+    Pilvitodisteiden moottori rajattuun keruuseen ja korpussemantiikkaan.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="database">
+    Cloudflare-kohtainen todistemoottori.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="cloud">
+    AWS-kohtainen laitteisto- ja resurssitietomoottori.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="cloud">
+    Azure-kohtainen laitteisto- ja resurssitietomoottori.
+  </Card>
+
+  <Card title="schv-do-engine" icon="cloud">
+    DigitalOcean-kohtainen resurssitietomoottori.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="cloud">
+    GCP-kohtainen laitteisto- ja resurssitietomoottori.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="plug">
+    Valinnainen relaatiograafiliitin, joka käyttää DuckDB:tä säilytettyyn SQL-indeksointiin.
+  </Card>
+</CardGroup>
+
+## Siirrettävät palveluntarjoajapaketit ja koostaminen
+
+SCV tarjoaa siirrettäviä palveluntarjoajapaketteja qxctl:n kautta. Säilytät hallinnan vaatimuksista, palveluntarjoajien käyttöoikeuksista, reseptivaihtoehdoista ja suorituspäätöksistä. qxctl tukee säilytettyjä työnkulkuja ja suojattua graafin valintaa, joten voit toistaa tarkat todisteet kysymättä palveluntarjoajilta uudelleen.
+
+## Valinnainen DuckDB-liitin
+
+`scv-graph-duckdb-connector` lisää rajatun relaatioprojektion muuttumattomista natiiveista graafeista. DuckDB on käyttäjän valitsema oletus-SQL-tietokanta. Voit tulevaisuudessa valita erillisiä graafimoottoreita lisäadapterien kautta.
+
+## Yksityisyys ja itsemääräämisoikeus
+
+Asennettu SCV-tietograafi kuuluu yksityiseen asennukseesi. Käyttäjän toimittamia tilejä, saldoja, käyttöoikeuksia ja sopimusrajoitteita käytetään vain eksplisiittisesti käyttöön otettujen havaintopintojen kautta. Yksityiset tiedot eivät päädy Symphonyn viralliseen lähdetotuuteen.
+
+## Miten SCV liittyy muihin vektoreihin
+
+<CardGroup cols={2}>
+  <Card title="SOV" icon="terminal" href="/fi/vectors/sov">
+    Operatiivinen ohjaustaso, joka toimii SCV-todisteiden pohjalta. SOV ei kirjoita palveluntarjoajien merkitystä uudelleen.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/fi/vectors/snv">
+    Kirjaa fyysisten Nodejen ja klusterien identiteetit, jotka syntyvät SCV-tietoon perustuvasta provisioinnista.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/fi/vectors/shv">
+    Omistaa yksityiskohtaisen laitteistokyvykkyystiedon komponenteista, joihin SCV viittaa.
+  </Card>
+</CardGroup>
+
+## Versioidut rajapintalisäykset
+
+SCV-julkaisut ovat lisääviä ja tarkasti versioituja. Aiemmat asennukset pysyvät kutsuttavina tarkoissa laajuuksissaan. Nykyisiin lisäyksiin kuuluvat natiivit operaatiot, korpuksen tilannevedokset, tulkintaprofiilit, siirrettävät palveluntarjoajapaketit, koostamistyönkulut, velvoitteiden seuranta ja todistepaketit. Jokainen lisäys säilyttää aiemmat reitit, oletukset ja tietueet.

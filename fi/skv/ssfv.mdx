@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector ja rekisteri"
+description: "SSFV omistaa kanonisen ominaisuusidentiteetin, semantiikan, hierarkian, elinkaaren ja hallinnan varmistuksen kaikissa toteutetuissa Symphony-moduuleissa ja qxctl-pinnoissa."
+sidebarTitle: "SSFV"
+---
+
+Symphony Semantic Feature Vector (SSFV) omistaa kanonisen sovellusominaisuuksien identiteetin, semantiikan, hierarkian, elinkaaren, erottelut, hajautettujen tietueiden reitityksen, kattavuusinventaarion ja graafiprojektiosopimukset. Sen moottori on itsenäisesti asennettava C++-prosessi, joka suorittaa rakenteellisia ja ajantasaisuuden huomioivia ominaisuustarkistuksia.
+
+## Operaatiot
+
+- **Tarkastelu ja tarkistus**: rakenteellinen ja ajantasaisuuden huomioiva ominaisuuksien arviointi.
+- **Erot**: sisältöosoitteiset erot ominaisuustilojen välillä.
+- **Ehdotus**: kutsujan ilmoittamat ehdotukset ominaisuuksien hyväksymiseksi tai muuttamiseksi.
+- **Graafi**: deterministiset kertakäyttöiset ominaisuusgraafit tarkastusta varten.
+
+## Rekisteröity kattavuus
+
+Nykyinen rekisteröity luettelo on nimenomaisesti osittainen:
+
+- **110** rekisteröityä ominaisuutta
+- **35** rekisteröityä omistajalaajuutta
+- **76** ratifioitua sisäkkäistä ominaisuutta
+- **295** tarkastettua ominaisuushallinnan pintaa (**285** vaadittua, **13** todisteisiin perustuvaa poikkeusta, **9** kieltoa, **0** tarkastamatonta)
+
+Rekisteröidyt omistajalaajuudet kattavat jokaisen toteutetun moduulin `qxctl`:stä ja validaattorista SKV-moottoreiden ja SSIAG-tarjoajien kautta SCV- ja SHV-moottoriperheisiin.
+
+## Mitä SSFV ei tee
+
+<Warning>
+  SSFV ei päätä ominaisuuksien arvokkuudesta, keksi identiteettejä eikä väitä repositorion tai isännän olevan täydellinen. `review_required` on todiste kutsujan tarkastettavaksi, ei ratifiointi eikä soveltamisoikeus.
+</Warning>
+
+Ominaisuuksien tarkastus, hyväksyntä ja elinkaarimuutokset pysyvät kunkin ominaisuuden omistavalla sopimuksella.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys, joka hallinnoi SSFV:tä.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fi/skv/sev">
+    Soveltaa evoluutiotapauksia ominaisuuksien lisäyksiin, muutoksiin ja käytöstä poistoihin.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/fi/qxctl/session">
+    Hallitse pysyviä SSFV-ylläpitoistuntoja qxctl:n kautta.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Suorita `qxctl ssfv ...` tarkastelua, tarkistusta, eroja, ehdotusta ja graafia varten.
+  </Card>
+</CardGroup>

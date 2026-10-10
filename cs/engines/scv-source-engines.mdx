@@ -1,0 +1,74 @@
+---
+title: "Enginy znalostí zdrojů SCV: realita poskytovatelů pro Symphony"
+description: "Osm samostatně balených enginů SCV pro hyperscalery, edge a poskytovatele uchovává přesné revize zdrojů a vytváří reprodukovatelné důkazy z grafů a dotazů."
+sidebarTitle: "Enginy SCV"
+---
+
+Enginy znalostí zdrojů SCV jsou osm samostatně balených procesů v C++26, které uchovávají soukromé sémantické znalosti o prostředcích, nabídkách, regionech, omezeních a hybridních možnostech externích poskytovatelů. Uchovávají přesné revize zdrojů a ohraničené záznamy, aby navazující nástroje mohly reprodukovat výsledky.
+
+## Enginy
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Zastřešující zdrojový engine SCV pro sdílený cloudový slovník.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Zdrojový engine Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Zdrojový engine pro edge specifický pro Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Zdrojový engine pro Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Zdrojový engine pro Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Zdrojový engine pro DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Zdrojový engine pro Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Volitelný konektor DuckDB pro uchovávané relační indexování grafu.
+  </Card>
+</CardGroup>
+
+## Co enginy SCV dělají
+
+- Uchovávají explicitní revize zdrojů a ohraničené záznamy
+- Zachovávají kvalifikovaná tvrzení a nativní strukturu dokumentů
+- Vytvářejí reprodukovatelné důkazy z grafů a dotazů
+- Napájejí přenositelné balíčky poskytovatelů a konečnou kompozici řízenou volajícím
+
+## Co nedělají
+
+<Warning>
+  Operace u poskytovatelů a kompletní cloudové katalogy zůstávají mimo tento přírůstek. Enginy SCV popisují, co je známo; na poskytovatele nepůsobí.
+</Warning>
+
+qxctl samostatně spravuje auditované lokální změny zdrojů a koherentní výběr grafu prostřednictvím uchovávaných pracovních postupů a chráněného výběru grafu. Specializované procházení grafu a provozní adaptéry zůstávají samostatnou prací.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="Vektor SCV" icon="cloud" href="/cs/vectors/scv">
+    Kontrakt Cloud Vector, který tyto enginy implementují.
+  </Card>
+
+  <Card title="Vektor SOV" icon="terminal" href="/cs/vectors/sov">
+    Ops Vector, který působí na základě důkazů SCV prostřednictvím qxctl.
+  </Card>
+
+  <Card title="Příkazy vektorů v qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Výběr grafu, pracovní postupy zdrojů a správa konektoru DuckDB.
+  </Card>
+</CardGroup>

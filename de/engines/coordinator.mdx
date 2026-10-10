@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator für Symphony-Vektor-Engines"
+description: "Der Knowledge Session Coordinator bietet abgegrenzte Kompatibilität, Worktree-Abgleich, authentifizierte Sitzungen und anwendungsfähige Lebenszykluskoordination in C++26."
+sidebarTitle: "Coordinator"
+---
+
+Der Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) ist ein unabhängig installierbarer C++26-Prozess. Er sitzt zwischen qxctl und den Vektor-Engines und ist zuständig für abgegrenzte Kompatibilität, Worktree-Abgleich, authentifizierte nichtkanonische Sitzungen, SSFV-Wartung, rein berichtende Lebenszyklusplanung und separat autorisierte, anwendungsfähige Journale.
+
+## Zuständigkeiten
+
+- **Kompatibilitätsprüfungen** zwischen qxctl, Coordinator und Engines
+- **Worktree-Abgleich** mit dauerhaftem, slotbasiertem Zustand
+- **Authentifizierte nichtkanonische Sitzungen** unter SSIAG-Autorität
+- **Persistente SSFV-Wartungs**-Streams
+- **Rein berichtende Lebenszyklusplanung** mit deterministischen Nachweisen
+- **Anwendungsfähige Journale** mit vorbereiteten Versuchen, Compare-and-Swap, erneuter Beobachtung, dynamischer Neuplanung und Wiederherstellung
+
+## Was der Coordinator nicht tut
+
+<Warning>
+  Der Coordinator führt weder Vektorsemantik noch Host-Aktionen aus. Er koordiniert Nachweise und Journale; jede Engine besitzt weiterhin ihre Domäne, und jede Host-Aktion bleibt durch ihren eigenen Vertrag autorisiert.
+</Warning>
+
+- Kein kanonisches Anwenden von Wissen
+- Keine Ausführung beliebiger Befehle
+- Keine versteckten Watcher oder residente Hintergrundarbeit
+
+## qxctl-Integration
+
+qxctl ruft exakte, per Quittung validierte Coordinator-Installationen auf. `qxctl knowledge reconcile ...` und `qxctl knowledge session ...` verwenden pro Operation genau einen exakt gebundenen Coordinator, und Mutationen erfordern stabile Operationskennungen sowie exakte aktuelle Journal-Digests für Compare-and-Swap.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/de/qxctl/reconcile">
+    Grammatik für den Worktree-Abgleich.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/de/qxctl/session">
+    Grammatik für authentifizierte Sitzungen und SSFV-Wartung.
+  </Card>
+
+  <Card title="Foundation-Bibliothek" icon="cube" href="/de/engines/knowledge-vector-foundation">
+    Gemeinsame C++-Mechanik, die der Coordinator wiederverwendet.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/de/governance/ssiag">
+    Autorisiert die Sitzungen, die der Coordinator verwaltet.
+  </Card>
+</CardGroup>

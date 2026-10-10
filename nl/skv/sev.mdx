@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector voor geplande wijzigingen"
+description: "SEV evalueert geplande wijzigingen, noviteiten en levenscyclustransities met deterministische cases, dependency-ready sets, wegwerpbare grafen en niet-toepassend herstelavies."
+sidebarTitle: "SEV"
+---
+
+De Symphony Evolution Vector (SEV) is eigenaar van cases voor geplande wijzigingen en aangetroffen noviteiten op het hele platform. De engine is een alleen-lezen C++26-proces op het freezing-pad. SEV bewaakt geen host en past geen transitie toe; het produceert bewijs en afhandelingsadvies.
+
+## Bewerkingen
+
+- **Case-evaluatie**: deterministische evolutiecases voor toevoegingen, wijzigingen, hernoemingen, vervangingen, deprecaties, uitfaseringen en verwijderingen.
+- **Impact- en afhandelingsplanning**: wijs elke case toe aan de gezaghebbende eigenaren.
+- **Herberekening van de dependency-ready set**: leid de veilige volgorde van afhankelijke transities af.
+- **Transitieverificatie**: bevestig dat de waargenomen status na een transitie overeenkomt met de verwachte vorm.
+- **Herstelavies**: beschrijf veilige voorwaartse of achterwaartse stappen wanneer een transitie wordt onderbroken.
+- **SCSEV-beoordeling**: het eerste beheerde SEV-profiel past deze bewerkingen toe op de evolutie van uitsluitend documentaire kennisonderdelen.
+- **Noviteits- en watchcontroles**: detecteer nieuwe of onverwachte onderdelen voor de aandacht van reviewers.
+- **Samenvoegen van triggers** en **binding aan levenscyclussessies**: verminder dubbele evaluatie en bind cases aan een sessie.
+- **Graafprojectie**: wegwerpbare grafen voor beoordeling.
+
+## SCSEV-profiel
+
+SCSEV hergebruikt SSFV-featurebeheer, stabiele qxctl-commandowaarheid en bewerkingsdescriptors van engines. Het creëert geen dubbele engine of register. Het eerste enginedeel is uitsluitend rapporterend en voorstellend; duurzame externe acties blijven afzonderlijk geautoriseerd via qxctl en de knowledge session coordinator.
+
+<Note>
+  SEV is uitsluitend bedoeld voor lezen, query's, valideren en voorstellen. Canonieke apply blijft uitgeschakeld in de hele SKV-enginefamilie.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Overzicht van SKV" icon="book-open" href="/nl/skv/overview">
+    Het overkoepelende framework en het Contract Quad-model.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/nl/skv/ssfv">
+    Featurebeheer dat het SCSEV-profiel hergebruikt.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/nl/skv/sav">
+    Compositie- en compatibiliteitsevaluatie voor gewijzigde componenten.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Bekrachtigde evolution-grammatica komt beschikbaar als `qxctl evolution ...` zodra die is geïmplementeerd.
+  </Card>
+</CardGroup>

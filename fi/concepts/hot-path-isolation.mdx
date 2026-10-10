@@ -1,0 +1,37 @@
+---
+title: "Kuuman polun eristäminen QuanuX Symphonyssä"
+description: "Opi, miten Symphony suojaa suorituspolkuja hallinnolliselta häiriöltä: kylmän ja jäätyvän polun komponentit, väyläkuri ja Prima Parte -tilatodistajan käsite."
+sidebarTitle: "Kuuman polun eristäminen"
+---
+
+Symphony erottaa hallinnollisen työn suoritustyöstä, jotta reaaliaikainen kaupankäynti, tutkimus ja muut suorituskykykriittiset polut pysyvät vapaina värinästä (jitter), viiveestä ja piilotetuista riippuvuuksista. qxctl ja tietotaso ovat kylmän tai jäätyvän polun hallintoa. Ne voivat eksplisiittisesti toimia Nodella, joka isännöi myös reaaliaikaista työtä, mutta niistä ei saa tulla jatkuvia kuuman polun riippuvuuksia.
+
+## Kylmän ja jäätyvän polun kuri
+
+qxctl ja vektorimoottorit ovat hallinnollisia kylmän tai jäätyvän polun komponentteja. Ne eivät saa:
+
+- Suorittua samassa linjassa kuumien tai lämpimien suorituspolkujen kanssa
+- Jakaa lukkoja reaaliaikaisten työkuormien kanssa
+- Luoda synkronisia riippuvuuksia, jotka lisäävät värinää tai viivettä
+- Muuttua piilotetuiksi tarkkailijoiksi, pysyvästi muistissa oleviksi tulkeiksi tai pyytämättä taustalla toimiviksi paketinhallinnoiksi
+- Ylläpitää jatkuvaa läsnäoloa suoritus-Nodeilla
+
+Tämä sääntö koskee tietoistuntokoordinaattoria, vektorimoottoreita ja kaikkia qxctl:n hallinnoimia toimintoja. Ne tuottavat näyttöä, validoivat tilaa ja laativat suunnitelmia, mutta ne eivät osallistu reaaliaikaiseen suorituspolkuun.
+
+## Väyläkuri
+
+Raskaan siirron, ohjauksen, tutkimuksen ja suorituksen poistovirtojen ei tarvitse jakaa yhtä väylää. Topologia voi käyttää useita väyliä tai ohittaa väylän ilmoitetulla polulla, erityisesti silloin, kun jaettu liikenne voisi aiheuttaa värinää. NATS JetStream, ZeroMQ ja muut kankaat ovat sovittimia ja käyttäjän valintoja. qxctl:n väylähallinnan olemassaolo ei tee väylän läpikulusta pakollista.
+
+Valitset väylätopologian, joka vastaa viive- ja läpäisyvaatimuksiasi. Symphony tukee konfiguraatiota pakottamatta yhtä jaettua kangasta.
+
+## Prima Parte
+
+**Prima Parte** on ratifioitu vaiheen 3 käsite, ei nykyinen suoritettava ohjelma. Se on valinnainen, äärimmäisen kevyt C++:lla toteutettu Noden paikallinen tilatodistaja, jota qxctl kutsuu eksplisiittisesti olennaisen toiminnon jälkeen. Sillä ei ole daemonia, kuuntelijaa, ajastinta, tarkkailijaa, kyselysilmukkaa tai pysyvää väyläyhteyttä.
+
+Sen rajattu pysyvä sanasto sisältää kolme termiä:
+
+- `current` — nykyinen havaittu tila
+- `previous` — tila ennen olennaista toimintoa
+- `lastTransmitted` — etä-Noden lähettämä tila siihen liittyvän komennon suorituksen jälkeen (vastaanottoa ei vahvistettu)
+
+Prima Parte kirjaa vain oman Nodensa, ei koskaan muutu pienemmäksi Maestroksi ja päättyy rajatun työnsä jälkeen. Se ei ole vaiheen 1 Maestro-reseptori, eikä suoritettavaa ohjelmaa ole vielä toteutettu.

@@ -1,0 +1,51 @@
+---
+title: "SKVI: a engine Symphony Knowledge Vector Index"
+description: "O SKVI indexa de forma determinística cada superfície canônica do SKV uma única vez, verifica a cobertura declarada no manifesto e emite projeções descartáveis vinculadas a digest sem tocar na verdade."
+sidebarTitle: "SKVI"
+---
+
+O Symphony Knowledge Vector Index (SKVI) é a engine que mapeia a verdade canônica atual em todas as superfícies do SKV. É um processo C++ instalável de forma independente que opera de forma determinística e somente leitura, e não pode decidir sobre inclusão nem escrever arquivos canônicos.
+
+## O que o SKVI faz
+
+O SKVI realiza três operações delimitadas:
+
+- **Inspecionar e verificar**: confirma que cada superfície obrigatória declarada no manifesto está indexada exatamente uma vez, com um dono estável, papel de verdade, relacionamentos, consumidores e elegibilidade para projeção.
+- **Propor**: aceita propostas imutáveis declaradas pelo chamador para alterações no índice, sem aplicá-las.
+- **Projetar**: emite projeções descartáveis vinculadas a digest do índice atual para consumidores downstream.
+
+## O que o SKVI não faz
+
+O SKVI nunca decide se algo merece ser uma feature nem a inclusão no manifesto. A propriedade permanece com o Contract Quad de cada vetor. O SKVI também não:
+
+- Escreve nem reescreve Markdown canônico
+- Publica nada em uma projeção pública
+- Concede autoridade só porque gerou evidências
+
+## Quando usá-lo
+
+Use o SKVI para confirmar que um repositório está totalmente coberto antes de propor uma alteração de código, ou para ver qual dono e qual papel de verdade uma superfície específica possui. Suas projeções alimentam revisores de propostas, o contexto de agentes e as linhas de base do validador.
+
+<Note>
+  O SKVI é uma das engines de leitura, consulta, validação e proposta. O apply canônico continua desativado nas engines de vetores ratificadas até que os contratos de SSIAG, transação de estado esperado, salvaguarda do qxctl, evento STAV, recuperação e testes negativos de cada engine estejam completos.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Visão geral do SKV" icon="book-open" href="/pt-BR/skv/overview">
+    O framework abrangente que governa o SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/pt-BR/skv/sclv">
+    O ledger de mudanças append-only que registra alterações materiais de código concluídas.
+  </Card>
+
+  <Card title="Comandos de vetores do qxctl" icon="terminal" href="/pt-BR/qxctl/vector-commands">
+    Execute `qxctl skvi ...` para invocar inspect, check e propose.
+  </Card>
+
+  <Card title="Validador" icon="clipboard-check" href="/pt-BR/governance/validator">
+    Verificações independentes somente leitura que complementam a cobertura do SKVI.
+  </Card>
+</CardGroup>

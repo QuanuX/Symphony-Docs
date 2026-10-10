@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: vazba, diagnostika a migrace registru"
+description: "Spravujte chráněný profil vazeb enginů Symphony v uživatelském rozsahu pomocí příkazů list, inspect, doctor, bind, unbind a migrace vázané na digest přes qxctl."
+sidebarTitle: "engines"
+---
+
+Gramatika `qxctl knowledge engines ...` spravuje chráněný profil vazeb `default` v uživatelském rozsahu pro vektorové enginy Symphony. Váže vybraný obsah pro pozdější rekonciliaci. Engine neinstaluje, nevyvolává, neaktivuje, nedokuje, neautentizuje, neautorizuje ani neaplikuje.
+
+## Příkazy
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Pro první mutaci registru v2 zadejte `absent`, pro pozdější mutace přesný digest hlášený příkazem `list`. Každá mutace je operací compare-and-swap vůči tomuto digestu.
+
+## Migrace z v1 na v2
+
+<Warning>
+  Platný stav registru v1 zůstává čitelný. Migrace na v2 je samostatná přesná operace compare-and-swap a nikdy není operací výběru verze. Nepovažujte migraci za cestu upgradu pro výběr enginu.
+</Warning>
+
+- `list` a `inspect` nadále fungují nad důkazy v1.
+- `migrate` vytvoří propojenou generaci v2, aniž by zahodil pravdu v1.
+- Po migraci používejte pro budoucí mutace digesty v2.
+
+## Co je vazba
+
+Vazba vybírá přesný obsah pro pozdější rekonciliaci koordinátorem. Vazba:
+
+- Neinstaluje engine
+- Nevyvolává ani neaktivuje engine
+- Nedokuje engine s Maestrem
+- Neautentizuje volajícího
+- Neautorizuje aplikaci (apply)
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/cs/qxctl/reconcile">
+    Rekonciliace vázaného obsahu s koordinátorem.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/cs/qxctl/lifecycle">
+    Plány životního cyklu, které používají vázané enginy.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/cs/governance/maestro">
+    Autorita přítomnosti, která zaznamenává dokování, nikoli vazby.
+  </Card>
+
+  <Card title="Přehled enginů" icon="cube" href="/cs/engines/overview">
+    Nezávisle instalovatelné vektorové enginy.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: leitura do inventário de presença de receptores do Symphony"
+description: "Inspecione a autoridade de presença Maestro do Symphony por meio do qxctl para ver relações de acoplamento autenticadas de engines de vetores e o inventário derivado de receptores."
+sidebarTitle: "maestro"
+---
+
+A gramática `qxctl maestro ...` expõe as evidências de presença do Maestro. O Maestro é a autoridade de presença; o qxctl apenas lê e inspeciona o que o Maestro registra. Nenhum dos dois cria relações de acoplamento por conta própria.
+
+## Inventário
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` apresenta o inventário completo, derivado e somente leitura do Maestro com as relações de acoplamento autenticadas de engines de vetores por TOPS e receptor.
+
+## Rotas administrativas relacionadas
+
+Folhas adicionais do qxctl expõem administração relacionada ao Maestro:
+
+- Status e inspeção de evidências de acoplamento
+- Rotas de recuperação delimitadas pelos próprios contratos do Maestro
+- Inscrição fundamental no ciclo de vida e supervisão nativa do próprio Maestro
+
+Toda rota de mutação passa pelo adaptador exato de propriedade do módulo. O qxctl nunca renderiza descritores do Maestro a partir de parsing interno nem invoca implicitamente a versão mais recente.
+
+<Warning>
+  O Maestro não inicia, agenda, supervisiona nem invoca engines. `qxctl maestro inventory` é somente leitura. Vinculação, reconciliação, coordenação de sessões ou um plano de ciclo de vida, por si sós, não estabelecem presença no Maestro.
+</Warning>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/pt-BR/governance/maestro">
+    Contrato e limites da autoridade de presença.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/pt-BR/qxctl/engines">
+    Registro de vinculação de engines (vinculações não são acoplamentos).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/pt-BR/qxctl/session">
+    Sessões autenticadas usadas para registrar presença.
+  </Card>
+
+  <Card title="Visão geral das engines" icon="cube" href="/pt-BR/engines/overview">
+    Engines de vetores instaláveis de forma independente que se acoplam ao Maestro.
+  </Card>
+</CardGroup>

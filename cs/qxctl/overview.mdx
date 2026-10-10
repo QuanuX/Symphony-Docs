@@ -1,0 +1,83 @@
+---
+title: "qxctl: agentní administrativní příkazová řádka Symphony"
+description: "qxctl je administrativní CLI Symphony napsané v Go. Seznamte se s jeho 373 spustitelnými příkazy, registrem vazeb enginů a modelem vyvolávání vektorových enginů ověřovaným stvrzenkami."
+sidebarTitle: "Přehled qxctl"
+---
+
+`qxctl` je administrativní a dotazovací CLI Symphony napsané v Go a navržené primárně pro agenty. Mluví v příkazech; operace a významy za nimi vlastní doménové vektory. Jeho registr uložený v repozitáři váže každý spustitelný listový příkaz na stabilní strojovou identitu a na zkontrolované důkazy správy funkcí.
+
+## Co qxctl pokrývá
+
+qxctl implementuje správu pro:
+
+- Inspekci repozitáře a kontraktů
+- Správu validátoru, varování, invariantů, funkcí, životního cyklu, relací, rekonciliace, vazeb a Maestra
+- Správu identit SSIAG, auditu STAV a producentů Accordare
+- Implementovanou gramatiku vektorových enginů (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv` a navíc oblasti SCV a SHV)
+
+Aktuální registr obsahuje **373** spustitelných příkazů.
+
+## Bezpečný model vyvolávání
+
+qxctl vyvolává přesné instalace ověřené stvrzenkami pomocí ohraničených podprocesů, pevných termínů, kontrol identity a digestu odpovědí, transakcí s očekávaným stavem a trvalé obnovy. Nikdy nepřijímá cesty k adaptérům ani surové verze místo stvrzenek.
+
+## Registr vazeb enginů v2
+
+Registr vazeb enginů v2 podporuje osm zavedených rolí enginů a ohraničené budoucí identity rolí. Starší stav v1 se čte duálně; migrace na v2 vyžaduje explicitní compare-and-swap vázaný na digest přes qxctl a nikdy není operací výběru verze.
+
+## Příkazy registru
+
+Vygenerujte a ověřte očekávaný registr z `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Nainstalovaný klient může emitovat důkazy vázané na spustitelný soubor:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Očekávané důkazy mají nulovou verzi klienta, digest spustitelného souboru i digest stvrzenky. Pozorované důkazy vážou přesnou verzi klienta a digest spustitelného souboru a navíc digest stvrzenky, je-li k dispozici. Obě formy používají `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl vlastní gramatiku a prezentaci příkazů. Nevlastní sémantiku vektorů ani kanonickou pravdu znalostí. Novou identitu `qxcmd` ratifikují pouze zkontrolované změny zdrojového kódu, bez ohledu na třídu volajícího.
+</Note>
+
+## Skupiny příkazů
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/cs/qxctl/knowledge">
+    Životní cyklus napříč vektory a správa perzistentních relací SSFV.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/cs/qxctl/lifecycle">
+    Profil, vlastnictví, pozorování, report, boot, apply a obnova.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/cs/qxctl/engines">
+    Registr vazeb enginů a migrace.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/cs/qxctl/reconcile">
+    Rekonciliace pracovních stromů koordinátoru.
+  </Card>
+
+  <Card title="session" icon="key" href="/cs/qxctl/session">
+    Autentizované relace a proudy údržby SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/cs/qxctl/maestro">
+    Odvozený inventář receptorů a důkazy dokování.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/cs/qxctl/validate">
+    Chráněná politika varování a správa validátoru.
+  </Card>
+
+  <Card title="vektorové příkazy" icon="terminal" href="/cs/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` a budoucí gramatika accord/evolution.
+  </Card>
+</CardGroup>

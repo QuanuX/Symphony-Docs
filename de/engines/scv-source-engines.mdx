@@ -1,0 +1,74 @@
+---
+title: "SCV-Engines für Quellwissen: Anbieterrealität für Symphony"
+description: "Acht unabhängig paketierte Engines für SCV, Hyperscaler, Edge und Anbieter bewahren exakte Quellrevisionen und erzeugen reproduzierbare Graph- und Abfragenachweise."
+sidebarTitle: "SCV-Engines"
+---
+
+Die SCV-Engines für Quellwissen sind acht unabhängig paketierte C++26-Prozesse, die privates semantisches Wissen über externe Anbieterressourcen, Angebote, Regionen, Einschränkungen und hybride Möglichkeiten vorhalten. Sie bewahren exakte Quellrevisionen und abgegrenzte Erfassungen, damit nachgelagerte Werkzeuge Ergebnisse reproduzieren können.
+
+## Engines
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Übergeordnete SCV-Quell-Engine für das gemeinsame Cloud-Vokabular.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Quell-Engine des Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-spezifische Edge-Quell-Engine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Quell-Engine für Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Quell-Engine für Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Quell-Engine für DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Quell-Engine für Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Optionaler DuckDB-Connector für die aufbewahrte relationale Graph-Indexierung.
+  </Card>
+</CardGroup>
+
+## Was die SCV-Engines tun
+
+- Explizite Quellrevisionen und abgegrenzte Erfassungen bewahren
+- Qualifizierte Aussagen und die native Dokumentstruktur beibehalten
+- Reproduzierbare Graph- und Abfragenachweise erzeugen
+- Portable Anbieterpakete und endliche, vom Aufrufer gesteuerte Komposition speisen
+
+## Was sie nicht tun
+
+<Warning>
+  Anbieteroperationen und vollständige Cloud-Kataloge liegen außerhalb dieses Inkrements. Die SCV-Engines beschreiben, was bekannt ist; sie agieren nicht auf Anbietern.
+</Warning>
+
+qxctl verwaltet separat auditierte lokale Quelländerungen und eine kohärente Graph-Auswahl über aufbewahrte Workflows und geschützte Graph-Auswahl. Dedizierte Graph-Traversierung und operative Adapter bleiben separate Arbeit.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SCV-Vektor" icon="cloud" href="/de/vectors/scv">
+    Cloud-Vector-Vertrag, den diese Engines implementieren.
+  </Card>
+
+  <Card title="SOV-Vektor" icon="terminal" href="/de/vectors/sov">
+    Ops Vector, der über qxctl auf Grundlage von SCV-Nachweisen agiert.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Graph-Auswahl, Quell-Workflows und Administration des DuckDB-Connectors.
+  </Card>
+</CardGroup>

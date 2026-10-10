@@ -1,0 +1,43 @@
+---
+title: "Maestro: aanwezigheidsautoriteit voor Symphony-vectorengines"
+description: "Maestro legt geauthenticeerde dockingrelaties van vectorengines vast per TOPS en receptor en leidt een volledige alleen-lezen inventaris af zonder engines te starten of te superviseren."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) is een onafhankelijk installeerbare C++26-aanwezigheidsautoriteit op het freezing path. Het legt exacte geauthenticeerde dockingrelaties van vectorengines vast per TOPS en receptor en leidt een volledige alleen-lezen inventaris af van wat momenteel gedockt is. Maestro is een getuige, geen supervisor.
+
+## Wat Maestro vastlegt
+
+- Exacte geauthenticeerde dockingrelaties tussen vectorengines en receptoren
+- Scoping per TOPS, zodat de aanwezigheid van elke installatie privé blijft voor die installatie
+- Een afgeleide, volledige, alleen-lezen inventaris die beschikbaar is via `qxctl maestro inventory`
+
+## Wat Maestro niet doet
+
+<Warning>
+  Maestro start, plant, superviseert of roept geen engines aan. Binding, reconciliatie, coördinatie van geauthenticeerde sessies of een lifecycleplan alleen vestigt geen Maestro-aanwezigheid, ratificeert geen semantische waarheid, muteert geen canonieke kennis en bewijst niet de volledigheid van een geïnstalleerde host.
+</Warning>
+
+- Maestro creëert geen processen.
+- Maestro past nooit canonieke kenniswijzigingen toe.
+- Maestro vervangt nooit de vectorengine die eigenaar is van de semantiek.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/nl/qxctl/maestro">
+    `qxctl maestro inventory` presenteert de afgeleide inventaris.
+  </Card>
+
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    Eigenaar van de mechanismen voor geauthenticeerde sessies en worktree-reconciliatie.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/nl/governance/ssiag">
+    Authenticeert de dockingrelaties die Maestro vastlegt.
+  </Card>
+
+  <Card title="Overzicht van engines" icon="cube" href="/nl/engines/overview">
+    Onafhankelijk installeerbare vectorengines die bij Maestro docken.
+  </Card>
+</CardGroup>

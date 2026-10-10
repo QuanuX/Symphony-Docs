@@ -1,0 +1,37 @@
+---
+title: "Hot-path-isolatie in QuanuX Symphony"
+description: "Leer hoe Symphony uitvoeringspaden beschermt tegen administratieve interferentie: componenten op het cold en freezing path, busdiscipline en het concept van de Prima Parte-statusgetuige."
+sidebarTitle: "Hot-path-isolatie"
+---
+
+Symphony scheidt administratief werk van uitvoeringswerk, zodat live handel, onderzoek en andere prestatiegevoelige paden vrij blijven van jitter, latentie en verborgen afhankelijkheden. qxctl en het kennisvlak zijn beheer op het cold of freezing path. Ze mogen expliciet handelen op een Node die ook live werk host, maar mogen geen continue hot-path-afhankelijkheden worden.
+
+## Discipline op het cold en freezing path
+
+qxctl en vectorengines zijn administratieve componenten op het cold of freezing path. Ze mogen niet:
+
+- Inline uitvoeren met hot of warm uitvoeringspaden
+- Locks delen met live workloads
+- Synchrone afhankelijkheden creëren die jitter of latentie toevoegen
+- Verborgen watchers, residente interpreters of ongevraagde achtergrondpakketbeheerders worden
+- Continu resident blijven op uitvoerings-Nodes
+
+Deze regel geldt voor de coördinator van kennissessies, vectorengines en alle door qxctl beheerde bewerkingen. Ze produceren bewijs, valideren status en bereiden plannen voor, maar nemen niet deel aan het live uitvoeringspad.
+
+## Busdiscipline
+
+Zware overdracht, besturing, onderzoek en uitvoeringsuitstoot hoeven niet één bus te delen. Een topologie kan meerdere bussen gebruiken of een bus omzeilen voor een gedeclareerd pad, vooral waar gedeeld verkeer jitter zou kunnen veroorzaken. NATS JetStream, ZeroMQ en andere fabrics zijn adapters en gebruikerskeuzes. Het bestaan van busbeheer in qxctl maakt het doorlopen van een bus niet verplicht.
+
+U kiest de bustopologie die past bij uw eisen aan latentie en doorvoer. Symphony ondersteunt de configuratie zonder één gedeelde fabric op te leggen.
+
+## Prima Parte
+
+**Prima Parte** is een geratificeerd concept uit Fase 3, geen huidig uitvoerbaar programma. Het is een optionele, uiterst lichtgewicht C++-statusgetuige die lokaal op een Node draait en na een materiële bewerking expliciet door qxctl wordt aangeroepen. Het heeft geen daemon, listener, timer, watcher, polling-lus of residente busverbinding.
+
+Het begrensde duurzame vocabulaire omvat drie termen:
+
+- `current` — de huidige waargenomen status
+- `previous` — de status vóór de materiële bewerking
+- `lastTransmitted` — de status die door de externe Node is verzonden nadat de bijbehorende opdracht is uitgevoerd (ontvangst niet bevestigd)
+
+Prima Parte legt alleen zijn eigen Node vast, wordt nooit een kleinere Maestro en wordt afgesloten na zijn begrensde werk. Het is geen Maestro-receptor uit Fase 1, en er is nog geen uitvoerbaar programma geïmplementeerd.

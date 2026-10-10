@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: waarschuwingsbeleid van de Symphony Validator"
+description: "Beheer beschermd waarschuwingsbeleid, baseline en weergavegrammatica bovenop de onafhankelijke Symphony Validator via qxctl, zonder ruw detectorbewijs te wijzigen."
+sidebarTitle: "validate"
+---
+
+De grammatica `qxctl validate ...` beheert het beschermde waarschuwingsbeleid, de baseline en de weergavegrammatica van de Symphony Validator. De onafhankelijk geïnstalleerde C++-validator produceert onveranderlijk ruw bewijs; qxctl beheert een beschermde, aanroeperneutrale presentatie zonder de detectie te wijzigen.
+
+## Wat qxctl validate omvat
+
+- Negen beschermde leaves voor de levenscyclus van waarschuwingen
+- De exacte, door ontvangstbewijzen ondersteunde root-summary-route
+- Baselinebeheer en deltarapportage
+- Weergavegrammatica voor regeluitvoer en gestructureerde JSON
+
+Elke leaf valideert het exacte ontvangstbewijs en de gestructureerde digests van de validator voordat het beschermde waarschuwingsbeleid wordt toegepast.
+
+## Grens
+
+<Warning>
+  qxctl validate kan geen bestanden repareren, niets publiceren en geen ruw detectorbewijs overschrijven. De afhandeling van waarschuwingen beïnvloedt de presentatie, niet de detectie.
+</Warning>
+
+- Geen onderdrukking van waarschuwingen buiten het beschermde beleid
+- Geen wijziging van validatoruitvoer
+- Geen verzonnen dekking voor een niet-beschikbare route
+
+## Veelvoorkomend gebruik
+
+- Een waarschuwingsbaseline vaststellen of resetten
+- Een beheerde historische waarschuwing goedkeuren of heropenen
+- De door ontvangstbewijzen ondersteunde root-summary uitgeven die in de README van de repository verschijnt
+
+De validator onder deze grammatica controleert contractvorm, huidige bronafsluiting, invarianteigendom, featurebeheer, releases en de door de machine beheerde root-summary.
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/nl/governance/validator">
+    De onafhankelijke, alleen-lezen C++-checker die qxctl beheert.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/nl/skv/ssfv">
+    Verwachtingen voor featurebeheer die in bewijs worden gecontroleerd.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/nl/skv/sodv">
+    Releaserecords die in validatorbewijs verschijnen.
+  </Card>
+
+  <Card title="Overzicht van qxctl" icon="terminal" href="/nl/qxctl/overview">
+    Volledig commando-oppervlak.
+  </Card>
+</CardGroup>

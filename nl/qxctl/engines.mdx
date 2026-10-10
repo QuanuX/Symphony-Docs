@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: register binden, controleren en migreren"
+description: "Beheer het beschermde engine-bindingsprofiel van Symphony op gebruikersniveau met list, inspect, doctor, bind, unbind en digest-gebonden migrate via qxctl."
+sidebarTitle: "engines"
+---
+
+De grammatica `qxctl knowledge engines ...` beheert het beschermde `default`-bindingsprofiel op gebruikersniveau voor de vector-engines van Symphony. Ze bindt geselecteerde content voor latere reconciliatie. Ze installeert, roept aan, activeert, dockt, authenticeert, autoriseert of past geen engine toe.
+
+## Commando's
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Geef `absent` op voor de eerste mutatie van het v2-register, of de exacte digest die `list` rapporteert voor latere mutaties. Elke mutatie is een compare-and-swap tegen die digest.
+
+## Migratie van v1 naar v2
+
+<Warning>
+  Geldige v1-registerstatus blijft leesbaar. Migratie naar v2 is een afzonderlijke, exacte compare-and-swap en nooit een versieselectie. Behandel migratie niet als upgradepad voor engineselectie.
+</Warning>
+
+- `list` en `inspect` blijven werken op v1-bewijs.
+- `migrate` produceert een gekoppelde v2-generatie zonder de v1-waarheid te verwerpen.
+- Gebruik na de migratie v2-digests voor toekomstige mutaties.
+
+## Wat een binding is
+
+Een binding selecteert exacte content voor latere reconciliatie door de coördinator. Een binding:
+
+- Installeert geen engine
+- Roept geen engine aan en activeert er geen
+- Dockt geen engine bij Maestro
+- Authenticeert geen aanroeper
+- Autoriseert geen apply
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/nl/qxctl/reconcile">
+    Reconcilieer gebonden content met een coördinator.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/nl/qxctl/lifecycle">
+    Levenscyclusplannen die gebonden engines gebruiken.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/nl/governance/maestro">
+    Aanwezigheidsautoriteit die docking vastlegt, geen bindingen.
+  </Card>
+
+  <Card title="Overzicht van engines" icon="cube" href="/nl/engines/overview">
+    Onafhankelijk installeerbare vector-engines.
+  </Card>
+</CardGroup>

@@ -1,0 +1,47 @@
+---
+title: "SEV: Symphony Evolution Vector suunnitelluille muutoksille"
+description: "SEV arvioi suunniteltuja muutoksia, uutuuksia ja elinkaarisiirtymiä deterministisillä tapauksilla, riippuvuusvalmiilla joukoilla, kertakäyttöisillä graafeilla ja soveltamattomilla palautusneuvoilla."
+sidebarTitle: "SEV"
+---
+
+Symphony Evolution Vector (SEV) omistaa suunniteltujen muutosten ja kohdattujen uutuuksien tapaukset koko alustalla. Sen moottori on jäädytyspolun vain luku -C++26-prosessi. SEV ei valvo isäntää eikä sovella siirtymää; se tuottaa todisteita ja käsittelyneuvoja.
+
+## Operaatiot
+
+- **Tapausten arviointi**: deterministiset evoluutiotapaukset lisäyksille, muutoksille, uudelleennimeämisille, korvaamisille, vanhentamisille, käytöstä poistoille ja poistoille.
+- **Vaikutusten ja käsittelyn suunnittelu**: osoita kukin tapaus sen auktoritatiivisille omistajille.
+- **Riippuvuusvalmiin joukon uudelleenlaskenta**: johda riippuvaisten siirtymien turvallinen järjestys.
+- **Siirtymän todentaminen**: varmista, että siirtymän jälkeen havaittu tila vastaa odotettua muotoa.
+- **Palautusneuvot**: kuvaa turvalliset eteen- tai taaksepäin suuntautuvat vaiheet, kun siirtymä keskeytyy.
+- **SCSEV-arviointi**: ensimmäinen hallinnoitu SEV-profiili soveltaa näitä operaatioita pelkästään dokumentaatiota koskevaan tietopintojen evoluutioon.
+- **Uutuus- ja valvontatarkistukset**: havaitse uudet tai odottamattomat pinnat tarkastajan huomioitavaksi.
+- **Käynnistimien yhdistäminen** ja **elinkaari-istuntoon sitominen**: vähennä päällekkäistä arviointia ja sido tapaukset istuntoon.
+- **Graafiprojektio**: kertakäyttöiset graafit tarkastusta varten.
+
+## SCSEV-profiili
+
+SCSEV hyödyntää uudelleen SSFV:n ominaisuushallintaa, vakaata qxctl-komentototuutta ja moottorien operaatiokuvaajia. Se ei luo päällekkäistä moottoria tai rekisteriä. Ensimmäinen moottoriosuus on vain raportoiva ja vain ehdottava; pysyvä ulkoinen toiminta valtuutetaan edelleen erikseen qxctl:n ja tietoistuntojen koordinaattorin kautta.
+
+<Note>
+  SEV on vain luku-, kysely-, validointi- ja ehdotusmoottori. Kanoninen soveltaminen on edelleen poissa käytöstä koko SKV-moottoriperheessä.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys ja Contract Quad -malli.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fi/skv/ssfv">
+    SCSEV-profiilin uudelleenkäyttämä ominaisuushallinta.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fi/skv/sav">
+    Koostamisen ja yhteensopivuuden arviointi muuttuneille komponenteille.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Ratifioitu evoluutiokielioppi tulee muodossa `qxctl evolution ...`, kun se on toteutettu.
+  </Card>
+</CardGroup>

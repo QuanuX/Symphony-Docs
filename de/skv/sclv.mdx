@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector für Quelländerungen"
+description: "SCLV führt ein Append-only-Ledger abgeschlossener Quelländerungen mit anbieterneutralen Vorschlägen, nicht verändernder Wiederherstellung und verwerfbaren Projektionen."
+sidebarTitle: "SCLV"
+---
+
+Der Symphony Change Ledger Vector (SCLV) erfasst Änderungen an SKV-Oberflächen im Zeitverlauf. Seine Engine ist ein unabhängig installierbarer C++-Prozess, der deterministische Append-only-Ledger-Prüfungen durchführt und verwerfbare Projektionen erzeugt. Das Ledger wird erst geschrieben, nachdem eine wesentliche Quelländerung abgeschlossen ist.
+
+## Operationen
+
+- **Inspect und Check**: Form, Kontinuität und Nachweise des Ledgers validieren.
+- **Propose (v3)**: vom Aufrufer deklarierte, anbieterneutrale Vorschläge für neue Einträge entgegennehmen.
+- **Recover**: nicht verändernde Wiederherstellung eines unterbrochenen oder mehrdeutigen Zustands durchführen.
+- **Project**: auf Anfrage verwerfbare Inventare des Ledger-Zustands ausgeben.
+
+## Aufnahme und Außerdienststellung
+
+Jeder aufgenommene SCLV-Eintrag bindet die zum Zeitpunkt des Schreibens aktuellen indexierten Nachweise. Eine spätere legitime Außerdienststellung einer Oberfläche bewahrt die unveränderliche historische Herkunft, ohne gelöschte aktuelle Texte wieder in SKVI zu erzwingen. Geschichte bleibt Geschichte; aktuelle Wahrheit bleibt aktuell.
+
+## Was SCLV nicht tut
+
+- SCLV erstellt oder genehmigt keine Quelländerungen.
+- SCLV schreibt bestehende Einträge nicht um; das Ledger ist append-only.
+- SCLV veröffentlicht nichts. Die öffentliche Projektion gehört zu SODV.
+
+<Note>
+  Jede aktuelle SKV-Engine beschränkt sich auf Lesen, Abfragen, Validieren und Vorschlagen. Kanonisches Apply ist deaktiviert, bis die vollständigen Autoritäts- und Audit-Verträge jeder Engine abgeschlossen sind.
+</Note>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/de/skv/skvi">
+    Indexiert die aktuelle kanonische Wahrheit, an die SCLV-Einträge gebunden sind.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/de/skv/sodv">
+    Regelt die offizielle öffentliche Projektion von Ledger-Informationen.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/de/skv/sev">
+    Evolutionsfälle bewerten Änderungen, bevor SCLV sie erfasst.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Führen Sie `qxctl sclv ...` für inspect, check, propose und recover aus.
+  </Card>
+</CardGroup>

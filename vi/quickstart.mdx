@@ -1,0 +1,33 @@
+---
+title: "Bắt đầu nhanh: Khám phá QuanuX Symphony"
+description: "Lộ trình có hướng dẫn qua học thuyết, kiến trúc, các vector contract và surface quản trị qxctl của Symphony."
+sidebarTitle: "Bắt đầu nhanh"
+---
+
+Hãy dùng hướng dẫn này để định hướng trước khi vận hành Symphony. Tài liệu tách biệt học thuyết nền tảng, hạ tầng do người dùng chọn, ngữ nghĩa do vector sở hữu, và các lệnh quản trị. Các bước cài đặt và thực thi chính xác thuộc về contract hiện hành của thành phần liên quan.
+
+## 1. Đọc các ranh giới vận hành
+
+Bắt đầu với [học thuyết nền tảng](/vi/doctrine). Nó xác lập quyền sở hữu chiến lược và hạ tầng của người dùng, tính trung lập đối với loại bên gọi, khả năng tương thích dựa trên bằng chứng, và việc bảo vệ hot path.
+
+## 2. Tìm hiểu mô hình vật lý
+
+Đọc [Node, Habitat và Nest](/vi/concepts/node-habitat-nest):
+
+- **Node:** tài nguyên máy tính vật lý đã được định danh.
+- **Habitat:** cấu hình hệ điều hành và gói phần mềm chính xác được triển khai lên một Node.
+- **Nest:** workload phục vụ mục đích của người dùng, được đặt vào một Habitat phù hợp.
+
+Các bus và adapter của một cluster là những lựa chọn kiến trúc tường minh. Symphony không áp đặt một nhà cung cấp hay chiến lược chung cho mọi trường hợp.
+
+## 3. Lần theo quyền sở hữu ý nghĩa
+
+[Tổng quan kiến trúc](/vi/concepts/architecture) cho thấy mối quan hệ giữa các vector contract, engine, qxctl và bằng chứng được quản trị. [Vector và giai đoạn](/vi/concepts/vectors) giải thích vì sao một vector vẫn là chủ sở hữu ngữ nghĩa ngay cả khi công việc triển khai đi qua các giai đoạn. [Symphony Knowledge Vector](/vi/skv/overview) mô tả Contract Quad và các surface đi kèm.
+
+## 4. Tìm surface quản trị
+
+[Tổng quan qxctl](/vi/qxctl/overview) giới thiệu CLI quản trị và truy vấn viết bằng Go. Hãy dùng các trang qxctl cho từng nhóm lệnh cụ thể, chẳng hạn [knowledge](/vi/qxctl/knowledge), [lifecycle](/vi/qxctl/lifecycle), [engines](/vi/qxctl/engines) hoặc [validation](/vi/qxctl/validate). qxctl cung cấp ngữ pháp lệnh và cách trình bày; các vector contract sở hữu các thao tác và ý nghĩa của chúng.
+
+## 5. Kiểm tra contract và bằng chứng liên quan
+
+Trước khi tác động lên một Node hoặc gọi một vector engine, hãy kiểm tra contract hiện hành của chủ sở hữu, trạng thái đích, ủy quyền, và bằng chứng biên nhận hoặc xác thực có sẵn. [Quyền hạn của bên gọi](/vi/concepts/caller-authority) và [cô lập hot path](/vi/concepts/hot-path-isolation) giải thích các ranh giới đó. Một surface mới xuất hiện không phải là một bảo đảm vận hành ngầm định.

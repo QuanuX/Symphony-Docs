@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: قراءة جرد حضور المستقبِلات في Symphony"
+description: "افحص سلطة الحضور Maestro في Symphony عبر qxctl لرؤية علاقات إرساء محركات المتجهات المصادق عليها وجرد المستقبِلات المشتق."
+sidebarTitle: "maestro"
+---
+
+تعرض قواعد الأوامر `qxctl maestro ...` أدلة حضور Maestro. إن Maestro هو سلطة الحضور؛ أما qxctl فيقتصر على قراءة ما يسجله Maestro وفحصه. ولا ينشئ أيٌّ منهما علاقات إرساء بمفرده.
+
+## الجرد
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+يعرض `qxctl maestro inventory` جرد Maestro الكامل والمشتق والقابل للقراءة فقط لعلاقات إرساء محركات المتجهات المصادق عليها لكل TOPS ومستقبِل.
+
+## مسارات إدارية ذات صلة
+
+تكشف أوامر فرعية إضافية في qxctl عن إدارة متعلقة بـ Maestro:
+
+- حالة أدلة الإرساء وفحصها
+- مسارات استرداد مقيدة بعقود Maestro الخاصة
+- التسجيل الأساسي في دورة الحياة والإشراف الأصلي على Maestro نفسه
+
+يمر كل مسار تعديل عبر المحوّل (adapter) الدقيق المملوك للوحدة. لا يعرض qxctl أبدًا واصفات Maestro من تحليل داخلي، ولا يستدعي ضمنيًا أحدث إصدار.
+
+<Warning>
+  لا يبدأ Maestro المحركات ولا يجدولها ولا يشرف عليها ولا يستدعيها. الأمر `qxctl maestro inventory` للقراءة فقط. لا يكفي الربط أو التسوية أو تنسيق الجلسات أو خطة دورة الحياة وحدها لإثبات حضور Maestro.
+</Warning>
+
+## واجهات ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/ar/governance/maestro">
+    عقد سلطة الحضور وحدودها.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ar/qxctl/engines">
+    سجل ربط المحركات (الروابط ليست إرساءً).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ar/qxctl/session">
+    الجلسات المصادق عليها المستخدمة لتسجيل الحضور.
+  </Card>
+
+  <Card title="نظرة عامة على المحركات" icon="cube" href="/ar/engines/overview">
+    محركات متجهات قابلة للتثبيت بشكل مستقل ترسو مع Maestro.
+  </Card>
+</CardGroup>

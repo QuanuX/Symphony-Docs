@@ -1,0 +1,50 @@
+---
+title: "Knowledge Session Coordinator cho các vector engine của Symphony"
+description: "Knowledge Session Coordinator cung cấp khả năng kiểm tra tương thích có giới hạn, đối soát worktree, phiên có xác thực và điều phối vòng đời có khả năng áp dụng, viết bằng C++26."
+sidebarTitle: "Bộ điều phối"
+---
+
+Knowledge Session Coordinator (`modules/knowledge-session-coordinator`) là một tiến trình C++26 có thể cài đặt độc lập. Nó nằm giữa qxctl và các vector engine, sở hữu việc kiểm tra tương thích có giới hạn, đối soát worktree, các phiên không chuẩn tắc có xác thực, bảo trì SSFV, lập kế hoạch vòng đời chỉ báo cáo, và các journal có khả năng áp dụng được ủy quyền riêng.
+
+## Trách nhiệm
+
+- **Kiểm tra tương thích** giữa qxctl, bộ điều phối và các engine
+- **Đối soát worktree** với trạng thái bền vững dựa trên slot
+- **Các phiên không chuẩn tắc có xác thực** dưới quyền hạn của SSIAG
+- **Các luồng bảo trì SSFV** bền vững
+- **Lập kế hoạch vòng đời chỉ báo cáo** với bằng chứng xác định
+- **Các journal có khả năng áp dụng** với các lần thử đã chuẩn bị, compare-and-swap, quan sát lại, lập lại kế hoạch động và khôi phục
+
+## Những gì bộ điều phối không làm
+
+<Warning>
+  Bộ điều phối không thực thi ngữ nghĩa của vector hay các hành động trên máy chủ. Nó điều phối bằng chứng và journal; mỗi engine vẫn sở hữu miền của mình, và mỗi hành động trên máy chủ vẫn được ủy quyền bởi contract riêng của nó.
+</Warning>
+
+- Không áp dụng tri thức chuẩn tắc
+- Không thực thi lệnh tùy ý
+- Không có bộ theo dõi ẩn hay công việc chạy nền thường trú
+
+## Tích hợp với qxctl
+
+qxctl gọi các bản cài đặt bộ điều phối chính xác đã được xác thực bằng biên nhận. `qxctl knowledge reconcile ...` và `qxctl knowledge session ...` sử dụng đúng một bộ điều phối được liên kết chính xác cho mỗi thao tác, và các thao tác thay đổi yêu cầu định danh thao tác ổn định cùng digest journal hiện tại chính xác cho compare-and-swap.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/vi/qxctl/reconcile">
+    Ngữ pháp đối soát worktree.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/vi/qxctl/session">
+    Ngữ pháp phiên có xác thực và bảo trì SSFV.
+  </Card>
+
+  <Card title="Thư viện nền tảng" icon="cube" href="/vi/engines/knowledge-vector-foundation">
+    Các cơ chế C++ dùng chung mà bộ điều phối tái sử dụng.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/vi/governance/ssiag">
+    Ủy quyền cho các phiên mà bộ điều phối quản lý.
+  </Card>
+</CardGroup>

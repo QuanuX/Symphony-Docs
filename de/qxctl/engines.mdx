@@ -1,0 +1,60 @@
+---
+title: "qxctl knowledge engines: Registry binden, prüfen und migrieren"
+description: "Verwalten Sie das geschützte Engine-Binding-Profil von Symphony im Benutzerbereich mit list, inspect, doctor, bind, unbind und digest-gebundenem migrate über qxctl."
+sidebarTitle: "engines"
+---
+
+Die Grammatik `qxctl knowledge engines ...` verwaltet das geschützte `default`-Binding-Profil im Benutzerbereich für die Vektor-Engines von Symphony. Sie bindet ausgewählte Inhalte für eine spätere Abstimmung (Reconciliation). Sie installiert, ruft auf, aktiviert, dockt, authentifiziert, autorisiert oder wendet keine Engine an.
+
+## Befehle
+
+```bash Engines grammar
+qxctl knowledge engines list
+qxctl knowledge engines inspect
+qxctl knowledge engines doctor
+qxctl knowledge engines bind    --expected-registry-digest absent|DIGEST ...
+qxctl knowledge engines unbind  --expected-registry-digest DIGEST ...
+qxctl knowledge engines migrate --expected-registry-digest DIGEST ...
+```
+
+Geben Sie `absent` für die erste Mutation der v2-Registry an oder den exakten Digest, den `list` für spätere Mutationen meldet. Jede Mutation ist ein Compare-and-Swap gegen diesen Digest.
+
+## Migration von v1 zu v2
+
+<Warning>
+  Gültiger v1-Registry-Zustand bleibt lesbar. Die Migration zu v2 ist ein separates, exaktes Compare-and-Swap und niemals eine Versionsauswahl. Behandeln Sie die Migration nicht als Upgrade-Pfad für die Engine-Auswahl.
+</Warning>
+
+- `list` und `inspect` funktionieren weiterhin mit v1-Nachweisen.
+- `migrate` erzeugt eine verknüpfte v2-Generation, ohne die v1-Wahrheit zu verwerfen.
+- Verwenden Sie nach der Migration v2-Digests für künftige Mutationen.
+
+## Was ein Bind ist
+
+Ein Bind wählt exakte Inhalte für die spätere Abstimmung durch den Koordinator aus. Er:
+
+- installiert keine Engine
+- ruft keine Engine auf und aktiviert keine
+- dockt keine Engine bei Maestro an
+- authentifiziert keinen Aufrufer
+- autorisiert kein Apply
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/de/qxctl/reconcile">
+    Gebundene Inhalte mit einem Koordinator abstimmen.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="rotate" href="/de/qxctl/lifecycle">
+    Lifecycle-Pläne, die gebundene Engines verwenden.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/de/governance/maestro">
+    Präsenzautorität, die Docking erfasst, nicht Bindings.
+  </Card>
+
+  <Card title="Engines-Übersicht" icon="cube" href="/de/engines/overview">
+    Unabhängig installierbare Vektor-Engines.
+  </Card>
+</CardGroup>

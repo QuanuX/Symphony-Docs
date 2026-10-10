@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: conhecimento sobre capacidades de hardware"
+description: "O SHV mantém conhecimento sobre capacidades de hardware de CPUs, GPUs, NICs, placas-mãe, RAM e NVMe por meio de várias engines C++ instaláveis de forma independente."
+sidebarTitle: "Hardware Vector"
+---
+
+O Symphony Hardware Vector (SHV) é dono do conhecimento sobre capacidades de hardware que ajuda você a entender como o design físico pode viabilizar, restringir, portar ou estender software quantitativo. Ele abrange processadores, tipos de núcleos de CPU, GPUs, NICs e interfaces de fibra, placas-mãe, hierarquias de cache, memória, NVMe e builds de sistemas completos. A curadoria padrão prioriza componentes originais e variantes comprovadas a partir de 2018.
+
+## Escopo e cobertura
+
+O SHV pode abranger qualquer capacidade física comprovada que seja relevante para o design de programas. Você controla o perfil de cobertura por meio do qxctl. A base de data padrão é o lançamento do modelo, não uma data de fabricação individual inferida. Você pode ampliar, restringir, substituir ou remover esse filtro.
+
+## Engines implementadas
+
+O conhecimento do SHV é entregue por meio de várias engines C++ instaláveis de forma independente:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Kernel central (0.4.0-dev): perfis de cobertura, build/replay de catálogo com fontes retidas, avaliação de requisitos, projeção determinística de grafos e validação de grafos apoiada em fontes.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Identidade de fontes, planos de realocação, vinculação de captura de bytes e grafos de proveniência reproduzidos a partir das fontes.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Conformidade de declarações, receitas portáveis e vinculação exata a fontes locais.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operações de particionamento de hardware e mapeamento de componentes.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Heads de catálogo protegidas do chamador, replay da fonte original e recuperação durável de snapshots.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Porta genérica de grafos em C++ e adaptador de referência portável em memória para troca sem perdas.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Projeção relacional opcional no DuckDB das evidências do grafo de hardware.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Extração delimitada de PDFs e revalidação de asserções documentais a partir dos bytes originais.
+  </Card>
+</CardGroup>
+
+## Revisão de fontes e proveniência
+
+O `shv-source-engine` implementa identidade estável de fontes, planos de realocação explícitos, validação pura de transições, vinculação de captura dos bytes reais e grafos de proveniência reproduzidos a partir das fontes. Essas são operações somente leitura. A curadoria central prioriza a identidade original dos componentes e variantes comprovadas. A ativação protegida de fontes é tratada separadamente; a engine de fontes pura não concede autoridade.
+
+## Troca e armazenamento de grafos
+
+O `shv-graph-adapter` fornece uma porta genérica de grafos em C++ para troca sem perdas e consultas estruturais. O armazenamento durável é implementado por meio do padrão SQL DuckDB. Nenhum banco de dados de grafos dedicado está selecionado no momento.
+
+## Limite das evidências em PDF
+
+O `shv-pdf-adapter` extrai asserções documentais qualificadas de tabelas explícitas em PDF e as revalida a partir dos bytes originais após a troca genérica de grafos. A cobertura geral de PDFs continua sendo um trabalho separado com escopo próprio.
+
+## Trabalho restante
+
+Um atlas amplo de hardware, aquisição automatizada de fontes, agregação de conflitos entre várias fontes, drivers de banco de dados adicionais específicos de fornecedores, carregamento de plugins personalizados e integração com o Composer ficam para trabalhos futuros. Mapeamentos amplos de componentes e drivers duráveis de fornecedores também continuam em aberto.
+
+## Como o SHV se relaciona com outros vetores
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/pt-BR/vectors/snv">
+    Registra os Nodes que contêm o hardware descrito pelo SHV.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/pt-BR/vectors/scv">
+    Referencia as ofertas de hardware dos provedores que o SHV caracteriza em detalhes.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/pt-BR/vectors/sov">
+    Pode agir com base nas evidências do SHV ao provisionar ou condicionar Nodes.
+  </Card>
+</CardGroup>

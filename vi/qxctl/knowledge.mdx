@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: Quản trị vòng đời liên vector"
+description: "Nhóm lệnh qxctl knowledge sở hữu việc quản trị vòng đời liên vector, chuyển trạng thái phiên, truy vấn bất biến và bảo trì SSFV lâu dài."
+sidebarTitle: "knowledge"
+---
+
+Nhóm `qxctl knowledge ...` sở hữu việc quản trị vòng đời liên vector và phiên SSFV lâu dài. Đây là điểm vào cho các thao tác do coordinator hỗ trợ và cho các truy vấn bất biến (invariant) đối với validator.
+
+## Chuyển trạng thái phiên
+
+Dùng `qxctl knowledge session transition` để báo một sự kiện vòng đời của máy chủ cho một phiên hiện có:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Các lần thử lại an toàn dùng lại cùng một event ID. Chỉ thêm `--recover` khi bạn chủ ý muốn khôi phục bằng khám phá (discovery recovery) từ bằng chứng phiên cục bộ bị hỏng; nó không khôi phục các trường hợp bị từ chối, trạng thái quan trọng không tương thích hoặc tình trạng mơ hồ.
+
+<Warning>
+  Symphony không cài đặt login hook, watcher hay boot unit thông qua lệnh này. Chỉ sử dụng lệnh này khi một tích hợp vòng đời máy chủ tường minh cung cấp định danh sự kiện ổn định.
+</Warning>
+
+## Truy vấn bất biến
+
+Bốn lệnh lá ràng buộc `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` còn ràng buộc thêm `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Các lệnh lá truy vấn trực tiếp xuất ra `symphony.knowledge.invariant-query-result.v1` với `semantic_validity=not_asserted`. `check` trả về chính xác kết quả đầy đủ của validator và giữ nguyên mã thoát 26.
+
+## Các nhóm lệnh con
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/vi/qxctl/lifecycle">
+    Hồ sơ, quyền sở hữu, observe, report, boot, apply và khôi phục.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/vi/qxctl/engines">
+    Registry ràng buộc engine: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/vi/qxctl/reconcile">
+    Cú pháp đối soát worktree qua coordinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/vi/qxctl/session">
+    Phiên đã xác thực và luồng bảo trì SSFV.
+  </Card>
+</CardGroup>

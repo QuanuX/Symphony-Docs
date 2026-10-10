@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: Đối soát worktree"
+description: "Đối soát worktree với một Symphony coordinator đã ràng buộc, với kiểm tra tương thích, nhật ký checkpoint và close, cùng khôi phục hai khe dựa trên bằng chứng."
+sidebarTitle: "reconcile"
+---
+
+Cú pháp `qxctl knowledge reconcile ...` điều khiển việc đối soát worktree thông qua đúng một Knowledge Session Coordinator đã ràng buộc. Mọi thay đổi đều được theo dõi bằng định danh ổn định và là compare-and-swap so với digest chính xác của nhật ký hiện tại.
+
+## Lệnh
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: xác minh rằng qxctl, coordinator và các engine đã ràng buộc thống nhất về phiên bản giao thức và phạm vi.
+- `begin`: mở một ngữ cảnh đối soát mới với định danh thao tác ổn định.
+- `status`: kiểm tra nhật ký hiện tại mà không thay đổi.
+- `checkpoint`: tiến nhật ký một cách bền vững bằng compare-and-swap.
+- `close`: hoàn tất ngữ cảnh đối soát.
+- `recover --discover`: khôi phục bằng khám phá khi status thông thường không thể xác thực trạng thái cục bộ.
+
+## Quy tắc khôi phục
+
+<Warning>
+  Khôi phục hai khe là sửa chữa tiến tới dựa trên bằng chứng. Nó không bao giờ là sự cho phép loại bỏ một nhật ký không tương thích hoặc một phần mở rộng quan trọng không xác định. Nếu khôi phục thất bại, hãy báo cáo lên cấp trên thay vì cưỡng ép.
+</Warning>
+
+Chỉ dùng khôi phục bằng khám phá khi status thông thường không thể xác thực trạng thái cục bộ. Giữ nguyên các trình chặn; chỉ lập lại kế hoạch sau khi bằng chứng đã xác minh thay đổi.
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Session coordinator" icon="gears" href="/vi/engines/coordinator">
+    Engine sở hữu các nhật ký đối soát.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/vi/qxctl/session">
+    Các phiên đã xác thực đi kèm với ngữ cảnh đối soát.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/vi/qxctl/engines">
+    Quản lý các ràng buộc mà coordinator sử dụng.
+  </Card>
+</CardGroup>

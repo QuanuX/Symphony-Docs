@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat và Nest trong Symphony"
+description: "Tìm hiểu cách Symphony mô hình hóa hạ tầng vật lý: Node là máy tính vật lý, Habitat là cấu hình hệ điều hành chính xác, và Nest là workload phục vụ mục đích của người dùng."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony định nghĩa ba khái niệm vật lý để tách biệt danh tính phần cứng, cấu hình phần mềm và workload của người dùng. Các khái niệm này giữ cho các mối quan tâm về hạ tầng tách bạch để bạn có thể suy xét từng khía cạnh một cách độc lập.
+
+## Node
+
+Một **Node** là tài nguyên máy tính vật lý đích với các tài nguyên được định danh cụ thể. Việc ngắt kết nối, kết nối lại, khởi động lại hoặc chỉ cài lại phần mềm không tạo ra một Node vật lý mới. Việc phá hủy, thay thế vật lý hoặc thay đổi phần cứng cục bộ đáng kể thì có. Một lần hiện thân (incarnation) của Node là bằng chứng riêng biệt được tạo ra khi Node đó được gắn vào một bus với tư cách là thành phần tham gia của một hệ thống giao dịch, cluster nghiên cứu hoặc một hệ thống khác được xây dựng bằng Symphony.
+
+## Habitat
+
+Một **Habitat** là cấu hình hệ điều hành và gói phần mềm chính xác được triển khai lên một Node cho công việc bạn chọn. Mặc định của nó chỉ là surface phần mềm cần thiết: không có gói không liên quan, runtime ẩn, container, Kubernetes hay ảo hóa ngầm định. Một Habitat đa dụng rộng vẫn là một lựa chọn tường minh hợp lệ của người dùng.
+
+## Nest
+
+Một **Nest** (tổ) phục vụ một mục đích do bạn chọn. Việc thực thi chiến lược trực tiếp được dự kiến là phổ biến, và một chiến lược có thể chứa nhiều phần mã dạng mô-đun, nhưng Symphony không định nghĩa mục đích của Nest hay đồng nhất nó với một tệp nguồn, tiến trình, thuật toán, API broker hay giao diện dữ liệu duy nhất. Logic chiến lược vẫn thuộc phạm vi của bạn.
+
+## So sánh
+
+| Khái niệm | Nó là gì | Điều gì làm thay đổi nó |
+| --- | --- | --- |
+| **Node** | Máy tính vật lý với các tài nguyên cụ thể | Phá hủy vật lý, thay thế, hoặc thay đổi phần cứng đáng kể |
+| **Habitat** | Cấu hình hệ điều hành và gói phần mềm chính xác trên một Node | Lựa chọn tường minh của người dùng hoặc cấu hình do qxctl quản trị |
+| **Nest** | Workload phục vụ mục đích của người dùng, được triển khai vào một Habitat | Người dùng triển khai chiến lược hoặc công việc khác đã chọn |
+
+## Cấu trúc cluster và bus
+
+Nhiều Node chỉ tạo thành một cluster khi được kết nối với nhau thông qua một hoặc nhiều bus. Nhiều bus fabric có thể cùng tồn tại trong một cluster, và một quan hệ Node-trong-cluster có thể xác định bus liên quan mà không thay đổi danh tính của Node vật lý.
+
+Các bus adapter như NATS JetStream và ZeroMQ là do người dùng chọn, không phải học thuyết. Lưu lượng truyền tải nặng, điều khiển, nghiên cứu và dữ liệu thải từ thực thi không nhất thiết phải dùng chung một bus. Một cấu trúc có thể sử dụng nhiều bus hoặc bỏ qua bus cho một đường đã khai báo.
+
+## Phạm vi TOPS và TROG
+
+**TOPS** là phạm vi Trade Operating System chi phối. Một **TROG** là phạm vi nhóm giao dịch không toàn cục, được chủ ý đặt ở cấp phụ thuộc. Bất chấp cách diễn đạt trong lịch sử, một TROG không nhất thiết là ảo. Đặc điểm phân biệt của nó là phạm vi và các quy tắc của nó không mang tính phổ quát.

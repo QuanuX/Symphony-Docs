@@ -1,0 +1,43 @@
+---
+title: "Maestro: autoritat de presència dels motors de vectors de Symphony"
+description: "Maestro registra les relacions d'acoblament autenticades dels motors de vectors per a cada TOPS i receptor, i en deriva un inventari complet de només lectura sense iniciar ni supervisar motors."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) és una autoritat de presència C++26 de camí de congelació, instal·lable de manera independent. Registra les relacions d'acoblament exactes i autenticades dels motors de vectors per a cada TOPS i receptor, i en deriva un inventari complet de només lectura del que està acoblat actualment. Maestro és un testimoni, no un supervisor.
+
+## Què registra Maestro
+
+- Relacions d'acoblament exactes i autenticades entre motors de vectors i receptors
+- Àmbit per TOPS perquè la presència de cada instal·lació es mantingui privada per a aquesta instal·lació
+- Un inventari derivat, complet i de només lectura disponible mitjançant `qxctl maestro inventory`
+
+## Què no fa Maestro
+
+<Warning>
+  Maestro no inicia, programa, supervisa ni invoca motors. Un enllaç, una reconciliació, la coordinació d'una sessió autenticada o un pla de cicle de vida per si sols no estableixen la presència a Maestro, no ratifiquen la veritat semàntica, no modifiquen el coneixement canònic ni demostren que l'amfitrió instal·lat sigui complet.
+</Warning>
+
+- Maestro no crea cap procés.
+- Maestro mai no aplica canvis al coneixement canònic.
+- Maestro mai no substitueix el motor de vector propietari de la semàntica.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/ca/qxctl/maestro">
+    `qxctl maestro inventory` presenta l'inventari derivat.
+  </Card>
+
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    Propietari de la mecànica de sessions autenticades i de reconciliació d'arbres de treball.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/ca/governance/ssiag">
+    Autentica les relacions d'acoblament que registra Maestro.
+  </Card>
+
+  <Card title="Visió general dels motors" icon="cube" href="/ca/engines/overview">
+    Motors de vectors instal·lables de manera independent que s'acoblen amb Maestro.
+  </Card>
+</CardGroup>

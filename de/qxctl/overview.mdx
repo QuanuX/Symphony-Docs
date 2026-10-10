@@ -1,0 +1,83 @@
+---
+title: "qxctl: Agentische Administrations-Kommandozeile von Symphony"
+description: "qxctl ist die Go-basierte Administrations-CLI von Symphony. Erfahren Sie mehr über ihre 373 ausführbaren Befehle, die Engine-Binding-Registry und das belegvalidierte Aufrufmodell für Vektor-Engines."
+sidebarTitle: "qxctl-Übersicht"
+---
+
+`qxctl` ist die Go-basierte, agentisch ausgerichtete Administrations- und Abfrage-CLI von Symphony. Sie spricht Befehle; die Domänenvektoren verantworten die Operationen und Bedeutungen dahinter. Ihre eingecheckte Registry bindet jedes ausführbare Befehls-Leaf an eine stabile Maschinenidentität und an geprüfte Nachweise zur Feature-Administration.
+
+## Was qxctl abdeckt
+
+qxctl implementiert die Administration für:
+
+- Repository- und Vertragsinspektion
+- Administration von Validator, Warnungen, Invarianten, Features, Lifecycle, Sessions, Abstimmung, Bindings und Maestro
+- SSIAG-Identität, STAV-Audit und Administration von Accordare-Produzenten
+- Implementierte Vektor-Engine-Grammatik (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv` sowie SCV- und SHV-Oberflächen)
+
+Die aktuelle Registry enthält **373** ausführbare Befehle.
+
+## Sicheres Aufrufmodell
+
+qxctl ruft exakte, belegvalidierte Installationen über begrenzte Subprozesse, harte Fristen, Prüfungen von Antwortidentität und Digest, Erwartungszustands-Transaktionen und dauerhafte Wiederherstellung auf. Es akzeptiert niemals Adapterpfade oder Rohversionen anstelle von Belegen.
+
+## Engine-Binding-Registry v2
+
+Die Engine-Binding-Registry v2 unterstützt die acht etablierten Engine-Rollen und begrenzte künftige Rollenidentitäten. Legacy-v1-Zustand wird doppelt gelesen; die Migration zu v2 erfordert ein explizites, digest-gebundenes Compare-and-Swap über qxctl und ist niemals eine Versionsauswahl.
+
+## Registry-Befehle
+
+Generieren und verifizieren Sie die erwartete Registry aus `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Ein installierter Client kann an die ausführbare Datei gebundene Nachweise ausgeben:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Erwartete Nachweise haben eine leere (null) Client-Version, einen leeren Digest der ausführbaren Datei und einen leeren Beleg-Digest. Beobachtete Nachweise binden die exakte Client-Version und den Digest der ausführbaren Datei sowie einen Beleg-Digest, sofern verfügbar. Beide Formen verwenden `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl verantwortet Befehlsgrammatik und Darstellung. Es verantwortet weder Vektorsemantik noch kanonische Wissenswahrheit. Nur geprüfte Quelländerungen ratifizieren eine neue `qxcmd`-Identität, unabhängig von der Aufruferklasse.
+</Note>
+
+## Befehlsgruppen
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/de/qxctl/knowledge">
+    Vektorübergreifender Lifecycle und Administration persistenter SSFV-Sessions.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/de/qxctl/lifecycle">
+    Profil, Ownership, Observe, Report, Boot, Apply und Wiederherstellung.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/de/qxctl/engines">
+    Engine-Binding-Registry und Migration.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/de/qxctl/reconcile">
+    Worktree-Abstimmung des Koordinators.
+  </Card>
+
+  <Card title="session" icon="key" href="/de/qxctl/session">
+    Authentifizierte Sessions und SSFV-Wartungsstreams.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/de/qxctl/maestro">
+    Abgeleitetes Rezeptorinventar und Docking-Nachweise.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/de/qxctl/validate">
+    Geschützte Warnungsrichtlinie und Validator-Administration.
+  </Card>
+
+  <Card title="Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` sowie künftige Accord-/Evolution-Grammatik.
+  </Card>
+</CardGroup>

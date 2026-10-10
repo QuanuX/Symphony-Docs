@@ -1,0 +1,43 @@
+---
+title: "Maestro: Präsenzautorität für Symphony-Vektor-Engines"
+description: "Maestro erfasst authentifizierte Docking-Beziehungen von Vektor-Engines pro TOPS und Rezeptor und leitet daraus ein vollständiges schreibgeschütztes Inventar ab, ohne Engines zu starten oder zu überwachen."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) ist eine unabhängig installierbare C++26-Präsenzautorität auf dem Freezing Path. Sie erfasst exakte, authentifizierte Docking-Beziehungen von Vektor-Engines pro TOPS und Rezeptor und leitet ein vollständiges schreibgeschütztes Inventar dessen ab, was aktuell angedockt ist. Maestro ist ein Zeuge, kein Supervisor.
+
+## Was Maestro erfasst
+
+- Exakte, authentifizierte Docking-Beziehungen zwischen Vektor-Engines und Rezeptoren
+- Abgrenzung pro TOPS, sodass die Präsenz jeder Installation privat für diese Installation bleibt
+- Ein abgeleitetes, vollständiges, schreibgeschütztes Inventar, verfügbar über `qxctl maestro inventory`
+
+## Was Maestro nicht tut
+
+<Warning>
+  Maestro startet, plant, überwacht oder ruft keine Engines auf. Bindung, Abgleich, Koordination authentifizierter Sitzungen oder ein Lebenszyklusplan allein begründen weder eine Maestro-Präsenz noch ratifizieren sie semantische Wahrheit, verändern kanonisches Wissen oder belegen die Vollständigkeit eines installierten Hosts.
+</Warning>
+
+- Maestro erzeugt keine Prozesse.
+- Maestro wendet niemals kanonische Wissensänderungen an.
+- Maestro ersetzt niemals die Vektor-Engine, der die Semantik gehört.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/de/qxctl/maestro">
+    `qxctl maestro inventory` stellt das abgeleitete Inventar dar.
+  </Card>
+
+  <Card title="Session Coordinator" icon="gears" href="/de/engines/coordinator">
+    Zuständig für die Mechanik authentifizierter Sitzungen und des Worktree-Abgleichs.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/de/governance/ssiag">
+    Authentifiziert die Docking-Beziehungen, die Maestro erfasst.
+  </Card>
+
+  <Card title="Engines-Überblick" icon="cube" href="/de/engines/overview">
+    Unabhängig installierbare Vektor-Engines, die an Maestro andocken.
+  </Card>
+</CardGroup>

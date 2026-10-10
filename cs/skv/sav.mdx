@@ -1,0 +1,50 @@
+---
+title: "SAV: Symphony Accordare Vector pro vyhodnocení kompozice"
+description: "SAV řeší odkazy Accord, vyhodnocuje kompozici ve třech osách, validuje Named Versions a plánuje Installation Blueprints, aniž by měnil kanonickou pravdu."
+sidebarTitle: "SAV"
+---
+
+Symphony Accordare Vector (SAV) řeší deklarovanou kompozici a kompatibilitu komponent. Jeho engine je proces v C++26 pouze pro čtení na zmrazovací cestě (freezing-path). SAV skládá přesné typované projekce, ale nikdy nepřebírá zdrojovou pravdu od vlastnických vektorů.
+
+## Operace
+
+SAV podporuje bohatou sadu vyhodnocovacích operací:
+
+- **Řešení odkazů Accord** do neměnných odvozených snímků CURRENT
+- **Vyhodnocení ve třech osách**, porovnání a vysvětlení
+- **Grafy kompozice** a jednorázové projekce
+- Validace a diff **Named Version**
+- Kontroly **Extension Capsule**
+- Plánování **Installation Blueprint**
+- **Vyjednávání kompatibility** mezi deklarovanými komponentami
+
+## Co SAV nedělá
+
+- SAV nepřebírá sémantické vlastnictví komponent, které skládá.
+- SAV za vás nevybírá návrh; vyhodnocuje to, co jste deklarovali.
+- SAV nemění kanonické soubory. Jeho výstupem jsou důkazy a návrhy.
+- SAV není autoritou pro připisování STAV. Zpracování záměru před mutací viz producent STAV pro Accordare.
+
+<Note>
+  SAV slouží pouze ke čtení, dotazování, validaci a navrhování. Programové kanonické apply zůstává napříč rodinou enginů SKV zakázáno.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující framework a model Contract Quad.
+  </Card>
+
+  <Card title="Producent Accordare" icon="pen-nib" href="/cs/governance/accordare-producer">
+    Ohraničený auditní okruh pro Named Version SAV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/cs/skv/sev">
+    Případy evoluce, které spouštějí vyhodnocení změn kompozice v SAV.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Ratifikovaná gramatika Accordare přibude jako `qxctl accord ...`, jakmile bude implementována.
+  </Card>
+</CardGroup>

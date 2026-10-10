@@ -1,0 +1,74 @@
+---
+title: "محركات معرفة المصادر في SCV: واقع المزوّدين في Symphony"
+description: "ثمانية محركات مُحزَّمة بشكل مستقل لـ SCV والسحابات الكبرى والحافة والمزوّدين، تحافظ على مراجعات المصادر الدقيقة وتُنتج أدلة رسوم بيانية واستعلامات قابلة لإعادة الإنتاج."
+sidebarTitle: "محركات SCV"
+---
+
+محركات معرفة المصادر في SCV ثماني عمليات C++26 مُحزَّمة بشكل مستقل، تحمل معرفة دلالية خاصة حول موارد المزوّدين الخارجيين وعروضهم ومناطقهم وقيودهم والإمكانات الهجينة. وهي تحافظ على مراجعات المصادر الدقيقة واللقطات المحدودة حتى تتمكن الأدوات اللاحقة من إعادة إنتاج النتائج.
+
+## المحركات
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    محرك مصادر SCV الشامل للمفردات السحابية المشتركة.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    محرك مصادر Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    محرك مصادر الحافة الخاص بـ Cloudflare.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    محرك مصادر Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    محرك مصادر Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    محرك مصادر DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    محرك مصادر Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    موصّل DuckDB اختياري لفهرسة الرسوم البيانية العلائقية المحتفظ بها.
+  </Card>
+</CardGroup>
+
+## ما تفعله محركات SCV
+
+- تحافظ على مراجعات المصادر الصريحة واللقطات المحدودة
+- تحتفظ بالادعاءات المؤهَّلة وبالبنية الأصلية للمستندات
+- تُنتج أدلة رسوم بيانية واستعلامات قابلة لإعادة الإنتاج
+- تغذّي حزم المزوّدين القابلة للنقل والتركيب المحدود الذي يوجّهه المستدعي
+
+## ما لا تفعله
+
+<Warning>
+  تبقى عمليات المزوّدين والفهارس السحابية الكاملة خارج هذه الزيادة. تصف محركات SCV ما هو معروف؛ ولا تتصرف على المزوّدين.
+</Warning>
+
+يدير qxctl بشكل منفصل تغييرات المصادر المحلية الخاضعة للتدقيق واختيار الرسوم البيانية المتسق عبر سير العمل المحتفظ به والاختيار المحمي للرسوم البيانية. ويبقى اجتياز الرسوم البيانية المخصص والمحوّلات التشغيلية عملًا منفصلًا.
+
+## أسطح ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="متجه SCV" icon="cloud" href="/ar/vectors/scv">
+    عقد Cloud Vector الذي تنفّذه هذه المحركات.
+  </Card>
+
+  <Card title="متجه SOV" icon="terminal" href="/ar/vectors/sov">
+    Ops Vector الذي يتصرف بناءً على أدلة SCV عبر qxctl.
+  </Card>
+
+  <Card title="أوامر المتجهات في qxctl" icon="terminal" href="/ar/qxctl/vector-commands">
+    اختيار الرسوم البيانية، وسير عمل المصادر، وإدارة موصّل DuckDB.
+  </Card>
+</CardGroup>

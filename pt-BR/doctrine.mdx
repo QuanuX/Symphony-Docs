@@ -1,0 +1,35 @@
+---
+title: "Doutrina da plataforma QuanuX Symphony"
+description: "Conheça os princípios que regem o Symphony: propriedade do usuário sobre estratégia e infraestrutura, neutralidade quanto à classe do chamador, proteção do hot path e compatibilidade baseada em evidências."
+sidebarTitle: "Doutrina"
+---
+
+A doutrina do Symphony define os limites entre o que a plataforma controla e o que você controla. Essas regras regem cada decisão de design no monorepo e cada interação com o qxctl, as engines de vetor e os contratos de conhecimento.
+
+## Propriedade do usuário
+
+Você é dono da lógica da sua estratégia, do propósito do Nest, da escolha de provedor, da escolha de hardware, da topologia de barramentos e da seleção de adaptadores compatíveis. O Symphony fornece evidências exatas de compatibilidade e operações compatíveis, mas não transforma recomendações em lei da plataforma. A plataforma relata correspondências, incompatibilidades, fatos não resolvidos e consequências. Ela não classifica provedores, não prescreve uma estratégia nem amplia silenciosamente o seu ambiente.
+
+## Proteção do hot path
+
+O hot path é protegido contra residência administrativa e pressão acidental sobre barramentos compartilhados. O qxctl e o plano de conhecimento são administração de caminho frio ou congelado. Eles podem agir explicitamente sobre um Node que também hospeda trabalho ao vivo, mas não devem se tornar dependências contínuas do hot path, observadores ocultos, interpretadores residentes nem gerenciadores de pacotes em segundo plano não solicitados. A sua arquitetura explícita permanece soberana.
+
+## Separação entre comandos e semântica
+
+O qxctl é dono da gramática e da apresentação dos comandos. Os vetores de domínio são donos das operações e dos significados que esses comandos expõem. Uma rota do qxctl invoca uma capacidade definida pelo proprietário sem absorver a sua semântica.
+
+## Nomes e namespaces
+
+Os nomes são registrados sob o escopo que os possui. O SNV e o SCNV não os ditam, e o NAMESPACES raiz continua mais amplo que o SNV. Um nome registrado dentro de um TOPS ou TROG segue esse escopo. Entre vários clusters, um nome curto de Node pode se repetir em clusters diferentes, mas não pode identificar de forma ambígua dois Nodes ativos no mesmo cluster.
+
+## Neutralidade quanto à classe do chamador
+
+A classificação de um chamador como humano, IA, agente, serviço ou workload não concede nem remove autoridade. As decisões de autorização compatíveis usam a propriedade do host de destino ou as permissões concedidas, a operação e o recurso solicitados, o estado esperado e as salvaguardas configuradas pelo proprietário. O administrador do host de destino é soberano sobre a governança configurável. O SSIAG pode verificar e projetar a autoridade efetiva do host, mas não cria uma autoridade de registro superior. A garantia de identidade reforçada e os intertravamentos de governança são salvaguardas neutras quanto ao chamador e configuradas pelo proprietário. Os requisitos de integridade de protocolo continuam obrigatórios. O Symphony não decide a capacidade jurídica ou financeira externa com base no tipo de chamador.
+
+## Verdade e evidência
+
+Os contratos atuais descrevem a verdade atual. Os registros imutáveis do SCLV e do SODV preservam o que era conhecido, foi alterado, autorizado ou concluído no ponto do histórico em que foram registrados. Quando os contratos atuais, as evidências de implementação e o registro aplicável mais recente divergem, a divergência é exposta como desvio (drift) para revisão. O histórico não é reescrito silenciosamente para se parecer com o presente.
+
+## Doutrina sobre Python
+
+O código-fonte próprio do Symphony, os geradores, a criação de schemas, os testes e os auxiliares de aceitação não exigem implementação em Python nem dependência de interpretador. O C++ é dono das ferramentas substitutas de criação e de testes de processo. Essa política do repositório não restringe os programas criados por você nem os Habitats isolados selecionados explicitamente.

@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector voor bronwijzigingen"
+description: "SCLV onderhoudt een append-only grootboek van voltooide bronwijzigingen met providerneutrale voorstellen, niet-muterend herstel en wegwerpbare projecties."
+sidebarTitle: "SCLV"
+---
+
+De Symphony Change Ledger Vector (SCLV) legt wijzigingen vast die in de loop van de tijd aan SKV-onderdelen zijn aangebracht. De engine is een onafhankelijk installeerbaar C++-proces dat deterministische append-only grootboekcontroles uitvoert en wegwerpbare projecties produceert. Het grootboek wordt pas beschreven nadat een materiële bronwijziging is voltooid.
+
+## Bewerkingen
+
+- **Inspecteren en controleren**: valideer de vorm, continuïteit en het bewijs van het grootboek.
+- **Voorstellen (v3)**: accepteer door de aanroeper gedeclareerde, providerneutrale voorstellen voor nieuwe records.
+- **Herstellen**: voer niet-muterend herstel uit van onderbroken of ambigue status.
+- **Projecteren**: geef op verzoek wegwerpbare inventarissen van de grootboekstatus uit.
+
+## Toelating en uitfasering
+
+Elk toegelaten SCLV-record bindt het actuele geïndexeerde bewijs op het moment dat het wordt geschreven. Een latere legitieme uitfasering van een onderdeel behoudt de onveranderlijke historische herkomst zonder verwijderde actuele tekst terug te dwingen in SKVI. Geschiedenis blijft geschiedenis; de huidige waarheid blijft actueel.
+
+## Wat SCLV niet doet
+
+- SCLV creëert of keurt geen bronwijzigingen goed.
+- SCLV herschrijft geen bestaande records; het is append-only.
+- SCLV publiceert niets. Publieke projectie hoort bij SODV.
+
+<Note>
+  Elke huidige SKV-engine is uitsluitend bedoeld voor lezen, query's, valideren en voorstellen. Canonieke apply is uitgeschakeld totdat de volledige autoriteits- en auditcontracten van elke engine voltooid zijn.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/nl/skv/skvi">
+    Indexeert de huidige canonieke waarheid waaraan SCLV-records binden.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/nl/skv/sodv">
+    Beheert de officiële publieke projectie van grootboekinformatie.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/nl/skv/sev">
+    Evolutiecases beoordelen wijzigingen voordat SCLV ze vastlegt.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Voer `qxctl sclv ...` uit voor inspect, check, propose en recover.
+  </Card>
+</CardGroup>

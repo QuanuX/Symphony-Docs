@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: lectura de l'inventari de presència de receptors de Symphony"
+description: "Inspeccioneu l'autoritat de presència Maestro de Symphony mitjançant qxctl per veure les relacions d'acoblament autenticades dels motors vectorials i l'inventari de receptors derivat."
+sidebarTitle: "maestro"
+---
+
+La gramàtica `qxctl maestro ...` mostra l'evidència de presència de Maestro. Maestro és l'autoritat de presència; qxctl només llegeix i inspecciona el que Maestro registra. Cap dels dos crea relacions d'acoblament pel seu compte.
+
+## Inventari
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` presenta l'inventari complet, derivat i de només lectura de Maestro de les relacions d'acoblament autenticades dels motors vectorials per TOPS i receptor.
+
+## Rutes administratives relacionades
+
+Altres fulles de qxctl exposen administració relacionada amb Maestro:
+
+- Estat i inspecció de l'evidència d'acoblament
+- Rutes de recuperació acotades pels contractes propis de Maestro
+- Inscripció fonamental al cicle de vida i supervisió nativa per al mateix Maestro
+
+Cada ruta de mutació passa per l'adaptador exacte propietat del mòdul. qxctl mai no genera descriptors de Maestro a partir d'anàlisis internes ni invoca implícitament la versió més recent.
+
+<Warning>
+  Maestro no inicia, planifica, supervisa ni invoca motors. `qxctl maestro inventory` és de només lectura. Una vinculació, una reconciliació, una coordinació de sessió o un pla de cicle de vida per si sols no estableixen la presència a Maestro.
+</Warning>
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/ca/governance/maestro">
+    Contracte i límits de l'autoritat de presència.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/ca/qxctl/engines">
+    Registre de vinculació de motors (les vinculacions no són acoblaments).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/ca/qxctl/session">
+    Sessions autenticades que s'utilitzen per registrar la presència.
+  </Card>
+
+  <Card title="Visió general dels motors" icon="cube" href="/ca/engines/overview">
+    Motors vectorials instal·lables de manera independent que s'acoblen amb Maestro.
+  </Card>
+</CardGroup>

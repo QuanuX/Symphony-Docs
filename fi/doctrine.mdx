@@ -1,0 +1,35 @@
+---
+title: "QuanuX Symphony -alustan doktriini"
+description: "Tutustu Symphonyn ohjaaviin periaatteisiin: käyttäjän omistajuus strategiasta ja infrastruktuurista, kutsujaluokkaneutraalius, kuuman polun suojaus ja näyttöön perustuva yhteensopivuus."
+sidebarTitle: "Doktriini"
+---
+
+Symphonyn doktriini määrittelee rajat sen välillä, mitä alusta hallitsee ja mitä sinä hallitset. Nämä säännöt ohjaavat jokaista monorepon suunnittelupäätöstä ja jokaista vuorovaikutusta qxctl:n, vektorimoottorien ja tietosopimusten kanssa.
+
+## Käyttäjän omistajuus
+
+Sinä omistat strategialogiikkasi, Nestin tarkoituksen, palveluntarjoajan valinnan, laitteistovalinnan, väylätopologian ja tuettujen sovittimien valinnan. Symphony tarjoaa tarkkaa yhteensopivuusnäyttöä ja tuettuja toimintoja, mutta se ei muuta suosituksia alustan laiksi. Alusta raportoi vastaavuudet, poikkeamat, ratkaisemattomat tosiasiat ja seuraukset. Se ei järjestä palveluntarjoajia paremmuusjärjestykseen, määrää strategiaa tai laajenna ympäristöäsi huomaamatta.
+
+## Kuuman polun suojaus
+
+Kuuma polku on suojattu hallinnolliselta läsnäololta ja tahattomalta jaetun väylän kuormitukselta. qxctl ja tietotaso ovat kylmän tai jäätyvän polun hallintoa. Ne voivat eksplisiittisesti toimia Nodella, joka isännöi myös reaaliaikaista työtä, mutta niistä ei saa tulla jatkuvia kuuman polun riippuvuuksia, piilotettuja tarkkailijoita, pysyvästi muistissa olevia tulkkeja tai pyytämättä taustalla toimivia paketinhallintoja. Oma eksplisiittinen arkkitehtuurisi pysyy suvereenina.
+
+## Komentojen ja semantiikan erottelu
+
+qxctl omistaa komentokieliopin ja esitystavan. Toimialavektorit omistavat toiminnot ja merkitykset, jotka komennot tuovat saataville. qxctl-reitti kutsuu omistajan määrittelemää kyvykkyyttä omaksumatta sen semantiikkaa.
+
+## Nimet ja nimiavaruudet
+
+Nimet kirjataan niitä omistavan laajuuden alle. SNV ja SCNV eivät sanele niitä, ja juuritason NAMESPACES on SNV:tä laajempi. TOPS- tai TROG-laajuudessa rekisteröity nimi noudattaa kyseistä laajuutta. Useiden klustereiden kesken Noden lyhyt nimi voi toistua eri klustereissa, mutta se ei saa yksiselitteisyyttä rikkoen tunnistaa kahta aktiivista Nodea samassa klusterissa.
+
+## Kutsujaluokkaneutraalius
+
+Kutsujan luokittelu ihmiseksi, tekoälyksi, agentiksi, palveluksi tai työkuormaksi ei myönnä eikä poista valtuuksia. Tuetut valtuutuspäätökset perustuvat kohdeisännän omistajuuteen tai myönnettyihin oikeuksiin, pyydettyyn toimintoon ja resurssiin, odotettuun tilaan sekä omistajan määrittämiin suojauksiin. Kohdeisännän ylläpitäjä on suvereeni konfiguroitavan hallinnan suhteen. SSIAG voi todentaa ja projisoida isännän todellisen valtuuden, mutta se ei luo ylempää rekisteröintiviranomaista. Vahvennettu identiteettivarmennus ja hallinnan lukitukset ovat kutsujaneutraaleja, omistajan määrittämiä suojauksia. Protokollan eheysvaatimukset pysyvät pakollisina. Symphony ei päätä ulkoisesta oikeudellisesta tai taloudellisesta kelpoisuudesta kutsujatyypin perusteella.
+
+## Totuus ja näyttö
+
+Nykyiset sopimukset kuvaavat nykyistä totuutta. Muuttumattomat SCLV- ja SODV-tietueet säilyttävät sen, mitä tiedettiin, muutettiin, valtuutettiin tai saatiin valmiiksi niiden kirjaamalla hetkellä historiassa. Kun nykyiset sopimukset, toteutusnäyttö ja viimeisin sovellettava tietue ovat ristiriidassa, ristiriita nostetaan esiin ajautumana (drift) tarkastettavaksi. Historiaa ei kirjoiteta hiljaisesti uudelleen nykyhetken kaltaiseksi.
+
+## Python-doktriini
+
+Symphonyn oma lähdekoodi, generaattorit, skeemojen laatiminen, testit ja hyväksyntäapuohjelmat eivät vaadi Python-toteutusta tai -tulkkiriippuvuutta. C++ omistaa korvaavan laadinta- ja prosessitestaustyökalun. Tämä repositorion käytäntö ei rajoita omia ohjelmiasi tai eksplisiittisesti valittuja eristettyjä Habitateja.

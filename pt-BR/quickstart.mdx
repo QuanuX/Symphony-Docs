@@ -1,0 +1,33 @@
+---
+title: "Início rápido: explore o QuanuX Symphony"
+description: "Um roteiro guiado pela doutrina, arquitetura, contratos de vetor e superfície administrativa qxctl do Symphony."
+sidebarTitle: "Início rápido"
+---
+
+Use este guia para se orientar antes de operar o Symphony. A documentação separa a doutrina da plataforma, a infraestrutura selecionada pelo usuário, a semântica de propriedade dos vetores e os comandos administrativos. As etapas exatas de instalação e execução pertencem ao contrato atual do componente relevante.
+
+## 1. Leia os limites operacionais
+
+Comece pela [doutrina da plataforma](/pt-BR/doctrine). Ela estabelece a propriedade do usuário sobre estratégia e infraestrutura, a neutralidade quanto à classe do chamador, a compatibilidade baseada em evidências e a proteção do hot path.
+
+## 2. Conheça o modelo físico
+
+Leia [Node, Habitat e Nest](/pt-BR/concepts/node-habitat-nest):
+
+- **Node:** o recurso computacional físico identificado.
+- **Habitat:** o condicionamento exato de sistema operacional e pacotes entregue a um Node.
+- **Nest:** o workload com o propósito do usuário colocado em um Habitat adequado.
+
+Os barramentos e adaptadores de um cluster são escolhas arquiteturais explícitas. O Symphony não prescreve um provedor ou uma estratégia universal.
+
+## 3. Rastreie a propriedade do significado
+
+A [visão geral da arquitetura](/pt-BR/concepts/architecture) mostra a relação entre contratos de vetor, engines, qxctl e evidências governadas. [Vetores e fases](/pt-BR/concepts/vectors) explica por que um vetor continua sendo o dono semântico mesmo quando o trabalho de entrega avança pelas fases. O [Symphony Knowledge Vector](/pt-BR/skv/overview) descreve o Contract Quad e suas superfícies complementares.
+
+## 4. Encontre a superfície administrativa
+
+A [visão geral do qxctl](/pt-BR/qxctl/overview) apresenta a CLI administrativa e de consulta escrita em Go. Use as páginas do qxctl para uma família de comandos específica, como [knowledge](/pt-BR/qxctl/knowledge), [lifecycle](/pt-BR/qxctl/lifecycle), [engines](/pt-BR/qxctl/engines) ou [validação](/pt-BR/qxctl/validate). O qxctl fornece a gramática e a apresentação dos comandos; os contratos de vetor são donos das operações e do seu significado.
+
+## 5. Verifique o contrato e as evidências relevantes
+
+Antes de agir sobre um Node ou invocar uma engine de vetor, verifique o contrato atual do proprietário, o estado de destino, a autorização e as evidências de recibo ou validação disponíveis. [Autoridade do chamador](/pt-BR/concepts/caller-authority) e [isolamento do hot path](/pt-BR/concepts/hot-path-isolation) explicam esses limites. Uma superfície emergente não é uma garantia operacional implícita.

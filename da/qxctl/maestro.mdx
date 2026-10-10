@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: Læs Symphonys inventar over receptortilstedeværelse"
+description: "Inspicer Symphonys Maestro-tilstedeværelsesautoritet via qxctl for at se autentificerede docking-relationer for vektormotorer og det afledte receptorinventar."
+sidebarTitle: "maestro"
+---
+
+Grammatikken `qxctl maestro ...` viser Maestros tilstedeværelsesevidens. Maestro er tilstedeværelsesautoriteten; qxctl læser og inspicerer blot det, Maestro registrerer. Ingen af dem opretter docking-relationer på egen hånd.
+
+## Inventar
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` præsenterer Maestros komplette, afledte, skrivebeskyttede inventar over autentificerede docking-relationer for vektormotorer pr. TOPS og receptor.
+
+## Relaterede administrative ruter
+
+Yderligere qxctl-blade eksponerer Maestro-relateret administration:
+
+- Status og inspektion af docking-evidens
+- Gendannelsesruter afgrænset af Maestros egne kontrakter
+- Grundlæggende livscyklustilmelding og indbygget supervision af Maestro selv
+
+Hver ændringsrute går gennem den nøjagtige moduletejede adapter. qxctl gengiver aldrig Maestro-deskriptorer ud fra intern parsing og kalder aldrig implicit den nyeste version.
+
+<Warning>
+  Maestro starter, planlægger, overvåger eller kalder ikke motorer. `qxctl maestro inventory` er skrivebeskyttet. Binding, afstemning, sessionskoordinering eller en livscyklusplan alene etablerer ikke Maestro-tilstedeværelse.
+</Warning>
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/da/governance/maestro">
+    Kontrakt og grænser for tilstedeværelsesautoriteten.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/da/qxctl/engines">
+    Register over motorbindinger (bindinger er ikke docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/da/qxctl/session">
+    Autentificerede sessioner, der bruges til at registrere tilstedeværelse.
+  </Card>
+
+  <Card title="Oversigt over motorer" icon="cube" href="/da/engines/overview">
+    Uafhængigt installerbare vektormotorer, der docker med Maestro.
+  </Card>
+</CardGroup>

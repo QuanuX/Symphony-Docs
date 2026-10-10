@@ -1,0 +1,25 @@
+---
+title: "Nhật ký thay đổi"
+description: "Các tính năng mới, bản cập nhật và bản sửa lỗi đã phát hành cho QuanuX Symphony."
+rss: true
+---
+
+<Update label="2 tháng 10, 2026" description="Tuần bắt đầu từ 25 tháng 9" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Tính năng mới
+
+- **Các engine Symphony Node Vector.** Năm engine C++26 có thể cài đặt độc lập hiện bao quát danh tính Node (SNIV), tài nguyên (SNRV), quan hệ cluster (SCIV), tên (SCNV), cùng việc kết hợp và lưu giữ SNV. Bạn có thể quản trị bằng chứng được cung cấp, các view đã chọn và lịch sử được lưu giữ thông qua qxctl. Quan sát trực tiếp và cung cấp SOV chưa được bao gồm. Xem [Node Vector](/vi/vectors/snv).
+- **Bộ quan sát cục bộ SNV tùy chọn.** qxctl có thể gọi một bộ quan sát cục bộ riêng biệt, báo cáo các quan sát CPU và bộ nhớ được chọn kèm độ bất định rõ ràng. Nó không bao giờ gán danh tính, tư cách thành viên hay tên.
+- **Nền tảng dữ liệu nghiên cứu SQV.** Các thư viện C++26 mới bao quát việc thu thập với byte gốc và nguồn gốc dữ liệu (SQAV), metadata (SQMV), luồng (SQFV), chuyển đổi số nguyên chính xác kèm dòng dõi dữ liệu (SQTV), lưu giữ cục bộ (SQPV), và phân phối với checkpoint cùng khả năng tiếp tục chính xác (SQDV). Xem [Quantitative Vector](/vi/vectors/sqv).
+- **Quản trị SQV thông qua qxctl.** Bảy engine quản trị có thể cài đặt độc lập cung cấp khả năng xác thực yêu cầu và cấu hình, các phép chiếu metadata, và kiểm tra trạng thái đã lưu giữ ở chế độ chỉ đọc. Xem [Lệnh vector](/vi/qxctl/vector-commands).
+- **Adapter Databento và broker.** SQV hiện hỗ trợ thu thập Databento DBNv3 MBO, giữ nguyên các mẫu DBNv1 và DBNv3, và lập kế hoạch cho các yêu cầu dữ liệu lịch sử có giới hạn kèm bằng chứng về phạm vi bao phủ. Các adapter đọc nguồn và broker không trực tiếp cũng đã có sẵn. Việc thực thi nhà cung cấp có xác thực và thu thập trực tiếp vẫn là công việc trong tương lai.
+
+## Cập nhật
+
+- **Chấp nhận thông tin xác thực trong SSIAG.** SSIAG bổ sung cơ chế bảo vệ sử dụng thông tin xác thực một lần, chấp nhận điều phối có xác thực, một nhật ký yêu cầu thông tin xác thực bền vững có khả năng khôi phục, và xác thực peer gốc trên macOS. Việc sử dụng thông tin xác thực trong vận hành vẫn bị vô hiệu hóa. Xem [SSIAG](/vi/governance/ssiag).
+- **Phạm vi lệnh của qxctl.** qxctl hiện có 399 định danh lệnh ổn định, tăng từ 383. Các liên kết engine hỗ trợ 13 vai trò đã được xác lập, bao gồm năm engine SNV. Xem [Tổng quan qxctl](/vi/qxctl/overview).
+- **Giao diện batch của SQFV.** Thư viện batch SQFV hiện sử dụng API C++26 thay vì C ABI. Hãy cập nhật mọi tích hợp đã gọi giao diện trước đó.
+- **Dung lượng SKVI.** [SKVI](/vi/skv/skvi) lập chỉ mục nhiều surface hơn, bao gồm các chủ sở hữu dữ liệu nghiên cứu SQV mới.
+- **Hướng dẫn cài đặt engine.** Hướng dẫn cài đặt hiện làm rõ rằng bạn cài đặt, cập nhật và gỡ bỏ từng engine riêng lẻ. Xem [Tổng quan engine](/vi/engines/overview).
+
+</Update>

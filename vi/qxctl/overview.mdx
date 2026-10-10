@@ -1,0 +1,83 @@
+---
+title: "qxctl: Dòng lệnh quản trị agentic của Symphony"
+description: "qxctl là CLI quản trị viết bằng Go của Symphony. Tìm hiểu về 373 lệnh thực thi, registry ràng buộc engine và mô hình gọi được xác thực bằng biên nhận cho các vector engine."
+sidebarTitle: "Tổng quan qxctl"
+---
+
+`qxctl` là CLI quản trị và truy vấn của Symphony, viết bằng Go và được thiết kế ưu tiên cho agent. Nó nói ngôn ngữ của lệnh; các vector miền sở hữu các thao tác và ý nghĩa đằng sau chúng. Registry được đưa vào kho mã của nó ràng buộc mọi lệnh lá có thể thực thi với một định danh máy ổn định và bằng chứng quản trị tính năng đã được xem xét.
+
+## Phạm vi của qxctl
+
+qxctl triển khai khả năng quản trị cho:
+
+- Kiểm tra kho mã và hợp đồng
+- Quản trị validator, cảnh báo, bất biến, tính năng, vòng đời, phiên, đối soát, ràng buộc và Maestro
+- Quản trị định danh SSIAG, kiểm toán STAV và producer Accordare
+- Cú pháp vector engine đã triển khai (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, cùng các bề mặt SCV và SHV)
+
+Registry hiện tại chứa **373** lệnh có thể thực thi.
+
+## Mô hình gọi an toàn
+
+qxctl gọi chính xác các bản cài đặt đã được xác thực bằng biên nhận, sử dụng tiến trình con có giới hạn, hạn chót cứng, kiểm tra định danh và digest của phản hồi, giao dịch theo trạng thái mong đợi và khôi phục bền vững. Nó không bao giờ chấp nhận đường dẫn adapter hay phiên bản thô thay cho biên nhận.
+
+## Registry ràng buộc engine v2
+
+Registry ràng buộc engine v2 hỗ trợ tám vai trò engine đã được thiết lập và các định danh vai trò tương lai có giới hạn. Trạng thái v1 cũ được đọc song song; việc di chuyển sang v2 yêu cầu một thao tác compare-and-swap tường minh ràng buộc theo digest thông qua qxctl và không bao giờ là thao tác chọn phiên bản.
+
+## Lệnh registry
+
+Tạo và xác minh registry mong đợi từ `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Một client đã cài đặt có thể xuất bằng chứng gắn với tệp thực thi:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Bằng chứng mong đợi có phiên bản client, digest tệp thực thi và digest biên nhận là null. Bằng chứng quan sát ràng buộc chính xác phiên bản client và digest tệp thực thi, cùng digest biên nhận khi có. Cả hai dạng đều dùng `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl sở hữu cú pháp và cách trình bày lệnh. Nó không sở hữu ngữ nghĩa vector hay sự thật tri thức chuẩn tắc. Chỉ những thay đổi mã nguồn đã được xem xét mới phê chuẩn một định danh `qxcmd` mới, bất kể loại bên gọi.
+</Note>
+
+## Các nhóm lệnh
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/vi/qxctl/knowledge">
+    Quản trị vòng đời liên vector và phiên SSFV lâu dài.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/vi/qxctl/lifecycle">
+    Hồ sơ, quyền sở hữu, observe, report, boot, apply và khôi phục.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/vi/qxctl/engines">
+    Registry ràng buộc engine và di chuyển.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/vi/qxctl/reconcile">
+    Đối soát worktree qua coordinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/vi/qxctl/session">
+    Phiên đã xác thực và luồng bảo trì SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/vi/qxctl/maestro">
+    Kiểm kê receptor được suy ra và bằng chứng docking.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/vi/qxctl/validate">
+    Chính sách cảnh báo được bảo vệ và quản trị validator.
+  </Card>
+
+  <Card title="Lệnh vector" icon="terminal" href="/vi/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` và cú pháp accord/evolution trong tương lai.
+  </Card>
+</CardGroup>

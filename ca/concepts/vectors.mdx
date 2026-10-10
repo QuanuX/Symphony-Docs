@@ -1,0 +1,47 @@
+---
+title: "Vectors i fases de lliurament de Symphony"
+description: "Enteneu els dominis de propietat semàntica duradors de Symphony (vectors) davant les fases cronològiques de lliurament, a més del Contract Quad i l'estat actual dels vectors."
+sidebarTitle: "Vectors i fases"
+---
+
+Symphony organitza la seva arquitectura al voltant de dues idees: els **vectors** són dominis de propietat semàntica duradors, i les **fases** són campanyes cronològiques de lliurament. Que un component s'hagi investigat per primera vegada en una fase no fa que aquesta fase en sigui la propietària permanent. Els vectors mantenen estable el significat mentre la implementació evoluciona.
+
+## Què és un vector?
+
+Un vector és un domini de propietat semàntica durador i acotat el contracte canònic del qual és propietari del significat i de les operacions permeses d'aquest domini. Cada vector rep un **Contract Quad**: `INTENT.md`, `MANIFEST.md`, `SKILL.md` i `SPEC.md`, a més de les superfícies complementàries específiques que realment necessita. El vector declara les seves superfícies canòniques i el seu graf de delegació, SKVI assigna cada superfície actual exactament una vegada, i les superfícies complementàries obsoletes se substitueixen mitjançant una evolució governada en lloc de romandre com a context contradictori.
+
+## Estat dels vectors
+
+| Vector | Estat | Pàgina |
+| --- | --- | --- |
+| **SKV** — Symphony Knowledge Vector | Implementat: fonament de la fase 1 amb superfícies indexades | [/skv/overview](/ca/skv/overview) |
+| **SKVI** — Indexació de fonts | Implementat: motor d'inspecció/comprovació/proposta | [/skv/skvi](/ca/skv/skvi) |
+| **SCLV** — Registre de canvis | Implementat: comprovacions del registre només d'addició | [/skv/sclv](/ca/skv/sclv) |
+| **SACV** — Governança de contractes d'API | Implementat: comprovacions d'OpenAPI 3.2.0 | [/skv/sacv](/ca/skv/sacv) |
+| **SODV** — Governança de la documentació oficial i de les versions | Implementat: comprovacions del registre local de versions | [/skv/sodv](/ca/skv/sodv) |
+| **SSFV** — Identitat i administració de funcionalitats | Implementat: comprovacions estructurals de funcionalitats | [/skv/ssfv](/ca/skv/ssfv) |
+| **SAV** — Composició Accordare | Implementat: avaluació en camí de congelació | [/skv/sav](/ca/skv/sav) |
+| **SEV** — Evolució | Implementat: planificació d'impacte i disposició | [/skv/sev](/ca/skv/sev) |
+| **SSIAG** — Governança segura d'identitat i accés | Implementat: fonament en Go sense cgo | [/governance/ssiag](/ca/governance/ssiag) |
+| **STAV** — Protocol d'auditoria de TOPS | Implementat: registre només d'addició per a cada TOPS | [/governance/stav](/ca/governance/stav) |
+| **SOV** — Ops Vector | Emergent: aprovisionament, lliurament d'Habitat i de Nest | [/vectors/sov](/ca/vectors/sov) |
+| **SCV** — Cloud Vector | Implementat: vuit motors C++ de coneixement de fonts | [/vectors/scv](/ca/vectors/scv) |
+| **SNV** — Node Vector | Emergent: composició de SNIV, SNRV, SCIV i SCNV | [/vectors/snv](/ca/vectors/snv) |
+| **SQV** — Quantitative Vector | Emergent: subvector d'arquitectura FIX SOOV | [/vectors/sqv](/ca/vectors/sqv) |
+| **SHV** — Hardware Vector | Implementat: motors C++ de fonts, catàleg i perfils | [/vectors/shv](/ca/vectors/shv) |
+| **SIV** — Intelligence Vector | Emergent: SMCV Markdown opcional; SAIV reservat | [/vectors/siv](/ca/vectors/siv) |
+
+## Contract Quad i superfícies complementàries
+
+Cada vector rep:
+
+1. **INTENT.md** — propòsit i abast
+2. **MANIFEST.md** — identitat, superfícies declarades, graf de delegació
+3. **SKILL.md** — ús segur i orientació operativa
+4. **SPEC.md** — comportament normatiu i límits
+
+Les superfícies complementàries com `SLANG.md`, `NAMESPACES.md`, els registres, els esquemes i els perfils continuen sent artefactes governats fora de l'estructura de quatre membres. Encaminen o especialitzen la veritat del propietari, però no poden ampliar la seva pròpia autoritat.
+
+## Integració basada en evidències
+
+Un motor ajornat no té cap rebut fabricat. Una API proposada no té cap entrada de registre inventada. Un contracte no publicat no té cap declaració de compleció de SODV. Això és integració basada en evidències, no duplicació cerimonial.

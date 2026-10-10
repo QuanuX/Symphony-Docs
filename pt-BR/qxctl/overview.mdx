@@ -1,0 +1,83 @@
+---
+title: "qxctl: linha de comando administrativa agêntica do Symphony"
+description: "qxctl é a CLI administrativa em Go do Symphony. Conheça seus 373 comandos executáveis, o registro de vinculação de engines e o modelo de invocação validado por recibos para engines de vetores."
+sidebarTitle: "Visão geral do qxctl"
+---
+
+`qxctl` é a CLI administrativa e de consultas do Symphony, escrita em Go e projetada com prioridade para agentes. Ela fala em comandos; os vetores de domínio são donos das operações e dos significados por trás deles. Seu registro versionado vincula cada folha de comando executável a uma identidade de máquina estável e a evidências revisadas de administração de features.
+
+## O que o qxctl abrange
+
+O qxctl implementa a administração de:
+
+- Inspeção de repositórios e contratos
+- Administração de validador, avisos, invariantes, features, ciclo de vida, sessões, reconciliação, vinculação e Maestro
+- Administração de identidade SSIAG, auditoria STAV e produtor Accordare
+- Gramática das engines de vetores implementadas (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, além das superfícies SCV e SHV)
+
+O registro atual contém **373** comandos executáveis.
+
+## Modelo de invocação segura
+
+O qxctl invoca instalações exatas validadas por recibos usando subprocessos delimitados, prazos rígidos, verificações de identidade e digest das respostas, transações de estado esperado e recuperação durável. Ele nunca aceita caminhos de adaptadores ou versões brutas no lugar de recibos.
+
+## Registro de vinculação de engines v2
+
+O registro de vinculação de engines v2 oferece suporte aos oito papéis de engine estabelecidos e a identidades de papéis futuros delimitadas. O estado legado v1 tem leitura dupla; a migração para a v2 exige um compare-and-swap explícito vinculado a digest por meio do qxctl e nunca é uma operação de seleção de versão.
+
+## Comandos do registro
+
+Gere e verifique o registro esperado a partir de `tools/qxctl`:
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Um cliente instalado pode emitir evidências vinculadas ao executável:
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+As evidências esperadas têm versão do cliente, digest do executável e digest do recibo nulos. As evidências observadas vinculam a versão exata do cliente e o digest do executável, além de um digest de recibo quando disponível. Ambas as formas usam `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  O qxctl é dono da gramática e da apresentação dos comandos. Ele não é dono da semântica dos vetores nem da verdade canônica do conhecimento. Somente alterações de código revisadas ratificam uma nova identidade `qxcmd`, independentemente da classe do chamador.
+</Note>
+
+## Grupos de comandos
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/pt-BR/qxctl/knowledge">
+    Ciclo de vida entre vetores e administração persistente de sessões SSFV.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/pt-BR/qxctl/lifecycle">
+    Perfil, propriedade, observação, relatório, boot, apply e recuperação.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/pt-BR/qxctl/engines">
+    Registro de vinculação de engines e migração.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/pt-BR/qxctl/reconcile">
+    Reconciliação de worktrees do coordenador.
+  </Card>
+
+  <Card title="session" icon="key" href="/pt-BR/qxctl/session">
+    Sessões autenticadas e fluxos de manutenção do SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/pt-BR/qxctl/maestro">
+    Inventário derivado de receptores e evidências de acoplamento.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/pt-BR/qxctl/validate">
+    Política de avisos protegida e administração do validador.
+  </Card>
+
+  <Card title="comandos de vetores" icon="terminal" href="/pt-BR/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` e a futura gramática de accord/evolution.
+  </Card>
+</CardGroup>

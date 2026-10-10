@@ -1,0 +1,52 @@
+---
+title: "SACV: API-sopimusten hallinta QuanuX Symphonyssä"
+description: "SACV hallinnoi versioituja API-sopimuksia rajatuilla OpenAPI 3.2.0 -tarkistuksilla, deterministisillä yhteensopivuuseroilla ja kutsujan ilmoittamilla rekisteriehdotuksilla vektorien välillä."
+sidebarTitle: "SACV"
+---
+
+Symphony API Contract Vector (SACV) hallinnoi versioituja API-sopimuksia koko alustalla. Sen moottori on itsenäisesti asennettava C++-prosessi, joka suorittaa rajatun OpenAPI 3.2.0 JSON -validoinnin, deterministiset yhteensopivuuserot ja kertakäyttöiset inventaariot. Päätepisteiden semantiikka pysyy toimialan omistavalla vektorilla tai moduulilla; SACV hallinnoi sopimusten muotoa ja yhteensopivuutta.
+
+## Operaatiot
+
+- **Tarkastelu ja tarkistus**: validoi, että OpenAPI 3.2.0 JSON -dokumentti noudattaa rajattua profiilia.
+- **Erot**: laske deterministiset yhteensopivuuserot sopimusversioiden välillä.
+- **Ehdotus**: ota vastaan kutsujan ilmoittamia rekisteriehdotuksia uusille tai muuttuneille sopimuksille.
+- **Projektio**: tuota kertakäyttöisiä inventaarioita tarkastajille ja jatkotyökaluille.
+
+## Mitä SACV hallinnoi
+
+SACV rajaa:
+
+- Sopimuksen muodon (OpenAPI 3.2.0 SACV-profiililla)
+- Versioiden välisen yhteensopivuusluokittelun
+- Hyväksyttyjen sopimusten rekisterijäsenyyden
+
+Se ei:
+
+- Omista päätepisteiden semantiikkaa (kukin vektori tai moduuli pitää ne)
+- Luo SDK:ita, julkaise artefakteja tai myönnä tunnisteita
+- Merkitse, että elävä verkkopinta olisi olemassa (tulevan yksityisen API:n mainitseminen ei luo sellaista)
+
+<Note>
+  SACV on vain luku-, kysely-, validointi- ja ehdotusmoottori. Ohjelmallinen kanoninen soveltaminen on poissa käytöstä kaikissa SKV-moottoreissa.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Kattokehys ja Contract Quad -malli.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Hallinnoi SACV:hen rekisteröidyn sopimuksen virallista julkaisua.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fi/skv/sav">
+    Arvioi koostamista ja yhteensopivuutta ilmoitettujen komponenttien välillä.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Suorita `qxctl sacv ...` tarkastellaksesi, tarkistaaksesi, verrataksesi ja ehdottaaksesi.
+  </Card>
+</CardGroup>

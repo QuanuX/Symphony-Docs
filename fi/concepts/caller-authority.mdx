@@ -1,0 +1,28 @@
+---
+title: "Kutsujaluokkaneutraalius ja isännän valtuus Symphonyssä"
+description: "Symphony ei luokittele kutsujia tyypin mukaan. Valtuus perustuu kohdeisännän omistajuuteen, eksplisiittiseen lupaan, odotettuun tilaan ja omistajan määrittämiin suojauksiin."
+sidebarTitle: "Kutsujan valtuus"
+---
+
+Symphony ei luokittele kutsujaa ihmiseksi, tekoälyksi, agentiksi, palveluksi, työkuormaksi, organisaatioksi tai muuksi toimijatyypiksi valtuuksista päättäessään. Luokittelusi henkilöksi tai automatisoiduksi järjestelmäksi ei sellaisenaan myönnä tai poista mitään kyvykkyyttä. Tämä kutsujaluokkaneutraalius on keskeinen arkkitehtuurinen raja, joka pitää valtuutuksen tosiasioihin eikä nimilappuihin perustuvana.
+
+## Mikä ohjaa valtuuksia
+
+Tuetut valtuutuspäätökset käyttävät seuraavia syötteitä:
+
+- **Kohdeisännän omistajuus tai myönnetyt oikeudet**: Kohdeisännän ylläpitäjä on suvereeni konfiguroitavan hallinnan suhteen.
+- **Pyydetty toiminto ja resurssi**: Tietty toimenpide ja kohde, johon se kohdistuu.
+- **Odotettu tila**: Ilmoitettu tavoiteltu lopputulos ja havaittu nykytila.
+- **Omistajan määrittämät suojaukset**: Varovaiset oletukset, joita ylläpitäjä voi säätää tai poistaa.
+
+## SSIAG ja isännän valtuus
+
+SSIAG voi todentaa ja projisoida isännän todellisen valtuuden, mutta se ei luo ylempää rekisteröintiviranomaista eikä käytä pysyvää veto-oikeutta kohdeisännän ylläpitäjää vastaan. Vahvennettu identiteettivarmennus ja hallinnan lukitukset ovat kutsujaneutraaleja, omistajan määrittämiä suojauksia. Protokollan eheysvaatimukset pysyvät pakollisina tuetuissa työkaluissa.
+
+## Mistä Symphony ei päätä
+
+Symphony ei päätä, saako toimija omistaa omaisuutta, avata tiliä, allekirjoittaa sopimusta, ottaa vastuuta tai toimia toisen tahon puolesta. Nämä tosiasiat kuuluvat asianomaiselle omistajalle, palveluntarjoajalle, vastapuolelle ja sovellettavalle lainsäädännölle. Alusta pysyy rajatussa roolissaan: se tuottaa yhteensopivuusnäyttöä ja tukee toimintoja, mutta se ei ulotu ulkoisen oikeudellisen tai taloudellisen kelpoisuuden määrittämiseen.
+
+## Käytännön merkitys
+
+Kun kutsut qxctl:ää tai vektorimoottoria, samat tarkistukset pätevät riippumatta siitä, suoritatko komennon käsin, skriptin kautta vai agenttityökalulla. Valtuuspolku on: kohdeisännän omistajuus, eksplisiittinen lupa, odotettu tila, suojaukset. Mikään kutsujatyyppi ei saa automaattista ohitusta tai automaattista rajoitusta.

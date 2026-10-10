@@ -1,0 +1,53 @@
+---
+title: "Accordare STAV Producer: kiểm toán SAV Named Version có giới hạn"
+description: "Accordare STAV producer giữ cho ý định, kết quả và khôi phục của SAV Named Version luôn bền vững thông qua một producer Go thuộc freezing path với các peer cục bộ có xác thực."
+sidebarTitle: "Accordare Producer"
+---
+
+Accordare STAV producer (`modules/accordare-stav-producer`) là một producer Go thuộc freezing path, có thể cài đặt độc lập, dành cho mạch kiểm toán SAV Named Version có giới hạn. Nó giữ cho ý định trước thay đổi và việc khôi phục ghi thêm luôn bền vững, xác thực các peer cục bộ của mình, và chỉ gửi đúng ứng viên an toàn được chấp nhận bởi bộ từ vựng đóng của nó. Bản thân nó không phải là cơ quan ghi thêm STAV.
+
+## Mô hình ý định, kết quả, khôi phục
+
+Producer tuân theo mô hình ba bước cho mọi thao tác thay đổi được kiểm toán:
+
+<Steps>
+  <Step title="Ý định trước thay đổi">
+    Ghi nhận ý định đã nêu của bên gọi một cách bền vững trước khi bất kỳ thay đổi nào có thể quan sát được. Producer từ chối các ứng viên nằm ngoài bộ từ vựng đóng của nó.
+  </Step>
+  <Step title="Kết quả cuối cùng">
+    Sau khi thao tác thay đổi hoàn tất hoặc thất bại, ghi lại chính xác kết quả để bản kiểm toán phản ánh thực tế, không phải một trạng thái được mong đợi.
+  </Step>
+  <Step title="Khôi phục có giới hạn">
+    Khi bị gián đoạn, producer thực hiện khôi phục có giới hạn cho luồng ghi thêm mà không tự tạo ra một đối soát hay âm thầm loại bỏ ý định.
+  </Step>
+</Steps>
+
+## Ranh giới
+
+<Warning>
+  Accordare producer không phải là cơ quan ghi thêm STAV. Nó xác thực các peer cục bộ và gửi ứng viên; cơ quan ghi thêm xác thực, niêm phong và lưu trữ chúng một cách bền vững. Không bao giờ định tuyến vòng qua sự phân tách này.
+</Warning>
+
+- Bộ từ vựng của producer là đóng. Nó chỉ chấp nhận các ứng viên kiểm toán SAV Named Version.
+- Producer thuộc freezing path. Nó không được trở thành phụ thuộc của hot path.
+- Producer xác thực các peer cục bộ; nó không xác thực các bên gọi từ xa.
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/vi/governance/stav">
+    Cơ quan ghi thêm niêm phong các bản ghi kiểm toán.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/vi/governance/ssiag">
+    Ủy quyền cho thao tác thay đổi mà producer kiểm toán.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/vi/skv/sav">
+    Ngữ nghĩa kết hợp Named Version mà mạch này kiểm toán.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Ngữ pháp Accordare đã được phê chuẩn sẽ có dưới dạng `qxctl accord ...` khi được triển khai.
+  </Card>
+</CardGroup>

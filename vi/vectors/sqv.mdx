@@ -1,0 +1,55 @@
+---
+title: "Symphony Quantitative Vector: Hợp đồng khung"
+description: "SQV sở hữu các hợp đồng khung định lượng và hệ thống giao dịch có thể tái sử dụng mà không nắm logic chiến lược của người dùng. SOOV là vector con được đặt tên đầu tiên cho kiến trúc FIX chỉ dùng C++ trong tương lai."
+sidebarTitle: "Quantitative Vector"
+---
+
+Symphony Quantitative Vector (SQV) sở hữu các hợp đồng khung có thể tái sử dụng cho nghiên cứu định lượng, xây dựng hệ thống giao dịch, hỗ trợ thực thi và các engine định lượng sau này. Logic chiến lược luôn thuộc về bạn. SQV cung cấp các bề mặt khung và bằng chứng tương thích chính xác, nhưng không bao giờ quyết định công cụ tài chính, nguồn dữ liệu, gói đăng ký, logic lệnh hay mô hình thực thi của bạn.
+
+## Ranh giới chiến lược của người dùng
+
+Bạn giữ toàn quyền sở hữu logic chiến lược. SQV không:
+
+- Chọn công cụ tài chính hay nguồn dữ liệu của bạn
+- Định nghĩa các trường đăng ký hay độ sâu thị trường
+- Quyết định hành vi khi lỗi hay quy tắc chuẩn hóa
+- Viết logic lệnh hay mô hình thực thi
+- Thiết kế cấu trúc module nội bộ của bạn
+
+Symphony cung cấp bằng chứng tương thích và các thao tác được hỗ trợ. Nó không bao giờ xếp hạng chiến lược hay áp đặt luật nền tảng lên các quyết định giao dịch của bạn.
+
+## SOOV: Symphony Orchestra Omega Vector
+
+SOOV là vector con được đặt tên đầu tiên thuộc SQV. Nó đại diện cho một kiến trúc FIX hiệu năng cao, chỉ dùng C++ trong tương lai, được định hình bởi các công trình QuanuX trước đây. SOOV được lên kế hoạch như một lớp nhắn tin tất định, có giới hạn cho giao tiếp giao dịch. Hành vi FIX chi tiết chưa được chuẩn tắc hóa; hiện chưa có phiên FIX, adapter nguồn dữ liệu hay tích hợp nhà môi giới nào được triển khai.
+
+## Phạm vi trong tương lai
+
+SQV là nơi được lên kế hoạch cho các thành phần khung định lượng đã phê chuẩn qua các giai đoạn phân phối sau này. Các lĩnh vực dự kiến bao gồm:
+
+- Engine kiểm thử ngược (backtesting)
+- API C++ của nhà môi giới
+- Thư viện chỉ báo
+- Toán học định lượng
+- Kiến trúc luồng dữ liệu
+
+Không thành phần nào trong số này được triển khai cho đến khi các hợp đồng tương ứng được phê chuẩn.
+
+## Trạng thái hiện tại
+
+SQV hiện chỉ là một hợp đồng kiến trúc chuẩn tắc. Hiện chưa có engine SQV hay SOOV, phiên FIX, adapter nguồn dữ liệu, runtime chiến lược, tích hợp nhà môi giới, công cụ kiểm thử ngược, thư viện chỉ báo hay thành phần luồng dữ liệu nào được triển khai.
+
+## Quan hệ giữa SQV và các vector khác
+
+<CardGroup cols={2}>
+  <Card title="SHV" icon="cpu" href="/vi/vectors/shv">
+    Cung cấp bằng chứng năng lực phần cứng ràng buộc thiết kế engine định lượng.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/vi/vectors/snv">
+    Ghi nhận các Node nơi khối công việc định lượng được thực thi.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/vi/skv/overview">
+    Quản trị các hợp đồng, sự tiến hóa và quan hệ xuất bản chính thức của SQV.
+  </Card>
+</CardGroup>

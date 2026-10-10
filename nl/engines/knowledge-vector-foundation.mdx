@@ -1,0 +1,53 @@
+---
+title: "C++-fundament van de Knowledge Vector Engine: gedeelde mechanismen"
+description: "Het C++-fundament van de Knowledge Vector Engine levert autoriteitsvrije procesframing, begrensde JSON, SHA-256, snapshots, ontvangstbewijzen en expliciete manifestdetectie."
+sidebarTitle: "Fundamentbibliotheek"
+---
+
+`libraries/knowledge-vector-engine-cpp` levert de gedeelde, autoriteitsvrije C++-mechanismen die elke Symphony-vectorengine hergebruikt. Het biedt deterministische bouwstenen, zodat elke engine begrensd, reproduceerbaar en vrij van onbedoelde neveneffecten kan blijven.
+
+## Wat het fundament biedt
+
+- **Procesframing**: autoriteitsvrij lokaal procesprotocol dat door elke engine wordt gebruikt
+- **Begrensde JSON**: strikte parsing en uitvoer met expliciete limieten voor grootte en diepte
+- **SHA-256**: inhoudsadressering voor bewijs en ontvangstbewijzen
+- **No-follow-leesbewerkingen**: bestandssysteemleesbewerkingen die nooit onverwacht symbolische links volgen
+- **Deterministische snapshots**: herhaalbare snapshots van geïnspecteerde status
+- **Temporele validatie**: canonieke UTC-afhandeling volgens het Symphony Temporal Semantics Contract
+- **Detectie van eigenaarsmanifesten**: exacte detectie van contractmanifesten
+- **Geversioneerde packaging**: onafhankelijk installeerbare pakketten in eigendom van ontvangstbewijzen
+- **Ontvangstbewijzen en de-installatie op basis van ontvangstbewijzen**: de-installatie die uitsluitend wordt aangestuurd door het ontvangstbewijs dat het artefact heeft geïnstalleerd
+
+## Grens van manifestdetectie
+
+<Warning>
+  Manifestdetectie begint vanuit een vaste bootstrapset en doorloopt alleen expliciete ondergeschikte declaraties. Het voert nooit een impliciete crawl van de repository uit en leidt eigendom nooit af uit mapnamen.
+</Warning>
+
+Elke vectorengine die het fundament gebruikt, erft deze regel.
+
+## Wat het fundament niet doet
+
+- Het draagt geen autoriteit. Engines die het gebruiken, moeten mutaties nog steeds autoriseren via SSIAG.
+- Het publiceert of haalt niets op via het netwerk.
+- Het muteert niet op eigen initiatief canonieke bestanden.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    C++26-coördinator gebouwd op het fundament voor sessies en reconciliatie.
+  </Card>
+
+  <Card title="Overzicht van engines" icon="cube" href="/nl/engines/overview">
+    De engines die het fundament hergebruiken.
+  </Card>
+
+  <Card title="SKV-overzicht" icon="book-open" href="/nl/skv/overview">
+    Vectorcontracten die de engines implementeren.
+  </Card>
+
+  <Card title="qxctl-overzicht" icon="terminal" href="/nl/qxctl/overview">
+    Administratieve CLI die exacte, door ontvangstbewijzen gevalideerde engines aanroept.
+  </Card>
+</CardGroup>

@@ -1,0 +1,48 @@
+---
+title: "SODV: virallisen dokumentaation ja julkaisujen hallinta"
+description: "SODV hallinnoi QuanuXin virallista julkaisemista vain lisäyksiä sallivan julkaisukirjanpidon tarkistuksilla, kutsujan toimittamien havaintojen todentamisella ja kertakäyttöisillä julkaisuinventaarioilla."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) hallinnoi sitä, miten SKV-kehyksen sisäisestä tiedosta tulee virallista julkista dokumentaatiota ja julkaisutietueita. Sen moottori on itsenäisesti asennettava C++-prosessi, joka suorittaa paikallisia, vain lisäyksiä sallivan julkaisukirjanpidon tarkistuksia ja tuottaa kertakäyttöisiä julkaisuinventaarioita. SODV ei itse julkaise mitään.
+
+## Operaatiot
+
+- **Tarkastelu ja tarkistus**: validoi julkaisukirjanpidon muoto ja jatkuvuus.
+- **Todentaminen**: tarkista kutsujan toimittamat havainnot julkaistusta tilasta.
+- **Ehdotus**: ota vastaan palveluntarjoajaneutraaleja julkaisuehdotuksia.
+- **Palautus**: suorita palautus muuttamatta mitään.
+- **Projektio**: tuota kertakäyttöisiä julkaisuinventaarioita.
+
+## Mitä SODV ei tee
+
+- SODV:llä ei ole verkkoyhteyttä.
+- SODV ei julkaise mitään GitHubiin, Mintlifyyn, pakettirekistereihin tai mihinkään muuhun pintaan.
+- SODV ei luo tageja eikä voi julistaa julkaisua valmiiksi.
+- SODV ei aseta palveluntarjoajia paremmuusjärjestykseen eikä suosi mitään julkaisupolkua.
+
+Julkaiseminen tapahtuu erillisillä valtuutetuilla työkaluilla, jotka tukeutuvat SODV:n todisteisiin.
+
+## Valmiit SODV-julkaisut
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` tagissa `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` tagissa `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` tagissa `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Suorita `qxctl sodv ...` tarkastellaksesi, todentaaksesi, ehdottaaksesi ja projisoidaksesi.
+  </Card>
+</CardGroup>
+
+<Note>
+  Jokainen SKV-moottori on vain luku-, kysely-, validointi- ja ehdotusmoottori. Kanoninen soveltaminen on poissa käytöstä, kunnes kunkin moottorin SSIAG-, odotetun tilan transaktio-, qxctl-suojaus-, STAV-tapahtuma-, palautus- ja negatiivitestisopimukset ovat valmiit.
+</Note>

@@ -1,0 +1,54 @@
+---
+title: "STAV: ledger de auditoria por TOPS, somente de acréscimo, para o Symphony"
+description: "O STAV Append Authority executa ledgers de auditoria por TOPS, somente de acréscimo, com IPC autenticado, durabilidade com fsync antes do recibo, leituras delimitadas, verificação e recuperação."
+sidebarTitle: "STAV"
+---
+
+O Symphony TOPS Audit Vector (STAV) define o protocolo de ledger de auditoria por TOPS, somente de acréscimo. Sua autoridade em tempo de execução fica em `modules/stav-append-authority`, um serviço Go instalável de forma independente. Os ledgers operacionais por TOPS são privados de cada instalação do TOPS; eles não são conteúdo do SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` oferece:
+
+- Ledgers de auditoria por TOPS, somente de acréscimo
+- IPC local com autenticação mútua
+- Concessões exatas para produtores e leitores
+- Durabilidade com fsync antes do recibo
+- Leituras delimitadas, verificação e recuperação
+- Registro e supervisão nativa (launchd, systemd)
+
+<Warning>
+  O qxctl nunca recebe autoridade bruta de acréscimo. Ele coordena o registro, a verificação e as concessões por meio do adaptador exato de propriedade do módulo, mas o acréscimo ao ledger permanece selado dentro do processo da autoridade de acréscimo.
+</Warning>
+
+## Protocolo STAV para Go
+
+`libraries/stav-protocol-go` é uma biblioteca Go sem autoridade que implementa o codec canônico do STAV v1, validação estrita, digests, enquadramento, regras de conformidade e o vocabulário fechado de produtores. Qualquer produtor ou leitor pode adotar o protocolo sem herdar autoridade.
+
+## Publicações concluídas no SODV
+
+Cada artefato do STAV publicado atualmente por meio do SODV é uma versão de módulo-fonte em Go, e não um release binário:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/pt-BR/governance/ssiag">
+    Autoriza as mutações protegidas que o STAV depois audita.
+  </Card>
+
+  <Card title="Produtor do Accordare" icon="pen-nib" href="/pt-BR/governance/accordare-producer">
+    Emite a intenção pré-mutação e os resultados terminais para o STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/pt-BR/qxctl/lifecycle">
+    Administração de ciclo de vida que se compõe com o registro no STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt-BR/skv/sodv">
+    Governa os registros oficiais de publicação dos componentes do STAV.
+  </Card>
+</CardGroup>

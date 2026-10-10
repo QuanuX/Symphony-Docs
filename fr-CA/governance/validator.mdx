@@ -1,0 +1,52 @@
+---
+title: "Validateur Symphony : vérifications déterministes du dépôt en lecture seule"
+description: "Le validateur Symphony produit des preuves en lignes ou en JSON structuré pour les contrats, la clôture des sources, les invariants, les fonctionnalités, les versions et le résumé racine vérifié par machine."
+sidebarTitle: "Validateur"
+---
+
+Le validateur Symphony (`tools/symphony-validator`) est un vérificateur de dépôt C++26 indépendant, déterministe et en lecture seule. Il produit des preuves immuables sur l’état actuel du dépôt et de ses contrats. Il ne peut rien réparer ni publier.
+
+## Ce que vérifie le validateur
+
+- La forme des contrats : ancres et structure obligatoires du Contract Quad
+- La clôture actuelle des sources sur l’ensemble des surfaces indexées par SKVI
+- La propriété des invariants selon `knowledge/INVARIANTS.md` et le registre des invariants
+- Les attentes en matière d’administration des fonctionnalités signalées par SSFV
+- Les enregistrements de versions signalés par SODV
+- Le résumé racine détenu par la machine dans le README du dépôt
+
+Les preuves sont émises sous forme de lignes ou de JSON structuré. Chaque émission est reproductible à partir du même état du dépôt.
+
+## Ce que le validateur ne fait pas
+
+<Warning>
+  Le validateur ne peut pas réparer de fichiers, réécrire des contrats ni publier le dépôt. Il ne crée aucune vérité canonique; il se contente de la signaler.
+</Warning>
+
+- Aucun effet secondaire sur le dépôt
+- Aucun accès réseau
+- Aucune suppression d’avertissements en dehors de la politique d’avertissements protégée de qxctl
+
+## Intégration à qxctl
+
+qxctl valide le reçu exact et les condensés structurés du validateur avant d’appliquer la politique d’avertissements protégée. Neuf commandes terminales qxctl protégées de cycle de vie des avertissements, ainsi que la route exacte du résumé racine appuyée par reçu, exposent l’administration de la validation sans modifier les preuves brutes des détecteurs.
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/fr-CA/qxctl/validate">
+    Grammaire de la politique d’avertissements protégée, de la base de référence et de l’affichage.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fr-CA/skv/ssfv">
+    Attentes en matière d’administration des fonctionnalités vérifiées par le validateur.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fr-CA/skv/sodv">
+    Enregistrements de versions qu’inspecte le validateur.
+  </Card>
+
+  <Card title="Aperçu de SKV" icon="book-open" href="/fr-CA/skv/overview">
+    Le cadre global dont le validateur vérifie les contrats.
+  </Card>
+</CardGroup>

@@ -1,0 +1,53 @@
+---
+title: "Producent STAV pro Accordare: ohraničený audit pojmenovaných verzí SAV"
+description: "Producent STAV pro Accordare udržuje záměr, výsledek a obnovu pojmenovaných verzí (Named Version) SAV trvalé prostřednictvím producenta v Go na mrazivé cestě s autentizovanými lokálními protějšky."
+sidebarTitle: "Producent Accordare"
+---
+
+Producent STAV pro Accordare (`modules/accordare-stav-producer`) je samostatně instalovatelný producent v Go na mrazivé cestě pro ohraničený auditní okruh pojmenovaných verzí (Named Version) SAV. Udržuje trvalý záměr před změnou i obnovu připojování, autentizuje své lokální protějšky a odesílá pouze přesného bezpečného kandidáta, kterého připouští jeho uzavřený slovník. Sám není autoritou pro připojování do STAV.
+
+## Vzor záměr, výsledek, obnova
+
+Producent se u každé auditované změny řídí tříkrokovým vzorem:
+
+<Steps>
+  <Step title="Záměr před změnou">
+    Trvale zaznamená uvedený záměr volajícího dříve, než se jakákoli změna stane pozorovatelnou. Producent odmítá kandidáty mimo svůj uzavřený slovník.
+  </Step>
+  <Step title="Konečný výsledek">
+    Po dokončení nebo selhání změny zachytí přesný výsledek, aby audit odrážel skutečnost, nikoli vytoužený stav.
+  </Step>
+  <Step title="Ohraničená obnova">
+    Při přerušení provede producent ohraničenou obnovu proudu připojování, aniž by si vymýšlel rekonciliaci nebo potichu zahazoval záměr.
+  </Step>
+</Steps>
+
+## Hranice
+
+<Warning>
+  Producent Accordare není autoritou pro připojování do STAV. Autentizuje lokální protějšky a odesílá kandidáty; autorita pro připojování je validuje, zapečetí a trvale uloží. Toto oddělení nikdy neobcházejte.
+</Warning>
+
+- Slovník producenta je uzavřený. Přijímá pouze kandidáty auditu pojmenovaných verzí SAV.
+- Producent běží na mrazivé cestě. Nesmí se stát závislostí hot path.
+- Producent autentizuje lokální protějšky; vzdálené volající neautentizuje.
+
+## Související povrchy
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/cs/governance/stav">
+    Autorita pro připojování, která zapečeťuje auditní záznamy.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/cs/governance/ssiag">
+    Autorizuje změnu, kterou producent audituje.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/cs/skv/sav">
+    Sémantika kompozice pojmenovaných verzí, kterou tento okruh audituje.
+  </Card>
+
+  <Card title="Příkazy vektorů v qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Ratifikovaná gramatika Accordare bude po implementaci dostupná jako `qxctl accord ...`.
+  </Card>
+</CardGroup>

@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: Tri thức năng lực phần cứng"
+description: "SHV duy trì tri thức năng lực phần cứng cho CPU, GPU, NIC, bo mạch chủ, RAM và NVMe thông qua nhiều engine C++ có thể cài đặt độc lập."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) sở hữu tri thức năng lực phần cứng giúp bạn hiểu thiết kế vật lý có thể hỗ trợ, ràng buộc, chuyển đổi hoặc mở rộng phần mềm định lượng như thế nào. Nó bao phủ bộ xử lý, loại nhân CPU, GPU, NIC và giao diện cáp quang, bo mạch chủ, phân cấp bộ nhớ đệm, bộ nhớ, NVMe và các cấu hình hệ thống hoàn chỉnh. Việc tuyển chọn mặc định ưu tiên các linh kiện nguyên bản và các biến thể có bằng chứng từ năm 2018 trở đi.
+
+## Phạm vi và độ bao phủ
+
+SHV có thể bao phủ bất kỳ năng lực vật lý nào có bằng chứng và liên quan đến thiết kế chương trình. Bạn kiểm soát hồ sơ bao phủ thông qua qxctl. Cơ sở ngày mặc định là thời điểm ra mắt mẫu, không phải ngày sản xuất riêng lẻ được suy đoán. Bạn có thể mở rộng, thu hẹp, thay thế hoặc gỡ bỏ bộ lọc này.
+
+## Các engine đã triển khai
+
+Tri thức SHV được cung cấp thông qua nhiều engine C++ có thể cài đặt độc lập:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Nhân lõi (0.4.0-dev): hồ sơ bao phủ, xây dựng/phát lại danh mục từ nguồn được lưu giữ, đánh giá yêu cầu, chiếu đồ thị tất định và xác thực đồ thị dựa trên nguồn.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Định danh nguồn, kế hoạch di dời, ràng buộc thu thập byte và đồ thị nguồn gốc được phát lại từ nguồn.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Tuân thủ khai báo, công thức di động và ràng buộc nguồn cục bộ chính xác.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Thao tác phân vùng phần cứng và ánh xạ linh kiện.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Head danh mục của bên gọi được bảo vệ, phát lại nguồn gốc và khôi phục snapshot bền vững.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Cổng đồ thị C++ chung và adapter tham chiếu di động trong bộ nhớ để trao đổi không mất mát.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Phép chiếu quan hệ DuckDB tùy chọn của bằng chứng đồ thị phần cứng.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Trích xuất PDF có giới hạn và xác thực lại khẳng định tài liệu từ byte gốc.
+  </Card>
+</CardGroup>
+
+## Phiên bản nguồn và nguồn gốc
+
+`shv-source-engine` triển khai định danh nguồn ổn định, kế hoạch di dời tường minh, xác thực chuyển đổi thuần túy, ràng buộc thu thập byte thực tế và đồ thị nguồn gốc được phát lại từ nguồn. Đây là các thao tác chỉ đọc. Việc tuyển chọn lõi ưu tiên định danh linh kiện nguyên bản và các biến thể có bằng chứng. Kích hoạt nguồn được bảo vệ được xử lý riêng; engine nguồn thuần túy không cấp thẩm quyền.
+
+## Trao đổi và lưu trữ đồ thị
+
+`shv-graph-adapter` cung cấp một cổng đồ thị C++ chung để trao đổi không mất mát và truy vấn cấu trúc. Lưu trữ bền vững được triển khai thông qua mặc định SQL là DuckDB. Hiện chưa có cơ sở dữ liệu đồ thị chuyên dụng nào được chọn.
+
+## Ranh giới bằng chứng PDF
+
+`shv-pdf-adapter` trích xuất các khẳng định tài liệu đủ điều kiện từ các bảng PDF tường minh và xác thực lại chúng từ byte gốc sau khi trao đổi đồ thị chung. Độ bao phủ PDF tổng quát vẫn là công việc có phạm vi riêng.
+
+## Công việc còn lại
+
+Một atlas phần cứng rộng, thu thập nguồn tự động, tổng hợp xung đột đa nguồn, các trình điều khiển cơ sở dữ liệu dành riêng cho nhà cung cấp bổ sung, tải plugin tùy chỉnh và tích hợp Composer vẫn là công việc về sau. Các ánh xạ linh kiện rộng và trình điều khiển nhà cung cấp bền vững cũng vẫn đang để ngỏ.
+
+## Quan hệ giữa SHV và các vector khác
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/vi/vectors/snv">
+    Ghi nhận các Node chứa phần cứng mà SHV mô tả.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/vi/vectors/scv">
+    Tham chiếu các dịch vụ phần cứng của nhà cung cấp mà SHV mô tả chi tiết.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/vi/vectors/sov">
+    Có thể hành động dựa trên bằng chứng SHV khi cấp phát hoặc điều chỉnh Node.
+  </Card>
+</CardGroup>

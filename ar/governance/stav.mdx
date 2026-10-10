@@ -1,0 +1,54 @@
+---
+title: "STAV: دفتر تدقيق إلحاق فقط لكل TOPS في Symphony"
+description: "تشغّل STAV Append Authority دفاتر تدقيق إلحاق فقط لكل TOPS مع اتصال IPC موثَّق، وديمومة fsync قبل الإيصال، وقراءات محدودة، وتحقق، واسترداد."
+sidebarTitle: "STAV"
+---
+
+يعرّف Symphony TOPS Audit Vector ‏(STAV) بروتوكول دفتر التدقيق بنمط الإلحاق فقط لكل TOPS. وتقع سلطته التشغيلية في `modules/stav-append-authority`، وهي خدمة Go قابلة للتثبيت بشكل مستقل. الدفاتر التشغيلية لكل TOPS خاصة بكل تثبيت TOPS؛ وليست من محتوى SKV.
+
+## STAV Append Authority
+
+توفر `modules/stav-append-authority`:
+
+- دفاتر تدقيق إلحاق فقط لكل TOPS
+- اتصال IPC محليًا موثَّقًا من الطرفين
+- منح دقيقة للمنتِجين والقرّاء
+- ديمومة fsync قبل الإيصال
+- قراءات محدودة، وتحققًا، واستردادًا
+- التسجيل والإشراف الأصلي (launchd وsystemd)
+
+<Warning>
+  لا يتلقى qxctl أبدًا سلطة إلحاق خام. فهو ينسّق التسجيل والتحقق والمنح عبر المحوّل الدقيق المملوك للوحدة، لكن الإلحاق بالدفتر يبقى مختومًا داخل عملية سلطة الإلحاق.
+</Warning>
+
+## بروتوكول STAV للغة Go
+
+`libraries/stav-protocol-go` مكتبة Go خالية من السلطة تنفّذ ترميز STAV v1 المرجعي، والتحقق الصارم، والملخصات، والتأطير، وقواعد المطابقة، ومفردات المنتِجين المغلقة. يمكن لأي منتِج أو قارئ تبنّي البروتوكول دون أن يرث أي سلطة.
+
+## منشورات SODV المكتملة
+
+كل عنصر من عناصر STAV منشور حاليًا عبر SODV هو إصدار لوحدة مصدرية بلغة Go، وليس إصدارًا ثنائيًا:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## أسطح ذات صلة
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/ar/governance/ssiag">
+    يفوّض التعديلات المحمية التي يدققها STAV بعد ذلك.
+  </Card>
+
+  <Card title="منتِج Accordare" icon="pen-nib" href="/ar/governance/accordare-producer">
+    يُصدر النية السابقة للتعديل والنتائج النهائية إلى STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/ar/qxctl/lifecycle">
+    إدارة دورة الحياة التي تتكامل مع تسجيل STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ar/skv/sodv">
+    يحكم سجلات النشر الرسمية لمكوّنات STAV.
+  </Card>
+</CardGroup>

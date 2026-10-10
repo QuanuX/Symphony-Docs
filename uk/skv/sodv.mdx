@@ -1,0 +1,48 @@
+---
+title: "SODV: врядування офіційною документацією та випусками"
+description: "SODV керує офіційними публікаціями QuanuX за допомогою перевірок журналу випусків, що лише доповнюється, перевірки наданих викликачем спостережень та одноразових інвентарів випусків."
+sidebarTitle: "SODV"
+---
+
+Symphony Official Documentation Vector (SODV) визначає, як знання у фреймворку SKV стають офіційною публічною документацією та записами про випуски. Його рушій — це незалежно встановлюваний процес на C++, що виконує локальні перевірки журналу випусків, який лише доповнюється, і створює одноразові інвентарі випусків. Сам SODV нічого не публікує.
+
+## Операції
+
+- **Inspect і check**: перевірка форми та безперервності журналу випусків.
+- **Verify**: перевірка наданих викликачем спостережень опублікованого стану.
+- **Propose**: прийняття нейтральних щодо провайдера пропозицій випусків.
+- **Recover**: відновлення без мутацій.
+- **Project**: створення одноразових інвентарів випусків.
+
+## Чого SODV не робить
+
+- SODV не має доступу до мережі.
+- SODV нічого не публікує в GitHub, Mintlify, реєстри пакетів чи будь-яку іншу поверхню.
+- SODV не створює тегів і не може оголосити випуск завершеним.
+- SODV не ранжує провайдерів і не надає переваги жодному шляху публікації.
+
+Публікація відбувається через окремі авторизовані інструменти, що звертаються до доказів SODV.
+
+## Завершені публікації SODV
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` за тегом `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` за тегом `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` за тегом `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="Векторні команди qxctl" icon="terminal" href="/uk/qxctl/vector-commands">
+    Запустіть `qxctl sodv ...`, щоб виконати inspect, verify, propose і project.
+  </Card>
+</CardGroup>
+
+<Note>
+  Кожен рушій SKV лише читає, виконує запити, перевіряє й пропонує. Канонічне застосування вимкнено, доки для кожного рушія не буде завершено контракти SSIAG, транзакцій очікуваного стану, запобіжників qxctl, подій STAV, відновлення та негативних тестів.
+</Note>

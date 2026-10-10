@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector lähdemuutoksille"
+description: "SCLV ylläpitää vain lisäyksiä sallivaa kirjanpitoa valmiista lähdemuutoksista palveluntarjoajaneutraaleilla ehdotuksilla, muuttamattomalla palautuksella ja kertakäyttöisillä projektioilla."
+sidebarTitle: "SCLV"
+---
+
+Symphony Change Ledger Vector (SCLV) kirjaa SKV-pintoihin ajan mittaan tehdyt muutokset. Sen moottori on itsenäisesti asennettava C++-prosessi, joka suorittaa deterministisiä, vain lisäyksiä sallivan kirjanpidon tarkistuksia ja tuottaa kertakäyttöisiä projektioita. Kirjanpitoon kirjoitetaan vasta, kun olennainen lähdemuutos on valmis.
+
+## Operaatiot
+
+- **Tarkastelu ja tarkistus**: validoi kirjanpidon muoto, jatkuvuus ja todisteet.
+- **Ehdotus (v3)**: ota vastaan kutsujan ilmoittamia, palveluntarjoajaneutraaleja ehdotuksia uusiksi tietueiksi.
+- **Palautus**: suorita keskeytyneen tai monitulkintaisen tilan palautus muuttamatta mitään.
+- **Projektio**: tuota pyynnöstä kertakäyttöisiä inventaarioita kirjanpidon tilasta.
+
+## Hyväksyntä ja käytöstä poisto
+
+Jokainen hyväksytty SCLV-tietue sitoo kirjoitushetkellä nykyiset indeksoidut todisteet. Pinnan myöhempi oikeutettu käytöstä poisto säilyttää muuttumattoman historiallisen alkuperän pakottamatta poistettua nykyistä tekstiä takaisin SKVI:hin. Historia pysyy historiana; nykyinen totuus pysyy nykyisenä.
+
+## Mitä SCLV ei tee
+
+- SCLV ei luo eikä hyväksy lähdemuutoksia.
+- SCLV ei kirjoita olemassa olevia tietueita uudelleen; se sallii vain lisäyksiä.
+- SCLV ei julkaise mitään. Julkinen projektio kuuluu SODV:lle.
+
+<Note>
+  Jokainen nykyinen SKV-moottori on vain luku-, kysely-, validointi- ja ehdotusmoottori. Kanoninen soveltaminen on poissa käytöstä, kunnes kunkin moottorin täydet auktoriteetti- ja auditointisopimukset ovat valmiit.
+</Note>
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/fi/skv/skvi">
+    Indeksoi nykyisen kanonisen totuuden, johon SCLV-tietueet sitoutuvat.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Hallinnoi kirjanpitotietojen virallista julkista projektiota.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fi/skv/sev">
+    Evoluutiotapaukset arvioivat muutokset ennen kuin SCLV kirjaa ne.
+  </Card>
+
+  <Card title="qxctl-vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Suorita `qxctl sclv ...` tarkastelua, tarkistusta, ehdotusta ja palautusta varten.
+  </Card>
+</CardGroup>

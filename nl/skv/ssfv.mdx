@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector en register"
+description: "SSFV is eigenaar van canonieke feature-identiteit, semantiek, hiërarchie, levenscyclus en zekerheid over beheer voor elke geïmplementeerde Symphony-module en elk qxctl-onderdeel."
+sidebarTitle: "SSFV"
+---
+
+De Symphony Semantic Feature Vector (SSFV) is eigenaar van de contracten voor canonieke identiteit, semantiek, hiërarchie, levenscyclus en onderscheidingen van applicatiefeatures, gedistribueerde recordroutering, dekkingsinventaris en graafprojectie. De engine is een onafhankelijk installeerbaar C++-proces dat structurele en actualiteitsbewuste featurecontroles uitvoert.
+
+## Bewerkingen
+
+- **Inspecteren en controleren**: structurele en actualiteitsbewuste evaluatie van features.
+- **Diff**: content-geadresseerde diffs tussen featurestatussen.
+- **Voorstellen**: door de aanroeper gedeclareerde voorstellen voor toelating of wijziging van features.
+- **Graaf**: deterministische, wegwerpbare featuregrafen voor beoordeling.
+
+## Geregistreerde dekking
+
+De huidige geregistreerde catalogus is uitdrukkelijk onvolledig:
+
+- **110** geregistreerde features
+- **35** geregistreerde eigenaarscopes
+- **76** bekrachtigde geneste features
+- **295** beoordeelde onderdelen voor featurebeheer (**285** vereist, **13** door bewijs onderbouwde vrijstellingen, **9** verboden, **0** onbeoordeeld)
+
+Geregistreerde eigenaarscopes omvatten elke geïmplementeerde module, van `qxctl` en de validator via SKV-engines en SSIAG-providers tot de SCV- en SHV-enginefamilies.
+
+## Wat SSFV niet doet
+
+<Warning>
+  SSFV bepaalt niet of iets een feature waard is, verzint geen identiteiten en claimt geen volledigheid van repository of host. `review_required` is bewijs voor beoordeling door de aanroeper, geen bekrachtiging of apply-autoriteit.
+</Warning>
+
+Beoordeling, toelating en levenscycluswijzigingen van features blijven bij het contract dat eigenaar is van elke feature.
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Overzicht van SKV" icon="book-open" href="/nl/skv/overview">
+    Het overkoepelende framework dat SSFV beheert.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/nl/skv/sev">
+    Past evolutiecases toe op toevoegingen, wijzigingen en uitfaseringen van features.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/nl/qxctl/session">
+    Beheer persistente SSFV-onderhoudssessies via qxctl.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Voer `qxctl ssfv ...` uit voor inspect, check, diff, propose en graph.
+  </Card>
+</CardGroup>

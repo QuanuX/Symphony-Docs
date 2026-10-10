@@ -1,0 +1,71 @@
+---
+title: "Symphony Knowledge Vector: SKV-kehyksen yleiskatsaus"
+description: "SKV on Symphonyn deklaratiivisen alustatiedon kattokehys. Tutustu Contract Quadeihin, oheispintoihin ja jokaiseen alivektoriin yhden hallintamallin alla."
+sidebarTitle: "SKV-yleiskatsaus"
+---
+
+Symphony Knowledge Vector (SKV) on Symphonyn deklaratiivisen alustatiedon kanoninen kehys. Se säilyttää arkkitehtuurisen totuuden, moduulirajat, sopimukset, periaatteet ja yhteensopivuustiedon rakenteessa, jota ihmiset, validaattorit, qxctl, CI ja agenttiset työkalut käyttävät johdonmukaisesti. SKV ei ole ajonaikainen ympäristö; se on jaettu tietokerros, jonka kautta jokainen vektori kulkee.
+
+## Contract Quad
+
+Jokainen SKV:n semanttinen omistaja julkaisee Contract Quadin:
+
+- **INTENT.md**: tarkoitus, laajuus ja rajaukset
+- **MANIFEST.md**: kanoniset pinnat ja delegointi
+- **SKILL.md**: turvallinen käyttömenettely kutsujille
+- **SPEC.md**: normatiivinen käyttäytyminen
+
+Skeemat, rekisterit, profiilit, kirjanpidot ja muut artefaktit pysyvät nelijäsenisen Quadin ulkopuolella, ja niitä hallinnoi sama omistaja.
+
+## Oheispinnat
+
+Kaksi SKV:n omistamaa oheispintaa ohjaa kaikkien vektorien läpi:
+
+- `knowledge/SLANG.md` yhdistää jokaisen alustatermin tarkkaan sopimukseen, joka omistaa sen semantiikan.
+- `knowledge/NAMESPACES.md` kirjaa identiteettiperheiden omistajuuden sanelematta kielioppia, allokointia, elinkaarta tai yksittäisiä identiteettejä.
+
+Kumpikaan oheispinta ei ole viides Quad-jäsen, uusi vektori eikä ajonaikainen palvelu.
+
+## Tulkintasääntö
+
+Nykyiset sopimukset kuvaavat nykyistä totuutta. Vain lisäyksiä sallivat SCLV- ja SODV-tietueet säilyttävät sen, mikä oli tiedossa, valtuutettu tai valmis niiden kirjaushetkellä. Kun sopimuksen tila, toteutustodisteet ja viimeisin sovellettava tietue ovat ristiriidassa, ristiriita on tarkastettavaa ajautumaa. Työkalut eivät saa hiljaisesti keksiä täsmäytystä.
+
+## Alivektorit
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/fi/skv/skvi">
+    Indeksoi jokaisen nykyisen kanonisen pinnan tasan kerran.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/fi/skv/sclv">
+    Vain lisäyksiä salliva muutoskirjanpito valmiille olennaisille lähdemuutoksille.
+  </Card>
+
+  <Card title="SACV" icon="code" href="/fi/skv/sacv">
+    Rajattu OpenAPI 3.2.0 -hallinta ja yhteensopivuuserot.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/fi/skv/sodv">
+    Hallinnoi QuanuXin virallisia julkaisu- ja julkaisuversiotietueita.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/fi/skv/ssfv">
+    Ominaisuuksien identiteetti, ajantasaisuus ja hallinnan varmistus.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fi/skv/sav">
+    Accordare-koostaminen ja kolmiakselinen yhteensopivuusarviointi.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/fi/skv/sev">
+    Evoluutiotapaukset, käsittelysuunnittelu ja uutuustarkistukset.
+  </Card>
+
+  <Card title="Hallinta" icon="shield-halved" href="/fi/governance/ssiag">
+    SSIAG-identiteetti ja STAV-auditointihallinta valtuutetuille muutoksille.
+  </Card>
+</CardGroup>
+
+<Note>
+  Jokainen nykyinen SKV-moottori on vain luku-, kysely-, validointi- ja ehdotusmoottori. Ohjelmallinen kanoninen soveltaminen on poissa käytöstä, kunnes kunkin moottorin SSIAG-käyttöoikeus-, odotetun tilan transaktio-, qxctl-suojaus-, STAV-tapahtuma-, palautus- ja negatiivitestisopimukset ovat valmiit.
+</Note>

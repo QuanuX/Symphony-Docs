@@ -1,0 +1,33 @@
+---
+title: "Architectuur van Symphony"
+description: "Begrijp de grenzen tussen door de gebruiker geselecteerde infrastructuur, vectorcontracten, engines, qxctl en beheerd bewijs."
+sidebarTitle: "Architectuur"
+---
+
+Symphony scheidt door de gebruiker geselecteerde infrastructuur en workloads van platformkennis en -beheer. Het platform kan compatibiliteit inspecteren, valideren en rapporteren zonder eigendom van uw strategie te claimen of een aanbeveling als opdracht te behandelen.
+
+## Fysieke laag en workloadlaag
+
+Een [Node](/nl/concepts/node-habitat-nest) is een geïdentificeerde fysieke computer. Een **Habitat** is de exacte conditionering van besturingssysteem en pakketten, en een **Nest** is een workload die een door de gebruiker gekozen doel dient. Clusters verbinden Nodes via een of meer bussen. Busfabrics, adapters, providers en hardwarekeuzes zijn expliciet in plaats van universele standaardwaarden.
+
+Het [hot path](/nl/concepts/hot-path-isolation) blijft gescheiden van administratieve residentie. Werk van qxctl en het kennisvlak mag een Node expliciet beheren, maar wordt geen verborgen continue afhankelijkheid van live uitvoering.
+
+## Semantisch eigendom
+
+[Vectoren](/nl/concepts/vectors) zijn begrensde, blijvende eigenaars van betekenis en toegestane bewerkingen. Elke eigenaar publiceert een Contract Quad: `INTENT.md`, `MANIFEST.md`, `SKILL.md` en `SPEC.md`. De [Symphony Knowledge Vector (SKV)](/nl/skv/overview) indexeert canonieke oppervlakken en bewaart een route naar hun eigenaar. Begeleidende schema's, registers en ledgers blijven beheerd zonder extra leden van de Quad te worden.
+
+Leveringsfasen beschrijven wanneer werk wordt gedaan. Ze dragen geen semantisch eigendom over van de ene vector naar de andere.
+
+## Engines en opdrachtoppervlak
+
+[Vectorengines](/nl/engines/overview) zijn onafhankelijk installeerbare componenten die buiten het proces draaien en binnen hun eigenaarscontracten inspecteren, controleren, projecteren en voorstellen. Ze krijgen geen autoriteit enkel doordat ze een voorstel produceren.
+
+[qxctl](/nl/qxctl/overview) is eigenaar van de administratieve opdrachtgrammatica en presentatie. Het roept begrensde, door ontvangstbewijzen gevalideerde capaciteiten aan, terwijl de vector die een bewerking definieert de semantiek ervan behoudt. Autorisatie- en auditbewijs sturen mutatieroutes; [classificatie van de aanroeper](/nl/concepts/caller-authority) alleen verleent geen autoriteit.
+
+## Waarheid en evolutie
+
+Huidige contracten geven de huidige waarheid weer. De wijzigings- en publicatieledgers bewaren het bewijs dat op een bepaald moment is vastgelegd. Onenigheid tussen contracten, implementatiebewijs en vastgelegde geschiedenis wordt als drift zichtbaar gemaakt in plaats van stilzwijgend herschreven. [SAV](/nl/skv/sav) beoordeelt de compatibiliteit van samenstellingen; [SEV](/nl/skv/sev) plant beheerde evolutie.
+
+<Note>
+  Dit overzicht is een kaart van grenzen. Raadpleeg het huidige contract en het implementatiebewijs van elke gelinkte vector voordat u een capaciteit als beschikbaar beschouwt in een specifieke installatie.
+</Note>

@@ -1,0 +1,83 @@
+---
+title: "qxctl : ligne de commande administrative agentique de Symphony"
+description: "qxctl est l'interface en ligne de commande administrative en Go de Symphony. Découvrez ses 373 commandes exécutables, son registre de liaison des moteurs et son modèle d'invocation validé par reçu pour les moteurs vectoriels."
+sidebarTitle: "Aperçu de qxctl"
+---
+
+`qxctl` est l'interface en ligne de commande d'administration et de requête de Symphony, écrite en Go et conçue d'abord pour les agents. Elle exprime des commandes; les vecteurs de domaine possèdent les opérations et les significations qui les sous-tendent. Son registre versionné lie chaque feuille de commande exécutable à une identité machine stable et à des preuves examinées d'administration des fonctionnalités.
+
+## Ce que couvre qxctl
+
+qxctl met en œuvre l'administration de :
+
+- L'inspection des dépôts et des contrats
+- L'administration du validateur, des avertissements, des invariants, des fonctionnalités, du cycle de vie, des sessions, de la réconciliation, des liaisons et de Maestro
+- L'administration de l'identité SSIAG, de l'audit STAV et des producteurs Accordare
+- La grammaire des moteurs vectoriels mis en œuvre (`skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, ainsi que les surfaces SCV et SHV)
+
+Le registre actuel contient **373** commandes exécutables.
+
+## Modèle d'invocation sécuritaire
+
+qxctl invoque des installations exactes validées par reçu au moyen de sous-processus bornés, d'échéances strictes, de vérifications de l'identité et du condensé des réponses, de transactions sur l'état attendu et d'une récupération durable. Il n'accepte jamais de chemins d'adaptateur ni de versions brutes à la place des reçus.
+
+## Registre de liaison des moteurs v2
+
+Le registre de liaison des moteurs v2 prend en charge les huit rôles de moteur établis ainsi que des identités de rôle futures bornées. L'état v1 hérité est lu en double; la migration vers v2 exige une opération compare-and-swap explicite liée à un condensé au moyen de qxctl et n'est jamais une opération de sélection de version.
+
+## Commandes du registre
+
+Générez et vérifiez le registre attendu à partir de `tools/qxctl` :
+
+```bash Registry generation and verification
+go run ./cmd/qxctl commands expected --json > COMMANDS.json
+go run ./cmd/qxctl commands verify --input COMMANDS.json --json
+```
+
+Un client installé peut émettre des preuves liées à l'exécutable :
+
+```bash Manifest from installed qxctl
+qxctl commands manifest --json
+```
+
+Les preuves attendues ont une version de client, un condensé d'exécutable et un condensé de reçu nuls. Les preuves observées lient la version exacte du client et le condensé de l'exécutable, ainsi qu'un condensé de reçu lorsqu'il est disponible. Les deux formes utilisent `symphony.qxctl.command-registry.v1`.
+
+<Note>
+  qxctl possède la grammaire et la présentation des commandes. Il ne possède ni la sémantique des vecteurs ni la vérité canonique des connaissances. Seules des modifications de source examinées ratifient une nouvelle identité `qxcmd`, quelle que soit la classe de l'appelant.
+</Note>
+
+## Groupes de commandes
+
+<CardGroup cols={2}>
+  <Card title="knowledge" icon="book-open" href="/fr-CA/qxctl/knowledge">
+    Administration du cycle de vie intervectoriel et des sessions SSFV persistantes.
+  </Card>
+
+  <Card title="lifecycle" icon="rotate" href="/fr-CA/qxctl/lifecycle">
+    Profil, propriété, observation, rapport, démarrage, application et récupération.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/fr-CA/qxctl/engines">
+    Registre de liaison des moteurs et migration.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/fr-CA/qxctl/reconcile">
+    Réconciliation des arbres de travail du coordonnateur.
+  </Card>
+
+  <Card title="session" icon="key" href="/fr-CA/qxctl/session">
+    Sessions authentifiées et flux de maintenance SSFV.
+  </Card>
+
+  <Card title="maestro" icon="chalkboard-user" href="/fr-CA/qxctl/maestro">
+    Inventaire dérivé des récepteurs et preuves d'amarrage.
+  </Card>
+
+  <Card title="validate" icon="clipboard-check" href="/fr-CA/qxctl/validate">
+    Politique d'avertissement protégée et administration du validateur.
+  </Card>
+
+  <Card title="commandes vectorielles" icon="terminal" href="/fr-CA/qxctl/vector-commands">
+    `skvi`, `sclv`, `sacv`, `sodv`, `ssfv`, `shv` et la future grammaire accord/evolution.
+  </Card>
+</CardGroup>

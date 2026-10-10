@@ -1,0 +1,52 @@
+---
+title: "Symphony Validator: comprovacions deterministes del repositori de només lectura"
+description: "El Symphony Validator produeix evidència en línies o en JSON estructurat sobre contractes, tancament de fonts, invariants, funcionalitats, versions i el resum arrel verificat automàticament."
+sidebarTitle: "Validador"
+---
+
+El Symphony Validator (`tools/symphony-validator`) és un verificador de repositori C++26 independent, determinista i de només lectura. Produeix evidència immutable sobre l'estat actual del repositori i dels seus contractes. No pot reparar ni publicar res.
+
+## Què comprova el validador
+
+- Forma dels contractes: ancoratges i estructura obligatoris del Contract Quad
+- Tancament actual de les fonts a través de les superfícies indexades per SKVI
+- Propietat de les invariants segons `knowledge/INVARIANTS.md` i el registre d'invariants
+- Expectatives d'administració de funcionalitats informades per SSFV
+- Registres de versions informats per SODV
+- El resum arrel gestionat per la màquina al README del repositori
+
+L'evidència s'emet com a sortida en línies o com a JSON estructurat. Cada emissió és reproduïble a partir del mateix estat del repositori.
+
+## Què no fa el validador
+
+<Warning>
+  El validador no pot reparar fitxers, reescriure contractes ni publicar el repositori. No crea veritat canònica sobre res; només n'informa.
+</Warning>
+
+- Cap efecte secundari sobre el repositori
+- Cap accés a la xarxa
+- Cap supressió d'avisos fora de la política d'avisos protegida de qxctl
+
+## Integració amb qxctl
+
+qxctl valida el rebut exacte del validador i els resums estructurats abans d'aplicar la política d'avisos protegida. Nou fulles protegides de qxctl per al cicle de vida dels avisos, juntament amb la ruta exacta del resum arrel basada en rebuts, exposen l'administració de la validació sense alterar l'evidència en brut dels detectors.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="qxctl validate" icon="terminal" href="/ca/qxctl/validate">
+    Gramàtica de la política d'avisos protegida, de la línia base i de la visualització.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ca/skv/ssfv">
+    Expectatives d'administració de funcionalitats que comprova el validador.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ca/skv/sodv">
+    Registres de versions que inspecciona el validador.
+  </Card>
+
+  <Card title="Visió general de SKV" icon="book-open" href="/ca/skv/overview">
+    El marc general els contractes del qual comprova el validador.
+  </Card>
+</CardGroup>

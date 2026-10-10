@@ -1,0 +1,74 @@
+---
+title: "SCV-lähdetietomoottorit: palveluntarjoajien todellisuus Symphonylle"
+description: "Kahdeksan erikseen paketoitua SCV-, hyperskaalaaja-, reuna- ja palveluntarjoajamoottoria säilyttää tarkat lähdeversiot ja tuottaa toistettavaa graafi- ja kyselynäyttöä."
+sidebarTitle: "SCV-moottorit"
+---
+
+SCV-lähdetietomoottorit ovat kahdeksan erikseen paketoitua C++26-prosessia, jotka sisältävät yksityistä semanttista tietoa ulkoisten palveluntarjoajien resursseista, tarjonnasta, alueista, rajoitteista ja hybridimahdollisuuksista. Ne säilyttävät tarkat lähdeversiot ja rajatut kaappaukset, jotta jatkokäsittelyn työkalut voivat toistaa tulokset.
+
+## Moottorit
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    SCV:n kattolähdemoottori jaetulle pilvisanastolle.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Symphony Cloud Edge Vectorin lähdemoottori.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-kohtainen reunalähdemoottori.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Amazon Web Servicesin lähdemoottori.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Microsoft Azuren lähdemoottori.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    DigitalOceanin lähdemoottori.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Google Cloud Platformin lähdemoottori.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Valinnainen DuckDB-liitin säilytetyn relaatiograafin indeksointia varten.
+  </Card>
+</CardGroup>
+
+## Mitä SCV-moottorit tekevät
+
+- Säilyttävät eksplisiittiset lähdeversiot ja rajatut kaappaukset
+- Säilyttävät tarkennetut väitteet ja alkuperäisen dokumenttirakenteen
+- Tuottavat toistettavaa graafi- ja kyselynäyttöä
+- Syöttävät siirrettäviä palveluntarjoajapaketteja ja äärellistä, kutsujan ohjaamaa koostamista
+
+## Mitä ne eivät tee
+
+<Warning>
+  Palveluntarjoajatoiminnot ja täydelliset pilviluettelot jäävät tämän lisäyksen ulkopuolelle. SCV-moottorit kuvaavat sen, mitä tiedetään; ne eivät toimi palveluntarjoajien suhteen.
+</Warning>
+
+qxctl hallinnoi erikseen auditoituja paikallisia lähdemuutoksia ja johdonmukaista graafivalintaa säilytettyjen työnkulkujen ja suojatun graafivalinnan kautta. Erillinen graafin läpikäynti ja operatiiviset sovittimet ovat edelleen erillistä työtä.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SCV-vektori" icon="cloud" href="/fi/vectors/scv">
+    Cloud Vector -sopimus, jonka nämä moottorit toteuttavat.
+  </Card>
+
+  <Card title="SOV-vektori" icon="terminal" href="/fi/vectors/sov">
+    Ops Vector, joka toimii SCV-näytön pohjalta qxctl:n kautta.
+  </Card>
+
+  <Card title="qxctl:n vektorikomennot" icon="terminal" href="/fi/qxctl/vector-commands">
+    Graafivalinta, lähdetyönkulut ja DuckDB-liittimen hallinta.
+  </Card>
+</CardGroup>

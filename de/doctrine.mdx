@@ -1,0 +1,35 @@
+---
+title: "Plattformdoktrin von QuanuX Symphony"
+description: "Lernen Sie die Leitprinzipien von Symphony kennen: Eigentum der Nutzer an Strategie und Infrastruktur, Neutralität gegenüber Aufruferklassen, Schutz des Hot Path und nachweisbasierte Kompatibilität."
+sidebarTitle: "Doktrin"
+---
+
+Die Symphony-Doktrin definiert die Grenzen zwischen dem, was die Plattform kontrolliert, und dem, was Sie kontrollieren. Diese Regeln bestimmen jede Designentscheidung im Monorepo und jede Interaktion mit qxctl, Vektor-Engines und Wissensverträgen.
+
+## Eigentum der Nutzer
+
+Ihnen gehören Ihre Strategielogik, der Zweck Ihres Nest, die Wahl des Anbieters, die Wahl der Hardware, die Bus-Topologie und die Auswahl unterstützter Adapter. Symphony liefert exakte Kompatibilitätsnachweise und unterstützte Operationen, macht aber Empfehlungen nicht zum Plattformgesetz. Die Plattform meldet Übereinstimmungen, Abweichungen, ungeklärte Fakten und Konsequenzen. Sie bewertet keine Anbieter, schreibt keine Strategie vor und erweitert Ihre Umgebung nicht stillschweigend.
+
+## Schutz des Hot Path
+
+Der Hot Path ist vor administrativer Residenz und versehentlicher Belastung gemeinsam genutzter Busse geschützt. qxctl und die Wissensebene sind Administration auf dem Cold oder Freezing Path. Sie dürfen explizit auf einem Node agieren, der auch Live-Arbeit hostet, dürfen aber nicht zu dauerhaften Hot-Path-Abhängigkeiten, versteckten Watchern, residenten Interpretern oder unaufgeforderten Hintergrund-Paketmanagern werden. Ihre explizite Architektur bleibt souverän.
+
+## Trennung von Befehlen und Semantik
+
+qxctl ist für Befehlsgrammatik und Darstellung zuständig. Domänenvektoren besitzen die Operationen und Bedeutungen, die diese Befehle bereitstellen. Eine qxctl-Route ruft eine vom Eigentümer definierte Fähigkeit auf, ohne deren Semantik zu übernehmen.
+
+## Namen und Namensräume
+
+Namen werden unter ihrem zuständigen Geltungsbereich erfasst. SNV und SCNV geben sie nicht vor, und das Root-NAMESPACES bleibt umfassender als SNV. Ein innerhalb eines TOPS oder TROG registrierter Name folgt diesem Geltungsbereich. Bei mehreren Clustern darf ein Node-Kurzname in verschiedenen Clustern wiederkehren, darf aber nicht mehrdeutig zwei aktive Nodes im selben Cluster bezeichnen.
+
+## Neutralität gegenüber Aufruferklassen
+
+Die Einordnung eines Aufrufers als Mensch, KI, Agent, Dienst oder Workload gewährt oder entzieht keine Befugnisse. Unterstützte Autorisierungsentscheidungen stützen sich auf das Eigentum am Zielhost oder gewährte Berechtigungen, die angeforderte Operation und Ressource, den erwarteten Zustand und vom Eigentümer konfigurierte Schutzmaßnahmen. Der Administrator des Zielhosts ist souverän über die konfigurierbare Governance. SSIAG kann die effektive Host-Autorität verifizieren und projizieren, schafft aber keine übergeordnete Registrierungsautorität. Erweiterte Identitätssicherung und Governance-Sperren sind aufruferneutrale, vom Eigentümer konfigurierte Schutzmaßnahmen. Anforderungen an die Protokollintegrität bleiben verpflichtend. Symphony entscheidet nicht anhand des Aufrufertyps über externe rechtliche oder finanzielle Handlungsfähigkeit.
+
+## Wahrheit und Nachweise
+
+Aktuelle Verträge beschreiben die aktuelle Wahrheit. Unveränderliche SCLV- und SODV-Einträge bewahren, was zu ihrem erfassten Zeitpunkt bekannt, geändert, autorisiert oder abgeschlossen war. Wenn aktuelle Verträge, Implementierungsnachweise und der jüngste maßgebliche Eintrag nicht übereinstimmen, wird die Abweichung als Drift zur Überprüfung sichtbar gemacht. Die Historie wird nicht stillschweigend umgeschrieben, um der Gegenwart zu ähneln.
+
+## Python-Doktrin
+
+Eigener Symphony-Quellcode, Generatoren, Schema-Erstellung, Tests und Abnahmehilfen erfordern keine Python-Implementierung und keine Abhängigkeit von einem Python-Interpreter. C++ übernimmt die Ersatzwerkzeuge für Erstellung und Prozesstests. Diese Repository-Richtlinie schränkt weder Ihre selbst geschriebenen Programme noch explizit ausgewählte isolierte Habitats ein.

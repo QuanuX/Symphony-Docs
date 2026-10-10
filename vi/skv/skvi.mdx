@@ -1,0 +1,51 @@
+---
+title: "SKVI: Engine chỉ mục Symphony Knowledge Vector"
+description: "SKVI lập chỉ mục tất định mỗi bề mặt SKV chuẩn tắc một lần, kiểm tra độ bao phủ do manifest khai báo và xuất các phép chiếu dùng một lần ràng buộc theo digest mà không chạm vào sự thật."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) là engine ánh xạ sự thật chuẩn tắc hiện tại trên mọi bề mặt SKV. Đây là một tiến trình C++ có thể cài đặt độc lập, hoạt động tất định, chỉ đọc, và không thể quyết định tư cách thành viên hay ghi các tệp chuẩn tắc.
+
+## SKVI làm gì
+
+SKVI thực hiện ba thao tác có giới hạn:
+
+- **Inspect và check**: xác minh rằng mọi bề mặt bắt buộc do manifest khai báo được lập chỉ mục đúng một lần, với chủ sở hữu ổn định, vai trò sự thật, quan hệ, bên sử dụng và điều kiện được chiếu.
+- **Propose**: tiếp nhận các đề xuất bất biến do bên gọi khai báo cho thay đổi chỉ mục mà không áp dụng chúng.
+- **Project**: xuất các phép chiếu dùng một lần ràng buộc theo digest của chỉ mục hiện tại cho các bên sử dụng hạ nguồn.
+
+## Những gì SKVI không làm
+
+SKVI không bao giờ quyết định một thứ có xứng đáng là tính năng hay có thuộc manifest hay không. Quyền sở hữu thuộc về Contract Quad của từng vector. SKVI cũng không:
+
+- Viết hoặc viết lại Markdown chuẩn tắc
+- Xuất bản bất cứ thứ gì ra một phép chiếu công khai
+- Cấp thẩm quyền chỉ vì nó đã tạo ra bằng chứng
+
+## Khi nào nên dùng
+
+Dùng SKVI để xác nhận rằng một kho mã đã được bao phủ đầy đủ trước khi bạn đề xuất một thay đổi mã nguồn, hoặc để xem một bề mặt cụ thể mang chủ sở hữu và vai trò sự thật nào. Các phép chiếu của nó cung cấp dữ liệu cho người xem xét đề xuất, ngữ cảnh của agent và baseline của validator.
+
+<Note>
+  SKVI là một trong các engine đọc, truy vấn, xác thực và đề xuất. Apply chuẩn tắc vẫn bị vô hiệu hóa trên các vector engine đã phê chuẩn cho đến khi các hợp đồng SSIAG, giao dịch theo trạng thái mong đợi, biện pháp bảo vệ qxctl, sự kiện STAV, khôi phục và kiểm thử phủ định của từng engine được hoàn thiện.
+</Note>
+
+## Các bề mặt liên quan
+
+<CardGroup cols={2}>
+  <Card title="Tổng quan SKV" icon="book-open" href="/vi/skv/overview">
+    Khung bao trùm quản trị SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/vi/skv/sclv">
+    Sổ cái thay đổi chỉ-thêm ghi nhận các thay đổi mã nguồn quan trọng đã hoàn tất.
+  </Card>
+
+  <Card title="Lệnh vector của qxctl" icon="terminal" href="/vi/qxctl/vector-commands">
+    Chạy `qxctl skvi ...` để gọi inspect, check và propose.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/vi/governance/validator">
+    Các kiểm tra chỉ đọc độc lập bổ sung cho độ bao phủ của SKVI.
+  </Card>
+</CardGroup>

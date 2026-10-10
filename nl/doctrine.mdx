@@ -1,0 +1,35 @@
+---
+title: "Platformdoctrine van QuanuX Symphony"
+description: "Leer de leidende principes van Symphony: gebruikerseigendom van strategie en infrastructuur, neutraliteit ten aanzien van aanroeperklassen, bescherming van het hot path en op bewijs gebaseerde compatibiliteit."
+sidebarTitle: "Doctrine"
+---
+
+De Symphony-doctrine definieert de grenzen tussen wat het platform beheert en wat u beheert. Deze regels sturen elke ontwerpbeslissing in de monorepo en elke interactie met qxctl, vectorengines en kenniscontracten.
+
+## Gebruikerseigendom
+
+U bent eigenaar van uw strategielogica, het doel van uw Nest, uw providerkeuze, hardwarekeuze, bustopologie en de selectie van ondersteunde adapters. Symphony levert exact compatibiliteitsbewijs en ondersteunde bewerkingen, maar maakt van aanbevelingen geen platformwet. Het platform rapporteert overeenkomsten, afwijkingen, onopgeloste feiten en gevolgen. Het rangschikt geen providers, schrijft geen strategie voor en breidt uw omgeving niet stilzwijgend uit.
+
+## Bescherming van het hot path
+
+Het hot path wordt beschermd tegen administratieve residentie en onbedoelde druk op een gedeelde bus. qxctl en het kennisvlak zijn beheer op het cold of freezing path. Ze mogen expliciet handelen op een Node die ook live werk host, maar mogen geen continue hot-path-afhankelijkheden, verborgen watchers, residente interpreters of ongevraagde achtergrondpakketbeheerders worden. Uw expliciete architectuur blijft soeverein.
+
+## Scheiding van opdrachten en semantiek
+
+qxctl is eigenaar van de opdrachtgrammatica en presentatie. Domeinvectoren zijn eigenaar van de bewerkingen en betekenissen die deze opdrachten blootstellen. Een qxctl-route roept een door de eigenaar gedefinieerde capaciteit aan zonder de semantiek ervan over te nemen.
+
+## Namen en namespaces
+
+Namen worden vastgelegd onder hun eigen scope. SNV en SCNV schrijven ze niet voor, en de root NAMESPACES blijft breder dan SNV. Een naam die binnen een TOPS of TROG is geregistreerd, volgt die scope. Binnen meerdere clusters mag een korte Node-naam in verschillende clusters terugkeren, maar mag deze niet op dubbelzinnige wijze twee actieve Nodes in hetzelfde cluster identificeren.
+
+## Neutraliteit ten aanzien van aanroeperklassen
+
+De classificatie van een aanroeper als mens, AI, agent, service of workload verleent of ontneemt geen autoriteit. Ondersteunde autorisatiebeslissingen gebruiken het eigendom van de doelhost of verleende rechten, de gevraagde bewerking en resource, de verwachte status en door de eigenaar geconfigureerde waarborgen. De beheerder van de doelhost is soeverein over configureerbare governance. SSIAG kan effectieve hostautoriteit verifiëren en projecteren, maar creëert geen hogere registratieautoriteit. Verhoogde identiteitszekerheid en governance-interlocks zijn aanroeperneutrale, door de eigenaar geconfigureerde waarborgen. Vereisten voor protocolintegriteit blijven verplicht. Symphony beslist niet op basis van het type aanroeper over externe juridische of financiële bevoegdheid.
+
+## Waarheid en bewijs
+
+Huidige contracten beschrijven de huidige waarheid. Onveranderlijke SCLV- en SODV-records bewaren wat bekend, gewijzigd, geautoriseerd of voltooid was op hun vastgelegde moment in de geschiedenis. Wanneer huidige contracten, implementatiebewijs en het meest recente toepasselijke record niet overeenkomen, wordt de onenigheid als drift ter beoordeling zichtbaar gemaakt. De geschiedenis wordt niet stilzwijgend herschreven om op het heden te lijken.
+
+## Python-doctrine
+
+Eigen Symphony-broncode, generators, schema-authoring, tests en acceptatiehulpmiddelen vereisen geen Python-implementatie of afhankelijkheid van een interpreter. C++ is eigenaar van de vervangende authoring- en procestesttooling. Dit repositorybeleid beperkt uw door uzelf geschreven programma's of expliciet geselecteerde geïsoleerde Habitats niet.

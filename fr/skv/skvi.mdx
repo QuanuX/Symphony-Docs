@@ -1,0 +1,51 @@
+---
+title: "SKVI : le moteur d’index du Symphony Knowledge Vector"
+description: "SKVI indexe de manière déterministe chaque surface SKV canonique une seule fois, vérifie la couverture déclarée dans les manifestes et émet des projections jetables liées au digest sans toucher à la vérité."
+sidebarTitle: "SKVI"
+---
+
+Le Symphony Knowledge Vector Index (SKVI) est le moteur qui cartographie la vérité canonique actuelle sur l’ensemble des surfaces SKV. C’est un processus C++ installable indépendamment, qui fonctionne de manière déterministe et en lecture seule, et qui ne peut ni décider de l’appartenance ni écrire de fichiers canoniques.
+
+## Ce que fait SKVI
+
+SKVI effectue trois opérations bornées :
+
+- **Inspect et check** : vérifier que chaque surface requise déclarée dans un manifeste est indexée exactement une fois, avec un propriétaire stable, un rôle de vérité, des relations, des consommateurs et une éligibilité à la projection.
+- **Propose** : accepter des propositions immuables déclarées par l’appelant pour des modifications d’index, sans les appliquer.
+- **Project** : émettre des projections jetables liées au digest de l’index actuel pour les consommateurs en aval.
+
+## Ce que SKVI ne fait pas
+
+SKVI ne décide jamais de la pertinence d’une fonctionnalité ni de l’appartenance à un manifeste. La propriété reste au Contract Quad de chaque vecteur. SKVI ne fait pas non plus ceci :
+
+- Écrire ou réécrire du Markdown canonique
+- Publier quoi que ce soit dans une projection publique
+- Accorder une autorité au seul motif qu’il a généré des preuves
+
+## Quand l’utiliser
+
+Utilisez SKVI pour confirmer qu’un dépôt est entièrement couvert avant de proposer une modification de source, ou pour savoir quel propriétaire et quel rôle de vérité porte une surface donnée. Ses projections alimentent les relecteurs de propositions, le contexte des agents et les références du validateur.
+
+<Note>
+  SKVI fait partie des moteurs de lecture, de requête, de validation et de proposition. L’application canonique reste désactivée pour les moteurs vectoriels ratifiés tant que les contrats SSIAG, de transaction sur état attendu, de garde-fou qxctl, d’événement STAV, de récupération et de tests négatifs de chaque moteur ne sont pas complets.
+</Note>
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="Vue d’ensemble de SKV" icon="book-open" href="/fr/skv/overview">
+    Le framework englobant qui gouverne SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/fr/skv/sclv">
+    Le registre des modifications en ajout seul qui consigne les changements de source substantiels achevés.
+  </Card>
+
+  <Card title="Commandes vectorielles qxctl" icon="terminal" href="/fr/qxctl/vector-commands">
+    Exécutez `qxctl skvi ...` pour invoquer inspect, check et propose.
+  </Card>
+
+  <Card title="Validateur" icon="clipboard-check" href="/fr/governance/validator">
+    Vérifications indépendantes en lecture seule qui complètent la couverture de SKVI.
+  </Card>
+</CardGroup>

@@ -1,0 +1,33 @@
+---
+title: "Pikaopas: tutustu QuanuX Symphonyyn"
+description: "Opastettu reitti Symphonyn doktriiniin, arkkitehtuuriin, vektorisopimuksiin ja qxctl-hallintapintaan."
+sidebarTitle: "Pikaopas"
+---
+
+Käytä tätä opasta orientoituaksesi ennen Symphonyn käyttämistä. Dokumentaatio erottaa toisistaan alustadoktriinin, käyttäjän valitseman infrastruktuurin, vektorien omistaman semantiikan ja hallintakomennot. Tarkat asennus- ja suoritusvaiheet kuuluvat kyseisen komponentin nykyiseen sopimukseen.
+
+## 1. Lue toimintarajat
+
+Aloita [alustadoktriinista](/fi/doctrine). Se vahvistaa käyttäjän omistajuuden strategiasta ja infrastruktuurista, kutsujaluokkaneutraaliuden, näyttöön perustuvan yhteensopivuuden ja kuuman polun suojauksen.
+
+## 2. Opettele fyysinen malli
+
+Lue [Node, Habitat ja Nest](/fi/concepts/node-habitat-nest):
+
+- **Node:** tunnistettu fyysinen tietokoneresurssi.
+- **Habitat:** Nodelle toimitettu tarkka käyttöjärjestelmä- ja pakettikonditiointi.
+- **Nest:** käyttäjän tarkoitusta palveleva työkuorma, joka sijoitetaan sopivaan Habitatiin.
+
+Klusterin väylät ja sovittimet ovat eksplisiittisiä arkkitehtuurivalintoja. Symphony ei määrää yleispätevää palveluntarjoajaa tai strategiaa.
+
+## 3. Jäljitä merkityksen omistajuus
+
+[Arkkitehtuurin yleiskatsaus](/fi/concepts/architecture) näyttää vektorisopimusten, moottorien, qxctl:n ja hallitun näytön väliset suhteet. [Vektorit ja vaiheet](/fi/concepts/vectors) selittää, miksi vektori pysyy semanttisena omistajana, vaikka toimitustyö etenee vaiheiden läpi. [Symphony Knowledge Vector](/fi/skv/overview) kuvaa Contract Quadin ja sen liitännäispinnat.
+
+## 4. Löydä hallintapinta
+
+[qxctl:n yleiskatsaus](/fi/qxctl/overview) esittelee Go-kielellä toteutetun hallinta- ja kysely-CLI:n. Käytä qxctl-sivuja tietylle komentoperheelle, kuten [tieto](/fi/qxctl/knowledge), [elinkaari](/fi/qxctl/lifecycle), [moottorit](/fi/qxctl/engines) tai [validointi](/fi/qxctl/validate). qxctl tarjoaa komentokieliopin ja esitystavan; vektorisopimukset omistavat toiminnot ja niiden merkityksen.
+
+## 5. Tarkista asiaankuuluva sopimus ja näyttö
+
+Ennen kuin toimit Nodella tai kutsut vektorimoottoria, tarkista omistajan nykyinen sopimus, kohdetila, valtuutus sekä saatavilla oleva kuitti- tai validointinäyttö. [Kutsujan valtuus](/fi/concepts/caller-authority) ja [kuuman polun eristäminen](/fi/concepts/hot-path-isolation) selittävät nämä rajat. Kehittymässä oleva pinta ei ole implisiittinen operatiivinen takuu.

@@ -1,0 +1,51 @@
+---
+title: "SKVI: Die Index-Engine des Symphony Knowledge Vector"
+description: "SKVI indexiert jede kanonische SKV-Oberfläche deterministisch genau einmal, prüft die im Manifest deklarierte Abdeckung und gibt verwerfbare, digest-gebundene Projektionen aus, ohne die Wahrheit anzutasten."
+sidebarTitle: "SKVI"
+---
+
+Der Symphony Knowledge Vector Index (SKVI) ist die Engine, die die aktuelle kanonische Wahrheit über alle SKV-Oberflächen hinweg abbildet. Sie ist ein unabhängig installierbarer C++-Prozess, der deterministisch und schreibgeschützt arbeitet und weder über Zugehörigkeit entscheiden noch kanonische Dateien schreiben kann.
+
+## Was SKVI tut
+
+SKVI führt drei begrenzte Operationen aus:
+
+- **Inspect und Check**: prüfen, dass jede im Manifest deklarierte erforderliche Oberfläche genau einmal indexiert ist, mit stabilem Eigentümer, Wahrheitsrolle, Beziehungen, Konsumenten und Projektionsberechtigung.
+- **Propose**: vom Aufrufer deklarierte unveränderliche Vorschläge für Indexänderungen entgegennehmen, ohne sie anzuwenden.
+- **Project**: verwerfbare, digest-gebundene Projektionen des aktuellen Index für nachgelagerte Konsumenten ausgeben.
+
+## Was SKVI nicht tut
+
+SKVI entscheidet niemals über Feature-Würdigkeit oder Manifest-Zugehörigkeit. Die Ownership verbleibt beim Contract Quad jedes Vektors. SKVI tut außerdem nicht Folgendes:
+
+- kanonisches Markdown schreiben oder umschreiben
+- etwas in eine öffentliche Projektion veröffentlichen
+- Autorität gewähren, nur weil es Nachweise erzeugt hat
+
+## Wann Sie es verwenden
+
+Verwenden Sie SKVI, um vor dem Vorschlagen einer Quelländerung zu bestätigen, dass ein Repository vollständig abgedeckt ist, oder um zu sehen, welchen Eigentümer und welche Wahrheitsrolle eine bestimmte Oberfläche trägt. Seine Projektionen speisen Vorschlagsprüfer, Agentenkontext und Validator-Baselines.
+
+<Note>
+  SKVI ist eine der Engines für Lesen, Abfragen, Validieren und Vorschlagen. Kanonisches Apply bleibt für die ratifizierten Vektor-Engines deaktiviert, bis für jede Engine die Verträge zu SSIAG, Erwartungszustands-Transaktion, qxctl-Schutzmechanismus, STAV-Ereignis, Wiederherstellung und Negativtests vollständig sind.
+</Note>
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SKV-Übersicht" icon="book-open" href="/de/skv/overview">
+    Das übergreifende Framework, das SKVI regelt.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/de/skv/sclv">
+    Das Append-only-Änderungsledger, das abgeschlossene wesentliche Quelländerungen erfasst.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Führen Sie `qxctl skvi ...` aus, um inspect, check und propose aufzurufen.
+  </Card>
+
+  <Card title="Validator" icon="clipboard-check" href="/de/governance/validator">
+    Unabhängige, schreibgeschützte Prüfungen, die die SKVI-Abdeckung ergänzen.
+  </Card>
+</CardGroup>

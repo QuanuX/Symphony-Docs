@@ -1,0 +1,54 @@
+---
+title: "STAV: ledger kiểm toán chỉ ghi thêm theo từng TOPS cho Symphony"
+description: "STAV Append Authority vận hành các ledger kiểm toán chỉ ghi thêm theo từng TOPS với IPC có xác thực, độ bền fsync trước khi cấp biên nhận, đọc có giới hạn, xác minh và khôi phục."
+sidebarTitle: "STAV"
+---
+
+Symphony TOPS Audit Vector (STAV) định nghĩa giao thức ledger kiểm toán chỉ ghi thêm theo từng TOPS. Cơ quan runtime của nó nằm trong `modules/stav-append-authority`, một dịch vụ Go có thể cài đặt độc lập. Các ledger vận hành theo từng TOPS là riêng tư đối với mỗi bản cài đặt TOPS; chúng không phải là nội dung SKV.
+
+## STAV Append Authority
+
+`modules/stav-append-authority` cung cấp:
+
+- Các ledger kiểm toán chỉ ghi thêm theo từng TOPS
+- IPC cục bộ xác thực lẫn nhau
+- Quyền chính xác cho producer và reader
+- Độ bền fsync trước khi cấp biên nhận
+- Đọc có giới hạn, xác minh và khôi phục
+- Đăng ký và giám sát gốc (launchd, systemd)
+
+<Warning>
+  qxctl không bao giờ nhận quyền ghi thêm thô. Nó điều phối việc đăng ký, xác minh và cấp quyền thông qua adapter chính xác thuộc sở hữu của mô-đun, nhưng việc ghi thêm vào ledger vẫn được niêm phong bên trong tiến trình append authority.
+</Warning>
+
+## STAV Protocol cho Go
+
+`libraries/stav-protocol-go` là một thư viện Go không mang quyền hạn, triển khai codec STAV v1 chuẩn, xác thực nghiêm ngặt, digest, đóng khung, các quy tắc tuân thủ và bộ từ vựng producer đóng. Bất kỳ producer hoặc reader nào cũng có thể áp dụng giao thức mà không kế thừa quyền hạn.
+
+## Các bản xuất bản SODV đã hoàn tất
+
+Mọi tạo phẩm STAV hiện được xuất bản thông qua SODV đều là một phiên bản mô-đun mã nguồn Go, không phải bản phát hành nhị phân:
+
+- `libraries/stav-protocol-go` v0.2.0
+- `modules/stav-append-authority` v0.1.0
+- `modules/stav-append-authority` v0.2.0
+
+## Các surface liên quan
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/vi/governance/ssiag">
+    Ủy quyền cho các thao tác thay đổi được bảo vệ mà STAV sau đó kiểm toán.
+  </Card>
+
+  <Card title="Accordare producer" icon="pen-nib" href="/vi/governance/accordare-producer">
+    Ghi ý định trước thay đổi và kết quả cuối cùng vào STAV.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/vi/qxctl/lifecycle">
+    Quản trị vòng đời kết hợp với việc đăng ký STAV.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/vi/skv/sodv">
+    Quản trị các bản ghi xuất bản chính thức cho các thành phần STAV.
+  </Card>
+</CardGroup>

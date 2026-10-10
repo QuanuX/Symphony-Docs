@@ -1,0 +1,43 @@
+---
+title: "Maestro : autorité de présence des moteurs de vecteurs Symphony"
+description: "Maestro enregistre les relations d'amarrage authentifiées des moteurs de vecteurs par TOPS et par récepteur, et en dérive un inventaire complet en lecture seule sans démarrer ni superviser les moteurs."
+sidebarTitle: "Maestro"
+---
+
+Maestro (`modules/maestro`) est une autorité de présence C++26 en chemin glacial, installable indépendamment. Il enregistre les relations d'amarrage exactes et authentifiées des moteurs de vecteurs par TOPS et par récepteur, et en dérive un inventaire complet en lecture seule de ce qui est actuellement amarré. Maestro est un témoin, et non un superviseur.
+
+## Ce que Maestro enregistre
+
+- Les relations d'amarrage exactes et authentifiées entre les moteurs de vecteurs et les récepteurs
+- Une portée par TOPS, afin que la présence de chaque installation reste privée à cette installation
+- Un inventaire dérivé, complet et en lecture seule, disponible via `qxctl maestro inventory`
+
+## Ce que Maestro ne fait pas
+
+<Warning>
+  Maestro ne démarre, ne planifie, ne supervise ni n'invoque les moteurs. Une liaison, une réconciliation, une coordination de session authentifiée ou un plan de cycle de vie ne suffit pas, à lui seul, à établir une présence Maestro, à ratifier une vérité sémantique, à modifier la connaissance canonique ni à prouver l'exhaustivité de l'hôte installé.
+</Warning>
+
+- Maestro ne crée aucun processus.
+- Maestro n'applique jamais de modifications à la connaissance canonique.
+- Maestro ne remplace jamais le moteur de vecteur propriétaire de la sémantique.
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="qxctl maestro" icon="terminal" href="/fr/qxctl/maestro">
+    `qxctl maestro inventory` présente l'inventaire dérivé.
+  </Card>
+
+  <Card title="Coordinateur de sessions" icon="gears" href="/fr/engines/coordinator">
+    Propriétaire des mécanismes de sessions authentifiées et de réconciliation des worktrees.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fr/governance/ssiag">
+    Authentifie les relations d'amarrage enregistrées par Maestro.
+  </Card>
+
+  <Card title="Vue d'ensemble des moteurs" icon="cube" href="/fr/engines/overview">
+    Moteurs de vecteurs installables indépendamment qui s'amarrent à Maestro.
+  </Card>
+</CardGroup>

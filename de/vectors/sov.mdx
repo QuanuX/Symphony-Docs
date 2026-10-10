@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: Betriebssteuerung mit qxctl"
+description: "SOV definiert die über qxctl administrierte Betriebsdomäne für Bereitstellung, Habitat-Konditionierung, Nest-Auslieferung, Bus-Adapter und optionale Remote-Administration von Nodes."
+sidebarTitle: "Ops Vector"
+---
+
+Der Symphony Ops Vector (SOV) ist die operative Steuerungsebene, über die autorisierte qxctl-Befehle auf Ihre Infrastruktur einwirken. Er verantwortet den Vertrag für Bereitstellung, Habitat-Konditionierung, Nest-Auslieferung, Einrichtung von Bus-Adaptern und optionale Remote-Administration von Nodes. SOV erfindet weder die Bedeutung von Providern noch Hardwarefakten; er führt unterstützte Entscheidungen aus, die Sie bereits getroffen haben.
+
+## Was SOV abdeckt
+
+SOV ist eine im Entstehen begriffene Domäne der Phase 2. Sein Umfang umfasst:
+
+- **Bereitstellung**: Workflows zur Ressourcenzuweisung bei Providern und auf eigener Hardware
+- **Habitat-Konditionierung**: exakte Betriebssystem- und Paketkonditionierung, die an einen Node ausgeliefert wird
+- **Nest-Auslieferung** (Nest: Workload-Container): Platzierung und Aktualisierung von Workloads auf einem Node
+- **Einrichtung von Bus-Adaptern**: Verbindung von Nodes über den von Ihnen gewählten Bus (NATS JetStream, ZeroMQ oder andere)
+- **Remote-Node-Operationen**: optionale Administration von Nodes außerhalb Ihrer lokalen Shell
+
+<Note>
+  Provider-Protokolle, Terraform-Ausführung, Habitat-Builder, Nest-Bereitstellungsbefehle und Empfänger für Remote-Operationen müssen noch entworfen werden. Derzeit sind weder eine SOV-Engine noch Provider-Mutationen implementiert.
+</Note>
+
+## Wie SOV mit anderen Vektoren zusammenhängt
+
+SOV ist die Steuerungsebene, nicht die Wissensquelle. Er handelt auf Grundlage von Nachweisen, die anderen Vektoren gehören:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/de/vectors/scv">
+    Liefert Wissen über Provider und externe Ressourcen. SOV liest SCV-Nachweise, um zu entscheiden, welche Operationen kompatibel sind.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/de/vectors/snv">
+    Erfasst nach Abschluss der SOV-Operationen die resultierenden Node-Identitäten, Cluster-Mitgliedschaften und Namen.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/de/vectors/shv">
+    Kann später detaillierte Nachweise zu Hardwarefähigkeiten liefern, um Bereitstellungsentscheidungen einzugrenzen.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/de/skv/overview">
+    Regelt SOV-Verträge, Änderungsfolgen, Indexierung und Lifecycle-Integration.
+  </Card>
+</CardGroup>
+
+## qxctl als Befehlsoberfläche
+
+SOV-Operationen werden über `qxctl` bereitgestellt, die Go-basierte Administrations-CLI mit 373 ausführbaren Befehlen. qxctl implementiert und präsentiert SOV-Operationen, verantwortet aber nicht deren Domänenbedeutung. Der Vektor verantwortet die Semantik; das Werkzeug verantwortet die Ausführungsoberfläche.
+
+## Grenze der Benutzerautorität
+
+Sie wählen Provider, Regionen, Hardware, Busse, Software, Bereitstellungstopologie und die Administrationsregelungen pro Node aus. SOV stellt unterstützte Entscheidungen bereit und führt sie aus. Er bewertet keine Provider, empfiehlt keine Topologien und macht aus Vorschlägen keine verbindlichen Richtlinien.
+
+## Aktueller Stand
+
+SOV ist ein kanonischer Architekturvertrag. Es wird nicht behauptet, dass eine Engine, ein Terraform-Wrapper, ein Habitat-Builder, ein Bus-Adapter oder ein Empfänger für Remote-Befehle implementiert ist. Künftige SOV-Komponenten bleiben unabhängig installierbar, in exakter Version auswählbar und im Rahmen des gemeinsamen SKV-Lifecycles zurückrollbar.

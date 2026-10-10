@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: Advarselspolitik for Symphony Validator"
+description: "Administrer beskyttet advarselspolitik, baseline og visningsgrammatik oven på den uafhængige Symphony Validator via qxctl uden at ændre rå detektorevidens."
+sidebarTitle: "validate"
+---
+
+Grammatikken `qxctl validate ...` administrerer Symphony Validators beskyttede advarselspolitik, baseline og visningsgrammatik. Den uafhængigt installerede C++-validator producerer uforanderlig rå evidens; qxctl administrerer en kalderneutral beskyttet præsentation uden at ændre detektionen.
+
+## Hvad qxctl validate dækker
+
+- Ni beskyttede blade for advarselslivscyklus
+- Den nøjagtige kvitteringsbaserede rodoversigtsrute
+- Baseline-administration og deltarapportering
+- Visningsgrammatik for linjeoutput og struktureret JSON
+
+Hvert blad validerer validatorens nøjagtige kvittering og strukturerede digests, før den beskyttede advarselspolitik anvendes.
+
+## Grænse
+
+<Warning>
+  qxctl validate kan ikke reparere filer, publicere noget eller tilsidesætte rå detektorevidens. Disponering af advarsler påvirker præsentationen, ikke detektionen.
+</Warning>
+
+- Ingen undertrykkelse af advarsler uden for den beskyttede politik
+- Ingen ændring af validatorens output
+- Ingen fabrikeret dækning for en utilgængelig rute
+
+## Almindelige anvendelser
+
+- Etabler eller nulstil en advarsels-baseline
+- Godkend eller genåbn en styret historisk advarsel
+- Udsend den kvitteringsbaserede rodoversigt, der vises i repositoryets README
+
+Validatoren, der ligger til grund for denne grammatik, kontrollerer kontraktform, aktuel kildelukning, invariantejerskab, funktionsadministration, udgivelser og den maskinejede rodoversigt.
+
+## Relaterede flader
+
+<CardGroup cols={2}>
+  <Card title="Validator" icon="clipboard-check" href="/da/governance/validator">
+    Den uafhængige, skrivebeskyttede C++-kontrol, som qxctl administrerer.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/da/skv/ssfv">
+    Forventninger til funktionsadministration, der kontrolleres i evidensen.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/da/skv/sodv">
+    Udgivelsesposter, der optræder i validatorevidensen.
+  </Card>
+
+  <Card title="Oversigt over qxctl" icon="terminal" href="/da/qxctl/overview">
+    Den fulde kommandoflade.
+  </Card>
+</CardGroup>

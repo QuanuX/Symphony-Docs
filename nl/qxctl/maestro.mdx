@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: receptoraanwezigheidsinventaris van Symphony lezen"
+description: "Inspecteer de Maestro-aanwezigheidsautoriteit van Symphony via qxctl om geauthenticeerde dockingrelaties van vector-engines en de afgeleide receptorinventaris te bekijken."
+sidebarTitle: "maestro"
+---
+
+De grammatica `qxctl maestro ...` maakt aanwezigheidsbewijs van Maestro zichtbaar. Maestro is de aanwezigheidsautoriteit; qxctl leest en inspecteert alleen wat Maestro vastlegt. Geen van beide creëert op eigen houtje dockingrelaties.
+
+## Inventaris
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` toont de volledige, afgeleide, alleen-lezen inventaris van Maestro met geauthenticeerde dockingrelaties van vector-engines per TOPS en receptor.
+
+## Gerelateerde beheerroutes
+
+Aanvullende qxctl-leaves bieden Maestro-gerelateerd beheer:
+
+- Status en inspectie van dockingbewijs
+- Herstelroutes begrensd door de eigen contracten van Maestro
+- Fundamentele levenscyclusinschrijving en native supervisie voor Maestro zelf
+
+Elke mutatieroute loopt via de exacte adapter die eigendom is van de module. qxctl rendert Maestro-descriptors nooit op basis van interne parsing en roept nooit impliciet de nieuwste versie aan.
+
+<Warning>
+  Maestro start, plant, superviseert of roept geen engines aan. `qxctl maestro inventory` is alleen-lezen. Binding, reconciliatie, sessiecoördinatie of een levenscyclusplan alleen legt geen Maestro-aanwezigheid vast.
+</Warning>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/nl/governance/maestro">
+    Contract en grenzen van de aanwezigheidsautoriteit.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/nl/qxctl/engines">
+    Engine-bindingsregister (bindingen zijn geen docking).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/nl/qxctl/session">
+    Geauthenticeerde sessies waarmee aanwezigheid wordt vastgelegd.
+  </Card>
+
+  <Card title="Overzicht van engines" icon="cube" href="/nl/engines/overview">
+    Onafhankelijk installeerbare vector-engines die bij Maestro docken.
+  </Card>
+</CardGroup>

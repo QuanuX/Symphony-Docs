@@ -1,0 +1,33 @@
+---
+title: "Démarrage rapide : explorer QuanuX Symphony"
+description: "Un parcours guidé de la doctrine de Symphony, de son architecture, de ses contrats de vecteurs et de la surface administrative qxctl."
+sidebarTitle: "Démarrage rapide"
+---
+
+Utilisez ce guide pour vous orienter avant d’exploiter Symphony. La documentation distingue la doctrine de la plateforme, l’infrastructure choisie par l’utilisateur, la sémantique dont les vecteurs sont propriétaires et les commandes administratives. Les étapes exactes d’installation et d’exécution relèvent du contrat actuel du composant concerné.
+
+## 1. Lire les frontières de fonctionnement
+
+Commencez par la [doctrine de la plateforme](/fr-CA/doctrine). Elle établit la propriété de la stratégie et de l’infrastructure par l’utilisateur, la neutralité quant à la catégorie d’appelant, la compatibilité fondée sur des preuves et la protection du chemin critique.
+
+## 2. Comprendre le modèle physique
+
+Lisez [Node, Habitat et Nest](/fr-CA/concepts/node-habitat-nest) :
+
+- **Node :** la ressource informatique physique identifiée.
+- **Habitat :** le conditionnement exact du système d’exploitation et des paquets livré à un Node.
+- **Nest :** la charge de travail répondant à la finalité de l’utilisateur, placée dans un Habitat approprié.
+
+Les bus et les adaptateurs d’une grappe sont des choix d’architecture explicites. Symphony ne prescrit aucun fournisseur ni aucune stratégie universels.
+
+## 3. Retracer la propriété de la signification
+
+L’[aperçu de l’architecture](/fr-CA/concepts/architecture) montre la relation entre les contrats de vecteurs, les moteurs, qxctl et les preuves gouvernées. [Vecteurs et phases](/fr-CA/concepts/vectors) explique pourquoi un vecteur demeure le propriétaire sémantique même lorsque le travail de livraison progresse d’une phase à l’autre. Le [Symphony Knowledge Vector](/fr-CA/skv/overview) décrit le Contract Quad et ses surfaces compagnes.
+
+## 4. Trouver la surface administrative
+
+L’[aperçu de qxctl](/fr-CA/qxctl/overview) présente l’interface en ligne de commande d’administration et de requête écrite en Go. Consultez les pages qxctl pour une famille de commandes précise, comme [knowledge](/fr-CA/qxctl/knowledge), [lifecycle](/fr-CA/qxctl/lifecycle), [engines](/fr-CA/qxctl/engines) ou [validation](/fr-CA/qxctl/validate). qxctl fournit la grammaire et la présentation des commandes; les contrats de vecteurs sont propriétaires des opérations et de leur signification.
+
+## 5. Vérifier le contrat et les preuves pertinents
+
+Avant d’agir sur un Node ou d’invoquer un moteur de vecteur, vérifiez le contrat actuel du propriétaire, l’état cible, l’autorisation ainsi que les reçus ou les preuves de validation disponibles. [Autorité de l’appelant](/fr-CA/concepts/caller-authority) et [isolation du chemin critique](/fr-CA/concepts/hot-path-isolation) expliquent ces frontières. Une surface émergente ne constitue pas une garantie opérationnelle implicite.

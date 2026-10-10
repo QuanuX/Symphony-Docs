@@ -1,0 +1,71 @@
+---
+title: "qxctl knowledge session: geauthenticeerde Symphony-sessies"
+description: "Open, checkpoint, sluit en herstel geauthenticeerde sessies van de Symphony-coördinator plus persistente SSFV-onderhoudsstromen met door SSIAG geverifieerde grants."
+sidebarTitle: "session"
+---
+
+De grammatica `qxctl knowledge session ...` opent niet-canonieke geauthenticeerde sessies via één exact gebonden coördinator en één SSIAG-endpoint met TOPS-scope. Een afzonderlijke grammatica `session features ...` stuurt de persistente SSFV-onderhoudsstroom aan.
+
+## Basisgrammatica voor sessies
+
+```bash Session lifecycle
+qxctl knowledge session begin
+qxctl knowledge session status
+qxctl knowledge session checkpoint
+qxctl knowledge session close
+qxctl knowledge session recover
+```
+
+Elke aanroep vraagt een verse, exacte grant aan en valideert:
+
+- Identiteit van subject en doel
+- Beleids- en configuratiestatus
+- Vervaldatum
+- Neutraliteit ten aanzien van de aanroeperklasse
+- Niet-overdraagbaarheid
+- Uitschakeling van canonieke apply
+- Capability-binding
+
+Sessiebewijs autoriseert alleen de genoemde beschermde, niet-canonieke bewerking. Houd sessie- en reconciliatiejournals gescheiden; gebruik contextverwijzingen alleen om ze aan elkaar te koppelen.
+
+## SSFV-onderhoudsstroom
+
+```bash Features stream
+qxctl knowledge session features begin
+qxctl knowledge session features status
+qxctl knowledge session features checkpoint
+qxctl knowledge session features close
+qxctl knowledge session features recover
+```
+
+De features-stroom is een afzonderlijke, persistente SSFV-onderhoudscontext. Mutaties vereisen:
+
+- Een open, geauthenticeerde basissessie
+- Exacte coördinator- en SSFV-bindingen
+- Stabiele bewerkingsidentificaties
+- Exacte compare-and-swap
+- Vers SSIAG-bewijs
+
+<Note>
+  Behoud de baseline-snapshot en de oorspronkelijke engine-identiteit ervan over compatibele upgrades of rollbacks heen. Optioneel Maestro-bewijs moet een volledige, geauthenticeerde inventaris zijn; wanneer Maestro bewust afwezig is, leg dan de expliciete reden voor het niet-geconfigureerd zijn vast. `review_required` is bewijs voor beoordeling door de aanroeper, geen bekrachtiging.
+</Note>
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="SSIAG" icon="shield-halved" href="/nl/governance/ssiag">
+    Geeft de verse grants uit die elk sessieverzoek valideert.
+  </Card>
+
+  <Card title="Sessiecoördinator" icon="gears" href="/nl/engines/coordinator">
+    De engine achter sessie- en features-journals.
+  </Card>
+
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/nl/qxctl/reconcile">
+    Reconciliatiecontexten die samengaan met sessies.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/nl/skv/ssfv">
+    De featurevector die de features-stroom onderhoudt.
+  </Card>
+</CardGroup>

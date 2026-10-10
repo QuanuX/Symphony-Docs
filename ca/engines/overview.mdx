@@ -1,0 +1,57 @@
+---
+title: "Motors de vectors de Symphony: visió general de la instal·lació independent"
+description: "Cada motor de vectors de Symphony s'instal·la de manera independent, s'executa fora de procés en C++ i es manté sense autoritat. Coneixeu aquí les famílies de motors SKV, SCV i SHV."
+sidebarTitle: "Visió general dels motors"
+---
+
+Cada vector actiu de Symphony a nivell d'aplicació pot tenir un motor C++ fora de procés instal·lable de manera independent. La mecànica C++ compartida i sense autoritat es troba a `libraries/`; un coordinador C++ independent és propietari de la mecànica de sessions autenticades i de reconciliació d'arbres de treball. Els motors inspeccionen, validen, projecten i proposen dins dels contractes propietat dels vectors. No adquireixen autoritat pel simple fet de generar contingut.
+
+## Motors implementats
+
+<CardGroup cols={2}>
+  <Card title="Fonament del Knowledge Vector" icon="cube" href="/ca/engines/knowledge-vector-foundation">
+    Enquadrament de processos en C++, JSON, SHA-256, instantànies, rebuts i descobriment de manifests.
+  </Card>
+
+  <Card title="Coordinador de sessions" icon="gears" href="/ca/engines/coordinator">
+    Sessions autenticades, reconciliació d'arbres de treball i coordinació de l'aplicació del cicle de vida.
+  </Card>
+
+  <Card title="Motors de fonts SCV" icon="cloud" href="/ca/engines/scv-source-engines">
+    Vuit motors C++26 de coneixement de fonts de SCV, hiperescaladors, edge i proveïdors.
+  </Card>
+
+  <Card title="Motors SHV" icon="microchip" href="/ca/engines/shv-engines">
+    Motors de fonts, catàleg, perfils, particions, publicació i adaptadors de maquinari.
+  </Card>
+</CardGroup>
+
+## Família de motors SKV
+
+Cadascuna de les superfícies de SKV té el seu propi motor:
+
+- Els motors SKVI, SCLV, SACV, SODV i SSFV implementen cadascun inspecció, comprovació, proposta i projecció (i recuperació quan escau).
+- Els motors SAV i SEV són processos C++26 de camí de congelació per a l'avaluació de composicions i els casos d'evolució.
+
+<Note>
+  Tots els motors SKV actuals són només de lectura, consulta, validació i proposta. L'aplicació canònica programàtica continua desactivada fins que no es completin, per a cada motor, els contractes de verificació de permisos de SSIAG, transacció d'estat esperat, salvaguarda de qxctl, esdeveniment STAV, recuperació i proves negatives.
+</Note>
+
+## Garanties comunes
+
+- Instal·lació i desinstal·lació independents per a cada mòdul
+- Cap rastreig ambiental del repositori; el descobriment de manifests és explícit
+- Cap autoritat compartida; cada ruta de mutació està controlada per SSIAG i STAV
+- Cap residència al camí crític; els motors mai no injecten latència a les càrregues de treball en directe
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Visió general de qxctl" icon="terminal" href="/ca/qxctl/overview">
+    CLI administrativa que invoca motors exactes validats per rebut.
+  </Card>
+
+  <Card title="Maestro" icon="chalkboard-user" href="/ca/governance/maestro">
+    Registra les relacions d'acoblament entre motors i receptors.
+  </Card>
+</CardGroup>

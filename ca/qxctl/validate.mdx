@@ -1,0 +1,54 @@
+---
+title: "qxctl validate: política d'avisos del Symphony Validator"
+description: "Administreu la política d'avisos protegida, la línia de base i la gramàtica de visualització sobre el Symphony Validator independent mitjançant qxctl sense alterar l'evidència en brut dels detectors."
+sidebarTitle: "validate"
+---
+
+La gramàtica `qxctl validate ...` administra la política d'avisos protegida, la línia de base i la gramàtica de visualització del Symphony Validator. El validador en C++ instal·lat de manera independent produeix evidència en brut immutable; qxctl administra una presentació protegida neutral respecte a l'invocador sense canviar la detecció.
+
+## Què cobreix qxctl validate
+
+- Nou fulles protegides del cicle de vida dels avisos
+- La ruta exacta de resum de l'arrel recolzada per rebut
+- Gestió de la línia de base i informes de diferències
+- Gramàtica de visualització per a sortida per línies i JSON estructurat
+
+Cada fulla valida el rebut exacte i els digests estructurats del validador abans d'aplicar la política d'avisos protegida.
+
+## Límit
+
+<Warning>
+  qxctl validate no pot reparar fitxers, publicar res ni anul·lar l'evidència en brut dels detectors. La disposició dels avisos afecta la presentació, no la detecció.
+</Warning>
+
+- Cap supressió d'avisos fora de la política protegida
+- Cap modificació de la sortida del validador
+- Cap cobertura inventada per a una ruta no disponible
+
+## Usos habituals
+
+- Establir o restablir una línia de base d'avisos
+- Aprovar o reobrir un avís històric governat
+- Emetre el resum de l'arrel recolzat per rebut que apareix al README del repositori
+
+El validador en què es basa aquesta gramàtica comprova la forma dels contractes, el tancament del codi font actual, la propietat dels invariants, l'administració de funcionalitats, les versions publicades i el resum de l'arrel propietat de la màquina.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Validador" icon="clipboard-check" href="/ca/governance/validator">
+    El verificador independent en C++ de només lectura que administra qxctl.
+  </Card>
+
+  <Card title="SSFV" icon="list-check" href="/ca/skv/ssfv">
+    Expectatives d'administració de funcionalitats comprovades a l'evidència.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/ca/skv/sodv">
+    Registres de versions publicades que apareixen a l'evidència del validador.
+  </Card>
+
+  <Card title="Visió general de qxctl" icon="terminal" href="/ca/qxctl/overview">
+    Superfície d'ordres completa.
+  </Card>
+</CardGroup>

@@ -1,0 +1,25 @@
+---
+title: "Changelog"
+description: "Neue Funktionen, Updates und Fehlerbehebungen für QuanuX Symphony."
+rss: true
+---
+
+<Update label="2. Oktober 2026" description="Woche vom 25. September" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Neue Funktionen
+
+- **Symphony Node Vector Engines.** Fünf unabhängig installierbare C++26-Engines decken jetzt Node-Identität (SNIV), Ressourcen (SNRV), Cluster-Beziehungen (SCIV), Namen (SCNV) sowie SNV-Komposition und -Aufbewahrung ab. Sie können bereitgestellte Nachweise, ausgewählte Ansichten und aufbewahrte Historie über qxctl verwalten. Live-Beobachtung und SOV-Provisionierung sind noch nicht enthalten. Siehe [Node Vector](/de/vectors/snv).
+- **Optionaler lokaler SNV-Observer.** qxctl kann einen separaten lokalen Observer aufrufen, der ausgewählte CPU- und Speicherbeobachtungen mit expliziter Unsicherheit meldet. Er vergibt niemals Identität, Mitgliedschaft oder Namen.
+- **SQV-Grundlagen für Forschungsdaten.** Neue C++26-Bibliotheken decken die Erfassung mit Originalbytes und Quellenherkunft (SQAV), Metadaten (SQMV), Datenfluss (SQFV), exakte Ganzzahlkonvertierung mit Herkunftsnachweis (SQTV), lokale Aufbewahrung (SQPV) sowie Auslieferung mit Checkpoints und exakter Wiederaufnahme (SQDV) ab. Siehe [Quantitative Vector](/de/vectors/sqv).
+- **SQV-Administration über qxctl.** Sieben unabhängig installierbare Administrations-Engines stellen Anfrage- und Konfigurationsvalidierung, Metadatenprojektionen und schreibgeschützte Inspektion des aufbewahrten Zustands bereit. Siehe [Vektorbefehle](/de/qxctl/vector-commands).
+- **Databento- und Broker-Adapter.** SQV unterstützt jetzt die Erfassung von Databento DBNv3 MBO, bewahrt DBNv1- und DBNv3-Beispiele und plant begrenzte historische Anfragen mit Abdeckungsnachweisen. Nicht-Live-Quell- und Broker-Leseadapter sind ebenfalls verfügbar. Authentifizierte Anbieterausführung und Live-Erfassung bleiben zukünftige Arbeit.
+
+## Updates
+
+- **SSIAG-Zulassung von Anmeldedaten.** SSIAG ergänzt Einmal-Schutzmechanismen für die Verwendung von Anmeldedaten, authentifizierte Dispatch-Zulassung, ein dauerhaftes Journal für Anmeldedatenanfragen mit Wiederherstellung und native Peer-Validierung unter macOS. Die operative Verwendung von Anmeldedaten bleibt deaktiviert. Siehe [SSIAG](/de/governance/ssiag).
+- **Befehlsabdeckung von qxctl.** qxctl verfügt jetzt über 399 stabile Befehlsidentitäten, zuvor 383. Engine-Bindungen unterstützen 13 etablierte Rollen, darunter die fünf SNV-Engines. Siehe [qxctl-Überblick](/de/qxctl/overview).
+- **SQFV-Batch-Schnittstelle.** Die SQFV-Batch-Bibliothek verwendet jetzt eine C++26-API anstelle einer C-ABI. Aktualisieren Sie alle Integrationen, die die bisherige Schnittstelle aufgerufen haben.
+- **SKVI-Kapazität.** [SKVI](/de/skv/skvi) indexiert mehr Oberflächen, darunter die neuen Eigentümer von SQV-Forschungsdaten.
+- **Anleitung zur Engine-Installation.** Die Installationsanleitung stellt jetzt klar, dass Sie jede Engine einzeln installieren, aktualisieren und entfernen. Siehe [Engines-Überblick](/de/engines/overview).
+
+</Update>

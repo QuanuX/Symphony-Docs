@@ -1,0 +1,48 @@
+---
+title: "SSIAG: Secure Identity and Access Governance voor Symphony"
+description: "SSIAG is het aanroeperneutrale autorisatiefundament van Symphony met inschrijving per TOPS, beschermde beleidslifecycle, veilige auditmetadata en native supervisiehooks."
+sidebarTitle: "SSIAG"
+---
+
+Symphony Secure Identity and Access Governance (SSIAG) is het onafhankelijk installeerbare, cgo-vrije Go-fundament voor aanroeperneutrale autorisatie op een Symphony-host. Het projecteert effectieve hostautoriteit, schermt beschermde mutaties af en integreert met STAV-audit voordat een wijziging zichtbaar wordt.
+
+## Wat SSIAG biedt
+
+- Exacte aanroeperneutrale autorisatie, gekoppeld aan eigendom van de doelhost, verleende toestemming, gevraagde bewerking, verwachte status en door de eigenaar geconfigureerde waarborgen
+- Inschrijving per TOPS en vertrouwen in lokale endpoints
+- Beschermde beleidslifecycle en lifecycle voor providerinstallaties
+- Bindingslifecycle met compare-and-swap tussen actieve en vorige bindingen
+- Veilige auditmetadata, voorbereid voor STAV
+- Native supervisie via launchd en systemd
+
+## Wat bewust is uitgeschakeld
+
+<Warning>
+  Operationeel gebruik van credentials, canonieke kennis-apply en levering van secrets blijven uitgeschakeld. Gewone fundamentele mutaties falen gesloten (fail closed) totdat de vereiste auditroute via STAV voltooid is.
+</Warning>
+
+SSIAG beslist niet over de klasse van de aanroeper. Menselijke aanroepers, AI, agents, services en workloads worden identiek behandeld; autoriteit komt van de doelhost en de gevraagde bewerking, niet van het label van de actor.
+
+## macOS Keychain-provider
+
+`modules/ssiag-provider-macos-keychain` is een Swift-metadata-adapter met een begrensde, wederzijds geverifieerde handshake en observatie van ondertekende bundels plus sessiegereedheid. Het stelt providermetadata beschikbaar aan SSIAG zonder operationele toegang tot de Keychain te verlenen, die vandaag bewust is uitgeschakeld.
+
+## Gerelateerde oppervlakken
+
+<CardGroup cols={2}>
+  <Card title="STAV" icon="scroll" href="/nl/governance/stav">
+    Append-only auditledger per TOPS waarop SSIAG-mutaties steunen.
+  </Card>
+
+  <Card title="Accordare-producer" icon="pen-nib" href="/nl/governance/accordare-producer">
+    Begrensd auditcircuit voor SAV Named Versions dat samenwerkt met SSIAG.
+  </Card>
+
+  <Card title="qxctl lifecycle" icon="terminal" href="/nl/qxctl/lifecycle">
+    Lifecyclebeheer dat SSIAG raadpleegt voor autorisatie.
+  </Card>
+
+  <Card title="Aanroeperautoriteit" icon="user-shield" href="/nl/concepts/caller-authority">
+    De doctrine die SSIAG implementeert.
+  </Card>
+</CardGroup>

@@ -1,0 +1,82 @@
+---
+title: "qxctl-vektorikomennot: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Tutustu nykyiseen vektorikohtaiseen qxctl-kielioppiin: SKVI, SCLV, SACV, SODV, SSFV, SHV-tallennus ja -luettelo sekä varatut accord- ja evolution-pinnat."
+sidebarTitle: "Vektorikomennot"
+---
+
+qxctl tarjoaa vektorikohtaisen kieliopin jokaiselle toteutetulle SKV-moottorille sekä SCV- ja SHV-hallinnalle. Ratifioitu Accordare- ja SEV-kielioppi käyttää komentoja `qxctl accord ...` ja `qxctl evolution ...`, kun niiden komentototeutukset ja vakaat rekisteritodisteet ovat olemassa.
+
+## SKV-moottorien kielioppi
+
+- `qxctl skvi ...`: inspect, check, propose, project SKVI-moottoria vasten
+- `qxctl sclv ...`: inspect, check, propose, recover, project SCLV-moottoria vasten
+- `qxctl sacv ...`: inspect, check, diff, propose, project SACV-moottoria vasten
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project SODV-moottoria vasten
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph SSFV-moottoria vasten
+
+Kutakin kielioppia rajaa omistavan moottorin sopimus. qxctl ei koskaan keksi operaatiota eikä ohita moottoria.
+
+## Accordare-lisäykset
+
+qxctl:n Accordare-lisäykset tarjoavat:
+
+- Vakaan tilan
+- Täsmäytyksen (toistaa vain tarkat ehdokkaat)
+- Valvojan asennuksen ja poiston (kutsuu vain todennettua receipt-v2-suoritettavaa tiedostoa)
+- Kaksi myöntöjen hallinnan identiteettiä, jotka muuttavat vain pysäytettyä STAV-konfiguraatiota SSIAG:n ja odotetun tilan palautuksen alaisuudessa
+
+Tila erottaa pysyvän aikomuksen ja liitejonon. Täsmäytys toistaa vain tarkat ehdokkaat. Myöntölehdet eivät koskaan avaa käynnissä olevaa konfiguraatiota.
+
+## SHV-tallennus
+
+Pysyvää SHV-tallennusta hallinnoidaan vain seuraavilla:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` säilytetyllä odotetulla aikomuksen digestillä toimii myös palautuksena. Erillistä palautusaliasta ei ole. Tallennuksen laajuus ilmoitetaan syötteessä; liittimen identiteetti asetetaan lipuilla. Rakenteellinen tallennus ei kopioi semanttista `shv graph validate` -toimintoa eikä valitse luettelon kärkeä.
+
+`shv graph store inventory` (julkaisu 0.2) lisää revisioon sidotun loogisen lukuoperaation eksplisiittisillä säilytetyillä kirjoittajaidentiteeteillä. Vanha 0.1-valinta on edelleen tuettu.
+
+## SHV-luettelon julkaisu
+
+Luettelon julkaisua hallinnoidaan vain seuraavilla:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Palautus on `apply --operation-id`, joka on toisensa poissulkeva `--input`-lipun kanssa. Käyttöoikeuksiin perustuva paikallinen luettelon valinta on eri asia kuin lähteen aktivointi ja yleinen graafitallennus.
+
+## Liittyvät pinnat
+
+<CardGroup cols={2}>
+  <Card title="SKV-yleiskatsaus" icon="book-open" href="/fi/skv/overview">
+    Moottorien toteuttama vektorisemantiikka.
+  </Card>
+
+  <Card title="SHV-vektori" icon="microchip" href="/fi/vectors/shv">
+    Hardware Vectorin tausta ja moottoriluettelo.
+  </Card>
+
+  <Card title="SHV-moottorit" icon="microchip" href="/fi/engines/shv-engines">
+    Moottoritason yksityiskohdat.
+  </Card>
+
+  <Card title="qxctl-yleiskatsaus" icon="terminal" href="/fi/qxctl/overview">
+    qxctl:n täydellinen komentopinta.
+  </Card>
+</CardGroup>

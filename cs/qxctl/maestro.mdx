@@ -1,0 +1,49 @@
+---
+title: "qxctl maestro: čtení inventáře přítomnosti receptorů Symphony"
+description: "Prozkoumejte autoritu přítomnosti Maestro v Symphony přes qxctl a zobrazte autentizované vztahy dokování vektorových enginů a odvozený inventář receptorů."
+sidebarTitle: "maestro"
+---
+
+Gramatika `qxctl maestro ...` zpřístupňuje důkazy přítomnosti z Maestra. Maestro je autoritou přítomnosti; qxctl pouze čte a zkoumá, co Maestro zaznamenává. Ani jeden z nich sám od sebe nevytváří vztahy dokování.
+
+## Inventář
+
+```bash Maestro inventory
+qxctl maestro inventory
+```
+
+`qxctl maestro inventory` zobrazuje úplný, odvozený inventář Maestra (pouze pro čtení) autentizovaných vztahů dokování vektorových enginů pro každý TOPS a receptor.
+
+## Související administrativní cesty
+
+Další listové příkazy qxctl zpřístupňují správu související s Maestrem:
+
+- Stav a inspekce důkazů dokování
+- Cesty obnovy ohraničené vlastními kontrakty Maestra
+- Základní zápis do životního cyklu a nativní supervize samotného Maestra
+
+Každá mutační cesta prochází přesným adaptérem vlastněným modulem. qxctl nikdy nevykresluje deskriptory Maestra z interního parsování ani implicitně nevyvolává nejnovější verzi.
+
+<Warning>
+  Maestro nespouští, neplánuje, nesupervizuje ani nevyvolává enginy. `qxctl maestro inventory` je pouze pro čtení. Samotná vazba, rekonciliace, koordinace relací ani plán životního cyklu přítomnost v Maestru nezakládá.
+</Warning>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Maestro" icon="chalkboard-user" href="/cs/governance/maestro">
+    Kontrakt a hranice autority přítomnosti.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/cs/qxctl/engines">
+    Registr vazeb enginů (vazby nejsou dokování).
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/cs/qxctl/session">
+    Autentizované relace používané k zaznamenání přítomnosti.
+  </Card>
+
+  <Card title="Přehled enginů" icon="cube" href="/cs/engines/overview">
+    Nezávisle instalovatelné vektorové enginy, které se dokují s Maestrem.
+  </Card>
+</CardGroup>

@@ -1,0 +1,25 @@
+---
+title: "Muutosloki"
+description: "QuanuX Symphonyyn julkaistut uudet ominaisuudet, päivitykset ja korjaukset."
+rss: true
+---
+
+<Update label="2. lokakuuta 2026" description="Viikko 25. syyskuuta alkaen" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
+
+## Uudet ominaisuudet
+
+- **Symphony Node Vector -moottorit.** Viisi toisistaan riippumattomasti asennettavaa C++26-moottoria kattaa nyt Noden identiteetin (SNIV), resurssit (SNRV), klusterisuhteet (SCIV), nimet (SCNV) sekä SNV:n koostamisen ja säilytyksen. Voit hallinnoida toimitettua näyttöä, valittuja näkymiä ja säilytettyä historiaa qxctl:n kautta. Reaaliaikainen havainnointi ja SOV-provisiointi eivät vielä sisälly. Katso [Node Vector](/fi/vectors/snv).
+- **Valinnainen SNV:n paikallinen tarkkailija.** qxctl voi käynnistää erillisen paikallisen tarkkailijan, joka raportoi valittuja suoritin- ja muistihavaintoja eksplisiittisen epävarmuuden kanssa. Se ei koskaan määritä identiteettiä, jäsenyyttä tai nimiä.
+- **SQV:n tutkimusdatan perustat.** Uudet C++26-kirjastot kattavat keruun alkuperäisine tavuineen ja lähdetietoineen (SQAV), metatiedot (SQMV), virran (SQFV), tarkan kokonaislukumuunnoksen polveutumistietoineen (SQTV), paikallisen säilytyksen (SQPV) sekä toimituksen tarkistuspisteineen ja tarkkoine jatkamisineen (SQDV). Katso [Quantitative Vector](/fi/vectors/sqv).
+- **SQV:n hallinta qxctl:n kautta.** Seitsemän toisistaan riippumattomasti asennettavaa hallintamoottoria tarjoaa pyyntöjen ja konfiguraation validoinnin, metatietoprojektiot sekä säilytetyn tilan vain luku -tarkastelun. Katso [Vektorikomennot](/fi/qxctl/vector-commands).
+- **Databento- ja välittäjäsovittimet.** SQV tukee nyt Databento DBNv3 MBO -keruuta, säilyttää DBNv1- ja DBNv3-näytteet ja suunnittelee rajattuja historiallisia pyyntöjä kattavuusnäytön kera. Saatavilla on myös muita kuin reaaliaikaisia lähde- ja välittäjälukusovittimia. Todennettu palveluntarjoajan suoritus ja reaaliaikainen keruu ovat edelleen tulevaa työtä.
+
+## Päivitykset
+
+- **SSIAG:n tunnistetietojen hyväksyntä.** SSIAG lisää kertakäyttöiset tunnistetietojen käytön suojaukset, todennetun lähetyksen hyväksynnän, pysyvän tunnistetietopyyntöjen lokin palautuksineen sekä natiivin vertaisvalidoinnin macOS:ssä. Tunnistetietojen operatiivinen käyttö pysyy poissa käytöstä. Katso [SSIAG](/fi/governance/ssiag).
+- **qxctl-komentojen kattavuus.** qxctl:ssä on nyt 399 vakaata komentoidentiteettiä, kun aiemmin niitä oli 383. Moottorisidonnat tukevat 13:a vakiintunutta roolia, mukaan lukien viisi SNV-moottoria. Katso [qxctl:n yleiskatsaus](/fi/qxctl/overview).
+- **SQFV:n eräliittymä.** SQFV:n eräkirjasto käyttää nyt C++26-rajapintaa C ABI:n sijaan. Päivitä integraatiot, jotka kutsuivat aiempaa liittymää.
+- **SKVI:n kapasiteetti.** [SKVI](/fi/skv/skvi) indeksoi useampia pintoja, mukaan lukien uudet SQV:n tutkimusdatan omistajat.
+- **Moottorien asennusohjeet.** Asennusohjeissa selvennetään nyt, että jokainen moottori asennetaan, päivitetään ja poistetaan erikseen. Katso [Moottorien yleiskatsaus](/fi/engines/overview).
+
+</Update>

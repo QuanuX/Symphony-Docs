@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile : réconciliation des worktrees"
+description: "Réconciliez des worktrees avec un coordinateur Symphony lié grâce à des vérifications de compatibilité, des journaux de point de contrôle et de clôture, et une récupération à deux emplacements fondée sur les preuves."
+sidebarTitle: "reconcile"
+---
+
+La grammaire `qxctl knowledge reconcile ...` pilote la réconciliation des worktrees via un unique Knowledge Session Coordinator lié de manière exacte. Chaque mutation est suivie par un identifiant stable et constitue un compare-and-swap par rapport au digest exact du journal courant.
+
+## Commandes
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility` : vérifier que qxctl, le coordinateur et les moteurs liés s’accordent sur la version du protocole et la portée.
+- `begin` : ouvrir un nouveau contexte de réconciliation avec un identifiant d’opération stable.
+- `status` : inspecter le journal courant sans mutation.
+- `checkpoint` : faire avancer durablement le journal par compare-and-swap.
+- `close` : finaliser le contexte de réconciliation.
+- `recover --discover` : récupération par découverte lorsque le statut ordinaire ne peut pas valider l’état local.
+
+## Règles de récupération
+
+<Warning>
+  La récupération à deux emplacements est une réparation vers l’avant fondée sur les preuves. Elle n’autorise jamais à écarter un journal incompatible ou une extension critique inconnue. Si la récupération échoue, escaladez plutôt que de forcer.
+</Warning>
+
+N’utilisez la récupération par découverte que lorsque le statut ordinaire ne peut pas valider l’état local. Conservez les blocages ; ne replanifiez qu’après une modification vérifiée des preuves.
+
+## Surfaces associées
+
+<CardGroup cols={2}>
+  <Card title="Coordinateur de session" icon="gears" href="/fr/engines/coordinator">
+    Le moteur qui détient les journaux de réconciliation.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fr/qxctl/session">
+    Sessions authentifiées associées aux contextes de réconciliation.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/fr/qxctl/engines">
+    Gérez les liaisons consommées par le coordinateur.
+  </Card>
+</CardGroup>

@@ -1,0 +1,51 @@
+---
+title: "SKVI: indexovací engine Symphony Knowledge Vector"
+description: "SKVI deterministicky indexuje každou kanonickou plochu SKV právě jednou, kontroluje pokrytí deklarované v manifestu a emituje jednorázové projekce vázané na digest, aniž by se dotkl pravdy."
+sidebarTitle: "SKVI"
+---
+
+Symphony Knowledge Vector Index (SKVI) je engine, který mapuje aktuální kanonickou pravdu napříč všemi plochami SKV. Jde o nezávisle instalovatelný proces v C++, který pracuje deterministicky, pouze pro čtení, a nemůže rozhodovat o členství ani zapisovat kanonické soubory.
+
+## Co SKVI dělá
+
+SKVI provádí tři ohraničené operace:
+
+- **Inspect a check**: ověří, že každá povinná plocha deklarovaná v manifestu je indexována právě jednou se stabilním vlastníkem, rolí pravdy, vztahy, konzumenty a způsobilostí k projekci.
+- **Propose**: přijímá neměnné návrhy změn indexu deklarované volajícím, aniž by je aplikoval.
+- **Project**: emituje jednorázové projekce aktuálního indexu vázané na digest pro navazující konzumenty.
+
+## Co SKVI nedělá
+
+SKVI nikdy nerozhoduje o tom, zda si něco zaslouží být funkcí, ani o členství v manifestu. Vlastnictví zůstává u Contract Quadu každého vektoru. SKVI dále:
+
+- Nezapisuje ani nepřepisuje kanonický Markdown
+- Nic nepublikuje do veřejné projekce
+- Neuděluje autoritu jen proto, že vygeneroval důkazy
+
+## Kdy jej použít
+
+SKVI použijte k potvrzení, že je repozitář plně pokryt, ještě než navrhnete změnu zdrojů, nebo ke zjištění, jakého vlastníka a jakou roli pravdy konkrétní plocha nese. Jeho projekce slouží recenzentům návrhů, kontextu agentů a baseline validátoru.
+
+<Note>
+  SKVI je jedním z enginů pro čtení, dotazování, validaci a navrhování. Kanonické apply zůstává napříč ratifikovanými vektorovými enginy zakázáno, dokud nebudou dokončeny kontrakty každého enginu pro SSIAG, transakce s očekávaným stavem, pojistky qxctl, události STAV, obnovu a negativní testy.
+</Note>
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Přehled SKV" icon="book-open" href="/cs/skv/overview">
+    Zastřešující framework, který spravuje SKVI.
+  </Card>
+
+  <Card title="SCLV" icon="clock-rotate-left" href="/cs/skv/sclv">
+    Účetní kniha změn (pouze připisování), která zaznamenává dokončené podstatné změny zdrojů.
+  </Card>
+
+  <Card title="Vektorové příkazy qxctl" icon="terminal" href="/cs/qxctl/vector-commands">
+    Spusťte `qxctl skvi ...` pro vyvolání inspect, check a propose.
+  </Card>
+
+  <Card title="Validátor" icon="clipboard-check" href="/cs/governance/validator">
+    Nezávislé kontroly pouze pro čtení, které doplňují pokrytí SKVI.
+  </Card>
+</CardGroup>

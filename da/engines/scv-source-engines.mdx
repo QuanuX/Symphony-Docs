@@ -1,0 +1,74 @@
+---
+title: "SCV-engines til kildeviden: udbydervirkelighed for Symphony"
+description: "Otte uafhængigt pakkede engines til SCV, hyperscalere, edge og udbydere bevarer præcise kilderevisioner og producerer reproducerbar graf- og forespørgselsevidens."
+sidebarTitle: "SCV-engines"
+---
+
+SCV-engines til kildeviden er otte uafhængigt pakkede C++26-processer, der rummer privat semantisk viden om eksterne udbyderes ressourcer, tilbud, regioner, begrænsninger og hybride muligheder. De bevarer præcise kilderevisioner og afgrænsede indsamlinger, så efterfølgende værktøjer kan reproducere resultater.
+
+## Engines
+
+<CardGroup cols={2}>
+  <Card title="scv-engine" icon="cloud">
+    Overordnet SCV-kilde-engine for det fælles cloud-ordforråd.
+  </Card>
+
+  <Card title="scev-engine" icon="server">
+    Kilde-engine til Symphony Cloud Edge Vector.
+  </Card>
+
+  <Card title="scev-cf-engine" icon="cloud-bolt">
+    Cloudflare-specifik edge-kilde-engine.
+  </Card>
+
+  <Card title="schv-aws-engine" icon="aws">
+    Kilde-engine til Amazon Web Services.
+  </Card>
+
+  <Card title="schv-azure-engine" icon="microsoft">
+    Kilde-engine til Microsoft Azure.
+  </Card>
+
+  <Card title="schv-do-engine" icon="digital-ocean">
+    Kilde-engine til DigitalOcean.
+  </Card>
+
+  <Card title="schv-gcp-engine" icon="google">
+    Kilde-engine til Google Cloud Platform.
+  </Card>
+
+  <Card title="scv-graph-duckdb-connector" icon="database">
+    Valgfri DuckDB-connector til indeksering af opbevarede relationelle grafer.
+  </Card>
+</CardGroup>
+
+## Hvad SCV-engines gør
+
+- Bevarer eksplicitte kilderevisioner og afgrænsede indsamlinger
+- Opbevarer kvalificerede påstande og indbygget dokumentstruktur
+- Producerer reproducerbar graf- og forespørgselsevidens
+- Forsyner portable udbyderpakker og endelig, kalderstyret sammensætning
+
+## Hvad de ikke gør
+
+<Warning>
+  Udbyderoperationer og komplette cloud-kataloger ligger fortsat uden for dette trin. SCV-engines beskriver, hvad der vides; de handler ikke på udbydere.
+</Warning>
+
+qxctl administrerer separat reviderede lokale kildeændringer og sammenhængende grafvalg gennem opbevarede arbejdsgange og beskyttet grafvalg. Dedikeret grafgennemløb og operationelle adaptere er fortsat separat arbejde.
+
+## Relaterede overflader
+
+<CardGroup cols={2}>
+  <Card title="SCV-vector" icon="cloud" href="/da/vectors/scv">
+    Cloud Vector-kontrakten, som disse engines implementerer.
+  </Card>
+
+  <Card title="SOV-vector" icon="terminal" href="/da/vectors/sov">
+    Ops Vector, der handler på SCV-evidens via qxctl.
+  </Card>
+
+  <Card title="qxctl-vector-kommandoer" icon="terminal" href="/da/qxctl/vector-commands">
+    Grafvalg, kildearbejdsgange og administration af DuckDB-connectoren.
+  </Card>
+</CardGroup>

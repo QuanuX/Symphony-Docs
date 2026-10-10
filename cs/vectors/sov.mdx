@@ -1,0 +1,55 @@
+---
+title: "Symphony Ops Vector: řízení operací přes qxctl"
+description: "SOV definuje doménu operací spravovanou přes qxctl pro zřizování, přípravu Habitat, doručování Nest, adaptéry sběrnic a volitelnou vzdálenou správu Nodes."
+sidebarTitle: "Ops Vector"
+---
+
+Symphony Ops Vector (SOV) je provozní řídicí rovina, jejímž prostřednictvím autorizované příkazy qxctl působí na vaši infrastrukturu. Vlastní kontrakt pro zřizování, přípravu Habitat, doručování Nest (pracovní zátěže), nastavení adaptérů sběrnic a volitelnou vzdálenou správu Nodes. SOV si nevymýšlí význam poskytovatelů ani fakta o hardwaru; provádí podporované volby, které jste již vybrali.
+
+## Co SOV pokrývá
+
+SOV je vznikající doména fáze 2. Její rozsah zahrnuje:
+
+- **Zřizování**: pracovní postupy alokace prostředků u poskytovatelů a na vlastním hardwaru
+- **Příprava Habitat**: přesná příprava OS a balíčků doručená na Node
+- **Doručování Nest**: umístění a aktualizace pracovní zátěže na Node
+- **Zřízení adaptérů sběrnic**: propojení Nodes zvolenou sběrnicí (NATS JetStream, ZeroMQ nebo jiné)
+- **Vzdálené operace s Nodes**: volitelná správa Nodes mimo váš místní shell
+
+<Note>
+  Protokoly poskytovatelů, spouštění Terraformu, sestavovače Habitat, příkazy pro nasazení Nest a přijímače vzdálených operací teprve čekají na návrh. Momentálně není implementován žádný engine SOV ani mutace u poskytovatelů.
+</Note>
+
+## Jak SOV souvisí s ostatními vektory
+
+SOV je řídicí rovina, nikoli zdroj znalostí. Jedná na základě důkazů vlastněných jinými vektory:
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/cs/vectors/scv">
+    Poskytuje znalosti o poskytovatelích a externích prostředcích. SOV čte důkazy SCV, aby rozhodl, které operace jsou kompatibilní.
+  </Card>
+
+  <Card title="SNV" icon="server" href="/cs/vectors/snv">
+    Po dokončení operací SOV zaznamenává výsledné identity Nodes, členství v clusterech a názvy.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/cs/vectors/shv">
+    Může později poskytovat podrobné důkazy o hardwarových schopnostech, které omezí volby při zřizování.
+  </Card>
+
+  <Card title="SKV" icon="book-open" href="/cs/skv/overview">
+    Spravuje kontrakty SOV, důsledky změn, indexování a integraci životního cyklu.
+  </Card>
+</CardGroup>
+
+## qxctl jako příkazová plocha
+
+Operace SOV jsou zpřístupněny prostřednictvím `qxctl`, administrativního CLI napsaného v Go se 373 spustitelnými příkazy. qxctl implementuje a prezentuje operace SOV, ale nevlastní jejich doménový význam. Sémantiku vlastní vektor; nástroj vlastní plochu provádění.
+
+## Hranice autority uživatele
+
+Poskytovatele, regiony, hardware, sběrnice, software, topologii nasazení i uspořádání správy jednotlivých Nodes volíte vy. SOV podporované volby zpřístupňuje a provádí. Neřadí poskytovatele, nedoporučuje topologie ani nemění návrhy v povinnou politiku.
+
+## Aktuální stav
+
+SOV je kanonický architektonický kontrakt. Netvrdí se, že by byl implementován jakýkoli engine, obal Terraformu, sestavovač Habitat, adaptér sběrnice nebo přijímač vzdálených příkazů. Budoucí komponenty SOV zůstanou nezávisle instalovatelné, volitelné podle přesné verze a vratitelné v rámci společného životního cyklu SKV.

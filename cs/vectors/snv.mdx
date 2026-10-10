@@ -1,0 +1,57 @@
+---
+title: "Symphony Node Vector: identita Nodes a záznamy clusterů"
+description: "SNV zaznamenává a propojuje identitu Nodes, jejich prostředky, členství v clusterech a uživatelem přidělené názvy, aniž by je určoval. Skládá se z podvektorů SNIV, SNRV, SCIV a SCNV."
+sidebarTitle: "Node Vector"
+---
+
+Symphony Node Vector (SNV) zaznamenává a propojuje identity, prostředky, členství v clusterech a názvy fyzických Nodes (uzlů), které se Symphony používáte. Skládá se ze čtyř podvektorů, z nichž každý vlastní samostatnou sémantickou hranici. SNV za vás nic nevybírá, nevydává, neurčuje ani automaticky nepřejmenovává.
+
+## Složení podvektorů
+
+SNV je postaven na čtyřech trvalých sémantických doménách:
+
+<CardGroup cols={2}>
+  <Card title="SNIV" icon="fingerprint">
+    **Identita Node**: identita fyzického Node a jeho přesné vazby na prostředek poskytovatele, zvolenou nabídku a infrastrukturní doménu.
+  </Card>
+
+  <Card title="SNRV" icon="gauge">
+    **Prostředky Node**: pravda o místních a explicitně kvalifikovaných vzdálených prostředcích Node.
+  </Card>
+
+  <Card title="SCIV" icon="network-wired">
+    **Identita clusteru**: identita clusteru, konektivita sběrnice a vztahy Node v clusteru.
+  </Card>
+
+  <Card title="SCNV" icon="tag">
+    **Konsolidované pojmenování**: řešení názvů již přidělených vámi nebo vašimi poskytovateli, ohraničené SNV.
+  </Card>
+</CardGroup>
+
+## Hranice zaznamenávání
+
+SNV zaznamenává fakta a jejich původ. Nerezervuje názvy, nealokuje prostředky ani za vás nevytváří clustery. Názvy přiděluje uživatel; Symphony je zaznamenává. Prostředky poskytovatelů vybírá uživatel; Symphony je propojuje. Topologii clusteru navrhuje uživatel; Symphony ji dokumentuje.
+
+## Jak SNV souvisí s ostatními vektory
+
+<CardGroup cols={2}>
+  <Card title="SCV" icon="cloud" href="/cs/vectors/scv">
+    Poskytuje znalosti o poskytovatelích a externích prostředcích, které určují, jaké Nodes mohou existovat.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/cs/vectors/sov">
+    Zřizuje a mění infrastrukturu prostřednictvím qxctl a vytváří tak Nodes, které SNV zaznamenává.
+  </Card>
+
+  <Card title="SHV" icon="cpu" href="/cs/vectors/shv">
+    Může poskytovat podrobné důkazy o hardwarových schopnostech fyzických komponent uvnitř Node.
+  </Card>
+</CardGroup>
+
+## Aktuální stav
+
+SNV je vznikající kanonický architektonický kontrakt. Momentálně není implementován žádný engine SNV, graf, schéma registru, kodér identit, služba zjišťování, služba pojmenování ani příkaz qxctl. Schémata záznamů a enginy jsou odloženy.
+
+## Budoucí instalovatelnost
+
+Každý budoucí engine SNV musí být nezávisle instalovatelný a schopný znovu sestavit své projekce z přesných důkazů vlastníka. Žádný engine se nestává autoritou pro identity nebo pojmenování jen tím, že ukládá nebo řeší záznamy.

@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector und Registry"
+description: "SSFV verantwortet kanonische Feature-Identität, Semantik, Hierarchie, Lifecycle und Administrationssicherung über jedes implementierte Symphony-Modul und jede qxctl-Oberfläche hinweg."
+sidebarTitle: "SSFV"
+---
+
+Der Symphony Semantic Feature Vector (SSFV) verantwortet die Verträge für kanonische Identität, Semantik, Hierarchie, Lifecycle, Abgrenzungen, verteiltes Record-Routing, Abdeckungsinventar und Graphprojektion von Anwendungsfeatures. Seine Engine ist ein unabhängig installierbarer C++-Prozess, der strukturelle und aktualitätsbewusste Feature-Prüfungen durchführt.
+
+## Operationen
+
+- **Inspect und Check**: strukturelle und aktualitätsbewusste Feature-Bewertung.
+- **Diff**: inhaltsadressierte Diffs zwischen Feature-Zuständen.
+- **Propose**: vom Aufrufer deklarierte Vorschläge zur Aufnahme oder Änderung von Features.
+- **Graph**: deterministische, verwerfbare Feature-Graphen zur Prüfung.
+
+## Registrierte Abdeckung
+
+Der aktuell registrierte Katalog ist ausdrücklich unvollständig:
+
+- **110** registrierte Features
+- **35** registrierte Eigentümerbereiche
+- **76** ratifizierte verschachtelte Features
+- **295** geprüfte Oberflächen der Feature-Administration (**285** erforderlich, **13** nachweisgestützte Ausnahmen, **9** Verbote, **0** ungeprüft)
+
+Die registrierten Eigentümerbereiche umfassen jedes implementierte Modul, von `qxctl` und dem Validator über die SKV-Engines und SSIAG-Provider bis hin zu den SCV- und SHV-Engine-Familien.
+
+## Was SSFV nicht tut
+
+<Warning>
+  SSFV entscheidet nicht über Feature-Würdigkeit, erfindet keine Identitäten und beansprucht keine Vollständigkeit von Repository oder Host. `review_required` ist ein Nachweis zur Prüfung durch den Aufrufer, keine Ratifizierung und keine Apply-Autorität.
+</Warning>
+
+Prüfung, Aufnahme und Lifecycle-Änderungen von Features verbleiben beim jeweils verantwortlichen Vertrag des Features.
+
+## Verwandte Oberflächen
+
+<CardGroup cols={2}>
+  <Card title="SKV-Übersicht" icon="book-open" href="/de/skv/overview">
+    Das übergreifende Framework, das SSFV regelt.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/de/skv/sev">
+    Wendet Evolutionsfälle auf Hinzufügungen, Änderungen und Außerdienststellungen von Features an.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/de/qxctl/session">
+    Persistente SSFV-Wartungssessions über qxctl verwalten.
+  </Card>
+
+  <Card title="qxctl-Vektorbefehle" icon="terminal" href="/de/qxctl/vector-commands">
+    Führen Sie `qxctl ssfv ...` für inspect, check, diff, propose und graph aus.
+  </Card>
+</CardGroup>

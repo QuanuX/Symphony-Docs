@@ -1,0 +1,48 @@
+---
+title: "SODV: حوكمة التوثيق الرسمي والإصدارات"
+description: "يحكم SODV النشر الرسمي لـ QuanuX عبر فحوص دفتر الإصدارات القابل للإلحاق فقط، والتحقق من الملاحظات التي يقدمها المستدعي، وعمليات جرد الإصدارات المؤقتة."
+sidebarTitle: "SODV"
+---
+
+يحكم متجه التوثيق الرسمي في Symphony ‏(SODV) كيفية تحوّل المعرفة داخل إطار SKV إلى توثيق عام رسمي وسجلات إصدارات. ومحركه عملية C++ قابلة للتثبيت بشكل مستقل تُجري فحوصًا محلية على دفتر الإصدارات القابل للإلحاق فقط وتنتج عمليات جرد مؤقتة للإصدارات. لا ينشر SODV أي شيء بنفسه.
+
+## العمليات
+
+- **الفحص والتحقق**: التحقق من شكل دفتر الإصدارات واستمراريته.
+- **التوثيق (Verify)**: فحص ملاحظات المستدعي عن الحالة المنشورة.
+- **الاقتراح**: قبول مقترحات إصدار محايدة تجاه المزوّد.
+- **الاسترداد**: إجراء استرداد غير معدِّل.
+- **الإسقاط**: إصدار عمليات جرد مؤقتة للإصدارات.
+
+## ما لا يفعله SODV
+
+- لا يملك SODV أي وصول إلى الشبكة.
+- لا ينشر SODV شيئًا إلى GitHub أو Mintlify أو سجلات الحزم أو أي واجهة أخرى.
+- لا ينشئ SODV وسومًا (tags) ولا يمكنه إعلان اكتمال إصدار.
+- لا يرتّب SODV المزوّدين ولا يفضّل مسار نشر معينًا.
+
+يحدث النشر عبر أدوات منفصلة مخوّلة تستشير أدلة SODV.
+
+## منشورات SODV المكتملة
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` عند الوسم `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` عند الوسم `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` عند الوسم `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="أوامر المتجهات في qxctl" icon="terminal" href="/ar/qxctl/vector-commands">
+    شغّل `qxctl sodv ...` للفحص والتوثيق والاقتراح والإسقاط.
+  </Card>
+</CardGroup>
+
+<Note>
+  كل محركات SKV مخصصة للقراءة والاستعلام والتحقق والاقتراح فقط. التطبيق القانوني معطّل حتى تكتمل لكل محرك عقود SSIAG، ومعاملة الحالة المتوقعة، وضمانات qxctl، وأحداث STAV، والاسترداد، والاختبارات السلبية.
+</Note>

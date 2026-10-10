@@ -1,0 +1,37 @@
+---
+title: "Node, Habitat a Nest v Symphony"
+description: "Zjistěte, jak Symphony modeluje fyzickou infrastrukturu: Node jako fyzický počítač, Habitat jako přesné vybavení OS a Nest jako workload sloužící účelu uživatele."
+sidebarTitle: "Node, Habitat, Nest"
+---
+
+Symphony definuje tři fyzické koncepty, které oddělují identitu hardwaru, softwarové vybavení a workload uživatele. Tyto koncepty udržují jednotlivé oblasti infrastruktury oddělené, takže o každé z nich můžete uvažovat samostatně.
+
+## Node
+
+**Node** je cílový fyzický výpočetní prostředek s konkrétně identifikovanými prostředky. Odpojení, opětovné připojení, restart nebo nové nahrání pouze softwaru nevytváří nový fyzický Node. Zničení, fyzická výměna nebo podstatná lokální změna hardwaru ano. Inkarnace Node je samostatný důkaz, který vzniká, když je daný Node připojen ke sběrnici jako účastník obchodního systému, výzkumného clusteru nebo jiného systému postaveného na Symphony.
+
+## Habitat
+
+**Habitat** je přesné vybavení operačním systémem a balíčky, které je do Node dodáno pro vámi zvolenou práci. Ve výchozím stavu obsahuje pouze požadovaný softwarový povrch: žádné nesouvisející balíčky, skryté runtimy, kontejnery, Kubernetes ani implicitní virtualizaci. Široký univerzální Habitat zůstává platnou explicitní volbou uživatele.
+
+## Nest
+
+**Nest** (hnízdo) slouží účelu, který si zvolíte. Očekává se, že běžným případem bude živé provádění strategie, přičemž jedna strategie může obsahovat mnoho modulárních částí kódu. Symphony však účel Nestu nedefinuje ani jej neztotožňuje s jedním zdrojovým souborem, procesem, algoritmem, API brokera nebo datovým rozhraním. Logika strategie zůstává vaší doménou.
+
+## Srovnání
+
+| Koncept | Co to je | Co jej mění |
+| --- | --- | --- |
+| **Node** | Fyzický počítač s konkrétními prostředky | Fyzické zničení, výměna nebo podstatná změna hardwaru |
+| **Habitat** | Přesné vybavení OS a balíčky na Node | Explicitní volba uživatele nebo vybavení spravované přes qxctl |
+| **Nest** | Workload sloužící účelu uživatele, dodaný do Habitatu | Nasazení strategie nebo jiné zvolené práce uživatelem |
+
+## Cluster a topologie sběrnic
+
+Více Nodů tvoří cluster pouze tehdy, jsou-li vzájemně propojeny jednou nebo více sběrnicemi. V jednom clusteru může koexistovat více struktur sběrnic a vztah Node v clusteru může identifikovat příslušnou sběrnici, aniž by se změnila identita fyzického Node.
+
+Adaptéry sběrnic, jako jsou NATS JetStream a ZeroMQ, volí uživatel; nejsou součástí doktríny. Přenosy velkých objemů, řízení, výzkum a výstupy provádění nemusejí sdílet jednu sběrnici. Topologie může používat více sběrnic nebo pro deklarovanou cestu sběrnici obejít.
+
+## Rozsah TOPS a TROG
+
+**TOPS** je dominantní rozsah obchodního operačního systému (Trade Operating System). **TROG** je záměrně podřízený, neglobální rozsah obchodní skupiny. Navzdory historickému označení není TROG nutně virtuální. Jeho rozlišující vlastností je, že jeho rozsah a pravidla nejsou univerzální.

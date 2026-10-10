@@ -1,0 +1,56 @@
+---
+title: "qxctl knowledge: vectoroverstijgend levenscyclusbeheer"
+description: "De commandogroep qxctl knowledge beheert de vectoroverstijgende levenscyclus, sessietransities, invariantquery's en het persistente SSFV-onderhoud."
+sidebarTitle: "knowledge"
+---
+
+De groep `qxctl knowledge ...` is eigenaar van het vectoroverstijgende levenscyclusbeheer en het beheer van persistente SSFV-sessies. Het is het toegangspunt voor door de coördinator ondersteunde bewerkingen en voor invariantquery's op de validator.
+
+## Sessietransitie
+
+Gebruik `qxctl knowledge session transition` om een levenscyclusgebeurtenis van de host door te geven aan een bestaande sessie:
+
+```bash Session transition
+qxctl knowledge session transition --event login|refresh|logout --event-id ID
+```
+
+Veilige herhaalpogingen hergebruiken dezelfde gebeurtenis-ID. Voeg `--recover` alleen toe wanneer discovery-herstel van beschadigd lokaal sessiebewijs de bedoeling is; het herstelt geen weigering, incompatibele kritieke status of ambiguïteit.
+
+<Warning>
+  Symphony installeert via dit commando geen login-hook, watcher of boot-unit. Gebruik het alleen wanneer een expliciete levenscyclusintegratie van de host een stabiele gebeurtenisidentiteit aanlevert.
+</Warning>
+
+## Invariantquery's
+
+Vier leaves binden `ssfv:symphony:qxctl.invariant-assurance`:
+
+```bash Invariant queries
+qxctl knowledge invariant status
+qxctl knowledge invariant list
+qxctl knowledge invariant show
+qxctl knowledge invariant check
+```
+
+`check` bindt daarnaast `ssfv:symphony:symphony-validator.invariant-ownership-assurance`.
+
+Directe query-leaves geven `symphony.knowledge.invariant-query-result.v1` uit met `semantic_validity=not_asserted`. `check` retourneert het exacte, volledige validatorresultaat en behoudt exitcode 26.
+
+## Subcommandogroepen
+
+<CardGroup cols={2}>
+  <Card title="lifecycle" icon="rotate" href="/nl/qxctl/lifecycle">
+    Profiel, eigendom, observeren, rapporteren, booten, toepassen en herstel.
+  </Card>
+
+  <Card title="engines" icon="cube" href="/nl/qxctl/engines">
+    Engine-bindingsregister: list, inspect, doctor, bind, unbind, migrate.
+  </Card>
+
+  <Card title="reconcile" icon="arrows-rotate" href="/nl/qxctl/reconcile">
+    Grammatica voor worktree-reconciliatie via de coördinator.
+  </Card>
+
+  <Card title="session" icon="key" href="/nl/qxctl/session">
+    Geauthenticeerde sessies en SSFV-onderhoudsstromen.
+  </Card>
+</CardGroup>

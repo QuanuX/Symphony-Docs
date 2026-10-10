@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: kennis over hardwaremogelijkheden"
+description: "SHV onderhoudt kennis over hardwaremogelijkheden voor CPU's, GPU's, NIC's, moederborden, RAM en NVMe via meerdere onafhankelijk installeerbare C++-engines."
+sidebarTitle: "Hardware Vector"
+---
+
+De Symphony Hardware Vector (SHV) is eigenaar van kennis over hardwaremogelijkheden die u helpt begrijpen hoe fysiek ontwerp kwantitatieve software kan mogelijk maken, beperken, porteren of uitbreiden. De vector omvat processors, CPU-kerntypen, GPU's, NIC's en glasvezelinterfaces, moederborden, cachehiërarchieën, geheugen, NVMe en complete systeembuilds. Standaardcuratie geeft voorrang aan originele componenten en onderbouwde varianten vanaf 2018.
+
+## Scope en dekking
+
+SHV kan elke onderbouwde fysieke mogelijkheid omvatten die relevant is voor programmaontwerp. U bepaalt het dekkingsprofiel via qxctl. De standaarddatumbasis is de introductie van het model, niet een afgeleide individuele productiedatum. U kunt dit filter uitbreiden, versmallen, vervangen of verwijderen.
+
+## Geïmplementeerde engines
+
+SHV-kennis wordt geleverd via meerdere onafhankelijk installeerbare C++-engines:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Kernel (0.4.0-dev): dekkingsprofielen, build/replay van de catalogus uit bewaarde bronnen, evaluatie van vereisten, deterministische graafprojectie en op bronnen gebaseerde graafvalidatie.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Bronidentiteit, verplaatsingsplannen, binding van byte-capture en via bronnen opnieuw afgespeelde herkomstgrafen.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Conformiteit van declaraties, draagbare recepten en exacte lokale bronbinding.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Bewerkingen voor hardwarepartities en componentmapping.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Beschermde catalogus-heads van aanroepers, replay van originele bronnen en duurzaam snapshotherstel.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Generieke C++-graafpoort en draagbare in-memory referentieadapter voor verliesvrije uitwisseling.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Optionele relationele DuckDB-projectie van hardwaregraafbewijs.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Begrensde PDF-extractie en hervalidatie van documentaire beweringen op basis van de originele bytes.
+  </Card>
+</CardGroup>
+
+## Bronrevisie en herkomst
+
+De `shv-source-engine` implementeert stabiele bronidentiteit, expliciete verplaatsingsplannen, pure transitievalidatie, binding van daadwerkelijk vastgelegde bytes en via bronnen opnieuw afgespeelde herkomstgrafen. Dit zijn alleen-lezen bewerkingen. Kerncuratie geeft voorrang aan de originele componentidentiteit en onderbouwde varianten. Beschermde bronactivering wordt afzonderlijk afgehandeld; de pure bronengine verleent geen autoriteit.
+
+## Graafuitwisseling en opslag
+
+De `shv-graph-adapter` levert een generieke C++-graafpoort voor verliesvrije uitwisseling en structurele query's. Duurzame opslag is geïmplementeerd via de standaard DuckDB-SQL. Er is momenteel geen speciale graafdatabase geselecteerd.
+
+## Grens van PDF-bewijs
+
+De `shv-pdf-adapter` extraheert gekwalificeerde documentaire beweringen uit expliciete PDF-tabellen en hervalideert ze op basis van de originele bytes na generieke graafuitwisseling. Algemene PDF-dekking blijft afzonderlijk afgebakend werk.
+
+## Resterend werk
+
+Een brede hardwareatlas, geautomatiseerde bronverwerving, aggregatie van conflicten tussen meerdere bronnen, extra leverancierspecifieke databasedrivers, het laden van aangepaste plug-ins en Composer-integratie blijven werk voor later. Brede componentmappings en duurzame leveranciersdrivers staan eveneens nog open.
+
+## Hoe SHV zich verhoudt tot andere vectoren
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/nl/vectors/snv">
+    Legt de Nodes vast die de door SHV beschreven hardware bevatten.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/nl/vectors/scv">
+    Verwijst naar het hardwareaanbod van providers dat SHV gedetailleerd karakteriseert.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/nl/vectors/sov">
+    Kan op basis van SHV-bewijs handelen bij het provisionen of conditioneren van Nodes.
+  </Card>
+</CardGroup>

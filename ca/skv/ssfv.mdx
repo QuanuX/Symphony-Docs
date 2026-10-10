@@ -1,0 +1,53 @@
+---
+title: "SSFV: Symphony Semantic Feature Vector i registre"
+description: "SSFV és propietari de la identitat canònica de funcionalitats, la semàntica, la jerarquia, el cicle de vida i la garantia d'administració a tots els mòduls de Symphony implementats i a les superfícies de qxctl."
+sidebarTitle: "SSFV"
+---
+
+El Symphony Semantic Feature Vector (SSFV) és propietari dels contractes canònics d'identitat, semàntica, jerarquia, cicle de vida, distincions, encaminament de registres distribuïts, inventari de cobertura i projecció de grafs de les funcionalitats d'aplicació. El seu motor és un procés en C++ instal·lable de manera independent que fa comprovacions estructurals de funcionalitats que tenen en compte l'actualitat.
+
+## Operacions
+
+- **Inspecció i comprovació**: avaluació estructural de funcionalitats que té en compte l'actualitat.
+- **Diferències**: diferències adreçades per contingut entre estats de funcionalitats.
+- **Proposta**: propostes declarades per l'invocador per a l'admissió o el canvi de funcionalitats.
+- **Graf**: grafs de funcionalitats deterministes d'un sol ús per a la revisió.
+
+## Cobertura registrada
+
+El catàleg registrat actual és explícitament parcial:
+
+- **110** funcionalitats registrades
+- **35** àmbits de propietari registrats
+- **76** funcionalitats niades ratificades
+- **295** superfícies d'administració de funcionalitats revisades (**285** requerides, **13** exempcions recolzades per evidència, **9** prohibicions, **0** sense revisar)
+
+Els àmbits de propietari registrats abasten tots els mòduls implementats, des de `qxctl` i el validador, passant pels motors SKV i els proveïdors SSIAG, fins a les famílies de motors SCV i SHV.
+
+## Què no fa SSFV
+
+<Warning>
+  SSFV no decideix si una funcionalitat mereix ser-ho, no inventa identitats ni afirma la completesa del repositori o de l'amfitrió. `review_required` és evidència perquè l'invocador la revisi, no una ratificació ni una autoritat d'aplicació.
+</Warning>
+
+La revisió, l'admissió i els canvis de cicle de vida de les funcionalitats continuen en mans del contracte propietari de cada funcionalitat.
+
+## Superfícies relacionades
+
+<CardGroup cols={2}>
+  <Card title="Visió general de SKV" icon="book-open" href="/ca/skv/overview">
+    El marc general que governa SSFV.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/ca/skv/sev">
+    Aplica casos d'evolució a addicions, canvis i retirades de funcionalitats.
+  </Card>
+
+  <Card title="qxctl session" icon="terminal" href="/ca/qxctl/session">
+    Gestioneu sessions persistents de manteniment de SSFV mitjançant qxctl.
+  </Card>
+
+  <Card title="Ordres de vectors de qxctl" icon="terminal" href="/ca/qxctl/vector-commands">
+    Executeu `qxctl ssfv ...` per inspeccionar, comprovar, comparar, proposar i generar grafs.
+  </Card>
+</CardGroup>

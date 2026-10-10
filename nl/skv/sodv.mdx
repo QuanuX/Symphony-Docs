@@ -1,0 +1,48 @@
+---
+title: "SODV: governance van officiële documentatie en releases"
+description: "SODV beheert officiële QuanuX-publicaties met append-only controles van het releasegrootboek, verificatie van door de aanroeper aangeleverde observaties en wegwerpbare release-inventarissen."
+sidebarTitle: "SODV"
+---
+
+De Symphony Official Documentation Vector (SODV) bepaalt hoe kennis binnen het SKV-framework officiële publieke documentatie en releaserecords wordt. De engine is een onafhankelijk installeerbaar C++-proces dat lokale append-only controles van het releasegrootboek uitvoert en wegwerpbare release-inventarissen produceert. SODV publiceert zelf niets.
+
+## Bewerkingen
+
+- **Inspecteren en controleren**: valideer de vorm en continuïteit van het releasegrootboek.
+- **Verifiëren**: controleer door de aanroeper aangeleverde observaties van de gepubliceerde status.
+- **Voorstellen**: accepteer providerneutrale releasevoorstellen.
+- **Herstellen**: voer niet-muterend herstel uit.
+- **Projecteren**: geef wegwerpbare release-inventarissen uit.
+
+## Wat SODV niet doet
+
+- SODV heeft geen netwerktoegang.
+- SODV publiceert niets naar GitHub, Mintlify, pakketregisters of enig ander oppervlak.
+- SODV maakt geen tags aan en kan een release niet als voltooid verklaren.
+- SODV rangschikt geen providers en geeft geen voorkeur aan een publicatiepad.
+
+Publicatie gebeurt via afzonderlijke geautoriseerde tooling die SODV-bewijs raadpleegt.
+
+## Voltooide SODV-publicaties
+
+<CardGroup cols={2}>
+  <Card title="stav-protocol-go v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/libraries/stav-protocol-go` op tag `libraries/stav-protocol-go/v0.2.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.1.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` op tag `modules/stav-append-authority/v0.1.0`.
+  </Card>
+
+  <Card title="stav-append-authority v0.2.0" icon="tag">
+    `github.com/QuanuX/Symphony/modules/stav-append-authority` op tag `modules/stav-append-authority/v0.2.0`.
+  </Card>
+
+  <Card title="qxctl-vectorcommando's" icon="terminal" href="/nl/qxctl/vector-commands">
+    Voer `qxctl sodv ...` uit om te inspecteren, verifiëren, voorstellen en projecteren.
+  </Card>
+</CardGroup>
+
+<Note>
+  Elke SKV-engine is uitsluitend bedoeld voor lezen, query's, valideren en voorstellen. Canonieke apply is uitgeschakeld totdat voor elke engine de contracten voor SSIAG, transacties op verwachte status, qxctl-waarborgen, STAV-gebeurtenissen, herstel en negatieve tests voltooid zijn.
+</Note>

@@ -1,0 +1,50 @@
+---
+title: "Coordonnateur de sessions de connaissances pour les moteurs de vecteurs Symphony"
+description: "Le coordonnateur de sessions de connaissances assure, en C++26, une compatibilité bornée, le rapprochement des arbres de travail, des sessions authentifiées et la coordination du cycle de vie avec capacité d’application."
+sidebarTitle: "Coordonnateur"
+---
+
+Le coordonnateur de sessions de connaissances (`modules/knowledge-session-coordinator`) est un processus C++26 installable indépendamment. Il se situe entre qxctl et les moteurs de vecteurs et est propriétaire de la compatibilité bornée, du rapprochement des arbres de travail, des sessions non canoniques authentifiées, de la maintenance SSFV, de la planification du cycle de vie en mode rapport seulement et des journaux avec capacité d’application autorisés séparément.
+
+## Responsabilités
+
+- **Vérifications de compatibilité** entre qxctl, le coordonnateur et les moteurs
+- **Rapprochement des arbres de travail** avec un état durable fondé sur des emplacements
+- **Sessions non canoniques authentifiées** sous l’autorité de SSIAG
+- **Flux persistants de maintenance SSFV**
+- **Planification du cycle de vie en mode rapport seulement** avec des preuves déterministes
+- **Journaux avec capacité d’application** comprenant des tentatives préparées, la comparaison et permutation (compare-and-swap), la réobservation, la replanification dynamique et la reprise
+
+## Ce que le coordonnateur ne fait pas
+
+<Warning>
+  Le coordonnateur n’exécute pas la sémantique des vecteurs ni d’actions sur l’hôte. Il coordonne les preuves et les journaux; chaque moteur demeure propriétaire de son domaine, et chaque action sur l’hôte reste autorisée par son propre contrat.
+</Warning>
+
+- Aucune application canonique des connaissances
+- Aucune exécution de commandes arbitraires
+- Aucun observateur caché ni travail résident en arrière-plan
+
+## Intégration à qxctl
+
+qxctl invoque des installations exactes du coordonnateur validées par reçu. `qxctl knowledge reconcile ...` et `qxctl knowledge session ...` utilisent un seul coordonnateur lié exact par opération, et les mutations exigent des identifiants d’opération stables ainsi que les condensés exacts du journal actuel pour la comparaison et permutation.
+
+## Surfaces connexes
+
+<CardGroup cols={2}>
+  <Card title="qxctl reconcile" icon="arrows-rotate" href="/fr-CA/qxctl/reconcile">
+    Grammaire du rapprochement des arbres de travail.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/fr-CA/qxctl/session">
+    Grammaire des sessions authentifiées et de la maintenance SSFV.
+  </Card>
+
+  <Card title="Bibliothèque de fondation" icon="cube" href="/fr-CA/engines/knowledge-vector-foundation">
+    Mécanismes C++ partagés que réutilise le coordonnateur.
+  </Card>
+
+  <Card title="SSIAG" icon="shield-halved" href="/fr-CA/governance/ssiag">
+    Autorise les sessions que gère le coordonnateur.
+  </Card>
+</CardGroup>

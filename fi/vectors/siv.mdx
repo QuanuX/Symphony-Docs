@@ -1,0 +1,64 @@
+---
+title: "Symphony Intelligence Vector: tuleva agenttiyhteistyö"
+description: "SIV omistaa tulevan agenttisen yhteistyön, laajennetun kontekstin, rakenteisen pitkäaikaisen logiikan ja hallinnoidun Symphony-vuorovaikutuksen. SMCV on sen ensimmäinen valinnainen komponentti; SAIV on varattu."
+sidebarTitle: "Intelligence Vector"
+---
+
+Symphony Intelligence Vector (SIV) omistaa Symphonyn tulevan semantiikan agenttiselle yhteistyölle, laajennetulle paikalliselle kontekstille, rakenteiselle pitkäaikaiselle logiikalle, agenttien väliselle viestinnälle ja ihmisen ohjaamalle toiminnalle Symphony-pinnalla. Se on kehittyvä toimiala, jolla on kanoniset sopimukset mutta ei vielä suoritettavaa toteutusta.
+
+## Laajuus ja tarkoitus
+
+SIV:n odotetaan tukevan:
+
+- Paikallisten ja etäagenttien osallistumista Symphony-työnkulkuihin
+- Istuntojen ja vektorien välillä jaettua laajennettua kontekstia
+- Rakenteista pitkäaikaista logiikkaa toistuville tai monivaiheisille operaatioille
+- Agenttien välisiä viestintäprotokollia
+- Hallinnoitua vuorovaikutusta Symphonyn komentopinnan kanssa
+
+SIV ei myönnä auktoriteettia kutsujan tyypin perusteella. Ihmis-, tekoäly-, agentti- ja palvelukutsujia kohdellaan samalla tavalla. Auktoriteetti perustuu kohdeisännän omistajuuteen, myönnettyyn käyttöoikeuteen, pyydettyyn operaatioon, odotettuun tilaan ja omistajan määrittämiin suojauksiin.
+
+## Nimetyt alivektorit
+
+<CardGroup cols={2}>
+  <Card title="SMCV" icon="file-lines">
+    Valinnainen Markdown-muunnoskomponentti. Suunniteltu qxctl:llä määritettäväksi kääntäjäksi käyttöön otetun IPC-yhteyden päälle. SMCV-komentoa tai -kääntäjää ei ole vielä toteutettu.
+  </Card>
+
+  <Card title="SAIV" icon="lock">
+    Varattu myöhemmälle Symphonyn älykkyysintegraation alivektorille. Varaus ei tarjoa toteutusta, nimiavaruuskäyttäytymistä eikä semanttista operaatiota.
+  </Card>
+</CardGroup>
+
+## Rajaukset
+
+SIV nimenomaisesti ei:
+
+- Korvaa vektorien omistamaa semantiikkaa (toimialaoperaatiot pysyvät kunkin vektorin omistuksessa silloinkin, kun agentti kutsuu niitä)
+- Muutu kanoniseksi totuudeksi eikä ohita SKV-sopimuksia
+- Tule kaupankäynnin kriittiselle polulle (hot path)
+- Tee vanhemmasta tekoälyä käsittelevästä työpaperista ratkaisevaa
+
+## Nykytila
+
+SIV on ainoastaan kanoninen arkkitehtuurisopimus. SIV-valjaita, agenttipostia, pitkäaikaisen tilan moottoria, malliyhteyttä, paikallisten/etäagenttien protokollaa, SAIV-komponenttia, SMCV-kääntäjää tai qxctl-ohjausta ei ole tällä hetkellä toteutettu.
+
+## Kieliraja
+
+SIV-komponenteille ei ole asetettu Rust-vaatimusta. Komponenttien kieli määräytyy lopullisen suorituskyky-, siirrettävyys-, turvallisuus- ja integraatiosopimuksen mukaan. Sitä ei peritä mistään työpaperista.
+
+## Miten SIV liittyy muihin vektoreihin
+
+<CardGroup cols={2}>
+  <Card title="SKV" icon="book-open" href="/fi/skv/overview">
+    Hallinnoi SIV:n sopimuksia, evoluutiota ja virallisia julkaisusuhteita.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/fi/vectors/sov">
+    Voi tarjota agenttien kutsumia operaatioita qxctl:n kautta säilyttäen vektorien omistaman semantiikan.
+  </Card>
+
+  <Card title="SAV" icon="scale-balanced" href="/fi/skv/sav">
+    Arvioi koostamista ja yhteensopivuutta agenttien kokoamille operaatioille.
+  </Card>
+</CardGroup>

@@ -1,0 +1,82 @@
+---
+title: "qxctl-vectorcommando's: skvi, sclv, sacv, sodv, ssfv, shv"
+description: "Verken de vectorspecifieke qxctl-grammatica die nu beschikbaar is: SKVI, SCLV, SACV, SODV, SSFV, SHV-opslag en -catalogus, plus gereserveerde accord- en evolution-onderdelen."
+sidebarTitle: "Vectorcommando's"
+---
+
+qxctl biedt vectorspecifieke grammatica voor elke geïmplementeerde SKV-engine en voor SCV- en SHV-beheer. Bekrachtigde Accordare- en SEV-grammatica zal `qxctl accord ...` en `qxctl evolution ...` gebruiken zodra de commando-implementaties en stabiel registerbewijs ervoor bestaan.
+
+## SKV-enginegrammatica
+
+- `qxctl skvi ...`: inspect, check, propose, project op de SKVI-engine
+- `qxctl sclv ...`: inspect, check, propose, recover, project op de SCLV-engine
+- `qxctl sacv ...`: inspect, check, diff, propose, project op de SACV-engine
+- `qxctl sodv ...`: inspect, check, verify, propose, recover, project op de SODV-engine
+- `qxctl ssfv ...`: inspect, check, diff, propose, graph op de SSFV-engine
+
+Elke grammatica wordt begrensd door het contract van de engine die er eigenaar van is. qxctl verzint nooit een bewerking en omzeilt de engine nooit.
+
+## Accordare-toevoegingen
+
+De Accordare-toevoegingen in qxctl bieden:
+
+- Stabiele status
+- Reconciliatie (speelt alleen exacte kandidaten opnieuw af)
+- Installeren en verwijderen van de supervisor (roept alleen het geverifieerde receipt-v2-uitvoerbare bestand aan)
+- Twee grant-beheeridentiteiten die alleen de gestopte STAV-configuratie wijzigen onder SSIAG en herstel op verwachte status
+
+Status scheidt duurzame intentie en append-achterstand. Reconciliatie speelt alleen exacte kandidaten opnieuw af. Grant-leaves openen nooit een draaiende configuratie.
+
+## SHV-opslag
+
+Duurzame SHV-opslag wordt uitsluitend beheerd via:
+
+```bash SHV graph store
+qxctl shv graph store inspect
+qxctl shv graph store prepare
+qxctl shv graph store commit    --expected-intent-digest DIGEST
+qxctl shv graph store status
+qxctl shv graph store query
+qxctl shv graph store export
+qxctl shv graph store schema
+qxctl shv graph store template
+```
+
+`commit` met de bewaarde verwachte intentiedigest is tevens het herstel. Er is geen aparte herstelalias. De opslagscope wordt in de invoer gedeclareerd; de connectoridentiteit wordt via flags ingesteld. Structurele opslag dupliceert de semantische `shv graph validate` niet en selecteert geen catalogus-head.
+
+`shv graph store inventory` (release 0.2) voegt een revisiegebonden logische leesbewerking toe met expliciet bewaarde writer-identiteiten. Legacy-selectie uit 0.1 blijft ondersteund.
+
+## Publicatie van de SHV-catalogus
+
+Cataloguspublicatie wordt uitsluitend beheerd via:
+
+```bash SHV catalogue publication
+qxctl shv catalogue publication inspect
+qxctl shv catalogue publication plan
+qxctl shv catalogue publication apply    --operation-id OPID
+qxctl shv catalogue publication status
+qxctl shv catalogue publication schema
+qxctl shv catalogue publication template
+```
+
+Herstel is `apply --operation-id`, wederzijds exclusief met `--input`. Lokale catalogusselectie op basis van permissies staat los van bronactivering en generieke grafiekopslag.
+
+## Gerelateerde onderdelen
+
+<CardGroup cols={2}>
+  <Card title="Overzicht van SKV" icon="book-open" href="/nl/skv/overview">
+    Vectorsemantiek die de engines implementeren.
+  </Card>
+
+  <Card title="SHV-vector" icon="microchip" href="/nl/vectors/shv">
+    Achtergrond van de Hardware Vector en lijst met engines.
+  </Card>
+
+  <Card title="SHV-engines" icon="microchip" href="/nl/engines/shv-engines">
+    Details op engineniveau.
+  </Card>
+
+  <Card title="Overzicht van qxctl" icon="terminal" href="/nl/qxctl/overview">
+    Volledig qxctl-commando-oppervlak.
+  </Card>
+</CardGroup>

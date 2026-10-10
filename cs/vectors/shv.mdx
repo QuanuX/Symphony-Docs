@@ -1,0 +1,81 @@
+---
+title: "Symphony Hardware Vector: znalosti o hardwarových schopnostech"
+description: "SHV udržuje znalosti o hardwarových schopnostech CPU, GPU, NIC, základních desek, RAM a NVMe prostřednictvím několika nezávisle instalovatelných enginů v C++."
+sidebarTitle: "Hardware Vector"
+---
+
+Symphony Hardware Vector (SHV) vlastní znalosti o hardwarových schopnostech, které vám pomáhají pochopit, jak fyzický návrh může umožnit, omezit, portovat nebo rozšířit kvantitativní software. Pokrývá procesory, typy jader CPU, GPU, NIC a optická rozhraní, základní desky, hierarchie cache, paměť, NVMe a kompletní sestavy systémů. Výchozí kurátorství upřednostňuje originální komponenty a doložené varianty od roku 2018.
+
+## Rozsah a pokrytí
+
+SHV může pokrývat jakoukoli doloženou fyzickou schopnost relevantní pro návrh programů. Profil pokrytí řídíte prostřednictvím qxctl. Výchozím datovým základem je uvedení modelu na trh, nikoli odvozené datum výroby konkrétního kusu. Tento filtr můžete rozšířit, zúžit, nahradit nebo odstranit.
+
+## Implementované enginy
+
+Znalosti SHV jsou dodávány prostřednictvím několika nezávisle instalovatelných enginů v C++:
+
+<CardGroup cols={2}>
+  <Card title="shv-engine" icon="cpu">
+    Základní jádro (0.4.0-dev): profily pokrytí, sestavení/přehrání katalogu z uchovaných zdrojů, vyhodnocení požadavků, deterministická projekce grafů a validace grafů podložená zdroji.
+  </Card>
+
+  <Card title="shv-source-engine" icon="book-open">
+    Identita zdrojů, plány přemístění, vazba zachycených bajtů a grafy původu přehrané ze zdrojů.
+  </Card>
+
+  <Card title="shv-profile-engine" icon="sliders">
+    Shoda s deklaracemi, přenositelné recepty a přesná vazba na místní zdroje.
+  </Card>
+
+  <Card title="shv-partition-engine" icon="table-columns">
+    Operace rozdělení hardwaru a mapování komponent.
+  </Card>
+
+  <Card title="shv-publication-engine" icon="upload">
+    Chráněné hlavy katalogu volajícího, přehrání původních zdrojů a trvalá obnova snímků.
+  </Card>
+
+  <Card title="shv-graph-adapter" icon="share-nodes">
+    Obecný grafový port v C++ a přenositelný referenční adaptér v paměti pro bezztrátovou výměnu.
+  </Card>
+
+  <Card title="shv-graph-duckdb-connector" icon="plug">
+    Volitelná relační projekce důkazů hardwarového grafu do DuckDB.
+  </Card>
+
+  <Card title="shv-pdf-adapter" icon="file-pdf">
+    Ohraničená extrakce z PDF a opětovná validace dokumentárních tvrzení z původních bajtů.
+  </Card>
+</CardGroup>
+
+## Revize zdrojů a původ
+
+`shv-source-engine` implementuje stabilní identitu zdrojů, explicitní plány přemístění, čistou validaci přechodů, vazbu skutečně zachycených bajtů a grafy původu přehrané ze zdrojů. Jde o operace pouze pro čtení. Základní kurátorství upřednostňuje originální identitu komponent a doložené varianty. Chráněná aktivace zdrojů se řeší samostatně; čistý zdrojový engine neuděluje autoritu.
+
+## Výměna a ukládání grafů
+
+`shv-graph-adapter` poskytuje obecný grafový port v C++ pro bezztrátovou výměnu a strukturální dotazy. Trvalé úložiště je implementováno prostřednictvím výchozí databáze DuckDB SQL. Žádná specializovaná grafová databáze momentálně zvolena není.
+
+## Hranice důkazů z PDF
+
+`shv-pdf-adapter` extrahuje kvalifikovaná dokumentární tvrzení z explicitních tabulek v PDF a po obecné výměně grafů je znovu validuje z původních bajtů. Obecné pokrytí PDF zůstává samostatnou, vymezenou prací.
+
+## Zbývající práce
+
+Široký hardwarový atlas, automatizované získávání zdrojů, agregace konfliktů z více zdrojů, další databázové ovladače specifické pro dodavatele, načítání vlastních pluginů a integrace s Composerem zůstávají na později. Otevřená jsou také široká mapování komponent a trvalé ovladače dodavatelů.
+
+## Jak SHV souvisí s ostatními vektory
+
+<CardGroup cols={2}>
+  <Card title="SNV" icon="server" href="/cs/vectors/snv">
+    Zaznamenává Nodes, které obsahují hardware popisovaný SHV.
+  </Card>
+
+  <Card title="SCV" icon="cloud" href="/cs/vectors/scv">
+    Odkazuje na hardwarové nabídky poskytovatelů, které SHV podrobně charakterizuje.
+  </Card>
+
+  <Card title="SOV" icon="terminal" href="/cs/vectors/sov">
+    Může jednat na základě důkazů SHV při zřizování nebo přípravě Nodes.
+  </Card>
+</CardGroup>

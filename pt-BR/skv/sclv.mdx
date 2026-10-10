@@ -1,0 +1,48 @@
+---
+title: "SCLV: Symphony Change Ledger Vector para alterações de código"
+description: "O SCLV mantém um ledger append-only de alterações de código concluídas, com propostas neutras quanto ao provedor, recuperação sem mutação e projeções descartáveis do registro."
+sidebarTitle: "SCLV"
+---
+
+O Symphony Change Ledger Vector (SCLV) registra as alterações feitas nas superfícies do SKV ao longo do tempo. Sua engine é um processo C++ instalável de forma independente que realiza verificações determinísticas de um ledger append-only e produz projeções descartáveis. O ledger só é escrito depois que uma alteração material de código é concluída.
+
+## Operações
+
+- **Inspecionar e verificar**: valida o formato, a continuidade e as evidências do ledger.
+- **Propor (v3)**: aceita propostas declaradas pelo chamador e neutras quanto ao provedor para novos registros.
+- **Recuperar**: realiza a recuperação sem mutação de estados interrompidos ou ambíguos.
+- **Projetar**: emite inventários descartáveis do estado do ledger sob demanda.
+
+## Admissão e desativação
+
+Todo registro SCLV admitido vincula as evidências indexadas atuais no momento em que é escrito. Uma desativação legítima posterior de uma superfície preserva a proveniência histórica imutável sem forçar o retorno ao SKVI de textos atuais já excluídos. A história continua sendo história; a verdade atual continua sendo atual.
+
+## O que o SCLV não faz
+
+- O SCLV não cria nem aprova alterações de código.
+- O SCLV não reescreve registros existentes; ele é append-only.
+- O SCLV não publica nada. A projeção pública pertence ao SODV.
+
+<Note>
+  Todas as engines SKV atuais fazem somente leitura, consulta, validação e proposta. O apply canônico está desativado até que os contratos completos de autoridade e auditoria de cada engine estejam concluídos.
+</Note>
+
+## Superfícies relacionadas
+
+<CardGroup cols={2}>
+  <Card title="SKVI" icon="magnifying-glass" href="/pt-BR/skv/skvi">
+    Indexa a verdade canônica atual à qual os registros do SCLV se vinculam.
+  </Card>
+
+  <Card title="SODV" icon="scroll" href="/pt-BR/skv/sodv">
+    Governa a projeção pública oficial das informações do ledger.
+  </Card>
+
+  <Card title="SEV" icon="arrow-trend-up" href="/pt-BR/skv/sev">
+    Os casos de evolução avaliam as alterações antes que o SCLV as registre.
+  </Card>
+
+  <Card title="Comandos de vetores do qxctl" icon="terminal" href="/pt-BR/qxctl/vector-commands">
+    Execute `qxctl sclv ...` para inspect, check, propose e recover.
+  </Card>
+</CardGroup>

@@ -1,0 +1,49 @@
+---
+title: "qxctl knowledge reconcile: rekonciliace pracovních stromů"
+description: "Rekonciliujte pracovní stromy vůči vázanému koordinátoru Symphony s kontrolami kompatibility, žurnály checkpointů a uzavření a dvouslotovou obnovou založenou na důkazech."
+sidebarTitle: "reconcile"
+---
+
+Gramatika `qxctl knowledge reconcile ...` řídí rekonciliaci pracovních stromů prostřednictvím jednoho přesně vázaného Knowledge Session Coordinatoru. Každá mutace je sledována stabilním identifikátorem a je operací compare-and-swap vůči přesnému aktuálnímu digestu žurnálu.
+
+## Příkazy
+
+```bash Reconcile grammar
+qxctl knowledge reconcile compatibility
+qxctl knowledge reconcile begin      --operation-id OPID --expected-journal-digest absent|DIGEST ...
+qxctl knowledge reconcile status
+qxctl knowledge reconcile checkpoint --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile close      --operation-id OPID --expected-journal-digest DIGEST
+qxctl knowledge reconcile recover    --discover
+```
+
+- `compatibility`: ověří, že qxctl, koordinátor a vázané enginy se shodují na verzi protokolu a rozsahu.
+- `begin`: otevře nový kontext rekonciliace se stabilním identifikátorem operace.
+- `status`: prozkoumá aktuální žurnál bez mutace.
+- `checkpoint`: trvale posune žurnál pomocí compare-and-swap.
+- `close`: dokončí kontext rekonciliace.
+- `recover --discover`: obnova zjišťováním, když běžný status nedokáže ověřit místní stav.
+
+## Pravidla obnovy
+
+<Warning>
+  Dvouslotová obnova je dopředná oprava založená na důkazech. Nikdy není povolením zahodit nekompatibilní žurnál nebo neznámé kritické rozšíření. Pokud obnova selže, eskalujte místo vynucování.
+</Warning>
+
+Obnovu zjišťováním používejte pouze tehdy, když běžný status nedokáže ověřit místní stav. Zachovávejte blokátory; plánujte znovu až po změně ověřených důkazů.
+
+## Související oblasti
+
+<CardGroup cols={2}>
+  <Card title="Koordinátor relací" icon="gears" href="/cs/engines/coordinator">
+    Engine, který vlastní žurnály rekonciliace.
+  </Card>
+
+  <Card title="qxctl session" icon="key" href="/cs/qxctl/session">
+    Autentizované relace, které se párují s kontexty rekonciliace.
+  </Card>
+
+  <Card title="qxctl engines" icon="cube" href="/cs/qxctl/engines">
+    Správa vazeb, které koordinátor spotřebovává.
+  </Card>
+</CardGroup>
