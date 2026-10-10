@@ -8,7 +8,7 @@ Symphony separa la infraestructura y las cargas de trabajo seleccionadas por el 
 
 ## Capa física y de cargas de trabajo
 
-Un [Node](/es/concepts/node-habitat-nest) es un ordenador físico identificado. Un **Habitat** es su acondicionamiento exacto de sistema operativo y paquetes, y un **Nest** es una carga de trabajo que sirve a un propósito seleccionado por el usuario. Los clústeres conectan Nodes mediante uno o varios buses. Las estructuras de bus, los adaptadores, los proveedores y las elecciones de hardware son explícitos en lugar de valores predeterminados universales.
+Un [Node](/es/concepts/node-habitat-nest) es un ordenador físico identificado. Un **Habitat** es su acondicionamiento exacto de sistema operativo y paquetes, y un **Nest** es una carga de trabajo que sirve a un propósito que tú seleccionas. Los clústeres conectan Nodes mediante uno o varios buses. Las estructuras de bus, los adaptadores, los proveedores y las elecciones de hardware son explícitos en lugar de valores predeterminados universales.
 
 El [hot path](/es/concepts/hot-path-isolation) se mantiene separado de la residencia administrativa. El trabajo de qxctl y del plano de conocimiento puede administrar explícitamente un Node, pero no se convierte en una dependencia continua y oculta de la ejecución en vivo.
 

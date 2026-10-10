@@ -8,7 +8,7 @@ Symphony tách biệt hạ tầng và workload do người dùng chọn khỏi t
 
 ## Lớp vật lý và workload
 
-Một [Node](/vi/concepts/node-habitat-nest) là một máy tính vật lý đã được định danh. Một **Habitat** là cấu hình hệ điều hành và gói phần mềm chính xác của nó, còn một **Nest** là workload phục vụ mục đích do người dùng lựa chọn. Các cluster kết nối các Node thông qua một hoặc nhiều bus. Bus fabric, adapter, nhà cung cấp và lựa chọn phần cứng đều được nêu tường minh thay vì là mặc định chung.
+Một [Node](/vi/concepts/node-habitat-nest) là một máy tính vật lý đã được định danh. Một **Habitat** là cấu hình hệ điều hành và gói phần mềm chính xác của nó, còn một **Nest** là workload phục vụ mục đích do bạn lựa chọn. Các cluster kết nối các Node thông qua một hoặc nhiều bus. Bus fabric, adapter, nhà cung cấp và lựa chọn phần cứng đều được nêu tường minh thay vì là mặc định chung.
 
 [Hot path](/vi/concepts/hot-path-isolation) được giữ tách biệt khỏi sự thường trú của các thành phần quản trị. qxctl và công việc của knowledge plane có thể chủ động quản trị một Node, nhưng chúng không trở thành phụ thuộc liên tục ẩn của quá trình thực thi trực tiếp.
 

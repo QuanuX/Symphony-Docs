@@ -6,7 +6,7 @@ sidebarTitle: "STAV"
 
 Symphony TOPS Audit Vector (STAV), TOPS başına yalnızca eklemeli (append-only) denetim defteri protokolünü tanımlar. Çalışma zamanı yetkisi, bağımsız olarak kurulabilen bir Go hizmeti olan `modules/stav-append-authority` içinde bulunur. TOPS başına operasyonel defterler her TOPS kurulumuna özeldir; SKV içeriği değildir.
 
-## STAV Append Authority
+## STAV ekleme yetkisi
 
 `modules/stav-append-authority` şunları sağlar:
 
@@ -21,7 +21,7 @@ Symphony TOPS Audit Vector (STAV), TOPS başına yalnızca eklemeli (append-only
   qxctl hiçbir zaman ham ekleme yetkisi almaz. Kaydı, doğrulamayı ve yetkileri modüle ait kesin adaptör aracılığıyla koordine eder, ancak deftere ekleme işlemi ekleme yetkisi sürecinin içinde mühürlü kalır.
 </Warning>
 
-## Go için STAV Protokolü
+## Go için STAV protokolü
 
 `libraries/stav-protocol-go`; kanonik STAV v1 kodlayıcısını, katı doğrulamayı, özetleri, çerçevelemeyi, uygunluk kurallarını ve kapalı üretici sözcük dağarcığını uygulayan, yetki taşımayan bir Go kütüphanesidir. Herhangi bir üretici veya okuyucu, yetki devralmadan protokolü benimseyebilir.
 

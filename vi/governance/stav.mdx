@@ -6,7 +6,7 @@ sidebarTitle: "STAV"
 
 Symphony TOPS Audit Vector (STAV) định nghĩa giao thức ledger kiểm toán chỉ ghi thêm theo từng TOPS. Cơ quan runtime của nó nằm trong `modules/stav-append-authority`, một dịch vụ Go có thể cài đặt độc lập. Các ledger vận hành theo từng TOPS là riêng tư đối với mỗi bản cài đặt TOPS; chúng không phải là nội dung SKV.
 
-## STAV Append Authority
+## Thẩm quyền ghi nối STAV
 
 `modules/stav-append-authority` cung cấp:
 
@@ -21,7 +21,7 @@ Symphony TOPS Audit Vector (STAV) định nghĩa giao thức ledger kiểm toán
   qxctl không bao giờ nhận quyền ghi thêm thô. Nó điều phối việc đăng ký, xác minh và cấp quyền thông qua adapter chính xác thuộc sở hữu của mô-đun, nhưng việc ghi thêm vào ledger vẫn được niêm phong bên trong tiến trình append authority.
 </Warning>
 
-## STAV Protocol cho Go
+## Giao thức STAV cho Go
 
 `libraries/stav-protocol-go` là một thư viện Go không mang quyền hạn, triển khai codec STAV v1 chuẩn, xác thực nghiêm ngặt, digest, đóng khung, các quy tắc tuân thủ và bộ từ vựng producer đóng. Bất kỳ producer hoặc reader nào cũng có thể áp dụng giao thức mà không kế thừa quyền hạn.
 

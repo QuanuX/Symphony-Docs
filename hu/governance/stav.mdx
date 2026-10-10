@@ -6,7 +6,7 @@ sidebarTitle: "STAV"
 
 A Symphony TOPS Audit Vector (STAV) határozza meg a TOPS-onkénti, csak hozzáfűzhető auditfőkönyv protokollját. Futásidejű hatósága a `modules/stav-append-authority` modulban található, amely egy függetlenül telepíthető Go szolgáltatás. A TOPS-onkénti operatív főkönyvek az egyes TOPS-telepítések privát adatai; nem képezik az SKV tartalmát.
 
-## STAV Append Authority
+## STAV hozzáfűzési hatóság
 
 A `modules/stav-append-authority` a következőket biztosítja:
 
@@ -21,7 +21,7 @@ A `modules/stav-append-authority` a következőket biztosítja:
   A qxctl soha nem kap nyers hozzáfűzési jogosultságot. A pontos, modul által birtokolt adapteren keresztül koordinálja a regisztrációt, az ellenőrzést és a jogosultságokat, de a főkönyvbe való hozzáfűzés a hozzáfűzési hatóság folyamatán belül lezárva marad.
 </Warning>
 
-## STAV Protocol for Go
+## STAV-protokoll Go-hoz
 
 A `libraries/stav-protocol-go` egy jogosultságmentes Go könyvtár, amely megvalósítja a kanonikus STAV v1 kodeket, a szigorú validálást, a kivonatokat, a keretezést, a megfelelőségi szabályokat és a zárt producer-szókészletet. Bármely producer vagy olvasó átveheti a protokollt anélkül, hogy jogosultságot örökölne.
 
