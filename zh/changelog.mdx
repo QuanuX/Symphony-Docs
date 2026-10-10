@@ -10,7 +10,7 @@ rss: true
 
 - **Symphony Node Vector 引擎。** 五个可独立安装的 C++26 引擎现已覆盖 Node 身份（SNIV）、资源（SNRV）、集群关系（SCIV）、名称（SCNV）以及 SNV 组合与保留。你可以通过 qxctl 管理所提供的证据、选定的视图和保留的历史记录。目前尚不包含实时观测和 SOV 预配。请参阅 [Node Vector](/zh/vectors/snv)。
 - **可选的 SNV 本地观测器。** qxctl 可以调用一个独立的本地观测器，该观测器会报告选定的 CPU 和内存观测结果，并明确标注不确定性。它从不分配身份、成员关系或名称。
-- **SQV 研究数据基础。** 新的 C++26 库涵盖：保留原始字节和来源出处的采集（SQAV）、元数据（SQMV）、数据流（SQFV）、带血缘关系的精确整数转换（SQTV）、本地保留（SQPV），以及支持检查点和精确续传的交付（SQDV）。请参阅 [Quantitative Vector](/zh/vectors/sqv)。
+- **SQV 研究数据基础。** 新的 C++26 库涵盖：保留原始字节和来源出处的采集（SQAV）、元数据（SQMV）以及数据流（SQFV）。它们还涵盖带血缘关系的精确整数转换（SQTV）、本地保留（SQPV），以及支持检查点和精确续传的交付（SQDV）。请参阅 [Quantitative Vector](/zh/vectors/sqv)。
 - **通过 qxctl 管理 SQV。** 七个可独立安装的管理引擎提供请求与配置验证、元数据投影以及只读的保留状态检查。请参阅 [Vector 命令](/zh/qxctl/vector-commands)。
 - **Databento 和经纪商适配器。** SQV 现已支持 Databento DBNv3 MBO 采集，保留 DBNv1 和 DBNv3 样本，并可规划带有覆盖范围证据的有界历史请求。非实时数据源和经纪商读取适配器也已可用。经过身份验证的提供商执行和实时采集仍属于未来工作。
 
