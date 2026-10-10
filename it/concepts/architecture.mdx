@@ -8,7 +8,7 @@ Symphony separa l'infrastruttura e i workload scelti dall'utente dalla conoscenz
 
 ## Livello fisico e dei workload
 
-Un [Node](/it/concepts/node-habitat-nest) è un computer fisico identificato. Un **Habitat** è il suo esatto sistema operativo e condizionamento dei pacchetti, e un **Nest** è un workload che serve uno scopo scelto dall'utente. I cluster collegano i Node tramite uno o più bus. Fabric dei bus, adapter, provider e scelte hardware sono espliciti e non default universali.
+Un [Node](/it/concepts/node-habitat-nest) è un computer fisico identificato. Un **Habitat** è il suo esatto sistema operativo e condizionamento dei pacchetti, e un **Nest** è un workload che serve uno scopo che scegli tu. I cluster collegano i Node tramite uno o più bus. Fabric dei bus, adapter, provider e scelte hardware sono espliciti e non default universali.
 
 L'[hot path](/it/concepts/hot-path-isolation) resta separato dalla residenza amministrativa. qxctl e il lavoro del knowledge plane possono amministrare esplicitamente un Node, ma non diventano dipendenze continue e nascoste dell'esecuzione live.
 

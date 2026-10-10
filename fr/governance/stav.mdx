@@ -6,7 +6,7 @@ sidebarTitle: "STAV"
 
 Le Symphony TOPS Audit Vector (STAV) définit le protocole de registre d'audit en ajout seul par TOPS. Son autorité d'exécution réside dans `modules/stav-append-authority`, un service Go installable indépendamment. Les registres opérationnels par TOPS sont privés à chaque installation TOPS ; ils ne font pas partie du contenu SKV.
 
-## STAV Append Authority
+## Autorité d'ajout STAV
 
 `modules/stav-append-authority` fournit :
 
@@ -21,7 +21,7 @@ Le Symphony TOPS Audit Vector (STAV) définit le protocole de registre d'audit e
   qxctl ne reçoit jamais d'autorité d'ajout brute. Il coordonne l'inscription, la vérification et les autorisations via l'adaptateur exact détenu par le module, mais l'ajout au registre reste scellé à l'intérieur du processus de l'autorité d'ajout.
 </Warning>
 
-## STAV Protocol pour Go
+## Protocole STAV pour Go
 
 `libraries/stav-protocol-go` est une bibliothèque Go sans autorité qui implémente le codec canonique STAV v1, la validation stricte, les condensés, le cadrage, les règles de conformité et le vocabulaire fermé des producteurs. Tout producteur ou lecteur peut adopter le protocole sans hériter d'autorité.
 
