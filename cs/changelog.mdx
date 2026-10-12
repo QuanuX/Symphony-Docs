@@ -1,8 +1,21 @@
 ---
 title: "Přehled změn"
-description: "Poznámky k vydání QuanuX Symphony, včetně nových enginů Node Vector, základů výzkumných dat SQV, přijímání přihlašovacích údajů SSIAG a aktualizací příkazů qxctl."
+description: "Trvalé poznámky k vydání QuanuX Symphony. Každé vydání se přidává jako datovaný blok Update, od nejnovějšího, s odkazy na archivované roky v dolní části."
 rss: true
+sidebarTitle: "Přehled změn"
 ---
+
+{/* CHANGELOG MAINTENANCE RULES — READ BEFORE EDITING */}
+
+{/* 1. Append new Update blocks between the markers below. Newest entry goes at the TOP of the current-year section, directly after CURRENT_YEAR_START. */}
+
+{/* 2. NEVER edit or delete published Update blocks. Corrections ship as a new entry that references the original by date. */}
+
+{/* 3. At year end, move that year's Update blocks into changelog/YEAR.mdx and link it from the Archive section below. Leave the markers in place. */}
+
+{/* 4. Keep this frontmatter and these marker comments intact. They are the contract between humans and the Draft changelog automation. */}
+
+{/* CURRENT_YEAR_START — new Update entries go directly below this marker, newest first. Do not remove this marker. */}
 
 <Update label="2. října 2026" description="Týden od 25. září" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
 
@@ -23,3 +36,17 @@ rss: true
 - **Pokyny k instalaci enginů.** Pokyny k instalaci nyní upřesňují, že každý engine instalujete, aktualizujete a odebíráte jednotlivě. Viz [Přehled enginů](/cs/engines/overview).
 
 </Update>
+
+{/* CURRENT_YEAR_END — do not add Update entries below this marker. */}
+
+## Archiv
+
+Starší roky jsou uchovány jako odkazované stránky, aby zůstala k dispozici celá historie vydání. Zatím nebyl archivován žádný rok.
+
+{/* When archiving a year (do this once per year at year end): */}
+
+{/* 1. Create changelog/YEAR.mdx with that year's Update blocks and the same frontmatter minus rss. */}
+
+{/* 2. Remove those blocks from the current-year section above. */}
+
+{/* 3. Add a Card linking to that archive page here. */}

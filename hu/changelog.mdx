@@ -1,8 +1,21 @@
 ---
 title: "Változásnapló"
-description: "A QuanuX Symphony kiadási megjegyzései, köztük az új Node Vector motorok, az SQV kutatási adatalapjai, az SSIAG hitelesítőadat-befogadás és a qxctl parancsfrissítései."
+description: "A QuanuX Symphony állandó kiadási megjegyzései. Minden kiadás dátummal ellátott Update blokként kerül hozzáadásra, a legújabb elöl, az archivált évek hivatkozásai pedig az oldal alján találhatók."
 rss: true
+sidebarTitle: "Változásnapló"
 ---
+
+{/* CHANGELOG MAINTENANCE RULES — READ BEFORE EDITING */}
+
+{/* 1. Append new Update blocks between the markers below. Newest entry goes at the TOP of the current-year section, directly after CURRENT_YEAR_START. */}
+
+{/* 2. NEVER edit or delete published Update blocks. Corrections ship as a new entry that references the original by date. */}
+
+{/* 3. At year end, move that year's Update blocks into changelog/YEAR.mdx and link it from the Archive section below. Leave the markers in place. */}
+
+{/* 4. Keep this frontmatter and these marker comments intact. They are the contract between humans and the Draft changelog automation. */}
+
+{/* CURRENT_YEAR_START — new Update entries go directly below this marker, newest first. Do not remove this marker. */}
 
 <Update label="2026. október 2." description="Szeptember 25-i hét" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
 
@@ -23,3 +36,17 @@ rss: true
 - **Motortelepítési útmutató.** A telepítési útmutató mostantól egyértelművé teszi, hogy minden motort külön-külön telepít, frissít és távolít el. Lásd: [Motorok áttekintése](/hu/engines/overview).
 
 </Update>
+
+{/* CURRENT_YEAR_END — do not add Update entries below this marker. */}
+
+## Archívum
+
+A korábbi évek hivatkozott oldalakként maradnak meg, így a teljes kiadási előzmény elérhető marad. Még egyetlen év sincs archiválva.
+
+{/* When archiving a year (do this once per year at year end): */}
+
+{/* 1. Create changelog/YEAR.mdx with that year's Update blocks and the same frontmatter minus rss. */}
+
+{/* 2. Remove those blocks from the current-year section above. */}
+
+{/* 3. Add a Card linking to that archive page here. */}

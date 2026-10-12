@@ -1,8 +1,21 @@
 ---
 title: "Journal des modifications"
-description: "Notes de version de QuanuX Symphony, notamment les nouveaux moteurs Node Vector, les fondations de données de recherche SQV, l'admission des identifiants SSIAG et les mises à jour des commandes qxctl."
+description: "Notes de version permanentes de QuanuX Symphony. Chaque version est ajoutée sous forme de bloc Update daté, de la plus récente à la plus ancienne, avec les années archivées liées en bas de page."
 rss: true
+sidebarTitle: "Journal des modifications"
 ---
+
+{/* CHANGELOG MAINTENANCE RULES — READ BEFORE EDITING */}
+
+{/* 1. Append new Update blocks between the markers below. Newest entry goes at the TOP of the current-year section, directly after CURRENT_YEAR_START. */}
+
+{/* 2. NEVER edit or delete published Update blocks. Corrections ship as a new entry that references the original by date. */}
+
+{/* 3. At year end, move that year's Update blocks into changelog/YEAR.mdx and link it from the Archive section below. Leave the markers in place. */}
+
+{/* 4. Keep this frontmatter and these marker comments intact. They are the contract between humans and the Draft changelog automation. */}
+
+{/* CURRENT_YEAR_START — new Update entries go directly below this marker, newest first. Do not remove this marker. */}
 
 <Update label="2 octobre 2026" description="Semaine du 25 septembre" tags={["SNV", "SQV", "SSIAG", "qxctl"]}>
 
@@ -23,3 +36,17 @@ rss: true
 - **Instructions d'installation des moteurs.** Les instructions d'installation précisent désormais que vous installez, mettez à jour et supprimez chaque moteur individuellement. Consultez la [vue d'ensemble des moteurs](/fr/engines/overview).
 
 </Update>
+
+{/* CURRENT_YEAR_END — do not add Update entries below this marker. */}
+
+## Archives
+
+Les années précédentes sont conservées sous forme de pages liées afin que l'historique complet des versions reste disponible. Aucune année n'a encore été archivée.
+
+{/* When archiving a year (do this once per year at year end): */}
+
+{/* 1. Create changelog/YEAR.mdx with that year's Update blocks and the same frontmatter minus rss. */}
+
+{/* 2. Remove those blocks from the current-year section above. */}
+
+{/* 3. Add a Card linking to that archive page here. */}
