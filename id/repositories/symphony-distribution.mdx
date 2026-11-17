@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Penginstal beta bertanda tangan, profil Conda yang persis, verifikasi, dan kode sumber terkait."
+---
+
+Repositori ini memiliki distribusi dan bukti rilis untuk Symphony. Beta publik **0.2.0-beta.1** dipublikasikan pada 16 November 2026.
+
+## Unduh dan instal {#download-and-install}
+
+Gunakan [quanux.org/downloads](https://quanux.org/downloads) untuk penginstal platform, instruksi Anaconda, dan deskripsi setiap paket. [Halaman rilis](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) mengidentifikasi artefak yang persis.
+
+Profilnya adalah macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64, dan Ubuntu 26.04 AMD64. Masing-masing mencakup 59 paket default yang dapat dipelihara secara independen ditambah kode sumber terkait opsional. Kohort Linux AMD64 berbagi subdirektori Conda tetapi merupakan build terkualifikasi yang berbeda: gunakan daftar eksplisit dari profil yang persis.
+
+## Verifikasi dan penggunaan pertama {#verification-and-first-use}
+
+1. Baca [panduan instalasi](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verifikasi manifest bertanda tangan, indeks rilis, dan file yang dipilih dengan verifikator yang disematkan.
+3. Instal ke prefix privat baru sebagai pengguna biasa Anda.
+4. Simpan biner yang telah diverifikasi ke direktori penyimpanan privat yang terpisah.
+5. Tinjau konfigurasi klien yang dihasilkan dan pilih pemilik native serta otoritas secara eksplisit.
+
+Conda 26.10.0 telah dikualifikasi. Python 3.11+ dan OpenSSL diperlukan untuk verifikasi dan penyiapan; kompiler tidak diperlukan untuk menjalankan biner yang disediakan. PKG Mac tidak ditandatangani dengan Apple Developer ID dan tidak dinotarisasi. Verifikasi terpisah tidak mengubah kepercayaan sistem.
+
+## Bukti siklus hidup {#lifecycle-evidence}
+
+Rilis ini mengualifikasi jalur penginstal dan penggunaan pertama, 22 kasus Codex, dan 182 transaksi pemeliharaan paket per profil. Revisi 0 → 1 → 0 menggunakan byte native yang identik. Peningkatan ke versi native yang berbeda, salinan yang disimpan, dan siklus hidup pemilik yang sedang berjalan tetap terpisah. Lihat [panduan retensi](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Kode sumber dan masukan {#source-and-feedback}
+
+[Repositori kode sumber](https://github.com/QuanuX/symphony-distribution) · [README saat ini](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Terakhir ditinjau untuk peluncuran beta publik pada 16 November 2026._

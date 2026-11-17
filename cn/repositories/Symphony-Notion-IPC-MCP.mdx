@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "面向 Notion 的本地 IPC/MCP 桥接以及由用户运营的可选网关。"
+---
+
+该配套项目通过原生桥接和可选的环回网关，将面向 Notion 的工作流连接到 Symphony。它包含本地 IPC 接口，以及用于用户自行发布和隧道设置的辅助工具。
+
+## 需要评估的内容 {#what-to-evaluate}
+
+- 检查原生桥接、本地网关和调用方权限的契约。
+- 使用前审阅配置和生成的连接材料。
+- 在隔离的工作区中运行仓库中范围受限的测试。
+- 分别认证 Notion 客户端、OAuth、页面发布和隧道的实际行为。
+
+这是一个独立的源代码集成。其自动化测试并不能证明 Notion 客户端的端到端验收或应用市场审批，而且它也不是签名版 Symphony 测试版的默认二进制组件。请使用仓库当前的安装说明，并自行提供你预期使用的账户、连接和发布权限。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [当前 README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_最后审阅于 2026 年 11 月 16 日公开测试版发布时。_

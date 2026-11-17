@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "Volitelná orchestrace agentů zaměřená na NVIDIA a integrace se Symphony."
+---
+
+NemoSymphTron je volitelné rozšíření v C++26, které zkoumá orchestraci agentů zaměřenou na NVIDIA vedle Symphony. Jeho veřejný zdrojový kód poskytuje operace qxctl a operace orientované na MCP s vlastními pokyny pro sestavení a testování.
+
+## Co otestovat {#what-to-test}
+
+- Sestavte deklarovaný zdrojový cíl s jeho připnutými předpoklady.
+- Spusťte jeho sadu CTest a prověřte katalogy příkazů a nástrojů.
+- Vyzkoušejte malý orchestrační postup s explicitními vstupy a konfigurací.
+- Zaznamenejte podrobnosti o CPU, GPU, ovladači a operačním systému u výsledků závislých na hardwaru.
+
+## Hranice vydání {#release-boundary}
+
+Tato doprovodná komponenta není výchozím balíčkem Symphony 0.2.0-beta.1. Testy zdrojového kódu nekvalifikují fyzický DGX Spark, sadu ovladačů NVIDIA, výkon GPU ani produkční nasazení. Taková tvrzení vyžadují důkazy na skutečném cílovém systému. Záznam o kvalifikaci rozšíření uchovávejte odděleně od [kvalifikace základní platformy bety](https://quanux.org/beta).
+
+## Zdrojový kód a zpětná vazba {#source-and-feedback}
+
+[Repozitář zdrojového kódu](https://github.com/QuanuX/NemoSymphTron) · [Aktuální README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_Naposledy zkontrolováno pro spuštění veřejné bety 16. listopadu 2026._

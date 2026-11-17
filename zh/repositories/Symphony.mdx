@@ -1,0 +1,40 @@
+---
+title: "Symphony"
+description: "原生量化研究、硬件与云知识、治理以及 qxctl。"
+---
+
+Symphony 是基于 Vector-Graph Application Architecture 开发的开源 quantOS。原生引擎和 SDK 负责领域工作；qxctl 为智能体和人员提供统一的控制界面。用户可以自行选择引擎、策略、提供商和拓扑。
+
+## 公开测试版 {#public-beta}
+
+已发布的版本为 **0.2.0-beta.1**，于 2026 年 11 月 16 日发布。它为每个确切配置文件提供 59 个默认软件包、一个原生 Codex 客户端、SDK 导出以及可选的对应源代码。
+
+| 目标 | 架构 |
+| --- | --- |
+| macOS 15 | Apple Silicon / ARM64 |
+| Ubuntu 24.04 | AMD64 |
+| Ubuntu 24.04 | ARM64 |
+| Ubuntu 26.04 | AMD64 |
+
+请从[下载和 Anaconda 说明](https://quanux.org/downloads)开始，然后使用[测试版功能与测试指南](https://quanux.org/beta)。
+
+## 可探索的功能 {#capabilities-to-explore}
+
+- qxctl 清单、版本、已安装所有者检查以及显式管理。
+- SQV 采集、元数据、数据流、整数转换、本地存储、回放和检查点。
+- SBV 范围受限的回测研究、普查、原生评估、保留结果、取消和恢复。
+- SHV 基于来源的硬件目录、需求、图和发布预览。
+- SCV 提供商知识，以及 SNV Node 身份、资源、集群关系和命名。
+- SSIAG 授权、STAV 审计证据、组合以及知识治理。
+
+## 资格认证边界 {#qualification-boundaries}
+
+发布记录标识了经过认证的确切字节。物理 DGX Spark、GPU 行为和线上提供商部署需要单独的证据。通用凭据分发和原生提供商桥接存在明确列出的实现缺口；安装适配器并不等于认证了线上连接。源代码主分支上的修复不能替代已签名的测试版制品。
+
+在运行所选模块之前，请阅读[当前源代码 README 和维护说明](https://github.com/QuanuX/Symphony#readme)以及每个所选模块的规范。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/Symphony) · [Issues](https://github.com/QuanuX/Symphony/issues)
+
+_最后审阅于 2026 年 11 月 16 日。_

@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Jembatan IPC/MCP lokal untuk Notion dan gateway opsional yang dioperasikan pengguna."
+---
+
+Proyek pendamping ini menghubungkan alur kerja Notion ke Symphony melalui jembatan native dan gateway loopback opsional. Proyek ini mencakup permukaan IPC lokal serta alat bantu untuk publikasi yang dioperasikan pengguna dan penyiapan tunnel.
+
+## Hal yang perlu dievaluasi {#what-to-evaluate}
+
+- Periksa kontrak jembatan native, gateway lokal, dan otoritas pemanggil.
+- Tinjau konfigurasi dan materi koneksi yang dihasilkan sebelum digunakan.
+- Jalankan pengujian terbatas repositori di ruang kerja yang terisolasi.
+- Kualifikasi perilaku sebenarnya dari klien Notion, OAuth, publikasi halaman, dan tunnel secara terpisah.
+
+Ini adalah integrasi kode sumber yang terpisah. Pengujian otomatisnya tidak membuktikan penerimaan end-to-end klien Notion atau persetujuan marketplace, dan integrasi ini bukan komponen biner default dari beta Symphony yang ditandatangani. Gunakan instruksi instalasi repositori saat ini dan sediakan sendiri otoritas akun, koneksi, dan publikasi yang Anda maksudkan.
+
+## Kode sumber dan masukan {#source-and-feedback}
+
+[Repositori kode sumber](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [README saat ini](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Terakhir ditinjau untuk peluncuran beta publik pada 16 November 2026._

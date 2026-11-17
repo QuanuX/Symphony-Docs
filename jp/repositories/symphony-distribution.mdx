@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "署名済みのベータ版インストーラー、正確な Conda プロファイル、検証、対応ソース。"
+---
+
+このリポジトリは、Symphony の配布とリリースの証拠を管理しています。公開ベータ版 **0.2.0-beta.1** は 2026年11月16日に公開されました。
+
+## ダウンロードとインストール {#download-and-install}
+
+プラットフォームごとのインストーラー、Anaconda の手順、各パッケージの説明については、[quanux.org/downloads](https://quanux.org/downloads) を使用してください。[リリースページ](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1)で正確な成果物を確認できます。
+
+プロファイルは macOS 15 ARM64、Ubuntu 24.04 AMD64、Ubuntu 24.04 ARM64、Ubuntu 26.04 AMD64 です。それぞれに、個別に保守できる 59 個のデフォルトパッケージと、オプションの対応ソースが含まれています。Linux AMD64 のコホートは Conda のサブディレクトリを共有しますが、別々に認定されたビルドです。正確なプロファイルの明示的なリストを使用してください。
+
+## 検証と初回使用 {#verification-and-first-use}
+
+1. [インストールガイド](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)を読みます。
+2. 固定された検証ツールで、署名済みマニフェスト、リリースインデックス、選択したファイルを検証します。
+3. 通常のユーザーとして、新しいプライベートプレフィックスにインストールします。
+4. 検証済みのバイナリを、別のプライベートな保管ディレクトリに保持します。
+5. 生成されたクライアント設定を確認し、ネイティブのオーナーと権限を明示的に選択します。
+
+Conda 26.10.0 が認定されています。検証とセットアップには Python 3.11 以降と OpenSSL が必要です。提供されたバイナリを実行するのにコンパイラーは不要です。Mac の PKG は Apple Developer ID で署名されておらず、公証も受けていません。分離された検証によってシステムの信頼設定が変更されることはありません。
+
+## ライフサイクルの証拠 {#lifecycle-evidence}
+
+このリリースでは、プロファイルごとに、インストーラーと初回使用の経路、22 件の Codex ケース、182 件のパッケージ保守トランザクションが認定されています。リビジョン 0 → 1 → 0 では同一のネイティブバイトを使用します。異なるネイティブバージョンへのアップグレード、保持されたコピー、実行中のオーナーのライフサイクルは、それぞれ別に扱われます。[保持ガイド](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md)を参照してください。
+
+## ソースとフィードバック {#source-and-feedback}
+
+[ソースリポジトリ](https://github.com/QuanuX/symphony-distribution) · [最新の README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_2026年11月16日の公開ベータ版リリースに向けて最終確認済み。_

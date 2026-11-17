@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Nativní lokální integrace IPC a MCP pro klienty agentů Symphony."
+---
+
+Tento projekt poskytuje nativní most MCP v C++, katalogy nástrojů, generátory konfigurace klientů a skills pro lokální operace Symphony prostřednictvím qxctl. Zachovává přesné směrování k vlastníkům a explicitní oprávnění.
+
+## Začněte s beta klientem {#start-with-the-beta-client}
+
+Pro kvalifikovanou binární cestu použijte klienta dodávaného se [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Postupujte podle [průvodce uchováním a konfigurací klienta](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex je primárním kvalifikovaným klientem; stávající konfigurační adaptéry pro Claude, Antigravity a obecné klienty si zachovávají vlastní hranice.
+
+## Prozkoumejte {#explore}
+
+- Objevujte strukturované nástroje a směrujte operace k nainstalovaným vlastníkům qxctl.
+- Vygenerujte izolovaný profil připojení a fragment konfigurace klienta.
+- Začněte operacemi čtení; oprávnění k zápisu povolujte pouze prostřednictvím zdokumentovaných postupů vlastníka.
+- Prověřte skills projektu a pokyny pro sestavení a testování na úrovni zdrojového kódu.
+
+Kontrakt protokolu je v tomto repozitáři připnutý. Používejte jeho deklarovanou verzi a předpoklady sestavení, místo abyste je tiše nahradili novější revizí MCP. Veřejný repozitář ani lokální konfigurace klienta nepředstavují tvrzení o schválení v adresáři pluginů třetí strany.
+
+## Zdrojový kód a zpětná vazba {#source-and-feedback}
+
+[Repozitář zdrojového kódu](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [Aktuální README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Naposledy zkontrolováno pro spuštění veřejné bety 16. listopadu 2026._

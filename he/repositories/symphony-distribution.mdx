@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "מתקיני בטא חתומים, פרופילי Conda מדויקים, אימות וקוד מקור תואם."
+---
+
+מאגר זה אחראי על ההפצה ועל ראיות הגרסה של Symphony. גרסת הבטא הציבורית **0.2.0-beta.1** פורסמה ב-16 בנובמבר 2026.
+
+## הורדה והתקנה {#download-and-install}
+
+השתמשו ב-[quanux.org/downloads](https://quanux.org/downloads) עבור מתקינים לכל פלטפורמה, הוראות Anaconda ותיאורים של כל החבילות. [דף הגרסה](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) מזהה את התוצרים המדויקים.
+
+הפרופילים הם macOS 15 ARM64,‏ Ubuntu 24.04 AMD64,‏ Ubuntu 24.04 ARM64 ו-Ubuntu 26.04 AMD64. כל אחד כולל 59 חבילות ברירת מחדל שניתן לתחזק באופן עצמאי, וגם קוד מקור תואם אופציונלי. קבוצות Linux AMD64 חולקות תיקיית משנה של Conda, אך הן גרסאות בנייה מוסמכות נפרדות: השתמשו ברשימה המפורשת של הפרופיל המדויק.
+
+## אימות ושימוש ראשון {#verification-and-first-use}
+
+1. קראו את [מדריך ההתקנה](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. אמתו את המניפסט החתום, את אינדקס הגרסה ואת הקבצים שנבחרו באמצעות המאמת הנעוץ.
+3. התקינו לתוך קידומת פרטית חדשה כמשתמש הרגיל שלכם.
+4. שמרו את הקבצים הבינאריים המאומתים בתיקיית שמירה פרטית נפרדת.
+5. עברו על תצורת הלקוח שנוצרה ובחרו במפורש את הבעלים הנייטיביים ואת ההרשאה.
+
+Conda 26.10.0 הוסמך. נדרשים Python 3.11+ ו-OpenSSL לאימות ולהגדרה; אין צורך במהדר כדי להריץ את הקבצים הבינאריים שסופקו. חבילת ה-PKG ל-Mac אינה חתומה ב-Apple Developer ID ואינה עוברת notarization. אימות מנותק אינו משנה את האמון של המערכת.
+
+## ראיות למחזור החיים {#lifecycle-evidence}
+
+הגרסה מסמיכה את מסלולי ההתקנה והשימוש הראשון, 22 תרחישי Codex ו-182 טרנזקציות תחזוקת חבילות לכל פרופיל. הגרסה 0 → 1 → 0 משתמשת בבתים נייטיביים זהים. שדרוגים לגרסאות נייטיביות שונות, עותקים שנשמרו ומחזורי חיים של בעלים פועלים נשארים נפרדים. ראו את [מדריך השמירה](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## קוד מקור ומשוב {#source-and-feedback}
+
+[מאגר קוד המקור](https://github.com/QuanuX/symphony-distribution) · [README עדכני](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_נבדק לאחרונה לקראת השקת גרסת הבטא הציבורית ב-16 בנובמבר 2026._

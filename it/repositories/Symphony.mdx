@@ -1,0 +1,40 @@
+---
+title: "Symphony"
+description: "Ricerca quantitativa nativa, conoscenza di hardware e cloud, governance e qxctl."
+---
+
+Symphony è il quantOS open source sviluppato secondo la Vector-Graph Application Architecture. I motori e gli SDK nativi svolgono il lavoro di dominio; qxctl offre ad agenti e persone una superficie di controllo comune. Gli utenti scelgono i propri motori, strategie, provider e topologia.
+
+## Beta pubblica {#public-beta}
+
+La release pubblicata è **0.2.0-beta.1**, lanciata il 16 novembre 2026. Fornisce 59 pacchetti predefiniti per profilo esatto, un client Codex nativo, esportazioni degli SDK e codice sorgente corrispondente facoltativo.
+
+| Destinazione | Architettura |
+| --- | --- |
+| macOS 15 | Apple Silicon / ARM64 |
+| Ubuntu 24.04 | AMD64 |
+| Ubuntu 24.04 | ARM64 |
+| Ubuntu 26.04 | AMD64 |
+
+Inizia da [download e istruzioni per Anaconda](https://quanux.org/downloads), poi usa la [guida alle funzionalità e ai test della beta](https://quanux.org/beta).
+
+## Funzionalità da esplorare {#capabilities-to-explore}
+
+- Manifest, versioni, ispezione dei proprietari installati e amministrazione esplicita con qxctl.
+- Acquisizione, metadati, flusso, conversione in interi, archivi locali, replay e checkpoint di SQV.
+- Ricerca con backtest delimitati, censimento, valutazione nativa, risultati conservati, annullamento e ripristino di SBV.
+- Cataloghi hardware basati su fonti, requisiti, grafi e anteprime di pubblicazione di SHV.
+- Conoscenza dei provider di SCV e identità dei Node, risorse, relazioni di cluster e denominazione di SNV.
+- Autorizzazione SSIAG, prove di audit STAV, composizione e governance della conoscenza.
+
+## Limiti della qualificazione {#qualification-boundaries}
+
+Il registro della release identifica i byte qualificati esatti. Un DGX Spark fisico, il comportamento della GPU e i deployment con provider in produzione richiedono prove separate. La distribuzione generale delle credenziali e i bridge nativi verso i provider presentano lacune di implementazione esplicite; installare un adattatore non qualifica una connessione in produzione. Le correzioni sul branch principale del codice sorgente non sostituiscono gli artefatti beta firmati.
+
+Leggi il [README attuale del codice sorgente e le note di manutenzione](https://github.com/QuanuX/Symphony#readme) e la specifica di ogni modulo selezionato prima di utilizzarlo.
+
+## Codice sorgente e feedback {#source-and-feedback}
+
+[Repository del codice sorgente](https://github.com/QuanuX/Symphony) · [Issue](https://github.com/QuanuX/Symphony/issues)
+
+_Ultima revisione il 16 novembre 2026._

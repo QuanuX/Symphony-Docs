@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Tích hợp IPC cục bộ và MCP gốc cho các client tác tử của Symphony."
+---
+
+Dự án này cung cấp một cầu nối MCP gốc bằng C++, danh mục công cụ, trình tạo cấu hình client và skills cho các thao tác Symphony cục bộ thông qua qxctl. Dự án giữ nguyên việc định tuyến chính xác đến chủ sở hữu và thẩm quyền tường minh.
+
+## Bắt đầu với client beta {#start-with-the-beta-client}
+
+Với lộ trình nhị phân đã được thẩm định, hãy dùng client đi kèm [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Làm theo [hướng dẫn lưu giữ và cấu hình client](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex là client chính đã được thẩm định; các adapter cấu hình hiện có cho Claude, Antigravity và client chung vẫn giữ ranh giới riêng.
+
+## Khám phá {#explore}
+
+- Khám phá các công cụ có cấu trúc và định tuyến thao tác đến các chủ sở hữu qxctl đã cài đặt.
+- Tạo một profile kết nối tách biệt và một đoạn cấu hình client.
+- Bắt đầu với các thao tác đọc; chỉ bật thẩm quyền ghi thông qua các luồng chủ sở hữu đã được ghi tài liệu.
+- Kiểm tra skills của dự án và hướng dẫn build và kiểm thử ở cấp mã nguồn.
+
+Hợp đồng giao thức được ghim trong kho này. Hãy dùng phiên bản và điều kiện tiên quyết build đã khai báo thay vì âm thầm thay bằng một bản sửa đổi MCP mới hơn. Một kho công khai hoặc cấu hình client cục bộ không phải là tuyên bố đã được phê duyệt trong thư mục plugin của bên thứ ba.
+
+## Mã nguồn và phản hồi {#source-and-feedback}
+
+[Kho mã nguồn](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [README hiện tại](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Được xem xét lần cuối cho đợt ra mắt bản beta công khai ngày 16 tháng 11 năm 2026._

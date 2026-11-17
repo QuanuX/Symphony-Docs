@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "已簽署的測試版安裝程式、確切的 Conda 設定檔、驗證以及對應原始碼。"
+---
+
+此儲存庫負責 Symphony 的發行與發布證據。公開測試版 **0.2.0-beta.1** 已於 2026 年 11 月 16 日發布。
+
+## 下載與安裝 {#download-and-install}
+
+請前往 [quanux.org/downloads](https://quanux.org/downloads) 取得各平台安裝程式、Anaconda 說明以及所有套件的描述。[發布頁面](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1)列出了確切的成品。
+
+設定檔包括 macOS 15 ARM64、Ubuntu 24.04 AMD64、Ubuntu 24.04 ARM64 與 Ubuntu 26.04 AMD64。每個設定檔都包含 59 個可獨立維護的預設套件，以及選用的對應原始碼。Linux AMD64 批次共用同一個 Conda 子目錄，但它們是各自獨立認證的建置：請使用確切設定檔的明確清單。
+
+## 驗證與首次使用 {#verification-and-first-use}
+
+1. 閱讀[安裝指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)。
+2. 使用固定的驗證工具驗證已簽署的資訊清單、發布索引與所選檔案。
+3. 以一般使用者身分安裝至新的私人前置路徑。
+4. 將經過驗證的二進位檔保留在獨立的私人保管目錄中。
+5. 檢視產生的用戶端設定，並明確選擇原生擁有者與權限。
+
+Conda 26.10.0 已通過認證。驗證與設定需要 Python 3.11+ 與 OpenSSL；執行所提供的二進位檔不需要編譯器。Mac PKG 未使用 Apple Developer ID 簽署，也未經過公證。分離式驗證不會變更系統信任設定。
+
+## 生命週期證據 {#lifecycle-evidence}
+
+此版本為每個設定檔認證了安裝程式與首次使用路徑、22 個 Codex 案例以及 182 個套件維護交易。修訂版本 0 → 1 → 0 使用完全相同的原生位元組。升級至不同的原生版本、保留的副本以及執行中擁有者的生命週期仍需分別處理。請參閱[保留指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md)。
+
+## 原始碼與意見回饋 {#source-and-feedback}
+
+[原始碼儲存庫](https://github.com/QuanuX/symphony-distribution) · [目前的 README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_最後審閱於 2026 年 11 月 16 日公開測試版發布時。_

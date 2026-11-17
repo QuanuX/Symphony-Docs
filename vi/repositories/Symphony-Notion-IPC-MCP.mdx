@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Cầu nối IPC/MCP cục bộ hướng Notion và gateway tùy chọn do người dùng vận hành."
+---
+
+Dự án đi kèm này kết nối các quy trình làm việc hướng Notion với Symphony thông qua một cầu nối gốc và một gateway loopback tùy chọn. Dự án bao gồm các bề mặt IPC cục bộ và các công cụ hỗ trợ cho việc xuất bản do người dùng vận hành và thiết lập tunnel.
+
+## Những gì cần đánh giá {#what-to-evaluate}
+
+- Kiểm tra các hợp đồng của cầu nối gốc, gateway cục bộ và thẩm quyền của bên gọi.
+- Xem xét cấu hình và tài liệu kết nối được tạo trước khi sử dụng.
+- Chạy các bài kiểm thử có giới hạn của kho trong một không gian làm việc tách biệt.
+- Thẩm định riêng hành vi thực tế của client Notion, OAuth, việc xuất bản trang và tunnel.
+
+Đây là một tích hợp mã nguồn riêng biệt. Các bài kiểm thử tự động của nó không xác lập việc chấp nhận đầu cuối của client Notion hay phê duyệt trên marketplace, và nó không phải là thành phần nhị phân mặc định của bản beta Symphony đã ký. Hãy dùng hướng dẫn cài đặt hiện tại của kho và tự cung cấp thẩm quyền tài khoản, kết nối và xuất bản mà bạn dự định.
+
+## Mã nguồn và phản hồi {#source-and-feedback}
+
+[Kho mã nguồn](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [README hiện tại](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Được xem xét lần cuối cho đợt ra mắt bản beta công khai ngày 16 tháng 11 năm 2026._

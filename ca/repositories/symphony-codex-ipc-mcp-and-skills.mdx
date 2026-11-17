@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Integració nativa d'IPC local i MCP per als clients d'agents de Symphony."
+---
+
+Aquest projecte proporciona un pont MCP natiu en C++, catàlegs d'eines, generadors de configuració de clients i skills per a operacions locals de Symphony mitjançant qxctl. Conserva l'encaminament exacte als propietaris i l'autoritat explícita.
+
+## Comenceu amb el client beta {#start-with-the-beta-client}
+
+Per al camí binari qualificat, utilitzeu el client inclòs a [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Seguiu la [guia de conservació i configuració del client](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex és el client qualificat principal; els adaptadors de configuració existents per a Claude, Antigravity i genèrics mantenen els seus propis límits.
+
+## Exploreu {#explore}
+
+- Descobriu eines estructurades i encamineu les operacions cap als propietaris de qxctl instal·lats.
+- Genereu un perfil de connexió aïllat i un fragment de configuració del client.
+- Comenceu amb operacions de lectura; habiliteu l'autoritat d'escriptura només mitjançant fluxos de propietari documentats.
+- Inspeccioneu les skills del projecte i les instruccions de compilació i prova a nivell de codi font.
+
+El contracte del protocol està fixat en aquest repositori. Utilitzeu-ne la versió declarada i els requisits previs de compilació en lloc de substituir-los silenciosament per una revisió de MCP més recent. Un repositori públic o una configuració de client local no és una afirmació d'aprovació en un directori de connectors de tercers.
+
+## Codi font i comentaris {#source-and-feedback}
+
+[Repositori del codi font](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [README actual](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Revisat per darrera vegada per al llançament de la beta pública del 16 de novembre de 2026._

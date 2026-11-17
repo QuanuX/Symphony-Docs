@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "選用的 NVIDIA 導向代理協調與 Symphony 整合。"
+---
+
+NemoSymphTron 是一個選用的 C++26 擴充功能，用於在 Symphony 之外探索 NVIDIA 導向的代理協調。其公開原始碼提供 qxctl 與面向 MCP 的操作，並附有個別的建置與測試說明。
+
+## 需要測試的項目 {#what-to-test}
+
+- 使用固定的先決條件建置宣告的原始碼目標。
+- 執行其 CTest 測試套件，並檢查命令與工具目錄。
+- 使用明確的輸入與設定試行一個小型協調工作流程。
+- 對於取決於硬體的結果，記錄 CPU、GPU、驅動程式與作業系統的詳細資訊。
+
+## 發布界線 {#release-boundary}
+
+此配套元件不是 Symphony 0.2.0-beta.1 的預設套件。原始碼測試無法認證實體 DGX Spark、NVIDIA 驅動程式堆疊、GPU 效能或正式環境部署。這類主張需要在實際目標系統上取得證據。請將擴充功能的資格認證紀錄與[核心測試版平台資格認證](https://quanux.org/beta)分開保存。
+
+## 原始碼與意見回饋 {#source-and-feedback}
+
+[原始碼儲存庫](https://github.com/QuanuX/NemoSymphTron) · [目前的 README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_最後審閱於 2026 年 11 月 16 日公開測試版發布時。_

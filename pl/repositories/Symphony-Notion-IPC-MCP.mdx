@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Lokalny most IPC/MCP dla Notion i opcjonalna bramka obsługiwana przez użytkownika."
+---
+
+Ten projekt towarzyszący łączy przepływy pracy związane z Notion z Symphony za pomocą natywnego mostu i opcjonalnej bramki loopback. Zawiera lokalne interfejsy IPC oraz narzędzia pomocnicze do publikowania obsługiwanego przez użytkownika i konfiguracji tuneli.
+
+## Co ocenić {#what-to-evaluate}
+
+- Sprawdź kontrakty natywnego mostu, lokalnej bramki i uprawnień wywołującego.
+- Przejrzyj konfigurację i wygenerowane materiały połączenia przed użyciem.
+- Uruchom ograniczone testy repozytorium w izolowanym obszarze roboczym.
+- Osobno zakwalifikuj rzeczywiste działanie klienta Notion, OAuth, publikowania stron i tuneli.
+
+Jest to osobna integracja na poziomie kodu źródłowego. Jej testy automatyczne nie potwierdzają kompleksowej akceptacji klienta Notion ani zatwierdzenia w marketplace i nie jest ona domyślnym komponentem binarnym podpisanej wersji beta Symphony. Korzystaj z aktualnych instrukcji instalacji z repozytorium i zapewnij własne zamierzone uprawnienia do konta, połączenia i publikowania.
+
+## Kod źródłowy i opinie {#source-and-feedback}
+
+[Repozytorium kodu źródłowego](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [Aktualny README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Ostatnio sprawdzono przed premierą publicznej wersji beta 16 listopada 2026 r._

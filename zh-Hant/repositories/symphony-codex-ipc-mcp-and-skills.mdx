@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "適用於 Symphony 代理用戶端的原生本機 IPC 與 MCP 整合。"
+---
+
+此專案提供原生 C++ MCP 橋接器、工具目錄、用戶端設定產生器以及 skills，用於透過 qxctl 執行本機 Symphony 操作。它保留了通往擁有者的精確路由與明確權限。
+
+## 從測試版用戶端開始 {#start-with-the-beta-client}
+
+如需經過認證的二進位路徑，請使用 [Symphony 0.2.0-beta.1](https://quanux.org/downloads) 中提供的用戶端。請依照[保留與用戶端設定指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)操作。Codex 是主要的認證用戶端；現有的 Claude、Antigravity 與通用設定轉接器保留各自的界線。
+
+## 探索 {#explore}
+
+- 探索結構化工具，並將操作路由至已安裝的 qxctl 擁有者。
+- 產生隔離的連線設定檔與用戶端設定片段。
+- 從讀取操作開始；僅透過有文件記載的擁有者流程啟用寫入權限。
+- 檢查專案的 skills 以及原始碼層級的建置與測試說明。
+
+通訊協定合約已固定在此儲存庫中。請使用其宣告的版本與建置先決條件，而不要悄悄替換為較新的 MCP 修訂版本。公開儲存庫或本機用戶端設定並不代表已在第三方外掛程式目錄中獲得核准。
+
+## 原始碼與意見回饋 {#source-and-feedback}
+
+[原始碼儲存庫](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [目前的 README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_最後審閱於 2026 年 11 月 16 日公開測試版發布時。_

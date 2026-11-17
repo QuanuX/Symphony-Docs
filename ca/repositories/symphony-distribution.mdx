@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Instal·ladors beta signats, perfils exactes de Conda, verificació i codi font corresponent."
+---
+
+Aquest repositori és responsable de la distribució i de les proves de versió de Symphony. La beta pública **0.2.0-beta.1** es va publicar el 16 de novembre de 2026.
+
+## Baixada i instal·lació {#download-and-install}
+
+Utilitzeu [quanux.org/downloads](https://quanux.org/downloads) per obtenir els instal·ladors de cada plataforma, les instruccions d'Anaconda i les descripcions de tots els paquets. La [pàgina de la versió](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifica els artefactes exactes.
+
+Els perfils són macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 i Ubuntu 26.04 AMD64. Cadascun inclou 59 paquets predeterminats que es poden mantenir de manera independent, a més del codi font corresponent opcional. Les cohorts Linux AMD64 comparteixen un subdirectori de Conda, però són compilacions qualificades diferents: utilitzeu la llista explícita del perfil exacte.
+
+## Verificació i primer ús {#verification-and-first-use}
+
+1. Llegiu la [guia d'instal·lació](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verifiqueu el manifest signat, l'índex de la versió i els fitxers seleccionats amb el verificador fixat.
+3. Instal·leu en un prefix privat nou amb el vostre usuari habitual.
+4. Conserveu els binaris verificats en un directori de custòdia privat independent.
+5. Reviseu la configuració de client generada i seleccioneu explícitament els propietaris natius i l'autoritat.
+
+Es va qualificar Conda 26.10.0. Cal Python 3.11+ i OpenSSL per a la verificació i la configuració; no cal cap compilador per executar els binaris subministrats. El PKG per a Mac no està signat amb Apple Developer ID ni notaritzat. La verificació separada no altera la confiança del sistema.
+
+## Proves del cicle de vida {#lifecycle-evidence}
+
+La versió qualifica els camins d'instal·lació i primer ús, 22 casos de Codex i 182 transaccions de manteniment de paquets per perfil. La revisió 0 → 1 → 0 utilitza bytes natius idèntics. Les actualitzacions a versions natives diferents, les còpies conservades i els cicles de vida dels propietaris en execució es mantenen separats. Consulteu la [guia de conservació](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Codi font i comentaris {#source-and-feedback}
+
+[Repositori del codi font](https://github.com/QuanuX/symphony-distribution) · [README actual](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Revisat per darrera vegada per al llançament de la beta pública del 16 de novembre de 2026._

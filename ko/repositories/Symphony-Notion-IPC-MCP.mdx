@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Notion용 로컬 IPC/MCP 브리지와 사용자가 운영하는 선택형 게이트웨이."
+---
+
+이 보조 프로젝트는 네이티브 브리지와 선택형 루프백 게이트웨이를 통해 Notion 대상 워크플로를 Symphony에 연결합니다. 로컬 IPC 인터페이스와 사용자가 운영하는 게시 및 터널 설정을 위한 도우미가 포함되어 있습니다.
+
+## 평가할 항목 {#what-to-evaluate}
+
+- 네이티브 브리지, 로컬 게이트웨이, 호출자 권한에 대한 계약을 살펴보세요.
+- 사용하기 전에 구성과 생성된 연결 자료를 검토하세요.
+- 격리된 작업 공간에서 저장소의 범위가 제한된 테스트를 실행하세요.
+- 실제 Notion 클라이언트, OAuth, 페이지 게시, 터널 동작은 각각 별도로 인증하세요.
+
+이것은 별도의 소스 통합입니다. 자동화된 테스트는 Notion 클라이언트의 엔드투엔드 수용이나 마켓플레이스 승인을 입증하지 않으며, 서명된 Symphony 베타의 기본 바이너리 구성 요소도 아닙니다. 저장소의 최신 설치 지침을 사용하고, 의도한 계정, 연결, 게시 권한은 직접 제공하세요.
+
+## 소스 및 피드백 {#source-and-feedback}
+
+[소스 저장소](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [최신 README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_2026년 11월 16일 공개 베타 출시를 기준으로 마지막으로 검토되었습니다._

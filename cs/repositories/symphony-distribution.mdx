@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Podepsané instalátory bety, přesné profily Conda, ověřování a odpovídající zdrojový kód."
+---
+
+Tento repozitář vlastní distribuci a důkazy o vydání Symphony. Veřejná beta **0.2.0-beta.1** byla publikována 16. listopadu 2026.
+
+## Stažení a instalace {#download-and-install}
+
+Na [quanux.org/downloads](https://quanux.org/downloads) najdete instalátory pro jednotlivé platformy, pokyny pro Anacondu a popisy všech balíčků. [Stránka vydání](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifikuje přesné artefakty.
+
+Profily jsou macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 a Ubuntu 26.04 AMD64. Každý obsahuje 59 nezávisle udržovatelných výchozích balíčků a volitelný odpovídající zdrojový kód. Kohorty Linux AMD64 sdílejí podadresář Conda, ale jde o odlišná kvalifikovaná sestavení: použijte explicitní seznam přesného profilu.
+
+## Ověření a první použití {#verification-and-first-use}
+
+1. Přečtěte si [průvodce instalací](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Ověřte podepsaný manifest, index vydání a vybrané soubory pomocí připnutého ověřovacího nástroje.
+3. Nainstalujte do nového soukromého prefixu jako běžný uživatel.
+4. Ověřené binární soubory uchovejte v samostatném soukromém úschovném adresáři.
+5. Zkontrolujte vygenerovanou konfiguraci klienta a explicitně vyberte nativní vlastníky a oprávnění.
+
+Conda 26.10.0 byla kvalifikována. K ověření a nastavení potřebujete Python 3.11+ a OpenSSL; ke spuštění dodaných binárních souborů není potřeba kompilátor. Balíček PKG pro Mac není podepsán pomocí Apple Developer ID ani notarizován. Oddělené ověření nemění důvěru systému.
+
+## Důkazy o životním cyklu {#lifecycle-evidence}
+
+Vydání kvalifikuje cesty instalace a prvního použití, 22 případů Codex a 182 transakcí údržby balíčků na profil. Revize 0 → 1 → 0 používá identické nativní bajty. Upgrady na jiné nativní verze, uchované kopie a životní cykly běžících vlastníků zůstávají oddělené. Viz [průvodce uchováním](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Zdrojový kód a zpětná vazba {#source-and-feedback}
+
+[Repozitář zdrojového kódu](https://github.com/QuanuX/symphony-distribution) · [Aktuální README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Naposledy zkontrolováno pro spuštění veřejné bety 16. listopadu 2026._

@@ -1,0 +1,21 @@
+---
+title: "Antigravity-IPC-MCP-CLI"
+description: "エージェントクライアント向けの C++26 によるローカル IPC、MCP、CLI 統合。"
+---
+
+このプロジェクトは、Antigravity やその他のエージェントクライアントのワークフロー向けに、ネイティブのローカル IPC と MCP のインターフェースを提供します。CLI のサポートと明示的な接続設定も備えています。
+
+## 評価すべき点 {#what-to-evaluate}
+
+- 宣言されている C++26 のビルド要件とプロトコル契約を確認します。
+- stdio とローカル IPC のトランスポートの選択肢と、それぞれの権限境界を確認します。
+- 対象ホスト向けのクライアント設定を生成し、内容を確認します。
+- 実際のエージェントクライアントのセッションを評価する前に、リポジトリのテストを実行します。
+
+Antigravity、agy、Gemini、Codex、Claude の各統合には、クライアントごとの設定要件と認定要件がそのまま適用されます。このスタンドアロンのリポジトリは、署名済みの Symphony ディストリビューションに同梱されている Codex クライアントとは別物です。ソースコードが公開されていることを理由に、バイナリのベータ版に含まれているとか、サードパーティのディレクトリで承認されていると推測しないでください。
+
+## ソースとフィードバック {#source-and-feedback}
+
+[ソースリポジトリ](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI) · [最新の README](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI#readme) · [Issues](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI/issues)
+
+_2026年11月16日の公開ベータ版リリースに向けて最終確認済み。_

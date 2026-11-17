@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "面向 Symphony 智能体客户端的原生本地 IPC 和 MCP 集成。"
+---
+
+该项目提供原生 C++ MCP 桥接、工具目录、客户端配置生成器以及 skills，用于通过 qxctl 执行本地 Symphony 操作。它保留了到所有者的精确路由和显式权限。
+
+## 从测试版客户端开始 {#start-with-the-beta-client}
+
+如需经过认证的二进制路径，请使用 [Symphony 0.2.0-beta.1](https://quanux.org/downloads) 中提供的客户端。请按照[保留与客户端配置指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)操作。Codex 是主要的认证客户端；现有的 Claude、Antigravity 和通用配置适配器保留各自的边界。
+
+## 探索 {#explore}
+
+- 发现结构化工具，并将操作路由到已安装的 qxctl 所有者。
+- 生成隔离的连接配置文件和客户端配置片段。
+- 从读取操作开始；仅通过有文档记录的所有者流程启用写入权限。
+- 检查项目的 skills 以及源代码级别的构建和测试说明。
+
+协议契约已固定在该仓库中。请使用其声明的版本和构建前置条件，而不要悄然替换为更新的 MCP 修订版本。公开仓库或本地客户端配置并不表示已在第三方插件目录中获得批准。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [当前 README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_最后审阅于 2026 年 11 月 16 日公开测试版发布时。_

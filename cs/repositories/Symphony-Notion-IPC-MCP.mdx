@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Lokální most IPC/MCP pro Notion a volitelná brána provozovaná uživatelem."
+---
+
+Tento doprovodný projekt propojuje pracovní postupy zaměřené na Notion se Symphony prostřednictvím nativního mostu a volitelné loopback brány. Obsahuje lokální rozhraní IPC a pomocné nástroje pro publikaci provozovanou uživatelem a nastavení tunelů.
+
+## Co vyhodnotit {#what-to-evaluate}
+
+- Prověřte kontrakty nativního mostu, lokální brány a oprávnění volajícího.
+- Před použitím zkontrolujte konfiguraci a vygenerované materiály pro připojení.
+- Spusťte ohraničené testy repozitáře v izolovaném pracovním prostoru.
+- Skutečné chování klienta Notion, OAuth, publikace stránek a tunelů kvalifikujte samostatně.
+
+Jde o samostatnou integraci na úrovni zdrojového kódu. Její automatické testy nedokládají kompletní přijetí klienta Notion ani schválení na marketplace a nejde o výchozí binární komponentu podepsané bety Symphony. Použijte aktuální pokyny k instalaci z repozitáře a zajistěte vlastní zamýšlené oprávnění k účtu, připojení a publikaci.
+
+## Zdrojový kód a zpětná vazba {#source-and-feedback}
+
+[Repozitář zdrojového kódu](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [Aktuální README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Naposledy zkontrolováno pro spuštění veřejné bety 16. listopadu 2026._

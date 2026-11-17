@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Trình cài đặt beta đã ký, profile Conda chính xác, xác minh và mã nguồn tương ứng."
+---
+
+Kho này sở hữu bản phân phối và bằng chứng phát hành của Symphony. Bản beta công khai **0.2.0-beta.1** được xuất bản ngày 16 tháng 11 năm 2026.
+
+## Tải xuống và cài đặt {#download-and-install}
+
+Dùng [quanux.org/downloads](https://quanux.org/downloads) để lấy trình cài đặt cho từng nền tảng, hướng dẫn Anaconda và mô tả của mọi gói. [Trang phát hành](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) xác định chính xác các artifact.
+
+Các profile gồm macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 và Ubuntu 26.04 AMD64. Mỗi profile gồm 59 gói mặc định có thể bảo trì độc lập cùng mã nguồn tương ứng tùy chọn. Các nhóm Linux AMD64 dùng chung một thư mục con Conda nhưng là các bản build đã thẩm định riêng biệt: hãy dùng danh sách tường minh của đúng profile.
+
+## Xác minh và sử dụng lần đầu {#verification-and-first-use}
+
+1. Đọc [hướng dẫn cài đặt](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Xác minh manifest đã ký, chỉ mục phát hành và các tệp đã chọn bằng trình xác minh đã ghim.
+3. Cài đặt vào một prefix riêng tư mới bằng người dùng thông thường của bạn.
+4. Lưu giữ các tệp nhị phân đã xác minh trong một thư mục lưu giữ riêng tư tách biệt.
+5. Xem xét cấu hình client được tạo và chọn tường minh các chủ sở hữu gốc cùng thẩm quyền.
+
+Conda 26.10.0 đã được thẩm định. Cần Python 3.11+ và OpenSSL để xác minh và thiết lập; không cần trình biên dịch để chạy các tệp nhị phân được cung cấp. Gói PKG cho Mac không được ký bằng Apple Developer ID và không được notarize. Việc xác minh tách rời không thay đổi độ tin cậy của hệ thống.
+
+## Bằng chứng vòng đời {#lifecycle-evidence}
+
+Bản phát hành thẩm định các lộ trình cài đặt và sử dụng lần đầu, 22 trường hợp Codex và 182 giao dịch bảo trì gói cho mỗi profile. Bản sửa đổi 0 → 1 → 0 dùng các byte gốc giống hệt nhau. Các bản nâng cấp lên phiên bản gốc khác, các bản sao được lưu giữ và vòng đời của các chủ sở hữu đang chạy vẫn tách biệt. Xem [hướng dẫn lưu giữ](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Mã nguồn và phản hồi {#source-and-feedback}
+
+[Kho mã nguồn](https://github.com/QuanuX/symphony-distribution) · [README hiện tại](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Được xem xét lần cuối cho đợt ra mắt bản beta công khai ngày 16 tháng 11 năm 2026._

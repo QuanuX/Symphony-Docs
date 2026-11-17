@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "Điều phối tác tử hướng NVIDIA tùy chọn và tích hợp với Symphony."
+---
+
+NemoSymphTron là một tiện ích mở rộng C++26 tùy chọn, khám phá việc điều phối tác tử hướng NVIDIA song song với Symphony. Mã nguồn công khai của nó cung cấp các thao tác qxctl và hướng MCP, với hướng dẫn build và kiểm thử riêng.
+
+## Những gì cần kiểm thử {#what-to-test}
+
+- Build mục tiêu nguồn đã khai báo với các điều kiện tiên quyết đã được ghim.
+- Chạy bộ CTest và kiểm tra danh mục lệnh và công cụ.
+- Thử một quy trình điều phối nhỏ với đầu vào và cấu hình tường minh.
+- Ghi lại thông tin CPU, GPU, trình điều khiển và hệ điều hành cho các kết quả phụ thuộc phần cứng.
+
+## Ranh giới bản phát hành {#release-boundary}
+
+Thành phần đi kèm này không phải là gói mặc định trong Symphony 0.2.0-beta.1. Các bài kiểm thử mã nguồn không thẩm định một DGX Spark vật lý, ngăn xếp trình điều khiển NVIDIA, hiệu năng GPU hay một triển khai thực tế. Những khẳng định đó cần bằng chứng trên hệ thống đích thực tế. Hãy giữ hồ sơ thẩm định của tiện ích mở rộng tách biệt với [thẩm định nền tảng beta cốt lõi](https://quanux.org/beta).
+
+## Mã nguồn và phản hồi {#source-and-feedback}
+
+[Kho mã nguồn](https://github.com/QuanuX/NemoSymphTron) · [README hiện tại](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_Được xem xét lần cuối cho đợt ra mắt bản beta công khai ngày 16 tháng 11 năm 2026._

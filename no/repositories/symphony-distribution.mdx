@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Signerte betainstallasjonsprogrammer, nøyaktige Conda-profiler, verifisering og tilhørende kildekode."
+---
+
+Dette repositoriet eier distribusjonen og versjonsbevisene for Symphony. Den offentlige betaen **0.2.0-beta.1** ble publisert 16. november 2026.
+
+## Last ned og installer {#download-and-install}
+
+Bruk [quanux.org/downloads](https://quanux.org/downloads) for installasjonsprogrammer for hver plattform, Anaconda-instruksjoner og beskrivelser av alle pakker. [Versjonssiden](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifiserer de nøyaktige artefaktene.
+
+Profilene er macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 og Ubuntu 26.04 AMD64. Hver profil inneholder 59 uavhengig vedlikeholdbare standardpakker pluss valgfri tilhørende kildekode. Linux AMD64-kohortene deler en Conda-underkatalog, men er separate kvalifiserte bygg: bruk den eksplisitte listen for den nøyaktige profilen.
+
+## Verifisering og første gangs bruk {#verification-and-first-use}
+
+1. Les [installasjonsveiledningen](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verifiser det signerte manifestet, versjonsindeksen og de valgte filene med den fastlåste verifikatoren.
+3. Installer i et nytt privat prefiks som din vanlige bruker.
+4. Oppbevar verifiserte binærfiler i en separat privat oppbevaringskatalog.
+5. Gå gjennom den genererte klientkonfigurasjonen, og velg native eiere og myndighet eksplisitt.
+
+Conda 26.10.0 ble kvalifisert. Python 3.11+ og OpenSSL trengs for verifisering og oppsett; det kreves ingen kompilator for å kjøre de medfølgende binærfilene. Mac-PKG-en er ikke signert med Apple Developer ID og ikke notarisert. Frittstående verifisering endrer ikke systemets tillit.
+
+## Livssyklusbevis {#lifecycle-evidence}
+
+Versjonen kvalifiserer installasjons- og førstegangsveier, 22 Codex-tilfeller og 182 pakkevedlikeholdstransaksjoner per profil. Revisjon 0 → 1 → 0 bruker identiske native byte. Oppgraderinger til andre native versjoner, bevarte kopier og livssykluser for kjørende eiere holdes atskilt. Se [oppbevaringsveiledningen](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Kildekode og tilbakemeldinger {#source-and-feedback}
+
+[Kildekoderepositorium](https://github.com/QuanuX/symphony-distribution) · [Gjeldende README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Sist gjennomgått for lanseringen av den offentlige betaen 16. november 2026._

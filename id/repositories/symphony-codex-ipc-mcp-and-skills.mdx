@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Integrasi IPC lokal dan MCP native untuk klien agen Symphony."
+---
+
+Proyek ini menyediakan jembatan MCP native dalam C++, katalog alat, generator konfigurasi klien, dan skills untuk operasi Symphony lokal melalui qxctl. Proyek ini mempertahankan perutean yang persis ke pemilik dan otoritas yang eksplisit.
+
+## Mulai dengan klien beta {#start-with-the-beta-client}
+
+Untuk jalur biner yang terkualifikasi, gunakan klien yang disertakan dalam [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Ikuti [panduan retensi dan konfigurasi klien](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex adalah klien utama yang terkualifikasi; adaptor konfigurasi Claude, Antigravity, dan generik yang sudah ada tetap memiliki batasnya sendiri.
+
+## Jelajahi {#explore}
+
+- Temukan alat terstruktur dan rutekan operasi ke pemilik qxctl yang terinstal.
+- Buat profil koneksi yang terisolasi dan fragmen konfigurasi klien.
+- Mulailah dengan operasi baca; aktifkan otoritas tulis hanya melalui alur pemilik yang terdokumentasi.
+- Periksa skills proyek serta instruksi build dan pengujian tingkat kode sumber.
+
+Kontrak protokol disematkan di repositori ini. Gunakan versi dan prasyarat build yang dideklarasikan, alih-alih diam-diam menggantinya dengan revisi MCP yang lebih baru. Repositori publik atau konfigurasi klien lokal bukan klaim persetujuan di direktori plugin pihak ketiga.
+
+## Kode sumber dan masukan {#source-and-feedback}
+
+[Repositori kode sumber](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [README saat ini](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Terakhir ditinjau untuk peluncuran beta publik pada 16 November 2026._

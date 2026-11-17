@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "面向 Notion 的本機 IPC/MCP 橋接器與由使用者營運的選用閘道。"
+---
+
+此配套專案透過原生橋接器與選用的回送閘道，將面向 Notion 的工作流程連接到 Symphony。其中包含本機 IPC 介面，以及供使用者自行發布與設定通道的輔助工具。
+
+## 需要評估的項目 {#what-to-evaluate}
+
+- 檢查原生橋接器、本機閘道與呼叫端權限的合約。
+- 使用前檢視設定與產生的連線資料。
+- 在隔離的工作區中執行儲存庫範圍受限的測試。
+- 分別認證 Notion 用戶端、OAuth、頁面發布與通道的實際行為。
+
+這是一個獨立的原始碼整合。其自動化測試無法證明 Notion 用戶端的端對端驗收或市集核准，而且它也不是已簽署 Symphony 測試版的預設二進位元件。請使用儲存庫目前的安裝說明，並自行提供你預計使用的帳戶、連線與發布權限。
+
+## 原始碼與意見回饋 {#source-and-feedback}
+
+[原始碼儲存庫](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [目前的 README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_最後審閱於 2026 年 11 月 16 日公開測試版發布時。_

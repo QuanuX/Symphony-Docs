@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Programe de instalare beta semnate, profiluri Conda exacte, verificare și cod sursă corespunzător."
+---
+
+Acest depozit deține distribuția și dovezile de versiune pentru Symphony. Versiunea beta publică **0.2.0-beta.1** a fost publicată pe 16 noiembrie 2026.
+
+## Descărcare și instalare {#download-and-install}
+
+Folosiți [quanux.org/downloads](https://quanux.org/downloads) pentru programele de instalare ale platformelor, instrucțiunile Anaconda și descrierile tuturor pachetelor. [Pagina versiunii](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifică artefactele exacte.
+
+Profilurile sunt macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 și Ubuntu 26.04 AMD64. Fiecare include 59 de pachete implicite care pot fi întreținute independent, plus cod sursă corespunzător opțional. Cohortele Linux AMD64 partajează un subdirector Conda, dar sunt build-uri calificate distincte: folosiți lista explicită a profilului exact.
+
+## Verificare și prima utilizare {#verification-and-first-use}
+
+1. Citiți [ghidul de instalare](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verificați manifestul semnat, indexul versiunii și fișierele selectate cu verificatorul fixat.
+3. Instalați într-un prefix privat nou ca utilizator obișnuit.
+4. Păstrați binarele verificate într-un director privat de custodie separat.
+5. Examinați configurația de client generată și selectați explicit proprietarii nativi și autoritatea.
+
+Conda 26.10.0 a fost calificată. Python 3.11+ și OpenSSL sunt necesare pentru verificare și configurare; nu este necesar un compilator pentru a rula binarele furnizate. Pachetul PKG pentru Mac nu este semnat cu Apple Developer ID și nici notarizat. Verificarea detașată nu modifică încrederea sistemului.
+
+## Dovezi privind ciclul de viață {#lifecycle-evidence}
+
+Versiunea califică traseele de instalare și primă utilizare, 22 de cazuri Codex și 182 de tranzacții de întreținere a pachetelor pentru fiecare profil. Revizia 0 → 1 → 0 folosește octeți nativi identici. Actualizările la versiuni native diferite, copiile păstrate și ciclurile de viață ale proprietarilor în execuție rămân separate. Consultați [ghidul de păstrare](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Cod sursă și feedback {#source-and-feedback}
+
+[Depozitul de cod sursă](https://github.com/QuanuX/symphony-distribution) · [README actual](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Revizuit ultima dată pentru lansarea versiunii beta publice din 16 noiembrie 2026._

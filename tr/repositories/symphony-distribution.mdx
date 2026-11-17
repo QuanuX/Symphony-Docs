@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "İmzalı beta yükleyicileri, tam Conda profilleri, doğrulama ve karşılık gelen kaynak kodu."
+---
+
+Bu depo, Symphony'nin dağıtımından ve sürüm kanıtlarından sorumludur. Herkese açık beta **0.2.0-beta.1**, 16 Kasım 2026'da yayımlandı.
+
+## İndirme ve kurulum {#download-and-install}
+
+Platform yükleyicileri, Anaconda talimatları ve tüm paketlerin açıklamaları için [quanux.org/downloads](https://quanux.org/downloads) adresini kullanın. [Sürüm sayfası](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) tam yapıtları tanımlar.
+
+Profiller macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 ve Ubuntu 26.04 AMD64'tür. Her biri, bağımsız olarak bakımı yapılabilen 59 varsayılan paketin yanı sıra isteğe bağlı karşılık gelen kaynak kodunu içerir. Linux AMD64 grupları bir Conda alt dizinini paylaşır ancak yeterliliği ayrı ayrı doğrulanmış farklı derlemelerdir: tam profilin açık listesini kullanın.
+
+## Doğrulama ve ilk kullanım {#verification-and-first-use}
+
+1. [Kurulum kılavuzunu](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md) okuyun.
+2. İmzalı manifesti, sürüm dizinini ve seçilen dosyaları sabitlenmiş doğrulayıcıyla doğrulayın.
+3. Normal kullanıcınız olarak yeni bir özel önek içine kurun.
+4. Doğrulanmış ikili dosyaları ayrı bir özel saklama dizininde tutun.
+5. Oluşturulan istemci yapılandırmasını gözden geçirin ve yerel sahipleri ve yetkiyi açıkça seçin.
+
+Conda 26.10.0'ın yeterliliği doğrulandı. Doğrulama ve kurulum için Python 3.11+ ve OpenSSL gerekir; sağlanan ikili dosyaları çalıştırmak için derleyici gerekmez. Mac PKG, Apple Developer ID ile imzalanmamış ve noter onayından geçirilmemiştir. Ayrık doğrulama sistem güvenini değiştirmez.
+
+## Yaşam döngüsü kanıtları {#lifecycle-evidence}
+
+Sürüm, her profil için yükleyici ve ilk kullanım yollarını, 22 Codex senaryosunu ve 182 paket bakım işlemini doğrular. 0 → 1 → 0 revizyonu aynı yerel baytları kullanır. Farklı yerel sürümlere yükseltmeler, saklanan kopyalar ve çalışan sahiplerin yaşam döngüleri ayrı kalır. [Saklama kılavuzuna](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md) bakın.
+
+## Kaynak kod ve geri bildirim {#source-and-feedback}
+
+[Kaynak kod deposu](https://github.com/QuanuX/symphony-distribution) · [Güncel README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_En son 16 Kasım 2026 herkese açık beta lansmanı için gözden geçirildi._

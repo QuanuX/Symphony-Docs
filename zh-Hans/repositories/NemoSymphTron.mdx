@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "可选的面向 NVIDIA 的智能体编排及 Symphony 集成。"
+---
+
+NemoSymphTron 是一个可选的 C++26 扩展，用于在 Symphony 之外探索面向 NVIDIA 的智能体编排。其公开源代码提供 qxctl 和面向 MCP 的操作，并附有单独的构建和测试说明。
+
+## 需要测试的内容 {#what-to-test}
+
+- 使用固定的前置条件构建声明的源代码目标。
+- 运行其 CTest 测试套件，并检查命令和工具目录。
+- 使用显式的输入和配置试运行一个小型编排工作流。
+- 对于依赖硬件的结果，记录 CPU、GPU、驱动程序和操作系统的详细信息。
+
+## 发布边界 {#release-boundary}
+
+该配套组件不是 Symphony 0.2.0-beta.1 的默认软件包。源代码测试并不能认证物理 DGX Spark、NVIDIA 驱动程序栈、GPU 性能或线上部署。这类结论需要在实际目标系统上取得证据。请将该扩展的资格认证记录与[核心测试版平台资格认证](https://quanux.org/beta)分开保存。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/NemoSymphTron) · [当前 README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_最后审阅于 2026 年 11 月 16 日公开测试版发布时。_
