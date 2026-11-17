@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Native local IPC and MCP integration for Symphony agent clients."
+---
+
+This project provides a native C++ MCP bridge, tool catalogues, client-configuration generators and skills for local Symphony operations through qxctl. It preserves exact owner routing and explicit authority.
+
+## Start with the beta client
+
+For the qualified binary path, use the client supplied in [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Follow the [retention and client configuration guide](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex is the primary qualified client; existing Claude, Antigravity and generic configuration adapters retain their own boundaries.
+
+## Explore
+
+- Discover structured tools and route operations to installed qxctl owners.
+- Generate an isolated connection profile and client configuration fragment.
+- Start with read operations; enable write authority only through documented owner flows.
+- Inspect the project's skills and source-level build/test instructions.
+
+The protocol contract is pinned in this repository. Use its declared version and build prerequisites rather than silently substituting a newer MCP revision. A public repository or local client configuration is not a claim of approval in a third-party plugin directory.
+
+## Source and feedback
+
+[Source repository](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [Current README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Last reviewed for the November 16, 2026 public beta launch._

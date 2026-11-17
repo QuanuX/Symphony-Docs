@@ -87,6 +87,20 @@
                   "engines/scv-source-engines",
                   "engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Public repositories",
+                "pages": [
+                  "en/repositories/Symphony",
+                  "en/repositories/symphony-distribution",
+                  "en/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "en/repositories/Symphony-Notion-IPC-MCP",
+                  "en/repositories/Antigravity-IPC-MCP-CLI",
+                  "en/repositories/NemoSymphTron",
+                  "en/repositories/quanux-gemini-cli-mcp",
+                  "en/repositories/quanux",
+                  "en/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
