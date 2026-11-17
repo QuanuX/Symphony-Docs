@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "Valgfri NVIDIA-orienteret agentorkestrering og Symphony-integration."
+---
+
+NemoSymphTron er en valgfri C++26-udvidelse, der udforsker NVIDIA-orienteret agentorkestrering sammen med Symphony. Dens offentlige kildekode leverer qxctl- og MCP-rettede operationer med egne bygge- og testinstruktioner.
+
+## Hvad du skal teste {#what-to-test}
+
+- Byg det erklærede kildemål med dets fastlåste forudsætninger.
+- Kør dets CTest-suite, og undersøg kommando- og værktøjskatalogerne.
+- Afprøv en lille orkestreringsarbejdsgang med eksplicitte input og eksplicit konfiguration.
+- Registrér CPU-, GPU-, driver- og operativsystemoplysninger for hardwareafhængige resultater.
+
+## Versionsgrænse {#release-boundary}
+
+Denne ledsagende komponent er ikke en standardpakke i Symphony 0.2.0-beta.1. Kildekodetests kvalificerer ikke en fysisk DGX Spark, en NVIDIA-driverstak, GPU-ydeevne eller en live-udrulning. Sådanne påstande kræver dokumentation på det faktiske målsystem. Hold udvidelsens kvalificeringsregistrering adskilt fra [kvalificeringen af betaens kerneplatform](https://quanux.org/beta).
+
+## Kildekode og feedback {#source-and-feedback}
+
+[Kildekoderepository](https://github.com/QuanuX/NemoSymphTron) · [Aktuel README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_Senest gennemgået til lanceringen af den offentlige beta den 16. november 2026._

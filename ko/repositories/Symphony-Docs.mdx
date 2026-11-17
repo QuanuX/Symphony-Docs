@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify 문서 소스와 게시된 Symphony 참조 페이지."
+---
+
+이 저장소는 [docs.quanux.org/symphony](https://docs.quanux.org/symphony)에 있는 Mintlify 사이트의 소스입니다. 플랫폼 원칙, 아키텍처, vector 및 오너 참조, qxctl 문서, 번역, 변경 로그 자료가 포함되어 있습니다.
+
+## 저장소의 목적과 릴리스 상태 {#repository-purpose-and-release-status}
+
+Symphony-Docs는 문서 저장소입니다. Symphony 소프트웨어 릴리스에 포함되지 않습니다.
+
+- 이 저장소에는 GitHub 릴리스, 태그, 패키지가 없습니다. 이 저장소에서 설치하는 것은 없습니다.
+- 엔진, SDK, qxctl 바이너리, Anaconda 프로필을 제공하지 않습니다. 이들은 Symphony 핵심 릴리스에서 제공됩니다.
+- `LICENSE` 파일은 Mintlify 스타터 템플릿에서 물려받은 MIT 라이선스입니다. Symphony 핵심 소프트웨어는 [QuanuX/Symphony](https://github.com/QuanuX/Symphony)에서 AGPL-3.0으로 게시됩니다.
+- 이 저장소에는 README가 없습니다. 게시된 사이트가 사용자를 위한 진입점입니다.
+
+Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시되었습니다. 릴리스 범위와 인증 경계는 [Symphony 저장소 페이지](/ko/repositories/Symphony)를 참고하세요. 이 저장소의 페이지는 기능을 설명합니다. 해당 기능을 인증하지는 않습니다. 이 페이지에 설명된 제안, 로드맵 항목, 하드웨어 또는 GPU 동작은 핵심 릴리스 기록에 명시되지 않는 한 검증된 기능이 아닙니다.
+
+## 공개 베타 문서 {#public-beta-documentation}
+
+[베타 기능 가이드](https://quanux.org/beta)로 시작한 다음 [다운로드 및 Anaconda 설치](https://quanux.org/downloads)를 확인하고, 이후 선택한 모듈의 문서를 살펴보세요.
+
+각 엔진은 개별적으로 설치, 업데이트, 제거됩니다. 필요한 엔진을 선택하고 조합하세요. [엔진 개요](/ko/engines/overview)를 참고하세요.
+
+## 문서 탐색 {#navigate-the-documentation}
+
+사이트에는 세 개의 탭이 있습니다.
+
+| 탭 | 내용 |
+| --- | --- |
+| 문서 | 시작하기, 핵심 개념, Knowledge Vector (SKV), 운영 및 인프라, 신원, 감사 및 거버넌스, 엔진 및 라이브러리, 공개 저장소 |
+| qxctl CLI | qxctl 개요 및 명령 참조, [qxctl 개요](/ko/qxctl/overview)부터 시작 |
+| 변경 로그 | [변경 로그](/ko/changelog)의 날짜별 릴리스 노트 |
+
+언어 선택기를 사용해 영어와 35개 번역 간에 전환하세요. Public repositories 그룹은 영어로만 제공됩니다.
+
+각 QuanuX 공개 저장소에는 "공개 저장소" 아래에 전용 페이지가 있습니다. 저장소 페이지는 `docs.quanux.org/symphony/en/repositories/<repository-name>`에 게시됩니다. 예를 들어 이 페이지는 [/ko/repositories/Symphony-Docs](/ko/repositories/Symphony-Docs)에 있습니다.
+
+## 소스 출처 {#source-provenance}
+
+게시된 모든 페이지는 이 저장소의 MDX 파일 하나에 대응합니다.
+
+- `docs.json`은 사이트 구성, 탭, 그룹, 페이지 순서, 언어를 정의합니다.
+- 영어 페이지는 저장소 루트와 `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/`, `qxctl/`에 있습니다.
+- 번역은 `de/`, `ja/`, `zh-Hans/` 같은 로캘 디렉터리에서 영어 구조를 그대로 따릅니다.
+- 저장소 페이지는 `en/repositories/`에 있습니다.
+- `changelog.mdx`에는 추가만 합니다. 새 항목은 현재 연도의 맨 위에 추가되며, 게시된 항목은 수정하거나 삭제하지 않습니다.
+
+어떤 내용의 출처를 추적하려면 GitHub에서 해당 MDX 파일을 열고 커밋 기록을 검토하세요. 기능에 대한 설명은 이 저장소가 아니라 Symphony 핵심 소스와 게시된 릴리스 아티팩트에 근거합니다.
+
+## 소스 및 게시 원칙 {#source-and-publication-discipline}
+
+준비 상태는 저장소의 현재 구현과 게시된 릴리스의 정확한 아티팩트로 결정됩니다. 과거 문서와 소스 메인 브랜치의 업데이트는 서로 다른 근거입니다. 페이지를 업데이트할 때는 버전 출처를 유지하고, 선택형 보조 구성 요소와 바이너리 릴리스 내용을 구분하며, 기존 번역과 소스 링크를 보존하세요.
+
+이전 [quanux](/ko/repositories/quanux) 저장소는 과거 작업입니다. 그 문서는 현재 Symphony를 설명하지 않습니다.
+
+자동 저장소 새로 고침은 2026년 11월 17일과 18일에 America/New_York 기준 00:01부터 30분 간격의 시작 슬롯으로 예약되어 있습니다. 새로운 근거와 릴리스가 나오면 페이지도 계속 갱신됩니다.
+
+## 소스 및 피드백 {#source-and-feedback}
+
+[소스 저장소](https://github.com/QuanuX/Symphony-Docs) · [커밋 기록](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_2026년 11월 17일에 마지막으로 검토되었습니다._

@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Notion-oldali helyi IPC/MCP-híd és opcionális, felhasználó által üzemeltetett átjáró."
+---
+
+Ez a kiegészítő projekt egy natív hídon és egy opcionális loopback-átjárón keresztül kapcsolja össze a Notionre épülő munkafolyamatokat a Symphonyval. Helyi IPC-felületeket és segédeszközöket tartalmaz a felhasználó által üzemeltetett közzétételhez és az alagutak beállításához.
+
+## Mit érdemes értékelni {#what-to-evaluate}
+
+- Vizsgálja meg a natív híd, a helyi átjáró és a hívó jogosultságának szerződéseit.
+- Használat előtt tekintse át a konfigurációt és a létrehozott kapcsolati anyagokat.
+- Futtassa a tároló korlátozott tesztjeit egy elkülönített munkaterületen.
+- Külön minősítse a Notion-kliens, az OAuth, az oldalközzététel és az alagutak tényleges működését.
+
+Ez egy különálló forráskód-integráció. Automatizált tesztjei nem igazolják a Notion-kliens teljes körű elfogadását vagy egy piactéren való jóváhagyást, és nem alapértelmezett bináris komponense az aláírt Symphony bétának. Használja a tároló aktuális telepítési utasításait, és adja meg a saját tervezett fiók-, kapcsolati és közzétételi jogosultságát.
+
+## Forráskód és visszajelzés {#source-and-feedback}
+
+[Forráskódtároló](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [Aktuális README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Utoljára ellenőrizve a nyilvános béta 2026. november 16-i indulásához._

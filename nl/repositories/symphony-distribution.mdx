@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Ondertekende bèta-installatieprogramma's, exacte Conda-profielen, verificatie en bijbehorende broncode."
+---
+
+Deze repository is eigenaar van de distributie en het releasebewijs voor Symphony. De openbare bèta **0.2.0-beta.1** is gepubliceerd op 16 november 2026.
+
+## Downloaden en installeren {#download-and-install}
+
+Gebruik [quanux.org/downloads](https://quanux.org/downloads) voor installatieprogramma's per platform, Anaconda-instructies en beschrijvingen van elk pakket. De [releasepagina](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identificeert de exacte artefacten.
+
+De profielen zijn macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 en Ubuntu 26.04 AMD64. Elk profiel bevat 59 onafhankelijk onderhoudbare standaardpakketten plus optioneel de bijbehorende broncode. De Linux AMD64-cohorten delen een Conda-submap, maar zijn afzonderlijke gekwalificeerde builds: gebruik de expliciete lijst van het exacte profiel.
+
+## Verificatie en eerste gebruik {#verification-and-first-use}
+
+1. Lees de [installatiegids](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verifieer het ondertekende manifest, de release-index en de geselecteerde bestanden met de vastgezette verificatietool.
+3. Installeer als uw normale gebruiker in een nieuw privéprefix.
+4. Bewaar geverifieerde binaire bestanden in een aparte privé-bewaarmap.
+5. Controleer de gegenereerde clientconfiguratie en selecteer expliciet native eigenaren en bevoegdheid.
+
+Conda 26.10.0 is gekwalificeerd. Python 3.11+ en OpenSSL zijn nodig voor verificatie en installatie; een compiler is niet vereist om de meegeleverde binaire bestanden uit te voeren. Het Mac-PKG is niet ondertekend met een Apple Developer ID en niet genotariseerd. Losgekoppelde verificatie wijzigt het systeemvertrouwen niet.
+
+## Levenscyclusbewijs {#lifecycle-evidence}
+
+De release kwalificeert installatie- en eerstegebruikspaden, 22 Codex-scenario's en 182 pakketonderhoudstransacties per profiel. Revisie 0 → 1 → 0 gebruikt identieke native bytes. Upgrades naar andere native versies, bewaarde kopieën en levenscycli van actieve eigenaren blijven gescheiden. Zie de [bewaargids](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Broncode en feedback {#source-and-feedback}
+
+[Broncoderepository](https://github.com/QuanuX/symphony-distribution) · [Huidige README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Laatst gecontroleerd voor de lancering van de openbare bèta op 16 november 2026._

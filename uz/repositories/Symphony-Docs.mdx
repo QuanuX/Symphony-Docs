@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify hujjatlari manbalari va Symphony’ning eʼlon qilingan maʼlumotnoma sahifalari."
+---
+
+Bu repozitoriy [docs.quanux.org/symphony](https://docs.quanux.org/symphony) manzilidagi Mintlify sayti uchun manba hisoblanadi. Unda platforma doktrinasi, arxitektura, vektorlar va egalar boʻyicha maʼlumotnomalar, qxctl hujjatlari, tarjimalar va oʻzgarishlar jurnali materiallari mavjud.
+
+## Repozitoriy maqsadi va reliz holati {#repository-purpose-and-release-status}
+
+Symphony-Docs hujjatlar repozitoriysidir. U Symphony dasturiy taʼminot relizining bir qismi emas.
+
+- Repozitoriyda GitHub relizlari, teglari yoki paketlari yoʻq. Undan hech narsa oʻrnatmaysiz.
+- U engine’lar, SDK’lar, qxctl binar fayllari yoki Anaconda profillarini taqdim etmaydi. Ular asosiy Symphony relizidan olinadi.
+- Uning `LICENSE` fayli Mintlify boshlangʻich shablonidan meros qolgan MIT litsenziyasidir. Asosiy Symphony dasturiy taʼminoti [QuanuX/Symphony](https://github.com/QuanuX/Symphony) orqali AGPL-3.0 litsenziyasi ostida eʼlon qilinadi.
+- Repozitoriyda README yoʻq. Eʼlon qilingan sayt foydalanuvchilar uchun kirish nuqtasidir.
+
+Asosiy Symphony ochiq betasi **0.2.0-beta.1** 2026-yil 16-noyabrda ishga tushirilgan. Reliz qamrovi va malaka chegaralari uchun [Symphony repozitoriysi sahifasiga](/uz/repositories/Symphony) qarang. Ushbu repozitoriydagi sahifa imkoniyatni tavsiflaydi. U bu imkoniyatni malakalamaydi. Bu sahifalarda tavsiflangan takliflar, yoʻl xaritasi bandlari va uskuna yoki GPU xatti-harakati, agar asosiy reliz yozuvida aytilmagan boʻlsa, tasdiqlangan imkoniyatlar emas.
+
+## Ochiq beta hujjatlari {#public-beta-documentation}
+
+[Beta imkoniyatlari qoʻllanmasidan](https://quanux.org/beta) boshlang, soʻngra [yuklab olish va Anaconda orqali oʻrnatish](https://quanux.org/downloads) boʻlimiga, keyin esa siz tanlagan modul hujjatlariga oʻting.
+
+Har bir engine alohida oʻrnatiladi, yangilanadi va olib tashlanadi. Kerakli engine’larni tanlang va birlashtiring. [Engine’lar umumiy koʻrinishi](/uz/engines/overview) sahifasiga qarang.
+
+## Hujjatlar boʻylab harakatlanish {#navigate-the-documentation}
+
+Saytda uchta yorliq bor:
+
+| Yorliq | Tarkib |
+| --- | --- |
+| Hujjatlar | Boshlash, Asosiy tushunchalar, Knowledge Vector (SKV), Operatsiyalar va infratuzilma, Identifikatsiya, audit va boshqaruv, Engine’lar va kutubxonalar va Ochiq repozitoriylar |
+| qxctl CLI | qxctl umumiy koʻrinishi va buyruqlar maʼlumotnomalari, [qxctl umumiy koʻrinishi](/uz/qxctl/overview) dan boshlab |
+| Oʻzgarishlar jurnali | [Oʻzgarishlar jurnalidagi](/uz/changelog) sanasi koʻrsatilgan reliz eslatmalari |
+
+Ingliz tili va 35 ta tarjima oʻrtasida almashish uchun til tanlagichidan foydalaning. Public repositories guruhi faqat ingliz tilida mavjud.
+
+Har bir ochiq QuanuX repozitoriysining Ochiq repozitoriylar boʻlimida alohida sahifasi bor. Repozitoriy sahifalari `docs.quanux.org/symphony/en/repositories/<repository-name>` manzilida eʼlon qilinadi. Masalan, bu sahifa [/uz/repositories/Symphony-Docs](/uz/repositories/Symphony-Docs) manzilida joylashgan.
+
+## Manbalarning kelib chiqishi {#source-provenance}
+
+Har bir eʼlon qilingan sahifa ushbu repozitoriydagi bitta MDX fayliga mos keladi.
+
+- `docs.json` sayt konfiguratsiyasi, yorliqlar, guruhlar, sahifalar tartibi va tillarni belgilaydi.
+- Inglizcha sahifalar repozitoriy ildizida hamda `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` va `qxctl/` kataloglarida joylashgan.
+- Tarjimalar inglizcha tuzilmani `de/`, `ja/` va `zh-Hans/` kabi til kataloglarida takrorlaydi.
+- Repozitoriy sahifalari `en/repositories/` katalogida joylashgan.
+- `changelog.mdx` faqat qoʻshish uchun moʻljallangan. Yangi yozuvlar joriy yilning yuqori qismiga qoʻshiladi, eʼlon qilingan yozuvlar esa hech qachon tahrirlanmaydi yoki oʻchirilmaydi.
+
+Biror daʼvoni kuzatish uchun GitHub’da mos MDX faylini oching va uning commit tarixini koʻrib chiqing. Funksiyalar haqidagi daʼvolar ushbu repozitoriyga emas, balki asosiy Symphony manba kodi va uning eʼlon qilingan reliz artefaktlariga borib taqaladi.
+
+## Manba va nashr intizomi {#source-and-publication-discipline}
+
+Tayyorlikni repozitoriyning joriy amalga oshirilishi va eʼlon qilingan relizning aniq artefaktlari belgilaydi. Tarixiy hujjatlar va manba kodining asosiy tarmogʻidagi yangilanishlar turli dalillardir. Versiya kelib chiqishini saqlang, ixtiyoriy yordamchi komponentlarni binar reliz tarkibidan farqlang va sahifalarni yangilashda mavjud tarjimalar hamda manba kodi havolalarini saqlab qoling.
+
+Oldingi [quanux](/uz/repositories/quanux) repozitoriysi tarixiy ishdir. Uning hujjatlari joriy Symphony’ni tavsiflamaydi.
+
+Repozitoriylarni avtomatik yangilash 2026-yil 17 va 18-noyabr kunlari America/New_York vaqti bilan 00:01 dan boshlab 30 daqiqalik boshlanish oraliqlarida rejalashtirilgan. Yangi dalillar va relizlar paydo boʻlishi bilan sahifalar rivojlanib boradi.
+
+## Manba kodi va fikr-mulohaza {#source-and-feedback}
+
+[Manba kodi repozitoriysi](https://github.com/QuanuX/Symphony-Docs) · [Commit tarixi](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Oxirgi marta 2026-yil 17-noyabrda koʻrib chiqilgan._

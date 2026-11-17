@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Natív helyi IPC- és MCP-integráció Symphony ügynökkliensekhez."
+---
+
+Ez a projekt natív C++ MCP-hidat, eszközkatalógusokat, kliens-konfigurációs generátorokat és skilleket biztosít a helyi Symphony-műveletekhez a qxctl-en keresztül. Megőrzi a tulajdonosokhoz való pontos útválasztást és az explicit jogosultságot.
+
+## Kezdés a béta klienssel {#start-with-the-beta-client}
+
+A minősített bináris útvonalhoz használja a [Symphony 0.2.0-beta.1](https://quanux.org/downloads) kiadással szállított klienst. Kövesse a [megőrzési és kliens-konfigurációs útmutatót](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). A Codex az elsődleges minősített kliens; a meglévő Claude, Antigravity és általános konfigurációs adapterek megtartják saját határaikat.
+
+## Felfedezés {#explore}
+
+- Fedezze fel a strukturált eszközöket, és irányítsa a műveleteket a telepített qxctl-tulajdonosokhoz.
+- Hozzon létre egy elkülönített kapcsolati profilt és egy kliens-konfigurációs töredéket.
+- Kezdje olvasási műveletekkel; az írási jogosultságot csak dokumentált tulajdonosi folyamatokon keresztül engedélyezze.
+- Vizsgálja meg a projekt skilljeit, valamint a forráskódszintű build- és tesztelési utasításokat.
+
+A protokollszerződés ebben a tárolóban van rögzítve. A deklarált verziót és build-előfeltételeket használja ahelyett, hogy csendben egy újabb MCP-revízióra cserélné őket. Egy nyilvános tároló vagy egy helyi kliens-konfiguráció nem jelenti egy harmadik féltől származó bővítménykönyvtárban való jóváhagyás állítását.
+
+## Forráskód és visszajelzés {#source-and-feedback}
+
+[Forráskódtároló](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [Aktuális README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Utoljára ellenőrizve a nyilvános béta 2026. november 16-i indulásához._

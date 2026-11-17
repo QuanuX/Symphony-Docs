@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Surse de documentație Mintlify și pagini de referință publicate pentru Symphony."
+---
+
+Acest depozit este sursa site-ului Mintlify de la [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Conține doctrina platformei, arhitectura, referințele pentru vectori și proprietari, documentația qxctl, traducerile și materialele pentru jurnalul de modificări.
+
+## Scopul depozitului și starea versiunii {#repository-purpose-and-release-status}
+
+Symphony-Docs este un depozit de documentație. Nu face parte din versiunea software Symphony.
+
+- Depozitul nu are versiuni, etichete sau pachete GitHub. Nu instalați nimic din el.
+- Nu furnizează motoare, SDK-uri, binare qxctl sau profiluri Anaconda. Acestea provin din versiunea de bază Symphony.
+- Fișierul său `LICENSE` este licența MIT moștenită din șablonul de pornire Mintlify. Software-ul de bază Symphony este publicat sub AGPL-3.0 din [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Depozitul nu are README. Site-ul publicat este punctul de intrare pentru utilizatori.
+
+Versiunea beta publică de bază Symphony, **0.2.0-beta.1**, a fost lansată pe 16 noiembrie 2026. Consultați [pagina depozitului Symphony](/ro/repositories/Symphony) pentru domeniul versiunii și limitele de calificare. O pagină din acest depozit descrie o capabilitate. Nu califică acea capabilitate. Propunerile, elementele din foaia de parcurs și comportamentul hardware sau GPU descrise în aceste pagini nu sunt capabilități verificate, cu excepția cazului în care înregistrarea versiunii de bază precizează acest lucru.
+
+## Documentația versiunii beta publice {#public-beta-documentation}
+
+Începeți cu [ghidul capabilităților versiunii beta](https://quanux.org/beta), apoi cu [descărcările și instalarea cu Anaconda](https://quanux.org/downloads), iar apoi cu documentația modulului pe care îl selectați.
+
+Fiecare motor este instalat, actualizat și eliminat individual. Alegeți și combinați motoarele de care aveți nevoie. Consultați [Prezentarea generală a motoarelor](/ro/engines/overview).
+
+## Navigarea în documentație {#navigate-the-documentation}
+
+Site-ul are trei file:
+
+| Filă | Conținut |
+| --- | --- |
+| Documentație | Primii pași, Concepte de bază, Knowledge Vector (SKV), Operațiuni și infrastructură, Identitate, audit și guvernanță, Motoare și biblioteci și Depozite publice |
+| CLI qxctl | Prezentarea generală qxctl și referințele comenzilor, începând cu [prezentarea generală qxctl](/ro/qxctl/overview) |
+| Jurnal de modificări | Note de versiune datate în [jurnalul de modificări](/ro/changelog) |
+
+Folosiți selectorul de limbă pentru a comuta între engleză și 35 de traduceri. Grupul Public repositories este disponibil numai în engleză.
+
+Fiecare depozit public QuanuX are o pagină dedicată în secțiunea Depozite publice. Paginile depozitelor sunt publicate la `docs.quanux.org/symphony/en/repositories/<repository-name>`. De exemplu, această pagină se află la [/ro/repositories/Symphony-Docs](/ro/repositories/Symphony-Docs).
+
+## Proveniența surselor {#source-provenance}
+
+Fiecare pagină publicată corespunde unui fișier MDX din acest depozit.
+
+- `docs.json` definește configurația site-ului, filele, grupurile, ordinea paginilor și limbile.
+- Paginile în engleză se află în rădăcina depozitului și în `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` și `qxctl/`.
+- Traducerile reproduc structura în engleză în directoare de limbă precum `de/`, `ja/` și `zh-Hans/`.
+- Paginile depozitelor se află în `en/repositories/`.
+- `changelog.mdx` acceptă doar adăugări. Intrările noi se adaugă la începutul anului curent, iar intrările publicate nu sunt niciodată editate sau șterse.
+
+Pentru a urmări o afirmație, deschideți fișierul MDX corespunzător pe GitHub și examinați istoricul commit-urilor sale. Afirmațiile despre funcționalități provin din codul sursă de bază Symphony și din artefactele sale de versiune publicate, nu din acest depozit.
+
+## Disciplina surselor și a publicării {#source-and-publication-discipline}
+
+Implementarea actuală din depozit și artefactele exacte ale versiunii publicate determină gradul de pregătire. Documentația istorică și actualizările din ramura principală a codului sursă sunt dovezi diferite. Păstrați proveniența versiunilor, distingeți componentele însoțitoare opționale de conținutul versiunii binare și păstrați traducerile și linkurile existente către codul sursă atunci când actualizați paginile.
+
+Depozitul anterior [quanux](/ro/repositories/quanux) este o lucrare istorică. Documentația sa nu descrie Symphony actual.
+
+Reîmprospătările automate ale depozitelor sunt programate în intervale de pornire de 30 de minute pe 17 și 18 noiembrie 2026, începând cu ora 00:01 America/New_York. Paginile vor evolua pe măsură ce devin disponibile dovezi și versiuni noi.
+
+## Cod sursă și feedback {#source-and-feedback}
+
+[Depozitul de cod sursă](https://github.com/QuanuX/Symphony-Docs) · [Istoricul commit-urilor](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Revizuit ultima dată pe 17 noiembrie 2026._

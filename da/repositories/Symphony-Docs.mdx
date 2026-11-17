@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify-dokumentationskilder og publicerede referencesider for Symphony."
+---
+
+Dette repository er kilden til Mintlify-webstedet på [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Det indeholder platformsdoktrin, arkitektur, referencer for vectors og ejere, qxctl-dokumentation, oversættelser og ændringslogmateriale.
+
+## Repositoryets formål og versionsstatus {#repository-purpose-and-release-status}
+
+Symphony-Docs er et dokumentationsrepository. Det er ikke en del af Symphony-softwareversionen.
+
+- Repositoryet har ingen GitHub-versioner, tags eller pakker. Du installerer ikke noget fra det.
+- Det leverer ingen motorer, SDK'er, qxctl-binærfiler eller Anaconda-profiler. De kommer fra Symphonys kerneversion.
+- Filen `LICENSE` er den MIT-licens, der er arvet fra Mintlifys startskabelon. Symphonys kernesoftware udgives under AGPL-3.0 fra [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Repositoryet har ingen README. Det publicerede websted er indgangen for brugerne.
+
+Symphonys offentlige kernebeta, **0.2.0-beta.1**, blev lanceret den 16. november 2026. Se [siden for Symphony-repositoryet](/da/repositories/Symphony) for versionens omfang og kvalificeringsgrænser. En side i dette repository beskriver en funktion. Den kvalificerer ikke funktionen. Forslag, roadmap-punkter og hardware- eller GPU-adfærd, der beskrives på disse sider, er ikke verificerede funktioner, medmindre kerneversionens registrering siger det.
+
+## Dokumentation til den offentlige beta {#public-beta-documentation}
+
+Start med [vejledningen til betaens funktioner](https://quanux.org/beta), derefter [downloads og installation med Anaconda](https://quanux.org/downloads) og så dokumentationen for det modul, du vælger.
+
+Hver motor installeres, opdateres og fjernes enkeltvis. Vælg og sammensæt de motorer, du har brug for. Se [Oversigt over motorer](/da/engines/overview).
+
+## Naviger i dokumentationen {#navigate-the-documentation}
+
+Webstedet har tre faner:
+
+| Fane | Indhold |
+| --- | --- |
+| Dokumentation | Kom godt i gang, Kernekoncepter, Knowledge Vector (SKV), Drift og infrastruktur, Identitet, revision og governance, Engines og biblioteker og Offentlige repositories |
+| qxctl CLI | qxctl-oversigt og kommandoreferencer, med start i [qxctl-oversigten](/da/qxctl/overview) |
+| Ændringslog | Daterede versionsnoter i [ændringsloggen](/da/changelog) |
+
+Brug sprogvælgeren til at skifte mellem engelsk og 35 oversættelser. Gruppen Public repositories findes kun på engelsk.
+
+Hvert offentligt QuanuX-repository har en dedikeret side under Offentlige repositories. Repositorysider publiceres på `docs.quanux.org/symphony/en/repositories/<repository-name>`. Denne side findes for eksempel på [/da/repositories/Symphony-Docs](/da/repositories/Symphony-Docs).
+
+## Kildernes oprindelse {#source-provenance}
+
+Hver publiceret side svarer til én MDX-fil i dette repository.
+
+- `docs.json` definerer webstedets konfiguration, faner, grupper, siderækkefølge og sprog.
+- Engelske sider ligger i repositoryets rod og i `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` og `qxctl/`.
+- Oversættelser spejler den engelske struktur i sprogmapper som `de/`, `ja/` og `zh-Hans/`.
+- Repositorysider ligger i `en/repositories/`.
+- `changelog.mdx` må kun udvides. Nye poster tilføjes øverst i det aktuelle år, og publicerede poster redigeres eller slettes aldrig.
+
+For at spore en påstand skal du åbne den tilsvarende MDX-fil på GitHub og gennemgå dens commit-historik. Påstande om funktioner kan spores til Symphonys kernekildekode og dens publicerede versionsartefakter, ikke til dette repository.
+
+## Disciplin for kilder og publicering {#source-and-publication-discipline}
+
+Den aktuelle implementering i repositoryet og de nøjagtige publicerede versionsartefakter afgør parathed. Historisk dokumentation og opdateringer på kildekodens hovedgren er forskellige former for dokumentation. Bevar versionsoprindelsen, skeln mellem valgfrie ledsagende komponenter og indholdet i den binære version, og bevar eksisterende oversættelser og kildekodelinks, når du opdaterer sider.
+
+Det tidligere repository [quanux](/da/repositories/quanux) er historisk arbejde. Dets dokumentation beskriver ikke det nuværende Symphony.
+
+Automatiske opdateringer af repositories er planlagt i startvinduer på 30 minutter den 17. og 18. november 2026 fra kl. 00:01 America/New_York. Siderne udvikler sig, efterhånden som ny dokumentation og nye versioner bliver tilgængelige.
+
+## Kildekode og feedback {#source-and-feedback}
+
+[Kildekoderepository](https://github.com/QuanuX/Symphony-Docs) · [Commit-historik](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Senest gennemgået den 17. november 2026._

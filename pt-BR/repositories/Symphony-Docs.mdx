@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Fontes da documentação do Mintlify e páginas de referência publicadas do Symphony."
+---
+
+Este repositório é a fonte do site do Mintlify em [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Ele contém a doutrina da plataforma, a arquitetura, as referências de vetores e proprietários, a documentação do qxctl, as traduções e o material do changelog.
+
+## Finalidade do repositório e status da versão {#repository-purpose-and-release-status}
+
+O Symphony-Docs é um repositório de documentação. Ele não faz parte da versão do software Symphony.
+
+- O repositório não tem releases, tags nem pacotes do GitHub. Você não instala nada a partir dele.
+- Ele não fornece motores, SDKs, binários do qxctl nem perfis do Anaconda. Eles vêm da versão principal do Symphony.
+- O arquivo `LICENSE` é a licença MIT herdada do modelo inicial do Mintlify. O software principal do Symphony é publicado sob AGPL-3.0 em [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- O repositório não tem README. O site publicado é o ponto de entrada para os usuários.
+
+A beta pública principal do Symphony, **0.2.0-beta.1**, foi lançada em 16 de novembro de 2026. Consulte a [página do repositório Symphony](/pt-BR/repositories/Symphony) para ver o escopo da versão e os limites de qualificação. Uma página deste repositório descreve um recurso. Ela não qualifica esse recurso. Propostas, itens do roadmap e comportamento de hardware ou GPU descritos nestas páginas não são recursos verificados, a menos que o registro da versão principal diga isso.
+
+## Documentação da beta pública {#public-beta-documentation}
+
+Comece pelo [guia de recursos da beta](https://quanux.org/beta), depois por [downloads e instalação com o Anaconda](https://quanux.org/downloads) e, em seguida, pela documentação do módulo que você selecionar.
+
+Cada motor é instalado, atualizado e removido individualmente. Escolha e combine os motores de que você precisa. Consulte a [visão geral dos motores](/pt-BR/engines/overview).
+
+## Navegar pela documentação {#navigate-the-documentation}
+
+O site tem três abas:
+
+| Aba | Conteúdo |
+| --- | --- |
+| Documentação | Primeiros passos, Conceitos principais, Vetor de Conhecimento (SKV), Operações e infraestrutura, Identidade, auditoria e governança, Engines e bibliotecas e Repositórios públicos |
+| CLI qxctl | Visão geral do qxctl e referências de comandos, começando pela [visão geral do qxctl](/pt-BR/qxctl/overview) |
+| Registro de alterações | Notas de versão datadas no [changelog](/pt-BR/changelog) |
+
+Use o seletor de idioma para alternar entre o inglês e 35 traduções. O grupo Public repositories está disponível apenas em inglês.
+
+Cada repositório público da QuanuX tem uma página dedicada em Repositórios públicos. As páginas dos repositórios são publicadas em `docs.quanux.org/symphony/en/repositories/<repository-name>`. Por exemplo, esta página está em [/pt-BR/repositories/Symphony-Docs](/pt-BR/repositories/Symphony-Docs).
+
+## Procedência das fontes {#source-provenance}
+
+Cada página publicada corresponde a um arquivo MDX neste repositório.
+
+- `docs.json` define a configuração do site, as abas, os grupos, a ordem das páginas e os idiomas.
+- As páginas em inglês ficam na raiz do repositório, em `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` e `qxctl/`.
+- As traduções espelham a estrutura em inglês em diretórios de idioma como `de/`, `ja/` e `zh-Hans/`.
+- As páginas dos repositórios ficam em `en/repositories/`.
+- O `changelog.mdx` só aceita acréscimos. Novas entradas são adicionadas no topo do ano atual, e entradas publicadas nunca são editadas nem excluídas.
+
+Para rastrear uma afirmação, abra o arquivo MDX correspondente no GitHub e revise o histórico de commits. Afirmações sobre recursos remontam ao código-fonte principal do Symphony e aos artefatos de versão publicados, não a este repositório.
+
+## Disciplina de código-fonte e publicação {#source-and-publication-discipline}
+
+A implementação atual do repositório e os artefatos exatos da versão publicada determinam a prontidão. A documentação histórica e as atualizações no branch principal do código-fonte são evidências diferentes. Preserve a procedência das versões, diferencie complementos opcionais do conteúdo da versão binária e preserve as traduções e os links de código-fonte existentes ao atualizar as páginas.
+
+O repositório anterior [quanux](/pt-BR/repositories/quanux) é um trabalho histórico. A documentação dele não descreve o Symphony atual.
+
+As atualizações automáticas dos repositórios estão agendadas em janelas de início de 30 minutos nos dias 17 e 18 de novembro de 2026, a partir das 00:01 America/New_York. As páginas vão evoluir à medida que novas evidências e versões ficarem disponíveis.
+
+## Código-fonte e feedback {#source-and-feedback}
+
+[Repositório do código-fonte](https://github.com/QuanuX/Symphony-Docs) · [Histórico de commits](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Revisado pela última vez em 17 de novembro de 2026._

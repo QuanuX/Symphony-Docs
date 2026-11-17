@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify 文档源文件及已发布的 Symphony 参考页面。"
+---
+
+该仓库是 [docs.quanux.org/symphony](https://docs.quanux.org/symphony) 上 Mintlify 站点的源。它包含平台准则、架构、vector 与所有者参考、qxctl 文档、翻译以及更新日志材料。
+
+## 仓库用途与发布状态 {#repository-purpose-and-release-status}
+
+Symphony-Docs 是一个文档仓库。它不属于 Symphony 软件发布的一部分。
+
+- 该仓库没有 GitHub 发布、标签或软件包。你不会从中安装任何内容。
+- 它不提供引擎、SDK、qxctl 二进制文件或 Anaconda 配置文件。这些来自 Symphony 核心发布。
+- 其 `LICENSE` 文件是从 Mintlify 入门模板继承的 MIT 许可证。Symphony 核心软件以 AGPL-3.0 许可证通过 [QuanuX/Symphony](https://github.com/QuanuX/Symphony) 发布。
+- 该仓库没有 README。已发布的站点是面向用户的入口。
+
+Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布。有关其发布范围和资格认证边界，请参阅 [Symphony 仓库页面](/zh/repositories/Symphony)。本仓库中的页面描述的是一项功能。它并不认证该功能。这些页面中描述的提案、路线图事项以及硬件或 GPU 行为，除非核心发布记录中有说明，否则均不属于经过验证的功能。
+
+## 公开测试版文档 {#public-beta-documentation}
+
+请先阅读[测试版功能指南](https://quanux.org/beta)，然后查看[下载和 Anaconda 安装](https://quanux.org/downloads)，再阅读你所选模块的文档。
+
+每个引擎都单独安装、更新和移除。请选择并组合你需要的引擎。参阅[引擎概览](/zh/engines/overview)。
+
+## 浏览文档 {#navigate-the-documentation}
+
+站点包含三个标签页：
+
+| 标签页 | 内容 |
+| --- | --- |
+| 文档 | 入门、核心概念、Knowledge Vector（SKV）、运维与基础设施、身份、审计与治理、引擎与库和公开仓库 |
+| qxctl CLI | qxctl 概览和命令参考，从 [qxctl 概览](/zh/qxctl/overview)开始 |
+| 更新日志 | [更新日志](/zh/changelog)中带日期的发布说明 |
+
+使用语言选择器在英语和 35 种译文之间切换。Public repositories 分组仅提供英文版。
+
+每个 QuanuX 公开仓库在“公开仓库”下都有专属页面。仓库页面发布在 `docs.quanux.org/symphony/en/repositories/<repository-name>`。例如，本页面位于 [/zh/repositories/Symphony-Docs](/zh/repositories/Symphony-Docs)。
+
+## 来源出处 {#source-provenance}
+
+每个已发布的页面都对应本仓库中的一个 MDX 文件。
+
+- `docs.json` 定义站点配置、标签页、分组、页面顺序和语言。
+- 英文页面位于仓库根目录以及 `concepts/`、`skv/`、`vectors/`、`governance/`、`engines/` 和 `qxctl/` 中。
+- 译文在 `de/`、`ja/` 和 `zh-Hans/` 等语言目录中沿用英文结构。
+- 仓库页面位于 `en/repositories/`。
+- `changelog.mdx` 只能追加。新条目添加在当年内容的顶部，已发布的条目从不编辑或删除。
+
+如需追溯某项说明，请在 GitHub 上打开对应的 MDX 文件并查看其提交历史。功能相关的说明以 Symphony 核心源代码及其已发布的发布制品为依据，而不是本仓库。
+
+## 源代码与发布规范 {#source-and-publication-discipline}
+
+就绪状态由仓库的当前实现和已发布版本的确切制品决定。历史文档与源代码主分支上的更新属于不同的证据。更新页面时，请保留版本来源，区分可选配套组件与二进制发布内容，并保留现有翻译和源代码链接。
+
+早期的 [quanux](/zh/repositories/quanux) 仓库属于历史工作。其文档描述的不是当前的 Symphony。
+
+仓库自动刷新已安排在 2026 年 11 月 17 日和 18 日，以 30 分钟为一个启动时段，从 America/New_York 时间 00:01 开始。随着新的证据和版本发布，这些页面会持续更新。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/Symphony-Docs) · [提交历史](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_最后审阅于 2026 年 11 月 17 日。_

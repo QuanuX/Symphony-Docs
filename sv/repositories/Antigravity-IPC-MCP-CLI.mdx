@@ -1,0 +1,21 @@
+---
+title: "Antigravity-IPC-MCP-CLI"
+description: "Lokal IPC-, MCP- och CLI-integration i C++26 för agentklienter."
+---
+
+Det här projektet tillhandahåller nativa lokala IPC- och MCP-gränssnitt för Antigravity och andra arbetsflöden för agentklienter, med CLI-stöd och explicit anslutningskonfiguration.
+
+## Vad du ska utvärdera {#what-to-evaluate}
+
+- Granska de deklarerade byggkraven för C++26 och protokollkontraktet.
+- Inspektera transportvalen för stdio och lokal IPC samt deras behörighetsgränser.
+- Generera och granska en klientkonfiguration för den avsedda värden.
+- Kör repositoryts tester innan du utvärderar en faktisk agentklientsession.
+
+Integrationerna för Antigravity, agy, Gemini, Codex och Claude behåller sina klientspecifika krav på konfiguration och kvalificering. Det här fristående repositoryt är skilt från Codex-klienten som ingår i den signerade Symphony-distributionen. Dra inte slutsatsen att något ingår i den binära betan eller är godkänt i en tredjepartskatalog bara för att källkoden finns tillgänglig.
+
+## Källkod och feedback {#source-and-feedback}
+
+[Källkodsrepository](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI) · [Aktuell README](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI#readme) · [Issues](https://github.com/QuanuX/Antigravity-IPC-MCP-CLI/issues)
+
+_Senast granskad inför lanseringen av den offentliga betan den 16 november 2026._

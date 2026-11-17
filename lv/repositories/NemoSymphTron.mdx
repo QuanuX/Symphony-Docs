@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "Neobligāta, uz NVIDIA orientēta aģentu orķestrācija un Symphony integrācija."
+---
+
+NemoSymphTron ir neobligāts C++26 paplašinājums, kas līdzās Symphony pēta uz NVIDIA orientētu aģentu orķestrāciju. Tā publiskais pirmkods nodrošina qxctl un ar MCP saistītas darbības ar atsevišķām būvēšanas un testēšanas instrukcijām.
+
+## Ko testēt {#what-to-test}
+
+- Būvējiet deklarēto pirmkoda mērķi ar tā fiksētajiem priekšnosacījumiem.
+- Palaidiet tā CTest komplektu un pārbaudiet komandu un rīku katalogus.
+- Izmēģiniet nelielu orķestrācijas darbplūsmu ar skaidri norādītiem ievaddatiem un konfigurāciju.
+- Reģistrējiet CPU, GPU, draivera un operētājsistēmas informāciju rezultātiem, kas atkarīgi no aparatūras.
+
+## Laidiena robeža {#release-boundary}
+
+Šis pavadošais komponents nav Symphony 0.2.0-beta.1 noklusējuma pakotne. Pirmkoda testi nekvalificē fizisku DGX Spark, NVIDIA draiveru steku, GPU veiktspēju vai reāllaika izvietošanu. Šādiem apgalvojumiem nepieciešami pierādījumi faktiskajā mērķa sistēmā. Glabājiet paplašinājuma kvalifikācijas ierakstu atsevišķi no [beta pamatplatformas kvalifikācijas](https://quanux.org/beta).
+
+## Pirmkods un atsauksmes {#source-and-feedback}
+
+[Pirmkoda krātuve](https://github.com/QuanuX/NemoSymphTron) · [Pašreizējais README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_Pēdējoreiz pārskatīts publiskās beta versijas palaišanai 2026. gada 16. novembrī._

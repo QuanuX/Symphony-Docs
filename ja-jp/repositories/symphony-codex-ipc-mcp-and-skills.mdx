@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Symphony のエージェントクライアント向けのネイティブなローカル IPC と MCP の統合。"
+---
+
+このプロジェクトは、qxctl を介したローカルの Symphony 操作のために、ネイティブの C++ MCP ブリッジ、ツールカタログ、クライアント設定ジェネレーター、skills を提供します。オーナーへの正確なルーティングと明示的な権限を維持します。
+
+## ベータクライアントから始める {#start-with-the-beta-client}
+
+認定済みのバイナリ経路では、[Symphony 0.2.0-beta.1](https://quanux.org/downloads) に同梱されているクライアントを使用してください。[保持とクライアント設定のガイド](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)に従ってください。Codex が主要な認定済みクライアントです。既存の Claude、Antigravity、汎用の設定アダプターには、それぞれ独自の境界があります。
+
+## 試してみる {#explore}
+
+- 構造化されたツールを見つけ、インストール済みの qxctl オーナーに操作をルーティングします。
+- 隔離された接続プロファイルと、クライアント設定のフラグメントを生成します。
+- まず読み取り操作から始め、書き込み権限はドキュメント化されたオーナーフローを通じてのみ有効にします。
+- プロジェクトの skills と、ソースレベルのビルドおよびテスト手順を確認します。
+
+プロトコル契約はこのリポジトリで固定されています。新しい MCP リビジョンに黙って置き換えるのではなく、宣言されたバージョンとビルドの前提条件を使用してください。公開リポジトリやローカルのクライアント設定は、サードパーティのプラグインディレクトリで承認されていることを意味するものではありません。
+
+## ソースとフィードバック {#source-and-feedback}
+
+[ソースリポジトリ](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [最新の README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_2026年11月16日の公開ベータ版リリースに向けて最終確認済み。_

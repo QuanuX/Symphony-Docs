@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "已签名的测试版安装程序、确切的 Conda 配置文件、验证以及对应源代码。"
+---
+
+该仓库负责 Symphony 的分发和发布证据。公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布。
+
+## 下载和安装 {#download-and-install}
+
+请访问 [quanux.org/downloads](https://quanux.org/downloads) 获取各平台安装程序、Anaconda 说明以及所有软件包的描述。[发布页面](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1)列出了确切的制品。
+
+配置文件包括 macOS 15 ARM64、Ubuntu 24.04 AMD64、Ubuntu 24.04 ARM64 和 Ubuntu 26.04 AMD64。每个配置文件都包含 59 个可独立维护的默认软件包，以及可选的对应源代码。Linux AMD64 批次共享同一个 Conda 子目录，但它们是各自独立认证的构建：请使用确切配置文件的显式列表。
+
+## 验证和首次使用 {#verification-and-first-use}
+
+1. 阅读[安装指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md)。
+2. 使用固定的验证工具验证已签名的清单、发布索引和所选文件。
+3. 以普通用户身份安装到新的私有前缀中。
+4. 将经过验证的二进制文件保留在单独的私有保管目录中。
+5. 审阅生成的客户端配置，并显式选择原生所有者和权限。
+
+Conda 26.10.0 已通过认证。验证和设置需要 Python 3.11+ 和 OpenSSL；运行所提供的二进制文件不需要编译器。Mac PKG 未使用 Apple Developer ID 签名，也未经过公证。分离式验证不会改变系统信任设置。
+
+## 生命周期证据 {#lifecycle-evidence}
+
+该版本为每个配置文件认证了安装程序和首次使用路径、22 个 Codex 用例以及 182 个软件包维护事务。修订版本 0 → 1 → 0 使用完全相同的原生字节。升级到不同的原生版本、保留的副本以及正在运行的所有者的生命周期仍需分别处理。请参阅[保留指南](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md)。
+
+## 源代码与反馈 {#source-and-feedback}
+
+[源代码仓库](https://github.com/QuanuX/symphony-distribution) · [当前 README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_最后审阅于 2026 年 11 月 16 日公开测试版发布时。_

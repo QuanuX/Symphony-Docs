@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify ドキュメントのソースと、公開済みの Symphony リファレンスページ。"
+---
+
+このリポジトリは、[docs.quanux.org/symphony](https://docs.quanux.org/symphony) にある Mintlify サイトのソースです。プラットフォームドクトリン、アーキテクチャ、vector とオーナーのリファレンス、qxctl のドキュメント、翻訳、変更履歴の資料が含まれています。
+
+## リポジトリの目的とリリース状況 {#repository-purpose-and-release-status}
+
+Symphony-Docs はドキュメント用のリポジトリです。Symphony ソフトウェアのリリースには含まれません。
+
+- このリポジトリには GitHub のリリース、タグ、パッケージはありません。ここから何かをインストールすることはありません。
+- エンジン、SDK、qxctl のバイナリ、Anaconda プロファイルは提供しません。これらは Symphony のコアリリースから提供されます。
+- `LICENSE` ファイルは、Mintlify のスターターテンプレートから引き継いだ MIT ライセンスです。Symphony のコアソフトウェアは、[QuanuX/Symphony](https://github.com/QuanuX/Symphony) から AGPL-3.0 で公開されています。
+- このリポジトリには README がありません。公開されたサイトが利用者向けの入り口です。
+
+Symphony のコア公開ベータ版 **0.2.0-beta.1** は、2026年11月16日にリリースされました。リリースの範囲と認定の境界については、[Symphony リポジトリのページ](/ja/repositories/Symphony)を参照してください。このリポジトリのページは機能を説明するものです。その機能を認定するものではありません。これらのページに記載された提案、ロードマップ項目、ハードウェアや GPU の動作は、コアリリースの記録にそう記載されていない限り、検証済みの機能ではありません。
+
+## 公開ベータ版のドキュメント {#public-beta-documentation}
+
+まず[ベータ版の機能ガイド](https://quanux.org/beta)から始め、次に[ダウンロードと Anaconda によるインストール](https://quanux.org/downloads)、その後に選択したモジュールのドキュメントに進んでください。
+
+各エンジンは個別にインストール、更新、削除します。必要なエンジンを選んで組み合わせてください。[エンジンの概要](/ja/engines/overview)を参照してください。
+
+## ドキュメントの使い方 {#navigate-the-documentation}
+
+このサイトには 3 つのタブがあります。
+
+| タブ | 内容 |
+| --- | --- |
+| ドキュメント | はじめに、コアコンセプト、Knowledge Vector (SKV)、運用とインフラストラクチャ、アイデンティティ、監査、ガバナンス、エンジンとライブラリ、公開リポジトリ |
+| qxctl CLI | qxctl の概要とコマンドリファレンス。[qxctl の概要](/ja/qxctl/overview)から始まります |
+| 変更履歴 | [変更履歴](/ja/changelog)の日付付きリリースノート |
+
+言語セレクターを使って、英語と 35 の翻訳を切り替えられます。Public repositories グループは英語でのみ提供されています。
+
+QuanuX の各公開リポジトリには、「公開リポジトリ」の下に専用ページがあります。リポジトリのページは `docs.quanux.org/symphony/en/repositories/<repository-name>` で公開されます。たとえば、このページは [/ja/repositories/Symphony-Docs](/ja/repositories/Symphony-Docs) にあります。
+
+## ソースの出所 {#source-provenance}
+
+公開されている各ページは、このリポジトリの 1 つの MDX ファイルに対応しています。
+
+- `docs.json` は、サイト設定、タブ、グループ、ページの順序、言語を定義します。
+- 英語のページは、リポジトリのルートと、`concepts/`、`skv/`、`vectors/`、`governance/`、`engines/`、`qxctl/` にあります。
+- 翻訳は、`de/`、`ja/`、`zh-Hans/` などのロケールディレクトリで英語の構成をそのまま反映しています。
+- リポジトリのページは `en/repositories/` にあります。
+- `changelog.mdx` は追記のみです。新しいエントリは当年の先頭に追加され、公開済みのエントリが編集・削除されることはありません。
+
+記載内容をたどるには、GitHub で対応する MDX ファイルを開き、そのコミット履歴を確認してください。機能に関する記述の根拠は、このリポジトリではなく、Symphony のコアソースと公開済みのリリース成果物にあります。
+
+## ソースと公開に関する規律 {#source-and-publication-discipline}
+
+準備状況は、リポジトリの現在の実装と、公開されたリリースの正確な成果物によって決まります。過去のドキュメントと、ソースのメインブランチでの更新は、別の種類の証拠です。ページを更新するときは、バージョンの出所を保持し、オプションのコンパニオンとバイナリリリースの内容を区別し、既存の翻訳とソースへのリンクを維持してください。
+
+以前の [quanux](/ja/repositories/quanux) リポジトリは過去の取り組みです。そのドキュメントは現在の Symphony を説明するものではありません。
+
+リポジトリの自動更新は、2026年11月17日と18日に、America/New_York の 00:01 から 30 分間隔の開始枠でスケジュールされています。新しい証拠やリリースが利用可能になるにつれて、ページは更新されていきます。
+
+## ソースとフィードバック {#source-and-feedback}
+
+[ソースリポジトリ](https://github.com/QuanuX/Symphony-Docs) · [コミット履歴](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_2026年11月17日に最終確認済み。_

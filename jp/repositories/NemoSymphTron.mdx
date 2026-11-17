@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "オプションの NVIDIA 向けエージェントオーケストレーションと Symphony 統合。"
+---
+
+NemoSymphTron は、Symphony と並行して NVIDIA 向けのエージェントオーケストレーションを検証するオプションの C++26 拡張機能です。公開されているソースコードは、qxctl と MCP 向けの操作を提供し、独自のビルド手順とテスト手順を備えています。
+
+## テストすべき点 {#what-to-test}
+
+- 宣言されたソースターゲットを、固定された前提条件とともにビルドします。
+- CTest スイートを実行し、コマンドとツールのカタログを確認します。
+- 明示的な入力と設定を使って、小規模なオーケストレーションワークフローを試します。
+- ハードウェアに依存する結果については、CPU、GPU、ドライバー、オペレーティングシステムの詳細を記録します。
+
+## リリースの境界 {#release-boundary}
+
+このコンパニオンは、Symphony 0.2.0-beta.1 のデフォルトパッケージではありません。ソースのテストでは、物理的な DGX Spark、NVIDIA ドライバースタック、GPU 性能、本番デプロイメントは認定されません。これらを主張するには、実際の対象システムでの証拠が必要です。拡張機能の認定記録は、[コアのベータプラットフォーム認定](https://quanux.org/beta)とは分けて管理してください。
+
+## ソースとフィードバック {#source-and-feedback}
+
+[ソースリポジトリ](https://github.com/QuanuX/NemoSymphTron) · [最新の README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_2026年11月16日の公開ベータ版リリースに向けて最終確認済み。_

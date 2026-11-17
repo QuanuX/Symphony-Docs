@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Signierte Beta-Installer, exakte Conda-Profile, Verifizierung und zugehöriger Quellcode."
+---
+
+Dieses Repository verantwortet die Distribution und die Release-Nachweise für Symphony. Die öffentliche Beta **0.2.0-beta.1** wurde am 16. November 2026 veröffentlicht.
+
+## Herunterladen und installieren {#download-and-install}
+
+Nutzen Sie [quanux.org/downloads](https://quanux.org/downloads) für Plattform-Installer, Anaconda-Anweisungen und Beschreibungen aller Pakete. Die [Release-Seite](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifiziert die exakten Artefakte.
+
+Die Profile sind macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 und Ubuntu 26.04 AMD64. Jedes enthält 59 unabhängig wartbare Standardpakete sowie optional den zugehörigen Quellcode. Die Linux-AMD64-Kohorten teilen sich ein Conda-Unterverzeichnis, sind aber unterschiedliche qualifizierte Builds: Verwenden Sie die explizite Liste des exakten Profils.
+
+## Verifizierung und erste Verwendung {#verification-and-first-use}
+
+1. Lesen Sie den [Installationsleitfaden](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verifizieren Sie das signierte Manifest, den Release-Index und die ausgewählten Dateien mit dem fixierten Verifizierer.
+3. Installieren Sie als Ihr normaler Benutzer in ein neues privates Präfix.
+4. Bewahren Sie die verifizierten Binärdateien in einem separaten privaten Verwahrungsverzeichnis auf.
+5. Prüfen Sie die erzeugte Client-Konfiguration und wählen Sie native Eigentümer und Autorität explizit aus.
+
+Conda 26.10.0 wurde qualifiziert. Für Verifizierung und Einrichtung werden Python 3.11+ und OpenSSL benötigt; zum Ausführen der mitgelieferten Binärdateien ist kein Compiler erforderlich. Das Mac-PKG ist weder mit einer Apple Developer ID signiert noch notarisiert. Die losgelöste Verifizierung verändert das Vertrauen des Systems nicht.
+
+## Nachweise zum Lebenszyklus {#lifecycle-evidence}
+
+Das Release qualifiziert Installer- und Erstverwendungspfade, 22 Codex-Fälle und 182 Paketwartungstransaktionen pro Profil. Die Revision 0 → 1 → 0 verwendet identische native Bytes. Upgrades auf andere native Versionen, aufbewahrte Kopien und Lebenszyklen laufender Eigentümer bleiben getrennt. Siehe den [Aufbewahrungsleitfaden](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Quellcode und Feedback {#source-and-feedback}
+
+[Quellcode-Repository](https://github.com/QuanuX/symphony-distribution) · [Aktuelle README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Zuletzt geprüft für den Start der öffentlichen Beta am 16. November 2026._

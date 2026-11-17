@@ -203,6 +203,20 @@
                   "cn/engines/scv-source-engines",
                   "cn/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "公开仓库",
+                "pages": [
+                  "cn/repositories/Symphony",
+                  "cn/repositories/symphony-distribution",
+                  "cn/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "cn/repositories/Symphony-Notion-IPC-MCP",
+                  "cn/repositories/Antigravity-IPC-MCP-CLI",
+                  "cn/repositories/NemoSymphTron",
+                  "cn/repositories/quanux-gemini-cli-mcp",
+                  "cn/repositories/quanux",
+                  "cn/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -304,6 +318,20 @@
                   "zh/engines/coordinator",
                   "zh/engines/scv-source-engines",
                   "zh/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "公开仓库",
+                "pages": [
+                  "zh/repositories/Symphony",
+                  "zh/repositories/symphony-distribution",
+                  "zh/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "zh/repositories/Symphony-Notion-IPC-MCP",
+                  "zh/repositories/Antigravity-IPC-MCP-CLI",
+                  "zh/repositories/NemoSymphTron",
+                  "zh/repositories/quanux-gemini-cli-mcp",
+                  "zh/repositories/quanux",
+                  "zh/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -407,6 +435,20 @@
                   "ja/engines/scv-source-engines",
                   "ja/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "公開リポジトリ",
+                "pages": [
+                  "ja/repositories/Symphony",
+                  "ja/repositories/symphony-distribution",
+                  "ja/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ja/repositories/Symphony-Notion-IPC-MCP",
+                  "ja/repositories/Antigravity-IPC-MCP-CLI",
+                  "ja/repositories/NemoSymphTron",
+                  "ja/repositories/quanux-gemini-cli-mcp",
+                  "ja/repositories/quanux",
+                  "ja/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -508,6 +550,20 @@
                   "ja-jp/engines/coordinator",
                   "ja-jp/engines/scv-source-engines",
                   "ja-jp/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "公開リポジトリ",
+                "pages": [
+                  "ja-jp/repositories/Symphony",
+                  "ja-jp/repositories/symphony-distribution",
+                  "ja-jp/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ja-jp/repositories/Symphony-Notion-IPC-MCP",
+                  "ja-jp/repositories/Antigravity-IPC-MCP-CLI",
+                  "ja-jp/repositories/NemoSymphTron",
+                  "ja-jp/repositories/quanux-gemini-cli-mcp",
+                  "ja-jp/repositories/quanux",
+                  "ja-jp/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -611,6 +667,20 @@
                   "ko/engines/scv-source-engines",
                   "ko/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "공개 저장소",
+                "pages": [
+                  "ko/repositories/Symphony",
+                  "ko/repositories/symphony-distribution",
+                  "ko/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ko/repositories/Symphony-Notion-IPC-MCP",
+                  "ko/repositories/Antigravity-IPC-MCP-CLI",
+                  "ko/repositories/NemoSymphTron",
+                  "ko/repositories/quanux-gemini-cli-mcp",
+                  "ko/repositories/quanux",
+                  "ko/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -712,6 +782,20 @@
                   "jp/engines/coordinator",
                   "jp/engines/scv-source-engines",
                   "jp/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "公開リポジトリ",
+                "pages": [
+                  "jp/repositories/Symphony",
+                  "jp/repositories/symphony-distribution",
+                  "jp/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "jp/repositories/Symphony-Notion-IPC-MCP",
+                  "jp/repositories/Antigravity-IPC-MCP-CLI",
+                  "jp/repositories/NemoSymphTron",
+                  "jp/repositories/quanux-gemini-cli-mcp",
+                  "jp/repositories/quanux",
+                  "jp/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -815,6 +899,20 @@
                   "zh-Hans/engines/scv-source-engines",
                   "zh-Hans/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "公开仓库",
+                "pages": [
+                  "zh-Hans/repositories/Symphony",
+                  "zh-Hans/repositories/symphony-distribution",
+                  "zh-Hans/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "zh-Hans/repositories/Symphony-Notion-IPC-MCP",
+                  "zh-Hans/repositories/Antigravity-IPC-MCP-CLI",
+                  "zh-Hans/repositories/NemoSymphTron",
+                  "zh-Hans/repositories/quanux-gemini-cli-mcp",
+                  "zh-Hans/repositories/quanux",
+                  "zh-Hans/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -916,6 +1014,20 @@
                   "sv/engines/coordinator",
                   "sv/engines/scv-source-engines",
                   "sv/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Offentliga repositorier",
+                "pages": [
+                  "sv/repositories/Symphony",
+                  "sv/repositories/symphony-distribution",
+                  "sv/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "sv/repositories/Symphony-Notion-IPC-MCP",
+                  "sv/repositories/Antigravity-IPC-MCP-CLI",
+                  "sv/repositories/NemoSymphTron",
+                  "sv/repositories/quanux-gemini-cli-mcp",
+                  "sv/repositories/quanux",
+                  "sv/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -1019,6 +1131,20 @@
                   "es/engines/scv-source-engines",
                   "es/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Repositorios públicos",
+                "pages": [
+                  "es/repositories/Symphony",
+                  "es/repositories/symphony-distribution",
+                  "es/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "es/repositories/Symphony-Notion-IPC-MCP",
+                  "es/repositories/Antigravity-IPC-MCP-CLI",
+                  "es/repositories/NemoSymphTron",
+                  "es/repositories/quanux-gemini-cli-mcp",
+                  "es/repositories/quanux",
+                  "es/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -1120,6 +1246,20 @@
                   "zh-Hant/engines/coordinator",
                   "zh-Hant/engines/scv-source-engines",
                   "zh-Hant/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "公開儲存庫",
+                "pages": [
+                  "zh-Hant/repositories/Symphony",
+                  "zh-Hant/repositories/symphony-distribution",
+                  "zh-Hant/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "zh-Hant/repositories/Symphony-Notion-IPC-MCP",
+                  "zh-Hant/repositories/Antigravity-IPC-MCP-CLI",
+                  "zh-Hant/repositories/NemoSymphTron",
+                  "zh-Hant/repositories/quanux-gemini-cli-mcp",
+                  "zh-Hant/repositories/quanux",
+                  "zh-Hant/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -1223,6 +1363,20 @@
                   "tr/engines/scv-source-engines",
                   "tr/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Herkese açık depolar",
+                "pages": [
+                  "tr/repositories/Symphony",
+                  "tr/repositories/symphony-distribution",
+                  "tr/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "tr/repositories/Symphony-Notion-IPC-MCP",
+                  "tr/repositories/Antigravity-IPC-MCP-CLI",
+                  "tr/repositories/NemoSymphTron",
+                  "tr/repositories/quanux-gemini-cli-mcp",
+                  "tr/repositories/quanux",
+                  "tr/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -1324,6 +1478,20 @@
                   "uz/engines/coordinator",
                   "uz/engines/scv-source-engines",
                   "uz/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Ochiq repozitoriylar",
+                "pages": [
+                  "uz/repositories/Symphony",
+                  "uz/repositories/symphony-distribution",
+                  "uz/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "uz/repositories/Symphony-Notion-IPC-MCP",
+                  "uz/repositories/Antigravity-IPC-MCP-CLI",
+                  "uz/repositories/NemoSymphTron",
+                  "uz/repositories/quanux-gemini-cli-mcp",
+                  "uz/repositories/quanux",
+                  "uz/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -1427,6 +1595,20 @@
                   "vi/engines/scv-source-engines",
                   "vi/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Kho lưu trữ công khai",
+                "pages": [
+                  "vi/repositories/Symphony",
+                  "vi/repositories/symphony-distribution",
+                  "vi/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "vi/repositories/Symphony-Notion-IPC-MCP",
+                  "vi/repositories/Antigravity-IPC-MCP-CLI",
+                  "vi/repositories/NemoSymphTron",
+                  "vi/repositories/quanux-gemini-cli-mcp",
+                  "vi/repositories/quanux",
+                  "vi/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -1528,6 +1710,20 @@
                   "uk/engines/coordinator",
                   "uk/engines/scv-source-engines",
                   "uk/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Публічні репозиторії",
+                "pages": [
+                  "uk/repositories/Symphony",
+                  "uk/repositories/symphony-distribution",
+                  "uk/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "uk/repositories/Symphony-Notion-IPC-MCP",
+                  "uk/repositories/Antigravity-IPC-MCP-CLI",
+                  "uk/repositories/NemoSymphTron",
+                  "uk/repositories/quanux-gemini-cli-mcp",
+                  "uk/repositories/quanux",
+                  "uk/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -1631,6 +1827,20 @@
                   "ar/engines/scv-source-engines",
                   "ar/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "المستودعات العامة",
+                "pages": [
+                  "ar/repositories/Symphony",
+                  "ar/repositories/symphony-distribution",
+                  "ar/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ar/repositories/Symphony-Notion-IPC-MCP",
+                  "ar/repositories/Antigravity-IPC-MCP-CLI",
+                  "ar/repositories/NemoSymphTron",
+                  "ar/repositories/quanux-gemini-cli-mcp",
+                  "ar/repositories/quanux",
+                  "ar/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -1732,6 +1942,20 @@
                   "pt-BR/engines/coordinator",
                   "pt-BR/engines/scv-source-engines",
                   "pt-BR/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Repositórios públicos",
+                "pages": [
+                  "pt-BR/repositories/Symphony",
+                  "pt-BR/repositories/symphony-distribution",
+                  "pt-BR/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "pt-BR/repositories/Symphony-Notion-IPC-MCP",
+                  "pt-BR/repositories/Antigravity-IPC-MCP-CLI",
+                  "pt-BR/repositories/NemoSymphTron",
+                  "pt-BR/repositories/quanux-gemini-cli-mcp",
+                  "pt-BR/repositories/quanux",
+                  "pt-BR/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -1835,6 +2059,20 @@
                   "fr-CA/engines/scv-source-engines",
                   "fr-CA/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Dépôts publics",
+                "pages": [
+                  "fr-CA/repositories/Symphony",
+                  "fr-CA/repositories/symphony-distribution",
+                  "fr-CA/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "fr-CA/repositories/Symphony-Notion-IPC-MCP",
+                  "fr-CA/repositories/Antigravity-IPC-MCP-CLI",
+                  "fr-CA/repositories/NemoSymphTron",
+                  "fr-CA/repositories/quanux-gemini-cli-mcp",
+                  "fr-CA/repositories/quanux",
+                  "fr-CA/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -1936,6 +2174,20 @@
                   "ca/engines/coordinator",
                   "ca/engines/scv-source-engines",
                   "ca/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Repositoris públics",
+                "pages": [
+                  "ca/repositories/Symphony",
+                  "ca/repositories/symphony-distribution",
+                  "ca/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ca/repositories/Symphony-Notion-IPC-MCP",
+                  "ca/repositories/Antigravity-IPC-MCP-CLI",
+                  "ca/repositories/NemoSymphTron",
+                  "ca/repositories/quanux-gemini-cli-mcp",
+                  "ca/repositories/quanux",
+                  "ca/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -2039,6 +2291,20 @@
                   "cs/engines/scv-source-engines",
                   "cs/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Veřejné repozitáře",
+                "pages": [
+                  "cs/repositories/Symphony",
+                  "cs/repositories/symphony-distribution",
+                  "cs/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "cs/repositories/Symphony-Notion-IPC-MCP",
+                  "cs/repositories/Antigravity-IPC-MCP-CLI",
+                  "cs/repositories/NemoSymphTron",
+                  "cs/repositories/quanux-gemini-cli-mcp",
+                  "cs/repositories/quanux",
+                  "cs/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -2140,6 +2406,20 @@
                   "da/engines/coordinator",
                   "da/engines/scv-source-engines",
                   "da/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Offentlige repositories",
+                "pages": [
+                  "da/repositories/Symphony",
+                  "da/repositories/symphony-distribution",
+                  "da/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "da/repositories/Symphony-Notion-IPC-MCP",
+                  "da/repositories/Antigravity-IPC-MCP-CLI",
+                  "da/repositories/NemoSymphTron",
+                  "da/repositories/quanux-gemini-cli-mcp",
+                  "da/repositories/quanux",
+                  "da/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -2243,6 +2523,20 @@
                   "nl/engines/scv-source-engines",
                   "nl/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Openbare repository's",
+                "pages": [
+                  "nl/repositories/Symphony",
+                  "nl/repositories/symphony-distribution",
+                  "nl/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "nl/repositories/Symphony-Notion-IPC-MCP",
+                  "nl/repositories/Antigravity-IPC-MCP-CLI",
+                  "nl/repositories/NemoSymphTron",
+                  "nl/repositories/quanux-gemini-cli-mcp",
+                  "nl/repositories/quanux",
+                  "nl/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -2344,6 +2638,20 @@
                   "fi/engines/coordinator",
                   "fi/engines/scv-source-engines",
                   "fi/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Julkiset repositoriot",
+                "pages": [
+                  "fi/repositories/Symphony",
+                  "fi/repositories/symphony-distribution",
+                  "fi/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "fi/repositories/Symphony-Notion-IPC-MCP",
+                  "fi/repositories/Antigravity-IPC-MCP-CLI",
+                  "fi/repositories/NemoSymphTron",
+                  "fi/repositories/quanux-gemini-cli-mcp",
+                  "fi/repositories/quanux",
+                  "fi/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -2447,6 +2755,20 @@
                   "fr/engines/scv-source-engines",
                   "fr/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Dépôts publics",
+                "pages": [
+                  "fr/repositories/Symphony",
+                  "fr/repositories/symphony-distribution",
+                  "fr/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "fr/repositories/Symphony-Notion-IPC-MCP",
+                  "fr/repositories/Antigravity-IPC-MCP-CLI",
+                  "fr/repositories/NemoSymphTron",
+                  "fr/repositories/quanux-gemini-cli-mcp",
+                  "fr/repositories/quanux",
+                  "fr/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -2548,6 +2870,20 @@
                   "de/engines/coordinator",
                   "de/engines/scv-source-engines",
                   "de/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Öffentliche Repositorys",
+                "pages": [
+                  "de/repositories/Symphony",
+                  "de/repositories/symphony-distribution",
+                  "de/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "de/repositories/Symphony-Notion-IPC-MCP",
+                  "de/repositories/Antigravity-IPC-MCP-CLI",
+                  "de/repositories/NemoSymphTron",
+                  "de/repositories/quanux-gemini-cli-mcp",
+                  "de/repositories/quanux",
+                  "de/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -2651,6 +2987,20 @@
                   "he/engines/scv-source-engines",
                   "he/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "מאגרים ציבוריים",
+                "pages": [
+                  "he/repositories/Symphony",
+                  "he/repositories/symphony-distribution",
+                  "he/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "he/repositories/Symphony-Notion-IPC-MCP",
+                  "he/repositories/Antigravity-IPC-MCP-CLI",
+                  "he/repositories/NemoSymphTron",
+                  "he/repositories/quanux-gemini-cli-mcp",
+                  "he/repositories/quanux",
+                  "he/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -2752,6 +3102,20 @@
                   "hi/engines/coordinator",
                   "hi/engines/scv-source-engines",
                   "hi/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "सार्वजनिक रिपॉज़िटरी",
+                "pages": [
+                  "hi/repositories/Symphony",
+                  "hi/repositories/symphony-distribution",
+                  "hi/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "hi/repositories/Symphony-Notion-IPC-MCP",
+                  "hi/repositories/Antigravity-IPC-MCP-CLI",
+                  "hi/repositories/NemoSymphTron",
+                  "hi/repositories/quanux-gemini-cli-mcp",
+                  "hi/repositories/quanux",
+                  "hi/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -2855,6 +3219,20 @@
                   "hu/engines/scv-source-engines",
                   "hu/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Nyilvános tárolók",
+                "pages": [
+                  "hu/repositories/Symphony",
+                  "hu/repositories/symphony-distribution",
+                  "hu/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "hu/repositories/Symphony-Notion-IPC-MCP",
+                  "hu/repositories/Antigravity-IPC-MCP-CLI",
+                  "hu/repositories/NemoSymphTron",
+                  "hu/repositories/quanux-gemini-cli-mcp",
+                  "hu/repositories/quanux",
+                  "hu/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -2956,6 +3334,20 @@
                   "id/engines/coordinator",
                   "id/engines/scv-source-engines",
                   "id/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Repositori publik",
+                "pages": [
+                  "id/repositories/Symphony",
+                  "id/repositories/symphony-distribution",
+                  "id/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "id/repositories/Symphony-Notion-IPC-MCP",
+                  "id/repositories/Antigravity-IPC-MCP-CLI",
+                  "id/repositories/NemoSymphTron",
+                  "id/repositories/quanux-gemini-cli-mcp",
+                  "id/repositories/quanux",
+                  "id/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -3059,6 +3451,20 @@
                   "it/engines/scv-source-engines",
                   "it/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Repository pubblici",
+                "pages": [
+                  "it/repositories/Symphony",
+                  "it/repositories/symphony-distribution",
+                  "it/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "it/repositories/Symphony-Notion-IPC-MCP",
+                  "it/repositories/Antigravity-IPC-MCP-CLI",
+                  "it/repositories/NemoSymphTron",
+                  "it/repositories/quanux-gemini-cli-mcp",
+                  "it/repositories/quanux",
+                  "it/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -3160,6 +3566,20 @@
                   "lv/engines/coordinator",
                   "lv/engines/scv-source-engines",
                   "lv/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Publiskās krātuves",
+                "pages": [
+                  "lv/repositories/Symphony",
+                  "lv/repositories/symphony-distribution",
+                  "lv/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "lv/repositories/Symphony-Notion-IPC-MCP",
+                  "lv/repositories/Antigravity-IPC-MCP-CLI",
+                  "lv/repositories/NemoSymphTron",
+                  "lv/repositories/quanux-gemini-cli-mcp",
+                  "lv/repositories/quanux",
+                  "lv/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -3263,6 +3683,20 @@
                   "no/engines/scv-source-engines",
                   "no/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Offentlige repositorier",
+                "pages": [
+                  "no/repositories/Symphony",
+                  "no/repositories/symphony-distribution",
+                  "no/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "no/repositories/Symphony-Notion-IPC-MCP",
+                  "no/repositories/Antigravity-IPC-MCP-CLI",
+                  "no/repositories/NemoSymphTron",
+                  "no/repositories/quanux-gemini-cli-mcp",
+                  "no/repositories/quanux",
+                  "no/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -3364,6 +3798,20 @@
                   "pl/engines/coordinator",
                   "pl/engines/scv-source-engines",
                   "pl/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Repozytoria publiczne",
+                "pages": [
+                  "pl/repositories/Symphony",
+                  "pl/repositories/symphony-distribution",
+                  "pl/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "pl/repositories/Symphony-Notion-IPC-MCP",
+                  "pl/repositories/Antigravity-IPC-MCP-CLI",
+                  "pl/repositories/NemoSymphTron",
+                  "pl/repositories/quanux-gemini-cli-mcp",
+                  "pl/repositories/quanux",
+                  "pl/repositories/Symphony-Docs"
                 ]
               }
             ]
@@ -3467,6 +3915,20 @@
                   "pt/engines/scv-source-engines",
                   "pt/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Repositórios públicos",
+                "pages": [
+                  "pt/repositories/Symphony",
+                  "pt/repositories/symphony-distribution",
+                  "pt/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "pt/repositories/Symphony-Notion-IPC-MCP",
+                  "pt/repositories/Antigravity-IPC-MCP-CLI",
+                  "pt/repositories/NemoSymphTron",
+                  "pt/repositories/quanux-gemini-cli-mcp",
+                  "pt/repositories/quanux",
+                  "pt/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -3569,6 +4031,20 @@
                   "ro/engines/scv-source-engines",
                   "ro/engines/shv-engines"
                 ]
+              },
+              {
+                "group": "Depozite publice",
+                "pages": [
+                  "ro/repositories/Symphony",
+                  "ro/repositories/symphony-distribution",
+                  "ro/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ro/repositories/Symphony-Notion-IPC-MCP",
+                  "ro/repositories/Antigravity-IPC-MCP-CLI",
+                  "ro/repositories/NemoSymphTron",
+                  "ro/repositories/quanux-gemini-cli-mcp",
+                  "ro/repositories/quanux",
+                  "ro/repositories/Symphony-Docs"
+                ]
               }
             ]
           },
@@ -3670,6 +4146,20 @@
                   "ru/engines/coordinator",
                   "ru/engines/scv-source-engines",
                   "ru/engines/shv-engines"
+                ]
+              },
+              {
+                "group": "Публичные репозитории",
+                "pages": [
+                  "ru/repositories/Symphony",
+                  "ru/repositories/symphony-distribution",
+                  "ru/repositories/symphony-codex-ipc-mcp-and-skills",
+                  "ru/repositories/Symphony-Notion-IPC-MCP",
+                  "ru/repositories/Antigravity-IPC-MCP-CLI",
+                  "ru/repositories/NemoSymphTron",
+                  "ru/repositories/quanux-gemini-cli-mcp",
+                  "ru/repositories/quanux",
+                  "ru/repositories/Symphony-Docs"
                 ]
               }
             ]

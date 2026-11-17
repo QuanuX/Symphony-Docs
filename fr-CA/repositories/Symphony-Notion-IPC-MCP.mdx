@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Pont IPC/MCP local orienté Notion et passerelle facultative gérée par l'utilisateur."
+---
+
+Ce projet compagnon relie les flux de travail orientés Notion à Symphony grâce à un pont natif et à une passerelle loopback facultative. Il comprend des surfaces IPC locales et des utilitaires pour la publication gérée par l'utilisateur et la configuration de tunnels.
+
+## Ce qu'il faut évaluer {#what-to-evaluate}
+
+- Inspectez les contrats du pont natif, de la passerelle locale et de l'autorité de l'appelant.
+- Examinez la configuration et les éléments de connexion générés avant de les utiliser.
+- Exécutez les tests délimités du dépôt dans un espace de travail isolé.
+- Qualifiez séparément le comportement réel du client Notion, d'OAuth, de la publication de pages et des tunnels.
+
+Il s'agit d'une intégration de code source distincte. Ses tests automatisés n'établissent ni l'acceptation de bout en bout du client Notion ni l'approbation sur une marketplace, et elle n'est pas un composant binaire par défaut de la bêta signée de Symphony. Utilisez les instructions d'installation actuelles du dépôt et fournissez votre propre autorité de compte, de connexion et de publication prévue.
+
+## Code source et rétroaction {#source-and-feedback}
+
+[Dépôt du code source](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [README actuel](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Dernière révision pour le lancement de la bêta publique du 16 novembre 2026._

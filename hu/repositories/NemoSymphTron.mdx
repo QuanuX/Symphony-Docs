@@ -1,0 +1,23 @@
+---
+title: "NemoSymphTron"
+description: "Opcionális, NVIDIA-orientált ügynök-orkesztráció és Symphony-integráció."
+---
+
+A NemoSymphTron egy opcionális C++26-bővítmény, amely NVIDIA-orientált ügynök-orkesztrációt vizsgál a Symphony mellett. Nyilvános forráskódja qxctl- és MCP-oldali műveleteket biztosít, külön build- és tesztelési utasításokkal.
+
+## Mit érdemes tesztelni {#what-to-test}
+
+- Buildelje a deklarált forráscélt a rögzített előfeltételekkel.
+- Futtassa a CTest tesztcsomagját, és vizsgálja meg a parancs- és eszközkatalógusokat.
+- Próbáljon ki egy kis orkesztrációs munkafolyamatot explicit bemenetekkel és konfigurációval.
+- Rögzítse a CPU, a GPU, az illesztőprogram és az operációs rendszer adatait a hardverfüggő eredményekhez.
+
+## A kiadás határa {#release-boundary}
+
+Ez a kiegészítő komponens nem alapértelmezett csomagja a Symphony 0.2.0-beta.1-nek. A forráskód-tesztek nem minősítenek fizikai DGX Sparkot, NVIDIA illesztőprogram-készletet, GPU-teljesítményt vagy éles telepítést. Ezekhez az állításokhoz a tényleges célrendszeren gyűjtött bizonyítékok szükségesek. Tartsa a bővítmény minősítési nyilvántartását külön a [béta alapplatform minősítésétől](https://quanux.org/beta).
+
+## Forráskód és visszajelzés {#source-and-feedback}
+
+[Forráskódtároló](https://github.com/QuanuX/NemoSymphTron) · [Aktuális README](https://github.com/QuanuX/NemoSymphTron#readme) · [Issues](https://github.com/QuanuX/NemoSymphTron/issues)
+
+_Utoljára ellenőrizve a nyilvános béta 2026. november 16-i indulásához._

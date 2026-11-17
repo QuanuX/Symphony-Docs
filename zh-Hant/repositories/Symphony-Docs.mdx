@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify 文件原始檔與已發布的 Symphony 參考頁面。"
+---
+
+此儲存庫是 [docs.quanux.org/symphony](https://docs.quanux.org/symphony) 上 Mintlify 網站的來源。其中包含平台準則、架構、vector 與擁有者參考、qxctl 文件、翻譯以及變更日誌資料。
+
+## 儲存庫用途與發布狀態 {#repository-purpose-and-release-status}
+
+Symphony-Docs 是一個文件儲存庫。它不屬於 Symphony 軟體發布的一部分。
+
+- 此儲存庫沒有 GitHub 發布、標籤或套件。你不會從中安裝任何內容。
+- 它不提供引擎、SDK、qxctl 二進位檔或 Anaconda 設定檔。這些來自 Symphony 核心發布。
+- 其 `LICENSE` 檔案是從 Mintlify 入門範本繼承的 MIT 授權。Symphony 核心軟體以 AGPL-3.0 授權透過 [QuanuX/Symphony](https://github.com/QuanuX/Symphony) 發布。
+- 此儲存庫沒有 README。已發布的網站是使用者的入口。
+
+Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出。關於其發布範圍與資格認證界線，請參閱 [Symphony 儲存庫頁面](/zh-Hant/repositories/Symphony)。此儲存庫中的頁面描述的是一項功能。它並不認證該功能。這些頁面中描述的提案、路線圖項目以及硬體或 GPU 行為，除非核心發布紀錄中有所說明，否則皆不屬於經過驗證的功能。
+
+## 公開測試版文件 {#public-beta-documentation}
+
+請先閱讀[測試版功能指南](https://quanux.org/beta)，接著查看[下載與 Anaconda 安裝](https://quanux.org/downloads)，再閱讀你所選模組的文件。
+
+每個引擎都個別安裝、更新與移除。請選擇並組合你需要的引擎。請參閱[引擎概觀](/zh-Hant/engines/overview)。
+
+## 瀏覽文件 {#navigate-the-documentation}
+
+網站包含三個分頁：
+
+| 分頁 | 內容 |
+| --- | --- |
+| 文件 | 開始使用、核心概念、Knowledge Vector（SKV）、營運與基礎架構、身分、稽核與治理、引擎與程式庫和公開儲存庫 |
+| qxctl CLI | qxctl 概觀與命令參考，從 [qxctl 概觀](/zh-Hant/qxctl/overview)開始 |
+| 更新日誌 | [變更日誌](/zh-Hant/changelog)中附日期的發布說明 |
+
+使用語言選擇器在英文與 35 種譯文之間切換。Public repositories 群組僅提供英文版。
+
+每個 QuanuX 公開儲存庫在「公開儲存庫」下都有專屬頁面。儲存庫頁面發布於 `docs.quanux.org/symphony/en/repositories/<repository-name>`。例如，本頁面位於 [/zh-Hant/repositories/Symphony-Docs](/zh-Hant/repositories/Symphony-Docs)。
+
+## 來源出處 {#source-provenance}
+
+每個已發布的頁面都對應此儲存庫中的一個 MDX 檔案。
+
+- `docs.json` 定義網站設定、分頁、群組、頁面順序與語言。
+- 英文頁面位於儲存庫根目錄以及 `concepts/`、`skv/`、`vectors/`、`governance/`、`engines/` 與 `qxctl/` 中。
+- 譯文在 `de/`、`ja/` 與 `zh-Hans/` 等語系目錄中沿用英文結構。
+- 儲存庫頁面位於 `en/repositories/`。
+- `changelog.mdx` 只能附加。新項目會加在當年內容的最上方，已發布的項目絕不會編輯或刪除。
+
+如需追溯某項說明，請在 GitHub 上開啟對應的 MDX 檔案並檢視其提交歷史。功能相關的說明以 Symphony 核心原始碼及其已發布的發布成品為依據，而非此儲存庫。
+
+## 原始碼與發布規範 {#source-and-publication-discipline}
+
+就緒狀態取決於儲存庫目前的實作以及已發布版本的確切成品。歷史文件與原始碼主要分支上的更新屬於不同的證據。更新頁面時，請保留版本來源，區分選用配套元件與二進位發布內容，並保留現有翻譯與原始碼連結。
+
+早期的 [quanux](/zh-Hant/repositories/quanux) 儲存庫屬於歷史工作。其文件描述的並非目前的 Symphony。
+
+儲存庫自動重新整理已排定於 2026 年 11 月 17 日與 18 日，以 30 分鐘為一個啟動時段，自 America/New_York 時間 00:01 開始。隨著新的證據與版本推出，這些頁面會持續更新。
+
+## 原始碼與意見回饋 {#source-and-feedback}
+
+[原始碼儲存庫](https://github.com/QuanuX/Symphony-Docs) · [提交歷史](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_最後審閱於 2026 年 11 月 17 日。_

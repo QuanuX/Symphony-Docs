@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Mintlify-dokumentációs források és a Symphony közzétett referenciaoldalai."
+---
+
+Ez a tároló a [docs.quanux.org/symphony](https://docs.quanux.org/symphony) címen elérhető Mintlify-webhely forrása. Tartalmazza a platformdoktrínát, az architektúrát, a vektor- és tulajdonosi referenciákat, a qxctl dokumentációját, a fordításokat és a változásnapló anyagait.
+
+## A tároló célja és a kiadás állapota {#repository-purpose-and-release-status}
+
+A Symphony-Docs egy dokumentációs tároló. Nem része a Symphony szoftverkiadásnak.
+
+- A tárolónak nincsenek GitHub-kiadásai, címkéi vagy csomagjai. Semmit sem telepít belőle.
+- Nem biztosít motorokat, SDK-kat, qxctl binárisokat vagy Anaconda-profilokat. Ezek a Symphony alapkiadásából származnak.
+- A `LICENSE` fájl a Mintlify kezdősablonjából örökölt MIT-licenc. A Symphony alapszoftverét AGPL-3.0 licenccel teszik közzé a [QuanuX/Symphony](https://github.com/QuanuX/Symphony) tárolóból.
+- A tárolónak nincs README-je. A közzétett webhely a felhasználók belépési pontja.
+
+A Symphony alapszintű nyilvános bétája, a **0.2.0-beta.1**, 2026. november 16-án jelent meg. A kiadás hatókörét és minősítési határait a [Symphony tároló oldalán](/hu/repositories/Symphony) találja. A tároló egy oldala leír egy képességet. Ezt a képességet nem minősíti. Az ezeken az oldalakon leírt javaslatok, ütemtervelemek és hardver- vagy GPU-viselkedés nem ellenőrzött képességek, hacsak az alapkiadás nyilvántartása ezt nem mondja ki.
+
+## A nyilvános béta dokumentációja {#public-beta-documentation}
+
+Kezdje [a béta képességeit bemutató útmutatóval](https://quanux.org/beta), majd a [letöltésekkel és az Anaconda-telepítéssel](https://quanux.org/downloads), végül a kiválasztott modul dokumentációjával.
+
+Minden motort egyenként telepít, frissít és távolít el. Válassza ki és állítsa össze a szükséges motorokat. Lásd: [Motorok áttekintése](/hu/engines/overview).
+
+## Navigálás a dokumentációban {#navigate-the-documentation}
+
+A webhelynek három lapja van:
+
+| Lap | Tartalom |
+| --- | --- |
+| Dokumentáció | Első lépések, Alapfogalmak, Knowledge Vector (SKV), Üzemeltetés és infrastruktúra, Identitás, audit és irányítás, Motorok és könyvtárak és Nyilvános tárolók |
+| qxctl CLI | A qxctl áttekintése és parancsreferenciái, a [qxctl áttekintésétől](/hu/qxctl/overview) kezdve |
+| Változásnapló | Dátumozott kiadási megjegyzések a [változásnaplóban](/hu/changelog) |
+
+A nyelvválasztóval válthat az angol és 35 fordítás között. A Public repositories csoport csak angolul érhető el.
+
+Minden nyilvános QuanuX-tárolónak saját oldala van a(z) Nyilvános tárolók szakaszban. A tárolóoldalak a `docs.quanux.org/symphony/en/repositories/<repository-name>` címen jelennek meg. Ez az oldal például a [/hu/repositories/Symphony-Docs](/hu/repositories/Symphony-Docs) címen található.
+
+## A források eredete {#source-provenance}
+
+Minden közzétett oldal egy MDX-fájlnak felel meg ebben a tárolóban.
+
+- A `docs.json` határozza meg a webhely konfigurációját, a lapokat, a csoportokat, az oldalak sorrendjét és a nyelveket.
+- Az angol oldalak a tároló gyökerében, valamint a `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` és `qxctl/` könyvtárakban találhatók.
+- A fordítások az angol szerkezetet követik olyan nyelvi könyvtárakban, mint a `de/`, a `ja/` és a `zh-Hans/`.
+- A tárolóoldalak az `en/repositories/` könyvtárban vannak.
+- A `changelog.mdx` csak bővíthető. Az új bejegyzések az aktuális év elejére kerülnek, a közzétett bejegyzéseket pedig soha nem szerkesztik és nem törlik.
+
+Egy állítás visszakövetéséhez nyissa meg a megfelelő MDX-fájlt a GitHubon, és tekintse át a commitelőzményeit. A funkciókra vonatkozó állítások a Symphony alapforráskódjára és annak közzétett kiadási artefaktumaira vezethetők vissza, nem erre a tárolóra.
+
+## Forrás- és közzétételi fegyelem {#source-and-publication-discipline}
+
+A készültséget a tároló aktuális implementációja és a pontos közzétett kiadási artefaktumok határozzák meg. A korábbi dokumentáció és a forráskód fő ágának frissítései eltérő bizonyítékok. Őrizze meg a verziók eredetét, különítse el az opcionális kiegészítő komponenseket a bináris kiadás tartalmától, és az oldalak frissítésekor őrizze meg a meglévő fordításokat és forráskód-hivatkozásokat.
+
+A korábbi [quanux](/hu/repositories/quanux) tároló történeti munka. Dokumentációja nem a jelenlegi Symphonyt írja le.
+
+A tárolók automatikus frissítései 30 perces indítási sávokban vannak ütemezve 2026. november 17-én és 18-án, 00:01-től (America/New_York). Az oldalak az új bizonyítékok és kiadások megjelenésével folyamatosan változnak.
+
+## Forráskód és visszajelzés {#source-and-feedback}
+
+[Forráskódtároló](https://github.com/QuanuX/Symphony-Docs) · [Commitelőzmények](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Utoljára ellenőrizve: 2026. november 17._

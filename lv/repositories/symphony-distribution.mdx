@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Parakstīti beta instalētāji, precīzi Conda profili, verifikācija un atbilstošais pirmkods."
+---
+
+Šī krātuve ir atbildīga par Symphony distribūciju un laidiena pierādījumiem. Publiskā beta versija **0.2.0-beta.1** tika publicēta 2026. gada 16. novembrī.
+
+## Lejupielāde un instalēšana {#download-and-install}
+
+Izmantojiet [quanux.org/downloads](https://quanux.org/downloads), lai iegūtu platformu instalētājus, Anaconda instrukcijas un visu pakotņu aprakstus. [Laidiena lapa](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identificē precīzos artefaktus.
+
+Profili ir macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 un Ubuntu 26.04 AMD64. Katrs ietver 59 neatkarīgi uzturamas noklusējuma pakotnes un neobligātu atbilstošo pirmkodu. Linux AMD64 kohortas koplieto Conda apakšdirektoriju, taču tās ir atšķirīgas kvalificētas būves: izmantojiet precīzā profila skaidri norādīto sarakstu.
+
+## Verifikācija un pirmā lietošana {#verification-and-first-use}
+
+1. Izlasiet [instalēšanas ceļvedi](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Verificējiet parakstīto manifestu, laidiena indeksu un atlasītos failus ar fiksēto verificētāju.
+3. Instalējiet jaunā privātā prefiksā kā parastais lietotājs.
+4. Saglabājiet verificētos bināros failus atsevišķā privātā glabāšanas direktorijā.
+5. Pārskatiet ģenerēto klienta konfigurāciju un skaidri atlasiet natīvos īpašniekus un pilnvaras.
+
+Conda 26.10.0 tika kvalificēta. Verifikācijai un iestatīšanai nepieciešami Python 3.11+ un OpenSSL; piegādāto bināro failu palaišanai kompilators nav nepieciešams. Mac PKG nav parakstīta ar Apple Developer ID un nav notarizēta. Atsevišķa verifikācija nemaina sistēmas uzticamību.
+
+## Dzīves cikla pierādījumi {#lifecycle-evidence}
+
+Laidiens kvalificē instalēšanas un pirmās lietošanas ceļus, 22 Codex gadījumus un 182 pakotņu uzturēšanas transakcijas katram profilam. Revīzija 0 → 1 → 0 izmanto identiskus natīvos baitus. Jauninājumi uz citām natīvajām versijām, saglabātās kopijas un darbojošos īpašnieku dzīves cikli paliek nošķirti. Skatiet [saglabāšanas ceļvedi](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Pirmkods un atsauksmes {#source-and-feedback}
+
+[Pirmkoda krātuve](https://github.com/QuanuX/symphony-distribution) · [Pašreizējais README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Pēdējoreiz pārskatīts publiskās beta versijas palaišanai 2026. gada 16. novembrī._

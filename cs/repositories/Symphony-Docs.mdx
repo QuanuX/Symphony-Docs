@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Zdroje dokumentace Mintlify a publikované referenční stránky Symphony."
+---
+
+Tento repozitář je zdrojem webu Mintlify na adrese [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Obsahuje doktrínu platformy, architekturu, reference vektorů a vlastníků, dokumentaci qxctl, překlady a materiály pro seznam změn.
+
+## Účel repozitáře a stav vydání {#repository-purpose-and-release-status}
+
+Symphony-Docs je repozitář dokumentace. Není součástí vydání softwaru Symphony.
+
+- Repozitář nemá žádná vydání, tagy ani balíčky na GitHubu. Nic z něj neinstalujete.
+- Neposkytuje enginy, SDK, binární soubory qxctl ani profily Anacondy. Ty pocházejí ze základního vydání Symphony.
+- Jeho soubor `LICENSE` obsahuje licenci MIT zděděnou ze startovací šablony Mintlify. Základní software Symphony je publikován pod licencí AGPL-3.0 v repozitáři [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Repozitář nemá README. Publikovaný web je jeho vstupním bodem pro uživatele.
+
+Základní veřejná beta Symphony, **0.2.0-beta.1**, byla spuštěna 16. listopadu 2026. Rozsah vydání a hranice kvalifikace najdete na [stránce repozitáře Symphony](/cs/repositories/Symphony). Stránka v tomto repozitáři popisuje funkci. Tuto funkci nekvalifikuje. Návrhy, položky plánu a chování hardwaru nebo GPU popsané na těchto stránkách nejsou ověřené funkce, pokud to neuvádí záznam o základním vydání.
+
+## Dokumentace veřejné bety {#public-beta-documentation}
+
+Začněte [průvodcem funkcemi bety](https://quanux.org/beta), poté [stažením a instalací přes Anacondu](https://quanux.org/downloads) a následně dokumentací zvoleného modulu.
+
+Každý engine se instaluje, aktualizuje a odebírá samostatně. Vyberte a zkombinujte enginy, které potřebujete. Viz [Přehled enginů](/cs/engines/overview).
+
+## Navigace v dokumentaci {#navigate-the-documentation}
+
+Web má tři karty:
+
+| Karta | Obsah |
+| --- | --- |
+| Dokumentace | Začínáme, Základní koncepty, Knowledge Vector (SKV), Provoz a infrastruktura, Identita, audit a správa, Enginy a knihovny a Veřejné repozitáře |
+| qxctl CLI | Přehled qxctl a reference příkazů, počínaje [přehledem qxctl](/cs/qxctl/overview) |
+| Přehled změn | Datované poznámky k vydáním v [seznamu změn](/cs/changelog) |
+
+Pomocí přepínače jazyka můžete přepínat mezi angličtinou a 35 překlady. Skupina Public repositories je k dispozici pouze v angličtině.
+
+Každý veřejný repozitář QuanuX má vlastní stránku v sekci Veřejné repozitáře. Stránky repozitářů se publikují na adrese `docs.quanux.org/symphony/en/repositories/<repository-name>`. Tato stránka je například na adrese [/cs/repositories/Symphony-Docs](/cs/repositories/Symphony-Docs).
+
+## Původ zdrojů {#source-provenance}
+
+Každá publikovaná stránka odpovídá jednomu souboru MDX v tomto repozitáři.
+
+- `docs.json` definuje konfiguraci webu, karty, skupiny, pořadí stránek a jazyky.
+- Anglické stránky jsou v kořeni repozitáře a v adresářích `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` a `qxctl/`.
+- Překlady zrcadlí anglickou strukturu v jazykových adresářích, jako jsou `de/`, `ja/` a `zh-Hans/`.
+- Stránky repozitářů jsou v `en/repositories/`.
+- Do `changelog.mdx` se pouze přidává. Nové záznamy se přidávají na začátek aktuálního roku a publikované záznamy se nikdy neupravují ani nemažou.
+
+Chcete-li dohledat tvrzení, otevřete odpovídající soubor MDX na GitHubu a projděte jeho historii commitů. Tvrzení o funkcích vycházejí ze základního zdrojového kódu Symphony a jeho publikovaných artefaktů vydání, nikoli z tohoto repozitáře.
+
+## Disciplína zdrojů a publikace {#source-and-publication-discipline}
+
+O připravenosti rozhoduje aktuální implementace v repozitáři a přesné publikované artefakty vydání. Historická dokumentace a aktualizace hlavní větve zdrojového kódu jsou odlišné důkazy. Zachovávejte původ verzí, odlišujte volitelné doprovodné komponenty od obsahu binárního vydání a při aktualizaci stránek zachovejte stávající překlady a odkazy na zdrojový kód.
+
+Dřívější repozitář [quanux](/cs/repositories/quanux) je historická práce. Jeho dokumentace nepopisuje současný Symphony.
+
+Automatické obnovy repozitářů jsou naplánovány ve 30minutových startovních oknech 17. a 18. listopadu 2026 od 00:01 America/New_York. Stránky se budou vyvíjet, jakmile budou k dispozici nové důkazy a vydání.
+
+## Zdrojový kód a zpětná vazba {#source-and-feedback}
+
+[Repozitář zdrojového kódu](https://github.com/QuanuX/Symphony-Docs) · [Historie commitů](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Naposledy zkontrolováno 17. listopadu 2026._

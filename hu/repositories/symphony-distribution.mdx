@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Aláírt béta telepítők, pontos Conda-profilok, ellenőrzés és a megfelelő forráskód."
+---
+
+Ez a tároló felel a Symphony disztribúciójáért és kiadási bizonyítékaiért. A **0.2.0-beta.1** nyilvános béta 2026. november 16-án jelent meg.
+
+## Letöltés és telepítés {#download-and-install}
+
+A platformonkénti telepítőkhöz, az Anaconda-utasításokhoz és az összes csomag leírásához használja a [quanux.org/downloads](https://quanux.org/downloads) oldalt. A [kiadási oldal](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) azonosítja a pontos artefaktumokat.
+
+A profilok: macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 és Ubuntu 26.04 AMD64. Mindegyik 59 egymástól függetlenül karbantartható alapértelmezett csomagot tartalmaz, valamint opcionálisan a megfelelő forráskódot. A Linux AMD64 kohorszok közös Conda-alkönyvtárat használnak, de különálló minősített buildek: használja a pontos profil explicit listáját.
+
+## Ellenőrzés és első használat {#verification-and-first-use}
+
+1. Olvassa el a [telepítési útmutatót](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Ellenőrizze az aláírt manifesztet, a kiadási indexet és a kiválasztott fájlokat a rögzített ellenőrzővel.
+3. Telepítsen egy új privát előtagba a szokásos felhasználójaként.
+4. Őrizze meg az ellenőrzött binárisokat egy külön privát megőrzési könyvtárban.
+5. Tekintse át a létrehozott kliens-konfigurációt, és explicit módon válassza ki a natív tulajdonosokat és a jogosultságot.
+
+A Conda 26.10.0 minősítve lett. Az ellenőrzéshez és a beállításhoz Python 3.11+ és OpenSSL szükséges; a mellékelt binárisok futtatásához nincs szükség fordítóprogramra. A Mac PKG nincs Apple Developer ID-vel aláírva és nincs hitelesítve (notarized). A leválasztott ellenőrzés nem módosítja a rendszer megbízhatósági beállításait.
+
+## Életciklus-bizonyítékok {#lifecycle-evidence}
+
+A kiadás profilonként minősíti a telepítési és első használati útvonalakat, 22 Codex-esetet és 182 csomagkarbantartási tranzakciót. A 0 → 1 → 0 revízió azonos natív bájtokat használ. A más natív verziókra történő frissítések, a megőrzött másolatok és a futó tulajdonosok életciklusai külön maradnak. Lásd a [megőrzési útmutatót](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Forráskód és visszajelzés {#source-and-feedback}
+
+[Forráskódtároló](https://github.com/QuanuX/symphony-distribution) · [Aktuális README](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Utoljára ellenőrizve a nyilvános béta 2026. november 16-i indulásához._

@@ -1,0 +1,63 @@
+---
+title: "Symphony-Docs"
+description: "Nguồn tài liệu Mintlify và các trang tham chiếu Symphony đã xuất bản."
+---
+
+Kho này là nguồn của trang Mintlify tại [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Kho chứa học thuyết nền tảng, kiến trúc, tài liệu tham chiếu về vector và chủ sở hữu, tài liệu qxctl, bản dịch và nội dung nhật ký thay đổi.
+
+## Mục đích của kho và trạng thái phát hành {#repository-purpose-and-release-status}
+
+Symphony-Docs là một kho tài liệu. Kho này không thuộc bản phát hành phần mềm Symphony.
+
+- Kho không có bản phát hành, thẻ hay gói nào trên GitHub. Bạn không cài đặt gì từ kho này.
+- Kho không cung cấp engine, SDK, tệp nhị phân qxctl hay profile Anaconda. Những thứ đó đến từ bản phát hành Symphony cốt lõi.
+- Tệp `LICENSE` của kho là giấy phép MIT kế thừa từ mẫu khởi đầu của Mintlify. Phần mềm Symphony cốt lõi được phát hành theo AGPL-3.0 từ [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Kho không có README. Trang đã xuất bản là điểm truy cập dành cho người dùng.
+
+Bản beta công khai cốt lõi của Symphony, **0.2.0-beta.1**, ra mắt ngày 16 tháng 11 năm 2026. Xem [trang kho Symphony](/vi/repositories/Symphony) để biết phạm vi phát hành và ranh giới thẩm định. Một trang trong kho này mô tả một khả năng. Trang đó không thẩm định khả năng ấy. Các đề xuất, hạng mục lộ trình và hành vi phần cứng hoặc GPU được mô tả trên các trang này không phải là khả năng đã được xác minh, trừ khi hồ sơ bản phát hành cốt lõi nêu rõ.
+
+## Tài liệu bản beta công khai {#public-beta-documentation}
+
+Hãy bắt đầu với [hướng dẫn về khả năng của bản beta](https://quanux.org/beta), tiếp theo là [tải xuống và cài đặt bằng Anaconda](https://quanux.org/downloads), sau đó là tài liệu của mô-đun bạn chọn.
+
+Mỗi engine được cài đặt, cập nhật và gỡ bỏ riêng lẻ. Hãy chọn và kết hợp các engine bạn cần. Xem [Tổng quan về engine](/vi/engines/overview).
+
+## Điều hướng tài liệu {#navigate-the-documentation}
+
+Trang có ba tab:
+
+| Tab | Nội dung |
+| --- | --- |
+| Tài liệu | Bắt đầu, Khái niệm cốt lõi, Knowledge Vector (SKV), Vận hành & hạ tầng, Danh tính, kiểm toán & quản trị, Engine & thư viện và Kho lưu trữ công khai |
+| qxctl CLI | Tổng quan qxctl và tài liệu tham chiếu lệnh, bắt đầu từ [tổng quan qxctl](/vi/qxctl/overview) |
+| Nhật ký thay đổi | Ghi chú phát hành có ngày tháng trong [nhật ký thay đổi](/vi/changelog) |
+
+Dùng bộ chọn ngôn ngữ để chuyển giữa tiếng Anh và 35 bản dịch. Nhóm Public repositories chỉ có bằng tiếng Anh.
+
+Mỗi kho công khai của QuanuX có một trang riêng trong mục Kho lưu trữ công khai. Các trang kho được xuất bản tại `docs.quanux.org/symphony/en/repositories/<repository-name>`. Ví dụ, trang này nằm tại [/vi/repositories/Symphony-Docs](/vi/repositories/Symphony-Docs).
+
+## Nguồn gốc mã nguồn {#source-provenance}
+
+Mỗi trang đã xuất bản tương ứng với một tệp MDX trong kho này.
+
+- `docs.json` xác định cấu hình trang, các tab, nhóm, thứ tự trang và ngôn ngữ.
+- Các trang tiếng Anh nằm ở thư mục gốc của kho, trong `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` và `qxctl/`.
+- Các bản dịch phản chiếu cấu trúc tiếng Anh trong các thư mục ngôn ngữ như `de/`, `ja/` và `zh-Hans/`.
+- Các trang kho nằm trong `en/repositories/`.
+- `changelog.mdx` chỉ được bổ sung thêm. Các mục mới được thêm vào đầu năm hiện tại, và các mục đã xuất bản không bao giờ bị chỉnh sửa hay xóa.
+
+Để truy vết một khẳng định, hãy mở tệp MDX tương ứng trên GitHub và xem lịch sử commit của nó. Các khẳng định về tính năng bắt nguồn từ mã nguồn Symphony cốt lõi và các artifact phát hành đã xuất bản của nó, không phải từ kho này.
+
+## Kỷ luật về nguồn và xuất bản {#source-and-publication-discipline}
+
+Mức độ sẵn sàng được quyết định bởi phần triển khai hiện tại trong kho và các artifact chính xác của bản phát hành đã xuất bản. Tài liệu lịch sử và các bản cập nhật trên nhánh chính của mã nguồn là những bằng chứng khác nhau. Hãy giữ nguồn gốc phiên bản, phân biệt các thành phần đi kèm tùy chọn với nội dung bản phát hành nhị phân, và giữ nguyên các bản dịch cùng liên kết mã nguồn hiện có khi cập nhật trang.
+
+Kho [quanux](/vi/repositories/quanux) trước đây là công việc mang tính lịch sử. Tài liệu của kho đó không mô tả Symphony hiện tại.
+
+Các đợt làm mới kho tự động được lên lịch trong các khung bắt đầu 30 phút vào ngày 17 và 18 tháng 11 năm 2026, bắt đầu lúc 00:01 America/New_York. Các trang sẽ thay đổi khi có bằng chứng và bản phát hành mới.
+
+## Mã nguồn và phản hồi {#source-and-feedback}
+
+[Kho mã nguồn](https://github.com/QuanuX/Symphony-Docs) · [Lịch sử commit](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+
+_Được xem xét lần cuối ngày 17 tháng 11 năm 2026._

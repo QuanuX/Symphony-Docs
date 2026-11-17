@@ -1,0 +1,25 @@
+---
+title: "symphony-codex-ipc-mcp-and-skills"
+description: "Native lokal IPC- og MCP-integrasjon for Symphony-agentklienter."
+---
+
+Dette prosjektet leverer en native MCP-bro i C++, verktøykataloger, generatorer for klientkonfigurasjon og skills for lokale Symphony-operasjoner via qxctl. Det bevarer nøyaktig ruting til eiere og eksplisitt myndighet.
+
+## Start med betaklienten {#start-with-the-beta-client}
+
+For den kvalifiserte binære veien bruker du klienten som følger med [Symphony 0.2.0-beta.1](https://quanux.org/downloads). Følg [veiledningen for oppbevaring og klientkonfigurasjon](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md). Codex er den primære kvalifiserte klienten; eksisterende konfigurasjonsadaptere for Claude, Antigravity og generiske klienter beholder sine egne grenser.
+
+## Utforsk {#explore}
+
+- Finn strukturerte verktøy og rut operasjoner til installerte qxctl-eiere.
+- Generer en isolert tilkoblingsprofil og et fragment av klientkonfigurasjonen.
+- Start med leseoperasjoner; aktiver skrivemyndighet bare gjennom dokumenterte eierflyter.
+- Undersøk prosjektets skills og bygge- og testinstruksjonene på kildekodenivå.
+
+Protokollkontrakten er fastlåst i dette repositoriet. Bruk den deklarerte versjonen og byggeforutsetningene i stedet for i det stille å bytte til en nyere MCP-revisjon. Et offentlig repositorium eller en lokal klientkonfigurasjon er ingen påstand om godkjenning i en plugin-katalog fra tredjepart.
+
+## Kildekode og tilbakemeldinger {#source-and-feedback}
+
+[Kildekoderepositorium](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills) · [Gjeldende README](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills#readme) · [Issues](https://github.com/QuanuX/symphony-codex-ipc-mcp-and-skills/issues)
+
+_Sist gjennomgått for lanseringen av den offentlige betaen 16. november 2026._

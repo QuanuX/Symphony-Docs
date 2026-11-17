@@ -1,0 +1,32 @@
+---
+title: "symphony-distribution"
+description: "Installateurs bêta signés, profils Conda exacts, vérification et code source correspondant."
+---
+
+Ce dépôt est responsable de la distribution et des preuves de version de Symphony. La bêta publique **0.2.0-beta.1** a été publiée le 16 novembre 2026.
+
+## Télécharger et installer {#download-and-install}
+
+Utilisez [quanux.org/downloads](https://quanux.org/downloads) pour les installateurs de chaque plateforme, les instructions Anaconda et la description de chaque paquet. La [page de la version](https://github.com/QuanuX/symphony-distribution/releases/tag/v0.2.0-beta.1) identifie les artefacts exacts.
+
+Les profils sont macOS 15 ARM64, Ubuntu 24.04 AMD64, Ubuntu 24.04 ARM64 et Ubuntu 26.04 AMD64. Chacun comprend 59 paquets par défaut maintenables indépendamment, ainsi que le code source correspondant en option. Les cohortes Linux AMD64 partagent un sous-répertoire Conda, mais ce sont des builds qualifiés distincts : utilisez la liste explicite du profil exact.
+
+## Vérification et première utilisation {#verification-and-first-use}
+
+1. Lisez le [guide d'installation](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/BETA-INSTALL.md).
+2. Vérifiez le manifeste signé, l'index de la version et les fichiers sélectionnés avec le vérificateur épinglé.
+3. Installez dans un nouveau préfixe privé avec votre utilisateur habituel.
+4. Conservez les binaires vérifiés dans un répertoire de conservation privé distinct.
+5. Examinez la configuration client générée et sélectionnez explicitement les propriétaires natifs et l'autorité.
+
+Conda 26.10.0 a été qualifié. Python 3.11+ et OpenSSL sont nécessaires pour la vérification et la configuration ; aucun compilateur n'est requis pour exécuter les binaires fournis. Le PKG pour Mac n'est ni signé avec un Apple Developer ID ni notarié. La vérification détachée ne modifie pas la confiance du système.
+
+## Preuves du cycle de vie {#lifecycle-evidence}
+
+La version qualifie les parcours d'installation et de première utilisation, 22 cas Codex et 182 transactions de maintenance de paquets par profil. La révision 0 → 1 → 0 utilise des octets natifs identiques. Les mises à niveau vers des versions natives distinctes, les copies conservées et les cycles de vie des propriétaires en cours d'exécution restent distincts. Consultez le [guide de conservation](https://downloads.quanux.org/symphony/0.2.0-beta.1/docs/RETENTION.md).
+
+## Code source et retours {#source-and-feedback}
+
+[Dépôt du code source](https://github.com/QuanuX/symphony-distribution) · [README actuel](https://github.com/QuanuX/symphony-distribution#readme) · [Issues](https://github.com/QuanuX/symphony-distribution/issues)
+
+_Dernière révision pour le lancement de la bêta publique du 16 novembre 2026._

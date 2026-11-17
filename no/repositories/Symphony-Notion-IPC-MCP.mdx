@@ -1,0 +1,21 @@
+---
+title: "Symphony-Notion-IPC-MCP"
+description: "Notion-rettet lokal IPC/MCP-bro og valgfri brukerdrevet gateway."
+---
+
+Dette tilleggsprosjektet kobler Notion-rettede arbeidsflyter til Symphony via en native bro og en valgfri loopback-gateway. Det inneholder lokale IPC-grensesnitt og hjelpeverktøy for brukerdrevet publisering og tunneloppsett.
+
+## Hva du bør vurdere {#what-to-evaluate}
+
+- Undersøk kontraktene for den native broen, den lokale gatewayen og anroperens myndighet.
+- Gå gjennom konfigurasjonen og det genererte tilkoblingsmaterialet før bruk.
+- Kjør repositoriets avgrensede tester i et isolert arbeidsområde.
+- Kvalifiser den faktiske oppførselen til Notion-klienten, OAuth, sidepublisering og tunneler separat.
+
+Dette er en separat kildekodeintegrasjon. De automatiserte testene fastslår ikke ende-til-ende-godkjenning av Notion-klienten eller godkjenning på en markedsplass, og den er ikke en binær standardkomponent i den signerte Symphony-betaen. Bruk repositoriets gjeldende installasjonsinstruksjoner, og oppgi din egen tiltenkte myndighet for konto, tilkobling og publisering.
+
+## Kildekode og tilbakemeldinger {#source-and-feedback}
+
+[Kildekoderepositorium](https://github.com/QuanuX/Symphony-Notion-IPC-MCP) · [Gjeldende README](https://github.com/QuanuX/Symphony-Notion-IPC-MCP#readme) · [Issues](https://github.com/QuanuX/Symphony-Notion-IPC-MCP/issues)
+
+_Sist gjennomgått for lanseringen av den offentlige betaen 16. november 2026._
