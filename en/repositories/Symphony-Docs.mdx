@@ -5,20 +5,59 @@ description: "Mintlify documentation sources and published Symphony reference pa
 
 This repository is the source for the Mintlify site at [docs.quanux.org/symphony](https://docs.quanux.org/symphony). It contains platform doctrine, architecture, vector and owner references, qxctl documentation, translations and changelog material.
 
+## Repository purpose and release status
+
+Symphony-Docs is a documentation repository. It is not part of the Symphony software release.
+
+- The repository has no GitHub releases, tags or packages. You do not install anything from it.
+- It does not supply engines, SDKs, qxctl binaries or Anaconda profiles. Those come from the core Symphony release.
+- Its `LICENSE` file is the MIT license inherited from the Mintlify starter template. The core Symphony software is published under AGPL-3.0 from [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- The repository has no README. The published site is its user-facing entry point.
+
+The core Symphony Public Beta, **0.2.0-beta.1**, launched November 16, 2026. See the [Symphony repository page](/en/repositories/Symphony) for its release scope and qualification boundaries. A page in this repository describes a capability. It does not qualify that capability. Proposals, roadmap items and hardware or GPU behavior described on these pages are not verified capabilities unless the core release record says so.
+
 ## Public beta documentation
 
 Start with [the beta capability guide](https://quanux.org/beta), [downloads and Anaconda installation](https://quanux.org/downloads), then the documentation for the module you select.
 
-Each public repository has a dedicated page under Public repositories. Short addresses such as docs.quanux.org/NemoSymphTron resolve to that repository's documentation.
+Each engine is installed, updated and removed individually. Choose and compose the engines you need. See [Engines overview](/engines/overview).
+
+## Navigate the documentation
+
+The site has three tabs:
+
+| Tab | Contents |
+| --- | --- |
+| Documentation | Get Started, Core Concepts, Knowledge Vector (SKV), Operations & Infrastructure, Identity, Audit & Governance, Engines & Libraries, and Public repositories |
+| qxctl CLI | qxctl overview and command references, starting at [qxctl overview](/qxctl/overview) |
+| Changelog | Dated release notes in the [changelog](/changelog) |
+
+Use the language selector to switch between English and 35 translations. The Public repositories group is available in English only.
+
+Each public QuanuX repository has a dedicated page under Public repositories. Repository pages are published at `docs.quanux.org/symphony/en/repositories/<repository-name>`. For example, this page is at [/en/repositories/Symphony-Docs](/en/repositories/Symphony-Docs).
+
+## Source provenance
+
+Every published page maps to one MDX file in this repository.
+
+- `docs.json` defines the site configuration, tabs, groups, page order and languages.
+- English pages live at the repository root, in `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` and `qxctl/`.
+- Translations mirror the English structure in locale directories such as `de/`, `ja/` and `zh-Hans/`.
+- Repository pages live in `en/repositories/`.
+- `changelog.mdx` is append-only. New entries are added at the top of the current year, and published entries are never edited or deleted.
+
+To trace a statement, open the matching MDX file on GitHub and review its commit history. Feature claims trace back to the core Symphony source and its published release artifacts, not to this repository.
 
 ## Source and publication discipline
 
 Current repository implementation and exact published release artifacts determine readiness. Historical documentation and source-main updates are different evidence. Retain version provenance, distinguish optional companions from binary-release contents, and preserve existing translations and source links when updating pages.
 
+The earlier [quanux](/en/repositories/quanux) repository is historical work. Its documentation does not describe current Symphony.
+
 Automated repository refreshes are scheduled in 30-minute start slots on November 17 and 18, 2026, beginning at 00:01 America/New_York. Pages will evolve as new evidence and releases become available.
 
 ## Source and feedback
 
-[Source repository](https://github.com/QuanuX/Symphony-Docs) · [Current README](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Source repository](https://github.com/QuanuX/Symphony-Docs) · [Commit history](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Last reviewed for the November 16, 2026 public beta launch._
+_Last reviewed November 17, 2026._
