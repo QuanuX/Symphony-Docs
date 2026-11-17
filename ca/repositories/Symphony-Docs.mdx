@@ -5,20 +5,59 @@ description: "Fonts de documentació de Mintlify i pàgines de referència publi
 
 Aquest repositori és la font del lloc de Mintlify a [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Conté la doctrina de la plataforma, l'arquitectura, les referències de vectors i propietaris, la documentació de qxctl, les traduccions i el material del registre de canvis.
 
+## Finalitat del repositori i estat de la versió {#repository-purpose-and-release-status}
+
+Symphony-Docs és un repositori de documentació. No forma part de la versió del programari Symphony.
+
+- El repositori no té versions, etiquetes ni paquets de GitHub. No hi instal·leu res.
+- No proporciona motors, SDK, binaris de qxctl ni perfils d'Anaconda. Aquests provenen de la versió principal de Symphony.
+- El fitxer `LICENSE` és la llicència MIT heretada de la plantilla inicial de Mintlify. El programari principal de Symphony es publica sota AGPL-3.0 des de [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- El repositori no té README. El lloc publicat és el punt d'entrada per als usuaris.
+
+La beta pública principal de Symphony, **0.2.0-beta.1**, es va llançar el 16 de novembre de 2026. Consulteu la [pàgina del repositori Symphony](/ca/repositories/Symphony) per conèixer l'abast de la versió i els límits de qualificació. Una pàgina d'aquest repositori descriu una capacitat. No qualifica aquesta capacitat. Les propostes, els elements del full de ruta i el comportament del maquinari o de la GPU descrits en aquestes pàgines no són capacitats verificades, tret que el registre de la versió principal ho indiqui.
+
 ## Documentació de la beta pública {#public-beta-documentation}
 
 Comenceu per [la guia de capacitats de la beta](https://quanux.org/beta), després per [les baixades i la instal·lació amb Anaconda](https://quanux.org/downloads) i, a continuació, per la documentació del mòdul que seleccioneu.
 
-Cada repositori públic té una pàgina dedicada a Repositoris públics. Les adreces curtes com docs.quanux.org/NemoSymphTron porten a la documentació d'aquell repositori.
+Cada motor s'instal·la, s'actualitza i s'elimina individualment. Trieu i combineu els motors que necessiteu. Consulteu la [visió general dels motors](/ca/engines/overview).
+
+## Navegar per la documentació {#navigate-the-documentation}
+
+El lloc té tres pestanyes:
+
+| Pestanya | Contingut |
+| --- | --- |
+| Documentació | Primers passos, Conceptes fonamentals, Vector de coneixement (SKV), Operacions i infraestructura, Identitat, auditoria i governança, Motors i biblioteques i Repositoris públics |
+| CLI qxctl | Visió general de qxctl i referències d'ordres, començant per la [visió general de qxctl](/ca/qxctl/overview) |
+| Registre de canvis | Notes de versió datades al [registre de canvis](/ca/changelog) |
+
+Utilitzeu el selector d'idioma per canviar entre l'anglès i 35 traduccions. El grup Public repositories només està disponible en anglès.
+
+Cada repositori públic de QuanuX té una pàgina dedicada a Repositoris públics. Les pàgines dels repositoris es publiquen a `docs.quanux.org/symphony/en/repositories/<repository-name>`. Per exemple, aquesta pàgina és a [/ca/repositories/Symphony-Docs](/ca/repositories/Symphony-Docs).
+
+## Procedència de les fonts {#source-provenance}
+
+Cada pàgina publicada correspon a un fitxer MDX d'aquest repositori.
+
+- `docs.json` defineix la configuració del lloc, les pestanyes, els grups, l'ordre de les pàgines i els idiomes.
+- Les pàgines en anglès es troben a l'arrel del repositori, a `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` i `qxctl/`.
+- Les traduccions reprodueixen l'estructura anglesa en directoris d'idioma com ara `de/`, `ja/` i `zh-Hans/`.
+- Les pàgines dels repositoris es troben a `en/repositories/`.
+- `changelog.mdx` només admet addicions. Les entrades noves s'afegeixen al principi de l'any en curs, i les entrades publicades no s'editen ni s'eliminen mai.
+
+Per rastrejar una afirmació, obriu el fitxer MDX corresponent a GitHub i reviseu-ne l'historial de commits. Les afirmacions sobre funcionalitats es remunten al codi font principal de Symphony i als seus artefactes de versió publicats, no a aquest repositori.
 
 ## Disciplina de fonts i publicació {#source-and-publication-discipline}
 
 La implementació actual del repositori i els artefactes exactes de la versió publicada determinen la preparació. La documentació històrica i les actualitzacions de la branca principal del codi font són proves diferents. Conserveu la procedència de les versions, distingiu els components complementaris opcionals del contingut de la versió binària i conserveu les traduccions i els enllaços al codi font existents quan actualitzeu les pàgines.
 
+L'anterior repositori [quanux](/ca/repositories/quanux) és treball històric. La seva documentació no descriu el Symphony actual.
+
 Les actualitzacions automàtiques dels repositoris estan programades en franges d'inici de 30 minuts els dies 17 i 18 de novembre de 2026, a partir de les 00:01 America/New_York. Les pàgines evolucionaran a mesura que hi hagi noves proves i versions disponibles.
 
 ## Codi font i comentaris {#source-and-feedback}
 
-[Repositori del codi font](https://github.com/QuanuX/Symphony-Docs) · [README actual](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Repositori del codi font](https://github.com/QuanuX/Symphony-Docs) · [Historial de commits](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Revisat per darrera vegada per al llançament de la beta pública del 16 de novembre de 2026._
+_Revisat per darrera vegada el 17 de novembre de 2026._

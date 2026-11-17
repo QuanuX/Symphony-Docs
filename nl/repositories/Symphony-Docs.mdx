@@ -5,20 +5,59 @@ description: "Mintlify-documentatiebronnen en gepubliceerde Symphony-referentiep
 
 Deze repository is de bron van de Mintlify-site op [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Ze bevat de platformdoctrine, architectuur, referenties voor vectoren en eigenaren, qxctl-documentatie, vertalingen en changelogmateriaal.
 
+## Doel van de repository en releasestatus {#repository-purpose-and-release-status}
+
+Symphony-Docs is een documentatierepository. Het maakt geen deel uit van de Symphony-softwarerelease.
+
+- De repository heeft geen GitHub-releases, tags of pakketten. U installeert er niets uit.
+- Ze levert geen engines, SDK's, qxctl-binaire bestanden of Anaconda-profielen. Die komen uit de kernrelease van Symphony.
+- Het bestand `LICENSE` is de MIT-licentie die is overgenomen van de Mintlify-startsjabloon. De kernsoftware van Symphony wordt onder AGPL-3.0 gepubliceerd via [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- De repository heeft geen README. De gepubliceerde site is het toegangspunt voor gebruikers.
+
+De openbare bèta van de Symphony-kern, **0.2.0-beta.1**, is gelanceerd op 16 november 2026. Zie de [pagina van de Symphony-repository](/nl/repositories/Symphony) voor de reikwijdte van de release en de kwalificatiegrenzen. Een pagina in deze repository beschrijft een mogelijkheid. Ze kwalificeert die mogelijkheid niet. Voorstellen, roadmap-items en hardware- of GPU-gedrag dat op deze pagina's wordt beschreven, zijn geen geverifieerde mogelijkheden, tenzij het releasedossier van de kern dat vermeldt.
+
 ## Documentatie van de openbare bèta {#public-beta-documentation}
 
 Begin met [de gids met bètamogelijkheden](https://quanux.org/beta), daarna [downloads en installatie met Anaconda](https://quanux.org/downloads) en vervolgens de documentatie van de module die u kiest.
 
-Elke openbare repository heeft een eigen pagina onder Openbare repository's. Korte adressen zoals docs.quanux.org/NemoSymphTron leiden naar de documentatie van die repository.
+Elke engine wordt afzonderlijk geïnstalleerd, bijgewerkt en verwijderd. Kies en combineer de engines die u nodig hebt. Zie [Overzicht van engines](/nl/engines/overview).
+
+## Door de documentatie navigeren {#navigate-the-documentation}
+
+De site heeft drie tabbladen:
+
+| Tabblad | Inhoud |
+| --- | --- |
+| Documentatie | Aan de slag, Kernconcepten, Knowledge Vector (SKV), Operaties en infrastructuur, Identiteit, audit en governance, Engines en bibliotheken en Openbare repository's |
+| qxctl CLI | qxctl-overzicht en opdrachtreferenties, te beginnen bij het [qxctl-overzicht](/nl/qxctl/overview) |
+| Changelog | Gedateerde releasenotes in de [changelog](/nl/changelog) |
+
+Gebruik de taalkiezer om te wisselen tussen Engels en 35 vertalingen. De groep Public repositories is alleen in het Engels beschikbaar.
+
+Elke openbare QuanuX-repository heeft een eigen pagina onder Openbare repository's. Repositorypagina's worden gepubliceerd op `docs.quanux.org/symphony/en/repositories/<repository-name>`. Deze pagina staat bijvoorbeeld op [/nl/repositories/Symphony-Docs](/nl/repositories/Symphony-Docs).
+
+## Herkomst van de bronnen {#source-provenance}
+
+Elke gepubliceerde pagina komt overeen met één MDX-bestand in deze repository.
+
+- `docs.json` definieert de siteconfiguratie, tabbladen, groepen, paginavolgorde en talen.
+- Engelse pagina's staan in de hoofdmap van de repository en in `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` en `qxctl/`.
+- Vertalingen spiegelen de Engelse structuur in taalmappen zoals `de/`, `ja/` en `zh-Hans/`.
+- Repositorypagina's staan in `en/repositories/`.
+- `changelog.mdx` wordt alleen aangevuld. Nieuwe items worden bovenaan het huidige jaar toegevoegd, en gepubliceerde items worden nooit bewerkt of verwijderd.
+
+Om een bewering te herleiden, opent u het bijbehorende MDX-bestand op GitHub en bekijkt u de commitgeschiedenis. Beweringen over functies zijn herleidbaar tot de kernbroncode van Symphony en de gepubliceerde releaseartefacten, niet tot deze repository.
 
 ## Discipline voor bronnen en publicatie {#source-and-publication-discipline}
 
 De huidige implementatie in de repository en de exacte gepubliceerde releaseartefacten bepalen de gereedheid. Historische documentatie en updates op de hoofdbranch van de broncode zijn verschillende soorten bewijs. Bewaar de versieherkomst, onderscheid optionele aanvullende componenten van de inhoud van de binaire release en behoud bestaande vertalingen en broncodelinks wanneer u pagina's bijwerkt.
 
+De eerdere repository [quanux](/nl/repositories/quanux) is historisch werk. De documentatie ervan beschrijft niet het huidige Symphony.
+
 Geautomatiseerde vernieuwingen van de repository's zijn gepland in startvensters van 30 minuten op 17 en 18 november 2026, vanaf 00:01 America/New_York. De pagina's ontwikkelen zich verder naarmate nieuw bewijs en nieuwe releases beschikbaar komen.
 
 ## Broncode en feedback {#source-and-feedback}
 
-[Broncoderepository](https://github.com/QuanuX/Symphony-Docs) · [Huidige README](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Broncoderepository](https://github.com/QuanuX/Symphony-Docs) · [Commitgeschiedenis](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Laatst gecontroleerd voor de lancering van de openbare bèta op 16 november 2026._
+_Laatst gecontroleerd op 17 november 2026._

@@ -5,20 +5,59 @@ description: "Mintlify dokumentācijas avoti un publicētās Symphony atsauces l
 
 Šī krātuve ir Mintlify vietnes avots adresē [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Tajā ir platformas doktrīna, arhitektūra, vektoru un īpašnieku atsauces, qxctl dokumentācija, tulkojumi un izmaiņu žurnāla materiāli.
 
+## Krātuves mērķis un laidiena statuss {#repository-purpose-and-release-status}
+
+Symphony-Docs ir dokumentācijas krātuve. Tā nav daļa no Symphony programmatūras laidiena.
+
+- Krātuvei nav GitHub laidienu, tagu vai pakotņu. No tās jūs neko neinstalējat.
+- Tā nenodrošina dzinējus, SDK, qxctl bināros failus vai Anaconda profilus. Tie nāk no Symphony pamatlaidiena.
+- Tās `LICENSE` fails ir MIT licence, kas mantota no Mintlify sākuma veidnes. Symphony pamatprogrammatūra tiek publicēta ar AGPL-3.0 licenci no [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Krātuvei nav README. Publicētā vietne ir lietotāju ieejas punkts.
+
+Symphony pamata publiskā beta versija **0.2.0-beta.1** tika palaista 2026. gada 16. novembrī. Laidiena tvērumu un kvalifikācijas robežas skatiet [Symphony krātuves lapā](/lv/repositories/Symphony). Lapa šajā krātuvē apraksta iespēju. Tā šo iespēju nekvalificē. Šajās lapās aprakstītie priekšlikumi, ceļveža vienumi un aparatūras vai GPU darbība nav pārbaudītas iespējas, ja vien pamatlaidiena ierakstā tas nav norādīts.
+
 ## Publiskās beta versijas dokumentācija {#public-beta-documentation}
 
 Sāciet ar [beta versijas iespēju ceļvedi](https://quanux.org/beta), pēc tam pārejiet uz [lejupielādēm un instalēšanu ar Anaconda](https://quanux.org/downloads) un tad uz izvēlētā moduļa dokumentāciju.
 
-Katrai publiskajai krātuvei ir sava lapa sadaļā Publiskās krātuves. Īsās adreses, piemēram, docs.quanux.org/NemoSymphTron, ved uz attiecīgās krātuves dokumentāciju.
+Katrs dzinējs tiek instalēts, atjaunināts un noņemts atsevišķi. Izvēlieties un apvienojiet nepieciešamos dzinējus. Skatiet [Dzinēju pārskatu](/lv/engines/overview).
+
+## Navigācija dokumentācijā {#navigate-the-documentation}
+
+Vietnē ir trīs cilnes:
+
+| Cilne | Saturs |
+| --- | --- |
+| Dokumentācija | Darba sākšana, Pamatkoncepcijas, Zināšanu vektors (SKV), Darbības un infrastruktūra, Identitāte, audits un pārvaldība, Dzinēji un bibliotēkas un Publiskās krātuves |
+| qxctl CLI | qxctl pārskats un komandu atsauces, sākot ar [qxctl pārskatu](/lv/qxctl/overview) |
+| Izmaiņu žurnāls | Datētas laidiena piezīmes [izmaiņu žurnālā](/lv/changelog) |
+
+Izmantojiet valodas atlasītāju, lai pārslēgtos starp angļu valodu un 35 tulkojumiem. Grupa Public repositories ir pieejama tikai angļu valodā.
+
+Katrai publiskajai QuanuX krātuvei ir sava lapa sadaļā Publiskās krātuves. Krātuvju lapas tiek publicētas adresē `docs.quanux.org/symphony/en/repositories/<repository-name>`. Piemēram, šī lapa atrodas adresē [/lv/repositories/Symphony-Docs](/lv/repositories/Symphony-Docs).
+
+## Avotu izcelsme {#source-provenance}
+
+Katra publicētā lapa atbilst vienam MDX failam šajā krātuvē.
+
+- `docs.json` nosaka vietnes konfigurāciju, cilnes, grupas, lapu secību un valodas.
+- Angļu valodas lapas atrodas krātuves saknē un mapēs `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` un `qxctl/`.
+- Tulkojumi atspoguļo angļu valodas struktūru lokalizācijas direktorijos, piemēram, `de/`, `ja/` un `zh-Hans/`.
+- Krātuvju lapas atrodas `en/repositories/`.
+- `changelog.mdx` tiek tikai papildināts. Jauni ieraksti tiek pievienoti pašreizējā gada sākumā, un publicētie ieraksti nekad netiek rediģēti vai dzēsti.
+
+Lai izsekotu apgalvojumam, atveriet atbilstošo MDX failu GitHub un pārskatiet tā commit vēsturi. Apgalvojumi par funkcijām balstās uz Symphony pamata pirmkodu un tā publicētajiem laidiena artefaktiem, nevis uz šo krātuvi.
 
 ## Avotu un publicēšanas disciplīna {#source-and-publication-discipline}
 
 Gatavību nosaka krātuves pašreizējā implementācija un precīzi publicētie laidiena artefakti. Vēsturiskā dokumentācija un pirmkoda galvenā zara atjauninājumi ir atšķirīgi pierādījumi. Saglabājiet versiju izcelsmi, nošķiriet neobligātos pavadošos komponentus no binārā laidiena satura un, atjauninot lapas, saglabājiet esošos tulkojumus un pirmkoda saites.
 
+Iepriekšējā [quanux](/lv/repositories/quanux) krātuve ir vēsturisks darbs. Tās dokumentācija neapraksta pašreizējo Symphony.
+
 Automātiskie krātuvju atsvaidzinājumi ir ieplānoti 30 minūšu sākuma logos 2026. gada 17. un 18. novembrī, sākot no plkst. 00:01 pēc America/New_York laika. Lapas mainīsies, kad kļūs pieejami jauni pierādījumi un laidieni.
 
 ## Pirmkods un atsauksmes {#source-and-feedback}
 
-[Pirmkoda krātuve](https://github.com/QuanuX/Symphony-Docs) · [Pašreizējais README](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Pirmkoda krātuve](https://github.com/QuanuX/Symphony-Docs) · [Commit vēsture](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Pēdējoreiz pārskatīts publiskās beta versijas palaišanai 2026. gada 16. novembrī._
+_Pēdējoreiz pārskatīts 2026. gada 17. novembrī._

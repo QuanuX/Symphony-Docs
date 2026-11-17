@@ -5,20 +5,59 @@ description: "Mintlify-dokumentaation lähteet ja Symphonyn julkaistut viitesivu
 
 Tämä repositorio on lähde Mintlify-sivustolle osoitteessa [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Se sisältää alustan doktriinin, arkkitehtuurin, vektorien ja omistajien viitteet, qxctl-dokumentaation, käännökset ja muutoslokiaineiston.
 
+## Repositorion tarkoitus ja julkaisun tila {#repository-purpose-and-release-status}
+
+Symphony-Docs on dokumentaatiorepositorio. Se ei kuulu Symphony-ohjelmistojulkaisuun.
+
+- Repositoriolla ei ole GitHub-julkaisuja, tageja tai paketteja. Et asenna siitä mitään.
+- Se ei toimita moottoreita, SDK:ita, qxctl-binäärejä tai Anaconda-profiileja. Ne tulevat Symphonyn ydinjulkaisusta.
+- Sen `LICENSE`-tiedosto on Mintlifyn aloituspohjasta peritty MIT-lisenssi. Symphonyn ydinohjelmisto julkaistaan AGPL-3.0-lisenssillä osoitteesta [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Repositoriossa ei ole READMEa. Julkaistu sivusto on sen käyttäjille tarkoitettu aloituskohta.
+
+Symphonyn julkinen ydinbeta **0.2.0-beta.1** julkaistiin 16. marraskuuta 2026. Katso julkaisun laajuus ja kelpuutuksen rajat [Symphony-repositorion sivulta](/fi/repositories/Symphony). Tämän repositorion sivu kuvaa ominaisuuden. Se ei kelpuuta kyseistä ominaisuutta. Näillä sivuilla kuvatut ehdotukset, tiekartan kohteet sekä laitteiston tai GPU:n toiminta eivät ole varmennettuja ominaisuuksia, ellei ydinjulkaisun tietue niin totea.
+
 ## Julkisen betan dokumentaatio {#public-beta-documentation}
 
 Aloita [betan ominaisuusoppaasta](https://quanux.org/beta), jatka [latauksiin ja Anaconda-asennukseen](https://quanux.org/downloads) ja siirry sitten valitsemasi moduulin dokumentaatioon.
 
-Jokaisella julkisella repositoriolla on oma sivunsa kohdassa Julkiset repositoriot. Lyhyet osoitteet, kuten docs.quanux.org/NemoSymphTron, ohjaavat kyseisen repositorion dokumentaatioon.
+Jokainen moottori asennetaan, päivitetään ja poistetaan erikseen. Valitse ja yhdistele tarvitsemasi moottorit. Katso [Moottorien yleiskatsaus](/fi/engines/overview).
+
+## Dokumentaatiossa liikkuminen {#navigate-the-documentation}
+
+Sivustolla on kolme välilehteä:
+
+| Välilehti | Sisältö |
+| --- | --- |
+| Dokumentaatio | Aloitus, Keskeiset käsitteet, Knowledge Vector (SKV), Toiminnot ja infrastruktuuri, Identiteetti, auditointi ja hallinta, Moottorit ja kirjastot ja Julkiset repositoriot |
+| qxctl CLI | qxctl-yleiskatsaus ja komentoviitteet, alkaen [qxctl-yleiskatsauksesta](/fi/qxctl/overview) |
+| Muutosloki | Päivätyt julkaisutiedot [muutoslokissa](/fi/changelog) |
+
+Vaihda englannin ja 35 käännöksen välillä kielivalitsimella. Public repositories -ryhmä on saatavilla vain englanniksi.
+
+Jokaisella julkisella QuanuX-repositoriolla on oma sivunsa kohdassa Julkiset repositoriot. Repositoriosivut julkaistaan osoitteessa `docs.quanux.org/symphony/en/repositories/<repository-name>`. Esimerkiksi tämä sivu on osoitteessa [/fi/repositories/Symphony-Docs](/fi/repositories/Symphony-Docs).
+
+## Lähteiden alkuperä {#source-provenance}
+
+Jokainen julkaistu sivu vastaa yhtä tämän repositorion MDX-tiedostoa.
+
+- `docs.json` määrittää sivuston asetukset, välilehdet, ryhmät, sivujen järjestyksen ja kielet.
+- Englanninkieliset sivut ovat repositorion juuressa sekä hakemistoissa `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` ja `qxctl/`.
+- Käännökset noudattavat englanninkielistä rakennetta kielihakemistoissa, kuten `de/`, `ja/` ja `zh-Hans/`.
+- Repositoriosivut ovat hakemistossa `en/repositories/`.
+- `changelog.mdx`-tiedostoon vain lisätään. Uudet merkinnät lisätään kuluvan vuoden alkuun, eikä julkaistuja merkintöjä koskaan muokata tai poisteta.
+
+Jäljitä väite avaamalla vastaava MDX-tiedosto GitHubissa ja tarkastelemalla sen commit-historiaa. Ominaisuuksia koskevat väitteet perustuvat Symphonyn ydinlähdekoodiin ja sen julkaistuihin julkaisuartefakteihin, eivät tähän repositorioon.
 
 ## Lähteiden ja julkaisun kurinalaisuus {#source-and-publication-discipline}
 
 Repositorion nykyinen toteutus ja tarkat julkaistut julkaisuartefaktit ratkaisevat valmiuden. Historiallinen dokumentaatio ja lähdekoodin päähaaran päivitykset ovat eri näyttöä. Säilytä versioiden alkuperä, erottele valinnaiset oheiskomponentit binäärijulkaisun sisällöstä ja säilytä olemassa olevat käännökset ja lähdekoodilinkit, kun päivität sivuja.
 
+Aiempi [quanux](/fi/repositories/quanux)-repositorio on historiallista työtä. Sen dokumentaatio ei kuvaa nykyistä Symphonya.
+
 Repositorioiden automaattiset päivitykset on ajoitettu 30 minuutin aloitusikkunoihin 17. ja 18. marraskuuta 2026 alkaen klo 00.01 America/New_York. Sivut kehittyvät sitä mukaa, kun uutta näyttöä ja uusia julkaisuja tulee saataville.
 
 ## Lähdekoodi ja palaute {#source-and-feedback}
 
-[Lähdekoodirepositorio](https://github.com/QuanuX/Symphony-Docs) · [Nykyinen README](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Lähdekoodirepositorio](https://github.com/QuanuX/Symphony-Docs) · [Commit-historia](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Tarkistettu viimeksi julkisen betan julkaisua varten 16. marraskuuta 2026._
+_Tarkistettu viimeksi 17. marraskuuta 2026._

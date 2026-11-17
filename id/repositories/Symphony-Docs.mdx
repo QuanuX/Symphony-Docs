@@ -5,20 +5,59 @@ description: "Sumber dokumentasi Mintlify dan halaman referensi Symphony yang di
 
 Repositori ini adalah sumber situs Mintlify di [docs.quanux.org/symphony](https://docs.quanux.org/symphony). Repositori ini berisi doktrin platform, arsitektur, referensi vektor dan pemilik, dokumentasi qxctl, terjemahan, serta materi changelog.
 
+## Tujuan repositori dan status rilis {#repository-purpose-and-release-status}
+
+Symphony-Docs adalah repositori dokumentasi. Repositori ini bukan bagian dari rilis perangkat lunak Symphony.
+
+- Repositori ini tidak memiliki rilis, tag, atau paket GitHub. Anda tidak menginstal apa pun darinya.
+- Repositori ini tidak menyediakan engine, SDK, biner qxctl, atau profil Anaconda. Semua itu berasal dari rilis inti Symphony.
+- File `LICENSE`-nya adalah lisensi MIT yang diwarisi dari templat awal Mintlify. Perangkat lunak inti Symphony dipublikasikan dengan lisensi AGPL-3.0 dari [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
+- Repositori ini tidak memiliki README. Situs yang dipublikasikan adalah titik masuk bagi pengguna.
+
+Beta publik inti Symphony, **0.2.0-beta.1**, diluncurkan pada 16 November 2026. Lihat [halaman repositori Symphony](/id/repositories/Symphony) untuk cakupan rilis dan batas kualifikasinya. Halaman di repositori ini menjelaskan suatu kemampuan. Halaman tersebut tidak mengualifikasi kemampuan itu. Proposal, item roadmap, dan perilaku perangkat keras atau GPU yang dijelaskan di halaman-halaman ini bukan kemampuan yang terverifikasi, kecuali catatan rilis inti menyatakannya.
+
 ## Dokumentasi beta publik {#public-beta-documentation}
 
 Mulailah dengan [panduan kemampuan beta](https://quanux.org/beta), lalu [unduhan dan instalasi Anaconda](https://quanux.org/downloads), kemudian dokumentasi modul yang Anda pilih.
 
-Setiap repositori publik memiliki halaman khusus di bagian Repositori publik. Alamat singkat seperti docs.quanux.org/NemoSymphTron mengarah ke dokumentasi repositori tersebut.
+Setiap engine diinstal, diperbarui, dan dihapus secara terpisah. Pilih dan susun engine yang Anda perlukan. Lihat [Ringkasan engine](/id/engines/overview).
+
+## Menavigasi dokumentasi {#navigate-the-documentation}
+
+Situs ini memiliki tiga tab:
+
+| Tab | Isi |
+| --- | --- |
+| Dokumentasi | Memulai, Konsep Inti, Knowledge Vector (SKV), Operasi & Infrastruktur, Identitas, Audit & Tata Kelola, Engine & Pustaka, dan Repositori publik |
+| CLI qxctl | Ringkasan qxctl dan referensi perintah, dimulai dari [ringkasan qxctl](/id/qxctl/overview) |
+| Catatan Perubahan | Catatan rilis bertanggal di [changelog](/id/changelog) |
+
+Gunakan pemilih bahasa untuk beralih antara bahasa Inggris dan 35 terjemahan. Grup Public repositories hanya tersedia dalam bahasa Inggris.
+
+Setiap repositori publik QuanuX memiliki halaman khusus di bagian Repositori publik. Halaman repositori dipublikasikan di `docs.quanux.org/symphony/en/repositories/<repository-name>`. Misalnya, halaman ini berada di [/id/repositories/Symphony-Docs](/id/repositories/Symphony-Docs).
+
+## Asal-usul sumber {#source-provenance}
+
+Setiap halaman yang dipublikasikan sesuai dengan satu file MDX di repositori ini.
+
+- `docs.json` mendefinisikan konfigurasi situs, tab, grup, urutan halaman, dan bahasa.
+- Halaman bahasa Inggris berada di root repositori, di `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/`, dan `qxctl/`.
+- Terjemahan mencerminkan struktur bahasa Inggris di direktori lokal seperti `de/`, `ja/`, dan `zh-Hans/`.
+- Halaman repositori berada di `en/repositories/`.
+- `changelog.mdx` hanya boleh ditambah. Entri baru ditambahkan di bagian atas tahun berjalan, dan entri yang sudah dipublikasikan tidak pernah diedit atau dihapus.
+
+Untuk menelusuri suatu pernyataan, buka file MDX yang sesuai di GitHub dan tinjau riwayat commit-nya. Klaim fitur bersumber dari kode sumber inti Symphony dan artefak rilis yang dipublikasikan, bukan dari repositori ini.
 
 ## Disiplin sumber dan publikasi {#source-and-publication-discipline}
 
 Implementasi repositori saat ini dan artefak rilis yang dipublikasikan secara persis menentukan kesiapan. Dokumentasi historis dan pembaruan di cabang utama kode sumber merupakan bukti yang berbeda. Pertahankan asal-usul versi, bedakan komponen pendamping opsional dari isi rilis biner, dan pertahankan terjemahan serta tautan kode sumber yang ada saat memperbarui halaman.
 
+Repositori [quanux](/id/repositories/quanux) sebelumnya adalah pekerjaan historis. Dokumentasinya tidak menjelaskan Symphony saat ini.
+
 Penyegaran repositori otomatis dijadwalkan dalam slot mulai 30 menit pada 17 dan 18 November 2026, mulai pukul 00.01 America/New_York. Halaman akan berkembang seiring tersedianya bukti dan rilis baru.
 
 ## Kode sumber dan masukan {#source-and-feedback}
 
-[Repositori kode sumber](https://github.com/QuanuX/Symphony-Docs) · [README saat ini](https://github.com/QuanuX/Symphony-Docs#readme) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
+[Repositori kode sumber](https://github.com/QuanuX/Symphony-Docs) · [Riwayat commit](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Terakhir ditinjau untuk peluncuran beta publik pada 16 November 2026._
+_Terakhir ditinjau pada 17 November 2026._
