@@ -14,7 +14,7 @@ Symphony-Docs là một kho tài liệu. Kho này không thuộc bản phát hà
 - Tệp `LICENSE` của kho là giấy phép MIT kế thừa từ mẫu khởi đầu của Mintlify. Phần mềm Symphony cốt lõi được phát hành theo AGPL-3.0 từ [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Kho không có README. Trang đã xuất bản là điểm truy cập dành cho người dùng.
 
-Bản beta công khai cốt lõi của Symphony, **0.2.0-beta.1**, ra mắt ngày 16 tháng 11 năm 2026. Xem [trang kho Symphony](/vi/repositories/Symphony) để biết phạm vi phát hành và ranh giới thẩm định. Một trang trong kho này mô tả một khả năng. Trang đó không thẩm định khả năng ấy. Các đề xuất, hạng mục lộ trình và hành vi phần cứng hoặc GPU được mô tả trên các trang này không phải là khả năng đã được xác minh, trừ khi hồ sơ bản phát hành cốt lõi nêu rõ.
+Bản beta công khai cốt lõi của Symphony, **0.2.0-beta.1**, ra mắt ngày 16 tháng 11 năm 2026. Xem [trang kho Symphony](/vi/repositories/Symphony) để biết phạm vi phát hành và ranh giới thẩm định. [Trang GitHub Releases của QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) không liệt kê bản phát hành nào. Hãy tải các tạo phẩm beta từ [quanux.org/downloads](https://quanux.org/downloads). Một trang trong kho này mô tả một khả năng. Trang đó không thẩm định khả năng ấy. Các đề xuất, hạng mục lộ trình và hành vi phần cứng hoặc GPU được mô tả trên các trang này không phải là khả năng đã được xác minh, trừ khi hồ sơ bản phát hành cốt lõi nêu rõ.
 
 ## Tài liệu bản beta công khai {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Trang có ba tab:
 | qxctl CLI | Tổng quan qxctl và tài liệu tham chiếu lệnh, bắt đầu từ [tổng quan qxctl](/vi/qxctl/overview) |
 | Nhật ký thay đổi | Ghi chú phát hành có ngày tháng trong [nhật ký thay đổi](/vi/changelog) |
 
-Dùng bộ chọn ngôn ngữ để chuyển giữa tiếng Anh và 35 bản dịch. Nhóm Public repositories chỉ có bằng tiếng Anh.
+Dùng bộ chọn ngôn ngữ để chuyển giữa tiếng Anh và 35 bản dịch. Mọi ngôn ngữ đều có nhóm Public repositories.
 
-Mỗi kho công khai của QuanuX có một trang riêng trong mục Kho lưu trữ công khai. Các trang kho được xuất bản tại `docs.quanux.org/symphony/en/repositories/<repository-name>`. Ví dụ, trang này nằm tại [/vi/repositories/Symphony-Docs](/vi/repositories/Symphony-Docs).
+Mỗi kho công khai của QuanuX có một trang riêng trong mục Kho lưu trữ công khai. Các trang kho tiếng Anh được xuất bản tại `docs.quanux.org/symphony/en/repositories/<repository-name>`. Các trang kho đã dịch dùng mã ngôn ngữ thay cho `en`, ví dụ `docs.quanux.org/symphony/de/repositories/<repository-name>`. Trang này nằm tại [/vi/repositories/Symphony-Docs](/vi/repositories/Symphony-Docs).
 
 ## Nguồn gốc mã nguồn {#source-provenance}
 
@@ -43,7 +43,8 @@ Mỗi trang đã xuất bản tương ứng với một tệp MDX trong kho này
 - `docs.json` xác định cấu hình trang, các tab, nhóm, thứ tự trang và ngôn ngữ.
 - Các trang tiếng Anh nằm ở thư mục gốc của kho, trong `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` và `qxctl/`.
 - Các bản dịch phản chiếu cấu trúc tiếng Anh trong các thư mục ngôn ngữ như `de/`, `ja/` và `zh-Hans/`.
-- Các trang kho nằm trong `en/repositories/`.
+- Các trang kho tiếng Anh nằm trong `en/repositories/`. Các trang kho đã dịch nằm trong `<locale>/repositories/`, chẳng hạn `de/repositories/`.
+- `.mintignore` loại trừ nội dung bản nháp (`drafts/` và `*.draft.mdx`) khỏi trang đã xuất bản.
 - `changelog.mdx` chỉ được bổ sung thêm. Các mục mới được thêm vào đầu năm hiện tại, và các mục đã xuất bản không bao giờ bị chỉnh sửa hay xóa.
 
 Để truy vết một khẳng định, hãy mở tệp MDX tương ứng trên GitHub và xem lịch sử commit của nó. Các khẳng định về tính năng bắt nguồn từ mã nguồn Symphony cốt lõi và các artifact phát hành đã xuất bản của nó, không phải từ kho này.
@@ -60,4 +61,4 @@ Các đợt làm mới kho tự động được lên lịch trong các khung b�
 
 [Kho mã nguồn](https://github.com/QuanuX/Symphony-Docs) · [Lịch sử commit](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Được xem xét lần cuối ngày 17 tháng 11 năm 2026._
+_Được xem xét lần cuối ngày 18 tháng 11 năm 2026._

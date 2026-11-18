@@ -14,7 +14,7 @@ Symphony-Docs הוא מאגר תיעוד. הוא אינו חלק מגרסת הת
 - קובץ ה-`LICENSE` שלו הוא רישיון MIT שעבר בירושה מתבנית הפתיחה של Mintlify. תוכנת הליבה של Symphony מתפרסמת תחת AGPL-3.0 מ-[QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - למאגר אין README. האתר שפורסם הוא נקודת הכניסה של המשתמשים.
 
-גרסת הבטא הציבורית של ליבת Symphony,‏ **0.2.0-beta.1**, הושקה ב-16 בנובמבר 2026. ראו את [דף המאגר של Symphony](/he/repositories/Symphony) להיקף הגרסה ולגבולות ההסמכה שלה. דף במאגר זה מתאר יכולת. הוא אינו מסמיך את היכולת הזו. הצעות, פריטי מפת דרכים והתנהגות חומרה או GPU המתוארים בדפים אלה אינם יכולות מאומתות, אלא אם רשומת גרסת הליבה קובעת זאת.
+גרסת הבטא הציבורית של ליבת Symphony,‏ **0.2.0-beta.1**, הושקה ב-16 בנובמבר 2026. ראו את [דף המאגר של Symphony](/he/repositories/Symphony) להיקף הגרסה ולגבולות ההסמכה שלה. [דף ה-GitHub Releases של QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) אינו מציג גרסאות. השיגו את תוצרי גרסת הבטא מ-[quanux.org/downloads](https://quanux.org/downloads). דף במאגר זה מתאר יכולת. הוא אינו מסמיך את היכולת הזו. הצעות, פריטי מפת דרכים והתנהגות חומרה או GPU המתוארים בדפים אלה אינם יכולות מאומתות, אלא אם רשומת גרסת הליבה קובעת זאת.
 
 ## תיעוד גרסת הבטא הציבורית {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Symphony-Docs הוא מאגר תיעוד. הוא אינו חלק מגרסת הת
 | qxctl CLI | סקירה כללית של qxctl ומדריכי עזר לפקודות, החל מ[סקירה כללית של qxctl](/he/qxctl/overview) |
 | יומן שינויים | הערות גרסה מתוארכות ב[יומן השינויים](/he/changelog) |
 
-השתמשו בבורר השפה כדי לעבור בין אנגלית ל-35 תרגומים. הקבוצה Public repositories זמינה באנגלית בלבד.
+השתמשו בבורר השפה כדי לעבור בין אנגלית ל-35 תרגומים. כל שפה כוללת את הקבוצה Public repositories.
 
-לכל מאגר ציבורי של QuanuX יש דף ייעודי תחת מאגרים ציבוריים. דפי המאגרים מתפרסמים בכתובת `docs.quanux.org/symphony/en/repositories/<repository-name>`. לדוגמה, דף זה נמצא בכתובת [/he/repositories/Symphony-Docs](/he/repositories/Symphony-Docs).
+לכל מאגר ציבורי של QuanuX יש דף ייעודי תחת מאגרים ציבוריים. דפי המאגרים באנגלית מתפרסמים בכתובת `docs.quanux.org/symphony/en/repositories/<repository-name>`. דפי המאגרים המתורגמים משתמשים בקוד השפה במקום `en`, לדוגמה `docs.quanux.org/symphony/de/repositories/<repository-name>`. דף זה נמצא בכתובת [/he/repositories/Symphony-Docs](/he/repositories/Symphony-Docs).
 
 ## מקור התוכן {#source-provenance}
 
@@ -43,7 +43,8 @@ Symphony-Docs הוא מאגר תיעוד. הוא אינו חלק מגרסת הת
 - `docs.json` מגדיר את תצורת האתר, הלשוניות, הקבוצות, סדר הדפים והשפות.
 - הדפים באנגלית נמצאים בשורש המאגר וב-`concepts/`,‏ `skv/`,‏ `vectors/`,‏ `governance/`,‏ `engines/` ו-`qxctl/`.
 - התרגומים משקפים את המבנה האנגלי בתיקיות שפה כמו `de/`,‏ `ja/` ו-`zh-Hans/`.
-- דפי המאגרים נמצאים ב-`en/repositories/`.
+- דפי המאגרים באנגלית נמצאים ב-`en/repositories/`. דפי המאגרים המתורגמים נמצאים ב-`<locale>/repositories/`, כמו `de/repositories/`.
+- `.mintignore` מחריג תוכן טיוטה (`drafts/` ו-`*.draft.mdx`) מהאתר שפורסם.
 - ל-`changelog.mdx` רק מוסיפים. רשומות חדשות נוספות בראש השנה הנוכחית, ורשומות שפורסמו לעולם אינן נערכות או נמחקות.
 
 כדי לעקוב אחר טענה, פתחו את קובץ ה-MDX התואם ב-GitHub ועברו על היסטוריית הקומיטים שלו. טענות על תכונות נשענות על קוד המקור של ליבת Symphony ועל תוצרי הגרסה שפורסמו, ולא על מאגר זה.
@@ -60,4 +61,4 @@ Symphony-Docs הוא מאגר תיעוד. הוא אינו חלק מגרסת הת
 
 [מאגר קוד המקור](https://github.com/QuanuX/Symphony-Docs) · [היסטוריית קומיטים](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_נבדק לאחרונה ב-17 בנובמבר 2026._
+_נבדק לאחרונה ב-18 בנובמבר 2026._

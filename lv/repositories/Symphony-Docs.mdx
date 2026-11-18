@@ -14,7 +14,7 @@ Symphony-Docs ir dokumentācijas krātuve. Tā nav daļa no Symphony programmat�
 - Tās `LICENSE` fails ir MIT licence, kas mantota no Mintlify sākuma veidnes. Symphony pamatprogrammatūra tiek publicēta ar AGPL-3.0 licenci no [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Krātuvei nav README. Publicētā vietne ir lietotāju ieejas punkts.
 
-Symphony pamata publiskā beta versija **0.2.0-beta.1** tika palaista 2026. gada 16. novembrī. Laidiena tvērumu un kvalifikācijas robežas skatiet [Symphony krātuves lapā](/lv/repositories/Symphony). Lapa šajā krātuvē apraksta iespēju. Tā šo iespēju nekvalificē. Šajās lapās aprakstītie priekšlikumi, ceļveža vienumi un aparatūras vai GPU darbība nav pārbaudītas iespējas, ja vien pamatlaidiena ierakstā tas nav norādīts.
+Symphony pamata publiskā beta versija **0.2.0-beta.1** tika palaista 2026. gada 16. novembrī. Laidiena tvērumu un kvalifikācijas robežas skatiet [Symphony krātuves lapā](/lv/repositories/Symphony). [QuanuX/Symphony GitHub Releases lapā](https://github.com/QuanuX/Symphony/releases) nav norādīts neviens laidiens. Beta artefaktus iegūstiet vietnē [quanux.org/downloads](https://quanux.org/downloads). Lapa šajā krātuvē apraksta iespēju. Tā šo iespēju nekvalificē. Šajās lapās aprakstītie priekšlikumi, ceļveža vienumi un aparatūras vai GPU darbība nav pārbaudītas iespējas, ja vien pamatlaidiena ierakstā tas nav norādīts.
 
 ## Publiskās beta versijas dokumentācija {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Vietnē ir trīs cilnes:
 | qxctl CLI | qxctl pārskats un komandu atsauces, sākot ar [qxctl pārskatu](/lv/qxctl/overview) |
 | Izmaiņu žurnāls | Datētas laidiena piezīmes [izmaiņu žurnālā](/lv/changelog) |
 
-Izmantojiet valodas atlasītāju, lai pārslēgtos starp angļu valodu un 35 tulkojumiem. Grupa Public repositories ir pieejama tikai angļu valodā.
+Izmantojiet valodas atlasītāju, lai pārslēgtos starp angļu valodu un 35 tulkojumiem. Grupa Public repositories ir iekļauta katrā valodā.
 
-Katrai publiskajai QuanuX krātuvei ir sava lapa sadaļā Publiskās krātuves. Krātuvju lapas tiek publicētas adresē `docs.quanux.org/symphony/en/repositories/<repository-name>`. Piemēram, šī lapa atrodas adresē [/lv/repositories/Symphony-Docs](/lv/repositories/Symphony-Docs).
+Katrai publiskajai QuanuX krātuvei ir sava lapa sadaļā Publiskās krātuves. Angļu valodas krātuvju lapas tiek publicētas adresē `docs.quanux.org/symphony/en/repositories/<repository-name>`. Tulkotajās krātuvju lapās `en` vietā tiek izmantots lokalizācijas kods, piemēram, `docs.quanux.org/symphony/de/repositories/<repository-name>`. Šī lapa atrodas adresē [/lv/repositories/Symphony-Docs](/lv/repositories/Symphony-Docs).
 
 ## Avotu izcelsme {#source-provenance}
 
@@ -43,7 +43,8 @@ Katra publicētā lapa atbilst vienam MDX failam šajā krātuvē.
 - `docs.json` nosaka vietnes konfigurāciju, cilnes, grupas, lapu secību un valodas.
 - Angļu valodas lapas atrodas krātuves saknē un mapēs `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` un `qxctl/`.
 - Tulkojumi atspoguļo angļu valodas struktūru lokalizācijas direktorijos, piemēram, `de/`, `ja/` un `zh-Hans/`.
-- Krātuvju lapas atrodas `en/repositories/`.
+- Angļu valodas krātuvju lapas atrodas `en/repositories/`. Tulkotās krātuvju lapas atrodas `<locale>/repositories/`, piemēram, `de/repositories/`.
+- `.mintignore` izslēdz melnrakstu saturu (`drafts/` un `*.draft.mdx`) no publicētās vietnes.
 - `changelog.mdx` tiek tikai papildināts. Jauni ieraksti tiek pievienoti pašreizējā gada sākumā, un publicētie ieraksti nekad netiek rediģēti vai dzēsti.
 
 Lai izsekotu apgalvojumam, atveriet atbilstošo MDX failu GitHub un pārskatiet tā commit vēsturi. Apgalvojumi par funkcijām balstās uz Symphony pamata pirmkodu un tā publicētajiem laidiena artefaktiem, nevis uz šo krātuvi.
@@ -60,4 +61,4 @@ Automātiskie krātuvju atsvaidzinājumi ir ieplānoti 30 minūšu sākuma logos
 
 [Pirmkoda krātuve](https://github.com/QuanuX/Symphony-Docs) · [Commit vēsture](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Pēdējoreiz pārskatīts 2026. gada 17. novembrī._
+_Pēdējoreiz pārskatīts 2026. gada 18. novembrī._

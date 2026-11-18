@@ -14,7 +14,7 @@ Symphony-Docs je repozitář dokumentace. Není součástí vydání softwaru Sy
 - Jeho soubor `LICENSE` obsahuje licenci MIT zděděnou ze startovací šablony Mintlify. Základní software Symphony je publikován pod licencí AGPL-3.0 v repozitáři [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Repozitář nemá README. Publikovaný web je jeho vstupním bodem pro uživatele.
 
-Základní veřejná beta Symphony, **0.2.0-beta.1**, byla spuštěna 16. listopadu 2026. Rozsah vydání a hranice kvalifikace najdete na [stránce repozitáře Symphony](/cs/repositories/Symphony). Stránka v tomto repozitáři popisuje funkci. Tuto funkci nekvalifikuje. Návrhy, položky plánu a chování hardwaru nebo GPU popsané na těchto stránkách nejsou ověřené funkce, pokud to neuvádí záznam o základním vydání.
+Základní veřejná beta Symphony, **0.2.0-beta.1**, byla spuštěna 16. listopadu 2026. Rozsah vydání a hranice kvalifikace najdete na [stránce repozitáře Symphony](/cs/repositories/Symphony). [Stránka GitHub Releases repozitáře QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) neuvádí žádná vydání. Artefakty bety získáte na [quanux.org/downloads](https://quanux.org/downloads). Stránka v tomto repozitáři popisuje funkci. Tuto funkci nekvalifikuje. Návrhy, položky plánu a chování hardwaru nebo GPU popsané na těchto stránkách nejsou ověřené funkce, pokud to neuvádí záznam o základním vydání.
 
 ## Dokumentace veřejné bety {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Web má tři karty:
 | qxctl CLI | Přehled qxctl a reference příkazů, počínaje [přehledem qxctl](/cs/qxctl/overview) |
 | Přehled změn | Datované poznámky k vydáním v [seznamu změn](/cs/changelog) |
 
-Pomocí přepínače jazyka můžete přepínat mezi angličtinou a 35 překlady. Skupina Public repositories je k dispozici pouze v angličtině.
+Pomocí přepínače jazyka můžete přepínat mezi angličtinou a 35 překlady. Každý jazyk obsahuje skupinu Public repositories.
 
-Každý veřejný repozitář QuanuX má vlastní stránku v sekci Veřejné repozitáře. Stránky repozitářů se publikují na adrese `docs.quanux.org/symphony/en/repositories/<repository-name>`. Tato stránka je například na adrese [/cs/repositories/Symphony-Docs](/cs/repositories/Symphony-Docs).
+Každý veřejný repozitář QuanuX má vlastní stránku v sekci Veřejné repozitáře. Anglické stránky repozitářů se publikují na adrese `docs.quanux.org/symphony/en/repositories/<repository-name>`. Přeložené stránky repozitářů používají místo `en` kód jazyka, například `docs.quanux.org/symphony/de/repositories/<repository-name>`. Tato stránka je na adrese [/cs/repositories/Symphony-Docs](/cs/repositories/Symphony-Docs).
 
 ## Původ zdrojů {#source-provenance}
 
@@ -43,7 +43,8 @@ Každá publikovaná stránka odpovídá jednomu souboru MDX v tomto repozitář
 - `docs.json` definuje konfiguraci webu, karty, skupiny, pořadí stránek a jazyky.
 - Anglické stránky jsou v kořeni repozitáře a v adresářích `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` a `qxctl/`.
 - Překlady zrcadlí anglickou strukturu v jazykových adresářích, jako jsou `de/`, `ja/` a `zh-Hans/`.
-- Stránky repozitářů jsou v `en/repositories/`.
+- Anglické stránky repozitářů jsou v `en/repositories/`. Přeložené stránky repozitářů jsou v `<locale>/repositories/`, například `de/repositories/`.
+- `.mintignore` vylučuje z publikovaného webu rozpracovaný obsah (`drafts/` a `*.draft.mdx`).
 - Do `changelog.mdx` se pouze přidává. Nové záznamy se přidávají na začátek aktuálního roku a publikované záznamy se nikdy neupravují ani nemažou.
 
 Chcete-li dohledat tvrzení, otevřete odpovídající soubor MDX na GitHubu a projděte jeho historii commitů. Tvrzení o funkcích vycházejí ze základního zdrojového kódu Symphony a jeho publikovaných artefaktů vydání, nikoli z tohoto repozitáře.
@@ -60,4 +61,4 @@ Automatické obnovy repozitářů jsou naplánovány ve 30minutových startovní
 
 [Repozitář zdrojového kódu](https://github.com/QuanuX/Symphony-Docs) · [Historie commitů](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Naposledy zkontrolováno 17. listopadu 2026._
+_Naposledy zkontrolováno 18. listopadu 2026._

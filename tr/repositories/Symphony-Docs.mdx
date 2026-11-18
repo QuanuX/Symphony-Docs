@@ -14,7 +14,7 @@ Symphony-Docs bir dokümantasyon deposudur. Symphony yazılım sürümünün par
 - `LICENSE` dosyası, Mintlify başlangıç şablonundan devralınan MIT lisansıdır. Çekirdek Symphony yazılımı [QuanuX/Symphony](https://github.com/QuanuX/Symphony) üzerinden AGPL-3.0 lisansıyla yayımlanır.
 - Deponun README dosyası yoktur. Yayımlanan site, kullanıcılar için giriş noktasıdır.
 
-Çekirdek Symphony herkese açık betası **0.2.0-beta.1**, 16 Kasım 2026'da kullanıma sunuldu. Sürüm kapsamı ve yeterlilik sınırları için [Symphony deposu sayfasına](/tr/repositories/Symphony) bakın. Bu depodaki bir sayfa bir yeteneği açıklar. O yeteneğin yeterliliğini doğrulamaz. Bu sayfalarda açıklanan öneriler, yol haritası öğeleri ve donanım veya GPU davranışları, çekirdek sürüm kaydı aksini belirtmedikçe doğrulanmış yetenekler değildir.
+Çekirdek Symphony herkese açık betası **0.2.0-beta.1**, 16 Kasım 2026'da kullanıma sunuldu. Sürüm kapsamı ve yeterlilik sınırları için [Symphony deposu sayfasına](/tr/repositories/Symphony) bakın. [QuanuX/Symphony GitHub Releases sayfasında](https://github.com/QuanuX/Symphony/releases) hiçbir sürüm listelenmez. Beta yapıtlarını [quanux.org/downloads](https://quanux.org/downloads) adresinden edinin. Bu depodaki bir sayfa bir yeteneği açıklar. O yeteneğin yeterliliğini doğrulamaz. Bu sayfalarda açıklanan öneriler, yol haritası öğeleri ve donanım veya GPU davranışları, çekirdek sürüm kaydı aksini belirtmedikçe doğrulanmış yetenekler değildir.
 
 ## Herkese açık beta dokümantasyonu {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Sitede üç sekme vardır:
 | qxctl CLI | qxctl genel bakışı ve komut başvuruları, [qxctl genel bakışı](/tr/qxctl/overview) ile başlayarak |
 | Değişiklik Günlüğü | [Değişiklik günlüğündeki](/tr/changelog) tarihli sürüm notları |
 
-İngilizce ile 35 çeviri arasında geçiş yapmak için dil seçiciyi kullanın. Public repositories grubu yalnızca İngilizce olarak sunulur.
+İngilizce ile 35 çeviri arasında geçiş yapmak için dil seçiciyi kullanın. Her dil Public repositories grubunu içerir.
 
-Her herkese açık QuanuX deposunun Herkese açık depolar altında kendine ait bir sayfası vardır. Depo sayfaları `docs.quanux.org/symphony/en/repositories/<repository-name>` adresinde yayımlanır. Örneğin bu sayfa [/tr/repositories/Symphony-Docs](/tr/repositories/Symphony-Docs) adresindedir.
+Her herkese açık QuanuX deposunun Herkese açık depolar altında kendine ait bir sayfası vardır. İngilizce depo sayfaları `docs.quanux.org/symphony/en/repositories/<repository-name>` adresinde yayımlanır. Çevrilmiş depo sayfalarında `en` yerine dil kodu kullanılır, örneğin `docs.quanux.org/symphony/de/repositories/<repository-name>`. Bu sayfa [/tr/repositories/Symphony-Docs](/tr/repositories/Symphony-Docs) adresindedir.
 
 ## Kaynakların kökeni {#source-provenance}
 
@@ -43,7 +43,8 @@ Yayımlanan her sayfa bu depodaki bir MDX dosyasına karşılık gelir.
 - `docs.json` site yapılandırmasını, sekmeleri, grupları, sayfa sırasını ve dilleri tanımlar.
 - İngilizce sayfalar deponun kökünde ve `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` ile `qxctl/` içinde bulunur.
 - Çeviriler, İngilizce yapıyı `de/`, `ja/` ve `zh-Hans/` gibi dil dizinlerinde yansıtır.
-- Depo sayfaları `en/repositories/` içinde bulunur.
+- İngilizce depo sayfaları `en/repositories/` içinde bulunur. Çevrilmiş depo sayfaları `de/repositories/` gibi `<locale>/repositories/` içinde bulunur.
+- `.mintignore`, taslak içeriği (`drafts/` ve `*.draft.mdx`) yayımlanan sitenin dışında tutar.
 - `changelog.mdx` yalnızca eklemeye açıktır. Yeni girdiler geçerli yılın en üstüne eklenir ve yayımlanan girdiler hiçbir zaman düzenlenmez veya silinmez.
 
 Bir ifadenin kaynağını izlemek için eşleşen MDX dosyasını GitHub'da açın ve commit geçmişini inceleyin. Özelliklere ilişkin ifadeler bu depoya değil, çekirdek Symphony kaynak koduna ve yayımlanmış sürüm yapıtlarına dayanır.
@@ -60,4 +61,4 @@ Otomatik depo yenilemeleri 17 ve 18 Kasım 2026 tarihlerinde, America/New_York s
 
 [Kaynak kod deposu](https://github.com/QuanuX/Symphony-Docs) · [Commit geçmişi](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_En son 17 Kasım 2026'da gözden geçirildi._
+_En son 18 Kasım 2026'da gözden geçirildi._

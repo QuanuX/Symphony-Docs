@@ -14,7 +14,7 @@ Symphony-Docs er et dokumentationsrepository. Det er ikke en del af Symphony-sof
 - Filen `LICENSE` er den MIT-licens, der er arvet fra Mintlifys startskabelon. Symphonys kernesoftware udgives under AGPL-3.0 fra [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Repositoryet har ingen README. Det publicerede websted er indgangen for brugerne.
 
-Symphonys offentlige kernebeta, **0.2.0-beta.1**, blev lanceret den 16. november 2026. Se [siden for Symphony-repositoryet](/da/repositories/Symphony) for versionens omfang og kvalificeringsgrænser. En side i dette repository beskriver en funktion. Den kvalificerer ikke funktionen. Forslag, roadmap-punkter og hardware- eller GPU-adfærd, der beskrives på disse sider, er ikke verificerede funktioner, medmindre kerneversionens registrering siger det.
+Symphonys offentlige kernebeta, **0.2.0-beta.1**, blev lanceret den 16. november 2026. Se [siden for Symphony-repositoryet](/da/repositories/Symphony) for versionens omfang og kvalificeringsgrænser. [Siden med GitHub-versioner for QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) viser ingen versioner. Hent betaartefakter fra [quanux.org/downloads](https://quanux.org/downloads). En side i dette repository beskriver en funktion. Den kvalificerer ikke funktionen. Forslag, roadmap-punkter og hardware- eller GPU-adfærd, der beskrives på disse sider, er ikke verificerede funktioner, medmindre kerneversionens registrering siger det.
 
 ## Dokumentation til den offentlige beta {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Webstedet har tre faner:
 | qxctl CLI | qxctl-oversigt og kommandoreferencer, med start i [qxctl-oversigten](/da/qxctl/overview) |
 | Ændringslog | Daterede versionsnoter i [ændringsloggen](/da/changelog) |
 
-Brug sprogvælgeren til at skifte mellem engelsk og 35 oversættelser. Gruppen Public repositories findes kun på engelsk.
+Brug sprogvælgeren til at skifte mellem engelsk og 35 oversættelser. Alle sprog indeholder gruppen Public repositories.
 
-Hvert offentligt QuanuX-repository har en dedikeret side under Offentlige repositories. Repositorysider publiceres på `docs.quanux.org/symphony/en/repositories/<repository-name>`. Denne side findes for eksempel på [/da/repositories/Symphony-Docs](/da/repositories/Symphony-Docs).
+Hvert offentligt QuanuX-repository har en dedikeret side under Offentlige repositories. Engelske repositorysider publiceres på `docs.quanux.org/symphony/en/repositories/<repository-name>`. Oversatte repositorysider bruger sprogkoden i stedet for `en`, for eksempel `docs.quanux.org/symphony/de/repositories/<repository-name>`. Denne side findes på [/da/repositories/Symphony-Docs](/da/repositories/Symphony-Docs).
 
 ## Kildernes oprindelse {#source-provenance}
 
@@ -43,7 +43,8 @@ Hver publiceret side svarer til én MDX-fil i dette repository.
 - `docs.json` definerer webstedets konfiguration, faner, grupper, siderækkefølge og sprog.
 - Engelske sider ligger i repositoryets rod og i `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` og `qxctl/`.
 - Oversættelser spejler den engelske struktur i sprogmapper som `de/`, `ja/` og `zh-Hans/`.
-- Repositorysider ligger i `en/repositories/`.
+- Engelske repositorysider ligger i `en/repositories/`. Oversatte repositorysider ligger i `<locale>/repositories/`, for eksempel `de/repositories/`.
+- `.mintignore` udelukker kladdeindhold (`drafts/` og `*.draft.mdx`) fra det publicerede websted.
 - `changelog.mdx` må kun udvides. Nye poster tilføjes øverst i det aktuelle år, og publicerede poster redigeres eller slettes aldrig.
 
 For at spore en påstand skal du åbne den tilsvarende MDX-fil på GitHub og gennemgå dens commit-historik. Påstande om funktioner kan spores til Symphonys kernekildekode og dens publicerede versionsartefakter, ikke til dette repository.
@@ -60,4 +61,4 @@ Automatiske opdateringer af repositories er planlagt i startvinduer på 30 minut
 
 [Kildekoderepository](https://github.com/QuanuX/Symphony-Docs) · [Commit-historik](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Senest gennemgået den 17. november 2026._
+_Senest gennemgået den 18. november 2026._

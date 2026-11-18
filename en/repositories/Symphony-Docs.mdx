@@ -14,7 +14,7 @@ Symphony-Docs is a documentation repository. It is not part of the Symphony soft
 - Its `LICENSE` file is the MIT license inherited from the Mintlify starter template. The core Symphony software is published under AGPL-3.0 from [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - The repository has no README. The published site is its user-facing entry point.
 
-The core Symphony Public Beta, **0.2.0-beta.1**, launched November 16, 2026. See the [Symphony repository page](/en/repositories/Symphony) for its release scope and qualification boundaries. A page in this repository describes a capability. It does not qualify that capability. Proposals, roadmap items and hardware or GPU behavior described on these pages are not verified capabilities unless the core release record says so.
+The core Symphony Public Beta, **0.2.0-beta.1**, launched November 16, 2026. See the [Symphony repository page](/en/repositories/Symphony) for its release scope and qualification boundaries. The [QuanuX/Symphony GitHub Releases page](https://github.com/QuanuX/Symphony/releases) lists no releases. Get beta artifacts from [quanux.org/downloads](https://quanux.org/downloads). A page in this repository describes a capability. It does not qualify that capability. Proposals, roadmap items and hardware or GPU behavior described on these pages are not verified capabilities unless the core release record says so.
 
 ## Public beta documentation
 
@@ -32,9 +32,9 @@ The site has three tabs:
 | qxctl CLI | qxctl overview and command references, starting at [qxctl overview](/qxctl/overview) |
 | Changelog | Dated release notes in the [changelog](/changelog) |
 
-Use the language selector to switch between English and 35 translations. The Public repositories group is available in English only.
+Use the language selector to switch between English and 35 translations. Every language includes the Public repositories group.
 
-Each public QuanuX repository has a dedicated page under Public repositories. Repository pages are published at `docs.quanux.org/symphony/en/repositories/<repository-name>`. For example, this page is at [/en/repositories/Symphony-Docs](/en/repositories/Symphony-Docs).
+Each public QuanuX repository has a dedicated page under Public repositories. English repository pages are published at `docs.quanux.org/symphony/en/repositories/<repository-name>`. Translated repository pages use the locale code in place of `en`, for example `docs.quanux.org/symphony/de/repositories/<repository-name>`. This page is at [/en/repositories/Symphony-Docs](/en/repositories/Symphony-Docs).
 
 ## Source provenance
 
@@ -43,7 +43,8 @@ Every published page maps to one MDX file in this repository.
 - `docs.json` defines the site configuration, tabs, groups, page order and languages.
 - English pages live at the repository root, in `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` and `qxctl/`.
 - Translations mirror the English structure in locale directories such as `de/`, `ja/` and `zh-Hans/`.
-- Repository pages live in `en/repositories/`.
+- English repository pages live in `en/repositories/`. Translated repository pages live in `<locale>/repositories/`, such as `de/repositories/`.
+- `.mintignore` excludes draft content (`drafts/` and `*.draft.mdx`) from the published site.
 - `changelog.mdx` is append-only. New entries are added at the top of the current year, and published entries are never edited or deleted.
 
 To trace a statement, open the matching MDX file on GitHub and review its commit history. Feature claims trace back to the core Symphony source and its published release artifacts, not to this repository.
@@ -60,4 +61,4 @@ Automated repository refreshes are scheduled in 30-minute start slots on Novembe
 
 [Source repository](https://github.com/QuanuX/Symphony-Docs) · [Commit history](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Last reviewed November 17, 2026._
+_Last reviewed November 18, 2026._

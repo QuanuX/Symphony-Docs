@@ -14,7 +14,7 @@ Symphony-Docs 是一個文件儲存庫。它不屬於 Symphony 軟體發布的�
 - 其 `LICENSE` 檔案是從 Mintlify 入門範本繼承的 MIT 授權。Symphony 核心軟體以 AGPL-3.0 授權透過 [QuanuX/Symphony](https://github.com/QuanuX/Symphony) 發布。
 - 此儲存庫沒有 README。已發布的網站是使用者的入口。
 
-Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出。關於其發布範圍與資格認證界線，請參閱 [Symphony 儲存庫頁面](/zh-Hant/repositories/Symphony)。此儲存庫中的頁面描述的是一項功能。它並不認證該功能。這些頁面中描述的提案、路線圖項目以及硬體或 GPU 行為，除非核心發布紀錄中有所說明，否則皆不屬於經過驗證的功能。
+Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出。關於其發布範圍與資格認證界線，請參閱 [Symphony 儲存庫頁面](/zh-Hant/repositories/Symphony)。[QuanuX/Symphony GitHub Releases 頁面](https://github.com/QuanuX/Symphony/releases)未列出任何版本。請從 [quanux.org/downloads](https://quanux.org/downloads) 取得測試版成品。此儲存庫中的頁面描述的是一項功能。它並不認證該功能。這些頁面中描述的提案、路線圖項目以及硬體或 GPU 行為，除非核心發布紀錄中有所說明，否則皆不屬於經過驗證的功能。
 
 ## 公開測試版文件 {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出
 | qxctl CLI | qxctl 概觀與命令參考，從 [qxctl 概觀](/zh-Hant/qxctl/overview)開始 |
 | 更新日誌 | [變更日誌](/zh-Hant/changelog)中附日期的發布說明 |
 
-使用語言選擇器在英文與 35 種譯文之間切換。Public repositories 群組僅提供英文版。
+使用語言選擇器在英文與 35 種譯文之間切換。每種語言都包含 Public repositories 群組。
 
-每個 QuanuX 公開儲存庫在「公開儲存庫」下都有專屬頁面。儲存庫頁面發布於 `docs.quanux.org/symphony/en/repositories/<repository-name>`。例如，本頁面位於 [/zh-Hant/repositories/Symphony-Docs](/zh-Hant/repositories/Symphony-Docs)。
+每個 QuanuX 公開儲存庫在「公開儲存庫」下都有專屬頁面。英文儲存庫頁面發布於 `docs.quanux.org/symphony/en/repositories/<repository-name>`。翻譯的儲存庫頁面會以語言代碼取代 `en`，例如 `docs.quanux.org/symphony/de/repositories/<repository-name>`。本頁面位於 [/zh-Hant/repositories/Symphony-Docs](/zh-Hant/repositories/Symphony-Docs)。
 
 ## 來源出處 {#source-provenance}
 
@@ -43,7 +43,8 @@ Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出
 - `docs.json` 定義網站設定、分頁、群組、頁面順序與語言。
 - 英文頁面位於儲存庫根目錄以及 `concepts/`、`skv/`、`vectors/`、`governance/`、`engines/` 與 `qxctl/` 中。
 - 譯文在 `de/`、`ja/` 與 `zh-Hans/` 等語系目錄中沿用英文結構。
-- 儲存庫頁面位於 `en/repositories/`。
+- 英文儲存庫頁面位於 `en/repositories/`。翻譯的儲存庫頁面位於 `<locale>/repositories/`，例如 `de/repositories/`。
+- `.mintignore` 會將草稿內容（`drafts/` 與 `*.draft.mdx`）排除於發布的網站之外。
 - `changelog.mdx` 只能附加。新項目會加在當年內容的最上方，已發布的項目絕不會編輯或刪除。
 
 如需追溯某項說明，請在 GitHub 上開啟對應的 MDX 檔案並檢視其提交歷史。功能相關的說明以 Symphony 核心原始碼及其已發布的發布成品為依據，而非此儲存庫。
@@ -60,4 +61,4 @@ Symphony 核心公開測試版 **0.2.0-beta.1** 於 2026 年 11 月 16 日推出
 
 [原始碼儲存庫](https://github.com/QuanuX/Symphony-Docs) · [提交歷史](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_最後審閱於 2026 年 11 月 17 日。_
+_最後審閱於 2026 年 11 月 18 日。_

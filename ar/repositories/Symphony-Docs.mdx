@@ -14,7 +14,7 @@ Symphony-Docs مستودع توثيق. وهو ليس جزءًا من إصدار 
 - ملف `LICENSE` الخاص به هو ترخيص MIT الموروث من قالب Mintlify الأولي. يُنشر برنامج Symphony الأساسي بموجب ترخيص AGPL-3.0 من [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - لا يحتوي المستودع على ملف README. الموقع المنشور هو نقطة الدخول للمستخدمين.
 
-أُطلقت النسخة التجريبية العامة الأساسية من Symphony، **0.2.0-beta.1**، في 16 نوفمبر 2026. راجع [صفحة مستودع Symphony](/ar/repositories/Symphony) لمعرفة نطاق الإصدار وحدود التأهيل. تصف الصفحة في هذا المستودع قدرةً ما. ولا تؤهّل تلك القدرة. المقترحات وعناصر خارطة الطريق وسلوك العتاد أو GPU الموصوفة في هذه الصفحات ليست قدرات تم التحقق منها، ما لم يذكر سجل الإصدار الأساسي ذلك.
+أُطلقت النسخة التجريبية العامة الأساسية من Symphony، **0.2.0-beta.1**، في 16 نوفمبر 2026. راجع [صفحة مستودع Symphony](/ar/repositories/Symphony) لمعرفة نطاق الإصدار وحدود التأهيل. لا تعرض [صفحة إصدارات QuanuX/Symphony على GitHub](https://github.com/QuanuX/Symphony/releases) أي إصدارات. احصل على عناصر النسخة التجريبية من [quanux.org/downloads](https://quanux.org/downloads). تصف الصفحة في هذا المستودع قدرةً ما. ولا تؤهّل تلك القدرة. المقترحات وعناصر خارطة الطريق وسلوك العتاد أو GPU الموصوفة في هذه الصفحات ليست قدرات تم التحقق منها، ما لم يذكر سجل الإصدار الأساسي ذلك.
 
 ## توثيق النسخة التجريبية العامة {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Symphony-Docs مستودع توثيق. وهو ليس جزءًا من إصدار 
 | واجهة qxctl CLI | نظرة عامة على qxctl ومراجع الأوامر، بدءًا من [نظرة عامة على qxctl](/ar/qxctl/overview) |
 | سجل التغييرات | ملاحظات إصدار مؤرخة في [سجل التغييرات](/ar/changelog) |
 
-استخدم محدد اللغة للتبديل بين الإنجليزية و35 ترجمة. مجموعة Public repositories متاحة باللغة الإنجليزية فقط.
+استخدم محدد اللغة للتبديل بين الإنجليزية و35 ترجمة. تتضمن كل لغة مجموعة Public repositories.
 
-لكل مستودع عام من QuanuX صفحة مخصصة ضمن المستودعات العامة. تُنشر صفحات المستودعات على `docs.quanux.org/symphony/en/repositories/<repository-name>`. على سبيل المثال، توجد هذه الصفحة على [/ar/repositories/Symphony-Docs](/ar/repositories/Symphony-Docs).
+لكل مستودع عام من QuanuX صفحة مخصصة ضمن المستودعات العامة. تُنشر صفحات المستودعات الإنجليزية على `docs.quanux.org/symphony/en/repositories/<repository-name>`. تستخدم صفحات المستودعات المترجمة رمز اللغة بدلًا من `en`، على سبيل المثال `docs.quanux.org/symphony/de/repositories/<repository-name>`. توجد هذه الصفحة على [/ar/repositories/Symphony-Docs](/ar/repositories/Symphony-Docs).
 
 ## مصدر المحتوى {#source-provenance}
 
@@ -43,7 +43,8 @@ Symphony-Docs مستودع توثيق. وهو ليس جزءًا من إصدار 
 - يحدد `docs.json` إعدادات الموقع وعلامات التبويب والمجموعات وترتيب الصفحات واللغات.
 - توجد الصفحات الإنجليزية في جذر المستودع وفي `concepts/` و`skv/` و`vectors/` و`governance/` و`engines/` و`qxctl/`.
 - تعكس الترجمات البنية الإنجليزية في أدلة اللغات مثل `de/` و`ja/` و`zh-Hans/`.
-- توجد صفحات المستودعات في `en/repositories/`.
+- توجد صفحات المستودعات الإنجليزية في `en/repositories/`. وتوجد صفحات المستودعات المترجمة في `<locale>/repositories/`، مثل `de/repositories/`.
+- يستبعد `.mintignore` محتوى المسودات (`drafts/` و`*.draft.mdx`) من الموقع المنشور.
 - يُضاف إلى `changelog.mdx` فقط. تُضاف الإدخالات الجديدة في أعلى السنة الحالية، ولا تُعدَّل الإدخالات المنشورة أو تُحذف أبدًا.
 
 لتتبّع أي عبارة، افتح ملف MDX المطابق على GitHub وراجع سجل الإيداعات الخاص به. ترجع ادعاءات الميزات إلى الشيفرة المصدرية الأساسية لـ Symphony وعناصر الإصدار المنشورة، وليس إلى هذا المستودع.
@@ -60,4 +61,4 @@ Symphony-Docs مستودع توثيق. وهو ليس جزءًا من إصدار 
 
 [مستودع الشيفرة المصدرية](https://github.com/QuanuX/Symphony-Docs) · [سجل الإيداعات](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_آخر مراجعة في 17 نوفمبر 2026._
+_آخر مراجعة في 18 نوفمبر 2026._

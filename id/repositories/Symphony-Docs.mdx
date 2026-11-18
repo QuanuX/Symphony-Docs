@@ -14,7 +14,7 @@ Symphony-Docs adalah repositori dokumentasi. Repositori ini bukan bagian dari ri
 - File `LICENSE`-nya adalah lisensi MIT yang diwarisi dari templat awal Mintlify. Perangkat lunak inti Symphony dipublikasikan dengan lisensi AGPL-3.0 dari [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Repositori ini tidak memiliki README. Situs yang dipublikasikan adalah titik masuk bagi pengguna.
 
-Beta publik inti Symphony, **0.2.0-beta.1**, diluncurkan pada 16 November 2026. Lihat [halaman repositori Symphony](/id/repositories/Symphony) untuk cakupan rilis dan batas kualifikasinya. Halaman di repositori ini menjelaskan suatu kemampuan. Halaman tersebut tidak mengualifikasi kemampuan itu. Proposal, item roadmap, dan perilaku perangkat keras atau GPU yang dijelaskan di halaman-halaman ini bukan kemampuan yang terverifikasi, kecuali catatan rilis inti menyatakannya.
+Beta publik inti Symphony, **0.2.0-beta.1**, diluncurkan pada 16 November 2026. Lihat [halaman repositori Symphony](/id/repositories/Symphony) untuk cakupan rilis dan batas kualifikasinya. [Halaman GitHub Releases QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) tidak mencantumkan rilis apa pun. Dapatkan artefak beta dari [quanux.org/downloads](https://quanux.org/downloads). Halaman di repositori ini menjelaskan suatu kemampuan. Halaman tersebut tidak mengualifikasi kemampuan itu. Proposal, item roadmap, dan perilaku perangkat keras atau GPU yang dijelaskan di halaman-halaman ini bukan kemampuan yang terverifikasi, kecuali catatan rilis inti menyatakannya.
 
 ## Dokumentasi beta publik {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Situs ini memiliki tiga tab:
 | CLI qxctl | Ringkasan qxctl dan referensi perintah, dimulai dari [ringkasan qxctl](/id/qxctl/overview) |
 | Catatan Perubahan | Catatan rilis bertanggal di [changelog](/id/changelog) |
 
-Gunakan pemilih bahasa untuk beralih antara bahasa Inggris dan 35 terjemahan. Grup Public repositories hanya tersedia dalam bahasa Inggris.
+Gunakan pemilih bahasa untuk beralih antara bahasa Inggris dan 35 terjemahan. Setiap bahasa menyertakan grup Public repositories.
 
-Setiap repositori publik QuanuX memiliki halaman khusus di bagian Repositori publik. Halaman repositori dipublikasikan di `docs.quanux.org/symphony/en/repositories/<repository-name>`. Misalnya, halaman ini berada di [/id/repositories/Symphony-Docs](/id/repositories/Symphony-Docs).
+Setiap repositori publik QuanuX memiliki halaman khusus di bagian Repositori publik. Halaman repositori bahasa Inggris dipublikasikan di `docs.quanux.org/symphony/en/repositories/<repository-name>`. Halaman repositori terjemahan menggunakan kode lokal sebagai pengganti `en`, misalnya `docs.quanux.org/symphony/de/repositories/<repository-name>`. Halaman ini berada di [/id/repositories/Symphony-Docs](/id/repositories/Symphony-Docs).
 
 ## Asal-usul sumber {#source-provenance}
 
@@ -43,7 +43,8 @@ Setiap halaman yang dipublikasikan sesuai dengan satu file MDX di repositori ini
 - `docs.json` mendefinisikan konfigurasi situs, tab, grup, urutan halaman, dan bahasa.
 - Halaman bahasa Inggris berada di root repositori, di `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/`, dan `qxctl/`.
 - Terjemahan mencerminkan struktur bahasa Inggris di direktori lokal seperti `de/`, `ja/`, dan `zh-Hans/`.
-- Halaman repositori berada di `en/repositories/`.
+- Halaman repositori bahasa Inggris berada di `en/repositories/`. Halaman repositori terjemahan berada di `<locale>/repositories/`, seperti `de/repositories/`.
+- `.mintignore` mengecualikan konten draf (`drafts/` dan `*.draft.mdx`) dari situs yang dipublikasikan.
 - `changelog.mdx` hanya boleh ditambah. Entri baru ditambahkan di bagian atas tahun berjalan, dan entri yang sudah dipublikasikan tidak pernah diedit atau dihapus.
 
 Untuk menelusuri suatu pernyataan, buka file MDX yang sesuai di GitHub dan tinjau riwayat commit-nya. Klaim fitur bersumber dari kode sumber inti Symphony dan artefak rilis yang dipublikasikan, bukan dari repositori ini.
@@ -60,4 +61,4 @@ Penyegaran repositori otomatis dijadwalkan dalam slot mulai 30 menit pada 17 dan
 
 [Repositori kode sumber](https://github.com/QuanuX/Symphony-Docs) · [Riwayat commit](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Terakhir ditinjau pada 17 November 2026._
+_Terakhir ditinjau pada 18 November 2026._
