@@ -14,7 +14,7 @@ Symphony-Docs는 문서 저장소입니다. Symphony 소프트웨어 릴리스�
 - `LICENSE` 파일은 Mintlify 스타터 템플릿에서 물려받은 MIT 라이선스입니다. Symphony 핵심 소프트웨어는 [QuanuX/Symphony](https://github.com/QuanuX/Symphony)에서 AGPL-3.0으로 게시됩니다.
 - 이 저장소에는 README가 없습니다. 게시된 사이트가 사용자를 위한 진입점입니다.
 
-Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시되었습니다. 릴리스 범위와 인증 경계는 [Symphony 저장소 페이지](/ko/repositories/Symphony)를 참고하세요. 이 저장소의 페이지는 기능을 설명합니다. 해당 기능을 인증하지는 않습니다. 이 페이지에 설명된 제안, 로드맵 항목, 하드웨어 또는 GPU 동작은 핵심 릴리스 기록에 명시되지 않는 한 검증된 기능이 아닙니다.
+Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시되었습니다. 릴리스 범위와 인증 경계는 [Symphony 저장소 페이지](/ko/repositories/Symphony)를 참고하세요. [QuanuX/Symphony GitHub 릴리스 페이지](https://github.com/QuanuX/Symphony/releases)에는 릴리스가 없습니다. 베타 아티팩트는 [quanux.org/downloads](https://quanux.org/downloads)에서 받으세요. 이 저장소의 페이지는 기능을 설명합니다. 해당 기능을 인증하지는 않습니다. 이 페이지에 설명된 제안, 로드맵 항목, 하드웨어 또는 GPU 동작은 핵심 릴리스 기록에 명시되지 않는 한 검증된 기능이 아닙니다.
 
 ## 공개 베타 문서 {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시�
 | qxctl CLI | qxctl 개요 및 명령 참조, [qxctl 개요](/ko/qxctl/overview)부터 시작 |
 | 변경 로그 | [변경 로그](/ko/changelog)의 날짜별 릴리스 노트 |
 
-언어 선택기를 사용해 영어와 35개 번역 간에 전환하세요. Public repositories 그룹은 영어로만 제공됩니다.
+언어 선택기를 사용해 영어와 35개 번역 간에 전환하세요. 모든 언어에 Public repositories 그룹이 포함되어 있습니다.
 
-각 QuanuX 공개 저장소에는 "공개 저장소" 아래에 전용 페이지가 있습니다. 저장소 페이지는 `docs.quanux.org/symphony/en/repositories/<repository-name>`에 게시됩니다. 예를 들어 이 페이지는 [/ko/repositories/Symphony-Docs](/ko/repositories/Symphony-Docs)에 있습니다.
+각 QuanuX 공개 저장소에는 "공개 저장소" 아래에 전용 페이지가 있습니다. 영어 저장소 페이지는 `docs.quanux.org/symphony/en/repositories/<repository-name>`에 게시됩니다. 번역된 저장소 페이지는 `en` 대신 로캘 코드를 사용합니다(예: `docs.quanux.org/symphony/de/repositories/<repository-name>`). 이 페이지는 [/ko/repositories/Symphony-Docs](/ko/repositories/Symphony-Docs)에 있습니다.
 
 ## 소스 출처 {#source-provenance}
 
@@ -43,7 +43,8 @@ Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시�
 - `docs.json`은 사이트 구성, 탭, 그룹, 페이지 순서, 언어를 정의합니다.
 - 영어 페이지는 저장소 루트와 `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/`, `qxctl/`에 있습니다.
 - 번역은 `de/`, `ja/`, `zh-Hans/` 같은 로캘 디렉터리에서 영어 구조를 그대로 따릅니다.
-- 저장소 페이지는 `en/repositories/`에 있습니다.
+- 영어 저장소 페이지는 `en/repositories/`에 있습니다. 번역된 저장소 페이지는 `de/repositories/`와 같은 `<locale>/repositories/`에 있습니다.
+- `.mintignore`는 초안 콘텐츠(`drafts/` 및 `*.draft.mdx`)를 게시된 사이트에서 제외합니다.
 - `changelog.mdx`에는 추가만 합니다. 새 항목은 현재 연도의 맨 위에 추가되며, 게시된 항목은 수정하거나 삭제하지 않습니다.
 
 어떤 내용의 출처를 추적하려면 GitHub에서 해당 MDX 파일을 열고 커밋 기록을 검토하세요. 기능에 대한 설명은 이 저장소가 아니라 Symphony 핵심 소스와 게시된 릴리스 아티팩트에 근거합니다.
@@ -60,4 +61,4 @@ Symphony 핵심 공개 베타 **0.2.0-beta.1**은 2026년 11월 16일에 출시�
 
 [소스 저장소](https://github.com/QuanuX/Symphony-Docs) · [커밋 기록](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_2026년 11월 17일에 마지막으로 검토되었습니다._
+_2026년 11월 18일에 마지막으로 검토되었습니다._

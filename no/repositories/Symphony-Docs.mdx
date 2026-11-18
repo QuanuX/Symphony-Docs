@@ -14,7 +14,7 @@ Symphony-Docs er et dokumentasjonsrepositorium. Det er ikke en del av Symphony-p
 - Filen `LICENSE` er MIT-lisensen som er arvet fra Mintlifys startmal. Symphonys kjerneprogramvare publiseres under AGPL-3.0 fra [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - Repositoriet har ingen README. Det publiserte nettstedet er inngangen for brukerne.
 
-Symphonys offentlige kjernebeta, **0.2.0-beta.1**, ble lansert 16. november 2026. Se [siden for Symphony-repositoriet](/no/repositories/Symphony) for versjonens omfang og kvalifiseringsgrenser. En side i dette repositoriet beskriver en funksjon. Den kvalifiserer ikke funksjonen. Forslag, veikartpunkter og maskinvare- eller GPU-oppførsel som beskrives på disse sidene, er ikke verifiserte funksjoner med mindre kjerneversjonens dokumentasjon sier det.
+Symphonys offentlige kjernebeta, **0.2.0-beta.1**, ble lansert 16. november 2026. Se [siden for Symphony-repositoriet](/no/repositories/Symphony) for versjonens omfang og kvalifiseringsgrenser. [GitHub Releases-siden for QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) viser ingen versjoner. Hent betaartefakter fra [quanux.org/downloads](https://quanux.org/downloads). En side i dette repositoriet beskriver en funksjon. Den kvalifiserer ikke funksjonen. Forslag, veikartpunkter og maskinvare- eller GPU-oppførsel som beskrives på disse sidene, er ikke verifiserte funksjoner med mindre kjerneversjonens dokumentasjon sier det.
 
 ## Dokumentasjon for den offentlige betaen {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Nettstedet har tre faner:
 | qxctl CLI | qxctl-oversikt og kommandoreferanser, med start i [qxctl-oversikten](/no/qxctl/overview) |
 | Endringslogg | Daterte versjonsnotater i [endringsloggen](/no/changelog) |
 
-Bruk språkvelgeren for å bytte mellom engelsk og 35 oversettelser. Gruppen Public repositories er bare tilgjengelig på engelsk.
+Bruk språkvelgeren for å bytte mellom engelsk og 35 oversettelser. Alle språk inkluderer gruppen Public repositories.
 
-Hvert offentlige QuanuX-repositorium har en egen side under Offentlige repositorier. Repositoriesider publiseres på `docs.quanux.org/symphony/en/repositories/<repository-name>`. Denne siden ligger for eksempel på [/no/repositories/Symphony-Docs](/no/repositories/Symphony-Docs).
+Hvert offentlige QuanuX-repositorium har en egen side under Offentlige repositorier. Engelske repositoriesider publiseres på `docs.quanux.org/symphony/en/repositories/<repository-name>`. Oversatte repositoriesider bruker språkkoden i stedet for `en`, for eksempel `docs.quanux.org/symphony/de/repositories/<repository-name>`. Denne siden ligger på [/no/repositories/Symphony-Docs](/no/repositories/Symphony-Docs).
 
 ## Kildenes opprinnelse {#source-provenance}
 
@@ -43,7 +43,8 @@ Hver publiserte side tilsvarer én MDX-fil i dette repositoriet.
 - `docs.json` definerer nettstedets konfigurasjon, faner, grupper, siderekkefølge og språk.
 - Engelske sider ligger i roten av repositoriet og i `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` og `qxctl/`.
 - Oversettelser speiler den engelske strukturen i språkkataloger som `de/`, `ja/` og `zh-Hans/`.
-- Repositoriesider ligger i `en/repositories/`.
+- Engelske repositoriesider ligger i `en/repositories/`. Oversatte repositoriesider ligger i `<locale>/repositories/`, for eksempel `de/repositories/`.
+- `.mintignore` utelater utkastinnhold (`drafts/` og `*.draft.mdx`) fra det publiserte nettstedet.
 - `changelog.mdx` skal bare utvides. Nye oppføringer legges til øverst i inneværende år, og publiserte oppføringer redigeres eller slettes aldri.
 
 For å spore en påstand åpner du den tilsvarende MDX-filen på GitHub og går gjennom commit-historikken. Påstander om funksjoner kan spores til Symphonys kjernekildekode og de publiserte versjonsartefaktene, ikke til dette repositoriet.
@@ -60,4 +61,4 @@ Automatiske oppdateringer av repositoriene er planlagt i startvinduer på 30 min
 
 [Kildekoderepositorium](https://github.com/QuanuX/Symphony-Docs) · [Commit-historikk](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Sist gjennomgått 17. november 2026._
+_Sist gjennomgått 18. november 2026._

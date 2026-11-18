@@ -14,7 +14,7 @@ O Symphony-Docs é um repositório de documentação. Não faz parte da versão 
 - O ficheiro `LICENSE` é a licença MIT herdada do modelo inicial do Mintlify. O software principal do Symphony é publicado ao abrigo da AGPL-3.0 em [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - O repositório não tem README. O site publicado é o ponto de entrada para os utilizadores.
 
-A beta pública principal do Symphony, **0.2.0-beta.1**, foi lançada a 16 de novembro de 2026. Consulte a [página do repositório Symphony](/pt/repositories/Symphony) para conhecer o âmbito da versão e os limites de qualificação. Uma página deste repositório descreve uma capacidade. Não qualifica essa capacidade. As propostas, os itens do roteiro e o comportamento do hardware ou da GPU descritos nestas páginas não são capacidades verificadas, a menos que o registo da versão principal o indique.
+A beta pública principal do Symphony, **0.2.0-beta.1**, foi lançada a 16 de novembro de 2026. Consulte a [página do repositório Symphony](/pt/repositories/Symphony) para conhecer o âmbito da versão e os limites de qualificação. A [página GitHub Releases do QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) não lista nenhuma versão. Obtenha os artefactos beta em [quanux.org/downloads](https://quanux.org/downloads). Uma página deste repositório descreve uma capacidade. Não qualifica essa capacidade. As propostas, os itens do roteiro e o comportamento do hardware ou da GPU descritos nestas páginas não são capacidades verificadas, a menos que o registo da versão principal o indique.
 
 ## Documentação da beta pública {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ O site tem três separadores:
 | CLI qxctl | Visão geral do qxctl e referências de comandos, a começar pela [visão geral do qxctl](/pt/qxctl/overview) |
 | Registo de alterações | Notas de versão datadas no [registo de alterações](/pt/changelog) |
 
-Utilize o seletor de idioma para alternar entre o inglês e 35 traduções. O grupo Public repositories está disponível apenas em inglês.
+Utilize o seletor de idioma para alternar entre o inglês e 35 traduções. Todos os idiomas incluem o grupo Public repositories.
 
-Cada repositório público da QuanuX tem uma página dedicada em Repositórios públicos. As páginas dos repositórios são publicadas em `docs.quanux.org/symphony/en/repositories/<repository-name>`. Por exemplo, esta página encontra-se em [/pt/repositories/Symphony-Docs](/pt/repositories/Symphony-Docs).
+Cada repositório público da QuanuX tem uma página dedicada em Repositórios públicos. As páginas dos repositórios em inglês são publicadas em `docs.quanux.org/symphony/en/repositories/<repository-name>`. As páginas dos repositórios traduzidas utilizam o código do idioma em vez de `en`, por exemplo `docs.quanux.org/symphony/de/repositories/<repository-name>`. Esta página encontra-se em [/pt/repositories/Symphony-Docs](/pt/repositories/Symphony-Docs).
 
 ## Proveniência das fontes {#source-provenance}
 
@@ -43,7 +43,8 @@ Cada página publicada corresponde a um ficheiro MDX neste repositório.
 - `docs.json` define a configuração do site, os separadores, os grupos, a ordem das páginas e os idiomas.
 - As páginas em inglês encontram-se na raiz do repositório, em `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` e `qxctl/`.
 - As traduções espelham a estrutura em inglês em diretórios de idioma como `de/`, `ja/` e `zh-Hans/`.
-- As páginas dos repositórios encontram-se em `en/repositories/`.
+- As páginas dos repositórios em inglês encontram-se em `en/repositories/`. As páginas dos repositórios traduzidas encontram-se em `<locale>/repositories/`, como `de/repositories/`.
+- `.mintignore` exclui o conteúdo de rascunho (`drafts/` e `*.draft.mdx`) do site publicado.
 - O `changelog.mdx` só aceita acréscimos. As novas entradas são adicionadas no topo do ano corrente, e as entradas publicadas nunca são editadas nem eliminadas.
 
 Para rastrear uma afirmação, abra o ficheiro MDX correspondente no GitHub e reveja o respetivo histórico de commits. As afirmações sobre funcionalidades remontam ao código-fonte principal do Symphony e aos artefactos de versão publicados, e não a este repositório.
@@ -60,4 +61,4 @@ As atualizações automáticas dos repositórios estão agendadas em janelas de 
 
 [Repositório do código-fonte](https://github.com/QuanuX/Symphony-Docs) · [Histórico de commits](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Revisto pela última vez a 17 de novembro de 2026._
+_Revisto pela última vez a 18 de novembro de 2026._

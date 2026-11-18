@@ -14,7 +14,7 @@ Symphony-Docs is een documentatierepository. Het maakt geen deel uit van de Symp
 - Het bestand `LICENSE` is de MIT-licentie die is overgenomen van de Mintlify-startsjabloon. De kernsoftware van Symphony wordt onder AGPL-3.0 gepubliceerd via [QuanuX/Symphony](https://github.com/QuanuX/Symphony).
 - De repository heeft geen README. De gepubliceerde site is het toegangspunt voor gebruikers.
 
-De openbare bèta van de Symphony-kern, **0.2.0-beta.1**, is gelanceerd op 16 november 2026. Zie de [pagina van de Symphony-repository](/nl/repositories/Symphony) voor de reikwijdte van de release en de kwalificatiegrenzen. Een pagina in deze repository beschrijft een mogelijkheid. Ze kwalificeert die mogelijkheid niet. Voorstellen, roadmap-items en hardware- of GPU-gedrag dat op deze pagina's wordt beschreven, zijn geen geverifieerde mogelijkheden, tenzij het releasedossier van de kern dat vermeldt.
+De openbare bèta van de Symphony-kern, **0.2.0-beta.1**, is gelanceerd op 16 november 2026. Zie de [pagina van de Symphony-repository](/nl/repositories/Symphony) voor de reikwijdte van de release en de kwalificatiegrenzen. De [GitHub-releasepagina van QuanuX/Symphony](https://github.com/QuanuX/Symphony/releases) vermeldt geen releases. Download bèta-artefacten via [quanux.org/downloads](https://quanux.org/downloads). Een pagina in deze repository beschrijft een mogelijkheid. Ze kwalificeert die mogelijkheid niet. Voorstellen, roadmap-items en hardware- of GPU-gedrag dat op deze pagina's wordt beschreven, zijn geen geverifieerde mogelijkheden, tenzij het releasedossier van de kern dat vermeldt.
 
 ## Documentatie van de openbare bèta {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ De site heeft drie tabbladen:
 | qxctl CLI | qxctl-overzicht en opdrachtreferenties, te beginnen bij het [qxctl-overzicht](/nl/qxctl/overview) |
 | Changelog | Gedateerde releasenotes in de [changelog](/nl/changelog) |
 
-Gebruik de taalkiezer om te wisselen tussen Engels en 35 vertalingen. De groep Public repositories is alleen in het Engels beschikbaar.
+Gebruik de taalkiezer om te wisselen tussen Engels en 35 vertalingen. Elke taal bevat de groep Public repositories.
 
-Elke openbare QuanuX-repository heeft een eigen pagina onder Openbare repository's. Repositorypagina's worden gepubliceerd op `docs.quanux.org/symphony/en/repositories/<repository-name>`. Deze pagina staat bijvoorbeeld op [/nl/repositories/Symphony-Docs](/nl/repositories/Symphony-Docs).
+Elke openbare QuanuX-repository heeft een eigen pagina onder Openbare repository's. Engelse repositorypagina's worden gepubliceerd op `docs.quanux.org/symphony/en/repositories/<repository-name>`. Vertaalde repositorypagina's gebruiken de taalcode in plaats van `en`, bijvoorbeeld `docs.quanux.org/symphony/de/repositories/<repository-name>`. Deze pagina staat op [/nl/repositories/Symphony-Docs](/nl/repositories/Symphony-Docs).
 
 ## Herkomst van de bronnen {#source-provenance}
 
@@ -43,7 +43,8 @@ Elke gepubliceerde pagina komt overeen met één MDX-bestand in deze repository.
 - `docs.json` definieert de siteconfiguratie, tabbladen, groepen, paginavolgorde en talen.
 - Engelse pagina's staan in de hoofdmap van de repository en in `concepts/`, `skv/`, `vectors/`, `governance/`, `engines/` en `qxctl/`.
 - Vertalingen spiegelen de Engelse structuur in taalmappen zoals `de/`, `ja/` en `zh-Hans/`.
-- Repositorypagina's staan in `en/repositories/`.
+- Engelse repositorypagina's staan in `en/repositories/`. Vertaalde repositorypagina's staan in `<locale>/repositories/`, zoals `de/repositories/`.
+- `.mintignore` sluit conceptinhoud (`drafts/` en `*.draft.mdx`) uit van de gepubliceerde site.
 - `changelog.mdx` wordt alleen aangevuld. Nieuwe items worden bovenaan het huidige jaar toegevoegd, en gepubliceerde items worden nooit bewerkt of verwijderd.
 
 Om een bewering te herleiden, opent u het bijbehorende MDX-bestand op GitHub en bekijkt u de commitgeschiedenis. Beweringen over functies zijn herleidbaar tot de kernbroncode van Symphony en de gepubliceerde releaseartefacten, niet tot deze repository.
@@ -60,4 +61,4 @@ Geautomatiseerde vernieuwingen van de repository's zijn gepland in startvensters
 
 [Broncoderepository](https://github.com/QuanuX/Symphony-Docs) · [Commitgeschiedenis](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_Laatst gecontroleerd op 17 november 2026._
+_Laatst gecontroleerd op 18 november 2026._

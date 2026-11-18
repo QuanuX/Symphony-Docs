@@ -14,7 +14,7 @@ Symphony-Docs 是一个文档仓库。它不属于 Symphony 软件发布的一�
 - 其 `LICENSE` 文件是从 Mintlify 入门模板继承的 MIT 许可证。Symphony 核心软件以 AGPL-3.0 许可证通过 [QuanuX/Symphony](https://github.com/QuanuX/Symphony) 发布。
 - 该仓库没有 README。已发布的站点是面向用户的入口。
 
-Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布。有关其发布范围和资格认证边界，请参阅 [Symphony 仓库页面](/zh/repositories/Symphony)。本仓库中的页面描述的是一项功能。它并不认证该功能。这些页面中描述的提案、路线图事项以及硬件或 GPU 行为，除非核心发布记录中有说明，否则均不属于经过验证的功能。
+Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布。有关其发布范围和资格认证边界，请参阅 [Symphony 仓库页面](/zh/repositories/Symphony)。[QuanuX/Symphony GitHub Releases 页面](https://github.com/QuanuX/Symphony/releases)中没有列出任何版本。请从 [quanux.org/downloads](https://quanux.org/downloads) 获取测试版制品。本仓库中的页面描述的是一项功能。它并不认证该功能。这些页面中描述的提案、路线图事项以及硬件或 GPU 行为，除非核心发布记录中有说明，否则均不属于经过验证的功能。
 
 ## 公开测试版文档 {#public-beta-documentation}
 
@@ -32,9 +32,9 @@ Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布
 | qxctl CLI | qxctl 概览和命令参考，从 [qxctl 概览](/zh/qxctl/overview)开始 |
 | 更新日志 | [更新日志](/zh/changelog)中带日期的发布说明 |
 
-使用语言选择器在英语和 35 种译文之间切换。Public repositories 分组仅提供英文版。
+使用语言选择器在英语和 35 种译文之间切换。每种语言都包含 Public repositories 分组。
 
-每个 QuanuX 公开仓库在“公开仓库”下都有专属页面。仓库页面发布在 `docs.quanux.org/symphony/en/repositories/<repository-name>`。例如，本页面位于 [/zh/repositories/Symphony-Docs](/zh/repositories/Symphony-Docs)。
+每个 QuanuX 公开仓库在“公开仓库”下都有专属页面。英文仓库页面发布在 `docs.quanux.org/symphony/en/repositories/<repository-name>`。翻译后的仓库页面使用语言代码替换 `en`，例如 `docs.quanux.org/symphony/de/repositories/<repository-name>`。本页面位于 [/zh/repositories/Symphony-Docs](/zh/repositories/Symphony-Docs)。
 
 ## 来源出处 {#source-provenance}
 
@@ -43,7 +43,8 @@ Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布
 - `docs.json` 定义站点配置、标签页、分组、页面顺序和语言。
 - 英文页面位于仓库根目录以及 `concepts/`、`skv/`、`vectors/`、`governance/`、`engines/` 和 `qxctl/` 中。
 - 译文在 `de/`、`ja/` 和 `zh-Hans/` 等语言目录中沿用英文结构。
-- 仓库页面位于 `en/repositories/`。
+- 英文仓库页面位于 `en/repositories/`。翻译后的仓库页面位于 `<locale>/repositories/`，例如 `de/repositories/`。
+- `.mintignore` 会从已发布的站点中排除草稿内容（`drafts/` 和 `*.draft.mdx`）。
 - `changelog.mdx` 只能追加。新条目添加在当年内容的顶部，已发布的条目从不编辑或删除。
 
 如需追溯某项说明，请在 GitHub 上打开对应的 MDX 文件并查看其提交历史。功能相关的说明以 Symphony 核心源代码及其已发布的发布制品为依据，而不是本仓库。
@@ -60,4 +61,4 @@ Symphony 核心公开测试版 **0.2.0-beta.1** 于 2026 年 11 月 16 日发布
 
 [源代码仓库](https://github.com/QuanuX/Symphony-Docs) · [提交历史](https://github.com/QuanuX/Symphony-Docs/commits/main/) · [Issues](https://github.com/QuanuX/Symphony-Docs/issues)
 
-_最后审阅于 2026 年 11 月 17 日。_
+_最后审阅于 2026 年 11 月 18 日。_
